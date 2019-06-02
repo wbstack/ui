@@ -1,0 +1,9 @@
+  ui:
+    image: nginx:1
+    volumes:
+    - ./src/dist:/usr/share/nginx/html
+    ports:
+      - 8080:80
+    environment:
+      PUBLIC: www.ww.10.0.75.2.xip.io:1999
+      API_URL: http://api.ww.10.0.75.2.xip.io:1999
