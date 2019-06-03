@@ -18,5 +18,10 @@ RUN apk add --update --upgrade --no-cache wget \
 # - only weights 100KB combined with it's libraries
 && apk add gettext libintl
 
-ADD ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /src/app/dist /usr/share/nginx/html
+ADD ./nginx/default.conf /dockertemplates/default.conf
+COPY --from=builder --chown=nginx:nginx /src/app/dist /usr/share/nginx/html
+
+COPY ./entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
