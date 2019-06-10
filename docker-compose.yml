@@ -1,5 +1,23 @@
 version: '2'
 services:
+  ui-dev:
+    image: node:8
+    depends_on:
+    - api
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+    - ./src:/home/node/app
+    restart: always
+    command: npm run dev
+    ports:
+      - 8081:2000
+    environment:
+      HOST: 0.0.0.0
+      PORT: 2000
+      PUBLIC: localhost:8081
+      API_URL: localhost:8082
+#      API_PROXY_PASS: http://api
   ui:
     image: localhost/open-cura/ui:0.1
 #    build: ./
@@ -11,13 +29,14 @@ services:
     environment:
       PUBLIC: localhost:8080
       API_URL: localhost:8081
+      # TODO not sure if this redirect thing is the right thing to do?
       API_PROXY_PASS: http://api
     depends_on:
       - api
   api:
     image: localhost/open-cura/api:0.4
     ports:
-      - 8081:80
+      - 8082:80
     restart: always
     depends_on:
       - api-sql
