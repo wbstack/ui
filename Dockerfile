@@ -8,9 +8,6 @@ COPY ./src/ .
 RUN npm run-script build
 
 FROM nginx:1-alpine
-HEALTHCHECK --timeout=1s --retries=99 \
-        CMD wget -q --spider http://127.0.0.1:80/ \
-         || exit 1
 
 RUN apk add --update --upgrade --no-cache wget \
 # Install envsubst command for replacing config files in system startup
@@ -24,4 +21,4 @@ COPY --from=builder --chown=nginx:nginx /src/app/dist /usr/share/nginx/html
 COPY ./entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx-debug", "-g", "daemon off;"]

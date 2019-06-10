@@ -1,8 +1,8 @@
   ui:
     image: localhost/open-cura/ui:0.1
 #    build: ./
-    volumes:
-    - ./src/dist:/usr/share/nginx/html
+#    volumes:
+#    - ./src/dist:/usr/share/nginx/html
     ports:
       - 8080:80
     environment:
