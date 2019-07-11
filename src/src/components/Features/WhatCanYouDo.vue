@@ -1,37 +1,37 @@
 <template>
   <div class="wrapper">
     <div class="wcyd-center">
-      <h1>What can you do with WW?</h1>
+      <h1>What can you do with Open Cura?</h1>
     </div>
     <div class="wcyd-center">
-      <p>WW allows you to create knowledge using proven and linkable solutions.</p>
+      <p>Open Cura allows you to easily curate data in your own Wikibase instance.</p>
     </div>
     <div class="wcyd-center">
       <div class="md-layout wcyd-center" >
         <md-card class="md-layout-item">
-          <md-card-header class="md-title">Start a wiki</md-card-header>
+          <md-card-header class="md-title">Create a Wikibase</md-card-header>
           <md-card-content>
-            Create a wiki with a few simple details.
+            Create a Wikibase with a few simple details.
           </md-card-content>
         </md-card>
         <md-card class="md-layout-item">
           <md-card-header class="md-title">Build a community</md-card-header>
           <md-card-content>
-            Allow people to find your knowledge and help you curate it.
+            Allow people to find your data and help you curate it.
           </md-card-content>
         </md-card>
       </div>
       <div class="md-layout wcyd-center">
         <md-card class="md-layout-item">
-          <md-card-header class="md-title">Store structured information</md-card-header>
+          <md-card-header class="md-title">Link to other data</md-card-header>
           <md-card-content>
-            Using Wikibase.
+            Link to other open data sets.
           </md-card-content>
         </md-card>
         <md-card class="md-layout-item">
           <md-card-header class="md-title">Query everything</md-card-header>
           <md-card-content>
-            Meta data backed by SQl.
+            Meta data backed by SQL.
             Triples via Blazegraph.
           </md-card-content>
         </md-card>

@@ -2,7 +2,7 @@
   <md-toolbar>
     <div class="md-layout-item md-alignment-center-left">
       <span class="md-title">
-        <router-link to="/">WikWiki</router-link>
+        <router-link to="/">Open Cura</router-link>
       </span>
     </div>
     <template v-if="currentUser">

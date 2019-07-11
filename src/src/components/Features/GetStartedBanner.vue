@@ -3,11 +3,11 @@
     <div class="md-layout feature-gsb-wrapper" >
       <div class="md-layout-item">
         <h1>
-          <span>Create a wiki,</span>
+          <span>Openly curate knowledge..</span>
         </h1>
-        <h1>
-          <span>curate knowledge.</span>
-        </h1>
+        <h2>
+          <span>..starting with Wikibase</span>
+        </h2>
         <md-button class="md-raised" to="/create-account">Get started</md-button>
       </div>
       <div class="md-layout-item">
@@ -31,13 +31,24 @@ export default {
 
 <style scoped>
 
+  .wrapper{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   img{
     max-width: 400px;
   }
 
-  span{
+  h1 span{
     font-size: 64px;
     font-weight: 400;
+    line-height: 72px;
+  }
+
+  h2 span{
+    font-size: 32px;
+    font-weight: 200;
     line-height: 72px;
   }
 
@@ -46,6 +57,6 @@ export default {
     max-width:1152px;
     align-items: center;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
   }
 </style>
