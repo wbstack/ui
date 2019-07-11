@@ -16,7 +16,7 @@ services:
       HOST: 0.0.0.0
       PORT: 2000
       PUBLIC: localhost:8081
-      API_URL: localhost:8082
+      API_URL: http://localhost:8082
   ui-build:
     image: localhost/open-cura/ui:local-0.1
     ports:
