@@ -1,6 +1,6 @@
 version: '2'
 services:
-  ui-dev:
+  ui-live:
     image: node:8
     depends_on:
     - api
@@ -17,20 +17,11 @@ services:
       PORT: 2000
       PUBLIC: localhost:8081
       API_URL: localhost:8082
-#      API_PROXY_PASS: http://api
-  ui:
-    image: localhost/open-cura/ui:0.1
-#    build: ./
-#    volumes:
-#    - ./src/dist:/usr/share/nginx/html
+  ui-build:
+    image: localhost/open-cura/ui:local-0.1
     ports:
       - 8080:80
     restart: always
-    environment:
-      PUBLIC: localhost:8080
-      API_URL: localhost:8081
-      # TODO not sure if this redirect thing is the right thing to do?
-      API_PROXY_PASS: http://api
     depends_on:
       - api
   api:
