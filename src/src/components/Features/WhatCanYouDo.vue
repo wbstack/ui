@@ -43,7 +43,7 @@
         <p>Getting started is easy</p>
       </v-flex>
       <v-flex>
-        <v-btn to="/create-account">Sign up for free</v-btn>
+        <v-btn color="primary" to="/create-account">Sign up for free</v-btn>
       </v-flex>
     </v-layout>
   </v-container>

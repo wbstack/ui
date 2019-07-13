@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <GetStartedBanner></GetStartedBanner>
-    <md-divider></md-divider>
     <WhatCanYouDo></WhatCanYouDo>
   </div>
 </template>

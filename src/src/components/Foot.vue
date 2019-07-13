@@ -58,7 +58,6 @@
     </v-layout>
   </v-footer>
 
-
   </footer>
 </template>
 
