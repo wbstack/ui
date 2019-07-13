@@ -20,6 +20,7 @@
                     type="email"
                     required
                     v-model="email"
+                    :disabled="inFlight"
                     :error-messages="error['inputEmail']"
                     />
                     <v-text-field
@@ -29,6 +30,7 @@
                     label="Username"
                     required
                     v-model="username"
+                    :disabled="inFlight"
                     :error-messages="error['inputUsername']"
                     />
                     <v-text-field
@@ -39,6 +41,7 @@
                     type="password"
                     required
                     v-model="password"
+                    :disabled="inFlight"
                     :error-messages="error['inputPassword']"
                     />
                     <v-text-field
@@ -49,6 +52,7 @@
                     type="password"
                     required
                     v-model="passwordConfirmation"
+                    :disabled="inFlight"
                     :error-messages="error['inputPasswordConfirmation']"
                     />
                     <p>By clicking the button below you accept out Terms of Service.</p>
@@ -56,7 +60,13 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn @click="createaccount" color="primary">Create Account</v-btn>
+                  <v-btn
+                  @click="createaccount"
+                  color="primary"
+                  :disabled="inFlight"
+                  >
+                  Create Account
+                </v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>

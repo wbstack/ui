@@ -17,6 +17,7 @@
                   type="email"
                   required
                   v-model="email"
+                  :disabled="loggingIn"
                   :error-messages="error"
                   />
                   <v-text-field
@@ -27,13 +28,14 @@
                   type="password"
                   required
                   v-model="password"
+                  :disabled="loggingIn"
                   :error-messages="error"
                   />
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="login" color="primary">Login</v-btn>
+                <v-btn @click="login" color="primary" :disabled="loggingIn">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
