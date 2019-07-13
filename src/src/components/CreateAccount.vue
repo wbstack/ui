@@ -1,36 +1,74 @@
 <template>
-  <div class="wrapper">
-    <form @submit.prevent="createaccount">
-      <h2>Let's get started.</h2>
-      <md-field>
-        <label for="inputEmail">Email address</label>
-        <md-input :disabled="inFlight" v-model="email" id="inputEmail" name="Email address" type="email" required></md-input>
-        <span class="md-error" v-if="error">Something is wrong with you input.</span>
-      </md-field>
-      <md-field>
-        <label for="inputUsername">Username</label>
-        <md-input :disabled="inFlight" v-model="username" id="inputUsername" name="Username" required></md-input>
-        <span class="md-error" v-if="error">Something is wrong with you input.</span>
-      </md-field>
-      <md-field v-bind:class="{ 'md-invalid':error['inputPassword'] }">
-        <label for="inputPassword">Password</label>
-        <md-input :disabled="inFlight" v-model="password" id="inputPassword" name="Password" type="password" required></md-input>
-        <span class="md-error" v-if="error['inputPassword']">{{error['inputPassword']}}</span>
-      </md-field>
-      <md-field v-bind:class="{ 'md-invalid':error['inputPasswordConfirmation']}">
-        <label for="inputPasswordConfirmation">Confirm Password</label>
-        <md-input :disabled="inFlight" v-model="passwordConfirmation" id="inputPasswordConfirmation" name="Confirm Password" type="password" required></md-input>
-        <span class="md-error" v-if="error['inputPasswordConfirmation']">{{error['inputPasswordConfirmation']}}</span>
-      </md-field>
-      <!-- TODO link to TOS-->
-      <p>By clicking the button below you accept out Terms of Service.</p>
-      <md-button :disabled="inFlight" class="md-raised md-primary" type="submit">Create your account</md-button>
-    </form>
-    <div class="register-already-have-account">
-      <p>Already have an account?</p>
-      <router-link to="/login">Login now.</router-link>
-    </div>
-  </div>
+<div>
+
+  <template>
+      <v-content>
+        <v-container fluid fill-height>
+          <v-layout align-center justify-center column>
+            <v-flex xs12 sm8 md4>
+              <v-card class="elevation-12">
+                <v-toolbar dark color="primary">
+                  <v-toolbar-title>Lets get started</v-toolbar-title>
+                </v-toolbar>
+                <v-card-text>
+                  <v-form>
+                    <v-text-field
+                    id="inputEmail"
+                    prepend-icon="email"
+                    name="login"
+                    label="Email address"
+                    type="email"
+                    required
+                    v-model="email"
+                    :error-messages="error['email']"
+                    />
+                    <v-text-field
+                    id="inputUsername"
+                    prepend-icon="person"
+                    name="username"
+                    label="Username"
+                    required
+                    v-model="username"
+                    :error-messages="error['username']"
+                    />
+                    <v-text-field
+                    id="inputPassword"
+                    prepend-icon="lock"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    required
+                    v-model="password"
+                    :error-messages="error['inputPassword']"
+                    />
+                    <v-text-field
+                    id="inputPasswordConfirmation"
+                    prepend-icon="lock"
+                    name="passwordConfirmation"
+                    label="Confirm Password"
+                    type="password"
+                    required
+                    v-model="passwordConfirmation"
+                    :error-messages="error['inputPasswordConfirmation']"
+                    />
+                    <p>By clicking the button below you accept out Terms of Service.</p>
+                  </v-form>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="createaccount" color="primary">Create Account</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+            <v-flex class="needs-padding">
+              <p>Already have an account?</p>
+              <router-link to="/login">Login now.</router-link>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+  </template>
+</div>
 </template>
 
 <script>
@@ -134,26 +172,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  form {
-    min-width: 200px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
 
-  .md-button{
-    width: 100%;
-  }
-
-  .register-already-have-account{
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .wrapper {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 auto;
-  }
+.needs-padding{
+  padding-top: 45px;
+  text-align: center;
+}
 
 </style>
