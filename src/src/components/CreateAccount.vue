@@ -101,7 +101,7 @@ export default {
         .then(request => this.loginSuccessful(request))
         .catch(() => this.loginFailed())
     },
-    createFailed (error) {
+    createFailed (/* error */) {
       this.setGeneralErrorState()
       this.$store.dispatch('logout')
     },
