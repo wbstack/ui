@@ -1,31 +1,49 @@
 <template>
-  <div class="wrapper border border-light md-layout">
-      <div class="md-layout-item md-alignment-center-center" >
-        <form @submit.prevent="login">
-          <h2>Log in to your account.</h2>
-          <!-- TODO allow email or username -->
-          <md-field v-bind:class="{ 'md-invalid':error }">
-            <label for="inputEmail">Email</label>
-            <md-input :disabled="loggingIn" v-model="email" id="inputEmail" name="Email address" type="email" required></md-input>
-            <span class="md-error" v-if="error">Unable to log in</span>
-          </md-field>
-          <md-field v-bind:class="{ 'md-invalid':error }">
-            <label for="inputPassword">Password</label>
-            <md-input :disabled="loggingIn" v-model="password" id="inputPassword" name="Password" type="password" required></md-input>
-            <span class="md-error" v-if="error">Unable to log in</span>
-          </md-field>
-          <!-- TODO link to TOS-->
-          <p>By clicking the button below you accept out Terms of Service.</p>
-          <div class="md-button-wrapper">
-            <md-button :disabled="loggingIn" class="md-raised md-primary" type="submit">Log In</md-button>
-          </div>
-        </form>
-        <div class="login-no-account-yet">
-          <p>Not yet got an account?</p>
-          <router-link to="/create-account">Create one now.</router-link>
-        </div>
-      </div>
-  </div>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center column>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar dark color="primary">
+                <v-toolbar-title>Log in to your account</v-toolbar-title>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field
+                  id="inputEmail"
+                  prepend-icon="email"
+                  name="login"
+                  label="Email address"
+                  type="email"
+                  required
+                  v-model="email"
+                  :error-messages="error"
+                  />
+                  <v-text-field
+                  id="inputPassword"
+                  prepend-icon="lock"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  required
+                  v-model="password"
+                  :error-messages="error"
+                  />
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn @click="login" color="primary">Login</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+          <v-flex class="needs-padding">
+            <p>Not got an account yet?</p>
+            <router-link to="/create-account">Create one now.</router-link>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
 </template>
 
 <script>
@@ -88,26 +106,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  form {
-    min-width: 200px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
 
-  .md-button-wrapper{
+  .needs-padding{
+    padding-top: 45px;
     text-align: center;
-  }
-
-  .login-no-account-yet{
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .wrapper{
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 auto;
   }
 
 </style>
