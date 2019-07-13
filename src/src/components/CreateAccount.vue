@@ -20,7 +20,7 @@
                     type="email"
                     required
                     v-model="email"
-                    :error-messages="error['email']"
+                    :error-messages="error['inputEmail']"
                     />
                     <v-text-field
                     id="inputUsername"
@@ -29,7 +29,7 @@
                     label="Username"
                     required
                     v-model="username"
-                    :error-messages="error['username']"
+                    :error-messages="error['inputUsername']"
                     />
                     <v-text-field
                     id="inputPassword"
@@ -96,8 +96,11 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    setGeneralErrorState (error = 'Something went wrong.') {
+    resetErrorState() {
       this.error = []
+    },
+    setGeneralErrorState (error = 'Something went wrong.') {
+      this.resetErrorState()
       this.error['inputEmail'] = error
       this.error['inputUsername'] = error
       this.error['inputPassword'] = error
@@ -139,9 +142,19 @@ export default {
         .then(request => this.loginSuccessful(request))
         .catch(() => this.loginFailed())
     },
-    createFailed (/* error */) {
-      this.setGeneralErrorState()
+    createFailed (error) {
+      this.resetErrorState()
+      if(error.response.data.email) {
+        this.error['inputEmail'] = error.response.data.email[0]
+      }
+      if(error.response.data.username) {
+        this.error['inputUsername'] = error.response.data.username[0]
+      }
+      if(!this.error){
+        this.setGeneralErrorState()
+      }
       this.$store.dispatch('logout')
+      this.inFlight = false
     },
     loginSuccessful (req) {
       if (!req.data.token) {
