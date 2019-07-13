@@ -1,29 +1,60 @@
 <template>
-  <div class="wrapper md-layout">
-    <md-drawer class="md-permanent md-layout-item" md-permanent="full">
-      <h4>{{ currentUser.email }}</h4>
-      <h4>Wikis<md-button class="md-raised md-primary" to="/wikis/create">New</md-button></h4>
-      <md-list>
-        <md-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
-          <a :href="wiki.homesrc">{{wiki.sitename}}</a>
-        </md-list-item>
-      </md-list>
-      <h4>Teams</h4>
-      <md-list>
-        <md-list-item>Teams are not yet implemented.</md-list-item>
-      </md-list>
-    </md-drawer>
-    <div class="md-layout-item">
-      <h3>Recent activity</h3>
-      <p>Not yet implemented</p>
-    </div>
-    <div class="md-layout-item right-bar">
-      <h4>Notices</h4>
-      <p>Not yet implemented</p>
-      <h4>Discover</h4>
-      <p>Not yet implemented</p>
-    </div>
-  </div>
+    <v-container fluid>
+      <v-layout>
+        <v-flex xs3>
+          <v-container fluid>
+            <v-layout column>
+              <v-flex>
+                <h4>Hi {{ currentUser.email }}!</h4>
+              </v-flex>
+              <v-flex>
+                <v-card>
+                  <v-toolbar>
+                    <v-toolbar-title>Your Wikis</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-toolbar-items>
+                      <v-btn fab color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
+                    </v-toolbar-items>
+                  </v-toolbar>
+                  <v-card-text>
+                    <v-list>
+                      <v-list-tile v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
+                        <v-list-tile-content>
+                          <a :href="wiki.homesrc">{{wiki.sitename}}</a>
+                        </v-list-tile-content>
+                      </v-list-tile>
+                    </v-list>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+              <v-flex>
+                <v-card>
+                  <v-toolbar>
+                    <v-toolbar-title>Your Teams</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-toolbar-items>
+                    </v-toolbar-items>
+                  </v-toolbar>
+                  <v-card-text>
+                    <p>Teams are not yet implemented.</p>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-flex>
+        <v-flex xs6>
+          <h3>Recent activity</h3>
+          <p>Not yet implemented</p>
+        </v-flex>
+        <v-flex xs3>
+          <h4>Notices</h4>
+          <p>Not yet implemented</p>
+          <h4>Discover</h4>
+          <p>Not yet implemented</p>
+        </v-flex>
+      </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -54,17 +85,5 @@ export default {
 </script>
 
 <style scoped>
-  .md-drawer{
-    max-width: 400px;
-  }
-  .right-bar{
-    max-width: 400px;
-  }
-  .md-layout-item{
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .md-button{
-    float: right;
-  }
+
 </style>
