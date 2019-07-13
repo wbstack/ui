@@ -1,18 +1,21 @@
 <template>
-  <md-toolbar>
-    <div class="md-layout-item md-alignment-center-left">
-      <span class="md-title">
-        <router-link to="/">Open Cura</router-link>
-      </span>
-    </div>
-    <template v-if="currentUser">
-      <md-button class="md-raised" to="/logout">Logout</md-button>
-    </template>
-    <template v-if="!currentUser">
-      <md-button class="md-raised" to="/login">Login</md-button>
-      <md-button class="md-raised md-primary" to="/create-account">Get Started</md-button>
-    </template>
-  </md-toolbar>
+  <v-toolbar>
+    <v-toolbar-title>
+      <router-link to="/">
+        Open Cura
+      </router-link>
+    </v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+      <template v-if="currentUser">
+        <v-btn flat to="/logout">Logout</v-btn>
+      </template>
+      <template v-if="!currentUser">
+        <v-btn flat to="/login">Login</v-btn>
+        <v-btn flat color="primary" to="/create-account">Get Started</v-btn>
+      </template>
+    </v-toolbar-items>
+  </v-toolbar>
 </template>
 
 <script>
