@@ -4,8 +4,6 @@ import Home from '@/components/Home'
 import CreateAccount from '@/components/CreateAccount'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
-import WikiList from '@/components/Wikis/List'
-import SingleWiki from '@/components/Wikis/Single'
 import CreateWiki from '@/components/CreateWiki'
 
 Vue.use(Router)
@@ -37,16 +35,6 @@ export default new Router({
       path: '/wikis/create',
       name: 'CreateWiki',
       component: CreateWiki
-    },
-    {
-      path: '/wikis/list',
-      name: 'Wikis',
-      component: WikiList
-    },
-    {
-      path: '/wikis/:id',
-      name: 'Wiki',
-      component: SingleWiki
     }
   ]
 })
