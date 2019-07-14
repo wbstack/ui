@@ -5,7 +5,11 @@
           <v-container fluid>
             <v-layout column>
               <v-flex>
-                <h4>Hi {{ currentUser.email }}!</h4>
+                <v-card>
+                  <v-toolbar flat class="transparent">
+                    <v-toolbar-title>Hi {{ currentUser.email }}!</v-toolbar-title>
+                  </v-toolbar>
+                </v-card>
               </v-flex>
               <v-flex>
                 <v-card>
@@ -13,7 +17,7 @@
                     <v-toolbar-title>Your Wikis</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-toolbar-items>
-                      <v-btn fab color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
+                      <v-btn fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
                     </v-toolbar-items>
                   </v-toolbar>
                   <v-card-text>
