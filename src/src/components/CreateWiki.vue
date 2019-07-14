@@ -1,36 +1,83 @@
 <template>
-  <div class="wrapper">
-    <form @submit.prevent="createwiki">
-      <h2>Create a wiki</h2>
-      <p>Please answer the questions below in order to create a wiki.</p>
-      <div v-if="error">{{ error }}</div>
-      <h3>Site Access</h3>
-      <!-- TODO make this configurable from somewhere.... -->
-      <p>Wikis by default are accessible at [project].[owner].mw.ww.10.0.75.2.xip.io</p>
-      <md-field>
-        <label for="inputSubdomainProject">Project Name</label>
-        <md-input :disabled="inFlight" v-model="subdomainProject" id="inputSubdomainProject" name="project" type="text" required="true"></md-input>
-      </md-field>
-      <md-field>
-        <label for="inputSubdomainOwner">Owner / Org Name</label>
-        <md-input :disabled="inFlight" v-model="subdomainOwner" id="inputSubdomainOwner" name="Owner or organization name" type="text" required="true"></md-input>
-      </md-field>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center column>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar dark color="primary">
+                <v-toolbar-title>Create a Wiki</v-toolbar-title>
+              </v-toolbar>
+              <v-card-text>
+                <p>Please answer the questions below in order to create a wiki.</p>
+                <v-form>
 
-      <h3>Site Settings</h3>
-      <p>These roughly correlate to MediaWiki Settings...</p>
+                  <h3>Site Access</h3>
+                  <!-- TODO make this configurable from somewhere.... -->
+                  <p>Wikis by default are accessible at [project].[owner].mw.ww.10.0.75.2.xip.io</p>
+                  <p>Or maybe at [project].[owner].wiki.opencura.com</p>
 
-      <!-- TODO Provide docs?! -->
-      <md-field>
-        <label for="inputSiteName">Site Name</label>
-        <md-input :disabled="inFlight" v-model="sitename" id="inputSiteName" name="Site name" type="text" required="true"></md-input>
-      </md-field>
-      <md-field>
-        <label for="inputMetaNamespace">Meta Namespace</label>
-        <md-input :disabled="inFlight" v-model="metaNamespace" id="inputMetaNamespace" name="Meta namespace" type="text" required="true"></md-input>
-      </md-field>
-      <md-button :disabled="inFlight" class="md-raised md-primary" type="submit">Create Wiki</md-button>
-    </form>
-  </div>
+                  <v-text-field
+                  id="inputSubdomainProject"
+                  prepend-icon="person"
+                  name="project"
+                  label="Project Name"
+                  required
+                  v-model="subdomainProject"
+                  :disabled="inFlight"
+                  :error-messages="error"
+                  />
+                  <v-text-field
+                  id="inputSubdomainOwner"
+                  prepend-icon="person"
+                  name="owner"
+                  label="Owner or Organization name"
+                  required
+                  v-model="subdomainOwner"
+                  :disabled="inFlight"
+                  :error-messages="error"
+                  />
+
+                  <h3>Site Settings</h3>
+                  <p>These roughly correlate to MediaWiki Settings...</p>
+
+                  <v-text-field
+                  id="inputSiteName"
+                  prepend-icon="person"
+                  name="sitename"
+                  label="Site Name"
+                  required
+                  v-model="sitename"
+                  :disabled="inFlight"
+                  :error-messages="error"
+                  />
+                  <v-text-field
+                  id="inputMetaNamespace"
+                  prepend-icon="person"
+                  name="metanamespace"
+                  label="Meta Namespace"
+                  required
+                  v-model="metaNamespace"
+                  :disabled="inFlight"
+                  :error-messages="error"
+                  />
+                  <p>By clicking the button below you accept out Terms of Service.</p>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                @click="createwiki"
+                color="primary"
+                :disabled="inFlight"
+                >
+                Create Wiki
+              </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
 </template>
 
 <script>
@@ -94,14 +141,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  form {
-    min-width: 200px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .wrapper{
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 auto;
-  }
 </style>
