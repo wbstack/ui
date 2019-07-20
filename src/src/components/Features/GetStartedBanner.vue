@@ -14,12 +14,14 @@
         </v-container>
       </v-flex>
       <v-flex xs6>
-        <div class="imgframe">
-          <span class="imghelper"></span>
-            <!--TODO load this image from somewhere locally hosted...-->
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/MediaWiki_software_screenshot.png/640px-MediaWiki_software_screenshot.png"/>
-        </div>
+        <!-- TODO trim images to all be a set size or ratio.... -->
+        <v-carousel hide-controls hide-delimiters interval="5400" max="400px" height="300px">
+          <v-carousel-item
+            v-for="(image,i) in images"
+            :key="i"
+            :src="image.src"
+          ></v-carousel-item>
+        </v-carousel>
       </v-flex>
     </v-layout>
     <v-layout>
@@ -34,7 +36,25 @@
 
 export default {
   name: 'GetStartedBanner',
-  components: {}
+  components: {},
+  data() {
+    return {
+      images: [
+          {
+            src: '/static/screenshot-mediawiki.png'
+          },
+          {
+            src: '/static/screenshot-wikibase-registry-query-april-2019.png'
+          },
+          {
+            src: '/static/screenshot-wikidata-main-page-finnish.png'
+          },
+          {
+            src: '/static/screenshot-wikidata-query-service.png'
+          }
+        ]
+    }
+  }
 }
 </script>
 
@@ -49,25 +69,5 @@ export default {
     font-size: 32px;
     font-weight: 200;
     line-height: 72px;
-  }
-
-  .imgframe {
-    max-width: 400px;
-    height: 100%;
-    white-space: nowrap; /* This is required unless you put the helper span closely near the img */
-
-    text-align: center;
-    margin: 1em 0;
-  }
-
-  .imghelper {
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
-  }
-
-  img {
-    vertical-align: middle;
-    max-width: 400px;
   }
 </style>
