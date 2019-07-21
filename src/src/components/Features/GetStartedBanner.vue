@@ -38,22 +38,22 @@
 export default {
   name: 'GetStartedBanner',
   components: {},
-  data() {
+  data () {
     return {
       images: [
-          {
-            src: '/static/screenshot-mediawiki.png'
-          },
-          {
-            src: '/static/screenshot-wikibase-registry-query-april-2019.png'
-          },
-          {
-            src: '/static/screenshot-wikidata-main-page-finnish.png'
-          },
-          {
-            src: '/static/screenshot-wikidata-query-service.png'
-          }
-        ]
+        {
+          src: '/static/screenshot-mediawiki.png'
+        },
+        {
+          src: '/static/screenshot-wikibase-registry-query-april-2019.png'
+        },
+        {
+          src: '/static/screenshot-wikidata-main-page-finnish.png'
+        },
+        {
+          src: '/static/screenshot-wikidata-query-service.png'
+        }
+      ]
     }
   }
 }

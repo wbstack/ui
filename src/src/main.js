@@ -8,7 +8,7 @@ import store from './store'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure you are using css-loader
-import 'typeface-roboto/index.css';
+import 'typeface-roboto/index.css'
 
 Vue.config.productionTip = false
 

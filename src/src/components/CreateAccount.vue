@@ -106,7 +106,7 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    resetErrorState() {
+    resetErrorState () {
       this.error = []
     },
     setGeneralErrorState (error = 'Something went wrong.') {
@@ -154,13 +154,13 @@ export default {
     },
     createFailed (error) {
       this.resetErrorState()
-      if(error.response.data.email) {
+      if (error.response.data.email) {
         this.error['inputEmail'] = error.response.data.email[0]
       }
-      if(error.response.data.username) {
+      if (error.response.data.username) {
         this.error['inputUsername'] = error.response.data.username[0]
       }
-      if(!this.error){
+      if (!this.error) {
         this.setGeneralErrorState()
       }
       this.$store.dispatch('logout')
