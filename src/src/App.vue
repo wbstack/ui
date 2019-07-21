@@ -2,7 +2,6 @@
   <v-app id="app">
       <Navbar></Navbar>
       <router-view></router-view>
-      <md-divider></md-divider>
       <Foot></Foot>
   </v-app>
 </template>
