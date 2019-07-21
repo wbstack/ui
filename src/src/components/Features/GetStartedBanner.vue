@@ -15,8 +15,9 @@
       </v-flex>
       <v-flex xs6>
         <!-- TODO trim images to all be a set size or ratio.... -->
-        <v-carousel hide-controls hide-delimiters interval="5400" max="400px" height="300px">
+        <v-carousel hide-controls hide-delimiters interval="5400" height="auto">
           <v-carousel-item
+            position="top"
             v-for="(image,i) in images"
             :key="i"
             :src="image.src"
