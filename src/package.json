@@ -60,6 +60,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.2",
+    "material-design-icons-iconfont": "^5.0.1",
     "mocha": "^3.2.0",
     "node-notifier": "^5.4.0",
     "node-sass": "^4.12.0",
