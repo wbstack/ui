@@ -4,6 +4,7 @@
       <v-flex xs12>
         <GetStartedBanner></GetStartedBanner>
         <WhatCanYouDo></WhatCanYouDo>
+        <WhatIsIncluded></WhatIsIncluded>
       </v-flex>
     </v-layout>
   </v-container>
@@ -13,6 +14,7 @@
 import GetStartedBanner from '@/components/Features/GetStartedBanner'
 import WikiCount from '@/components/Features/WikiCount'
 import WhatCanYouDo from '@/components/Features/WhatCanYouDo'
+import WhatIsIncluded from '@/components/Features/WhatIsIncluded'
 
 export default {
   name: 'LoggedOut',
@@ -20,7 +22,8 @@ export default {
   components: {
     GetStartedBanner,
     WikiCount,
-    WhatCanYouDo
+    WhatCanYouDo,
+    WhatIsIncluded
   }
 }
 </script>
