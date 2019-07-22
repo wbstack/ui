@@ -1,8 +1,12 @@
 <template>
-  <div class="wrapper">
-    <GetStartedBanner></GetStartedBanner>
-    <WhatCanYouDo></WhatCanYouDo>
-  </div>
+  <v-container fluid>
+    <v-layout>
+      <v-flex xs12>
+        <GetStartedBanner></GetStartedBanner>
+        <WhatCanYouDo></WhatCanYouDo>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -21,5 +25,5 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 </style>

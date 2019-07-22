@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-layout column align-center>
       <v-flex>
         <h1>What can you do with Open Cura?</h1>
@@ -9,7 +9,7 @@
       </v-flex>
       <v-flex>
         <!-- START blocks side by side -->
-        <v-container grid-list-xl>
+        <v-container fluid grid-list-xl>
           <v-layout align-start justify-space-between>
             <v-flex xs3>
               <v-card>

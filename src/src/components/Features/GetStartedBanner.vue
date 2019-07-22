@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-layout>
       <v-flex xs6>
-        <v-container>
+        <v-container fluid>
           <v-layout column>
             <v-flex>
               <h1>Openly curate knowledge..</h1>
