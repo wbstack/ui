@@ -5,6 +5,7 @@ import CreateAccount from '@/components/CreateAccount'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import CreateWiki from '@/components/CreateWiki'
+import NotYetImplemented from '@/components/NotYetImplemented'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/logout',
       name: 'Logout',
       component: Logout
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: NotYetImplemented
     },
     {
       path: '/wikis/create',

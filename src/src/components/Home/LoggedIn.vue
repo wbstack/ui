@@ -6,13 +6,6 @@
             <v-layout column>
               <v-flex>
                 <v-card>
-                  <v-toolbar flat class="transparent">
-                    <v-toolbar-title>Hi {{ currentUser.email }}!</v-toolbar-title>
-                  </v-toolbar>
-                </v-card>
-              </v-flex>
-              <v-flex>
-                <v-card>
                   <v-toolbar>
                     <v-toolbar-title>Your Wikis</v-toolbar-title>
                     <v-spacer></v-spacer>

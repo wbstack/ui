@@ -1,13 +1,14 @@
 <template>
   <v-toolbar>
     <v-toolbar-title>
-      <router-link to="/">
-        Open Cura
-      </router-link>
+      <span>Open Cura</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <template v-if="currentUser">
+        <v-btn class="text-none no-button-pointer-events" flat> Hi {{ currentUser.email }}</v-btn>
+        <v-btn flat to="/">Dashboard</v-btn>
+        <v-btn flat to="/user">Account</v-btn>
         <v-btn flat to="/logout">Logout</v-btn>
       </template>
       <template v-if="!currentUser">
@@ -29,5 +30,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped>
+.no-button-pointer-events{
+  pointer-events: none
+}
 </style>
