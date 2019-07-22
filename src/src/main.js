@@ -6,9 +6,9 @@ import router from './router'
 import axios from './backend/vue-axios'
 import store from './store'
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
-import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure you are using css-loader
+import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must be loaded before vuetify css
 import 'typeface-roboto/index.css'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 
