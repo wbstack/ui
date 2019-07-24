@@ -17,7 +17,13 @@
                     <v-list>
                       <v-list-tile v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
                         <v-list-tile-content>
-                          <a :href="wiki.homesrc">{{wiki.sitename}}</a>
+                          <div class="fullwidth">
+                            {{wiki.sitename}}
+                            <div class="rightfloat">
+                              <v-btn icon small class="nomargin" :href="wiki.homesrc"><v-icon>home</v-icon></v-btn>
+                              <v-btn icon small class="nomargin" :to="wiki.id"><v-icon>settings</v-icon></v-btn>
+                            </div>
+                          </div>
                         </v-list-tile-content>
                       </v-list-tile>
                     </v-list>
@@ -81,5 +87,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
+.fullwidth {
+  width: 100%;
+}
+.rightfloat {
+  float: right;
+}
+.nomargin {
+  margin: 0;
+}
 </style>
