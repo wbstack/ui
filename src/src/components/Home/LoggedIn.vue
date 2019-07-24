@@ -2,7 +2,7 @@
     <v-container fluid>
       <v-layout>
         <v-flex xs3>
-          <v-container fluid>
+          <v-container fluid class="rightpaddingonly">
             <v-layout column>
               <v-flex>
                 <v-card>
@@ -96,5 +96,10 @@ export default {
 }
 .nomargin {
   margin: 0;
+}
+.rightpaddingonly {
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 </style>
