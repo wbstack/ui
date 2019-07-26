@@ -21,7 +21,7 @@
                             {{wiki.sitename}}
                             <div class="rightfloat">
                               <v-btn icon small class="nomargin" :href="wiki.homesrc"><v-icon>home</v-icon></v-btn>
-                              <v-btn icon small class="nomargin" :to="wiki.id"><v-icon>settings</v-icon></v-btn>
+                              <v-btn icon small class="nomargin" :to="'wikis/manage/' + wiki.id"><v-icon>settings</v-icon></v-btn>
                             </div>
                           </div>
                         </v-list-tile-content>
