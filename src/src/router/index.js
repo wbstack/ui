@@ -41,6 +41,11 @@ export default new Router({
       path: '/wikis/create',
       name: 'CreateWiki',
       component: CreateWiki
+    },
+    {
+      path: '/wikis/manage/:id',
+      name: 'ManageWiki',
+      component: NotYetImplemented
     }
   ]
 })
