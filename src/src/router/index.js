@@ -38,9 +38,19 @@ export default new Router({
       component: NotYetImplemented
     },
     {
+      path: '/terms-of-service',
+      name: 'TermsOfService',
+      component: NotYetImplemented
+    },
+    {
       path: '/wikis/create',
       name: 'CreateWiki',
       component: CreateWiki
+    },
+    {
+      path: '/wikis/create/success',
+      name: 'CreateWikiSuccess',
+      component: NotYetImplemented
     },
     {
       path: '/wikis/manage/:id',

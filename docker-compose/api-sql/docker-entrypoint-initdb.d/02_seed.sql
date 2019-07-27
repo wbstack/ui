@@ -39,9 +39,8 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `wikis`;
 CREATE TABLE `wikis` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `subdomain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sitename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metanamespace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)

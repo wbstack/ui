@@ -8,59 +8,58 @@
                 <v-toolbar-title>Create a Wiki</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <p>Please answer the questions below in order to create a wiki.</p>
                 <v-form>
 
-                  <h3>Site Access</h3>
-                  <!-- TODO make this configurable from somewhere.... -->
-                  <p>Wikis by default are accessible at [project].[owner].mw.ww.10.0.75.2.xip.io</p>
-                  <p>Or maybe at [project].[owner].wiki.opencura.com</p>
-
-                  <v-text-field
-                  id="inputSubdomainProject"
-                  prepend-icon="person"
-                  name="project"
-                  label="Project Name"
-                  required
-                  v-model="subdomainProject"
-                  :disabled="inFlight"
-                  :error-messages="error"
-                  />
-                  <v-text-field
-                  id="inputSubdomainOwner"
-                  prepend-icon="person"
-                  name="owner"
-                  label="Owner or Organization name"
-                  required
-                  v-model="subdomainOwner"
-                  :disabled="inFlight"
-                  :error-messages="error"
-                  />
-
-                  <h3>Site Settings</h3>
-                  <p>These roughly correlate to MediaWiki Settings...</p>
-
+                  <h3>Site Name</h3>
+                  <p>This will appear in your page titles and can be changed at any time.</p>
                   <v-text-field
                   id="inputSiteName"
                   prepend-icon="person"
                   name="sitename"
-                  label="Site Name"
+                  label="E.g., Goat Collective"
                   required
                   v-model="sitename"
                   :disabled="inFlight"
                   :error-messages="error"
                   />
+
+                  <h3>Site Address</h3>
+                  <p>Choose a subdomain for your site to be accessed at.</p>
                   <v-text-field
-                  id="inputMetaNamespace"
+                  id="inputSubdomain"
                   prepend-icon="person"
-                  name="metanamespace"
-                  label="Meta Namespace"
+                  name="subdomain"
+                  label="E.g., goat-collective"
                   required
-                  v-model="metaNamespace"
+                  v-model="subdomain"
+                  suffix=".wiki.opencura.com"
                   :disabled="inFlight"
                   :error-messages="error"
                   />
-                  <p>By clicking the button below you accept out Terms of Service.</p>
+
+                  <h3>Terms of Service</h3>
+                  <v-checkbox v-model="terms">
+                    <template v-slot:label>
+                      <div>
+                        I agree to the
+                        <v-tooltip bottom>
+                          <template v-slot:activator="{ on }">
+                            <a
+                              target="_blank"
+                              href="/terms-of-service"
+                              @click.stop
+                              v-on="on"
+                            >
+                              Terms of Service
+                            </a>
+                          </template>
+                          Opens in new window
+                        </v-tooltip>
+                        .
+                      </div>
+                    </template>
+                  </v-checkbox>
+
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -90,18 +89,15 @@ export default {
   },
   data () {
     return {
-      subdomainProject: '',
-      subdomainOwner: 'owner',
       sitename: '',
-      metaNamespace: '',
+      subdomain: '',
+      terms: false,
       error: false,
       inFlight: false
     }
   },
   created () {
     this.checkCurrentLogin()
-    // Set the default subdomainOwner to be the currently logged in user.
-    this.subdomainOwner = this.currentUser.username
   },
   updated () {
     this.checkCurrentLogin()
@@ -112,10 +108,8 @@ export default {
       this.$http.post(
         '/wiki/create',
         {
-          // TODO configurable second part of the sub domain..
-          subdomain: this.subdomainProject + '.' + this.currentUser.username,
-          sitename: this.sitename,
-          metanamespace: this.metaNamespace
+          domain: this.subdomain + '.wiki.opencura.com',
+          sitename: this.sitename
         },
         {headers: {'Authorization': localStorage.auth}}
       )
@@ -124,8 +118,7 @@ export default {
     },
     createSuccess (req) {
       this.error = false
-      // TODO redirect to a success page? / link to the page entry for the wiki?
-      this.$router.replace(this.$route.query.redirect || '/')
+      this.$router.replace(this.$route.query.redirect || '/wikis/create/success')
     },
     createFail () {
       this.error = 'Creation failed!'
@@ -140,5 +133,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style>
 </style>
