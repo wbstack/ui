@@ -20,24 +20,24 @@
           <v-flex xs3>
             <h5>Explore</h5>
             <ul>
-              <li>News</li>
-              <li>Discover</li>
+              <li><router-link to="/not-yet-implemented">News</router-link></li>
+              <li><router-link to="/not-yet-implemented">Discover</router-link></li>
             </ul>
           </v-flex>
           <v-flex xs3>
             <h5>Community</h5>
             <ul>
-              <li>Mediawiki</li>
-              <li>Wikibase</li>
-              <li>Wikimedia</li>
+              <li><a href="https://www.mediawiki.org">Mediawiki</a></li>
+              <li><a href="https://www.wikiba.se">Wikibase</a></li>
+              <li><a href="https://www.wikidata.org">Wikidata</a></li>
             </ul>
           </v-flex>
           <v-flex xs3>
             <h5>Company</h5>
             <ul>
-              <li>About Us</li>
-              <li>Privacy</li>
-              <li>Terms of Service</li>
+              <li><router-link to="/about">About Us</router-link></li>
+              <li><router-link to="/privacy-policy">Privacy</router-link></li>
+              <li><router-link to="/terms-of-service">Terms of Service</router-link></li>
             </ul>
           </v-flex>
         </v-layout>
@@ -75,6 +75,10 @@ export default {
   ul {
     list-style: none;
     padding:0;
+  }
+
+  a {
+    color: white;
   }
 
 </style>

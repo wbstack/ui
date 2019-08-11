@@ -56,6 +56,11 @@ export default new Router({
       path: '/wikis/manage/:id',
       name: 'ManageWiki',
       component: NotYetImplemented
+    },
+    {
+      path: '/not-yet-implemented',
+      name: 'NotYetImplemented',
+      component: NotYetImplemented
     }
   ]
 })
