@@ -55,7 +55,7 @@
                     :disabled="inFlight"
                     :error-messages="error['inputPasswordConfirmation']"
                     />
-                    <p>By clicking the button below you accept out Terms of Service.</p>
+                    <p>By clicking the button below you accept our Terms of Service.</p>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
