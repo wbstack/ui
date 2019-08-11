@@ -20,7 +20,7 @@
                   required
                   v-model="sitename"
                   :disabled="inFlight"
-                  :error-messages="error"
+                  :error-messages="error['sitename']"
                   />
 
                   <h3>Site Address</h3>
@@ -34,7 +34,7 @@
                   v-model="subdomain"
                   suffix=".wiki.opencura.com"
                   :disabled="inFlight"
-                  :error-messages="error"
+                  :error-messages="error['siteaddress']"
                   />
 
                   <h3>Terms of Service</h3>
@@ -42,7 +42,7 @@
                   required
                   v-model="terms"
                   :disabled="inFlight"
-                  :error-messages="error"
+                  :error-messages="error['terms']"
                   >
                     <template v-slot:label>
                       <div>
@@ -97,7 +97,8 @@ export default {
       sitename: '',
       subdomain: '',
       terms: false,
-      error: false,
+      hasError: false,
+      error: [],
       inFlight: false
     }
   },
@@ -110,6 +111,19 @@ export default {
   methods: {
     createwiki () {
       this.inFlight = true
+      this.hasError = false
+      this.error = []
+
+      if(!this.terms) {
+        this.hasError = true
+        this.error['terms'] = 'You must accept the Terms of Service.'
+      }
+
+      if(this.hasError) {
+        this.inFlight = false;
+        return
+      }
+
       this.$http.post(
         '/wiki/create',
         {
@@ -122,11 +136,15 @@ export default {
         .catch((error) => this.createFail(error))
     },
     createSuccess (req) {
-      this.error = false
+      this.hasError = false
+      this.error = []
       this.$router.replace(this.$route.query.redirect || '/wikis/create/success')
     },
     createFail () {
-      this.error = 'Creation failed!'
+      this.hasError = true
+      this.error['sitename'] = 'Creation failed!'
+      this.error['siteaddress'] = 'Creation failed!'
+      this.error['terms'] = 'Creation failed!'
       this.inFlight = false
     },
     checkCurrentLogin () {
