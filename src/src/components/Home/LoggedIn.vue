@@ -30,19 +30,6 @@
                   </v-card-text>
                 </v-card>
               </v-flex>
-              <v-flex>
-                <v-card>
-                  <v-toolbar>
-                    <v-toolbar-title>Your Teams</v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-toolbar-items>
-                    </v-toolbar-items>
-                  </v-toolbar>
-                  <v-card-text>
-                    <p>Teams are not yet implemented.</p>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
             </v-layout>
           </v-container>
         </v-flex>
