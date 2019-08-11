@@ -14,8 +14,10 @@
           <li>Wikidata style SPARQL interface</li>
         </ul>
         <span>And a managment system for all of the above, allowing:</span>
-        <li>User and Organizational installations</li>
-        <li>Site configuration</li>
+        <ul>
+          <li>User and Organizational installations</li>
+          <li>Site configuration</li>
+        </ul>
       </v-flex>
       <v-flex>
         <h2>Coming soon...</h2>
