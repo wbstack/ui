@@ -24,16 +24,6 @@
                     :error-messages="error['inputEmail']"
                     />
                     <v-text-field
-                    id="inputUsername"
-                    prepend-icon="person"
-                    name="username"
-                    label="Username"
-                    required
-                    v-model="username"
-                    :disabled="inFlight"
-                    :error-messages="error['inputUsername']"
-                    />
-                    <v-text-field
                     id="inputPassword"
                     prepend-icon="lock"
                     name="password"
@@ -116,7 +106,6 @@ export default {
   },
   data () {
     return {
-      username: '',
       email: '',
       password: '',
       passwordConfirmation: '',
@@ -141,7 +130,6 @@ export default {
       this.resetErrorState()
       this.hasError = true
       this.error['inputEmail'] = error
-      this.error['inputUsername'] = error
       this.error['inputPassword'] = error
       this.error['inputPasswordConfirmation'] = error
       this.error['terms'] = error
@@ -177,7 +165,6 @@ export default {
       this.$http.post(
         '/user/register',
         {
-          username: this.username,
           email: this.email,
           password: this.password
         })
@@ -201,10 +188,6 @@ export default {
         this.hasError = true
         this.error['inputEmail'] = error.response.data.email[0]
       }
-      if (error.response.data.username) {
-        this.hasError = true
-        this.error['inputUsername'] = error.response.data.username[0]
-      }
       if (!this.hasError) {
         this.setGeneralErrorState()
       }
@@ -218,7 +201,6 @@ export default {
       }
 
       localStorage.auth = req.data.token
-      localStorage.username = req.data.username
       localStorage.email = this.email
       this.$store.dispatch('login')
       this.$router.replace(this.$route.query.redirect || '/')
@@ -227,7 +209,6 @@ export default {
       this.setGeneralErrorState('Post account creation authentication failed!')
       this.$store.dispatch('logout')
       delete localStorage.auth
-      delete localStorage.username
       delete localStorage.email
     },
     checkCurrentLogin () {

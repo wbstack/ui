@@ -85,8 +85,8 @@ export default {
 
       this.error = false
       localStorage.auth = req.data.token
-      localStorage.username = req.data.username
-      localStorage.email = this.email
+      // TODO maybe verify the email here?
+      localStorage.email = req.data.email
       this.$store.dispatch('login')
       this.$router.replace(this.$route.query.redirect || '/')
     },
@@ -96,7 +96,6 @@ export default {
       this.$store.dispatch('logout')
       delete localStorage.auth
       delete localStorage.email
-      delete localStorage.username
     },
     checkCurrentLogin () {
       if (this.currentUser) {
