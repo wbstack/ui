@@ -38,7 +38,12 @@
                   />
 
                   <h3>Terms of Service</h3>
-                  <v-checkbox v-model="terms">
+                  <v-checkbox
+                  required
+                  v-model="terms"
+                  :disabled="inFlight"
+                  :error-messages="error"
+                  >
                     <template v-slot:label>
                       <div>
                         I agree to the

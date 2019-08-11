@@ -55,7 +55,32 @@
                     :disabled="inFlight"
                     :error-messages="error['inputPasswordConfirmation']"
                     />
-                    <p>By clicking the button below you accept our Terms of Service.</p>
+                    <v-checkbox
+                    required
+                    v-model="terms"
+                    :disabled="inFlight"
+                    :error-messages="error['terms']"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          I agree to the
+                          <v-tooltip bottom>
+                            <template v-slot:activator="{ on }">
+                              <a
+                                target="_blank"
+                                href="/terms-of-service"
+                                @click.stop
+                                v-on="on"
+                              >
+                                Terms of Service
+                              </a>
+                            </template>
+                            Opens in new window
+                          </v-tooltip>
+                          .
+                        </div>
+                      </template>
+                    </v-checkbox>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
@@ -95,7 +120,9 @@ export default {
       email: '',
       password: '',
       passwordConfirmation: '',
-      error: false,
+      terms: false,
+      hasError: false,
+      error: [],
       inFlight: false
     }
   },
@@ -107,29 +134,45 @@ export default {
   },
   methods: {
     resetErrorState () {
+      this.hasError = false
       this.error = []
     },
     setGeneralErrorState (error = 'Something went wrong.') {
       this.resetErrorState()
+      this.hasError = true
       this.error['inputEmail'] = error
       this.error['inputUsername'] = error
       this.error['inputPassword'] = error
       this.error['inputPasswordConfirmation'] = error
+      this.error['terms'] = error
       this.inFlight = false
     },
     createaccount () {
-      // Reset errors
-      this.error = false
+      // Request is processing
       this.inFlight = true
+
+      // Reset errors
+      this.resetErrorState()
+
+      // Check for the terms
+      if(this.terms == false){
+        this.hasError = true;
+        this.error['terms'] = 'You must accept the Terms of Service.'
+      }
 
       // Check for matching confirmed password
       if (this.password !== this.passwordConfirmation) {
-        this.error = []
+        this.hasError = true;
         this.error['inputPassword'] = 'Passwords do not match.'
         this.error['inputPasswordConfirmation'] = 'Passwords do not match.'
+      }
+
+      // If the error are not empty then dont submit the request
+      if(this.hasError){
         this.inFlight = false
         return
       }
+
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
       this.$http.post(
         '/user/register',
@@ -155,12 +198,14 @@ export default {
     createFailed (error) {
       this.resetErrorState()
       if (error.response.data.email) {
+        this.hasError = true
         this.error['inputEmail'] = error.response.data.email[0]
       }
       if (error.response.data.username) {
+        this.hasError = true
         this.error['inputUsername'] = error.response.data.username[0]
       }
-      if (!this.error) {
+      if (!this.hasError) {
         this.setGeneralErrorState()
       }
       this.$store.dispatch('logout')
