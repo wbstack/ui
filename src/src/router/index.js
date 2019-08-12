@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import CreateWiki from '@/components/CreateWiki'
 import NotYetImplemented from '@/components/NotYetImplemented'
+import User from '@/components/User'
 
 Vue.use(Router)
 
@@ -35,7 +36,7 @@ export default new Router({
     {
       path: '/user',
       name: 'User',
-      component: NotYetImplemented
+      component: User
     },
     {
       path: '/terms-of-service',
