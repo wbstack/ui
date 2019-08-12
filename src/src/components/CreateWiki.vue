@@ -37,7 +37,7 @@
                   :error-messages="error['siteaddress']"
                   />
 
-                  <h3>Terms of Service</h3>
+                  <h3>Terms of Use</h3>
                   <v-checkbox
                   required
                   v-model="terms"
@@ -51,11 +51,11 @@
                           <template v-slot:activator="{ on }">
                             <a
                               target="_blank"
-                              href="/terms-of-service"
+                              href="/terms-of-use"
                               @click.stop
                               v-on="on"
                             >
-                              Terms of Service
+                              Terms of Use
                             </a>
                           </template>
                           Opens in new window

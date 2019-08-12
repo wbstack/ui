@@ -37,7 +37,7 @@
             <ul>
               <li><router-link to="/about">About Us</router-link></li>
               <li><router-link to="/privacy-policy">Privacy</router-link></li>
-              <li><router-link to="/terms-of-service">Terms of Service</router-link></li>
+              <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
             </ul>
           </v-flex>
         </v-layout>
