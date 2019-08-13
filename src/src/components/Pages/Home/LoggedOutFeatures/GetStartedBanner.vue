@@ -10,6 +10,9 @@
             <v-flex>
               <h2>..starting with Wikibase</h2>
             </v-flex>
+            <v-flex>
+              <RegisterInterest></RegisterInterest>
+            </v-flex>
           </v-layout>
         </v-container>
       </v-flex>
@@ -27,17 +30,20 @@
     </v-layout>
     <v-layout>
       <v-flex>
-        <v-btn outline raised to="/create-account">Get started</v-btn>
+        <!-- <v-btn outline raised to="/create-account">Get started</v-btn> -->
       </v-flex>
     </v-layout>
 </v-container>
 </template>
 
 <script>
+import RegisterInterest from '@/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
 
 export default {
   name: 'GetStartedBanner',
-  components: {},
+  components: {
+    RegisterInterest
+  },
   data () {
     return {
       images: [
