@@ -8,8 +8,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Navbar from '@/components/Navbar'
-import Foot from '@/components/Foot'
+import Navbar from '@/components/Layout/Navbar'
+import Foot from '@/components/Layout/Foot'
 
 export default {
   name: 'App',

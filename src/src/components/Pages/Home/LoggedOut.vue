@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import GetStartedBanner from '@/components/Features/GetStartedBanner'
-import WikiCount from '@/components/Features/WikiCount'
-import WhatCanYouDo from '@/components/Features/WhatCanYouDo'
-import WhatIsIncluded from '@/components/Features/WhatIsIncluded'
+import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
+import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
+import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
+import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
 
 export default {
   name: 'LoggedOut',

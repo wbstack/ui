@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import CreateAccount from '@/components/CreateAccount'
-import Login from '@/components/Login'
-import Logout from '@/components/Logout'
-import CreateWiki from '@/components/CreateWiki'
+import Home from '@/components/Pages/Home/Home'
+import CreateAccount from '@/components/Pages/CreateAccount/CreateAccount'
+import Login from '@/components/Pages/Login/Login'
+import Logout from '@/components/Pages/Logout/Logout'
+import CreateWiki from '@/components/Pages/CreateWiki/CreateWiki'
+import TermsOfUse from '@/components/Pages/TermsOfUse/TermsOfUse'
+import User from '@/components/Pages/User/User'
+
 import NotYetImplemented from '@/components/NotYetImplemented'
-import TermsOfUse from '@/components/TermsOfUse'
-import User from '@/components/User'
 
 Vue.use(Router)
 
