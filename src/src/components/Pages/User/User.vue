@@ -29,7 +29,7 @@ export default {
   name: 'User',
   computed: {
     ...mapGetters({currentUser: 'currentUser'})
-  },
+  }
 }
 </script>
 

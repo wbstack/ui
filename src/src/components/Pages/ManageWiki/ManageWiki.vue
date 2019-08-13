@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'ManageWiki',
   data () {
@@ -39,7 +37,6 @@ export default {
       id: 0
     }
   },
-  props: ['id'],
   computed: {},
   created () {
     this.id = this.$route.params.id

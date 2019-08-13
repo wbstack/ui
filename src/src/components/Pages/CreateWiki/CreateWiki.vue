@@ -114,13 +114,13 @@ export default {
       this.hasError = false
       this.error = []
 
-      if(!this.terms) {
+      if (!this.terms) {
         this.hasError = true
         this.error['terms'] = 'You must accept the Terms of Service.'
       }
 
-      if(this.hasError) {
-        this.inFlight = false;
+      if (this.hasError) {
+        this.inFlight = false
         return
       }
 

@@ -143,20 +143,20 @@ export default {
       this.resetErrorState()
 
       // Check for the terms
-      if(this.terms == false){
-        this.hasError = true;
+      if (this.terms === false) {
+        this.hasError = true
         this.error['terms'] = 'You must accept the Terms of Service.'
       }
 
       // Check for matching confirmed password
       if (this.password !== this.passwordConfirmation) {
-        this.hasError = true;
+        this.hasError = true
         this.error['inputPassword'] = 'Passwords do not match.'
         this.error['inputPasswordConfirmation'] = 'Passwords do not match.'
       }
 
       // If the error are not empty then dont submit the request
-      if(this.hasError){
+      if (this.hasError) {
         this.inFlight = false
         return
       }
