@@ -5,6 +5,7 @@ import CreateAccount from '@/components/Pages/CreateAccount/CreateAccount'
 import Login from '@/components/Pages/Login/Login'
 import Logout from '@/components/Pages/Logout/Logout'
 import CreateWiki from '@/components/Pages/CreateWiki/CreateWiki'
+import ManageWiki from '@/components/Pages/ManageWiki/ManageWiki'
 import TermsOfUse from '@/components/Pages/TermsOfUse/TermsOfUse'
 import User from '@/components/Pages/User/User'
 
@@ -58,7 +59,7 @@ export default new Router({
     {
       path: '/wikis/manage/:id',
       name: 'ManageWiki',
-      component: NotYetImplemented
+      component: ManageWiki
     },
     {
       path: '/not-yet-implemented',
