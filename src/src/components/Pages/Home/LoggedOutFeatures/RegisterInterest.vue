@@ -1,22 +1,34 @@
 <template>
-  <v-form>
-  <p>Register your interest to get updates</p>
-    <v-text-field
-    id="inputEmail"
-    prepend-icon="email"
-    name="interest"
-    label="Email address"
-    type="email"
-    required
-    v-model="email"
-    :disabled="formDisabled"
-    :error-messages="error"
-    />
-    <!-- TODO inline the button on the end of the input line -->
-  <v-btn @click="registerInterest" color="primary" :disabled="formDisabled">
-    {{buttonText}}
-  </v-btn>
-  </v-form>
+  <div>
+  <p>Join the waiting list and receive updates</p>
+  <v-layout row>
+    <v-flex>
+      <v-text-field
+      id="inputEmail"
+      prepend-icon="email"
+      name="interest"
+      label="Email address"
+      type="email"
+      required
+      v-model="email"
+      :disabled="formDisabled"
+      :error-messages="error"
+      />
+    </v-flex>
+    <v-flex>
+      <v-btn
+        depressed
+        tile
+        @click="registerInterest"
+        class="ma-0"
+        color="primary"
+        :disabled="formDisabled"
+        >
+        {{buttonText}}
+      </v-btn>
+    </v-flex>
+  </v-layout>
+  </div>
 </template>
 
 <script>
@@ -28,18 +40,23 @@ export default {
     return {
       email: '',
       buttonText: 'Submit',
-      error: false,
+      error: '',
       formDisabled: false
     }
   },
   methods: {
     registerInterest () {
+      if ( this.email == ''){
+        this.error = 'An email must be provided'
+        return
+      }
+
       this.formDisabled = true
-      this.error = false
+      this.error = ''
       this.buttonText = 'Submitting'
       this.$http.post('/interest/register', {email: this.email})
         .then(request => this.success(request))
-        .catch(() => this.fail(error))
+        .catch((error) => this.fail(error))
     },
     success (req) {
       if(!req.data.success){
