@@ -196,6 +196,10 @@ export default {
     },
     createFailed (error) {
       this.resetErrorState()
+      if (error.response.data.invite) {
+        this.hasError = true
+        this.error['inputInvite'] = error.response.data.invite[0]
+      }
       if (error.response.data.email) {
         this.hasError = true
         this.error['inputEmail'] = error.response.data.email[0]
