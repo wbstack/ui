@@ -11,6 +11,7 @@ export default {
     logout (req) {
       delete localStorage.auth
       delete localStorage.email
+      delete localStorage.isAdmin
       this.$store.dispatch('logout')
       this.$router.push('/')
     }

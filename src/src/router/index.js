@@ -8,6 +8,7 @@ import CreateWiki from '@/components/Pages/CreateWiki/CreateWiki'
 import ManageWiki from '@/components/Pages/ManageWiki/ManageWiki'
 import TermsOfUse from '@/components/Pages/TermsOfUse/TermsOfUse'
 import User from '@/components/Pages/User/User'
+import Admin from '@/components/Pages/Admin/Admin'
 
 import NotYetImplemented from '@/components/NotYetImplemented'
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/not-yet-implemented',
       name: 'NotYetImplemented',
       component: NotYetImplemented
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
     }
   ]
 })

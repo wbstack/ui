@@ -202,6 +202,7 @@ export default {
 
       localStorage.auth = req.data.token
       localStorage.email = this.email
+      localStorage.isAdmin = req.data.isAdmin
       this.$store.dispatch('login')
       this.$router.replace(this.$route.query.redirect || '/')
     },
@@ -210,6 +211,7 @@ export default {
       this.$store.dispatch('logout')
       delete localStorage.auth
       delete localStorage.email
+      delete localStorage.isAdmin
     },
     checkCurrentLogin () {
       if (this.currentUser) {

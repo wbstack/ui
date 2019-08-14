@@ -6,6 +6,9 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <template v-if="currentUser">
+        <template v-if="currentUser.isAdmin">
+          <v-btn flat to="/admin">Admin</v-btn>
+        </template>
         <v-btn class="text-none no-button-pointer-events" flat> Hi {{ currentUser.email }}</v-btn>
         <v-btn flat to="/">Dashboard</v-btn>
         <v-btn flat to="/user">Account</v-btn>

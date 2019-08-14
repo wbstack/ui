@@ -1,19 +1,16 @@
 export default class User {
   static fromLocalStorage () {
-    if (localStorage.auth && localStorage.email && localStorage.username) {
-      return new User(localStorage.username, localStorage.email, localStorage.auth)
+    if (localStorage.email && localStorage.auth && localStorage.isAdmin) {
+      return new User(localStorage.email, localStorage.auth, localStorage.isAdmin)
     }
     return null
   }
 
-  constructor (username, email, auth) {
-    this.username = username
+  constructor (email, auth, isAdmin) {
     this.email = email
     this.auth = auth
-  }
-
-  get getUsername () {
-    return this.username
+    // The API currently returns this as a stirng, yay
+    this.isAdmin = ( isAdmin == 'true' )
   }
 
   get getEmail () {
@@ -22,5 +19,9 @@ export default class User {
 
   get getAuth () {
     return this.auth
+  }
+
+  get getIsAdmin() {
+    return this.isAdmin
   }
 }
