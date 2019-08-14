@@ -12,6 +12,15 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
+                      <v-text-field
+                      id="inputInvite"
+                      prepend-icon="email"
+                      name="invite"
+                      label="Invite code"
+                      v-model="invite"
+                      :disabled="inFlight"
+                      :error-messages="error['inputInvite']"
+                      />
                     <v-text-field
                     id="inputEmail"
                     prepend-icon="email"
@@ -106,6 +115,7 @@ export default {
   },
   data () {
     return {
+      invite: '',
       email: '',
       password: '',
       passwordConfirmation: '',
@@ -129,6 +139,7 @@ export default {
     setGeneralErrorState (error = 'Something went wrong.') {
       this.resetErrorState()
       this.hasError = true
+      this.error['inputInvite'] = error
       this.error['inputEmail'] = error
       this.error['inputPassword'] = error
       this.error['inputPasswordConfirmation'] = error
@@ -166,7 +177,8 @@ export default {
         '/user/register',
         {
           email: this.email,
-          password: this.password
+          password: this.password,
+          invite: this.invite,
         })
         .then(request => this.createSuccessful(request))
         .catch((error) => this.createFailed(error))
