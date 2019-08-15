@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Pages/Home/Home'
+import About from '@/components/Pages/About/About'
 import CreateAccount from '@/components/Pages/CreateAccount/CreateAccount'
 import Login from '@/components/Pages/Login/Login'
 import Logout from '@/components/Pages/Logout/Logout'
@@ -21,6 +22,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
     },
     {
       path: '/create-account',
