@@ -11,15 +11,29 @@
                 <v-card-text>
                   <h3>Managers</h3>
 
+                  <v-layout row>
+                    <v-flex>
+                      <v-text-field
+                      id="inputAddManager"
+                      name="manager"
+                      label="Manager Email"
+                      required
+                      v-model="inputAddManager"
+                      :disabled="inputAddManagerDisabled"
+                      :error-messages="inputAddManagerError"
+                      />
+                    </v-flex>
+                    <v-flex>
+                      <v-btn icon small class="nomargin" @click="addManager()"><v-icon>add</v-icon></v-btn>
+                    </v-flex>
+                  </v-layout>
                   <v-list-tile v-for="manager in managers" :key="manager.email" :manager="manager">
                     <v-list-tile-content>
                       <div class="fullwidth">
                         {{manager.email}}
-                        <!--
                         <div class="rightfloat">
-                          <v-btn icon small class="nomargin" @click="deleteInvitationCode(invite.code)"><v-icon>delete</v-icon></v-btn>
+                          <v-btn icon small class="nomargin" @click="deleteManager(manager.email)"><v-icon>delete</v-icon></v-btn>
                         </div>
-                      -->
                       </div>
                   </v-list-tile-content>
                   </v-list-tile>
@@ -68,9 +82,18 @@ export default {
     buildManagersList (data) {
       this.managers = data
     },
+    addManager() {
+      alert('Not yet implemented')
+    },
+    deleteManager() {
+      alert('Not yet implemented')
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
+.rightfloat {
+  float: right;
+}
 </style>
