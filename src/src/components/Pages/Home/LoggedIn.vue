@@ -61,7 +61,11 @@ export default {
     ...mapGetters({currentUser: 'currentUser'})
   },
   created () {
-    this.$http.get('/wiki/list')
+    this.$http.post(
+      '/wiki/mine',
+      {},
+      {headers: {'Authorization': localStorage.auth}}
+    )
       .then(request => this.buildWikiList(request.data.data))
       .catch(() => { alert('Something went wrong!') })
   },
