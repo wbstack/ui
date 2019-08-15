@@ -71,16 +71,16 @@ export default {
     this.id = this.$route.params.id
     // TODO get the data about the wiki if the user can see it...
     this.$http.post(
-      '/wiki/managers/list',
+      '/wiki/details',
       { wiki: this.id },
       {headers: {'Authorization': localStorage.auth}}
     )
-      .then(request => this.buildManagersList(request.data.data))
-      .catch(() => { alert('Failed to retrieve managers!') })
+      .then(request => this.buildDataFromDetails(request.data.data))
+      .catch(() => { alert('Failed to retrieve wiki details!') })
   },
   methods: {
-    buildManagersList (data) {
-      this.managers = data
+    buildDataFromDetails (data) {
+      this.managers = data['wikimanagers']
     },
     addManager() {
       alert('Not yet implemented')
