@@ -6,11 +6,15 @@
             <template v-if="id != 0">
               <v-card>
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Manage Wiki {{id}}</v-toolbar-title>
+                  <v-toolbar-title>Manage - {{apiData['sitename']}}</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <h3>Managers</h3>
+                  <h3>Details</h3>
+                    <p>Site Name: {{apiData['sitename']}}</p>
+                    <p>Domain: {{apiData['domain']}}</p>
+                    <p>Date Created {{apiData['created_at']}}</p>
 
+                  <h3>Managers</h3>
                   <v-layout row>
                     <v-flex>
                       <v-text-field
@@ -27,7 +31,7 @@
                       <v-btn icon small class="nomargin" @click="addManager()"><v-icon>add</v-icon></v-btn>
                     </v-flex>
                   </v-layout>
-                  <v-list-tile v-for="manager in managers" :key="manager.email" :manager="manager">
+                  <v-list-tile v-for="manager in apiData['wikimanagers']" :key="manager.email" :manager="manager">
                     <v-list-tile-content>
                       <div class="fullwidth">
                         {{manager.email}}
@@ -63,7 +67,7 @@ export default {
   data () {
     return {
       id: 0,
-      managers: []
+      apiData: []
     }
   },
   computed: {},
@@ -80,7 +84,7 @@ export default {
   },
   methods: {
     buildDataFromDetails (data) {
-      this.managers = data['wikimanagers']
+      this.apiData = data
     },
     addManager() {
       alert('Not yet implemented')
