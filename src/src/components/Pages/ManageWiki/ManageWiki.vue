@@ -31,7 +31,7 @@
                       <v-btn icon small class="nomargin" @click="addManager()"><v-icon>add</v-icon></v-btn>
                     </v-flex>
                   </v-layout>
-                  <v-list-tile v-for="manager in apiData['wikimanagers']" :key="manager.email" :manager="manager">
+                  <v-list-tile v-for="manager in apiData['wiki_managers']" :key="manager.email" :manager="manager">
                     <v-list-tile-content>
                       <div class="fullwidth">
                         {{manager.email}}
