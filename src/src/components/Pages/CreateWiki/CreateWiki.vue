@@ -138,7 +138,8 @@ export default {
     createSuccess (req) {
       this.hasError = false
       this.error = []
-      this.$router.replace(this.$route.query.redirect || '/wikis/create/success')
+      //this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
+      this.$router.replace('/wikis/manage/' + req.data.data.id)
     },
     createFail () {
       this.hasError = true
