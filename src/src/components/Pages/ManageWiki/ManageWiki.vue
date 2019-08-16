@@ -12,7 +12,8 @@
                   <h3>Details</h3>
                     <p>Site Name: {{apiData['sitename']}}</p>
                     <p>Domain: {{apiData['domain']}}</p>
-                    <p>Date Created {{apiData['created_at']}}</p>
+                    <p>Date Created: {{apiData['created_at']}}</p>
+                    <p>Version: {{apiData['wiki_db_version']['version']}}</p>
 
                   <h3>Managers</h3>
                   <v-layout row>
