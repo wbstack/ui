@@ -54,7 +54,7 @@ export default {
   },
   created () {
     this.$http.post(
-      '/invitation/list',
+      '/admin/invitation/list',
       {},
       {headers: {'Authorization': localStorage.auth}}
     )
@@ -67,7 +67,7 @@ export default {
     },
     deleteInvitationCode(codeToDelete) {
       this.$http.post(
-        '/invitation/delete',
+        '/admin/invitation/delete',
         {code: codeToDelete},
         {headers: {'Authorization': localStorage.auth}}
       )
@@ -89,7 +89,7 @@ export default {
       this.newInvitationCodeDisabled = true
       this.newInvitationCodeError = ''
       this.$http.post(
-        '/invitation/create',
+        '/admin/invitation/create',
         {code: this.newInvitationCode},
         {headers: {'Authorization': localStorage.auth}}
       )
