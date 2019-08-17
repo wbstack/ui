@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Pages/Home/Home'
 import About from '@/components/Pages/About'
+import Contact from '@/components/Pages/Contact'
 import CreateAccount from '@/components/Pages/CreateAccount'
 import Login from '@/components/Pages/Login'
 import Logout from '@/components/Pages/Logout'
@@ -28,6 +29,11 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About
+    },
+    {
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     },
     {
       path: '/create-account',
