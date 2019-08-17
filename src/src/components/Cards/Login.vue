@@ -1,29 +1,50 @@
 <template>
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center column>
-          <v-flex xs12 sm8 md4>
-            <LoginCard title="Log in to your account" buttonText="Login"/>
-            </v-card>
-          </v-flex>
-          <v-flex class="needs-padding">
-            <p>Not got an account yet?</p>
-            <router-link to="/create-account">Create one now.</router-link>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
+  <v-card class="elevation-12">
+    <v-toolbar dark color="primary">
+      <v-toolbar-title>{{title}}</v-toolbar-title>
+    </v-toolbar>
+    <v-card-text>
+      <v-form>
+        <v-text-field
+        id="inputEmail"
+        prepend-icon="email"
+        name="login"
+        label="Email address"
+        type="email"
+        required
+        v-model="email"
+        :disabled="loggingIn"
+        :error-messages="error"
+        />
+        <v-text-field
+        id="inputPassword"
+        prepend-icon="lock"
+        name="password"
+        label="Password"
+        type="password"
+        required
+        v-model="password"
+        :disabled="loggingIn"
+        :error-messages="error"
+        />
+      </v-form>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import LoginCard from '@/components/Cards/Login'
 
 export default {
-  name: 'Login',
-  components: {
-      LoginCard
-  },
+  name: 'LoginCard',
+  props: [
+    'title',
+    'buttonText'
+  ],
   computed: {
     ...mapGetters({ currentUser: 'currentUser' })
   },
@@ -79,10 +100,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-  .needs-padding{
-    padding-top: 45px;
-    text-align: center;
-  }
-
 </style>
