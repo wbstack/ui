@@ -13,7 +13,7 @@
                     <p>Site Name: {{apiData['sitename']}}</p>
                     <p>Domain: {{apiData['domain']}}</p>
                     <p>Date Created: {{apiData['created_at']}}</p>
-                    <template v-if="apiData['wiki_db_version']['version']">
+                    <template v-if="apiData['wiki_db_version']">
                       <p>Version: {{apiData['wiki_db_version']['version']}}</p>
                     </template>
                     <template v-else>
