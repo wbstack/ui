@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import LoginCard from '@/components/Cards/Login'
 
 export default {
@@ -24,56 +23,8 @@ export default {
   components: {
       LoginCard
   },
-  computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
-  },
   data () {
-    return {
-      email: '',
-      password: '',
-      error: false,
-      loggingIn: false
-    }
-  },
-  created () {
-    this.checkCurrentLogin()
-  },
-  updated () {
-    this.checkCurrentLogin()
-  },
-  methods: {
-    login () {
-      this.loggingIn = true
-      this.$http.post('/auth/login', {email: this.email, password: this.password})
-        .then(request => this.loginSuccessful(request))
-        .catch(() => this.loginFailed())
-    },
-    loginSuccessful (req) {
-      if (!req.data.token) {
-        this.loginFailed()
-        return
-      }
-
-      this.error = false
-      localStorage.auth = req.data.token
-      localStorage.email = req.data.email
-      localStorage.isAdmin = req.data.isAdmin
-      this.$store.dispatch('login')
-      this.$router.replace(this.$route.query.redirect || '/')
-    },
-    loginFailed () {
-      this.loggingIn = false
-      this.error = 'Login failed!'
-      this.$store.dispatch('logout')
-      delete localStorage.auth
-      delete localStorage.email
-      delete localStorage.isAdmin
-    },
-    checkCurrentLogin () {
-      if (this.currentUser) {
-        this.$router.replace(this.$route.query.redirect || '/')
-      }
-    }
+    return {}
   }
 }
 </script>
