@@ -8,6 +8,7 @@ import Logout from '@/components/Pages/Logout'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import ManageWiki from '@/components/Pages/ManageWiki'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
+import Privacy from '@/components/Pages/Privacy'
 import User from '@/components/Pages/User'
 import Admin from '@/components/Pages/Admin/Admin'
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/terms-of-use',
       name: 'TermsOfUse',
       component: TermsOfUse
+    },
+    {
+      path: '/privacy-policy',
+      name: 'Privacy',
+      component: Privacy
     },
     {
       path: '/wikis/create',
