@@ -4,6 +4,7 @@
       <v-flex xs12>
         <GetStartedBanner></GetStartedBanner>
         <WhatCanYouDo></WhatCanYouDo>
+        <PricingTable></PricingTable>
         <WhatIsIncluded></WhatIsIncluded>
       </v-flex>
     </v-layout>
@@ -15,6 +16,7 @@ import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStart
 import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
 import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
 import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
+import PricingTable from '@/components/Pages/Home/LoggedOutFeatures/PricingTable'
 
 export default {
   name: 'LoggedOut',
@@ -23,7 +25,8 @@ export default {
     GetStartedBanner,
     WikiCount,
     WhatCanYouDo,
-    WhatIsIncluded
+    WhatIsIncluded,
+    PricingTable
   }
 }
 </script>
