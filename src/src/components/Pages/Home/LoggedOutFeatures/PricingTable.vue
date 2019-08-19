@@ -13,12 +13,12 @@
           <v-flex x6>
             <v-card dark min-height="100%">
               <v-card-text>
-                <v-container fluid>
+                <v-container fluid class="container-less-padding">
                   <v-layout>
                     <v-flex>
                       <div class="headline">Free</div>
                       <v-divider class="divider-topbottom-spacing"/>
-                      <p>Create a Wikibase in minuites.</p>
+                      <span>Create a Wikibase in minuites.</span>
                     </v-flex>
                     <v-divider class="divider-side-spacing" vertical/>
                     <v-flex>
@@ -41,13 +41,14 @@
           <v-flex x6>
             <v-card dark min-height="100%">
               <v-card-text>
-                <v-container fluid>
+                <v-container fluid class="container-less-padding">
                   <v-layout>
                     <v-flex>
                       <div class="headline">Custom</div>
                       <v-divider class="divider-topbottom-spacing"/>
-                      <p>Don't see what you need below?</p>
-                      <p>Need more storage, pages or features?</p>
+                      <span>Need more storage, pages or features?</span><br/>
+                      <span>Have specific hosting requirements?</span><br/>
+                      <span>Don't see what you need below?</span>
                     </v-flex>
                     <v-divider class="divider-side-spacing" vertical/>
                     <v-flex>
@@ -384,6 +385,10 @@ export default {
 </script>
 
 <style scoped>
+
+.container-less-padding {
+  padding: 10px;
+}
 
 .headline{
   font-size: 30px !important;
