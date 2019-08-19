@@ -17,6 +17,7 @@
     "typeface-roboto": "0.0.75",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
+    "vue-recaptcha-v3": "^1.5.0",
     "vue-router": "^3.0.7",
     "vuetify": "^1.5.16",
     "vuex": "^3.1.1"

@@ -97,6 +97,7 @@ export default {
     'title',
     'buttonText'
   ],
+  components: {},
   computed: {
     ...mapGetters({ currentUser: 'currentUser' })
   },
@@ -160,15 +161,18 @@ export default {
       }
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
-      this.$http.post(
-        '/user/register',
-        {
-          email: this.email,
-          password: this.password,
-          invite: this.invite,
-        })
-        .then(request => this.createSuccessful(request))
-        .catch((error) => this.createFailed(error))
+      this.$recaptcha('login').then((token) => {
+        this.$http.post(
+          '/user/register',
+          {
+            email: this.email,
+            password: this.password,
+            invite: this.invite,
+            recaptcha: token,
+          })
+          .then(request => this.createSuccessful(request))
+          .catch((error) => this.createFailed(error))
+      })
     },
     createSuccessful (req) {
       if (!req.data.success) {

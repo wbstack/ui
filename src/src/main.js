@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
 import router from './router'
 import axios from './backend/vue-axios'
 import store from './store'
@@ -15,6 +16,9 @@ Vue.config.productionTip = false
 Vue.use(Vuetify, {
   iconfont: 'md'
 })
+
+// TODO inject this key...
+Vue.use(VueReCaptcha, { siteKey: '6LeHzbMUAAAAABjNp0vILaWr5ZeYHmteF7rGuZNV' })
 
 /* eslint-disable no-new */
 new Vue({
