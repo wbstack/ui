@@ -2,6 +2,7 @@
   <v-toolbar>
     <v-toolbar-title>
       <span>Open Cura</span>
+      <sub>Alpha</sub>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
