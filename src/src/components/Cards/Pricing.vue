@@ -12,8 +12,9 @@
 
       Includes:
       <ul>
-        <li>Disk: <strong>{{disk}}</strong></li>
-        <li>Traffic: <strong>{{traffic}}</strong></li>
+        <li><strong>{{pages}}</strong> Pages</li>
+        <li><strong>{{disk}}</strong> Storage</li>
+        <li><strong>{{traffic}}</strong> Traffic</li>
       </ul>
       <v-btn class="button-center" @click="start" color="primary">{{button}}</v-btn>
     </v-card-text>
@@ -32,6 +33,7 @@ export default {
     'title',
     'price',
     'snippet',
+    'pages',
     'disk',
     'traffic',
     'button'

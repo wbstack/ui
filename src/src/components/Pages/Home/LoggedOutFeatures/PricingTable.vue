@@ -11,7 +11,7 @@
       <v-flex>
         <v-layout row>
           <v-flex x6>
-            <v-card dark>
+            <v-card dark min-height="100%">
               <v-card-text>
                 <v-container fluid>
                   <v-layout>
@@ -23,8 +23,9 @@
                     <v-flex>
                       Includes:
                       <ul>
-                        <li>Disk: <strong>2GB</strong></li>
-                        <li>Traffic: <strong>Included</strong></li>
+                        <li><strong>100</strong> Pages</li>
+                        <li><strong>2GB</strong> Storage</li>
+                        <li><strong>Included</strong> Traffic</li>
                       </ul>
                     </v-flex>
                     <v-divider class="divider-side-spacing" vertical/>
@@ -37,7 +38,7 @@
             </v-card>
           </v-flex>
           <v-flex x6>
-            <v-card dark>
+            <v-card dark min-height="100%">
               <v-card-text>
                 <v-container fluid>
                   <v-layout>
@@ -63,6 +64,7 @@
         title="Starter"
         price="$10"
         snippet="Best to get started with"
+        pages="500"
         disk="3GB"
         traffic="Included"
         button="Get Starter"
@@ -73,6 +75,7 @@
         title="Personal"
         price="$20"
         snippet="Great for a project"
+        pages="1000"
         disk="5GB"
         traffic="Included"
         button="Get Personal"
@@ -83,6 +86,7 @@
         title="Premium"
         price="$50"
         snippet="For that extra touch"
+        pages="10,000"
         disk="10GB"
         traffic="Included"
         button="Get Permium"
@@ -93,6 +97,7 @@
         title="Pro"
         price="$100"
         snippet="Getting professional"
+        pages="100,000"
         disk="20GB"
         traffic="Included"
         button="Get Pro"
@@ -103,12 +108,14 @@
         title="Pro+"
         price="$200"
         snippet="You probably won't need this"
+        pages="1,000,000"
         disk="160GB"
         traffic="Included"
         button="Get Pro+"
         />
       </v-flex>
     </v-layout>
+    <p class="text-center">Prices are still being figured out during the Alpha and may change.</p>
   </v-container>
 </div>
 </template>
