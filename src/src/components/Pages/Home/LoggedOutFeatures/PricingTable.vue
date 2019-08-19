@@ -192,7 +192,7 @@
           </tbody>
 
           <thead>
-            <th colspan="2">MediaWiki Features</th>
+            <th colspan="2">Wikibase Features</th>
             <th>Free</th>
             <th>Personal</th>
             <th>Premium</th>
@@ -246,6 +246,25 @@
                     <v-icon small v-on="on">info_outline</v-icon>
                   </template>
                   <span>MediaWiki RevisionSlider extension.</span>
+                </v-tooltip>
+              </td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+            </tr>
+            </tr>
+            <tr>
+              <td>
+                Spam protection extensions
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>Provided with ConfirmEdit, Nuke, TorBlock,</span>
                 </v-tooltip>
               </td>
               <td><v-icon>check_circle</v-icon></td>
