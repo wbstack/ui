@@ -1,6 +1,6 @@
 <template>
-  <v-card tile class="card-spacing">
-    <v-card-title primary-title>
+  <v-card tile>
+    <v-card-title>
       <div>
         <div class="headline">{{title}}</div>
         <span>{{snippet}}</span>
@@ -15,10 +15,8 @@
         <li>Disk: <strong>{{disk}}</strong></li>
         <li>Traffic: <strong>{{traffic}}</strong></li>
       </ul>
+      <v-btn class="button-center" @click="start" color="primary">{{button}}</v-btn>
     </v-card-text>
-    <v-card-actions>
-        <v-btn @click="start" color="primary">{{button}}</v-btn>
-    </v-card-actions>
     <!--
     <v-card-text>
       Extra text
@@ -48,8 +46,9 @@ export default {
 .headline{
   font-size: 26px !important;
 }
-.card-spacing{
-  margin: 5px;
-  padding: 5px;
+.button-center {
+    margin:0 auto;
+    display:block;
+    margin-top: 10px;
 }
 </style>

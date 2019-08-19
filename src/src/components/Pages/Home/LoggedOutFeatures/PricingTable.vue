@@ -1,39 +1,62 @@
 <template>
   <div>
-    <h1>There’s a plan for you.</h1>
-    <h4>Whether you want to try Wikibase, play around with some data or enter the linked data world.</h4>
-    <h6>You can do it all here.</h6>
-  <v-container fluid>
-    <v-layout column align-center>
+  <v-container fluid grid-list-md>
+    <v-layout column>
+      <v-flex class="text-center">
+        <h1>There’s a plan for you.</h1>
+        <h2>Whether you want to try Wikibase, play with some data</h2>
+        <h2>or enter the linked data world.</h2>
+        <p>You can do it all here.</p>
+      </v-flex>
       <v-flex>
-        <v-card dark max-width="600">
-          <v-card-text>
-            <v-container fluid>
-              <v-layout>
-                <v-flex>
-                  <div class="headline">Free</div>
-                  <p>Create a Wikibase in minuites.</p>
-                </v-flex>
-                <v-divider class="divider-side-spacing" vertical/>
-                <v-flex>
-                  Includes:
-                  <ul>
-                    <li>Disk: <strong>2GB</strong></li>
-                    <li>Traffic: <strong>Included</strong></li>
-                  </ul>
-                </v-flex>
-                <v-divider class="divider-side-spacing" vertical/>
-                <v-flex>
-                  <v-btn @click="startFree" color="primary">Start Free</v-btn>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card-text>
-        </v-card>
+        <v-layout row>
+          <v-flex x6>
+            <v-card dark>
+              <v-card-text>
+                <v-container fluid>
+                  <v-layout>
+                    <v-flex>
+                      <div class="headline">Free</div>
+                      <p>Create a Wikibase in minuites.</p>
+                    </v-flex>
+                    <v-divider class="divider-side-spacing" vertical/>
+                    <v-flex>
+                      Includes:
+                      <ul>
+                        <li>Disk: <strong>2GB</strong></li>
+                        <li>Traffic: <strong>Included</strong></li>
+                      </ul>
+                    </v-flex>
+                    <v-divider class="divider-side-spacing" vertical/>
+                    <v-flex>
+                      <v-btn @click="startFree" color="primary">Start Free</v-btn>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-flex>
+          <v-flex x6>
+            <v-card dark>
+              <v-card-text>
+                <v-container fluid>
+                  <v-layout>
+                    <v-flex>
+                      <div class="headline">Custom</div>
+                      <p>Don't see what you need below?</p>
+                    </v-flex>
+                    <v-divider class="divider-side-spacing" vertical/>
+                    <v-flex>
+                      <v-btn @click="contactUs" color="primary">Contact us</v-btn>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
-  </v-container>
-  <v-container fluid>
     <v-layout>
       <v-flex>
         <Pricing
@@ -111,4 +134,25 @@ export default {
   margin-right: 10px;
   margin-left: 10px;
 }
+
+h1{
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 50px;
+}
+h2{
+  font-size: 30px;
+  font-weight: 375;
+  line-height: 50px;
+}
+
+.text-center{
+  text-align: center;
+}
+
+button {
+    margin:0 auto;
+    display:block;
+}
+
 </style>
