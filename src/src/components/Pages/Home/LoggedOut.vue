@@ -3,9 +3,7 @@
     <v-layout>
       <v-flex xs12>
         <GetStartedBanner></GetStartedBanner>
-        <WhatCanYouDo></WhatCanYouDo>
         <PricingTable></PricingTable>
-        <WhatIsIncluded></WhatIsIncluded>
       </v-flex>
     </v-layout>
   </v-container>

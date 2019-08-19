@@ -17,6 +17,7 @@
                   <v-layout>
                     <v-flex>
                       <div class="headline">Free</div>
+                      <v-divider class="divider-topbottom-spacing"/>
                       <p>Create a Wikibase in minuites.</p>
                     </v-flex>
                     <v-divider class="divider-side-spacing" vertical/>
@@ -44,7 +45,9 @@
                   <v-layout>
                     <v-flex>
                       <div class="headline">Custom</div>
+                      <v-divider class="divider-topbottom-spacing"/>
                       <p>Don't see what you need below?</p>
+                      <p>Need more storage, pages or features?</p>
                     </v-flex>
                     <v-divider class="divider-side-spacing" vertical/>
                     <v-flex>
@@ -57,65 +60,286 @@
           </v-flex>
         </v-layout>
       </v-flex>
+      <v-flex>
+        <v-layout>
+          <v-flex>
+            <Pricing
+            title="Personal"
+            price="$30"
+            snippet="Great for a project"
+            pages="1000"
+            disk="5GB"
+            traffic="Included"
+            button="Get Personal"
+            />
+          </v-flex>
+          <v-flex>
+            <Pricing
+            title="Premium"
+            price="$60"
+            snippet="For that extra touch"
+            pages="10,000"
+            disk="10GB"
+            traffic="Included"
+            button="Get Permium"
+            />
+          </v-flex>
+          <v-flex>
+            <Pricing
+            title="Pro"
+            price="$120"
+            snippet="Getting professional"
+            pages="100,000"
+            disk="20GB"
+            traffic="Included"
+            button="Get Pro"
+            />
+          </v-flex>
+          <v-flex>
+            <Pricing
+            title="Pro+"
+            price="$350"
+            snippet="You probably won't need this"
+            pages="1,000,000"
+            disk="160GB"
+            traffic="Included"
+            button="Get Pro+"
+            />
+          </v-flex>
+        </v-layout>
+        <p class="text-center">Prices are still being figured out during the Alpha and may change.</p>
+      </v-flex>
+      <v-flex class="text-center">
+        <h2>Compare Pricing and Plans</h2>
+      </v-flex>
+      <v-flex>
+        <table class="v-table">
+          <colgroup>
+            <col class="col-feature">
+            <col class="col-info">
+            <col class="col-plan">
+            <col class="col-plan">
+            <col class="col-plan">
+            <col class="col-plan">
+            <col class="col-plan">
+          </colgroup>
+
+          <thead>
+            <th colspan="2"></th>
+            <th>Free</th>
+            <th>Personal</th>
+            <th>Premium</th>
+            <th>Pro</th>
+            <th>Pro+</th>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                Pages
+              </td>
+              <td>
+
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>Number of pages as counted by MediaWiki.</span>
+                </v-tooltip>
+              </td>
+              <td>100</td>
+              <td>1000</td>
+              <td>10,000</td>
+              <td>100,000</td>
+              <td>1,000,000</td>
+            </tr>
+            <tr>
+              <td>
+                Storage
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>All storage space. Includes content, revisions, indexes and files.</span>
+                </v-tooltip>
+              </td>
+              <td>2GB</td>
+              <td>5GB</td>
+              <td>10GB</td>
+              <td>20GB</td>
+              <td>160GB</td>
+            </tr>
+            <tr>
+              <td>
+                Traffic
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>A Fair usage Policy applies.</span>
+                </v-tooltip>
+              </td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included</td>
+              <td>Included</td>
+            </tr>
+          </tbody>
+
+          <thead>
+            <th colspan="2">MediaWiki Features</th>
+            <th>Free</th>
+            <th>Personal</th>
+            <th>Premium</th>
+            <th>Pro</th>
+            <th>Pro+</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Skins
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>MediaWiki skin options.</span>
+                </v-tooltip>
+              </td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>
+                Uploads
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>MediaWiki file uploads.</span>
+                </v-tooltip>
+              </td>
+              <td>Coming Soon!</td>
+              <td>Coming Soon!</td>
+              <td>Coming Soon!</td>
+              <td>Coming Soon!</td>
+              <td>Coming Soon!</td>
+            </tr>
+            <tr>
+              <td>
+                RevisionSlider
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>MediaWiki RevisionSlider extension.</span>
+                </v-tooltip>
+              </td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+              <td><v-icon>check_circle</v-icon></td>
+            </tr>
+          </tbody>
+
+          <thead>
+            <th colspan="2">Services</th>
+            <th>Free</th>
+            <th>Personal</th>
+            <th>Premium</th>
+            <th>Pro</th>
+            <th>Pro+</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                SPARQL Query Service & Interface
+              </td>
+              <td>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-icon small v-on="on">info_outline</v-icon>
+                  </template>
+                  <span>The same Blazegraph based query service and user interface that runs on wikidata.org</span>
+                </v-tooltip>
+              </td>
+              <td>Shared</td>
+              <td>Shared</td>
+              <td>Shared</td>
+              <td>Shared</td>
+              <td>Shared</td>
+            </tr>
+
+              <tr>
+                <td>
+                  Elastic Search
+                </td>
+                <td>
+                  <v-tooltip right>
+                    <template v-slot:activator="{ on }">
+                      <v-icon small v-on="on">info_outline</v-icon>
+                    </template>
+                    <span>Powering more powerfull search.</span>
+                  </v-tooltip>
+                </td>
+                <td>Shared</td>
+                <td>Shared</td>
+                <td>Shared</td>
+                <td>Shared</td>
+                <td>Shared</td>
+              </tr>
+          </tbody>
+
+          <thead>
+            <th colspan="2"/>
+            <th>Free</th>
+            <th>Personal</th>
+            <th>Premium</th>
+            <th>Pro</th>
+            <th>Pro+</th>
+          </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Monthly Subscription
+            </td>
+            <td>
+              <v-tooltip right>
+                <template v-slot:activator="{ on }">
+                  <v-icon small v-on="on">info_outline</v-icon>
+                </template>
+                <span>Includes VAT. Can be changed at any time.</span>
+              </v-tooltip>
+            </td>
+            <td>Free</td>
+            <td>$30</td>
+            <td>$60</td>
+            <td>$120</td>
+            <td>$350</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+        </tfoot>
+        </table>
+        <p class="text-center">Prices and features are still being figured out during the Alpha and may change.</p>
+      </v-flex>
     </v-layout>
-    <v-layout>
-      <v-flex>
-        <Pricing
-        title="Starter"
-        price="$10"
-        snippet="Best to get started with"
-        pages="500"
-        disk="3GB"
-        traffic="Included"
-        button="Get Starter"
-        />
-      </v-flex>
-      <v-flex>
-        <Pricing
-        title="Personal"
-        price="$20"
-        snippet="Great for a project"
-        pages="1000"
-        disk="5GB"
-        traffic="Included"
-        button="Get Personal"
-        />
-      </v-flex>
-      <v-flex>
-        <Pricing
-        title="Premium"
-        price="$50"
-        snippet="For that extra touch"
-        pages="10,000"
-        disk="10GB"
-        traffic="Included"
-        button="Get Permium"
-        />
-      </v-flex>
-      <v-flex>
-        <Pricing
-        title="Pro"
-        price="$100"
-        snippet="Getting professional"
-        pages="100,000"
-        disk="20GB"
-        traffic="Included"
-        button="Get Pro"
-        />
-      </v-flex>
-      <v-flex>
-        <Pricing
-        title="Pro+"
-        price="$200"
-        snippet="You probably won't need this"
-        pages="1,000,000"
-        disk="160GB"
-        traffic="Included"
-        button="Get Pro+"
-        />
-      </v-flex>
-    </v-layout>
-    <p class="text-center">Prices are still being figured out during the Alpha and may change.</p>
   </v-container>
 </div>
 </template>
@@ -141,6 +365,10 @@ export default {
   margin-right: 10px;
   margin-left: 10px;
 }
+.divider-topbottom-spacing{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 h1{
   font-size: 40px;
@@ -153,13 +381,20 @@ h2{
   line-height: 50px;
 }
 
-.text-center{
-  text-align: center;
-}
+.text-center{ text-align: center; }
 
 button {
     margin:0 auto;
     display:block;
+}
+
+td { text-align: center }
+td:first-child { text-align: left }
+td:nth-child(2) { text-align: right }
+th {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f5f5;
 }
 
 </style>

@@ -1,16 +1,12 @@
 <template>
   <v-card tile>
-    <v-card-title>
-      <div>
-        <div class="headline">{{title}}</div>
-        <span>{{snippet}}</span>
-      </div>
-    </v-card-title>
     <v-card-text>
-      <!-- TODO use v-list-item for card when vuetify 2.0.0 is used -->
+      <div class="headline">{{title}}</div>
+      <span>{{snippet}}</span>
       <p><strong>{{price}}</strong> per month</p>
-
+      <v-divider class="divider-topbottom-spacing"/>
       Includes:
+      <!-- TODO use v-list-item for card when vuetify 2.0.0 is used -->
       <ul>
         <li><strong>{{pages}}</strong> Pages</li>
         <li><strong>{{disk}}</strong> Storage</li>
@@ -52,5 +48,9 @@ export default {
     margin:0 auto;
     display:block;
     margin-top: 10px;
+}
+.divider-topbottom-spacing{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>
