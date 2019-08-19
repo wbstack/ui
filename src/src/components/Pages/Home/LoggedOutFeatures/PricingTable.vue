@@ -209,14 +209,14 @@
                   <template v-slot:activator="{ on }">
                     <v-icon small v-on="on">info_outline</v-icon>
                   </template>
-                  <span>MediaWiki skin options.</span>
+                  <span>Vector (as seen on Wikipedia), Timeless, Modern</span>
                 </v-tooltip>
               </td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
+              <td>3</td>
+              <td>3</td>
+              <td>3</td>
+              <td>3</td>
+              <td>3</td>
             </tr>
             <tr>
               <td>
@@ -345,11 +345,20 @@
                 <span>Includes VAT. Can be changed at any time.</span>
               </v-tooltip>
             </td>
-            <td>Free</td>
-            <td>$30</td>
-            <td>$60</td>
-            <td>$120</td>
-            <td>$350</td>
+            <td><strong>Free</strong></td>
+            <td><strong>$30</strong></td>
+            <td><strong>$60</strong></td>
+            <td><strong>$120</strong></td>
+            <td><strong>$350</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><v-btn color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn color="primary" small block>Sign up</v-btn></td>
           </tr>
         </tbody>
 

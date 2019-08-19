@@ -12,7 +12,7 @@
         <li><strong>{{disk}}</strong> Storage</li>
         <li><strong>{{traffic}}</strong> Traffic</li>
       </ul>
-      <v-btn class="button-center" @click="start" color="primary">{{button}}</v-btn>
+      <v-btn class="button-center" @click="start" color="primary" block>{{button}}</v-btn>
     </v-card-text>
     <!--
     <v-card-text>
