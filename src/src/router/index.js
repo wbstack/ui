@@ -6,6 +6,7 @@ import Contact from '@/components/Pages/Contact'
 import CreateAccount from '@/components/Pages/CreateAccount'
 import Login from '@/components/Pages/Login'
 import Logout from '@/components/Pages/Logout'
+import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import ManageWiki from '@/components/Pages/ManageWiki'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
@@ -49,6 +50,11 @@ export default new Router({
       path: '/logout',
       name: 'Logout',
       component: Logout
+    },
+    {
+      path: '/emailVerification/:token',
+      name: 'EmailVerification',
+      component: EmailVerification
     },
     {
       path: '/user',
