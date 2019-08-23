@@ -24,4 +24,6 @@ export default {
 </script>
 
 <style>
+/* https://brizzo.net/tips/hide-recaptcha-v3-badge/ */
+.grecaptcha-badge { opacity:0;}
 </style>
