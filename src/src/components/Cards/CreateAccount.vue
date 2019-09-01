@@ -230,7 +230,7 @@ export default {
       localStorage.email = this.email
       localStorage.isAdmin = req.data.isAdmin
       this.$store.dispatch('login')
-      this.$router.replace(this.$route.query.redirect || '/')
+      this.$router.replace(this.$route.query.redirect || '/dashboard')
     },
     loginFailed () {
       this.setGeneralErrorState('Post account creation authentication failed!')

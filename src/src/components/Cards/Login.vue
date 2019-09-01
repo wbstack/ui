@@ -80,7 +80,7 @@ export default {
       localStorage.email = req.data.email
       localStorage.isAdmin = req.data.isAdmin
       this.$store.dispatch('login')
-      this.$router.replace(this.$route.query.redirect || '/')
+      this.$router.replace(this.$route.query.redirect || '/dashboard')
     },
     loginFailed () {
       this.loggingIn = false
