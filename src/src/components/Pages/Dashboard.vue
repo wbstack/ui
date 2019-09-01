@@ -1,5 +1,6 @@
 <template>
-    <v-container fluid>
+  <v-content>
+    <v-container fluid fill-height>
       <v-layout>
         <v-flex xs3>
           <v-container fluid class="rightpaddingonly">
@@ -45,13 +46,14 @@
         </v-flex>
       </v-layout>
     </v-container>
+  </v-content>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 
 export default {
-  name: 'LoggedIn',
+  name: 'Dashboard',
   data () {
     return {
       wikis: []

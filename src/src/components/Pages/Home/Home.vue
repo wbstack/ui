@@ -1,23 +1,33 @@
 <template>
-  <div>
-    <LoggedOut v-if="!currentUser"></LoggedOut>
-    <LoggedIn v-if="currentUser"></LoggedIn>
-  </div>
+  <v-container fluid>
+    <v-layout>
+      <v-flex xs12>
+        <GetStartedBanner></GetStartedBanner>
+        <PricingTable></PricingTable>
+        <WhatIsWikibase></WhatIsWikibase>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import LoggedIn from '@/components/Pages/Home/LoggedIn'
-import LoggedOut from '@/components/Pages/Home/LoggedOut'
+import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
+import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
+import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
+import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
+import PricingTable from '@/components/Pages/Home/LoggedOutFeatures/PricingTable'
+import WhatIsWikibase from '@/components/Pages/Home/LoggedOutFeatures/WhatIsWikibase'
 
 export default {
   name: 'Home',
-  computed: {
-    ...mapGetters({currentUser: 'currentUser'})
-  },
+  computed: {},
   components: {
-    LoggedIn,
-    LoggedOut
+    GetStartedBanner,
+    WikiCount,
+    WhatCanYouDo,
+    WhatIsIncluded,
+    PricingTable,
+    WhatIsWikibase
   }
 }
 </script>

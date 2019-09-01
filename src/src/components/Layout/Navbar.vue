@@ -1,7 +1,8 @@
 <template>
   <v-toolbar>
     <v-toolbar-title>
-      <span>Open Cura</span>
+      <!-- TODO remove link styling...-->
+      <router-link to="/"><span>Open Cura</span></router-link>
       <sub>Alpha</sub>
     </v-toolbar-title>
     <v-spacer></v-spacer>
@@ -11,7 +12,7 @@
           <v-btn flat to="/admin">Admin</v-btn>
         </template>
         <v-btn class="text-none no-button-pointer-events" flat> Hi {{ currentUser.email }}</v-btn>
-        <v-btn flat to="/">Dashboard</v-btn>
+        <v-btn flat to="/dashboard">Dashboard</v-btn>
         <v-btn flat to="/user">Account</v-btn>
         <v-btn flat to="/logout">Logout</v-btn>
       </template>
