@@ -25,7 +25,7 @@
                       Includes:
                       <ul>
                         <li><strong>100</strong> Pages</li>
-                        <li><strong>2GB</strong> Storage</li>
+                        <li><strong>1GB</strong> Storage</li>
                         <li><strong>Included</strong> Traffic</li>
                       </ul>
                     </v-flex>
@@ -66,7 +66,7 @@
           <v-flex>
             <Pricing
             title="Personal"
-            price="$30"
+            price="$40"
             snippet="Great for a project"
             pages="1000"
             disk="5GB"
@@ -77,20 +77,9 @@
           <v-flex>
             <Pricing
             title="Premium"
-            price="$60"
-            snippet="For that extra touch"
-            pages="10,000"
-            disk="10GB"
-            traffic="Included"
-            button="Get Permium"
-            />
-          </v-flex>
-          <v-flex>
-            <Pricing
-            title="Pro"
             price="$120"
-            snippet="Getting professional"
-            pages="100,000"
+            snippet="For that extra touch"
+            pages="50,000"
             disk="20GB"
             traffic="Included"
             button="Get Pro"
@@ -98,13 +87,13 @@
           </v-flex>
           <v-flex>
             <Pricing
-            title="Pro+"
+            title="Pro"
             price="$350"
             snippet="You probably won't need this"
             pages="1,000,000"
             disk="160GB"
             traffic="Included"
-            button="Get Pro+"
+            button="Get Pro"
             />
           </v-flex>
         </v-layout>
@@ -122,7 +111,6 @@
             <col class="col-plan">
             <col class="col-plan">
             <col class="col-plan">
-            <col class="col-plan">
           </colgroup>
 
           <thead>
@@ -131,7 +119,6 @@
             <th>Personal</th>
             <th>Premium</th>
             <th>Pro</th>
-            <th>Pro+</th>
           </thead>
 
           <tbody>
@@ -150,8 +137,7 @@
               </td>
               <td>100</td>
               <td>1000</td>
-              <td>10,000</td>
-              <td>100,000</td>
+              <td>50,000</td>
               <td>1,000,000</td>
             </tr>
             <tr>
@@ -166,9 +152,8 @@
                   <span>All storage space. Includes content, revisions, indexes and files.</span>
                 </v-tooltip>
               </td>
-              <td>2GB</td>
+              <td>1GB</td>
               <td>5GB</td>
-              <td>10GB</td>
               <td>20GB</td>
               <td>160GB</td>
             </tr>
@@ -188,7 +173,6 @@
               <td>Included</td>
               <td>Included</td>
               <td>Included</td>
-              <td>Included</td>
             </tr>
           </tbody>
 
@@ -198,7 +182,6 @@
             <th>Personal</th>
             <th>Premium</th>
             <th>Pro</th>
-            <th>Pro+</th>
           </thead>
           <tbody>
             <tr>
@@ -213,7 +196,6 @@
                   <span>Vector (as seen on Wikipedia), Timeless, Modern</span>
                 </v-tooltip>
               </td>
-              <td>3</td>
               <td>3</td>
               <td>3</td>
               <td>3</td>
@@ -235,7 +217,6 @@
               <td>Coming Soon!</td>
               <td>Coming Soon!</td>
               <td>Coming Soon!</td>
-              <td>Coming Soon!</td>
             </tr>
             <tr>
               <td>
@@ -249,7 +230,6 @@
                   <span>MediaWiki RevisionSlider extension.</span>
                 </v-tooltip>
               </td>
-              <td><v-icon>check_circle</v-icon></td>
               <td><v-icon>check_circle</v-icon></td>
               <td><v-icon>check_circle</v-icon></td>
               <td><v-icon>check_circle</v-icon></td>
@@ -272,7 +252,6 @@
               <td><v-icon>check_circle</v-icon></td>
               <td><v-icon>check_circle</v-icon></td>
               <td><v-icon>check_circle</v-icon></td>
-              <td><v-icon>check_circle</v-icon></td>
             </tr>
           </tbody>
 
@@ -282,7 +261,6 @@
             <th>Personal</th>
             <th>Premium</th>
             <th>Pro</th>
-            <th>Pro+</th>
           </thead>
           <tbody>
             <tr>
@@ -301,7 +279,6 @@
               <td>Shared</td>
               <td>Shared</td>
               <td>Shared</td>
-              <td>Shared</td>
             </tr>
 
               <tr>
@@ -316,11 +293,10 @@
                     <span>Powering more powerfull search.</span>
                   </v-tooltip>
                 </td>
-                <td>Shared</td>
-                <td>Shared</td>
-                <td>Shared</td>
-                <td>Shared</td>
-                <td>Shared</td>
+                <td>Coming Soon!</td>
+                <td>Coming Soon!</td>
+                <td>Coming Soon!</td>
+                <td>Coming Soon!</td>
               </tr>
           </tbody>
 
@@ -330,7 +306,6 @@
             <th>Personal</th>
             <th>Premium</th>
             <th>Pro</th>
-            <th>Pro+</th>
           </thead>
 
         <tbody>
@@ -347,15 +322,13 @@
               </v-tooltip>
             </td>
             <td><strong>Free</strong></td>
-            <td><strong>$30</strong></td>
-            <td><strong>$60</strong></td>
+            <td><strong>$40</strong></td>
             <td><strong>$120</strong></td>
             <td><strong>$350</strong></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
-            <td><v-btn color="primary" small block>Sign up</v-btn></td>
             <td><v-btn color="primary" small block>Sign up</v-btn></td>
             <td><v-btn color="primary" small block>Sign up</v-btn></td>
             <td><v-btn color="primary" small block>Sign up</v-btn></td>
