@@ -10,12 +10,12 @@
               prepend-icon="email"
               label="Email address"
               type="email"
-              v-model="currentUser.email"
+              v-model="apiData.email"
               :disabled=true
               />
               <template v-if="apiData.verified == 0">
                 <!-- TODO make button send another verification email -->
-                <span><v-btn>Send another verification email.</v-btn></span>
+                <span><v-btn :disabled="sentVerifyEmail == 1" @click="sendVerifyEmail" color="red">Send another verification email.</v-btn></span>
               </template>
               <template v-if="apiData.verified == 1">
                 <span>Email address verified!</span>
@@ -36,7 +36,8 @@ export default {
   name: 'User',
   data () {
     return {
-      apiData: []
+      apiData: [],
+      sentVerifyEmail: false
     }
   },
   computed: {
@@ -54,6 +55,15 @@ export default {
   methods: {
     buildData (data) {
       this.apiData = data
+    },
+    sendVerifyEmail () {
+      this.$http.post(
+        '/user/sendVerifyEmail',
+        {},
+        {headers: {'Authorization': localStorage.auth}}
+      )
+        .then(() => { this.sentVerifyEmail = true } )
+        .catch(() => { alert('Failed to send user verification email!') })
     }
   }
 }

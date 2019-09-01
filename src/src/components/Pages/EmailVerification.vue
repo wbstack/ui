@@ -23,7 +23,7 @@ export default {
   computed: {},
   data () {
     return {
-      state: "Verifying...",
+      state: "Verifying... Please don't leave the page.",
       token: 0
     }
   },
