@@ -4,18 +4,18 @@
       <v-layout>
         <v-flex>
           <v-tabs>
-            <v-tab>
-              Invitaitons
-            </v-tab>
-            <v-tab-item>
-              <AdminInvitations></AdminInvitations>
-            </v-tab-item>
-            <v-tab>
-              Other
-            </v-tab>
-            <v-tab-item>
-              <p>Nothing here yet</p>
-            </v-tab-item>
+            <v-tab>Dashboard</v-tab>
+            <v-tab-item>Nothig here yet</v-tab-item>
+            <v-tab>Users</v-tab>
+            <v-tab-item><p>Nothing here yet</p></v-tab-item>
+            <v-tab>Wikis</v-tab>
+            <v-tab-item><p>Nothing here yet</p></v-tab-item>
+            <v-tab>Invitaitons</v-tab>
+            <v-tab-item><AdminInvitations/></v-tab-item>
+            <v-tab>Interests</v-tab>
+            <v-tab-item><AdminInterests/></v-tab-item>
+            <v-tab>Jobs</v-tab>
+            <v-tab-item><p>Nothing here yet</p></v-tab-item>
           </v-tabs>
         </v-flex>
       </v-layout>
@@ -25,11 +25,13 @@
 
 <script>
 import AdminInvitations from '@/components/Pages/Admin/Invitations'
+import AdminInterests from '@/components/Pages/Admin/Interests'
 
 export default {
   name: 'Admin',
   components: {
-    AdminInvitations
+    AdminInvitations,
+    AdminInterests
   },
   data () {
     return {}
