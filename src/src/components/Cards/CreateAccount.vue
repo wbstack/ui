@@ -166,18 +166,32 @@ export default {
       }
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
-      this.$recaptcha('login').then((token) => {
+      if(this.email == 'adamshorland@gmail.com' || this.email == 'a@a.a') {
+        // for deving with no internet... (no recaptcha token)
         this.$http.post(
           '/user/register',
           {
             email: this.email,
             password: this.password,
             invite: this.invite,
-            recaptcha: token,
           })
           .then(request => this.createSuccessful(request))
           .catch((error) => this.createFailed(error))
-      })
+      } else {
+        // default
+        this.$recaptcha('login').then((token) => {
+          this.$http.post(
+            '/user/register',
+            {
+              email: this.email,
+              password: this.password,
+              invite: this.invite,
+              recaptcha: token,
+            })
+            .then(request => this.createSuccessful(request))
+            .catch((error) => this.createFailed(error))
+        })
+      }
     },
     createSuccessful (req) {
       if (!req.data.success) {
