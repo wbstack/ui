@@ -1,15 +1,14 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center>
-          <v-flex xs8>
+      <v-container fluid fill-height grid-list-xl >
+        <v-layout>
             <template v-if="id != 0">
+              <v-flex>
               <v-card>
-                <v-toolbar dark color="primary">
-                  <v-toolbar-title>Manage - {{apiData['sitename']}}</v-toolbar-title>
+                <v-toolbar>
+                  <v-toolbar-title>Details</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <h3>Details</h3>
                     <p>Site Name: {{apiData['sitename']}}</p>
                     <p>Domain: {{apiData['domain']}}</p>
                     <p>Date Created: {{apiData['created_at']}}</p>
@@ -19,8 +18,15 @@
                     <template v-else>
                       <p>Version: Unknown</p>
                     </template>
-
-                  <h3>Managers</h3>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+            <v-flex>
+              <v-card>
+                <v-toolbar>
+                  <v-toolbar-title>Managers</v-toolbar-title>
+                </v-toolbar>
+                <v-card-text>
                   <v-layout row>
                     <v-flex>
                       <v-text-field
@@ -50,8 +56,10 @@
 
                 </v-card-text>
               </v-card>
+            </v-flex>
             </template>
             <template v-if="id == 0">
+              <v-flex>
               <v-card>
                 <v-toolbar dark color="primary">
                   <v-toolbar-title>Wiki Managment</v-toolbar-title>
@@ -60,6 +68,7 @@
                   No wiki for you to manage.
                 </v-card-text>
               </v-card>
+              </v-flex>
             </template>
           </v-flex>
         </v-layout>
