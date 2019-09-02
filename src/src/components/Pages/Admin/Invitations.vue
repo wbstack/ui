@@ -54,9 +54,7 @@ export default {
   },
   created () {
     this.$http.post(
-      '/admin/invitation/list',
-      {},
-      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
+      '/admin/invitation/list'
     )
       .then(request => this.buildInvitationsList(request.data.data))
       .catch(() => { alert('Failed to retrieve invitations!') })
@@ -68,8 +66,7 @@ export default {
     deleteInvitationCode(codeToDelete) {
       this.$http.post(
         '/admin/invitation/delete',
-        {code: codeToDelete},
-        {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
+        {code: codeToDelete}
       )
         .then(request => this.deleteInvitationCodeSuccess(request))
         .catch((error) => this.deleteInvitationCodeFail(error))
@@ -90,8 +87,7 @@ export default {
       this.newInvitationCodeError = ''
       this.$http.post(
         '/admin/invitation/create',
-        {code: this.newInvitationCode},
-        {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
+        {code: this.newInvitationCode}
       )
         .then(request => this.newInvitationCodeSuccess(request))
         .catch((error) => this.newInvitationCodeFail(error))

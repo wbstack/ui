@@ -125,8 +125,7 @@ export default {
         {
           domain: this.subdomain + '.wiki.opencura.com',
           sitename: this.sitename
-        },
-        {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
+        }
       )
         .then(request => this.createSuccess(request))
         .catch((error) => this.createFail(error))

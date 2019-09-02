@@ -91,8 +91,7 @@ export default {
     // TODO get the data about the wiki if the user can see it...
     this.$http.post(
       '/wiki/details',
-      { wiki: this.id },
-      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
+      { wiki: this.id }
     )
       .then(request => this.buildDataFromDetails(request.data.data))
       .catch(() => { alert('Failed to retrieve wiki details!') })
