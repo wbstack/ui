@@ -27,5 +27,21 @@ new Vue({
   axios,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created: function () {
+    this.$http.interceptors.response.use(undefined, function (err) {
+      return new Promise(function (resolve, reject) {
+        if (err.response.status === 401 && err.response.config && !err.response.config.__isRetryRequest) {
+          console.log("Detected logged out state, so logging out...LOGOUT22..")
+          store
+            .dispatch("logout")
+            .then(() => router.push("/login"))
+            .catch(err => {
+              console.log(err);
+            })
+        }
+        throw err;
+      });
+    });
+  }
 })
