@@ -168,7 +168,8 @@ export default {
       }
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
-      if (this.email == 'adamshorland@gmail.com' || this.email == 'a@a.a') {
+      // currently allow me and also 5 char emails to skip captcha...
+      if (this.email == 'adamshorland@gmail.com' || this.email.length == 5) {
         // for deving with no internet... (no recaptcha token)
         this.$http.post(
           '/user/register',
@@ -200,11 +201,18 @@ export default {
         this.setGeneralErrorState()
         return
       }
-      // TODO this is C&P from Login.vue, can I reuse it?
-      // TODO will this have to behave differently once email verification is in play?
-      this.$http.post('/auth/login', {email: this.email, password: this.password})
-        .then(request => this.loginSuccessful(request))
-        .catch(() => this.loginFailed())
+      let email = this.email
+      let password = this.password
+      this.$store
+        .dispatch('login', { email, password })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => {
+          console.log(err)
+          // TODO better error messages..
+          this.setGeneralErrorState('Post account creation authentication failed!')
+          this.loggingIn = false
+          this.inFlight = false
+        })
     },
     createFailed (error) {
       this.resetErrorState()
@@ -221,25 +229,6 @@ export default {
       }
       this.$store.dispatch('logout')
       this.inFlight = false
-    },
-    loginSuccessful (req) {
-      if (!req.data.token) {
-        this.loginFailed()
-        return
-      }
-
-      localStorage.auth = req.data.token
-      localStorage.email = this.email
-      localStorage.isAdmin = req.data.isAdmin
-      this.$store.dispatch('login')
-      this.$router.replace(this.$route.query.redirect || '/dashboard')
-    },
-    loginFailed () {
-      this.setGeneralErrorState('Post account creation authentication failed!')
-      this.$store.dispatch('logout')
-      delete localStorage.auth
-      delete localStorage.email
-      delete localStorage.isAdmin
     },
     checkCurrentLogin () {
       if (this.isLoggedIn) {
