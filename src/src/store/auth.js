@@ -6,7 +6,7 @@ const state = {
   status: '',
   // TODO maybe this should be called token not auth?
   token: localStorage.getItem('auth') || '',
-  user: JSON.parse(localStorage.getItem('user')) || {}
+  user: JSON.parse(localStorage.getItem('user')) || ''
 }
 
 const getters = {

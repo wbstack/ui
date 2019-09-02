@@ -104,8 +104,8 @@ export default {
   ],
   components: {},
   computed: {
-    currentUser: function () {
-      return this.$store.getters.currentUser
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn
     }
   },
   data () {
@@ -242,7 +242,7 @@ export default {
       delete localStorage.isAdmin
     },
     checkCurrentLogin () {
-      if (this.currentUser) {
+      if (this.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
     }
