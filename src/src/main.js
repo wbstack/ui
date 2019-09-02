@@ -32,16 +32,16 @@ new Vue({
     this.$http.interceptors.response.use(undefined, function (err) {
       return new Promise(function (resolve, reject) {
         if (err.response.status === 401 && err.response.config && !err.response.config.__isRetryRequest) {
-          console.log("Detected logged out state, so logging out...LOGOUT22..")
+          console.log('Detected logged out state, so logging out...LOGOUT22..')
           store
-            .dispatch("logout")
-            .then(() => router.push("/login"))
+            .dispatch('logout')
+            .then(() => router.push('/login'))
             .catch(err => {
-              console.log(err);
+              console.log(err)
             })
         }
-        throw err;
-      });
-    });
+        throw err
+      })
+    })
   }
 })

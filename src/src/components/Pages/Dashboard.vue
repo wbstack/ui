@@ -60,8 +60,8 @@ export default {
     }
   },
   computed: {
-    currentUser: function() {
-      return this.$store.getters.currentUser;
+    currentUser: function () {
+      return this.$store.getters.currentUser
     }
   },
   created () {

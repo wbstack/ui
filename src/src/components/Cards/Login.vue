@@ -57,28 +57,28 @@ export default {
     this.redirectIfLoggedIn()
   },
   computed: {
-    isLoggedIn: function() {
-      return this.$store.getters.isLoggedIn;
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn
     }
   },
   methods: {
-    redirectIfLoggedIn() {
+    redirectIfLoggedIn () {
       if (this.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
     },
     login () {
       this.loggingIn = true
-      let email = this.email;
-      let password = this.password;
+      let email = this.email
+      let password = this.password
       this.$store
-        .dispatch("login", { email, password })
-        .then(() => this.$router.push("/dashboard"))
+        .dispatch('login', { email, password })
+        .then(() => this.$router.push('/dashboard'))
         .catch(err => {
-          console.log(err);
+          console.log(err)
           // TODO better error messages..
           this.error = 'Login failed!'
-          this.loggingIn = false;
+          this.loggingIn = false
         })
     }
   }

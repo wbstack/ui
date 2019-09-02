@@ -35,7 +35,7 @@ export default {
     buildList (data) {
       this.list = data
     }
-  },
+  }
 }
 </script>
 

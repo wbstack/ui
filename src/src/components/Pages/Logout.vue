@@ -10,10 +10,10 @@ export default {
   methods: {
     logout (req) {
       this.$store
-        .dispatch("logout")
-        .then(() => this.$router.push("/"))
+        .dispatch('logout')
+        .then(() => this.$router.push('/'))
         .catch(err => {
-          console.log(err);
+          console.log(err)
         })
     }
   }

@@ -86,8 +86,8 @@ export default {
     'buttonText'
   ],
   computed: {
-    currentUser: function() {
-      return this.$store.getters.currentUser;
+    currentUser: function () {
+      return this.$store.getters.currentUser
     }
   },
   data () {
@@ -135,7 +135,7 @@ export default {
     createSuccess (req) {
       this.hasError = false
       this.error = []
-      //this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
+      // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
       this.$router.replace('/wikis/manage/' + req.data.data.id)
     },
     createFail () {

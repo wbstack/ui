@@ -18,7 +18,7 @@ import CreateAccountCard from '@/components/Cards/CreateAccount'
 export default {
   name: 'CreateAccount',
   components: {
-      CreateAccountCard
+    CreateAccountCard
   },
   data () {
     return {}

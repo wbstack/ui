@@ -21,7 +21,7 @@ import LoginCard from '@/components/Cards/Login'
 export default {
   name: 'Login',
   components: {
-      LoginCard
+    LoginCard
   },
   data () {
     return {}

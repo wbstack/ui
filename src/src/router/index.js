@@ -127,7 +127,7 @@ let router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
+    }
   ]
 })
 
@@ -145,4 +145,4 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export default router;
+export default router

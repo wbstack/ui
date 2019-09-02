@@ -30,11 +30,11 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'Navbar',
   computed: {
-    isLoggedIn: function() {
-      return this.$store.getters.isLoggedIn;
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn
     },
-    currentUser: function() {
-      return this.$store.getters.currentUser;
+    currentUser: function () {
+      return this.$store.getters.currentUser
     }
   }
 }

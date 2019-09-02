@@ -41,8 +41,8 @@ export default {
     }
   },
   computed: {
-    currentUser: function() {
-      return this.$store.getters.currentUser;
+    currentUser: function () {
+      return this.$store.getters.currentUser
     }
   },
   created () {
@@ -60,7 +60,7 @@ export default {
       this.$http.post(
         '/user/sendVerifyEmail'
       )
-        .then(() => { this.sentVerifyEmail = true } )
+        .then(() => { this.sentVerifyEmail = true })
         .catch(() => { alert('Failed to send user verification email!') })
     }
   }

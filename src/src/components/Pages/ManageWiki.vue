@@ -100,10 +100,10 @@ export default {
     buildDataFromDetails (data) {
       this.apiData = data
     },
-    addManager() {
+    addManager () {
       alert('Not yet implemented')
     },
-    deleteManager() {
+    deleteManager () {
       alert('Not yet implemented')
     }
   }

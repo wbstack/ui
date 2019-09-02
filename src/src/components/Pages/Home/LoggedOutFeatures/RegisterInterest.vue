@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     registerInterest () {
-      if ( this.email == ''){
+      if (this.email == '') {
         this.error = 'An email must be provided'
         return
       }
@@ -59,7 +59,7 @@ export default {
         .catch((error) => this.fail(error))
     },
     success (req) {
-      if(!req.data.success){
+      if (!req.data.success) {
         this.error = req.data.message
         this.formDisabled = false
         this.buttonText = 'Submit'

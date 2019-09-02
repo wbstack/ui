@@ -104,8 +104,8 @@ export default {
   ],
   components: {},
   computed: {
-    currentUser: function() {
-      return this.$store.getters.currentUser;
+    currentUser: function () {
+      return this.$store.getters.currentUser
     }
   },
   data () {
@@ -168,14 +168,14 @@ export default {
       }
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
-      if(this.email == 'adamshorland@gmail.com' || this.email == 'a@a.a') {
+      if (this.email == 'adamshorland@gmail.com' || this.email == 'a@a.a') {
         // for deving with no internet... (no recaptcha token)
         this.$http.post(
           '/user/register',
           {
             email: this.email,
             password: this.password,
-            invite: this.invite,
+            invite: this.invite
           })
           .then(request => this.createSuccessful(request))
           .catch((error) => this.createFailed(error))
@@ -188,7 +188,7 @@ export default {
               email: this.email,
               password: this.password,
               invite: this.invite,
-              recaptcha: token,
+              recaptcha: token
             })
             .then(request => this.createSuccessful(request))
             .catch((error) => this.createFailed(error))

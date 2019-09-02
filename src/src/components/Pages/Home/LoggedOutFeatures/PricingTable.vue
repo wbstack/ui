@@ -355,9 +355,9 @@ export default {
     Pricing
   },
   methods: {
-    contactUs() {},
-    start() {},
-    startFree() {},
+    contactUs () {},
+    start () {},
+    startFree () {}
   }
 }
 </script>

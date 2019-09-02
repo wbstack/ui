@@ -21,7 +21,7 @@ ajax.interceptors.request.use(
     let token = localStorage.getItem('auth')
 
     if (token) {
-      config.headers['Authorization'] = `Bearer ${ token }`
+      config.headers['Authorization'] = `Bearer ${token}`
     }
 
     return config
@@ -32,4 +32,4 @@ ajax.interceptors.request.use(
   }
 )
 
-export default ajax;
+export default ajax

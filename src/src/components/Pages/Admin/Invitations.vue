@@ -63,7 +63,7 @@ export default {
     buildInvitationsList (data) {
       this.invitations = data
     },
-    deleteInvitationCode(codeToDelete) {
+    deleteInvitationCode (codeToDelete) {
       this.$http.post(
         '/admin/invitation/delete',
         {code: codeToDelete}
@@ -72,13 +72,13 @@ export default {
         .catch((error) => this.deleteInvitationCodeFail(error))
     },
     deleteInvitationCodeSuccess (req) {
-      this.invitations.splice(this.invitations.indexOf(req.data.code),1)
+      this.invitations.splice(this.invitations.indexOf(req.data.code), 1)
     },
     deleteInvitationCodeFail (error) {
       alert('Invite code deletion failed')
     },
     registerNewInvitationCode () {
-      if ( this.newInvitationCode == ''){
+      if (this.newInvitationCode == '') {
         this.newInvitationCodeError = 'A code must be provided'
         return
       }
@@ -93,14 +93,14 @@ export default {
         .catch((error) => this.newInvitationCodeFail(error))
     },
     newInvitationCodeSuccess (req) {
-      if(!req.data.success){
+      if (!req.data.success) {
         this.newInvitationCodeError = 'Unknown error'
       } else {
         this.newInvitationCode = ''
       }
       this.newInvitationCodeDisabled = false
       // Add code to the list being shown
-      this.invitations.unshift({code:req.data.code})
+      this.invitations.unshift({code: req.data.code})
     },
     newInvitationCodeFail (error) {
       this.newInvitationCodeDisabled = false
@@ -110,7 +110,7 @@ export default {
         this.newInvitationCodeError = 'Something went wrong, please try again.'
       }
     }
-  },
+  }
 }
 </script>
 
