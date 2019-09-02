@@ -28,7 +28,7 @@ export default {
     this.$http.post(
       '/admin/interest/list',
       {},
-      {headers: {'Authorization': localStorage.auth}}
+      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
     )
       .then(request => this.buildList(request.data.data))
       .catch(() => { alert('Failed to retrieve interests!') })

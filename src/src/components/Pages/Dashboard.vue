@@ -66,7 +66,7 @@ export default {
     this.$http.post(
       '/wiki/mine',
       {},
-      {headers: {'Authorization': localStorage.auth}}
+      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
     )
       .then(request => this.buildWikiList(request.data.data))
       .catch(() => { alert('Something went wrong!') })

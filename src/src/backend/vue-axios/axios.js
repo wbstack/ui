@@ -9,6 +9,6 @@ export default axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': localStorage.auth
+    'Authorization': 'Bearer ' + localStorage.auth
   }
 })

@@ -47,7 +47,7 @@ export default {
     this.$http.post(
       '/user/self',
       {},
-      {headers: {'Authorization': localStorage.auth}}
+      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
     )
       .then(request => this.buildData(request.data.data))
       .catch(() => { alert('Failed to retrieve user details!') })
@@ -60,7 +60,7 @@ export default {
       this.$http.post(
         '/user/sendVerifyEmail',
         {},
-        {headers: {'Authorization': localStorage.auth}}
+        {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
       )
         .then(() => { this.sentVerifyEmail = true } )
         .catch(() => { alert('Failed to send user verification email!') })

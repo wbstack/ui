@@ -70,7 +70,8 @@ export default {
         .catch(() => this.loginFailed())
     },
     loginSuccessful (req) {
-      if (!req.data.token) {
+      // TODO the api now returns a user key we should use instead of email and isAdmin directly
+      if (!req.data.token || !req.data.email || !req.data.isAdmin) {
         this.loginFailed()
         return
       }

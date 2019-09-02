@@ -92,7 +92,7 @@ export default {
     this.$http.post(
       '/wiki/details',
       { wiki: this.id },
-      {headers: {'Authorization': localStorage.auth}}
+      {headers: {'Authorization': 'Bearer ' + localStorage.auth}}
     )
       .then(request => this.buildDataFromDetails(request.data.data))
       .catch(() => { alert('Failed to retrieve wiki details!') })
