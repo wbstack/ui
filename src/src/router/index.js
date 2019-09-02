@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Store from './../store'
+
 import Home from '@/components/Pages/Home/Home'
 import Dashboard from '@/components/Pages/Dashboard'
 import About from '@/components/Pages/About'
@@ -19,18 +21,13 @@ import NotYetImplemented from '@/components/NotYetImplemented'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history', // <=
   routes: [
     {
       path: '/',
       name: 'Home',
       component: Home
-    },
-    {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
     },
     {
       path: '/about',
@@ -53,21 +50,6 @@ export default new Router({
       component: Login
     },
     {
-      path: '/logout',
-      name: 'Logout',
-      component: Logout
-    },
-    {
-      path: '/emailVerification/:token',
-      name: 'EmailVerification',
-      component: EmailVerification
-    },
-    {
-      path: '/user',
-      name: 'User',
-      component: User
-    },
-    {
       path: '/terms-of-use',
       name: 'TermsOfUse',
       component: TermsOfUse
@@ -78,29 +60,89 @@ export default new Router({
       component: Privacy
     },
     {
-      path: '/wikis/create',
-      name: 'CreateWiki',
-      component: CreateWiki
-    },
-    {
-      path: '/wikis/create/success',
-      name: 'CreateWikiSuccess',
-      component: NotYetImplemented
-    },
-    {
-      path: '/wikis/manage/:id',
-      name: 'ManageWiki',
-      component: ManageWiki
-    },
-    {
       path: '/not-yet-implemented',
       name: 'NotYetImplemented',
       component: NotYetImplemented
     },
     {
+      path: '/logout',
+      name: 'Logout',
+      component: Logout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/emailVerification/:token',
+      name: 'EmailVerification',
+      component: EmailVerification,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/wikis/create',
+      name: 'CreateWiki',
+      component: CreateWiki,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/wikis/create/success',
+      name: 'CreateWikiSuccess',
+      component: NotYetImplemented,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/wikis/manage/:id',
+      name: 'ManageWiki',
+      component: ManageWiki,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/admin',
       name: 'Admin',
-      component: Admin
-    }
+      component: Admin,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
+
+// Require some routes to be logged in only.
+// From https://pusher.com/tutorials/authentication-vue-vuex
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (Store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router;
