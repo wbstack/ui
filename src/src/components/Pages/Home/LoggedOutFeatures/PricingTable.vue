@@ -329,10 +329,10 @@
           <tr>
             <td></td>
             <td></td>
-            <td><v-btn color="primary" small block>Sign up</v-btn></td>
-            <td><v-btn color="primary" small block>Sign up</v-btn></td>
-            <td><v-btn color="primary" small block>Sign up</v-btn></td>
-            <td><v-btn color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn @click="start" color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn @click="start" color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn @click="start" color="primary" small block>Sign up</v-btn></td>
+            <td><v-btn @click="start" color="primary" small block>Sign up</v-btn></td>
           </tr>
         </tbody>
 
@@ -353,6 +353,11 @@ export default {
   name: 'PricingTable',
   components: {
     Pricing
+  },
+  methods: {
+    contactUs() {},
+    start() {},
+    startFree() {},
   }
 }
 </script>
