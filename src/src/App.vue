@@ -13,9 +13,6 @@ import Foot from '@/components/Layout/Foot'
 
 export default {
   name: 'App',
-  computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
-  },
   components: {
     Navbar,
     Foot

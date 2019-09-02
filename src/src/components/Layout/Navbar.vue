@@ -7,7 +7,7 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <template v-if="currentUser">
+      <template v-if="isLoggedIn">
         <template v-if="currentUser.isAdmin">
           <v-btn flat to="/admin">Admin</v-btn>
         </template>
@@ -16,7 +16,7 @@
         <v-btn flat to="/user">Account</v-btn>
         <v-btn flat to="/logout">Logout</v-btn>
       </template>
-      <template v-if="!currentUser">
+      <template v-if="!isLoggedIn">
         <v-btn flat to="/login">Login</v-btn>
         <v-btn flat color="primary" to="/create-account">Get Started</v-btn>
       </template>
@@ -30,7 +30,12 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'Navbar',
   computed: {
-    ...mapGetters({currentUser: 'currentUser'})
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn;
+    },
+    currentUser: function() {
+      return this.$store.getters.currentUser;
+    }
   }
 }
 </script>

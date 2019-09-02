@@ -41,7 +41,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({currentUser: 'currentUser'})
+    currentUser: function() {
+      return this.$store.getters.currentUser;
+    }
   },
   created () {
     this.$http.post(

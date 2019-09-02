@@ -104,7 +104,9 @@ export default {
   ],
   components: {},
   computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
+    currentUser: function() {
+      return this.$store.getters.currentUser;
+    }
   },
   data () {
     return {

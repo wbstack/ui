@@ -45,56 +45,41 @@ export default {
     'title',
     'buttonText'
   ],
-  computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
-  },
   data () {
     return {
       email: '',
       password: '',
-      error: false,
+      error: '',
       loggingIn: false
     }
   },
   created () {
-    this.checkCurrentLogin()
+    this.redirectIfLoggedIn()
   },
-  updated () {
-    this.checkCurrentLogin()
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isLoggedIn;
+    }
   },
   methods: {
-    login () {
-      this.loggingIn = true
-      this.$http.post('/auth/login', {email: this.email, password: this.password})
-        .then(request => this.loginSuccessful(request))
-        .catch(() => this.loginFailed())
-    },
-    loginSuccessful (req) {
-      // TODO the api now returns a user key we should use instead of email and isAdmin directly
-      if (!req.data.token || !req.data.email || !req.data.isAdmin) {
-        this.loginFailed()
-        return
-      }
-
-      this.error = false
-      localStorage.auth = req.data.token
-      localStorage.email = req.data.email
-      localStorage.isAdmin = req.data.isAdmin
-      this.$store.dispatch('login')
-      this.$router.replace(this.$route.query.redirect || '/dashboard')
-    },
-    loginFailed () {
-      this.loggingIn = false
-      this.error = 'Login failed!'
-      this.$store.dispatch('logout')
-      delete localStorage.auth
-      delete localStorage.email
-      delete localStorage.isAdmin
-    },
-    checkCurrentLogin () {
-      if (this.currentUser) {
+    redirectIfLoggedIn() {
+      if (this.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
+    },
+    login () {
+      this.loggingIn = true
+      let email = this.email;
+      let password = this.password;
+      this.$store
+        .dispatch("login", { email, password })
+        .then(() => this.$router.push("/dashboard"))
+        .catch(err => {
+          console.log(err);
+          // TODO better error messages..
+          this.error = 'Login failed!'
+          this.loggingIn = false;
+        })
     }
   }
 }
