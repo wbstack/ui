@@ -6,22 +6,48 @@
               <v-flex>
               <v-card>
                 <v-toolbar>
-                  <v-toolbar-title>Details</v-toolbar-title>
+                  <v-toolbar-title>
+                    Details
+                    <v-tooltip right>
+                      <template v-slot:activator="{ on }">
+                        <v-icon v-on="on">info_outline</v-icon>
+                      </template>
+                      <span>During Alpha if you would like to change the details please contact us.</span>
+                    </v-tooltip>
+                  </v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                    <p>Site Name: {{apiData['sitename']}}</p>
-                    <p>Domain: {{apiData['domain']}}</p>
-                    <p>Date Created: {{apiData['created_at']}}</p>
+                  <!-- TODO display this data in a nice table? -->
+                    <!-- TODO get status from the api? archived? deleted? pending delete? creating? upgrading?-->
+                    <span>Status: Published</span></br>
+                    <span>Site Name: {{apiData['sitename']}}</span></br>
+                    <span>Domain: {{apiData['domain']}}</span></br>
+                    <span>Date Created: {{apiData['created_at']}}</span></br>
+
+                    <!-- TODO actually get this from the API?-->
+                    <span>Tier: Free
+                    <v-tooltip right>
+                      <template v-slot:activator="{ on }">
+                        <v-icon small v-on="on">info_outline</v-icon>
+                      </template>
+                      <span>During Alpha only the Free tier is availible.</span>
+                    </v-tooltip>
+                    </span></br>
+
+                    <!-- TODO actually get a different app version?-->
+                    <span>Application Version: {{apiData['wiki_db_version']['version']}}</span></br>
                     <template v-if="apiData['wiki_db_version']">
-                      <p>Version: {{apiData['wiki_db_version']['version']}}</p>
+                      <span>Database Version: {{apiData['wiki_db_version']['version']}}</span>
                     </template>
                     <template v-else>
-                      <p>Version: Unknown</p>
+                      <span>Version: Unknown</span>
                     </template>
+                  </br>
                 </v-card-text>
               </v-card>
             </v-flex>
-            <v-flex>
+            <!-- TODO finish managers idea once alpha is done -->
+            <!-- <v-flex>
               <v-card>
                 <v-toolbar>
                   <v-toolbar-title>Managers</v-toolbar-title>
@@ -56,7 +82,20 @@
 
                 </v-card-text>
               </v-card>
-            </v-flex>
+            </v-flex> -->
+            <v-flex>
+            <v-card>
+              <v-toolbar>
+                <v-toolbar-title>
+                  Actions
+                </v-toolbar-title>
+              </v-toolbar>
+              <v-card-text>
+                <!-- TODO action to actually delete the site -->
+                <span><v-btn @click="deleteSite" color="red">Delete site.</v-btn></span>
+              </v-card-text>
+            </v-card>
+          </v-flex>
             </template>
             <template v-if="id == 0">
               <v-flex>
@@ -105,6 +144,9 @@ export default {
     },
     deleteManager () {
       alert('Not yet implemented')
+    },
+    deleteSite () {
+      alert('Not yet implemented ;)')
     }
   }
 }
