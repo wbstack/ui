@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12>
         <GetStartedBanner></GetStartedBanner>
-        <PricingTable></PricingTable>
+        <!-- <PricingTable></PricingTable> -->
         <WhatIsWikibase></WhatIsWikibase>
       </v-flex>
     </v-layout>
@@ -12,10 +12,10 @@
 
 <script>
 import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
-import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
+//import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
 import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
-import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
-import PricingTable from '@/components/Pages/Home/LoggedOutFeatures/PricingTable'
+//import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
+//import PricingTable from '@/components/Pages/Home/LoggedOutFeatures/PricingTable'
 import WhatIsWikibase from '@/components/Pages/Home/LoggedOutFeatures/WhatIsWikibase'
 
 export default {
@@ -23,10 +23,10 @@ export default {
   computed: {},
   components: {
     GetStartedBanner,
-    WikiCount,
+//    WikiCount,
     WhatCanYouDo,
-    WhatIsIncluded,
-    PricingTable,
+//    WhatIsIncluded,
+//    PricingTable,
     WhatIsWikibase
   }
 }

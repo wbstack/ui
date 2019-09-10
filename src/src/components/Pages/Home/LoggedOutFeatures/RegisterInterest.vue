@@ -1,6 +1,6 @@
 <template>
   <div>
-  <p>Join the waiting list and receive updates</p>
+  <p>Join the waiting list for an invitation</p>
   <v-layout row>
     <v-flex>
       <v-text-field

@@ -5,10 +5,10 @@
         <v-container fluid>
           <v-layout column>
             <v-flex>
-              <h1>Openly curate knowledge..</h1>
+              <h1>Your open data..</h1>
             </v-flex>
             <v-flex>
-              <h2>..starting with Wikibase</h2>
+              <h2>..starting with a Wikibase stack</h2>
             </v-flex>
             <v-flex>
               <RegisterInterest></RegisterInterest>
