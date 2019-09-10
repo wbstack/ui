@@ -17,13 +17,14 @@
         justify-center
         row
         wrap>
-          <v-flex xs3>
+        <!-- TODO unhide this one pages are implemented.. -->
+          <!-- <v-flex xs3>
             <h5>Explore</h5>
             <ul>
               <li><router-link to="/not-yet-implemented">News</router-link></li>
               <li><router-link to="/not-yet-implemented">Discover</router-link></li>
             </ul>
-          </v-flex>
+          </v-flex> -->
           <v-flex xs3>
             <h5>Community</h5>
             <ul>
