@@ -46,11 +46,7 @@ const actions = {
       axios.post('/auth/login', user)
         .then(resp => {
           const token = resp.data.token
-          // TODO eventually use the model returned?
-          const user = {
-            email: resp.data.email,
-            isAdmin: resp.data.isAdmin
-          }
+          const user = resp.data.user
           localStorage.setItem('auth', token)
           localStorage.setItem('user', JSON.stringify(user))
           commit('auth_success', {token, user})

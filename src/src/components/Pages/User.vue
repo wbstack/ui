@@ -1,4 +1,4 @@
-<template>
+  <template>
     <v-content>
       <v-container fluid fill-height>
         <v-layout justify-center>
@@ -10,15 +10,11 @@
               prepend-icon="email"
               label="Email address"
               type="email"
-              v-model="apiData.email"
+              v-model="currentUser.email"
               :disabled=true
               />
-              <template v-if="apiData.verified == 0">
-                <!-- TODO make button send another verification email -->
+              <template v-if="currentUser.verified == 0">
                 <span><v-btn :disabled="sentVerifyEmail == 1" @click="sendVerifyEmail" color="red">Send another verification email.</v-btn></span>
-              </template>
-              <template v-if="apiData.verified == 1">
-                <span>Email address verified!</span>
               </template>
             </v-form>
             <!-- TODO add date account registered? -->
@@ -36,7 +32,6 @@ export default {
   name: 'User',
   data () {
     return {
-      apiData: [],
       sentVerifyEmail: false
     }
   },
@@ -44,13 +39,6 @@ export default {
     currentUser: function () {
       return this.$store.getters.currentUser
     }
-  },
-  created () {
-    this.$http.post(
-      '/user/self'
-    )
-      .then(request => this.buildData(request.data.data))
-      .catch(() => { alert('Failed to retrieve user details!') })
   },
   methods: {
     buildData (data) {
