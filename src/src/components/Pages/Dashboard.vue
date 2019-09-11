@@ -54,29 +54,17 @@ import {mapGetters} from 'vuex'
 
 export default {
   name: 'Dashboard',
-  data () {
-    return {
-      wikis: []
-    }
-  },
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
-    }
+    },
+    wikis: function () {
+      return this.$store.getters.wikis
+    },
   },
   created () {
-    this.$http.post(
-      '/wiki/mine'
-    )
-      .then(request => this.buildWikiList(request.data.data))
-      .catch(() => { alert('Something went wrong!') })
-  },
-  methods: {
-    buildWikiList (data) {
-      this.wikis = data
-    }
-  },
-  components: {}
+    this.$store.dispatch('refreshWikis');
+  }
 }
 </script>
 

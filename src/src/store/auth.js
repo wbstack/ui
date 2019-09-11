@@ -1,13 +1,17 @@
 /* global localStorage */
 
-import axios from 'axios'
+import axios from './../backend/vue-axios/axios.js'
 
-const state = {
-  status: '',
-  // TODO maybe this should be called token not auth?
-  token: localStorage.getItem('auth') || '',
-  user: JSON.parse(localStorage.getItem('user')) || ''
+const getDefaultState = () => {
+  return {
+    status: '',
+    // TODO maybe this should be called token not auth?
+    token: localStorage.getItem('auth') || '',
+    user: JSON.parse(localStorage.getItem('user')) || ''
+  }
 }
+
+const state = getDefaultState()
 
 const getters = {
   isLoggedIn: state => !!state.token,
@@ -16,6 +20,9 @@ const getters = {
 }
 
 const mutations = {
+  auth_resetState (state) {
+    Object.assign(state, getDefaultState())
+  },
   auth_request (state) {
     state.status = 'loading'
   },
@@ -26,19 +33,17 @@ const mutations = {
   },
   auth_error (state) {
     state.status = 'error'
-  },
-  logout (state) {
-    state.status = ''
-    state.token = ''
-    state.user = {}
   }
 }
 
 const actions = {
+  resetAuthState ({ commit }) {
+    commit('auth_resetState')
+  },
   login ({ commit }, user) {
     return new Promise((resolve, reject) => {
       commit('auth_request')
-      axios({ url: 'http://localhost:8082/auth/login', data: user, method: 'POST' })
+      axios.post('/auth/login', user)
         .then(resp => {
           const token = resp.data.token
           // TODO eventually use the model returned?
@@ -61,16 +66,15 @@ const actions = {
   },
   logout ({ commit }) {
     return new Promise((resolve, reject) => {
-      commit('logout')
       localStorage.removeItem('auth')
       localStorage.removeItem('user')
+      // TODO have 1 thing to comit here reseting all state?
+      commit('auth_resetState');
+      commit('wikis_resetState');
       resolve()
     })
   }
 }
-
-// TODO maybe add namespaced: true, ?
-// https://vuex.vuejs.org/guide/modules.html#namespacing
 
 export default {
   state,
