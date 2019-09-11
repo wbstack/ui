@@ -12,6 +12,7 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const getters = {
+  // TODO should add getter for a single wiki by id?
   wikisStatus: state => state.status,
   wikis: state => state.wikis,
   wikiCount: state => state.wikis.length,
@@ -44,7 +45,7 @@ const actions = {
       axios.post('/wiki/mine')
         .then(resp => {
           // TODO model or something?
-          const wikiList = resp.data.data
+          const wikiList = resp.data
           commit('wikis_success', wikiList)
           resolve(resp)
         })
