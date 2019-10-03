@@ -1,5 +1,7 @@
 FROM node:12 as builder
 
+ARG API_URL
+ENV API_URL $_API_URL
 #ENV NODE_ENV=production
 
 WORKDIR /src/app
@@ -10,9 +12,6 @@ COPY ./src/package.json ./src/package-lock.json ./
 RUN npm install --force && npm cache clean --force
 
 COPY ./src/ .
-
-ARG API_URL
-RUN test -n "$API_URL"
 
 RUN npm run-script build
 
