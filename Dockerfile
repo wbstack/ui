@@ -1,8 +1,12 @@
 FROM node:12 as builder
 
+# Set various things
 ARG API_URL
-ENV API_URL $_API_URL
-#ENV NODE_ENV=production
+ENV API_URL $API_URL
+#ENV NODE_ENV production
+
+# Output the set values in the build log
+RUN echo API_URL $API_URL, NODE_ENV $NODE_ENV
 
 WORKDIR /src/app
 
