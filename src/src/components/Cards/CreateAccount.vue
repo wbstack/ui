@@ -216,17 +216,24 @@ export default {
     },
     createFailed (error) {
       this.resetErrorState()
-      if (error.response.data.invite) {
-        this.hasError = true
-        this.error['inputInvite'] = error.response.data.invite[0]
+
+      // If the api gave use details of the error, then use them
+      if(error.response.data) {
+        if (error.response.data.invite) {
+          this.hasError = true
+          this.error['inputInvite'] = error.response.data.invite[0]
+        }
+        if (error.response.data.email) {
+          this.hasError = true
+          this.error['inputEmail'] = error.response.data.email[0]
+        }
       }
-      if (error.response.data.email) {
-        this.hasError = true
-        this.error['inputEmail'] = error.response.data.email[0]
-      }
+
+      // Otherwise show a general error state
       if (!this.hasError) {
         this.setGeneralErrorState()
       }
+
       this.$store.dispatch('logout')
       this.inFlight = false
     },
