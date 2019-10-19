@@ -54,7 +54,7 @@
         text-xs-center
         xs12
       >
-        &copy;2019 — <strong>Open Cura</strong>
+        &copy;2019 — <strong>WBStack</strong>
       </v-flex>
     </v-layout>
   </v-footer>
