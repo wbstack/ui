@@ -10,7 +10,7 @@
         <p>This will appear in your page titles and can be changed at any time.</p>
         <v-text-field
         id="inputSiteName"
-        prepend-icon="person"
+        prepend-icon="title"
         name="sitename"
         label="E.g., Goat Collective"
         required
@@ -23,7 +23,7 @@
         <p>Choose a subdomain for your site to be accessed at.</p>
         <v-text-field
         id="inputSubdomain"
-        prepend-icon="person"
+        prepend-icon="web"
         name="subdomain"
         label="E.g., goat-collective"
         required
@@ -31,6 +31,20 @@
         suffix=".wiki.opencura.com"
         :disabled="inFlight"
         :error-messages="error['siteaddress']"
+        />
+
+        <h3>Initial user</h3>
+        <p>Choose the username of the first admin user.</p>
+        <p>You will be emailed log in details for this account.</p>
+        <v-text-field
+        id="inputUsername"
+        prepend-icon="person"
+        name="username"
+        label="E.g., Addshore"
+        required
+        v-model="username"
+        :disabled="inFlight"
+        :error-messages="error['username']"
         />
 
         <h3>Resource Tier</h3>
@@ -104,6 +118,7 @@ export default {
     return {
       sitename: '',
       subdomain: '',
+      username: '',
       freeSelected: 'free',
       resourceTiers: [
         {
@@ -158,7 +173,8 @@ export default {
         '/wiki/create',
         {
           domain: this.subdomain + '.wiki.opencura.com',
-          sitename: this.sitename
+          sitename: this.sitename,
+          username: this.username
         }
       )
         .then(request => this.createSuccess(request))
@@ -174,6 +190,7 @@ export default {
       this.hasError = true
       this.error['sitename'] = 'Creation failed!'
       this.error['siteaddress'] = 'Creation failed!'
+      this.error['username'] = 'Creation failed!'
       this.error['terms'] = 'Creation failed!'
       this.inFlight = false
     },
