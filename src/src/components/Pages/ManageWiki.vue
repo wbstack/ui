@@ -19,20 +19,21 @@
                 <v-card-text>
                   <!-- TODO display this data in a nice table? -->
                     <!-- TODO get status from the api? archived? deleted? pending delete? creating? upgrading?-->
+                    <strong>Please check your emails for your log in details.</strong>
                     <span>Status: Published</span></br>
                     <span>Site Name: {{apiData['sitename']}}</span></br>
                     <span>Domain: {{apiData['domain']}}</span></br>
                     <span>Date Created: {{apiData['created_at']}}</span></br>
 
                     <!-- TODO actually get this from the API?-->
-                    <span>Tier: Free
-                    <v-tooltip right>
-                      <template v-slot:activator="{ on }">
-                        <v-icon small v-on="on">info_outline</v-icon>
-                      </template>
-                      <span>During Alpha only the Free tier is availible.</span>
-                    </v-tooltip>
-                    </span></br>
+                    <!--<span>Tier: Free-->
+                    <!--<v-tooltip right>-->
+                      <!--<template v-slot:activator="{ on }">-->
+                        <!--<v-icon small v-on="on">info_outline</v-icon>-->
+                      <!--</template>-->
+                      <!--<span>During Alpha only the Free tier is available.</span>-->
+                    <!--</v-tooltip>-->
+                    <!--</span></br>-->
 
                     <!-- TODO actually get a different app version?-->
                     <span>Application Version: {{apiData['wiki_db_version']['version']}}</span></br>
