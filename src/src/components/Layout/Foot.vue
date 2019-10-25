@@ -34,7 +34,7 @@
             </ul>
           </v-flex>
           <v-flex xs3>
-            <h5>Company</h5>
+            <h5>Organization</h5>
             <ul>
               <li><router-link to="/about">About Us</router-link></li>
               <li><router-link to="/privacy-policy">Privacy</router-link></li>
