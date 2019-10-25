@@ -47,15 +47,15 @@
         :error-messages="error['username']"
         />
 
-        <h3>Resource Tier</h3>
-        <p>What resource level would you like to allocate to your site?</p>
-        <p>During Alpha only the free tier is supported.</p>
-        <v-select
-          v-model="freeSelected"
-          :items="resourceTiers"
-          label="Resource tier"
-          solo
-        ></v-select>
+        <!--<h3>Resource Tier</h3>-->
+        <!--<p>What resource level would you like to allocate to your site?</p>-->
+        <!--<p>During Alpha only the free tier is supported.</p>-->
+        <!--<v-select-->
+          <!--v-model="freeSelected"-->
+          <!--:items="resourceTiers"-->
+          <!--label="Resource tier"-->
+          <!--solo-->
+        <!--&gt;</v-select>-->
 
         <h3>Terms of Use</h3>
         <v-checkbox

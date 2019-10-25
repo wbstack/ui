@@ -10,9 +10,9 @@
             <v-flex>
               <h2>..starting with a Wikibase stack</h2>
             </v-flex>
-            <v-flex>
-              <RegisterInterest></RegisterInterest>
-            </v-flex>
+            <!--<v-flex>-->
+              <!--<RegisterInterest></RegisterInterest>-->
+            <!--</v-flex>-->
           </v-layout>
         </v-container>
       </v-flex>
