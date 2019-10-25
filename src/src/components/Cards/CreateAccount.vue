@@ -215,6 +215,10 @@ export default {
           this.hasError = true
           this.error['inputEmail'] = error.response.data.email[0]
         }
+        if (error.response.data.password) {
+          this.hasError = true
+          this.error['inputPassword'] = error.response.data.password[0]
+        }
       }
 
       // Otherwise show a general error state
