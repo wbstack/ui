@@ -47,6 +47,7 @@
         :disabled="inFlight"
         :error-messages="error['inputPasswordConfirmation']"
         />
+        <p>Your password must be 8 characters long.</p>
         <v-checkbox
         required
         v-model="terms"
