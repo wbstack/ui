@@ -168,33 +168,21 @@ export default {
       }
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
-      // currently allow me and also 5 char emails to skip captcha...
-      if (this.email == 'adamshorland@gmail.com' || this.email.length == 5) {
-        // for deving with no internet... (no recaptcha token)
+
+      // TODO recaptcha check should be optional for development (env var switch?)
+      // Recaptcha check
+      this.$recaptcha('login').then((token) => {
         this.$http.post(
           '/user/register',
           {
             email: this.email,
             password: this.password,
-            invite: this.invite
+            invite: this.invite,
+            recaptcha: token
           })
           .then(request => this.createSuccessful(request))
           .catch((error) => this.createFailed(error))
-      } else {
-        // default
-        this.$recaptcha('login').then((token) => {
-          this.$http.post(
-            '/user/register',
-            {
-              email: this.email,
-              password: this.password,
-              invite: this.invite,
-              recaptcha: token
-            })
-            .then(request => this.createSuccessful(request))
-            .catch((error) => this.createFailed(error))
-        })
-      }
+      })
     },
     createSuccessful (req) {
       if (!req.data.success) {
