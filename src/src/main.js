@@ -31,6 +31,8 @@ new Vue({
   created: function () {
     this.$http.interceptors.response.use(undefined, function (err) {
       return new Promise(function (resolve, reject) {
+        // TODO this IF should also have a condition for is logged in....
+        // XXX should this actually happen on ALL 401s? probably not..
         if (err.response.status === 401 && err.response.config && !err.response.config.__isRetryRequest) {
           console.log('Detected logged out state, so logging out...')
           store
