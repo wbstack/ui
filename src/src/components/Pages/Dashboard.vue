@@ -35,14 +35,30 @@
           </v-container>
         </v-flex>
         <v-flex xs6>
-          <h3>Recent activity</h3>
-          <p>Not yet implemented</p>
+          <h3>Welcome to WBStack</h3>
+          <p>WBStack is currently in Alpha.</p>
+          <p>Feel free to try out the platform!</p>
+          <p>Create wikis using the + button to the left.</p>
+          <p>Stay up to date with the blog posts on the right.</p>
+          <p>Join the telegram group <a href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g">here</a>.</p>
         </v-flex>
         <v-flex xs3>
+          <h4>Blog Posts</h4>
+          <ul>
+            <li><a href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
+            <li><a href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
+          </ul>
+          <h4>Manual Stats</h4>
+          <ul>
+            <li><span>Users: 38</span></li>
+            <li><span>Wikis: 65</span></li>
+          </ul>
           <h4>Notices</h4>
-          <p>Not yet implemented</p>
+          <span>Not yet implemented</span>
+          <h4>Recent activity</h4>
+          <span>Not yet implemented</span>
           <h4>Discover</h4>
-          <p>Not yet implemented</p>
+          <span>Not yet implemented</span>
         </v-flex>
       </v-layout>
     </v-container>

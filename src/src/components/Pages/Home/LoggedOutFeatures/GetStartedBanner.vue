@@ -10,6 +10,13 @@
             <v-flex>
               <h2>..starting with a Wikibase stack</h2>
             </v-flex>
+            <v-flex>
+              <h3>Blog posts:</h3>
+              <ul>
+                <li><a href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
+                <li><a href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
+              </ul>
+            </v-flex>
             <!--<v-flex>-->
               <!--<RegisterInterest></RegisterInterest>-->
             <!--</v-flex>-->
