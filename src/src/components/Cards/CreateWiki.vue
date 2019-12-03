@@ -89,13 +89,14 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn
-      @click="createwiki"
-      color="primary"
-      :disabled="inFlight"
-      >
-      {{buttonText}}
-    </v-btn>
+      <h3>New Wiki creation currently Paused. See Telegram chat for more info :) -- 3 Dec Addshore</h3>
+      <!--<v-btn-->
+      <!--@click="createwiki"-->
+      <!--color="primary"-->
+      <!--:disabled="inFlight"-->
+      <!--&gt;-->
+      <!--{{buttonText}}-->
+    <!--</v-btn>-->
     </v-card-actions>
   </v-card>
 </template>

@@ -10,9 +10,9 @@
                   <v-toolbar>
                     <v-toolbar-title>Your Wikis</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-toolbar-items>
-                      <v-btn fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
-                    </v-toolbar-items>
+                    <!--<v-toolbar-items>-->
+                      <!--<v-btn fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>-->
+                    <!--</v-toolbar-items>-->
                   </v-toolbar>
                   <v-card-text>
                     <v-list>
@@ -35,6 +35,7 @@
           </v-container>
         </v-flex>
         <v-flex xs6>
+          <h2>New Wiki creation currently Paused. See Telegram chat for more info :) -- 3 Dec Addshore</h2>
           <h3>Welcome to WBStack</h3>
           <p>WBStack is currently in Alpha.</p>
           <p>Feel free to try out the platform!</p>
