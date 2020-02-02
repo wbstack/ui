@@ -45,13 +45,14 @@
         <v-flex xs3>
           <h4>Blog Posts</h4>
           <ul>
+            <li><a href="https://addshore.com/2020/01/wbstack-infrastructure/">Infrastructure overview</a></li>
             <li><a href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
             <li><a href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
           </ul>
           <h4>Manual Stats</h4>
           <ul>
-            <li><span>Users: 38</span></li>
-            <li><span>Wikis: 65</span></li>
+            <li><span>Users: 51</span></li>
+            <li><span>Wikis: 100</span></li>
           </ul>
           <h4>Notices</h4>
           <span>Not yet implemented</span>
