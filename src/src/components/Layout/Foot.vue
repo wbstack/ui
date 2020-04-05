@@ -54,7 +54,7 @@
         text-xs-center
         xs12
       >
-        &copy;2019 — <strong>WBStack</strong>
+        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a> - Funded by <a href="https://rhizome.org/">Rhizome</a>
       </v-flex>
     </v-layout>
   </v-footer>
