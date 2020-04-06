@@ -51,24 +51,27 @@
           </ul>
         </v-flex>
         <v-flex xs3>
-          <h4>Blog Posts</h4>
-          <ul>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2020/01/wbstack-infrastructure/">Infrastructure overview</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
-          </ul>
-          <h4>Manual Stats (March)</h4>
+          <BlogPostList headerElement="h4" headerText="Blog Posts" ></BlogPostList>
+          <v-flex>
+          <h4>Manual Stats (March) </h4>
           <ul>
             <li><span>Users: 80</span></li>
             <li><span>Wikis: 150</span></li>
             <li><span>Edits: 160k</span></li>
           </ul>
+          </v-flex>
+          <v-flex>
           <h4>Notices</h4>
           <span>Not yet implemented</span>
+          </v-flex>
+          <v-flex>
           <h4>Recent activity</h4>
           <span>Not yet implemented</span>
+          </v-flex>
+          <v-flex>
           <h4>Discover</h4>
           <span>Not yet implemented</span>
+          </v-flex>
         </v-flex>
       </v-layout>
     </v-container>
@@ -77,9 +80,13 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import BlogPostList from '@/components/Content/BlogPostList'
 
 export default {
   name: 'Dashboard',
+  components: {
+    BlogPostList
+  },
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser

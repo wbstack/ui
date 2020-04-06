@@ -10,14 +10,7 @@
             <v-flex>
               <h2>..starting with a Wikibase stack</h2>
             </v-flex>
-            <v-flex>
-              <h3>Blog posts:</h3>
-              <ul>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2020/01/wbstack-infrastructure/">Infrastructure overview</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
-              </ul>
-            </v-flex>
+            <BlogPostList headerElement="h3" headerText="Blog Posts" ></BlogPostList>
             <!--<v-flex>-->
               <!--<RegisterInterest></RegisterInterest>-->
             <!--</v-flex>-->
@@ -46,11 +39,13 @@
 
 <script>
 import RegisterInterest from '@/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
+import BlogPostList from '@/components/Content/BlogPostList'
 
 export default {
   name: 'GetStartedBanner',
   components: {
-    RegisterInterest
+    RegisterInterest,
+    BlogPostList
   },
   data () {
     return {
