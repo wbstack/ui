@@ -42,7 +42,7 @@
           <p>Feel free to try out the platform!</p>
           <p>Create wikis using the + button to the left</p>
           <p>Stay up to date with the blog posts on the right</p>
-          <p>Join the telegram group <a href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g">here</a>.</p>
+          <p>Join the telegram group <a target="_blank" rel="noopener noreferrer" href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g">here</a>.</p>
           <h4>Known limitations</h4>
           <p>You can not:</p>
           <ul>
@@ -53,9 +53,9 @@
         <v-flex xs3>
           <h4>Blog Posts</h4>
           <ul>
-            <li><a href="https://addshore.com/2020/01/wbstack-infrastructure/">Infrastructure overview</a></li>
-            <li><a href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
-            <li><a href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2020/01/wbstack-infrastructure/">Infrastructure overview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/wbstack-november-review">November review</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com/2019/11/an-introduction-to-wbstack/">October introduction</a></li>
           </ul>
           <h4>Manual Stats (March)</h4>
           <ul>

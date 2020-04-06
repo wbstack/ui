@@ -28,9 +28,9 @@
           <v-flex xs3>
             <h5>Community</h5>
             <ul>
-              <li><a href="https://www.mediawiki.org">Mediawiki</a></li>
-              <li><a href="https://www.wikiba.se">Wikibase</a></li>
-              <li><a href="https://www.wikidata.org">Wikidata</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org">Mediawiki</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se">Wikibase</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikidata.org">Wikidata</a></li>
             </ul>
           </v-flex>
           <v-flex xs3>
@@ -54,7 +54,7 @@
         text-xs-center
         xs12
       >
-        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a> - Funded by <a href="https://rhizome.org/">Rhizome</a>
+        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a> - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
       </v-flex>
     </v-layout>
   </v-footer>
