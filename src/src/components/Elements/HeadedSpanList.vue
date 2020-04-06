@@ -11,25 +11,25 @@
 </template>
 
 <script>
-  export default {
-    name: 'HeadedSpanList',
-    props: {
-      'headerElement': {
-        type: String,
-        default: 'h3'
-      },
-      'headerText': {
-        type: String,
-        default: 'List header'
-      },
-      'emptyText': {
-        type: String,
-        default: 'No items in list'
-      },
-      'items': {
-        type: Array,
-        default: []
-      }
+export default {
+  name: 'HeadedSpanList',
+  props: {
+    'headerElement': {
+      type: String,
+      default: 'h3'
+    },
+    'headerText': {
+      type: String,
+      default: 'List header'
+    },
+    'emptyText': {
+      type: String,
+      default: 'No items in list'
+    },
+    'items': {
+      type: Array,
+      default: []
     }
   }
+}
 </script>

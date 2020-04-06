@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     registerInterest () {
-      if (this.email == '') {
+      if (this.email === '') {
         this.error = 'An email must be provided'
         return
       }

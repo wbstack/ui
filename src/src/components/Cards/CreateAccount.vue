@@ -95,8 +95,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'CreateAccountCard',
   props: [
@@ -186,7 +184,7 @@ export default {
             this.resetErrorState()
 
             // If the api gave use details of the error, then use them
-            if(err.response.data && err.response.data.errors) {
+            if (err.response.data && err.response.data.errors) {
               if (err.response.data.errors.invite) {
                 this.hasError = true
                 this.error['inputInvite'] = err.response.data.errors.invite[0]

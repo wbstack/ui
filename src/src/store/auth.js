@@ -65,8 +65,8 @@ const actions = {
       localStorage.removeItem('auth')
       localStorage.removeItem('user')
       // TODO have 1 thing to comit here reseting all state?
-      commit('auth_resetState');
-      commit('wikis_resetState');
+      commit('auth_resetState')
+      commit('wikis_resetState')
       resolve()
     })
   }

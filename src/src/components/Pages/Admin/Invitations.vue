@@ -74,11 +74,11 @@ export default {
     deleteInvitationCodeSuccess (req) {
       this.invitations.splice(this.invitations.indexOf(req.data.code), 1)
     },
-    deleteInvitationCodeFail (error) {
+    deleteInvitationCodeFail () {
       alert('Invite code deletion failed')
     },
     registerNewInvitationCode () {
-      if (this.newInvitationCode == '') {
+      if (this.newInvitationCode === '') {
         this.newInvitationCodeError = 'A code must be provided'
         return
       }

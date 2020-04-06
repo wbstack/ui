@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Navbar from '@/components/Layout/Navbar'
 import Foot from '@/components/Layout/Foot'
 

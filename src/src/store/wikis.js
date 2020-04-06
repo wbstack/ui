@@ -16,7 +16,7 @@ const getters = {
   wikisStatus: state => state.status,
   wikis: state => state.wikis,
   wikiCount: state => state.wikis.length,
-  hasLoaded: state => state.wikis.status != ''
+  hasLoaded: state => state.wikis.status !== ''
 }
 
 const mutations = {

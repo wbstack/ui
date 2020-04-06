@@ -63,7 +63,6 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
 import BlogPostList from '@/components/Content/BlogPostList'
 import HeadedSpanList from '@/components/Elements/HeadedSpanList'
 
@@ -78,7 +77,7 @@ export default {
       'stats': [
         'Users: 80',
         'Wikis: 150',
-        'Edits: 160k',
+        'Edits: 160k'
       ]
     }
   },
@@ -88,10 +87,10 @@ export default {
     },
     wikis: function () {
       return this.$store.getters.wikis
-    },
+    }
   },
   created () {
-    this.$store.dispatch('refreshWikis');
+    this.$store.dispatch('refreshWikis')
   }
 }
 </script>

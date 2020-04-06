@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'LoginCard',
   props: [
@@ -80,7 +78,7 @@ export default {
           console.log(err.response)
 
           // If the api gave use details of the error, then use them
-          if(err.response.data.errors) {
+          if (err.response.data.errors) {
             if (err.response.data.errors.email) {
               this.error['email'] = err.response.data.errors.email[0]
             }

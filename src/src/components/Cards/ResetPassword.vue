@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'ResetPasswordCard',
   props: [
@@ -100,7 +98,7 @@ export default {
           console.log(err.response)
           this.hasError = true
 
-          if(err.response.data && err.response.data.errors) {
+          if (err.response.data && err.response.data.errors) {
             if (err.response.data.errors.password) {
               this.hasError = true
               this.error['password'] = err.response.data.errors.password[0]

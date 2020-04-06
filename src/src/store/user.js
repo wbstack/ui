@@ -5,7 +5,7 @@ import axios from './../backend/vue-axios/axios.js'
 const getDefaultState = () => {
   return {
     forgottenPasswordSubmitSuccess: null,
-    resetPasswordSubmitSuccess: null,
+    resetPasswordSubmitSuccess: null
   }
 }
 
@@ -36,7 +36,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post('/user/forgotPassword', payload)
         .then(resp => {
-          if(resp.status !== 200) {
+          if (resp.status !== 200) {
             commit('user_setForgottenPasswordSubmitSuccessFalse')
           } else {
             commit('user_setForgottenPasswordSubmitSuccessTrue')
@@ -53,7 +53,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post('/user/resetPassword', payload)
         .then(resp => {
-          if(resp.status !== 200) {
+          if (resp.status !== 200) {
             commit('user_setResetPasswordSubmitSuccessFalse')
           } else {
             commit('user_setResetPasswordSubmitSuccessTrue')

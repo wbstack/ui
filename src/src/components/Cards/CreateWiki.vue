@@ -91,8 +91,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'CreateWiki',
   props: [
@@ -158,7 +156,7 @@ export default {
       this.error = []
 
       // If the api gave use details of the error, then use them
-      if(err.response.data && err.response.data.errors) {
+      if (err.response.data && err.response.data.errors) {
         if (err.response.data.errors.sitename) {
           this.hasError = true
           this.error['sitename'] = err.response.data.errors.sitename[0]
@@ -177,8 +175,8 @@ export default {
         }
       }
 
-      //IF we get a more specific error do something else
-      if( err.response.data.message === 'No databases ready' ) {
+      // IF we get a more specific error do something else
+      if (err.response.data.message === 'No databases ready') {
         this.hasError = true
         this.displayGenericError(err.response.data.message + ', please report this!')
       }
@@ -191,7 +189,7 @@ export default {
 
       this.inFlight = false
     },
-    displayGenericError(message) {
+    displayGenericError (message) {
       this.error['sitename'] = message
       this.error['siteaddress'] = message
       this.error['username'] = message
