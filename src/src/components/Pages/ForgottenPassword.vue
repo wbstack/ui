@@ -3,7 +3,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center column>
           <v-flex xs12 sm8 md4>
-            <LoginCard title="Log in to your account" buttonText="Login"/>
+            <ForgottenPasswordCard title="Forgotten password" buttonText="Reset"/>
           </v-flex>
           <v-flex class="needs-padding">
             <p>Not got an account yet?</p>
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import LoginCard from '@/components/Cards/Login'
+import ForgottenPasswordCard from '@/components/Cards/ForgottenPassword'
 
 export default {
-  name: 'Login',
+  name: 'ForgottenPassword',
   components: {
-    LoginCard
+    ForgottenPasswordCard
   },
   data () {
     return {}

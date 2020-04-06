@@ -199,7 +199,6 @@ export default {
           console.log(err)
           // TODO better error messages..
           this.setGeneralErrorState('Post account creation authentication failed!')
-          this.loggingIn = false
           this.inFlight = false
         })
     },

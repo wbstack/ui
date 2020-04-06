@@ -9,6 +9,8 @@ import Contact from '@/components/Pages/Contact'
 import CreateAccount from '@/components/Pages/CreateAccount'
 import Login from '@/components/Pages/Login'
 import Logout from '@/components/Pages/Logout'
+import ForgottenPassword from '@/components/Pages/ForgottenPassword'
+import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import ManageWiki from '@/components/Pages/ManageWiki'
@@ -48,6 +50,16 @@ let router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/forgotten-password',
+      name: 'ForgottenPassword',
+      component: ForgottenPassword
+    },
+    {
+      path: '/reset-password',
+      name: 'ResetPassword',
+      component: ResetPassword
     },
     {
       path: '/terms-of-use',

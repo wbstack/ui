@@ -28,6 +28,7 @@
         :error-messages="error['password']"
         />
       </v-form>
+      <router-link to="/forgotten-password">Forgotten password</router-link>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>

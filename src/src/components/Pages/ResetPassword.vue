@@ -3,11 +3,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center column>
           <v-flex xs12 sm8 md4>
-            <LoginCard title="Log in to your account" buttonText="Login"/>
-          </v-flex>
-          <v-flex class="needs-padding">
-            <p>Not got an account yet?</p>
-            <router-link to="/create-account">Create one now.</router-link>
+            <ResetPasswordCard title="Reset password" buttonText="Reset" :email="this.email" :token="this.token"/>
           </v-flex>
         </v-layout>
       </v-container>
@@ -15,16 +11,23 @@
 </template>
 
 <script>
-import LoginCard from '@/components/Cards/Login'
+import ResetPasswordCard from '@/components/Cards/ResetPassword'
 
 export default {
-  name: 'Login',
+  name: 'ResetPassword',
   components: {
-    LoginCard
+    ResetPasswordCard
   },
   data () {
-    return {}
-  }
+    return {
+      email: null,
+      token: null,
+    }
+  },
+  created () {
+    this.email = this.$route.query.email
+    this.token = this.$route.query.token
+  },
 }
 </script>
 
