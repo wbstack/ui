@@ -92,8 +92,12 @@
                 </v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <!-- TODO action to actually delete the site -->
-                <span><v-btn @click="deleteSite" color="red">Delete site.</v-btn></span>
+                <h4>Delete the wiki</h4>
+                <span><p>This will permanently delete the selected wiki.</p></span>
+                <span><p>The used domain will not immediately be available for re use.</p></span>
+                <span><v-btn v-if="!expandDelete" @click="expandDelete = true">Delete site</v-btn></span>
+                <span><v-btn v-if="expandDelete" @click="expandDelete = false" color="blue">Cancel deletion</v-btn></span>
+                <span><v-btn v-if="expandDelete" @click="doDelete" color="red">Confirm deletion</v-btn></span>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -122,7 +126,8 @@ export default {
   data () {
     return {
       id: 0,
-      apiData: []
+      apiData: [],
+      expandDelete: false
     }
   },
   computed: {},
@@ -146,8 +151,17 @@ export default {
     deleteManager () {
       alert('Not yet implemented')
     },
-    deleteSite () {
-      alert('Not yet implemented ;)')
+    doDelete () {
+      let wiki = this.id
+
+      this.$store
+        .dispatch('deleteWiki', { wiki })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.push('/dashboard')
+        })
     }
   }
 }

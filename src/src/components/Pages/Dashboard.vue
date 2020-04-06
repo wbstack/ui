@@ -43,12 +43,6 @@
           <p>Create wikis using the + button to the left</p>
           <p>Stay up to date with the blog posts on the right</p>
           <p>Join the telegram group <a target="_blank" rel="noopener noreferrer" href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g">here</a>.</p>
-          <h4>Known limitations</h4>
-          <p>You can not:</p>
-          <ul>
-            <li>Upload a custom logo</li>
-            <li>Delete Wikis (please request this on telegram)</li>
-          </ul>
         </v-flex>
         <v-flex xs3>
           <BlogPostList headerElement="h4" ></BlogPostList>

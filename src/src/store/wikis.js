@@ -54,7 +54,19 @@ const actions = {
           reject(err)
         })
     })
-  }
+  },
+  deleteWiki ({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post('/wiki/delete', payload)
+        .then(resp => {
+          resolve(resp)
+        })
+        .catch(err => {
+          reject(err)
+        })
+      commit('wikis_resetState')
+    })
+  },
 }
 
 export default {
