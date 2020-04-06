@@ -182,7 +182,33 @@ export default {
             recaptcha: token
           })
           .then(request => this.createSuccessful(request))
-          .catch((error) => this.createFailed(error))
+          .catch((err) => {
+            this.resetErrorState()
+
+            // If the api gave use details of the error, then use them
+            if(err.response.data && err.response.data.errors) {
+              if (err.response.data.errors.invite) {
+                this.hasError = true
+                this.error['inputInvite'] = err.response.data.errors.invite[0]
+              }
+              if (err.response.data.errors.email) {
+                this.hasError = true
+                this.error['inputEmail'] = err.response.data.errors.email[0]
+              }
+              if (err.response.data.errors.password) {
+                this.hasError = true
+                this.error['inputPassword'] = err.response.data.errors.password[0]
+              }
+            }
+
+            // Otherwise show a general error state
+            if (!this.hasError) {
+              this.setGeneralErrorState()
+            }
+
+            this.$store.dispatch('logout')
+            this.inFlight = false
+          })
       })
     },
     createSuccessful (req) {
@@ -201,33 +227,6 @@ export default {
           this.setGeneralErrorState('Post account creation authentication failed!')
           this.inFlight = false
         })
-    },
-    createFailed (error) {
-      this.resetErrorState()
-
-      // If the api gave use details of the error, then use them
-      if(error.response.data) {
-        if (error.response.data.invite) {
-          this.hasError = true
-          this.error['inputInvite'] = error.response.data.invite[0]
-        }
-        if (error.response.data.email) {
-          this.hasError = true
-          this.error['inputEmail'] = error.response.data.email[0]
-        }
-        if (error.response.data.password) {
-          this.hasError = true
-          this.error['inputPassword'] = error.response.data.password[0]
-        }
-      }
-
-      // Otherwise show a general error state
-      if (!this.hasError) {
-        this.setGeneralErrorState()
-      }
-
-      this.$store.dispatch('logout')
-      this.inFlight = false
     },
     checkCurrentLogin () {
       if (this.isLoggedIn) {
