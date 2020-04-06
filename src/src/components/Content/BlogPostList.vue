@@ -1,25 +1,19 @@
 <template>
-  <v-flex>
-    <component :is="headerElement">{{headerText}}</component>
-    <ul>
-      <li v-for="post in posts" :key="post.name">
-        <a target="_blank" rel="noopener noreferrer" :href="post.url">{{post.name}}</a>
-      </li>
-    </ul>
-  </v-flex>
+  <HeadedLinkedList :headerElement="headerElement" headerText="Blog Posts" :items="posts" ></HeadedLinkedList>
 </template>
 
 <script>
+  import HeadedLinkedList from '@/components/Elements/HeadedLinkedList'
+
   export default {
     name: 'BlogPostList',
+    components: {
+      HeadedLinkedList
+    },
     props: {
       'headerElement': {
         type: String,
         default: 'h3'
-      },
-      'headerText': {
-        type: String,
-        default: 'List header'
       }
     },
     data () {

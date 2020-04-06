@@ -51,27 +51,11 @@
           </ul>
         </v-flex>
         <v-flex xs3>
-          <BlogPostList headerElement="h4" headerText="Blog Posts" ></BlogPostList>
-          <v-flex>
-          <h4>Manual Stats (March) </h4>
-          <ul>
-            <li><span>Users: 80</span></li>
-            <li><span>Wikis: 150</span></li>
-            <li><span>Edits: 160k</span></li>
-          </ul>
-          </v-flex>
-          <v-flex>
-          <h4>Notices</h4>
-          <span>Not yet implemented</span>
-          </v-flex>
-          <v-flex>
-          <h4>Recent activity</h4>
-          <span>Not yet implemented</span>
-          </v-flex>
-          <v-flex>
-          <h4>Discover</h4>
-          <span>Not yet implemented</span>
-          </v-flex>
+          <BlogPostList headerElement="h4" ></BlogPostList>
+          <HeadedSpanList headerElement="h4" headerText="Manual Stats (March)" :items="stats" ></HeadedSpanList>
+          <HeadedSpanList headerElement="h4" headerText="Notices" emptyText="Not yet implemented" ></HeadedSpanList>
+          <HeadedSpanList headerElement="h4" headerText="Recent activity" emptyText="Not yet implemented" ></HeadedSpanList>
+          <HeadedSpanList headerElement="h4" headerText="Discover" emptyText="Not yet implemented" ></HeadedSpanList>
         </v-flex>
       </v-layout>
     </v-container>
@@ -81,11 +65,22 @@
 <script>
 import {mapGetters} from 'vuex'
 import BlogPostList from '@/components/Content/BlogPostList'
+import HeadedSpanList from '@/components/Elements/HeadedSpanList'
 
 export default {
   name: 'Dashboard',
   components: {
+    HeadedSpanList,
     BlogPostList
+  },
+  data () {
+    return {
+      'stats': [
+        'Users: 80',
+        'Wikis: 150',
+        'Edits: 160k',
+      ]
+    }
   },
   computed: {
     currentUser: function () {
