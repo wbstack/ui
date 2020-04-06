@@ -47,16 +47,6 @@
         :error-messages="error['username']"
         />
 
-        <!--<h3>Resource Tier</h3>-->
-        <!--<p>What resource level would you like to allocate to your site?</p>-->
-        <!--<p>During Alpha only the free tier is supported.</p>-->
-        <!--<v-select-->
-          <!--v-model="freeSelected"-->
-          <!--:items="resourceTiers"-->
-          <!--label="Resource tier"-->
-          <!--solo-->
-        <!--&gt;</v-select>-->
-
         <h3>Terms of Use</h3>
         <v-checkbox
         required
@@ -119,28 +109,6 @@ export default {
       sitename: '',
       subdomain: '',
       username: '',
-      freeSelected: 'free',
-      resourceTiers: [
-        {
-          text: 'Free',
-          value: 'free',
-        },
-        {
-          text: 'Personal',
-          value: 'personal',
-          disabled: true
-        },
-        {
-          text: 'Premium',
-          value: 'premium',
-          disabled: true
-        },
-        {
-          text: 'Pro',
-          value: 'pro',
-          disabled: true
-        }
-      ],
       terms: false,
       hasError: false,
       error: [],
