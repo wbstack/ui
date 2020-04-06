@@ -146,7 +146,7 @@ export default {
         }
       )
         .then(request => this.createSuccess(request))
-        .catch((error) => this.createFail(error))
+        .catch((err) => this.createFail(err))
     },
     createSuccess (req) {
       this.hasError = false
@@ -154,13 +154,48 @@ export default {
       // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
       this.$router.replace('/wikis/manage/' + req.data.data.id)
     },
-    createFail () {
-      this.hasError = true
-      this.error['sitename'] = 'Creation failed!'
-      this.error['siteaddress'] = 'Creation failed!'
-      this.error['username'] = 'Creation failed!'
-      this.error['terms'] = 'Creation failed!'
+    createFail (err) {
+      this.error = []
+
+      // If the api gave use details of the error, then use them
+      if(err.response.data && err.response.data.errors) {
+        if (err.response.data.errors.sitename) {
+          this.hasError = true
+          this.error['sitename'] = err.response.data.errors.sitename[0]
+        }
+        if (err.response.data.errors.domain) {
+          this.hasError = true
+          this.error['siteaddress'] = err.response.data.errors.domain[0]
+        }
+        if (err.response.data.errors.username) {
+          this.hasError = true
+          this.error['username'] = err.response.data.errors.username[0]
+        }
+        if (err.response.data.errors.terms) {
+          this.hasError = true
+          this.error['terms'] = err.response.data.errors.terms[0]
+        }
+      }
+
+      //IF we get a more specific error do something else
+      if( err.response.data.message === 'No databases ready' ) {
+        this.hasError = true
+        this.displayGenericError(err.response.data.message + ', please report this!')
+      }
+
+      // Otherwise show a general error state
+      if (!this.hasError) {
+        this.hasError = true
+        this.displayGenericError('Creation failed!')
+      }
+
       this.inFlight = false
+    },
+    displayGenericError(message) {
+      this.error['sitename'] = message
+      this.error['siteaddress'] = message
+      this.error['username'] = message
+      this.error['terms'] = message
     },
     checkCurrentLogin () {
       if (!this.currentUser) {
