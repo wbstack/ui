@@ -33,12 +33,12 @@ export default {
       '/user/verifyEmail',
       { token: this.token }
     )
-      .then(request => this.success())
+      .then(request => this.success(request))
       .catch((error) => this.fail(error))
   },
   methods: {
-    success () {
-      this.state = 'Successfully verified!'
+    success (request) {
+      this.state = request.data.message
     },
     fail () {
       this.state = 'Verification failed!'
