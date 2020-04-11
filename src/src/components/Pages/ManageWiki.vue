@@ -22,7 +22,7 @@
                     <strong>Please check your emails for your log in details.</strong></br>
                     <span>Status: Published</span></br>
                     <span>Site Name: {{apiData['sitename']}}</span></br>
-                    <span>Domain: <a :href="'//' + apiData['domain']" >{{apiData['domain']}}</a></span></br>
+                    <span>Domain: <a target="_blank" rel="noopener noreferrer" :href="'//' + apiData['domain']" >{{apiData['domain']}}</a></span></br>
                     <span>Date Created: {{apiData['created_at']}}</span></br>
 
                     <!-- TODO actually get this from the API?-->
