@@ -36,10 +36,10 @@
           <v-flex xs3>
             <h5>Organization</h5>
             <ul>
-              <li><router-link to="/about">About Us</router-link></li>
+              <li><router-link to="/about">About</router-link></li>
               <li><router-link to="/privacy-policy">Privacy</router-link></li>
               <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
-              <li><router-link to="/contact">Contact us</router-link></li>
+              <li><router-link to="/contact">Contact</router-link></li>
             </ul>
           </v-flex>
         </v-layout>
@@ -54,7 +54,9 @@
         text-xs-center
         xs12
       >
-        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a> - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
+        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a>
+        - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a>
+        - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
       </v-flex>
     </v-layout>
   </v-footer>

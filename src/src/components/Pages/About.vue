@@ -4,7 +4,9 @@
         <v-layout justify-center>
           <v-flex xs8>
             <h1>About</h1>
-            <p>Coming soon...</p>
+            <p>The WbStack alpha platform was released in late 2019.</p>
+            <p>You can find out more details about it in the blog posts below.</p>
+            <BlogPostList headerElement="h3" headerText="Blog Posts" ></BlogPostList>
           </v-flex>
         </v-layout>
       </v-container>
@@ -12,9 +14,15 @@
 </template>
 
 <script>
-export default {
+  import BlogPostList from '@/components/Content/BlogPostList'
+
+
+  export default {
   name: 'About',
-  computed: {}
+  computed: {},
+  components: {
+    BlogPostList
+  }
 }
 </script>
 

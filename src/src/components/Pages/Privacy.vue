@@ -2,7 +2,16 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout justify-center>
-          <p>Coming soon...</p>
+          <v-flex xs8>
+            <h1>Privacy</h1>
+            <p>We value your privacy, but do not yet have a privacy policy during this invitation only alpha release.</p>
+            <h3>Things to know:</h3>
+            <ul>
+              <li>We are hosted in the US in the <a target="_blank" rel="noopener noreferrer" href="https://cloud.google.com/">Google Cloud</a></li>
+              <li>We send our email via <a target="_blank" rel="noopener noreferrer" href="https://www.mailgun.com/">Mail Gun</a></li>
+              <li>We use <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/recaptcha/intro/v3.html">Recaptcha</a></li>
+            </ul>
+          </v-flex>
           <!--<v-flex xs8>-->
             <!--&lt;!&ndash; https://www.futurescaper.com/privacy-policy is a nice example &ndash;&gt;-->
             <!--<h1>Privacy</h1>-->
