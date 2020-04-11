@@ -2,10 +2,10 @@
   <v-container fluid>
     <v-layout column align-center>
       <v-flex>
-        <h1>What can you do with Open Cura?</h1>
+        <h1>What can you do with WbStack?</h1>
       </v-flex>
       <v-flex>
-        <p>Open Cura allows you to easily curate data in your own Wikibase instance.</p>
+        <p>WbStack allows you to easily curate data in your own Wikibase instance, without worrying about the technical side of things.</p>
       </v-flex>
       <v-flex>
         <!-- START blocks side by side -->
@@ -14,25 +14,27 @@
             <v-flex xs3>
               <v-card>
                 <v-card-title><h3>Create a Wikibase</h3></v-card-title>
-                <v-card-text>Create a Wikibase with a few simple details.</v-card-text>
+                <v-card-text>
+                Get set up in under a minute, with no technical knowledge, get automatic upgrades and much more.
+                </v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs3>
               <v-card>
                 <v-card-title><h3>Build a community</h3></v-card-title>
-                <v-card-text>Allow people to find your data and help you curate it.</v-card-text>
+                <v-card-text>Allow people to find your data, in the standard Wikibase format, and help you curate it.</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs3>
               <v-card>
                 <v-card-title><h3>Link to other data</h3></v-card-title>
-                <v-card-text>Link to other open data sets.</v-card-text>
+                <v-card-text>Link to other open data sets and become part of the <a target="_blank" rel="noopener noreferrer" href="https://lod-cloud.net/">Linked Open Data Cloud</a>.</v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs3>
               <v-card>
                 <v-card-title><h3>Query everything</h3></v-card-title>
-                <v-card-text>Meta data backed by SQL. Triples via Blazegraph.</v-card-text>
+                <v-card-text>Data and input managed by <a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/MediaWiki" >MediaWiki</a>, Triples and querying handled in <a target="_blank" rel="noopener noreferrer" href="https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial" >SPARQL</a> via Blazegraph.</v-card-text>
               </v-card>
             </v-flex>
           </v-layout>

@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12>
         <GetStartedBanner></GetStartedBanner>
-        <WhatIsWikibase></WhatIsWikibase>
+        <WhatCanYouDo></WhatCanYouDo>
       </v-flex>
     </v-layout>
   </v-container>
@@ -13,8 +13,7 @@
 import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
 // import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
 import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
-// import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
-import WhatIsWikibase from '@/components/Pages/Home/LoggedOutFeatures/WhatIsWikibase'
+//import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
 
 export default {
   name: 'Home',
@@ -23,8 +22,7 @@ export default {
     GetStartedBanner,
     //    WikiCount,
     WhatCanYouDo,
-    //    WhatIsIncluded,
-    WhatIsWikibase
+    //WhatIsIncluded,
   }
 }
 </script>

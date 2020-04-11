@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <h1>What is included?</h1>
-        <span>Mediawiki installation with various skins and extensions, including:</span>
+        <p>Mediawiki installation with various skins and extensions, including:</p>
         <ul>
           <li>Wikibase</li>
           <li>Revision Slider</li>

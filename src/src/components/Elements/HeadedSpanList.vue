@@ -1,12 +1,13 @@
 <template>
   <v-flex>
-    <component :is="headerElement">{{headerText}}</component>
+    <p><component :is="headerElement">{{headerText}}</component></p>
     <span v-if="!items.length">{{emptyText}}</span>
     <ul v-if="items.length">
       <li v-for="item in items" :key="item">
         <span>{{item}}</span>
       </li>
     </ul>
+    <div class="spacer"></div>
   </v-flex>
 </template>
 
@@ -33,3 +34,10 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+  div.spacer {
+    margin-bottom: 16px;
+  }
+</style>
+
