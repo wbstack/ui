@@ -6,42 +6,81 @@
     <v-card-text>
       <v-form>
 
-        <h3>Site Name</h3>
-        <p>This will appear in your page titles and can be changed at any time.</p>
+        <h3>Site Name
+          <v-tooltip right>
+            <template v-slot:activator="{ on }">
+              <v-icon v-on="on">info_outline</v-icon>
+            </template>
+            <span>The main name of your site</span></br>
+            <span>Will appear in your page titles and can be changed at any time</span></br>
+            <span>In MediaWiki terms this is $wgSitename</span></br>
+          </v-tooltip>
+        </h3>
+
         <v-text-field
         id="inputSiteName"
         prepend-icon="title"
         name="sitename"
         label="E.g., Goat Collective"
-        required
         v-model="sitename"
         :disabled="inFlight"
         :error-messages="error['sitename']"
         />
 
-        <h3>Site Address</h3>
-        <p>Choose a subdomain for your site to be accessed at.</p>
-        <v-text-field
-        id="inputSubdomain"
-        prepend-icon="web"
-        name="subdomain"
-        label="E.g., goat-collective"
-        required
-        v-model="subdomain"
-        suffix=".wiki.opencura.com"
-        :disabled="inFlight"
-        :error-messages="error['siteaddress']"
+        <h3>Site Domain
+          <v-tooltip right>
+            <template v-slot:activator="{ on }">
+              <v-icon v-on="on">info_outline</v-icon>
+            </template>
+            <span>A domain name is the site address people type into their browser to visit your site</span></br>
+            <span>If you already own a domain you can use it by selecting "Custom Domain"</span></br>
+            <span>If not you can use a "Free Subdomain"</span></br>
+          </v-tooltip>
+        </h3>
+
+        <v-radio-group row v-model="domainRadioChoice" :mandatory="true">
+          <v-radio label="Free Subdomain" value="sub"></v-radio>
+          <v-radio label="Custom Domain" value="own"></v-radio>
+        </v-radio-group>
+
+        <v-text-field v-if="domainRadioChoice == 'sub'"
+                      id="inputSubdomain"
+                      prepend-icon="web"
+                      name="subdomain"
+                      label="E.g. goat-collective"
+                      v-model="subdomain"
+                      suffix=".wiki.opencura.com"
+                      :disabled="inFlight"
+                      :error-messages="error['siteaddress']"
         />
 
-        <h3>Initial user</h3>
-        <p>Choose the username of the first admin user.</p>
-        <p>You will be emailed log in details for this account.</p>
+        <v-text-field v-if="domainRadioChoice == 'own'"
+                      id="inputDomain"
+                      prepend-icon="web"
+                      name="domain"
+                      label="E.g. goat-collective.com"
+                      v-model="domain"
+                      :disabled="inFlight"
+                      :error-messages="error['siteaddress']"
+        />
+
+        <p v-if="domainRadioChoice == 'own'">This domain should have an CNAME record pointing to sites-1.dyna.wbstack.com</p>
+
+        <h3>Your User
+          <v-tooltip right>
+            <template v-slot:activator="{ on }">
+              <v-icon v-on="on">info_outline</v-icon>
+            </template>
+            <span>Choose the username of your user and the first admin user on the site</span></br>
+            <span>You will receive an email with log in details for this account</span></br>
+          </v-tooltip>
+        </h3>
+
         <v-text-field
         id="inputUsername"
         prepend-icon="person"
         name="username"
         label="E.g., Addshore"
-        required
         v-model="username"
         :disabled="inFlight"
         :error-messages="error['username']"
@@ -49,7 +88,6 @@
 
         <h3>Terms of Use</h3>
         <v-checkbox
-        required
         v-model="terms"
         :disabled="inFlight"
         :error-messages="error['terms']"
@@ -105,7 +143,9 @@ export default {
   data () {
     return {
       sitename: '',
+      domainRadioChoice: 'sub',
       subdomain: '',
+      domain: '',
       username: '',
       terms: false,
       hasError: false,
@@ -125,6 +165,9 @@ export default {
       this.hasError = false
       this.error = []
 
+      // Terms are not checked by the API? so check this here...?
+      // TODO do an initial round of validation here too!
+      // https://vuejs.org/v2/cookbook/form-validation.html
       if (!this.terms) {
         this.hasError = true
         this.error['terms'] = 'You must accept the Terms of Service.'
@@ -135,10 +178,19 @@ export default {
         return
       }
 
+      // Figure out the actual domain to submit to the api!
+      let domainToSubmit = '';
+      if(this.domainRadioChoice == 'sub') {
+        domainToSubmit = this.subdomain + '.wiki.opencura.com'
+      }
+      if(this.domainRadioChoice == 'own') {
+        domainToSubmit = this.domain
+      }
+
       this.$http.post(
         '/wiki/create',
         {
-          domain: this.subdomain + '.wiki.opencura.com',
+          domain: domainToSubmit,
           sitename: this.sitename,
           username: this.username
         }
