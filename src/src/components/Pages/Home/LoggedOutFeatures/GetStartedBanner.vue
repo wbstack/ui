@@ -54,14 +54,17 @@ export default {
           src: '/static/screenshot-mediawiki.png'
         },
         {
-          src: '/static/screenshot-wikibase-registry-query-april-2019.png'
+          src: '/static/screenshot-wikibase-registry-query-april-2020.png'
         },
         {
-          src: '/static/screenshot-wikidata-main-page-finnish.png'
+          src: '/static/screenshot-wikidata-main-page-english.png'
         },
         {
-          src: '/static/screenshot-wikidata-query-service.png'
-        }
+          src: '/static/screenshot-biodiversity-query-april-2020.png'
+        },
+        {
+          src: '/static/screenshot-quickstatements.png'
+        },
       ]
     }
   }
