@@ -66,6 +66,20 @@ const actions = {
         })
       commit('wikis_resetState')
     })
+  },
+  updateLogo ({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      let mypostparameters = new FormData()
+      mypostparameters.append('logo', payload.file, payload.fileName);
+      mypostparameters.append('wiki', payload.wiki);
+      axios.post('/wiki/logo/update', mypostparameters)
+        .then(resp => {
+          resolve(resp)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
   }
 }
 
