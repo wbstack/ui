@@ -13,9 +13,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 
-Vue.use(Vuetify, {
-  iconfont: 'md'
-})
+Vue.use(Vuetify)
 
 // TODO inject this key...
 Vue.use(VueReCaptcha, { siteKey: '6LeHzbMUAAAAABjNp0vILaWr5ZeYHmteF7rGuZNV' })
@@ -26,6 +24,11 @@ new Vue({
   router,
   axios,
   store,
+  vuetify: new Vuetify({
+    icons: {
+      iconfont: 'md'
+    }
+  }),
   components: { App },
   template: '<App/>',
   created: function () {

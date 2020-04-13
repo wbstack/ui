@@ -1,8 +1,8 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center>
-          <v-flex xs8>
+      <v-container class="fill-height" fluid >
+        <v-row justify="center">
+          <v-col cols="8">
             <h1>Privacy</h1>
             <p>We value your privacy, but do not yet have a privacy policy during this invitation only alpha release.</p>
             <h3>Things to know:</h3>
@@ -11,7 +11,7 @@
               <li>We send our email via <a target="_blank" rel="noopener noreferrer" href="https://www.mailgun.com/">Mail Gun</a></li>
               <li>We use <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/recaptcha/intro/v3.html">Recaptcha</a></li>
             </ul>
-          </v-flex>
+          </v-col>
           <!--<v-flex xs8>-->
             <!--&lt;!&ndash; https://www.futurescaper.com/privacy-policy is a nice example &ndash;&gt;-->
             <!--<h1>Privacy</h1>-->
@@ -33,7 +33,7 @@
               <!--<a href="https://policies.google.com/terms">Terms of Service</a> apply.-->
             <!--</p>-->
           <!--</v-flex>-->
-        </v-layout>
+        </v-row>
       </v-container>
     </v-content>
 </template>

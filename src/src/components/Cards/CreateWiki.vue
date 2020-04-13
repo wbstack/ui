@@ -11,9 +11,9 @@
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">info_outline</v-icon>
             </template>
-            <span>The main name of your site</span></br>
-            <span>Will appear in your page titles and can be changed at any time</span></br>
-            <span>In MediaWiki terms this is $wgSitename</span></br>
+            <span>The main name of your site</span><br/>
+            <span>Will appear in your page titles and can be changed at any time</span><br/>
+            <span>In MediaWiki terms this is $wgSitename</span><br/>
           </v-tooltip>
         </h3>
 
@@ -32,9 +32,9 @@
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">info_outline</v-icon>
             </template>
-            <span>A domain name is the site address people type into their browser to visit your site</span></br>
-            <span>If you already own a domain you can use it by selecting "Custom Domain"</span></br>
-            <span>If not you can use a "Free Subdomain"</span></br>
+            <span>A domain name is the site address people type into their browser to visit your site</span><br/>
+            <span>If you already own a domain you can use it by selecting "Custom Domain"</span><br/>
+            <span>If not you can use a "Free Subdomain"</span><br/>
           </v-tooltip>
         </h3>
 
@@ -43,7 +43,7 @@
           <v-radio label="Custom Domain" value="own"></v-radio>
         </v-radio-group>
 
-        <v-text-field v-if="domainRadioChoice == 'sub'"
+        <v-text-field v-if="domainRadioChoice === 'sub'"
                       id="inputSubdomain"
                       prepend-icon="web"
                       name="subdomain"
@@ -54,7 +54,7 @@
                       :error-messages="error['siteaddress']"
         />
 
-        <v-text-field v-if="domainRadioChoice == 'own'"
+        <v-text-field v-if="domainRadioChoice === 'own'"
                       id="inputDomain"
                       prepend-icon="web"
                       name="domain"
@@ -64,15 +64,15 @@
                       :error-messages="error['siteaddress']"
         />
 
-        <p v-if="domainRadioChoice == 'own'">This domain should have an CNAME record pointing to sites-1.dyna.wbstack.com</p>
+        <p v-if="domainRadioChoice === 'own'">This domain should have an CNAME record pointing to sites-1.dyna.wbstack.com</p>
 
         <h3>Your User
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">info_outline</v-icon>
             </template>
-            <span>Choose the username of your user and the first admin user on the site</span></br>
-            <span>You will receive an email with log in details for this account</span></br>
+            <span>Choose the username of your user and the first admin user on the site</span><br/>
+            <span>You will receive an email with log in details for this account</span><br/>
           </v-tooltip>
         </h3>
 
@@ -179,11 +179,11 @@ export default {
       }
 
       // Figure out the actual domain to submit to the api!
-      let domainToSubmit = '';
-      if(this.domainRadioChoice == 'sub') {
+      let domainToSubmit = ''
+      if (this.domainRadioChoice === 'sub') {
         domainToSubmit = this.subdomain + '.wiki.opencura.com'
       }
-      if(this.domainRadioChoice == 'own') {
+      if (this.domainRadioChoice === 'own') {
         domainToSubmit = this.domain
       }
 

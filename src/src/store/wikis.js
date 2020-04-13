@@ -66,7 +66,7 @@ const actions = {
         })
       commit('wikis_resetState')
     })
-  },
+  }
 }
 
 export default {

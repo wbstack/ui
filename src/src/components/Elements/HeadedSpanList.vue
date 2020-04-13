@@ -1,5 +1,5 @@
 <template>
-  <v-flex>
+  <v-col>
     <p><component :is="headerElement">{{headerText}}</component></p>
     <span v-if="!items.length">{{emptyText}}</span>
     <ul v-if="items.length">
@@ -8,7 +8,7 @@
       </li>
     </ul>
     <div class="spacer"></div>
-  </v-flex>
+  </v-col>
 </template>
 
 <script>
@@ -40,4 +40,3 @@ export default {
     margin-bottom: 16px;
   }
 </style>
-

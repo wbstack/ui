@@ -1,11 +1,11 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center column>
-          <v-flex xs12 sm8 md4>
+      <v-container class="fill-height" fluid >
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
             <ResetPasswordCard title="Reset password" buttonText="Reset" :email="this.email" :token="this.token"/>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
 </template>

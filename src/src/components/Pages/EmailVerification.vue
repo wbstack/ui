@@ -1,8 +1,8 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center column>
-          <v-flex>
+      <v-container class="fill-height" fluid >
+        <v-row align="center" justify="center">
+          <v-col>
             <v-card>
               <v-toolbar dark color="primary">
                 <v-toolbar-title>Email Verification</v-toolbar-title>
@@ -11,8 +11,8 @@
                 {{state}}
               </v-card-text>
             </v-card>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
 </template>

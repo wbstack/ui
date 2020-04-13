@@ -1,8 +1,8 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center>
-          <v-flex xs8>
+      <v-container class="fill-height" fluid >
+        <v-row justify="center">
+          <v-col cols="8">
             <h1>Terms Of Use</h1>
             <p>
               PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THE SERVICES.
@@ -142,8 +142,8 @@
               If any provision of this Agreement is held invalid, the remainder of this Agreement shall continue in full force and effect.
               If any provision of these Terms of Use shall be deemed unlawful, void or for any reason unenforceable, then that provision shall be deemed severable from these Terms of Use and shall not affect the validity and enforceability of any remaining provisions.
             </p>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
 </template>

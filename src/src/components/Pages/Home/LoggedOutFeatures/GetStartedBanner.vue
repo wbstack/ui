@@ -1,43 +1,38 @@
 <template>
-  <v-container fluid>
-    <v-layout>
-      <v-flex xs6>
-        <v-container fluid>
-          <v-layout column>
-            <v-flex>
-              <h1 class="header-main">Your open data..</h1>
-            </v-flex>
-            <v-flex>
-              <h2 class="header-main">..starting with a Wikibase stack</h2>
-            </v-flex>
+  <div>
+    <v-row>
+      <v-col cols="6">
+        <v-row>
+          <h1 class="header-main">Your open data..</h1>
+        </v-row>
+        <v-row>
+          <h2 class="header-main">..starting with a Wikibase stack</h2>
+        </v-row>
 
-            <v-flex>
-              <p><h2 class="header-secondary"><a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se/">Wikibase</a> is an open source software suite for running a collaborative knowledge base.</h2></p>
-              <p><small>-- <a target="_blank" rel="noopener noreferrer" href="https://learningwikibase.com/">learningwikibase.com</a> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></small></p>
-            </v-flex>
+        <v-row>
+          <p><h2 class="header-secondary">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se/">Wikibase</a> is an open source software suite for running a collaborative knowledge base.
+            <small>-- <a target="_blank" rel="noopener noreferrer" href="https://learningwikibase.com/">learningwikibase.com</a> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></small>
+          </h2></p>
+        </v-row>
 
-            <v-flex>
-              <p><h2 class="header-secondary">WbStack is an alpha release platform for shared hosting of Wikibase sites.</h2></p>
-            </v-flex>
+        <v-row>
+          <p>WbStack is an alpha release platform for shared hosting of Wikibase sites.</p>
+        </v-row>
 
-            <v-flex>
-              <p>You can rean more about it in the blog posts below.</p>
-            </v-flex>
-
-            <BlogPostList headerElement="h3" headerText="Blog Posts" ></BlogPostList>
-
-            <v-flex>
+        <v-row>
               <p>If you would like an invitation please contact Addshore on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/addshore">Twitter</a> or <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/contact/" >by email</a></p>
-            </v-flex>
-            <!--<v-flex>-->
-              <!--<RegisterInterest></RegisterInterest>-->
-            <!--</v-flex>-->
-          </v-layout>
-        </v-container>
-      </v-flex>
-      <v-flex xs6>
+        </v-row>
+
+          <v-row>
+            <p>You can learn more about it in the blog posts below.</p>
+          </v-row>
+
+          <BlogPostList headerElement="h3" headerText="Blog Posts"></BlogPostList>
+      </v-col>
+      <v-col cols="6">
         <!-- TODO trim images to all be a set size or ratio.... -->
-        <v-carousel hide-controls hide-delimiters interval="5400" height="auto">
+        <v-carousel class="carousel-drop-shadow" interval="5500" height="460" cycle :show-arrows="false" :hide-delimiters="true" :touchless="true">
           <v-carousel-item
             position="top"
             v-for="(image,i) in images"
@@ -45,14 +40,14 @@
             :src="image.src"
           ></v-carousel-item>
         </v-carousel>
-      </v-flex>
-    </v-layout>
-    <v-layout>
-      <v-flex>
-        <!-- <v-btn outline raised to="/create-account">Get started</v-btn> -->
-      </v-flex>
-    </v-layout>
-</v-container>
+      </v-col>
+    </v-row>
+<!--    <v-row>-->
+<!--      <v-col>-->
+<!--        <v-btn outline raised to="/create-account">Get started</v-btn>-->
+<!--      </v-col>-->
+<!--    </v-row>-->
+  </div>
 </template>
 
 <script>
@@ -82,7 +77,7 @@ export default {
         },
         {
           src: '/static/screenshot-quickstatements.png'
-        },
+        }
       ]
     }
   }
@@ -90,6 +85,12 @@ export default {
 </script>
 
 <style scoped>
+  .carousel-drop-shadow{
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+  }
+
   h1.header-main{
     font-size: 64px;
     font-weight: 400;
@@ -104,7 +105,7 @@ export default {
 
   h2.header-secondary{
     font-size: 20px;
-    font-weight: 370;
+    font-weight: 300;
     line-height: 35px;
   }
 </style>

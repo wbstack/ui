@@ -1,11 +1,11 @@
 <template>
   <v-content>
-    <v-container fluid fill-height>
-      <v-layout>
-        <v-flex xs3>
+    <v-container class="fill-height" fluid >
+      <v-row>
+        <v-col cols="3">
           <v-container fluid class="rightpaddingonly">
-            <v-layout column>
-              <v-flex>
+            <v-row>
+              <v-col>
                 <v-card>
                   <v-toolbar>
                     <v-toolbar-title>Your Wikis</v-toolbar-title>
@@ -16,8 +16,8 @@
                   </v-toolbar>
                   <v-card-text>
                     <v-list>
-                      <v-list-tile v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
-                        <v-list-tile-content>
+                      <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
+                        <v-list-item-content>
                           <div class="fullwidth">
                             {{wiki.sitename}}
                             <div class="rightfloat">
@@ -25,16 +25,16 @@
                               <v-btn icon small class="nomargin" :to="{ name: 'ManageWiki', params: { id: wiki.id } }"><v-icon>settings</v-icon></v-btn>
                             </div>
                           </div>
-                        </v-list-tile-content>
-                      </v-list-tile>
+                        </v-list-item-content>
+                      </v-list-item>
                     </v-list>
                   </v-card-text>
                 </v-card>
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </v-container>
-        </v-flex>
-        <v-flex xs6>
+        </v-col>
+        <v-col cols="6">
           <h3>Welcome to WBStack</h3>
           <p>Feel free to try out the platform!</p>
           <p>Create wikis using the + button to the left</p>
@@ -43,13 +43,13 @@
           <h4>Wikimedia Germany & The Future</h4>
           <p>WMDE work around “Wikibase as a Service” is planned during the second half of 2020</p>
           <p>For more info contact <a href="mailto:samantha.alipio@wikimedia.de">Samantha Alipio</a></p>
-        </v-flex>
-        <v-flex xs3>
+        </v-col>
+        <v-col cols="3">
           <BlogPostList headerElement="h4" ></BlogPostList>
           <HeadedSpanList headerElement="h4" headerText="Manual Stats (March)" :items="stats" ></HeadedSpanList>
           <HeadedSpanList headerElement="h4" headerText="Notices" emptyText="Not yet implemented" ></HeadedSpanList>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </v-content>
 </template>

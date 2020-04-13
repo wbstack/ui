@@ -1,64 +1,37 @@
 <template>
   <footer>
-  <v-footer
-    height="auto"
-    color="primary lighten-1"
-  >
-    <v-layout
-      justify-center
-      row
-      wrap
-    >
+  <v-footer color="primary lighten-1">
+    <v-container>
+    <v-row dense class="text-center" >
+    <v-col cols="3"></v-col>
+      <v-col cols="3" >
+        <h5>Community</h5>
+        <ul class="footer-list">
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org">Mediawiki</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se">Wikibase</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikidata.org">Wikidata</a></li>
+        </ul>
+      </v-col>
+      <v-col cols="3">
+        <h5>Organization</h5>
+        <ul class="footer-list">
+          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/privacy-policy">Privacy</router-link></li>
+          <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
+        </ul>
+      </v-col>
+      <v-col cols="3"></v-col>
+    </v-row>
 
-    <v-flex>
-
-      <v-container grid-list-xl>
-        <v-layout
-        justify-center
-        row
-        wrap>
-        <!-- TODO unhide this one pages are implemented.. -->
-          <!-- <v-flex xs3>
-            <h5>Explore</h5>
-            <ul>
-              <li><router-link to="/not-yet-implemented">News</router-link></li>
-              <li><router-link to="/not-yet-implemented">Discover</router-link></li>
-            </ul>
-          </v-flex> -->
-          <v-flex xs3>
-            <h5>Community</h5>
-            <ul>
-              <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org">Mediawiki</a></li>
-              <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se">Wikibase</a></li>
-              <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikidata.org">Wikidata</a></li>
-            </ul>
-          </v-flex>
-          <v-flex xs3>
-            <h5>Organization</h5>
-            <ul>
-              <li><router-link to="/about">About</router-link></li>
-              <li><router-link to="/privacy-policy">Privacy</router-link></li>
-              <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
-              <li><router-link to="/contact">Contact</router-link></li>
-            </ul>
-          </v-flex>
-        </v-layout>
-      </v-container>
-
-    </v-flex>
-
-      <v-flex
-        primary
-        lighten-2
-        py-3
-        text-xs-center
-        xs12
-      >
-        &copy;2020 — <a href="https://wbstack.com/"><strong>WBStack</strong></a>
-        - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a>
-        - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
-      </v-flex>
-    </v-layout>
+    <v-row class="text-center white-footer-links" no-gutters>
+      <v-col>
+      &copy;2020 — <a href="https://wbstack.com/">WBStack</a>
+      - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a>
+      - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
+      </v-col>
+    </v-row>
+    </v-container>
   </v-footer>
 
   </footer>
@@ -71,18 +44,14 @@ export default {
 </script>
 
 <style scoped>
-
-  h5, li {
-    text-align: center;
-  }
-
-  ul {
+  ul.footer-list {
     list-style: none;
-    padding:0;
+    padding-left: 0 !important;
   }
 
-  a {
-    color: white;
+  ul.footer-list a,
+  .white-footer-links a{
+    color: white !important;
   }
 
 </style>

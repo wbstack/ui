@@ -1,15 +1,15 @@
 <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center column>
-          <v-flex xs12 sm8 md4>
+      <v-container class="fill-height" fluid >
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
             <LoginCard title="Log in to your account" buttonText="Login"/>
-          </v-flex>
-          <v-flex class="needs-padding">
+          </v-col>
+          <v-col class="needs-padding">
             <p>Not got an account yet?</p>
             <router-link to="/create-account">Create one now.</router-link>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
 </template>

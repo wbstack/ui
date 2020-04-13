@@ -1,8 +1,8 @@
 <template>
   <div>
   <p>Join the waiting list for an invitation</p>
-  <v-layout row>
-    <v-flex>
+  <v-row >
+    <v-col>
       <v-text-field
       id="inputEmail"
       prepend-icon="email"
@@ -14,8 +14,8 @@
       :disabled="formDisabled"
       :error-messages="error"
       />
-    </v-flex>
-    <v-flex>
+    </v-col>
+    <v-col>
       <v-btn
         depressed
         tile
@@ -26,8 +26,8 @@
         >
         {{buttonText}}
       </v-btn>
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
   </div>
 </template>
 

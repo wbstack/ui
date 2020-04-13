@@ -1,8 +1,8 @@
 <template>
   <v-content>
-    <v-container fluid fill-height>
-      <v-layout>
-        <v-flex>
+    <v-container class="fill-height" fluid >
+      <v-row>
+        <v-col>
           <v-tabs>
             <v-tab>Dashboard</v-tab>
             <v-tab-item>Nothig here yet</v-tab-item>
@@ -17,8 +17,8 @@
             <v-tab>Jobs</v-tab>
             <v-tab-item><p>Nothing here yet</p></v-tab-item>
           </v-tabs>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </v-content>
 </template>

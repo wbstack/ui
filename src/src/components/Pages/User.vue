@@ -1,8 +1,8 @@
   <template>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center>
-          <v-flex xs6>
+      <v-container class="fill-height" fluid >
+        <v-row justify="center">
+          <v-col cols="6">
             <h1>Private Profile</h1>
             <v-form>
               <v-text-field
@@ -19,8 +19,8 @@
             </v-form>
             <!-- TODO add date account registered? -->
             <p>To change any details or to remove your account please contact us.</p>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
 </template>

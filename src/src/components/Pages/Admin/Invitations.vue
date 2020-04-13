@@ -2,8 +2,8 @@
 <div>
 <h2>Create new</h2>
 
-<v-layout row>
-  <v-flex>
+<v-row >
+  <v-col>
     <v-text-field
     id="inputInvitation"
     name="invitation"
@@ -13,8 +13,8 @@
     :disabled="newInvitationCodeDisabled"
     :error-messages="newInvitationCodeError"
     />
-  </v-flex>
-  <v-flex>
+  </v-col>
+  <v-col>
     <v-btn
       depressed
       tile
@@ -25,8 +25,8 @@
       >
       Create
     </v-btn>
-  </v-flex>
-</v-layout>
+  </v-col>
+</v-row>
 
 <h2>Current Invitations</h2>
 <v-list-tile v-for="invite in invitations" :key="invite.code" :invite="invite">

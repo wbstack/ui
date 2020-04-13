@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
-    <v-layout>
-      <v-flex>
+    <v-row>
+      <v-col>
         <h1>What is included?</h1>
         <p>Mediawiki installation with various skins and extensions, including:</p>
         <ul>
@@ -18,8 +18,8 @@
           <li>User and Organizational installations</li>
           <li>Site configuration</li>
         </ul>
-      </v-flex>
-      <v-flex>
+      </v-col>
+      <v-col>
         <h2>Coming soon...</h2>
         <span>More Extensions:</span>
         <ul>
@@ -35,8 +35,8 @@
           <li>Backups</li>
           <li>Elastic Search</li>
         </ul>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <h3>Got suggestions?</h3>
     <span>Get in touch!</span>
   </v-container>

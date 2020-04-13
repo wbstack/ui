@@ -1,9 +1,9 @@
 <template>
     <v-content>
-      <v-container fluid fill-height grid-list-xl >
-        <v-layout>
+      <v-container class="fill-height" fluid >
+        <v-row>
             <template v-if="id != 0">
-              <v-flex>
+              <v-col>
               <v-card>
                 <v-toolbar>
                   <v-toolbar-title>
@@ -19,11 +19,11 @@
                 <v-card-text>
                   <!-- TODO display this data in a nice table? -->
                     <!-- TODO get status from the api? archived? deleted? pending delete? creating? upgrading?-->
-                    <strong>Please check your emails for your log in details.</strong></br>
-                    <span>Status: Published</span></br>
-                    <span>Site Name: {{apiData['sitename']}}</span></br>
-                    <span>Domain: <a target="_blank" rel="noopener noreferrer" :href="'//' + apiData['domain']" >{{apiData['domain']}}</a></span></br>
-                    <span>Date Created: {{apiData['created_at']}}</span></br>
+                    <strong>Please check your emails for your log in details.</strong><br/>
+                    <span>Status: Published</span><br/>
+                    <span>Site Name: {{apiData['sitename']}}</span><br/>
+                    <span>Domain: <a target="_blank" rel="noopener noreferrer" :href="'//' + apiData['domain']" >{{apiData['domain']}}</a></span><br/>
+                    <span>Date Created: {{apiData['created_at']}}</span><br/>
 
                     <!-- TODO actually get this from the API?-->
                     <!--<span>Tier: Free-->
@@ -33,20 +33,20 @@
                       <!--</template>-->
                       <!--<span>During Alpha only the Free tier is available.</span>-->
                     <!--</v-tooltip>-->
-                    <!--</span></br>-->
+                    <!--</span><br/>-->
 
                     <!-- TODO actually get a different app version?-->
-                    <span>Application Version: {{apiData['wiki_db_version']['version']}}</span></br>
+                    <span>Application Version: {{apiData['wiki_db_version']['version']}}</span><br/>
                     <template v-if="apiData['wiki_db_version']">
                       <span>Database Version: {{apiData['wiki_db_version']['version']}}</span>
                     </template>
                     <template v-else>
                       <span>Version: Unknown</span>
                     </template>
-                  </br>
+                  <br/>
                 </v-card-text>
               </v-card>
-            </v-flex>
+            </v-col>
             <!-- TODO finish managers idea once alpha is done -->
             <!-- <v-flex>
               <v-card>
@@ -84,7 +84,7 @@
                 </v-card-text>
               </v-card>
             </v-flex> -->
-            <v-flex>
+            <v-col>
             <v-card>
               <v-toolbar>
                 <v-toolbar-title>
@@ -100,10 +100,10 @@
                 <span><v-btn v-if="expandDelete" @click="doDelete" color="red">Confirm deletion</v-btn></span>
               </v-card-text>
             </v-card>
-          </v-flex>
+          </v-col>
             </template>
             <template v-if="id == 0">
-              <v-flex>
+              <v-col>
               <v-card>
                 <v-toolbar dark color="primary">
                   <v-toolbar-title>Wiki Managment</v-toolbar-title>
@@ -112,10 +112,9 @@
                   No wiki for you to manage.
                 </v-card-text>
               </v-card>
-              </v-flex>
+              </v-col>
             </template>
-          </v-flex>
-        </v-layout>
+        </v-row>
       </v-container>
     </v-content>
 </template>
