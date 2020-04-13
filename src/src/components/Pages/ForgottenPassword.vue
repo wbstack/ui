@@ -2,9 +2,9 @@
     <v-content>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
-            <ForgottenPasswordCard title="Forgotten password" buttonText="Reset"/>
-          </v-col>
+          <ForgottenPasswordCard title="Forgotten password" buttonText="Reset"/>
+        </v-row>
+        <v-row align="center" justify="center">
           <v-col class="needs-padding">
             <p>Not got an account yet?</p>
             <router-link to="/create-account">Create one now.</router-link>

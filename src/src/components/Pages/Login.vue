@@ -2,9 +2,9 @@
     <v-content>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
             <LoginCard title="Log in to your account" buttonText="Login"/>
-          </v-col>
+        </v-row>
+        <v-row align="center" justify="center" >
           <v-col class="needs-padding">
             <p>Not got an account yet?</p>
             <router-link to="/create-account">Create one now.</router-link>

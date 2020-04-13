@@ -64,7 +64,8 @@
                       :error-messages="error['siteaddress']"
         />
 
-        <p v-if="domainRadioChoice === 'own'">This domain should have an CNAME record pointing to sites-1.dyna.wbstack.com</p>
+        <p v-if="domainRadioChoice === 'own'">This domain should have an CNAME record pointing to:</p>
+        <p v-if="domainRadioChoice === 'own'">"sites-1.dyna.wbstack.com"</p>
 
         <h3>Your User
           <v-tooltip right>
