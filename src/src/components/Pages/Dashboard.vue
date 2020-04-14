@@ -14,21 +14,19 @@
                       <v-btn fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
                     </v-toolbar-items>
                   </v-toolbar>
-                  <v-card-text>
                     <v-list>
                       <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
                         <v-list-item-content>
-                          <div class="fullwidth">
-                            {{wiki.sitename}}
-                            <div class="rightfloat">
-                              <v-btn icon small class="nomargin" target="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>home</v-icon></v-btn>
-                              <v-btn icon small class="nomargin" :to="{ name: 'ManageWiki', params: { id: wiki.id } }"><v-icon>settings</v-icon></v-btn>
-                            </div>
-                          </div>
+                          <v-list-item-title>{{wiki.sitename}}</v-list-item-title>
                         </v-list-item-content>
+                            <v-list-item-icon>
+                              <v-btn icon small icontarget="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>home</v-icon></v-btn>
+                            </v-list-item-icon>
+                            <v-list-item-icon>
+                              <v-btn icon small :to="{ name: 'ManageWiki', params: { id: wiki.id } }"><v-icon>settings</v-icon></v-btn>
+                            </v-list-item-icon>
                       </v-list-item>
                     </v-list>
-                  </v-card-text>
                 </v-card>
               </v-col>
             </v-row>
