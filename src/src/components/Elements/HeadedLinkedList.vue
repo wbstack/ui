@@ -29,7 +29,9 @@ export default {
     },
     'items': {
       type: Array,
-      default: []
+      default: function() {
+        return []
+      }
     }
   }
 }

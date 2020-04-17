@@ -1,19 +1,13 @@
 <template>
     <v-content>
-      <v-container class="fill-height" fluid >
-        <v-row align="center" justify="center">
-          <v-col>
-            <v-card>
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Email Verification</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                {{state}}
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-card>
+        <v-toolbar dark :color=color>
+          <v-toolbar-title>Email Verification</v-toolbar-title>
+        </v-toolbar>
+        <v-card-text>
+          {{state}}
+        </v-card-text>
+      </v-card>
     </v-content>
 </template>
 
@@ -23,7 +17,8 @@ export default {
   computed: {},
   data () {
     return {
-      state: "Verifying... Please don't leave the page.",
+      state: "Verifying...",
+      color: "primary",
       token: 0
     }
   },
@@ -39,9 +34,16 @@ export default {
   methods: {
     success (request) {
       this.state = request.data.message
+      this.color = 'green';
     },
-    fail () {
-      this.state = 'Verification failed!'
+    fail (error) {
+      if(error.response.status === 422) {
+        this.state = 'Verification token expired, or you are already verified!'
+        this.color = 'orange';
+      } else {
+        this.state = 'Verification failed for unknown reason!'
+        this.color = 'red';
+      }
     }
   }
 }
