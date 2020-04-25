@@ -20,15 +20,19 @@ export default {
     return {
       posts: [
         {
+          name: '2020 Update #1',
+          url: 'https://addshore.com/2020/04/wbstack-2020-update-1/'
+        },
+        {
           name: 'Infrastructure overview',
           url: 'https://addshore.com/2020/01/wbstack-infrastructure/'
         },
         {
-          name: 'November review',
+          name: '2019 November review',
           url: 'https://addshore.com/2019/11/wbstack-november-review'
         },
         {
-          name: 'October introduction',
+          name: '2019 October introduction',
           url: 'https://addshore.com/2019/11/an-introduction-to-wbstack/'
         }
       ]
