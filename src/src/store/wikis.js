@@ -80,6 +80,19 @@ const actions = {
           reject(err)
         })
     })
+  },
+  updateSkin ({ commit }, payload) {
+    // TODO the API should deduce this from the route...
+    payload.setting = 'skin'
+    return new Promise((resolve, reject) => {
+      axios.post('/wiki/setting/skin/update', payload)
+        .then(resp => {
+          resolve(resp)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
   }
 }
 

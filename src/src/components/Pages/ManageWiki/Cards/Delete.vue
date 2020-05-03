@@ -1,0 +1,45 @@
+<template>
+  <v-card color="#fad1d0">
+    <v-card-title>Delete Site</v-card-title>
+    <v-card-text>
+      This will permanently delete the selected wiki.<br>
+      The used domain will not immediately be available for re use.
+    </v-card-text>
+    <v-card-actions>
+      <v-btn v-if="!expandDelete" @click="expandDelete = true" color="red">Delete site</v-btn>
+      <v-btn v-if="expandDelete" @click="expandDelete = false" color="blue">Cancel deletion</v-btn>
+      <v-btn v-if="expandDelete" @click="doDelete" color="red">Confirm deletion</v-btn>
+    </v-card-actions>
+  </v-card>
+</template>
+
+<script>
+  export default {
+    name: 'Logo',
+    props: [
+      'wikiId',
+    ],
+    data () {
+      return {
+        expandDelete: false
+      }
+    },
+    methods: {
+      doDelete () {
+        let wikiId = this.wikiId
+
+        this.$store
+          .dispatch('deleteWiki', { wikiId })
+          .then(() => this.$router.push('/dashboard'))
+          .catch(err => {
+            console.log(err.response)
+            alert('Something went wrong.')
+            this.$router.push('/dashboard')
+          })
+      }
+    }
+  }
+</script>
+
+<style lang="css" scoped>
+</style>
