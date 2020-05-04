@@ -26,10 +26,10 @@
     },
     methods: {
       doDelete () {
-        let wikiId = this.wikiId
+        let wiki = this.wikiId
 
         this.$store
-          .dispatch('deleteWiki', { wikiId })
+          .dispatch('deleteWiki', { wiki })
           .then(() => this.$router.push('/dashboard'))
           .catch(err => {
             console.log(err.response)
