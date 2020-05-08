@@ -33,6 +33,9 @@ const mutations = {
   },
   auth_error (state) {
     state.status = 'error'
+  },
+  auth_isVerified(state) {
+    state.user.verified = true;
   }
 }
 
@@ -67,6 +70,12 @@ const actions = {
       // TODO have 1 thing to comit here reseting all state?
       commit('auth_resetState')
       commit('wikis_resetState')
+      resolve()
+    })
+  },
+  markAsVerified ({ commit }) {
+    return new Promise((resolve, reject) => {
+      commit('auth_isVerified')
       resolve()
     })
   }

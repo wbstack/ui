@@ -35,6 +35,7 @@ export default {
     success (request) {
       this.state = request.data.message
       this.color = 'green';
+      this.$store.dispatch( 'markAsVerified', {} )
     },
     fail (error) {
       if(error.response.status === 422) {

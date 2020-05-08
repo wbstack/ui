@@ -11,10 +11,11 @@
                     <v-toolbar-title>Your Wikis</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-toolbar-items>
-                      <v-btn fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
+                      <v-btn v-if="currentUser.verified == 1" fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
+                      <v-btn v-if="currentUser.verified == 0" fab small color="red"><v-icon dark>warning</v-icon></v-btn>
                     </v-toolbar-items>
                   </v-toolbar>
-                    <v-list>
+                    <v-list v-if="currentUser.verified == 1">
                       <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
                         <v-list-item-content>
                           <v-list-item-title>{{wiki.sitename}}</v-list-item-title>
@@ -27,6 +28,10 @@
                             </v-list-item-icon>
                       </v-list-item>
                     </v-list>
+                  <v-card-text v-if="currentUser.verified == 0" >
+                    <p><strong>Your email address is not yet verified.</strong></p>
+                    <p>You can trigger another verification link from the <router-link to="/user">account page</router-link>.</p>
+                  </v-card-text>
                 </v-card>
               </v-col>
             </v-row>
