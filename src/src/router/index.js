@@ -15,7 +15,7 @@ import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import ManageWiki from '@/components/Pages/ManageWiki/ManageWiki'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
-import Privacy from '@/components/Pages/Privacy'
+import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Admin from '@/components/Pages/Admin/Admin'
 
