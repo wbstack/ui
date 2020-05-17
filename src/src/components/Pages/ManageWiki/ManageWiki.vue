@@ -2,6 +2,9 @@
   <v-content>
     <v-container class="fill-height" fluid>
       <v-row v-if="wikiId != 0">
+        <h4>This page allows you to alter settings of the site, but it will not currently show you the current settings.</h4>
+      </v-row>
+      <v-row v-if="wikiId != 0">
         <!--Col 1-->
         <v-col>
           <v-row>
@@ -9,14 +12,6 @@
               <Details :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
-          <v-row>
-            <v-col>
-              <Delete :wikiId="this.wikiId"/>
-            </v-col>
-          </v-row>
-        </v-col>
-        <!--Col 2-->
-        <v-col>
           <v-row>
             <v-col>
               <Skin :wikiId="this.wikiId"/>
@@ -27,6 +22,24 @@
               <Logo :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
+        </v-col>
+        <!--Col 2-->
+        <v-col>
+          <v-row>
+            <v-col>
+              <Registration :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <Wikibase :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <Delete :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
       <v-row v-if="wikiId == 0">
@@ -49,6 +62,8 @@
   import Details from '@/components/Pages/ManageWiki/Cards/Details'
   import Logo from '@/components/Pages/ManageWiki/Cards/Logo'
   import Skin from '@/components/Pages/ManageWiki/Cards/Skin'
+  import Registration from '@/components/Pages/ManageWiki/Cards/Registration'
+  import Wikibase from '@/components/Pages/ManageWiki/Cards/Wikibase'
   import Delete from '@/components/Pages/ManageWiki/Cards/Delete'
 
   export default {
@@ -57,6 +72,8 @@
       Details,
       Logo,
       Skin,
+      Registration,
+      Wikibase,
       Delete
     },
     data() {

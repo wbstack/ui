@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: 'Logo',
+    name: 'Delete',
     props: [
       'wikiId',
     ],

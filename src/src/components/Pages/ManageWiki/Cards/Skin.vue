@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'Logo',
+    name: 'Skin',
     props: [
       'wikiId',
     ],

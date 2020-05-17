@@ -42,7 +42,7 @@
 
 <script>
   export default {
-    name: 'Logo',
+    name: 'Details',
     props: [
       'wikiId',
     ],

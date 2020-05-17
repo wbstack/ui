@@ -82,10 +82,24 @@ const actions = {
     })
   },
   updateSkin ({ commit }, payload) {
+    // TODO remove updateSkin and just use updateSetting...
     // TODO the API should deduce this from the route...
     payload.setting = 'skin'
     return new Promise((resolve, reject) => {
       axios.post('/wiki/setting/skin/update', payload)
+        .then(resp => {
+          resolve(resp)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  updateSetting ({ commit }, payload) {
+    // payload needs 'wiki', 'setting' and 'value' keys
+    return new Promise((resolve, reject) => {
+      // TODO the api should get the setting from the path (so it isn't needed in the payload)
+      axios.post('/wiki/setting/' + payload.setting + '/update', payload)
         .then(resp => {
           resolve(resp)
         })
