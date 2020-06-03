@@ -3,7 +3,7 @@
     <v-card-title>Delete Site</v-card-title>
     <v-card-text>
       This will permanently delete the selected wiki.<br>
-      The used domain will not immediately be available for re use.
+      <strong>The used domain will NOT be available for re use.</strong>
     </v-card-text>
     <v-card-actions>
       <v-btn v-if="!expandDelete" @click="expandDelete = true" color="red">Delete site</v-btn>

@@ -2,7 +2,7 @@
   <v-content>
     <v-container class="fill-height" fluid>
       <v-row v-if="wikiId != 0">
-        <h4>This page allows you to alter settings of the site, but it will not currently show you the current settings.</h4>
+        <h4 class="red-notice-highlight">This page allows you to alter settings of the site, but it will not show you the current values of the settings.</h4>
       </v-row>
       <v-row v-if="wikiId != 0">
         <!--Col 1-->
@@ -88,4 +88,8 @@
 </script>
 
 <style scoped>
+  .red-notice-highlight{
+    background-color: red;
+  }
+
 </style>

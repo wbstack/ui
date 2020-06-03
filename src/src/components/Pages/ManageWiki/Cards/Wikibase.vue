@@ -2,8 +2,7 @@
   <v-card>
     <v-card-title>Wikibase Options</v-card-title>
     <v-card-text>
-      <h4>Value lengths (max characters)</h4>
-      <p>Changing these values will allow your Wikibase to store values of longer lengths.</p>
+      <h4>Value lengths</h4>
       <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
       <p>The default values for both fo these fields is <strong>400 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
       <v-text-field
@@ -14,9 +13,16 @@
         v-model="stringLengthMonoText"
         label="Monolingual text"
       ></v-text-field>
+      <h4>Multilang (term) lengths</h4>
+      <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
+      <p>The default values for this field is <strong>250 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
+      <v-text-field
+        v-model="stringLengthMultilang"
+        label="Multilang (labels, descriptions and such)"
+      ></v-text-field>
     </v-card-text>
     <v-card-actions>
-      <v-btn :disabled="this.stringLengthString == '' && this.stringLengthMonoText == ''" @click="doSubmit">Set Options</v-btn>
+      <v-btn :disabled="this.stringLengthString == '' && this.stringLengthMonoText == '' && this.stringLengthMultilang == ''" @click="doSubmit">Set Options</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -31,6 +37,7 @@
       return {
         stringLengthString: '',
         stringLengthMonoText: '',
+        stringLengthMultilang: '',
         inFlight: false,
         error: ''
       }
@@ -51,6 +58,14 @@
         if(this.stringLengthMonoText) {
           let setting = 'wikibaseStringLengthMonolingualText';
           let value = this.stringLengthMonoText;
+          promises.push(
+            this.$store.dispatch('updateSetting', { wiki, setting, value })
+          )
+        }
+
+        if(this.stringLengthMultilang) {
+          let setting = 'wikibaseStringLengthMultilang';
+          let value = this.stringLengthMultilang;
           promises.push(
             this.$store.dispatch('updateSetting', { wiki, setting, value })
           )
