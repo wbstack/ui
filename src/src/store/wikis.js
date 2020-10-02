@@ -71,7 +71,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       let mypostparameters = new FormData()
       mypostparameters.append('logo', payload.file, payload.fileName);
-      mypostparameters.append('wiki', payload.wiki);
+      mypostparameters.append('wiki', payload.wikiId);
       axios.post('/wiki/logo/update', mypostparameters)
         .then(resp => {
           resolve(resp)
