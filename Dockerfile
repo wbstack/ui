@@ -7,12 +7,12 @@ ENV API_URL $API_URL
 
 WORKDIR /src/app
 
-COPY ./src/package.json ./src/package-lock.json ./
+COPY ./package.json ./package-lock.json ./
 
 # TODO remove the --force from the install...
 RUN npm install --force && npm cache clean --force
 
-COPY ./src/ .
+COPY ./ .
 
 RUN npm run-script build
 
