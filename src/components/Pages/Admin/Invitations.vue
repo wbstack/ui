@@ -53,9 +53,7 @@ export default {
     }
   },
   created () {
-    this.$http.post(
-      '/admin/invitation/list'
-    )
+    this.$api.listInvitations()
       .then(request => this.buildInvitationsList(request.data.data))
       .catch(() => { alert('Failed to retrieve invitations!') })
   },
@@ -64,8 +62,7 @@ export default {
       this.invitations = data
     },
     deleteInvitationCode (codeToDelete) {
-      this.$http.post(
-        '/admin/invitation/delete',
+      this.$api.deleteInvitation(
         {code: codeToDelete}
       )
         .then(request => this.deleteInvitationCodeSuccess(request))
@@ -85,8 +82,7 @@ export default {
 
       this.newInvitationCodeDisabled = true
       this.newInvitationCodeError = ''
-      this.$http.post(
-        '/admin/invitation/create',
+      this.$api.createInvitation(
         {code: this.newInvitationCode}
       )
         .then(request => this.newInvitationCodeSuccess(request))

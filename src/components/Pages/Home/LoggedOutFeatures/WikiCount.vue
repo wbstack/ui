@@ -20,8 +20,8 @@ export default {
     }
   },
   created () {
-    this.$http.get('/wiki/count')
-      .then(request => { this.count = request.data.data })
+    this.$api.countWikis()
+      .then(count => { this.count = count })
       .catch(() => { alert('Something went wrong!') })
   }
 }

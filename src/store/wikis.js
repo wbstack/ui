@@ -1,6 +1,6 @@
 /* global localStorage */
 
-import axios from './../backend/vue-axios/axios.js'
+import { api } from './../backend'
 
 const getDefaultState = () => {
   return {
@@ -42,12 +42,10 @@ const actions = {
   refreshWikis ({ commit }) {
     return new Promise((resolve, reject) => {
       commit('wikis_request')
-      axios.post('/wiki/mine')
-        .then(resp => {
-          // TODO model or something?
-          const wikiList = resp.data
+      api.myWikis()
+        .then(wikiList => {
           commit('wikis_success', wikiList)
-          resolve(resp)
+          resolve()
         })
         .catch(err => {
           commit('wikis_error')
@@ -57,7 +55,7 @@ const actions = {
   },
   deleteWiki ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('/wiki/delete', payload)
+      api.deleteWiki(payload)
         .then(resp => {
           resolve(resp)
         })
@@ -69,10 +67,7 @@ const actions = {
   },
   updateLogo ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      let mypostparameters = new FormData()
-      mypostparameters.append('logo', payload.file, payload.fileName);
-      mypostparameters.append('wiki', payload.wikiId);
-      axios.post('/wiki/logo/update', mypostparameters)
+      api.updateLogo(payload)
         .then(resp => {
           resolve(resp)
         })
@@ -86,7 +81,7 @@ const actions = {
     // TODO the API should deduce this from the route...
     payload.setting = 'skin'
     return new Promise((resolve, reject) => {
-      axios.post('/wiki/setting/skin/update', payload)
+      api.updateSkin(payload)
         .then(resp => {
           resolve(resp)
         })
@@ -99,7 +94,7 @@ const actions = {
     // payload needs 'wiki', 'setting' and 'value' keys
     return new Promise((resolve, reject) => {
       // TODO the api should get the setting from the path (so it isn't needed in the payload)
-      axios.post('/wiki/setting/' + payload.setting + '/update', payload)
+      api.updateSetting(payload.setting, payload)
         .then(resp => {
           resolve(resp)
         })

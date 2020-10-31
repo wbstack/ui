@@ -1,6 +1,6 @@
 /* global localStorage */
 
-import axios from './../backend/vue-axios/axios.js'
+import { api } from './../backend'
 
 const getDefaultState = () => {
   return {
@@ -34,8 +34,8 @@ const mutations = {
   auth_error (state) {
     state.status = 'error'
   },
-  auth_isVerified(state) {
-    state.user.verified = true;
+  auth_isVerified (state) {
+    state.user.verified = true
   }
 }
 
@@ -46,14 +46,12 @@ const actions = {
   login ({ commit }, user) {
     return new Promise((resolve, reject) => {
       commit('auth_request')
-      axios.post('/auth/login', user)
-        .then(resp => {
-          const token = resp.data.token
-          const user = resp.data.user
+      api.login(user)
+        .then(({token, user}) => {
           localStorage.setItem('auth', token)
           localStorage.setItem('user', JSON.stringify(user))
           commit('auth_success', {token, user})
-          resolve(resp)
+          resolve()
         })
         .catch(err => {
           commit('auth_error')

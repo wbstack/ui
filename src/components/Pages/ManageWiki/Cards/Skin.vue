@@ -21,43 +21,43 @@
 </template>
 
 <script>
-  export default {
-    name: 'Skin',
-    props: [
-      'wikiId',
-    ],
-    data () {
-      return {
-        items: [
-          'Vector',
-          'Modern',
-          'Timeless',
-        ],
-        skin: '',
-        inFlight: false,
-        error: ''
-      }
-    },
-    methods: {
-      doSetSkin () {
-        let wiki = this.wikiId
-        // API needs the skin ID which is lower case..
-        let value = this.skin.toLowerCase()
+export default {
+  name: 'Skin',
+  props: [
+    'wikiId'
+  ],
+  data () {
+    return {
+      items: [
+        'Vector',
+        'Modern',
+        'Timeless'
+      ],
+      skin: '',
+      inFlight: false,
+      error: ''
+    }
+  },
+  methods: {
+    doSetSkin () {
+      let wiki = this.wikiId
+      // API needs the skin ID which is lower case..
+      let value = this.skin.toLowerCase()
 
-        this.$store
-          .dispatch('updateSkin', { wiki, value })
-          .then(() => {
-            alert('Update success!')
-            this.$router.go()
-          })
-          .catch(err => {
-            console.log(err.response)
-            alert('Something went wrong.')
-            this.$router.go()
-          })
-      }
+      this.$store
+        .dispatch('updateSkin', { wiki, value })
+        .then(() => {
+          alert('Update success!')
+          this.$router.go()
+        })
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.go()
+        })
     }
   }
+}
 </script>
 
 <style lang="css" scoped>

@@ -20,39 +20,39 @@
 </template>
 
 <script>
-  export default {
-    name: 'Logo',
-    props: [
-      'wikiId',
-    ],
-    data () {
-      return {
-        selectedLogoFile: null
-      }
+export default {
+  name: 'Logo',
+  props: [
+    'wikiId'
+  ],
+  data () {
+    return {
+      selectedLogoFile: null
+    }
+  },
+  methods: {
+    onLogoFileChanged (event) {
+      this.selectedLogoFile = event
     },
-    methods: {
-      onLogoFileChanged (event) {
-        this.selectedLogoFile = event;
-      },
-      doLogoUpload () {
-        let wikiId = this.wikiId
-        let file = this.selectedLogoFile
-        let fileName = this.selectedLogoFile.name
+    doLogoUpload () {
+      let wikiId = this.wikiId
+      let file = this.selectedLogoFile
+      let fileName = this.selectedLogoFile.name
 
-        this.$store
-          .dispatch('updateLogo', { wikiId, file, fileName })
-          .then(() => {
-            alert('Upload success!')
-            this.$router.go()
-          })
-          .catch(err => {
-            console.log(err.response)
-            alert('Something went wrong.')
-            this.$router.go()
-          })
-      }
+      this.$store
+        .dispatch('updateLogo', { wikiId, file, fileName })
+        .then(() => {
+          alert('Upload success!')
+          this.$router.go()
+        })
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.go()
+        })
     }
   }
+}
 </script>
 
 <style lang="css" scoped>

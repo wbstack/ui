@@ -171,8 +171,7 @@ export default {
       // TODO recaptcha check should be optional for development (env var switch?)
       // Recaptcha check
       this.$recaptcha('login').then((token) => {
-        this.$http.post(
-          '/user/register',
+        this.$api.register(
           {
             email: this.email,
             password: this.password,

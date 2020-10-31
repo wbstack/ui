@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import router from './router'
-import axios from './backend/vue-axios'
 import store from './store'
+import { api, axios } from './backend'
 import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must be loaded before vuetify css
 import 'typeface-roboto/index.css'
@@ -18,11 +18,13 @@ Vue.use(Vuetify)
 // TODO inject this key...
 Vue.use(VueReCaptcha, { siteKey: '6LeHzbMUAAAAABjNp0vILaWr5ZeYHmteF7rGuZNV' })
 
+// allow components to access api without importing it
+Vue.prototype.$api = api
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  axios,
   store,
   vuetify: new Vuetify({
     icons: {
@@ -32,7 +34,7 @@ new Vue({
   components: { App },
   template: '<App/>',
   created: function () {
-    this.$http.interceptors.response.use(undefined, function (err) {
+    axios.interceptors.response.use(undefined, function (err) {
       return new Promise(function (resolve, reject) {
         // Unauthenticated. is the exact error message returned by the API for the auth middle ware
         // which is why we check for that message here...

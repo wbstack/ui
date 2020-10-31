@@ -1,8 +1,8 @@
 /* global localStorage */
 
-import axios from 'axios'
+import Axios from 'axios'
 
-const ajax = axios.create({
+const axios = Axios.create({
   baseURL: process.env.API_URL,
   headers: {
     'Content-Type': 'application/json'
@@ -13,7 +13,7 @@ const ajax = axios.create({
  * The interceptor here ensures that we check for the token in local storage
  * every time an ajax request is made
  */
-ajax.interceptors.request.use(
+axios.interceptors.request.use(
   (config) => {
     let token = localStorage.getItem('auth')
 
@@ -29,4 +29,4 @@ ajax.interceptors.request.use(
   }
 )
 
-export default ajax
+export default axios

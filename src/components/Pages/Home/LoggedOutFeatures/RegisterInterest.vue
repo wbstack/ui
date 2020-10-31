@@ -54,7 +54,7 @@ export default {
       this.formDisabled = true
       this.error = ''
       this.buttonText = 'Submitting'
-      this.$http.post('/interest/register', {email: this.email})
+      this.$api.registerInterest({email: this.email})
         .then(request => this.success(request))
         .catch((error) => this.fail(error))
     },

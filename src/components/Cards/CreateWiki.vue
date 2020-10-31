@@ -188,8 +188,7 @@ export default {
         domainToSubmit = this.domain
       }
 
-      this.$http.post(
-        '/wiki/create',
+      this.$api.createWiki(
         {
           domain: domainToSubmit,
           sitename: this.sitename,

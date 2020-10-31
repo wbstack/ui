@@ -10,10 +10,10 @@
         </v-row>
 
         <v-row>
-          <p><h2 class="header-secondary">
+          <h2 class="header-secondary">
           <a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se/">Wikibase</a> is an open source software suite for running a collaborative knowledge base.
             <small>-- <a target="_blank" rel="noopener noreferrer" href="https://learningwikibase.com/">learningwikibase.com</a> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></small>
-          </h2></p>
+          </h2>
         </v-row>
 
         <v-row>

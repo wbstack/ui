@@ -17,33 +17,30 @@ export default {
   computed: {},
   data () {
     return {
-      state: "Verifying...",
-      color: "primary",
+      state: 'Verifying...',
+      color: 'primary',
       token: 0
     }
   },
   created () {
     this.token = this.$route.params.token
-    this.$http.post(
-      '/user/verifyEmail',
-      { token: this.token }
-    )
+    this.$api.verifyEmail({ token: this.token })
       .then(request => this.success(request))
       .catch((error) => this.fail(error))
   },
   methods: {
     success (request) {
       this.state = request.data.message
-      this.color = 'green';
-      this.$store.dispatch( 'markAsVerified', {} )
+      this.color = 'green'
+      this.$store.dispatch('markAsVerified', {})
     },
     fail (error) {
-      if(error.response.status === 422) {
+      if (error.response.status === 422) {
         this.state = 'Verification token expired, or you are already verified!'
-        this.color = 'orange';
+        this.color = 'orange'
       } else {
         this.state = 'Verification failed for unknown reason!'
-        this.color = 'red';
+        this.color = 'red'
       }
     }
   }

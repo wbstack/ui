@@ -41,31 +41,30 @@
 </template>
 
 <script>
-  export default {
-    name: 'Details',
-    props: [
-      'wikiId',
-    ],
-    data () {
-      return {
-        apiData: []
-      }
-    },
-    created () {
-      // TODO get the data about the wiki if the user can see it...
-      this.$http.post(
-        '/wiki/details',
-        { wiki: this.wikiId }
-      )
-        .then(request => this.buildDataFromDetails(request.data.data))
-        .catch(() => { alert('Failed to retrieve wiki details!') })
-    },
-    methods: {
-      buildDataFromDetails (data) {
-        this.apiData = data
-      }
+export default {
+  name: 'Details',
+  props: [
+    'wikiId'
+  ],
+  data () {
+    return {
+      apiData: []
+    }
+  },
+  created () {
+    // TODO get the data about the wiki if the user can see it...
+    this.$api.wikiDetails(
+      { wiki: this.wikiId }
+    )
+      .then(details => this.buildDataFromDetails(details))
+      .catch(() => { alert('Failed to retrieve wiki details!') })
+  },
+  methods: {
+    buildDataFromDetails (data) {
+      this.$apiData = data
     }
   }
+}
 </script>
 
 <style lang="css" scoped>

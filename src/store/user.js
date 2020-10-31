@@ -1,6 +1,6 @@
 /* global localStorage */
 
-import axios from './../backend/vue-axios/axios.js'
+import { api } from './../backend'
 
 const getDefaultState = () => {
   return {
@@ -34,7 +34,7 @@ const mutations = {
 const actions = {
   forgottenPassword ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('/user/forgotPassword', payload)
+      api.forgottenPassword()
         .then(resp => {
           if (resp.status !== 200) {
             commit('user_setForgottenPasswordSubmitSuccessFalse')
@@ -51,7 +51,7 @@ const actions = {
   },
   resetPassword ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('/user/resetPassword', payload)
+      api.resetPassword(payload)
         .then(resp => {
           if (resp.status !== 200) {
             commit('user_setResetPasswordSubmitSuccessFalse')
