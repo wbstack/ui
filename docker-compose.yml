@@ -5,7 +5,7 @@ services:
     user: "node"
     working_dir: /home/node/app
     volumes:
-    - ./src:/home/node/app
+    - ./:/home/node/app
     command: npm run dev
     ports:
       - 8081:2000
@@ -13,5 +13,5 @@ services:
       HOST: 0.0.0.0
       PORT: 2000
       PUBLIC: localhost:8081
-      API_URL: http://localhost:8082
-#      API_URL: https://api.wbstack.com
+      API_URL: https://api.wbstack.com
+      # API_URL: http://localhost:8082
