@@ -36,6 +36,9 @@ To run dev server with mocked api, set env variable `API_MOCK` to a value that e
 API_MOCK=1 npm run dev
 ```
 
+Currently, logging in using any email and password will behave as if the same user is always logging in.
+Created wikis by that user will live in local storage (`msw-myWikis` key)
+
 Backend api mocks live in `/src/backend/mocks/default_handlers.js`.
 
 **Note**
