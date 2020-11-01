@@ -26,6 +26,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
+        { from: /^\/mockServiceWorker.js/, to: path.posix.join(config.dev.assetsPublicPath, 'mockServiceWorker.js') },
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
@@ -69,6 +70,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../mockServiceWorker.js'),
+        to: config.assetsPublicPath
       }
     ])
   ]

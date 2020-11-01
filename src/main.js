@@ -11,6 +11,11 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must b
 import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 
+if (process.env.NODE_ENV !== 'production' && !!process.env.API_MOCK) {
+  const { worker } = require('./backend/mocks/browser')
+  worker.start()
+}
+
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)

@@ -1,6 +1,6 @@
 import axios from './axios'
 
-// User endpoints
+/* User endpoints */
 export const login = async user => (await axios.post('/auth/login', user)).data
 export const register = async payload => {
   const resp = await axios.post('/user/register', payload).catch(ex => {
@@ -12,7 +12,7 @@ export const register = async payload => {
 }
 export const forgottenPassword = async () => axios.post('/user/forgotPassword')
 export const resetPassword = async payload => axios.post('/user/resetPassword', payload)
-export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message
+export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified'
 export const verifyEmail = async payload => {
   const resp = await axios.post('/user/verifyEmail', payload).catch(error => {
     const expired = error.response.status === 422
@@ -22,7 +22,7 @@ export const verifyEmail = async payload => {
   return resp.data.message
 }
 
-// Wiki endpoints
+/* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data
 export const myWikis = async () => (await axios.post('/wiki/mine')).data
 export const createWiki = async payload => {
@@ -45,7 +45,7 @@ export const updateSetting = async (setting, payload) => axios.post(`/wiki/setti
 export const updateSkin = async payload => updateSetting('skin', payload)
 export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data
 
-// Admin endpoints
+/* Admin endpoints */
 export const listInterests = async () => (await axios.post('/admin/interest/list')).data.data
 export const registerInterest = async payload => {
   const { success, message } = (await axios.post('/interest/register', payload).catch(ex => {
