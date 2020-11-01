@@ -2,7 +2,7 @@ import { rest } from 'msw'
 
 const absolutePath = path => `${process.env.API_URL}${path}`
 
-const myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
+let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
 let user = JSON.parse(localStorage.getItem('user'))
 
@@ -46,6 +46,11 @@ const makeNewWiki = ({ domain, sitename }) => {
   return newWiki
 }
 
+const removeWiki = wikiIndex => {
+  myWikis = myWikis.splice(wikiIndex, 1)
+  localStorage.setItem('msw-myWikis', JSON.stringify(myWikis))
+}
+
 export const handlers = [
   /* User endpoints */
   rest.post(absolutePath('/auth/login'), (req, res, ctx) => {
@@ -66,7 +71,16 @@ export const handlers = [
   rest.post(absolutePath('/wiki/create'), (req, res, ctx) => {
     return res(ctx.json({data: makeNewWiki(req.body)}))
   }),
-  rest.post(absolutePath('/wiki/delete'), (_, res, ctx) => res(ctx.status(200))),
+  rest.post(absolutePath('/wiki/delete'), (req, res, ctx) => {
+    const wikiId = req.body.wiki
+    const wikiIndex = myWikis.findIndex(w => w.id === Number(wikiId))
+    if (wikiIndex < 0) {
+      return res(ctx.status(404))
+    }
+
+    removeWiki(wikiIndex)
+    return res(ctx.status(200))
+  }),
   rest.post(absolutePath('/wiki/logo/update'), (_, res, ctx) => res(ctx.status(200))),
   rest.post(absolutePath('/wiki/setting/:setting/update'), (_, res, ctx) => res(ctx.status(200))),
   rest.post(absolutePath('/wiki/details'), (req, res, ctx) => {
