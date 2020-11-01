@@ -25,17 +25,17 @@ export default {
   created () {
     this.token = this.$route.params.token
     this.$api.verifyEmail({ token: this.token })
-      .then(request => this.success(request))
-      .catch((error) => this.fail(error))
+      .then(message => this.success(message))
+      .catch(expired => this.fail(expired))
   },
   methods: {
-    success (request) {
-      this.state = request.data.message
+    success (message) {
+      this.state = message
       this.color = 'green'
       this.$store.dispatch('markAsVerified', {})
     },
-    fail (error) {
-      if (error.response.status === 422) {
+    fail (expired) {
+      if (expired) {
         this.state = 'Verification token expired, or you are already verified!'
         this.color = 'orange'
       } else {

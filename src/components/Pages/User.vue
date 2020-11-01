@@ -44,9 +44,9 @@ export default {
     },
     sendVerifyEmail () {
       this.$api.sendVerifyEmail()
-        .then((response) => {
+        .then(message => {
           this.sentVerifyEmail = true
-          if (response.data.message === 'Already verified') {
+          if (message === 'Already verified') {
             this.$store.dispatch('markAsVerified', {})
           }
         })

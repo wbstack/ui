@@ -44,22 +44,18 @@ const actions = {
     commit('auth_resetState')
   },
   login ({ commit }, user) {
-    return new Promise((resolve, reject) => {
-      commit('auth_request')
-      api.login(user)
-        .then(({token, user}) => {
-          localStorage.setItem('auth', token)
-          localStorage.setItem('user', JSON.stringify(user))
-          commit('auth_success', {token, user})
-          resolve()
-        })
-        .catch(err => {
-          commit('auth_error')
-          localStorage.removeItem('auth')
-          localStorage.removeItem('user')
-          reject(err)
-        })
-    })
+    commit('auth_request')
+    return api.login(user)
+      .then(({token, user}) => {
+        localStorage.setItem('auth', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        commit('auth_success', {token, user})
+      })
+      .catch(() => {
+        commit('auth_error')
+        localStorage.removeItem('auth')
+        localStorage.removeItem('user')
+      })
   },
   logout ({ commit }) {
     return new Promise((resolve, reject) => {

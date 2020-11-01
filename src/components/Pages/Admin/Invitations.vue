@@ -54,7 +54,7 @@ export default {
   },
   created () {
     this.$api.listInvitations()
-      .then(request => this.buildInvitationsList(request.data.data))
+      .then(invitations => this.buildInvitationsList(invitations))
       .catch(() => { alert('Failed to retrieve invitations!') })
   },
   methods: {
@@ -62,14 +62,12 @@ export default {
       this.invitations = data
     },
     deleteInvitationCode (codeToDelete) {
-      this.$api.deleteInvitation(
-        {code: codeToDelete}
-      )
-        .then(request => this.deleteInvitationCodeSuccess(request))
-        .catch((error) => this.deleteInvitationCodeFail(error))
+      this.$api.deleteInvitation({code: codeToDelete})
+        .then(code => this.deleteInvitationCodeSuccess(code))
+        .catch(() => this.deleteInvitationCodeFail())
     },
-    deleteInvitationCodeSuccess (req) {
-      this.invitations.splice(this.invitations.indexOf(req.data.code), 1)
+    deleteInvitationCodeSuccess (code) {
+      this.invitations.splice(this.invitations.indexOf(code), 1)
     },
     deleteInvitationCodeFail () {
       alert('Invite code deletion failed')
@@ -82,26 +80,20 @@ export default {
 
       this.newInvitationCodeDisabled = true
       this.newInvitationCodeError = ''
-      this.$api.createInvitation(
-        {code: this.newInvitationCode}
-      )
-        .then(request => this.newInvitationCodeSuccess(request))
+      this.$api.createInvitation({code: this.newInvitationCode})
+        .then(code => this.newInvitationCodeSuccess(code))
         .catch((error) => this.newInvitationCodeFail(error))
     },
-    newInvitationCodeSuccess (req) {
-      if (!req.data.success) {
-        this.newInvitationCodeError = 'Unknown error'
-      } else {
-        this.newInvitationCode = ''
-      }
+    newInvitationCodeSuccess (code) {
+      this.newInvitationCode = ''
       this.newInvitationCodeDisabled = false
       // Add code to the list being shown
-      this.invitations.unshift({code: req.data.code})
+      this.invitations.unshift({code})
     },
-    newInvitationCodeFail (error) {
+    newInvitationCodeFail (errors) {
       this.newInvitationCodeDisabled = false
-      if (error.response.data.code) {
-        this.newInvitationCodeError = error.response.data.code[0]
+      if (errors) {
+        this.newInvitationCodeError = errors[0]
       } else {
         this.newInvitationCodeError = 'Something went wrong, please try again.'
       }

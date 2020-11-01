@@ -32,39 +32,15 @@ const mutations = {
 }
 
 const actions = {
-  forgottenPassword ({ commit }, payload) {
-    return new Promise((resolve, reject) => {
-      api.forgottenPassword()
-        .then(resp => {
-          if (resp.status !== 200) {
-            commit('user_setForgottenPasswordSubmitSuccessFalse')
-          } else {
-            commit('user_setForgottenPasswordSubmitSuccessTrue')
-          }
-          resolve(resp)
-        })
-        .catch(err => {
-          commit('user_setForgottenPasswordSubmitSuccessFalse')
-          reject(err)
-        })
-    })
+  forgottenPassword ({ commit }) {
+    return api.forgottenPassword()
+      .then(() => commit('user_setForgottenPasswordSubmitSuccessTrue'))
+      .catch(() => commit('user_setForgottenPasswordSubmitSuccessFalse'))
   },
   resetPassword ({ commit }, payload) {
-    return new Promise((resolve, reject) => {
-      api.resetPassword(payload)
-        .then(resp => {
-          if (resp.status !== 200) {
-            commit('user_setResetPasswordSubmitSuccessFalse')
-          } else {
-            commit('user_setResetPasswordSubmitSuccessTrue')
-          }
-          resolve(resp)
-        })
-        .catch(err => {
-          commit('user_setResetPasswordSubmitSuccessFalse')
-          reject(err)
-        })
-    })
+    return api.resetPassword(payload)
+      .then(() => commit('user_setResetPasswordSubmitSuccessTrue'))
+      .catch(() => commit('user_setResetPasswordSubmitSuccessFalse'))
   }
 }
 
