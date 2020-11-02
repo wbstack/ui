@@ -28,62 +28,62 @@
 </template>
 
 <script>
-  export default {
-    name: 'Wikibase',
-    props: [
-      'wikiId',
-    ],
-    data () {
-      return {
-        stringLengthString: '',
-        stringLengthMonoText: '',
-        stringLengthMultilang: '',
-        inFlight: false,
-        error: ''
+export default {
+  name: 'Wikibase',
+  props: [
+    'wikiId'
+  ],
+  data () {
+    return {
+      stringLengthString: '',
+      stringLengthMonoText: '',
+      stringLengthMultilang: '',
+      inFlight: false,
+      error: ''
+    }
+  },
+  methods: {
+    doSubmit () {
+      let wiki = this.wikiId
+      let promises = []
+
+      if (this.stringLengthString) {
+        let setting = 'wikibaseStringLengthString'
+        let value = this.stringLengthString
+        promises.push(
+          this.$store.dispatch('updateSetting', { wiki, setting, value })
+        )
       }
-    },
-    methods: {
-      doSubmit () {
-        let wiki = this.wikiId
-        let promises = [];
 
-        if(this.stringLengthString) {
-          let setting = 'wikibaseStringLengthString';
-          let value = this.stringLengthString;
-          promises.push(
-            this.$store.dispatch('updateSetting', { wiki, setting, value })
-          )
-        }
-
-        if(this.stringLengthMonoText) {
-          let setting = 'wikibaseStringLengthMonolingualText';
-          let value = this.stringLengthMonoText;
-          promises.push(
-            this.$store.dispatch('updateSetting', { wiki, setting, value })
-          )
-        }
-
-        if(this.stringLengthMultilang) {
-          let setting = 'wikibaseStringLengthMultilang';
-          let value = this.stringLengthMultilang;
-          promises.push(
-            this.$store.dispatch('updateSetting', { wiki, setting, value })
-          )
-        }
-
-        Promise.all(promises)
-          .then(() => {
-            alert('Update success!')
-            this.$router.go()
-          })
-          .catch(err => {
-            console.log(err.response)
-            alert('Something went wrong.')
-            this.$router.go()
-          })
+      if (this.stringLengthMonoText) {
+        let setting = 'wikibaseStringLengthMonolingualText'
+        let value = this.stringLengthMonoText
+        promises.push(
+          this.$store.dispatch('updateSetting', { wiki, setting, value })
+        )
       }
+
+      if (this.stringLengthMultilang) {
+        let setting = 'wikibaseStringLengthMultilang'
+        let value = this.stringLengthMultilang
+        promises.push(
+          this.$store.dispatch('updateSetting', { wiki, setting, value })
+        )
+      }
+
+      Promise.all(promises)
+        .then(() => {
+          alert('Update success!')
+          this.$router.go()
+        })
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.go()
+        })
     }
   }
+}
 </script>
 
 <style lang="css" scoped>

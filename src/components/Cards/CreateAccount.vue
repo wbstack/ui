@@ -171,31 +171,30 @@ export default {
       // TODO recaptcha check should be optional for development (env var switch?)
       // Recaptcha check
       this.$recaptcha('login').then((token) => {
-        this.$http.post(
-          '/user/register',
+        this.$api.register(
           {
             email: this.email,
             password: this.password,
             invite: this.invite,
             recaptcha: token
           })
-          .then(request => this.createSuccessful(request))
-          .catch((err) => {
+          .then(success => this.createSuccessful(success))
+          .catch(errors => {
             this.resetErrorState()
 
             // If the api gave use details of the error, then use them
-            if (err.response.data && err.response.data.errors) {
-              if (err.response.data.errors.invite) {
+            if (errors) {
+              if (errors.invite) {
                 this.hasError = true
-                this.error['inputInvite'] = err.response.data.errors.invite[0]
+                this.error['inputInvite'] = errors.invite[0]
               }
-              if (err.response.data.errors.email) {
+              if (errors.email) {
                 this.hasError = true
-                this.error['inputEmail'] = err.response.data.errors.email[0]
+                this.error['inputEmail'] = errors.email[0]
               }
-              if (err.response.data.errors.password) {
+              if (errors.password) {
                 this.hasError = true
-                this.error['inputPassword'] = err.response.data.errors.password[0]
+                this.error['inputPassword'] = errors.password[0]
               }
             }
 
@@ -209,8 +208,8 @@ export default {
           })
       })
     },
-    createSuccessful (req) {
-      if (!req.data.success) {
+    createSuccessful (success) {
+      if (!success) {
         this.setGeneralErrorState()
         return
       }

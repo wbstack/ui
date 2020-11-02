@@ -188,50 +188,44 @@ export default {
         domainToSubmit = this.domain
       }
 
-      this.$http.post(
-        '/wiki/create',
+      this.$api.createWiki(
         {
           domain: domainToSubmit,
           sitename: this.sitename,
           username: this.username
         }
       )
-        .then(request => this.createSuccess(request))
-        .catch((err) => this.createFail(err))
+        .then(wikiDetails => this.createSuccess(wikiDetails))
+        .catch(errors => this.createFail(errors))
     },
-    createSuccess (req) {
+    createSuccess (wikiDetails) {
       this.hasError = false
       this.error = []
       // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
-      this.$router.replace('/wikis/manage/' + req.data.data.id)
+      this.$router.replace('/wikis/manage/' + wikiDetails.id)
     },
-    createFail (err) {
+    createFail (errors) {
       this.error = []
 
-      // If the api gave use details of the error, then use them
-      if (err.response.data && err.response.data.errors) {
-        if (err.response.data.errors.sitename) {
-          this.hasError = true
-          this.error['sitename'] = err.response.data.errors.sitename[0]
-        }
-        if (err.response.data.errors.domain) {
-          this.hasError = true
-          this.error['siteaddress'] = err.response.data.errors.domain[0]
-        }
-        if (err.response.data.errors.username) {
-          this.hasError = true
-          this.error['username'] = err.response.data.errors.username[0]
-        }
-        if (err.response.data.errors.terms) {
-          this.hasError = true
-          this.error['terms'] = err.response.data.errors.terms[0]
-        }
-      }
-
-      // IF we get a more specific error do something else
-      if (err.response.data.message === 'No databases ready') {
+      if (errors.sitename) {
         this.hasError = true
-        this.displayGenericError(err.response.data.message + ', please report this!')
+        this.error['sitename'] = errors.sitename[0]
+      }
+      if (errors.domain) {
+        this.hasError = true
+        this.error['siteaddress'] = errors.domain[0]
+      }
+      if (errors.username) {
+        this.hasError = true
+        this.error['username'] = errors.username[0]
+      }
+      if (errors.terms) {
+        this.hasError = true
+        this.error['terms'] = errors.terms[0]
+      }
+      if (errors.dbNotReady) {
+        this.hasError = true
+        this.displayGenericError('No databases ready, please report this!')
       }
 
       // Otherwise show a general error state

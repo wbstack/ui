@@ -14,31 +14,31 @@
 </template>
 
 <script>
-  export default {
-    name: 'Delete',
-    props: [
-      'wikiId',
-    ],
-    data () {
-      return {
-        expandDelete: false
-      }
-    },
-    methods: {
-      doDelete () {
-        let wiki = this.wikiId
+export default {
+  name: 'Delete',
+  props: [
+    'wikiId'
+  ],
+  data () {
+    return {
+      expandDelete: false
+    }
+  },
+  methods: {
+    doDelete () {
+      let wiki = this.wikiId
 
-        this.$store
-          .dispatch('deleteWiki', { wiki })
-          .then(() => this.$router.push('/dashboard'))
-          .catch(err => {
-            console.log(err.response)
-            alert('Something went wrong.')
-            this.$router.push('/dashboard')
-          })
-      }
+      this.$store
+        .dispatch('deleteWiki', { wiki })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.push('/dashboard')
+        })
     }
   }
+}
 </script>
 
 <style lang="css" scoped>

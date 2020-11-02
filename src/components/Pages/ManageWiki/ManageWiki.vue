@@ -59,32 +59,32 @@
 </template>
 
 <script>
-  import Details from '@/components/Pages/ManageWiki/Cards/Details'
-  import Logo from '@/components/Pages/ManageWiki/Cards/Logo'
-  import Skin from '@/components/Pages/ManageWiki/Cards/Skin'
-  import Registration from '@/components/Pages/ManageWiki/Cards/Registration'
-  import Wikibase from '@/components/Pages/ManageWiki/Cards/Wikibase'
-  import Delete from '@/components/Pages/ManageWiki/Cards/Delete'
+import Details from '@/components/Pages/ManageWiki/Cards/Details'
+import Logo from '@/components/Pages/ManageWiki/Cards/Logo'
+import Skin from '@/components/Pages/ManageWiki/Cards/Skin'
+import Registration from '@/components/Pages/ManageWiki/Cards/Registration'
+import Wikibase from '@/components/Pages/ManageWiki/Cards/Wikibase'
+import Delete from '@/components/Pages/ManageWiki/Cards/Delete'
 
-  export default {
-    name: 'ManageWiki',
-    components: {
-      Details,
-      Logo,
-      Skin,
-      Registration,
-      Wikibase,
-      Delete
-    },
-    data() {
-      return {
-        wikiId: 0
-      }
-    },
-    created() {
-      this.wikiId = this.$route.params.id
+export default {
+  name: 'ManageWiki',
+  components: {
+    Details,
+    Logo,
+    Skin,
+    Registration,
+    Wikibase,
+    Delete
+  },
+  data () {
+    return {
+      wikiId: 0
     }
+  },
+  created () {
+    this.wikiId = this.$route.params.id
   }
+}
 </script>
 
 <style scoped>

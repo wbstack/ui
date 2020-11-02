@@ -40,16 +40,14 @@ export default {
   },
   methods: {
     buildData (data) {
-      this.apiData = data
+      this.$apiData = data
     },
     sendVerifyEmail () {
-      this.$http.post(
-        '/user/sendVerifyEmail'
-      )
-        .then(( response ) => {
+      this.$api.sendVerifyEmail()
+        .then(alreadyVerified => {
           this.sentVerifyEmail = true
-          if(response.data.message === 'Already verified') {
-            this.$store.dispatch( 'markAsVerified', {} )
+          if (alreadyVerified) {
+            this.$store.dispatch('markAsVerified', {})
           }
         })
         .catch(() => { alert('Failed to send user verification email!') })

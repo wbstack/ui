@@ -54,28 +54,17 @@ export default {
       this.formDisabled = true
       this.error = ''
       this.buttonText = 'Submitting'
-      this.$http.post('/interest/register', {email: this.email})
-        .then(request => this.success(request))
-        .catch((error) => this.fail(error))
+      this.$api.registerInterest({email: this.email})
+        .then(() => this.success())
+        .catch(error => this.fail(error))
     },
-    success (req) {
-      if (!req.data.success) {
-        this.error = req.data.message
-        this.formDisabled = false
-        this.buttonText = 'Submit'
-      } else {
-        this.buttonText = 'Done'
-      }
+    success () {
+      this.buttonText = 'Done'
     },
     fail (error) {
       this.formDisabled = false
       this.buttonText = 'Submit'
-
-      if (error.response.data.email) {
-        this.error = error.response.data.email[0]
-      } else {
-        this.error = 'Something went wrong, please try again.'
-      }
+      this.error = error
     }
   }
 }

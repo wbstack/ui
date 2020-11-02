@@ -87,10 +87,10 @@ export default {
       let email = this.email
       let token = this.token
       let password = this.password
-      let password_confirmation = this.passwordConfirmation
+      let passwordConfirmation = this.passwordConfirmation
 
       this.$store
-        .dispatch('resetPassword', { email, token, password, password_confirmation })
+        .dispatch('resetPassword', { email, token, password, password_confirmation: passwordConfirmation })
         .then(() => {
           this.$router.push('/login')
         })

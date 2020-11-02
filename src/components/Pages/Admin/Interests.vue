@@ -25,10 +25,8 @@ export default {
     }
   },
   created () {
-    this.$http.post(
-      '/admin/interest/list'
-    )
-      .then(request => this.buildList(request.data.data))
+    this.$api.listInterests()
+      .then(interests => this.buildList(interests))
       .catch(() => { alert('Failed to retrieve interests!') })
   },
   methods: {
