@@ -27,8 +27,6 @@
       <!--</v-tooltip>-->
       <!--</span><br/>-->
 
-      <!-- TODO actually get a different app version?-->
-      <span>Application Version: {{apiData['wiki_db_version']['version']}}</span><br/>
       <template v-if="apiData['wiki_db_version']">
         <span>Database Version: {{apiData['wiki_db_version']['version']}}</span>
       </template>
@@ -61,7 +59,7 @@ export default {
   },
   methods: {
     buildDataFromDetails (data) {
-      this.$apiData = data
+      this.apiData = data
     }
   }
 }

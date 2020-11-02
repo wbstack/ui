@@ -43,7 +43,7 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
 // payload needs 'wiki', 'setting' and 'value' keys
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
 export const updateSkin = async payload => updateSetting('skin', payload)
-export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data
+export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
 
 /* Admin endpoints */
 export const listInterests = async () => (await axios.post('/admin/interest/list')).data.data
