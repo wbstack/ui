@@ -21,7 +21,7 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 
 // TODO inject this key...
-Vue.use(VueReCaptcha, { siteKey: '6LeHzbMUAAAAABjNp0vILaWr5ZeYHmteF7rGuZNV' })
+Vue.use(VueReCaptcha, { siteKey: process.env.RECAPTCHA_SITE_KEY })
 
 // allow components to access api without importing it
 Vue.prototype.$api = api
