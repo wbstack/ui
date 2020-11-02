@@ -1,7 +1,5 @@
 import { rest } from 'msw'
 
-const absolutePath = path => `${process.env.API_URL}${path}`
-
 let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
 let user = JSON.parse(localStorage.getItem('user'))
@@ -53,25 +51,25 @@ const removeWiki = wikiIndex => {
 
 export const handlers = [
   /* User endpoints */
-  rest.post(absolutePath('/auth/login'), (req, res, ctx) => {
+  rest.post(/\/auth\/login$/, (req, res, ctx) => {
     user = makeUser(req.body.email)
     return res(ctx.json({
       user,
       token: 'test_token'
     }))
   }),
-  rest.post(absolutePath('/user/forgotPassword'), (_, res, ctx) => res(ctx.status(200))),
-  rest.post(absolutePath('/user/resetPassword'), (_, res, ctx) => res(ctx.status(200))),
-  rest.post(absolutePath('/user/sendVerifyEmail'), (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
-  rest.post(absolutePath('/user/verifyEmail'), (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/user\/forgotPassword$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
+  rest.post(/\/user\/verifyEmail$/, (_, res, ctx) => res(ctx.status(200))),
 
   /* Wiki endpoints */
-  rest.get(absolutePath('/wiki/count'), (_, res, ctx) => res(ctx.json({ data: 1 }))),
-  rest.post(absolutePath('/wiki/mine'), (_, res, ctx) => res(ctx.json(myWikis))),
-  rest.post(absolutePath('/wiki/create'), (req, res, ctx) => {
+  rest.get(/\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
+  rest.post(/\/wiki\/mine$/, (_, res, ctx) => res(ctx.json(myWikis))),
+  rest.post(/\/wiki\/create$/, (req, res, ctx) => {
     return res(ctx.json({data: makeNewWiki(req.body)}))
   }),
-  rest.post(absolutePath('/wiki/delete'), (req, res, ctx) => {
+  rest.post(/\/wiki\/delete$/, (req, res, ctx) => {
     const wikiId = req.body.wiki
     const wikiIndex = myWikis.findIndex(w => w.id === Number(wikiId))
     if (wikiIndex < 0) {
@@ -81,14 +79,14 @@ export const handlers = [
     removeWiki(wikiIndex)
     return res(ctx.status(200))
   }),
-  rest.post(absolutePath('/wiki/logo/update'), (_, res, ctx) => res(ctx.status(200))),
-  rest.post(absolutePath('/wiki/setting/:setting/update'), (_, res, ctx) => res(ctx.status(200))),
-  rest.post(absolutePath('/wiki/details'), (req, res, ctx) => {
+  rest.post(/\/wiki\/logo\/update$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/wiki\/setting\/.*?\/update$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/wiki\/details$/, (req, res, ctx) => {
     const wikiId = req.body.wiki
     const wikiDetails = myWikis.find(w => w.id === Number(wikiId))
     if (!wikiDetails) {
       return res(ctx.status(404))
     }
-    return res(ctx.json(wikiDetails), ctx.status(200))
+    return res(ctx.json({data: wikiDetails}), ctx.status(200))
   })
 ]
