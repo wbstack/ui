@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import RegisterInterest from '@/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
-import BlogPostList from '@/components/Content/BlogPostList'
+import RegisterInterest from '~/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
+import BlogPostList from '~/components/Content/BlogPostList'
 
 export default {
   name: 'GetStartedBanner',

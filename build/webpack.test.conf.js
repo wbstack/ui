@@ -3,15 +3,16 @@
 
 const utils = require('./utils')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 const webpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     rules: utils.styleLoaders()
   },
-  devtool: '#inline-source-map',
+  devtool: 'inline-source-map',
   resolveLoader: {
     alias: {
       // necessary to to make lang="scss" work in test when using vue-loader's ?inject option

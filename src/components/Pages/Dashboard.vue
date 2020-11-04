@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import BlogPostList from '@/components/Content/BlogPostList'
-import HeadedSpanList from '@/components/Elements/HeadedSpanList'
+import BlogPostList from '~/components/Content/BlogPostList'
+import HeadedSpanList from '~/components/Elements/HeadedSpanList'
 
 export default {
   name: 'Dashboard',

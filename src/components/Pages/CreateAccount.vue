@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import CreateAccountCard from '@/components/Cards/CreateAccount'
+import CreateAccountCard from '~/components/Cards/CreateAccount'
 
 export default {
   name: 'CreateAccount',

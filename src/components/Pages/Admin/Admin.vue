@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import AdminInvitations from '@/components/Pages/Admin/Invitations'
-import AdminInterests from '@/components/Pages/Admin/Interests'
+import AdminInvitations from '~/components/Pages/Admin/Invitations'
+import AdminInterests from '~/components/Pages/Admin/Interests'
 
 export default {
   name: 'Admin',

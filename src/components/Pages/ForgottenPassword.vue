@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ForgottenPasswordCard from '@/components/Cards/ForgottenPassword'
+import ForgottenPasswordCard from '~/components/Cards/ForgottenPassword'
 
 export default {
   name: 'ForgottenPassword',

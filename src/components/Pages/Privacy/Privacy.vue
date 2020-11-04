@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import SubprocessorTable from '@/components/Pages/Privacy/SubprocessorTable'
+import SubprocessorTable from '~/components/Pages/Privacy/SubprocessorTable'
 
 export default {
   name: 'Privacy',

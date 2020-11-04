@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import GetStartedBanner from '@/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
-// import WikiCount from '@/components/Pages/Home/LoggedOutFeatures/WikiCount'
-import WhatCanYouDo from '@/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
-// import WhatIsIncluded from '@/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
+import GetStartedBanner from '~/components/Pages/Home/LoggedOutFeatures/GetStartedBanner'
+// import WikiCount from '~/components/Pages/Home/LoggedOutFeatures/WikiCount'
+import WhatCanYouDo from '~/components/Pages/Home/LoggedOutFeatures/WhatCanYouDo'
+// import WhatIsIncluded from '~/components/Pages/Home/LoggedOutFeatures/WhatIsIncluded'
 
 export default {
   name: 'Home',
