@@ -69,7 +69,7 @@ export default {
   },
   data () {
     return {
-      'stats': [
+      stats: [
         'Users: 80',
         'Wikis: 150',
         'Edits: 160k'

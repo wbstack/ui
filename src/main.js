@@ -11,7 +11,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must b
 import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 
-if (process.env.NODE_ENV !== 'production' && !!process.env.API_MOCK) {
+if (process.env.NODE_ENV !== 'production' && !!process.env.VUE_APP_API_MOCK) {
   const { worker } = require('./backend/mocks/browser')
   worker.start()
 }
@@ -21,7 +21,7 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 
 // TODO inject this key...
-Vue.use(VueReCaptcha, { siteKey: process.env.RECAPTCHA_SITE_KEY })
+Vue.use(VueReCaptcha, { siteKey: process.env.VUE_APP_RECAPTCHA_SITE_KEY })
 
 // allow components to access api without importing it
 Vue.prototype.$api = api

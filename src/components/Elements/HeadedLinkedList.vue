@@ -15,19 +15,19 @@
 export default {
   name: 'HeadedLinkedList',
   props: {
-    'headerElement': {
+    headerElement: {
       type: String,
       default: 'h3'
     },
-    'headerText': {
+    headerText: {
       type: String,
       default: 'List header'
     },
-    'emptyText': {
+    emptyText: {
       type: String,
       default: 'No items in list'
     },
-    'items': {
+    items: {
       type: Array,
       default: function () {
         return []

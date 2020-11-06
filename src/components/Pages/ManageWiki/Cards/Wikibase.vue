@@ -44,28 +44,28 @@ export default {
   },
   methods: {
     doSubmit () {
-      let wiki = this.wikiId
-      let promises = []
+      const wiki = this.wikiId
+      const promises = []
 
       if (this.stringLengthString) {
-        let setting = 'wikibaseStringLengthString'
-        let value = this.stringLengthString
+        const setting = 'wikibaseStringLengthString'
+        const value = this.stringLengthString
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
         )
       }
 
       if (this.stringLengthMonoText) {
-        let setting = 'wikibaseStringLengthMonolingualText'
-        let value = this.stringLengthMonoText
+        const setting = 'wikibaseStringLengthMonolingualText'
+        const value = this.stringLengthMonoText
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
         )
       }
 
       if (this.stringLengthMultilang) {
-        let setting = 'wikibaseStringLengthMultilang'
-        let value = this.stringLengthMultilang
+        const setting = 'wikibaseStringLengthMultilang'
+        const value = this.stringLengthMultilang
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
         )

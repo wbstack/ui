@@ -55,7 +55,7 @@ export default {
     },
     reset () {
       this.inFlight = true
-      let email = this.email
+      const email = this.email
       this.error = ''
 
       this.$store

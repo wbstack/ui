@@ -31,11 +31,11 @@ export default {
   },
   methods: {
     doSubmit () {
-      let wiki = this.wikiId
-      let promises = []
+      const wiki = this.wikiId
+      const promises = []
 
-      let setting = 'extConfirmAccount'
-      let value = this.requestAccount
+      const setting = 'extConfirmAccount'
+      const value = this.requestAccount
       promises.push(
         this.$store.dispatch('updateSetting', { wiki, setting, value })
       )

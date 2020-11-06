@@ -11,7 +11,7 @@ export default {
     HeadedLinkedList
   },
   props: {
-    'headerElement': {
+    headerElement: {
       type: String,
       default: 'h3'
     }

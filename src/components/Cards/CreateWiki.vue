@@ -171,7 +171,7 @@ export default {
       // https://vuejs.org/v2/cookbook/form-validation.html
       if (!this.terms) {
         this.hasError = true
-        this.error['terms'] = 'You must accept the Terms of Service.'
+        this.error.terms = 'You must accept the Terms of Service.'
       }
 
       if (this.hasError) {
@@ -209,19 +209,19 @@ export default {
 
       if (errors.sitename) {
         this.hasError = true
-        this.error['sitename'] = errors.sitename[0]
+        this.error.sitename = errors.sitename[0]
       }
       if (errors.domain) {
         this.hasError = true
-        this.error['siteaddress'] = errors.domain[0]
+        this.error.siteaddress = errors.domain[0]
       }
       if (errors.username) {
         this.hasError = true
-        this.error['username'] = errors.username[0]
+        this.error.username = errors.username[0]
       }
       if (errors.terms) {
         this.hasError = true
-        this.error['terms'] = errors.terms[0]
+        this.error.terms = errors.terms[0]
       }
       if (errors.dbNotReady) {
         this.hasError = true
@@ -237,10 +237,10 @@ export default {
       this.inFlight = false
     },
     displayGenericError (message) {
-      this.error['sitename'] = message
-      this.error['siteaddress'] = message
-      this.error['username'] = message
-      this.error['terms'] = message
+      this.error.sitename = message
+      this.error.siteaddress = message
+      this.error.username = message
+      this.error.terms = message
     },
     checkCurrentLogin () {
       if (!this.currentUser) {

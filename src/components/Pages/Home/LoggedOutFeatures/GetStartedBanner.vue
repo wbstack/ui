@@ -51,32 +51,32 @@
 </template>
 
 <script>
-import RegisterInterest from '~/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
+// import RegisterInterest from '~/components/Pages/Home/LoggedOutFeatures/RegisterInterest'
 import BlogPostList from '~/components/Content/BlogPostList'
 
 export default {
   name: 'GetStartedBanner',
   components: {
-    RegisterInterest,
+    // RegisterInterest,
     BlogPostList
   },
   data () {
     return {
       images: [
         {
-          src: '/static/screenshot-mediawiki.png'
+          src: '/assets/screenshot-mediawiki.png'
         },
         {
-          src: '/static/screenshot-wikibase-registry-query-april-2020.png'
+          src: '/assets/screenshot-wikibase-registry-query-april-2020.png'
         },
         {
-          src: '/static/screenshot-wikidata-main-page-english.png'
+          src: '/assets/screenshot-wikidata-main-page-english.png'
         },
         {
-          src: '/static/screenshot-biodiversity-query-april-2020.png'
+          src: '/assets/screenshot-biodiversity-query-april-2020.png'
         },
         {
-          src: '/static/screenshot-quickstatements.png'
+          src: '/assets/screenshot-quickstatements.png'
         }
       ]
     }
