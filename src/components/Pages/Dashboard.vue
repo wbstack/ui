@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import BlogPostList from '@/components/Content/BlogPostList'
-import HeadedSpanList from '@/components/Elements/HeadedSpanList'
+import BlogPostList from '~/components/Content/BlogPostList'
+import HeadedSpanList from '~/components/Elements/HeadedSpanList'
 
 export default {
   name: 'Dashboard',
@@ -69,7 +69,7 @@ export default {
   },
   data () {
     return {
-      'stats': [
+      stats: [
         'Users: 80',
         'Wikis: 150',
         'Edits: 160k'

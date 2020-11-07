@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     doDelete () {
-      let wiki = this.wikiId
+      const wiki = this.wikiId
 
       this.$store
         .dispatch('deleteWiki', { wiki })

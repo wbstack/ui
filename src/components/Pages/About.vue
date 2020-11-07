@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BlogPostList from '@/components/Content/BlogPostList'
+import BlogPostList from '~/components/Content/BlogPostList'
 
 export default {
   name: 'About',

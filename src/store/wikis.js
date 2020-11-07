@@ -1,5 +1,3 @@
-/* global localStorage */
-
 import { api } from './../backend'
 
 const getDefaultState = () => {

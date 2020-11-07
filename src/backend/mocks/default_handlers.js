@@ -67,7 +67,7 @@ export const handlers = [
   rest.get(/\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
   rest.post(/\/wiki\/mine$/, (_, res, ctx) => res(ctx.json(myWikis))),
   rest.post(/\/wiki\/create$/, (req, res, ctx) => {
-    return res(ctx.json({data: makeNewWiki(req.body)}))
+    return res(ctx.json({ data: makeNewWiki(req.body) }))
   }),
   rest.post(/\/wiki\/delete$/, (req, res, ctx) => {
     const wikiId = req.body.wiki
@@ -87,6 +87,6 @@ export const handlers = [
     if (!wikiDetails) {
       return res(ctx.status(404))
     }
-    return res(ctx.json({data: wikiDetails}), ctx.status(200))
+    return res(ctx.json({ data: wikiDetails }), ctx.status(200))
   })
 ]

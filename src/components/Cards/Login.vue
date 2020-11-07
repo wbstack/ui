@@ -68,8 +68,8 @@ export default {
     },
     login () {
       this.loggingIn = true
-      let email = this.email
-      let password = this.password
+      const email = this.email
+      const password = this.password
       this.error = []
       this.$store
         .dispatch('login', { email, password })
@@ -80,14 +80,14 @@ export default {
           // If the api gave use details of the error, then use them
           if (err.response.data.errors) {
             if (err.response.data.errors.email) {
-              this.error['email'] = err.response.data.errors.email[0]
+              this.error.email = err.response.data.errors.email[0]
             }
             if (err.response.data.errors.password) {
-              this.error['password'] = err.response.data.errors.password[0]
+              this.error.password = err.response.data.errors.password[0]
             }
           } else {
-            this.error['email'] = 'Could not log in.'
-            this.error['password'] = 'Could not log in.'
+            this.error.email = 'Could not log in.'
+            this.error.password = 'Could not log in.'
           }
 
           this.loggingIn = false

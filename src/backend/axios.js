@@ -3,7 +3,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.VUE_APP_API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -15,10 +15,10 @@ const axios = Axios.create({
  */
 axios.interceptors.request.use(
   (config) => {
-    let token = localStorage.getItem('auth')
+    const token = localStorage.getItem('auth')
 
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`
+      config.headers.Authorization = `Bearer ${token}`
     }
 
     return config

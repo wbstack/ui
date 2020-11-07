@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import CreateWikiCard from '@/components/Cards/CreateWiki'
+import CreateWikiCard from '~/components/Cards/CreateWiki'
 
 export default {
   name: 'CreateWiki',

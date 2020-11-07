@@ -26,7 +26,7 @@ const mutations = {
   auth_request (state) {
     state.status = 'loading'
   },
-  auth_success (state, {token, user}) {
+  auth_success (state, { token, user }) {
     state.status = 'success'
     state.token = token
     state.user = user
@@ -46,10 +46,10 @@ const actions = {
   login ({ commit }, user) {
     commit('auth_request')
     return api.login(user)
-      .then(({token, user}) => {
+      .then(({ token, user }) => {
         localStorage.setItem('auth', token)
         localStorage.setItem('user', JSON.stringify(user))
-        commit('auth_success', {token, user})
+        commit('auth_success', { token, user })
       })
       .catch(() => {
         commit('auth_error')

@@ -35,9 +35,9 @@ export default {
       this.selectedLogoFile = event
     },
     doLogoUpload () {
-      let wikiId = this.wikiId
-      let file = this.selectedLogoFile
-      let fileName = this.selectedLogoFile.name
+      const wikiId = this.wikiId
+      const file = this.selectedLogoFile
+      const fileName = this.selectedLogoFile.name
 
       this.$store
         .dispatch('updateLogo', { wikiId, file, fileName })

@@ -62,7 +62,7 @@ export default {
       this.invitations = data
     },
     deleteInvitationCode (codeToDelete) {
-      this.$api.deleteInvitation({code: codeToDelete})
+      this.$api.deleteInvitation({ code: codeToDelete })
         .then(code => this.deleteInvitationCodeSuccess(code))
         .catch(() => this.deleteInvitationCodeFail())
     },
@@ -80,7 +80,7 @@ export default {
 
       this.newInvitationCodeDisabled = true
       this.newInvitationCodeError = ''
-      this.$api.createInvitation({code: this.newInvitationCode})
+      this.$api.createInvitation({ code: this.newInvitationCode })
         .then(code => this.newInvitationCodeSuccess(code))
         .catch((error) => this.newInvitationCodeFail(error))
     },
@@ -88,7 +88,7 @@ export default {
       this.newInvitationCode = ''
       this.newInvitationCodeDisabled = false
       // Add code to the list being shown
-      this.invitations.unshift({code})
+      this.invitations.unshift({ code })
     },
     newInvitationCodeFail (errors) {
       this.newInvitationCodeDisabled = false

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ResetPasswordCard from '@/components/Cards/ResetPassword'
+import ResetPasswordCard from '~/components/Cards/ResetPassword'
 
 export default {
   name: 'ResetPassword',

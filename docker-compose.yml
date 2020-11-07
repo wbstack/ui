@@ -1,17 +1,11 @@
 version: '3.3'
 services:
   ui:
-    image: node:8
+    image: node:10
     user: "node"
     working_dir: /home/node/app
     volumes:
     - ./:/home/node/app
-    command: npm run dev
+    command: npm run serve
     ports:
-      - 8081:2000
-    environment:
-      HOST: 0.0.0.0
-      PORT: 2000
-      PUBLIC: localhost:8081
-      API_URL: https://api.wbstack.com
-      # API_URL: http://localhost:8082
+      - 8081:8080

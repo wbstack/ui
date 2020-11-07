@@ -133,11 +133,11 @@ export default {
     setGeneralErrorState (error = 'Something went wrong.') {
       this.resetErrorState()
       this.hasError = true
-      this.error['inputInvite'] = error
-      this.error['inputEmail'] = error
-      this.error['inputPassword'] = error
-      this.error['inputPasswordConfirmation'] = error
-      this.error['terms'] = error
+      this.error.inputInvite = error
+      this.error.inputEmail = error
+      this.error.inputPassword = error
+      this.error.inputPasswordConfirmation = error
+      this.error.terms = error
       this.inFlight = false
     },
     createaccount () {
@@ -150,14 +150,14 @@ export default {
       // Check for the terms
       if (this.terms === false) {
         this.hasError = true
-        this.error['terms'] = 'You must accept the Terms of Service.'
+        this.error.terms = 'You must accept the Terms of Service.'
       }
 
       // Check for matching confirmed password
       if (this.password !== this.passwordConfirmation) {
         this.hasError = true
-        this.error['inputPassword'] = 'Passwords do not match.'
-        this.error['inputPasswordConfirmation'] = 'Passwords do not match.'
+        this.error.inputPassword = 'Passwords do not match.'
+        this.error.inputPasswordConfirmation = 'Passwords do not match.'
       }
 
       // If the error are not empty then dont submit the request
@@ -186,15 +186,15 @@ export default {
             if (errors) {
               if (errors.invite) {
                 this.hasError = true
-                this.error['inputInvite'] = errors.invite[0]
+                this.error.inputInvite = errors.invite[0]
               }
               if (errors.email) {
                 this.hasError = true
-                this.error['inputEmail'] = errors.email[0]
+                this.error.inputEmail = errors.email[0]
               }
               if (errors.password) {
                 this.hasError = true
-                this.error['inputPassword'] = errors.password[0]
+                this.error.inputPassword = errors.password[0]
               }
             }
 
@@ -213,8 +213,8 @@ export default {
         this.setGeneralErrorState()
         return
       }
-      let email = this.email
-      let password = this.password
+      const email = this.email
+      const password = this.password
       this.$store
         .dispatch('login', { email, password })
         .then(() => this.$router.push('/dashboard'))

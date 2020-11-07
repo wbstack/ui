@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import HeadedLinkedList from '@/components/Elements/HeadedLinkedList'
+import HeadedLinkedList from '~/components/Elements/HeadedLinkedList'
 
 export default {
   name: 'BlogPostList',
@@ -11,7 +11,7 @@ export default {
     HeadedLinkedList
   },
   props: {
-    'headerElement': {
+    headerElement: {
       type: String,
       default: 'h3'
     }

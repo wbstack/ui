@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import LoginCard from '@/components/Cards/Login'
+import LoginCard from '~/components/Cards/Login'
 
 export default {
   name: 'Login',

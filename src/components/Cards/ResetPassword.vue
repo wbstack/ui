@@ -74,8 +74,8 @@ export default {
 
       // Check for matching confirmed password
       if (this.password !== this.passwordConfirmation) {
-        this.error['password'] = 'Passwords do not match.'
-        this.error['passwordConfirmation'] = 'Passwords do not match.'
+        this.error.password = 'Passwords do not match.'
+        this.error.passwordConfirmation = 'Passwords do not match.'
         this.hasError = true
       }
 
@@ -84,10 +84,10 @@ export default {
         return
       }
 
-      let email = this.email
-      let token = this.token
-      let password = this.password
-      let passwordConfirmation = this.passwordConfirmation
+      const email = this.email
+      const token = this.token
+      const password = this.password
+      const passwordConfirmation = this.passwordConfirmation
 
       this.$store
         .dispatch('resetPassword', { email, token, password, password_confirmation: passwordConfirmation })
@@ -101,15 +101,15 @@ export default {
           if (err.response.data && err.response.data.errors) {
             if (err.response.data.errors.password) {
               this.hasError = true
-              this.error['password'] = err.response.data.errors.password[0]
+              this.error.password = err.response.data.errors.password[0]
             }
             if (err.response.data.errors.password_confirmation) {
               this.hasError = true
-              this.error['passwordConfirmation'] = err.response.data.errors.password_confirmation[0]
+              this.error.passwordConfirmation = err.response.data.errors.password_confirmation[0]
             }
           } else {
-            this.error['password'] = 'Something went very wrong.'
-            this.error['passwordConfirmation'] = 'Something went very wrong.'
+            this.error.password = 'Something went very wrong.'
+            this.error.passwordConfirmation = 'Something went very wrong.'
           }
 
           this.inFlight = false

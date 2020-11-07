@@ -40,9 +40,9 @@ export default {
   },
   methods: {
     doSetSkin () {
-      let wiki = this.wikiId
+      const wiki = this.wikiId
       // API needs the skin ID which is lower case..
-      let value = this.skin.toLowerCase()
+      const value = this.skin.toLowerCase()
 
       this.$store
         .dispatch('updateSkin', { wiki, value })

@@ -1,21 +1,14 @@
 FROM node:12 as builder
 
-# Set various things
-ARG API_URL
-ENV API_URL $API_URL
-#ENV NODE_ENV production
-
 WORKDIR /src/app
 
 COPY ./package.json ./package-lock.json ./
 
-# TODO remove the --force from the install...
-RUN npm install --force && npm cache clean --force
+RUN npm install && npm cache clean --force
 
 COPY ./ .
 
-RUN npm run-script build
-
+RUN npm run build
 
 FROM nginx:1-alpine
 
