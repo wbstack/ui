@@ -1,0 +1,2 @@
+- name: Docker Lint
+  uses: luke142367/Docker-Lint-Action@v1.1.1
