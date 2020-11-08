@@ -5,7 +5,7 @@ on:
     branches: main
 
 jobs:
-  multi-registries:
+  docker-build-and-push:
     runs-on: ubuntu-latest
     steps:
       -
@@ -30,7 +30,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/386,linux/amd64
+          platforms: linux/amd64
           push: true
           tags: |
             ghcr.io/wbstack/ui:latest
