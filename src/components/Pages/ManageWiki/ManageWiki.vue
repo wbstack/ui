@@ -35,6 +35,11 @@
               <Wikibase :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col>
+              <WikibaseManifest :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
       <v-row>
@@ -64,6 +69,7 @@ import Logo from '~/components/Pages/ManageWiki/Cards/Logo'
 import Skin from '~/components/Pages/ManageWiki/Cards/Skin'
 import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
 import Wikibase from '~/components/Pages/ManageWiki/Cards/Wikibase'
+import WikibaseManifest from '~/components/Pages/ManageWiki/Cards/WikibaseManifest'
 import Delete from '~/components/Pages/ManageWiki/Cards/Delete'
 
 export default {
@@ -74,6 +80,7 @@ export default {
     Skin,
     Registration,
     Wikibase,
+    WikibaseManifest,
     Delete
   },
   data () {
