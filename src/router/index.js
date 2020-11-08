@@ -157,4 +157,15 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+router.afterEach(({ title, name }) => {
+  if (typeof title === 'undefined') {
+    // split camel-case into separate words
+    title = [...name.matchAll(/([A-Z]+[^A-Z]*)/g)]
+      .map(m => m[0])
+      .join(' ')
+  }
+
+  document.title = `WbStack ${title.length ? ' - ' + title : ''}`
+})
+
 export default router
