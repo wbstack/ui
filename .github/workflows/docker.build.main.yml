@@ -25,6 +25,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
       -
+        name: Login to Google Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: gcr.io
+          username: _json_key
+          password: ${{ secrets.GCR_JSON_KEY }}
+      -
         name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -34,3 +41,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/wbstack/ui:latest
+            gcr.io/wbstack/ui:latest
