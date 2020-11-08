@@ -159,7 +159,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(({ title, name }) => {
   if (typeof title === 'undefined') {
-    // split camel-case into separate words
+    // split pascal-case into separate words
     title = [...name.matchAll(/([A-Z]+[^A-Z]*)/g)]
       .map(m => m[0])
       .join(' ')
