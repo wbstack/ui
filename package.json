@@ -2,7 +2,7 @@
   "name": "wbstack-ui",
   "version": "1.0.0",
   "private": true,
-  "description": "WbStack, for quick wikibase instances",
+  "description": "WbStack, for quick Wikibase instances",
   "author": {
     "name": "Addshore"
   },
