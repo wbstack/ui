@@ -1,8 +1,8 @@
 {
-  "name": "wikwiki-ui",
+  "name": "wbstack-ui",
   "version": "1.0.0",
   "private": true,
-  "description": "WikWiki, for quick wikis",
+  "description": "WbStack, for quick Wikibase instances",
   "author": {
     "name": "Addshore"
   },
