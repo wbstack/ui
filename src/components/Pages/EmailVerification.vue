@@ -1,46 +1,48 @@
 <template>
     <v-content>
       <v-card>
-        <v-toolbar dark :color=color>
+        <v-toolbar dark :color=state.color>
           <v-toolbar-title>Email Verification</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
-          {{state}}
+          {{state.message}}
         </v-card-text>
       </v-card>
     </v-content>
 </template>
 
 <script>
+
+const STATES = Object.freeze({
+  PENDING: { color: 'primary', message: 'Verifying...' },
+  EXPIRED_TOKEN: { color: 'orange', message: 'Verification token expired, or you are already verified!' },
+  FAILED: { color: 'red', message: 'Verification failed for unknown reason!' },
+  VERIFIED: { color: '', message: 'Email verified!' }
+})
+
 export default {
   name: 'EmailVerification',
   computed: {},
   data () {
     return {
-      state: 'Verifying...',
-      color: 'primary',
-      token: 0
+      state: STATES.PENDING
     }
   },
   created () {
-    this.token = this.$route.params.token
-    this.$api.verifyEmail({ token: this.token })
-      .then(message => this.success(message))
+    this.$api.verifyEmail({ token: this.$route.params.token })
+      .then(message => this.success())
       .catch(expired => this.fail(expired))
   },
   methods: {
     success (message) {
-      this.state = message
-      this.color = 'green'
+      this.state = STATES.VERIFIED
       this.$store.dispatch('markAsVerified', {})
     },
     fail (expired) {
       if (expired) {
-        this.state = 'Verification token expired, or you are already verified!'
-        this.color = 'orange'
+        this.state = STATES.EXPIRED_TOKEN
       } else {
-        this.state = 'Verification failed for unknown reason!'
-        this.color = 'red'
+        this.state = STATES.FAILED
       }
     }
   }
