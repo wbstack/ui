@@ -20,6 +20,14 @@ export default {
     return {
       posts: [
         {
+          name: 'Open Sourcing WBStack',
+          url: 'https://addshore.com/2020/12/open-sourcing-wbstack/'
+        },
+        {
+          name: '2020 Update #2 (May)',
+          url: 'https://addshore.com/2020/05/wbstack-2020-update-2/'
+        },
+        {
           name: '2020 Update #1',
           url: 'https://addshore.com/2020/04/wbstack-2020-update-1/'
         },
