@@ -21,6 +21,7 @@ export const verifyEmail = async payload => {
 
   return resp.data.message
 }
+export const checkVerified = async () => (await axios.post('/user/self')).data.data.verified
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data
