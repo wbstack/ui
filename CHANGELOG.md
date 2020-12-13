@@ -1,9 +1,28 @@
 
 # ui
 
-## November 2020
+## 2.4 - 13 December 2020
 
-- 2.1 - Move to GitHub & vue-cli
+- Link to Github from various places
+  - [main page](https://github.com/wbstack/ui/commit/9d4c4474c6826282b4a8810d0d1d95ca6a53f05a)
+  - [footer](https://github.com/wbstack/ui/commit/0659a6568cefb8ce61ebb91ed1aa26c65b8c2a1d)
+- [Link to the docs site from about page](https://github.com/wbstack/ui/commit/6eb10ee2c8da9f27a15346f9f0f508c7ab91c1cd)
+- [Add latest blog posts](https://github.com/wbstack/ui/commit/c5e2a46726a54b0944e216a1843e3d235dc51ad0)
+- [Update manual stats on dashboard](https://github.com/wbstack/ui/commit/37114542c44922b3d061ec85dd8232b408f320d5)
+- [Check verified state periodically](https://github.com/wbstack/ui/commit/52d7776ea5235978010ee542688859b73c20d936)
+
+## 2.3 - 6 December 2020
+
+- [Poke the verification issue](https://github.com/wbstack/ui/commit/716e1cb51e8447b25e9e2ef08620fb0d3e6bbb97)
+
+## 2.2- 17 November 2020
+
+- [Title and favicon fixes](https://github.com/wbstack/ui/pull/20)
+- [beta->alpha fix](https://github.com/wbstack/ui/commit/8db99ef91b5c86221a0a6c7457977a519bfc2654)
+
+## 2.1 - November 2020
+
+- Move to GitHub & vue-cli
 
 ## October 2020
 
