@@ -70,6 +70,7 @@ const actions = {
   markAsVerified ({ commit }) {
     return new Promise((resolve, reject) => {
       commit('auth_isVerified')
+      localStorage.setItem('user', JSON.stringify(state.user))
       resolve()
     })
   }

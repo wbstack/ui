@@ -13,18 +13,33 @@
       </v-container>
 
       <Foot></Foot>
+
+      <Interval
+        v-if="this.$store.getters.isLoggedIn && !this.$store.getters.currentUser.verified"
+        :callback="checkVerified"
+        :interval="3000"
+      />
   </v-app>
 </template>
 
 <script>
 import Navbar from '@/components/Layout/Navbar'
 import Foot from '@/components/Layout/Foot'
+import Interval from '@/components/Util/Interval'
 
 export default {
   name: 'App',
   components: {
     Navbar,
-    Foot
+    Foot,
+    Interval
+  },
+  methods: {
+    checkVerified () {
+      this.$api
+        .checkVerified()
+        .then(verified => verified && this.$store.dispatch('markAsVerified'))
+    }
   }
 }
 </script>

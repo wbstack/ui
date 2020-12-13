@@ -25,13 +25,15 @@ export default {
   computed: {},
   data () {
     return {
-      state: STATES.PENDING
+      state: this.$store.getters.currentUser.verified ? STATES.VERIFIED : STATES.PENDING
     }
   },
   created () {
-    this.$api.verifyEmail({ token: this.$route.params.token })
-      .then(message => this.success())
-      .catch(expired => this.fail(expired))
+    if (!this.$store.getters.currentUser.verified) {
+      this.$api.verifyEmail({ token: this.$route.params.token })
+        .then(message => this.success())
+        .catch(expired => this.fail(expired))
+    }
   },
   methods: {
     success (message) {

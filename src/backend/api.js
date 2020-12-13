@@ -19,6 +19,7 @@ export const verifyEmail = async payload => {
     throw expired
   })
 }
+export const checkVerified = async () => (await axios.post('/user/self')).data.data.verified
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data
