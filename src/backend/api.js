@@ -12,14 +12,12 @@ export const register = async payload => {
 }
 export const forgottenPassword = async () => axios.post('/user/forgotPassword')
 export const resetPassword = async payload => axios.post('/user/resetPassword', payload)
-export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified'
+export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified!'
 export const verifyEmail = async payload => {
-  const resp = await axios.post('/user/verifyEmail', payload).catch(error => {
+  await axios.post('/user/verifyEmail', payload).catch(error => {
     const expired = error.response.status === 422
     throw expired
   })
-
-  return resp.data.message
 }
 export const checkVerified = async () => (await axios.post('/user/self')).data.data.verified
 
