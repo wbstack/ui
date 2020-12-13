@@ -7,15 +7,17 @@
       <v-col cols="3" >
         <h5>Community</h5>
         <ul class="footer-list">
-          <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org">Mediawiki</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org">MediaWiki</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikiba.se">Wikibase</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikidata.org">Wikidata</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://addshore.com">Addshore</a></li>
         </ul>
       </v-col>
       <v-col cols="3">
         <h5>Organization</h5>
         <ul class="footer-list">
           <li><router-link to="/about">About</router-link></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
           <li><router-link to="/privacy-policy">Privacy</router-link></li>
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
           <li><router-link to="/contact">Contact</router-link></li>
@@ -28,7 +30,7 @@
       <v-col>
       &copy;2020 — <a href="https://wbstack.com/">WBStack</a>
       - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a>
-      - Funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
+      - Hosting funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
       </v-col>
     </v-row>
     </v-container>
