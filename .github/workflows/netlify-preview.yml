@@ -1,9 +1,7 @@
 name: Netlify Preview
 
 on:
-  push:
-    branches:
-      - '*'
+  pull_request: null
 
 jobs:
   build-mock:
