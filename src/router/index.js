@@ -13,7 +13,7 @@ import ForgottenPassword from '@/components/Pages/ForgottenPassword'
 import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
-import ManageWiki from '@/components/Pages/ManageWiki/ManageWiki'
+import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
@@ -126,8 +126,8 @@ const router = new Router({
     },
     {
       path: '/wikis/manage/:id',
-      name: 'ManageWiki',
-      component: ManageWiki,
+      name: 'TabSettings',
+      component: TabSettings,
       meta: {
         requiresAuth: true
       }
