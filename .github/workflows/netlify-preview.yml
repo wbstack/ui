@@ -12,7 +12,7 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - uses: actions/dotenv-action
+    - uses: actions/dotenv-action@v0.2.5
       with:
         path: .env.dev.mock
 
@@ -42,7 +42,7 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - uses: ./.github/actions/dotenv-action
+    - uses: actions/dotenv-action@v0.2.5
       with:
         path: .env.dev.prod
 
