@@ -1,4 +1,4 @@
-name: Comment on PR with netlify links
+name: Netlify comment on PR
 
 on:
   pull_request:
