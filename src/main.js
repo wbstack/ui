@@ -11,7 +11,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must b
 import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 
-if (process.env.NODE_ENV !== 'production' && !!process.env.VUE_APP_API_MOCK) {
+if (process.env.NODE_ENV !== 'production' && process.env.VUE_APP_API_MOCK === '1') {
   const { worker } = require('./backend/mocks/browser')
   worker.start()
 }
