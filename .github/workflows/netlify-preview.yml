@@ -7,11 +7,13 @@ on:
       - '!main'
 
 jobs:
-  preview:
+  preview-mock:
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v2
+
+    - run: cp .env.mock .env
 
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
@@ -24,7 +26,35 @@ jobs:
       id: netlify_deploy
       run: echo "::set-output name=url::$(npx -p netlify-cli
         netlify deploy --dir=dist --json
-        --alias $(echo '${{ github.ref }}' | shasum | awk '{print $1}' | head -c 10 )
+        --alias $(echo '${{ github.ref }}' | shasum | awk '{print $1}' | head -c 10 )-mock
+        | jq '.deploy_url' --raw-output)"
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+    - name: Print deploy URL
+      run: echo ${{ steps.netlify_deploy.outputs.url }}
+
+  preview-prod:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - run: cp .env.prod .env
+
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - run: npm ci
+    - run: npm run build
+
+    - name: Deploy branch preview to Netlify
+      id: netlify_deploy
+      run: echo "::set-output name=url::$(npx -p netlify-cli
+        netlify deploy --dir=dist --json
+        --alias $(echo '${{ github.ref }}' | shasum | awk '{print $1}' | head -c 10 )-prod
         | jq '.deploy_url' --raw-output)"
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
