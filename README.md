@@ -8,7 +8,15 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 This app uses https://cli.vuejs.org.
 
-```
+### Install dependencies
+
+`npm install`
+
+### Run (with npm)
+
+You can choose to run the ui via npm.
+
+```sh
 # run dev server
 npm run serve
 
@@ -16,11 +24,21 @@ npm run serve
 npm run build
 ```
 
-### Running with mocked api
+### Run (with docker-compose)
+
+You can also choose to run the ui in docker.
+
+```sh
+docker-compose up -d
+```
+
+### Mocked API
 
 This ui uses Mock Service Worker (https://mswjs.io/) to mock the backend api for test purposes.
 
-To run dev server with mocked api, set env variable `API_MOCK` to a value that evaluates to `true`:
+To run dev server with mocked api, set env variable `API_MOCK` to a value that evaluates to `true`.
+
+This can either be done at runtime using npm, or in `.env` for docker-compose.
 
 ```
 VUE_APP_API_MOCK=1 npm run serve
