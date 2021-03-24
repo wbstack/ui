@@ -5,7 +5,6 @@
       <v-file-input
         hint="Upload a square PNG logo that is at least 135x135 pixels."
         label="Logo"
-        placeholder="Pick a Logo"
         prepend-icon="branding_watermark"
         accept="image/png"
         :show-size="true"

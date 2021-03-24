@@ -3,6 +3,7 @@
 
 ## 2.5 - To Be Tagged
 
+- [Fix Logo setting appearance](https://github.com/wbstack/ui/pull/51)
 - [Fix missing <p> tag in About.vue](https://github.com/wbstack/ui/pull/27)
 - [Add settings tabs in wiki manager view](https://github.com/wbstack/ui/pull/28)
 - [Add UI for federated properties setting](https://github.com/wbstack/ui/pull/30)
