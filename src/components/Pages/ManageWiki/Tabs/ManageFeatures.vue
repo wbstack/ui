@@ -13,6 +13,7 @@ import EntityMapping from '../Features/EntityMapping.vue'
 export default {
   name: 'ManageFeatures',
   components: { FederatedProperties, EntityMapping },
+
   data () {
     return {
       wikiId: 0

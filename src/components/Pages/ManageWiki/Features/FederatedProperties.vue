@@ -42,7 +42,7 @@
 <script>
 export default {
   name: 'FederatedProperties',
-  props: ['wikiId'],
+  props: ['wikiId', 'setting'],
   data () {
     return {
       valid: false,
@@ -57,16 +57,17 @@ export default {
   methods: {
     enableFeature () {
       const wiki = this.wikiId
-      this.hideModal()
-      // TODO This should go somehwere else
-      this.$store
-        .dispatch('enableFederatedProperties', { wiki })
+      const setting = 'wikibaseFedPropsEnable'
+      const value = 1
+
+      this.$store.dispatch('updateSetting', { wiki, setting, value })
         .then(() => this.$router.push('/dashboard'))
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
           this.$router.push('/dashboard')
         })
+      this.hideModal()
     },
     confirmAction () {
       const formValidation = this.$refs.form.validate()
