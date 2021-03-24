@@ -1,13 +1,22 @@
 <template>
   <v-content>
-      Feature Settings
+    <FederatedProperties :wikiId="wikiId" />
   </v-content>
 </template>
 
 <script>
+import FederatedProperties from '../Features/FederatedProperties.vue'
+
 export default {
   name: 'ManageFeatures',
-  components: {
+  components: { FederatedProperties },
+  data () {
+    return {
+      wikiId: null
+    }
+  },
+  created () {
+    this.wikiId = this.$route.params.id
   }
 }
 </script>
