@@ -41,7 +41,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.8.0",
     "geckodriver": "^1.22.1",
     "lint-staged": "^9.5.0",
     "material-design-icons-iconfont": "^6.1.0",
