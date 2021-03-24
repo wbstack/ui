@@ -214,6 +214,7 @@ export default {
         } else {
           this.properties.push(this.editedItem)
         }
+        this.$emit('save')
         this.close()
       },
     },
