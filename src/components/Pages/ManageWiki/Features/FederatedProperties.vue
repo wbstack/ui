@@ -23,7 +23,6 @@
         <v-card-text>If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!</v-card-text>
         <v-card-text>
           <v-text-field
-            v-model="userConfirmationInput"
             :label="`Please type ${userConfirmationString} to confirm`"
             :rules="[rules.match]"
           ></v-text-field>
@@ -61,7 +60,7 @@ export default {
       const value = 1
 
       this.$store.dispatch('updateSetting', { wiki, setting, value })
-        .then(() => this.$router.push('/dashboard'))
+        .then(() => this.hideModal())
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')

@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <FederatedProperties :wikiId="this.wikiId" />
+    <FederatedProperties :wikiId="wikiId" />
   </v-content>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   components: { FederatedProperties },
   data () {
     return {
-      wikiId: 0
+      wikiId: null
     }
   },
   created () {
