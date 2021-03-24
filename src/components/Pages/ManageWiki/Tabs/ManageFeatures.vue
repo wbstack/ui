@@ -1,15 +1,18 @@
 <template>
   <v-content>
     <FederatedProperties :wikiId="wikiId" />
+    <v-divider class="space"></v-divider>
+    <EntityMapping/>
   </v-content>
 </template>
 
 <script>
 import FederatedProperties from '../Features/FederatedProperties.vue'
+import EntityMapping from '../Features/EntityMapping.vue'
 
 export default {
   name: 'ManageFeatures',
-  components: { FederatedProperties },
+  components: { FederatedProperties, EntityMapping },
   data () {
     return {
       wikiId: null
@@ -22,4 +25,8 @@ export default {
 </script>
 
 <style scoped>
+.space {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 </style>
