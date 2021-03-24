@@ -1,6 +1,13 @@
 
 # ui
 
+## 2.5 - To Be Tagged
+
+- [Fix missing <p> tag in About.vue](https://github.com/wbstack/ui/pull/27)
+- [Add settings tabs in wiki manager view](https://github.com/wbstack/ui/pull/28)
+- [Add UI for federated properties setting](https://github.com/wbstack/ui/pull/30)
+- [Add UI for Manifest settings](https://github.com/wbstack/ui/pull/32)
+
 ## 2.4 - 13 December 2020
 
 - Link to Github from various places
