@@ -12,7 +12,7 @@
             E.g. if a tool needs instanceOf (P31 on Wikidata) but the instanceOf property is P4
             on your Wikibase you can create a mapping between them.
         </v-card-text>
-        <PropertiesTable/>
+        <PropertiesTable ref="propertyTable" @save="onSave" />
     </v-card>
 
     <v-divider class="space"></v-divider>
@@ -27,7 +27,7 @@
             Some tools assume items with special meanings under certain identifiers.
             Here, you can map a item on your Wikibase instance to an item on Wikidata.
         </v-card-text>
-        <ItemsTable/>
+        <ItemsTable ref="itemTable" @save="onSave" />
     </v-card>
 </div>
 </template>
@@ -39,8 +39,31 @@ import ItemsTable from './ItemsTable.vue'
 export default {
   name: 'EntityMapping',
   components: { PropertiesTable, ItemsTable },
-  props: [],
+  props: ['wikiId'],
   methods: {
+    toMapping (entities) {
+      const mappings = {}
+      for (var i = 0; i < entities.length; i++) {
+        const mapping = entities[i]
+        mappings[mapping.wikidata] = mapping.local
+      }
+      return mappings
+    },
+    onSave (a) {
+      const props = this.toMapping(this.$refs.propertyTable.properties)
+      const items = this.toMapping(this.$refs.itemTable.wikibaseItems)
+      const value = JSON.stringify({ properties: props, items: items })
+      const wiki = this.wikiId
+      const setting = 'wikibaseManifestEquivEntities'
+
+      this.$store.dispatch('updateSetting', { wiki, setting, value })
+        .then(() => console.log('saved!'))
+        .catch(err => {
+          console.log(err.response)
+          alert('Something went wrong.')
+          this.$router.push('/dashboard')
+        })
+    }
   }
 }
 </script>

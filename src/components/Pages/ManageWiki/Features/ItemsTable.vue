@@ -209,6 +209,7 @@ export default {
       } else {
         this.wikibaseItems.push(this.editedItem)
       }
+      this.$emit('save')
       this.close()
     }
   }
