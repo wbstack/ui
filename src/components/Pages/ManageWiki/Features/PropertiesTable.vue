@@ -69,6 +69,7 @@
         </v-card-title>
 
         <v-card-text>
+          <v-form ref="mapping">
             <v-container>
             <v-row>
                 <v-col
@@ -79,6 +80,8 @@
                 <v-text-field
                     v-model="editedItem.local"
                     label="My Wikibase (Your Instance)"
+                    :rules="[isValidPropertyId]"
+                    validate-on-blur
                 ></v-text-field>
                 </v-col>
                 <v-col
@@ -89,10 +92,13 @@
                 <v-text-field
                     v-model="editedItem.wikidata"
                     label="Wikidata"
+                    :rules="[isValidPropertyId]"
+                    validate-on-blur
                 ></v-text-field>
                 </v-col>
             </v-row>
             </v-container>
+          </v-form>
         </v-card-text>
 
         <v-card-actions>
@@ -141,7 +147,8 @@ export default {
     defaultItem: {
       local: '',
       wikidata: ''
-    }
+    },
+    isValidPropertyId: (val) => /^P\d+$/.test(val) || `"${val}" is not a valid Property id`
   }),
 
   computed: {
@@ -212,6 +219,10 @@ export default {
     },
 
     save () {
+      if (!this.$refs.mapping.validate()) {
+        return
+      }
+
       if (this.editedIndex > -1) {
         // TODO: this way of editing an item pair is silly. how to do computed setters for arrays?!
         this.properties[this.editedIndex] = this.editedItem
