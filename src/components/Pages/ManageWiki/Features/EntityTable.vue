@@ -126,7 +126,7 @@
 <script>
 export default {
   name: 'EntityTable',
-  props: ['mappingName', 'entityValidation', 'entityName', 'storeAction'],
+  props: ['mappingName', 'entityValidation', 'entityName', 'storeAction', 'deleteAction'],
   data: () => ({
     dialog: false,
     dialogDelete: false,
@@ -161,14 +161,6 @@ export default {
 
         return Object.keys(mapping)
           .map((wikidataId) => ({ local: mapping[wikidataId], wikidata: wikidataId }))
-      },
-      set (itemMapping) {
-        const mapping = {}
-        itemMapping.forEach(itemPair => {
-          mapping[itemPair.wikidata] = itemPair.local
-        })
-        this.$store.dispatch(this.storeAction, mapping)
-        this.$store.dispatch('saveEntityMapping', this.$route.params.id)
       }
     }
   },
@@ -199,9 +191,10 @@ export default {
     },
 
     deleteItemConfirm () {
-      this.entities.splice(this.editedIndex, 1)
-      // TODO: this way of deleting an item pair is silly. how to do computed setters for arrays?!
-      this.entities = [...this.entities]
+      const currentItem = this.entities[this.editedIndex]
+      this.deleteItemInStore(currentItem)
+      this.$store.dispatch('saveEntityMapping', this.$route.params.id)
+
       this.closeDelete()
     },
 
@@ -226,14 +219,29 @@ export default {
         return
       }
 
+      const dbMapping = {}
+      dbMapping[this.editedItem.wikidata] = this.editedItem.local
+
       if (this.editedIndex > -1) {
-        // TODO: this way of editing an item pair is silly. how to do computed setters for arrays?!
-        this.entities[this.editedIndex] = this.editedItem
-        this.entities = [...this.entities]
+        const currentItem = this.entities[this.editedIndex]
+
+        this.deleteItemInStore(currentItem)
+        this.addItemToStore(dbMapping)
       } else {
-        this.entities = [...this.entities, this.editedItem]
+        this.addItemToStore(dbMapping)
       }
+
+      this.$store.dispatch('saveEntityMapping', this.$route.params.id)
+
       this.close()
+    },
+
+    deleteItemInStore (currentItem, dbItem) {
+      this.$store.dispatch(this.deleteAction, currentItem, dbItem)
+    },
+
+    addItemToStore (item) {
+      this.$store.dispatch(this.storeAction, item)
     }
   }
 }

@@ -38,11 +38,27 @@ const mutations = {
     )
     state.currentWikiSettings = { entityMapping }
   },
-  set_item_mapping (state, mapping) {
-    state.currentWikiSettings.entityMapping.items = mapping
+
+  delete_item_mapping (state, current) {
+    delete state.currentWikiSettings.entityMapping.items[current.wikidata]
   },
-  set_property_mapping (state, mapping) {
-    state.currentWikiSettings.entityMapping.properties = mapping
+
+  add_item_mapping (state, mapping) {
+    state.currentWikiSettings.entityMapping.items = {
+      ...state.currentWikiSettings.entityMapping.items,
+      ...mapping
+    }
+  },
+
+  delete_property_mapping (state, current) {
+    delete state.currentWikiSettings.entityMapping.properties[current.wikidata]
+  },
+
+  add_property_mapping (state, mapping) {
+    state.currentWikiSettings.entityMapping.properties = {
+      ...state.currentWikiSettings.entityMapping.properties,
+      ...mapping
+    }
   }
 }
 
@@ -76,12 +92,25 @@ const actions = {
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
   },
-  setItemMapping ({ commit }, mapping) {
-    commit('set_item_mapping', mapping)
+
+  editItemMapping ({ commit }, current, editedMapping) {
+    commit('delete_item_mapping', current)
+    commit('add_item_mapping', editedMapping)
   },
-  setPropertyMapping ({ commit }, mapping) {
-    commit('set_property_mapping', mapping)
+
+  addItemMapping ({ commit }, mapping) {
+    commit('add_item_mapping', mapping)
   },
+
+  editPropertyMapping ({ commit }, current, editedMapping) {
+    commit('delete_property_mapping', current)
+    commit('add_property_mapping', editedMapping)
+  },
+
+  addPropertyMapping ({ commit }, mapping) {
+    commit('add_property_mapping', mapping)
+  },
+
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
     return api.updateSetting(setting, {

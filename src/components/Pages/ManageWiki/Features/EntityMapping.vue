@@ -12,7 +12,7 @@
             E.g. if a tool needs instanceOf (P31 on Wikidata) but the instanceOf property is P4
             on your Wikibase you can create a mapping between them.
         </v-card-text>
-        <PropertiesTable/>
+        <EntityTable mappingName="properties" :entityValidation="/^P\d+$/" entityName="Property" storeAction="addPropertyMapping" deleteAction="editPropertyMapping" />
     </v-card>
 
     <v-divider class="space"></v-divider>
@@ -27,18 +27,17 @@
             Some tools assume items with special meanings under certain identifiers.
             Here, you can map a item on your Wikibase instance to an item on Wikidata.
         </v-card-text>
-        <ItemsTable/>
+        <EntityTable mappingName="items" :entityValidation="/^Q\d+$/" entityName="Item" storeAction="addItemMapping" deleteAction="editItemMapping" />
     </v-card>
 </div>
 </template>
 
 <script>
-import PropertiesTable from './PropertiesTable.vue'
-import ItemsTable from './ItemsTable.vue'
+import EntityTable from './EntityTable.vue'
 
 export default {
   name: 'EntityMapping',
-  components: { PropertiesTable, ItemsTable },
+  components: { EntityTable },
   props: ['wikiId']
 }
 </script>
