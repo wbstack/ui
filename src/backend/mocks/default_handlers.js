@@ -35,7 +35,8 @@ const makeNewWiki = ({ domain, sitename }) => {
       id: 101,
       wiki_id: lastWikiId,
       version: 'mw1.33-wbs1'
-    }
+    },
+    public_settings: []
   }
 
   myWikis.push(newWiki)
