@@ -3,7 +3,8 @@ import { api } from './../backend'
 const getDefaultState = () => {
   return {
     status: '',
-    wikis: []
+    wikis: [],
+    currentWikiSettings: null
   }
 }
 
@@ -30,14 +31,30 @@ const mutations = {
   },
   wikis_error (state) {
     state.status = 'error'
+  },
+  set_current_wiki_settings (state, details) {
+    const entityMapping = JSON.parse(
+      details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities').value
+    )
+    state.currentWikiSettings = { entityMapping }
+  },
+  set_item_mapping (state, mapping) {
+    state.currentWikiSettings.entityMapping.items = mapping
+  },
+  set_property_mapping (state, mapping) {
+    state.currentWikiSettings.entityMapping.properties = mapping
   }
 }
 
 const actions = {
+  initializeSettings ({ commit }, wikiId) {
+    api.wikiDetails({ wiki: wikiId })
+      .then(details => commit('set_current_wiki_settings', details))
+  },
   resetWikisState ({ commit }) {
     commit('wikis_resetState')
   },
-  refreshWikis ({ commit }) {
+  refreshWikis ({ commit, dispatch }) {
     commit('wikis_request')
     return api.myWikis()
       .then(wikiList => {
@@ -58,6 +75,20 @@ const actions = {
   },
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
+  },
+  setItemMapping ({ commit }, mapping) {
+    commit('set_item_mapping', mapping)
+  },
+  setPropertyMapping ({ commit }, mapping) {
+    commit('set_property_mapping', mapping)
+  },
+  saveEntityMapping ({ state }, wikiId) {
+    const setting = 'wikibaseManifestEquivEntities'
+    return api.updateSetting(setting, {
+      wiki: wikiId,
+      setting,
+      value: JSON.stringify(state.currentWikiSettings.entityMapping)
+    })
   }
 }
 

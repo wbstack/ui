@@ -17,7 +17,6 @@
           vertical
         ></v-divider>
         <v-spacer></v-spacer>
-
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
             <v-card-title class="headline">Are you sure you want to delete this mapping?</v-card-title>
@@ -139,7 +138,6 @@ export default {
       { text: 'Wikidata', value: 'wikidata' },
       { text: 'Actions', value: 'actions', sortable: false }
     ],
-    properties: [],
     editedIndex: -1,
     editedItem: {
       local: '',
@@ -155,6 +153,22 @@ export default {
   computed: {
     formTitle () {
       return this.editedIndex === -1 ? 'New Mapping' : 'Edit Mapping'
+    },
+    properties: {
+      get () {
+        const mapping = this.$store.state.wikis.currentWikiSettings.entityMapping.properties
+
+        return Object.keys(mapping)
+          .map((wikidataId) => ({ local: mapping[wikidataId], wikidata: wikidataId }))
+      },
+      set (itemMapping) {
+        const mapping = {}
+        itemMapping.forEach(itemPair => {
+          mapping[itemPair.wikidata] = itemPair.local
+        })
+        this.$store.dispatch('setPropertyMapping', mapping)
+        this.$store.dispatch('saveEntityMapping', this.$route.params.id)
+      }
     }
   },
 
@@ -167,24 +181,7 @@ export default {
     }
   },
 
-  created () {
-    this.initialize()
-  },
-
   methods: {
-    initialize () {
-      this.properties = [
-        {
-          local: 'No Mapping',
-          wikidata: 'P31'
-        },
-        {
-          local: 'No Mapping',
-          wikidata: 'P279'
-        }
-      ]
-    },
-
     editItem (item) {
       this.editedIndex = this.properties.indexOf(item)
       this.editedItem = Object.assign({}, item)
@@ -199,6 +196,8 @@ export default {
 
     deleteItemConfirm () {
       this.properties.splice(this.editedIndex, 1)
+      // TODO: this way of deleting an item pair is silly. how to do computed setters for arrays?!
+      this.properties = [...this.properties]
       this.closeDelete()
     },
 
@@ -224,9 +223,11 @@ export default {
       }
 
       if (this.editedIndex > -1) {
-        Object.assign(this.properties[this.editedIndex], this.editedItem)
+        // TODO: this way of editing an item pair is silly. how to do computed setters for arrays?!
+        this.properties[this.editedIndex] = this.editedItem
+        this.properties = [...this.properties]
       } else {
-        this.properties.push(this.editedItem)
+        this.properties = [...this.properties, this.editedItem]
       }
       this.close()
     }

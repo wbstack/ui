@@ -39,9 +39,7 @@ import ItemsTable from './ItemsTable.vue'
 export default {
   name: 'EntityMapping',
   components: { PropertiesTable, ItemsTable },
-  props: [],
-  methods: {
-  }
+  props: ['wikiId']
 }
 </script>
 

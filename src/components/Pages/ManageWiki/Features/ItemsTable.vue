@@ -138,7 +138,6 @@ export default {
       { text: 'Wikidata', value: 'wikidata' },
       { text: 'Actions', value: 'actions', sortable: false }
     ],
-    wikibaseItems: [],
     editedIndex: -1,
     editedItem: {
       local: '',
@@ -154,6 +153,22 @@ export default {
   computed: {
     formTitle () {
       return this.editedIndex === -1 ? 'New Mapping' : 'Edit Mapping'
+    },
+    wikibaseItems: {
+      get () {
+        const mapping = this.$store.state.wikis.currentWikiSettings.entityMapping.items
+
+        return Object.keys(mapping)
+          .map((wikidataId) => ({ local: mapping[wikidataId], wikidata: wikidataId }))
+      },
+      set (itemMapping) {
+        const mapping = {}
+        itemMapping.forEach(itemPair => {
+          mapping[itemPair.wikidata] = itemPair.local
+        })
+        this.$store.dispatch('setItemMapping', mapping)
+        this.$store.dispatch('saveEntityMapping', this.$route.params.id)
+      }
     }
   },
 
@@ -166,16 +181,7 @@ export default {
     }
   },
 
-  created () {
-    this.initialize()
-  },
-
   methods: {
-    initialize () {
-      // Add suggested items for mapping
-      this.wikibaseItems = []
-    },
-
     editItem (item) {
       this.editedIndex = this.wikibaseItems.indexOf(item)
       this.editedItem = Object.assign({}, item)
@@ -190,6 +196,8 @@ export default {
 
     deleteItemConfirm () {
       this.wikibaseItems.splice(this.editedIndex, 1)
+      // TODO: this way of deleting an item pair is silly. how to do computed setters for arrays?!
+      this.wikibaseItems = [...this.wikibaseItems]
       this.closeDelete()
     },
 
@@ -215,9 +223,11 @@ export default {
       }
 
       if (this.editedIndex > -1) {
-        Object.assign(this.wikibaseItems[this.editedIndex], this.editedItem)
+        // TODO: this way of editing an item pair is silly. how to do computed setters for arrays?!
+        this.wikibaseItems[this.editedIndex] = this.editedItem
+        this.wikibaseItems = [...this.wikibaseItems]
       } else {
-        this.wikibaseItems.push(this.editedItem)
+        this.wikibaseItems = [...this.wikibaseItems, this.editedItem]
       }
       this.close()
     }

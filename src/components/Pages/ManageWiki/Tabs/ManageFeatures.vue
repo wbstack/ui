@@ -2,7 +2,7 @@
   <v-content>
     <FederatedProperties :wikiId="wikiId" />
     <v-divider class="space"></v-divider>
-    <EntityMapping/>
+    <EntityMapping :wikiId="wikiId" />
   </v-content>
 </template>
 
