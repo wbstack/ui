@@ -69,6 +69,7 @@
         </v-card-title>
 
         <v-card-text>
+          <v-form ref="mapping">
             <v-container>
             <v-row>
                 <v-col
@@ -79,6 +80,8 @@
                 <v-text-field
                     v-model="editedItem.local"
                     label="My Wikibase (Your Instance)"
+                    :rules="[isValidItemId]"
+                    validate-on-blur
                 ></v-text-field>
                 </v-col>
                 <v-col
@@ -89,10 +92,13 @@
                 <v-text-field
                     v-model="editedItem.wikidata"
                     label="Wikidata"
+                    :rules="[isValidItemId]"
+                    validate-on-blur
                 ></v-text-field>
                 </v-col>
             </v-row>
             </v-container>
+          </v-form>
         </v-card-text>
 
         <v-card-actions>
@@ -142,7 +148,8 @@ export default {
     defaultItem: {
       local: '',
       wikidata: ''
-    }
+    },
+    isValidItemId: (val) => /^Q\d+$/.test(val) || `"${val}" is not a valid Item id`
   }),
 
   computed: {
@@ -204,6 +211,10 @@ export default {
     },
 
     save () {
+      if (!this.$refs.mapping.validate()) {
+        return
+      }
+
       if (this.editedIndex > -1) {
         Object.assign(this.wikibaseItems[this.editedIndex], this.editedItem)
       } else {
