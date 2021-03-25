@@ -29,6 +29,9 @@ export default {
     return {
       tab: null
     }
+  },
+  created () {
+    this.$store.dispatch('initializeSettings', this.$route.params.id)
   }
 }
 </script>

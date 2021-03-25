@@ -48,21 +48,6 @@ export default {
         mappings[mapping.wikidata] = mapping.local
       }
       return mappings
-    },
-    onSave (a) {
-      const props = this.toMapping(this.$refs.propertyTable.properties)
-      const items = this.toMapping(this.$refs.itemTable.wikibaseItems)
-      const value = JSON.stringify({ properties: props, items: items })
-      const wiki = this.wikiId
-      const setting = 'wikibaseManifestEquivEntities'
-
-      this.$store.dispatch('updateSetting', { wiki, setting, value })
-        .then(() => console.log('saved!'))
-        .catch(err => {
-          console.log(err.response)
-          alert('Something went wrong.')
-          this.$router.push('/dashboard')
-        })
     }
   }
 }

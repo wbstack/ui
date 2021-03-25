@@ -40,6 +40,9 @@ export default {
         .checkVerified()
         .then(verified => verified && this.$store.dispatch('markAsVerified'))
     }
+  },
+  created () {
+    this.$store.dispatch('refreshWikis')
   }
 }
 </script>

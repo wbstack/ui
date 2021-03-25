@@ -167,16 +167,7 @@ export default {
 
   methods: {
     initialize () {
-      this.properties = [
-        {
-          local: 'No Mapping',
-          wikidata: 'P31'
-        },
-        {
-          local: 'No Mapping',
-          wikidata: 'P279'
-        }
-      ]
+      this.properties = []
     },
 
     editItem (item) {
