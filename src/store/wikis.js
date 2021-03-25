@@ -33,9 +33,8 @@ const mutations = {
     state.status = 'error'
   },
   set_current_wiki_settings (state, details) {
-    const entityMapping = JSON.parse(
-      details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities').value
-    )
+    const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
+    const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : { properties: {}, items: {} }
     state.currentWikiSettings = { entityMapping }
   },
   set_item_mapping (state, mapping) {
