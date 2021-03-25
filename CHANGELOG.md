@@ -1,13 +1,13 @@
 
 # ui
 
-## 2.5 - To Be Tagged
+## 2.5 - 25 March 2021
 
 - [Fix Logo setting appearance](https://github.com/wbstack/ui/pull/51)
 - [Fix missing <p> tag in About.vue](https://github.com/wbstack/ui/pull/27)
 - [Add settings tabs in wiki manager view](https://github.com/wbstack/ui/pull/28)
-- [Add UI for federated properties setting](https://github.com/wbstack/ui/pull/30)
-- [Add UI for Manifest settings](https://github.com/wbstack/ui/pull/32)
+- [Add UI for federated properties setting](https://github.com/wbstack/ui/pull/30) + other PRs
+- [Add UI for Manifest settings](https://github.com/wbstack/ui/pull/32) + other PRs
 
 ## 2.4 - 13 December 2020
 
