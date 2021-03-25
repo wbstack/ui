@@ -48,7 +48,7 @@ export default {
       const promises = []
 
       if (this.stringLengthString) {
-        const setting = 'wikibaseStringLengthString'
+        const setting = 'wwWikibaseStringLengthString'
         const value = this.stringLengthString
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
@@ -56,7 +56,7 @@ export default {
       }
 
       if (this.stringLengthMonoText) {
-        const setting = 'wikibaseStringLengthMonolingualText'
+        const setting = 'wwWikibaseStringLengthMonolingualText'
         const value = this.stringLengthMonoText
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
@@ -64,7 +64,7 @@ export default {
       }
 
       if (this.stringLengthMultilang) {
-        const setting = 'wikibaseStringLengthMultilang'
+        const setting = 'wwWikibaseStringLengthMultilang'
         const value = this.stringLengthMultilang
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
