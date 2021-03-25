@@ -1,5 +1,5 @@
 <template>
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
             <LoginCard title="Log in to your account" buttonText="Login"/>
@@ -11,7 +11,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
 </template>
 
 <script>
