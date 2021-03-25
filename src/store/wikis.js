@@ -34,7 +34,8 @@ const mutations = {
   },
   set_current_wiki_settings (state, details) {
     const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
-    const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : { properties: {}, items: {} }
+    const defaultMapping = { properties: { P31: 'No Mapping', P279: 'No Mapping' }, items: {} }
+    const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
     state.currentWikiSettings = { entityMapping }
   },
   set_item_mapping (state, mapping) {
