@@ -111,13 +111,12 @@
             >
             Cancel
             </v-btn>
-            <v-btn
-            color="blue darken-1"
-            text
-            @click="save"
-            >
-            Save
-            </v-btn>
+             <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                <v-btn color="blue darken-1" v-bind="attrs" v-on="on" text @click="save">Save</v-btn>
+                </template>
+                <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+            </v-tooltip>
         </v-card-actions>
         </v-card>
     </v-dialog>
