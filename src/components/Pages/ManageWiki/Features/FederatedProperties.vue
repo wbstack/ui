@@ -31,7 +31,12 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="confirmAction">I understand</v-btn>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" v-bind="attrs" v-on="on" text @click="confirmAction">I understand</v-btn>
+            </template>
+            <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+          </v-tooltip>
         </v-card-actions>
       </v-card>
     </v-dialog>
