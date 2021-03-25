@@ -1,6 +1,10 @@
 
 # ui
 
+## 2.5.1 - 25 March 2021
+
+- Fix env file for production
+
 ## 2.5 - 25 March 2021
 
 - [Fix Logo setting appearance](https://github.com/wbstack/ui/pull/51)
