@@ -12,7 +12,7 @@
             E.g. if a tool needs instanceOf (P31 on Wikidata) but the instanceOf property is P4
             on your Wikibase you can create a mapping between them.
         </v-card-text>
-        <PropertiesTable ref="propertyTable" @save="onSave" />
+        <PropertiesTable/>
     </v-card>
 
     <v-divider class="space"></v-divider>
@@ -27,7 +27,7 @@
             Some tools assume items with special meanings under certain identifiers.
             Here, you can map a item on your Wikibase instance to an item on Wikidata.
         </v-card-text>
-        <ItemsTable ref="itemTable" @save="onSave" />
+        <ItemsTable/>
     </v-card>
 </div>
 </template>
@@ -39,17 +39,7 @@ import ItemsTable from './ItemsTable.vue'
 export default {
   name: 'EntityMapping',
   components: { PropertiesTable, ItemsTable },
-  props: ['wikiId'],
-  methods: {
-    toMapping (entities) {
-      const mappings = {}
-      for (var i = 0; i < entities.length; i++) {
-        const mapping = entities[i]
-        mappings[mapping.wikidata] = mapping.local
-      }
-      return mappings
-    }
-  }
+  props: ['wikiId']
 }
 </script>
 

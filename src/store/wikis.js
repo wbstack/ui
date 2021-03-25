@@ -40,6 +40,9 @@ const mutations = {
   },
   set_item_mapping (state, mapping) {
     state.currentWikiSettings.entityMapping.items = mapping
+  },
+  set_property_mapping (state, mapping) {
+    state.currentWikiSettings.entityMapping.properties = mapping
   }
 }
 
@@ -76,7 +79,10 @@ const actions = {
   setItemMapping ({ commit }, mapping) {
     commit('set_item_mapping', mapping)
   },
-  saveItemMapping ({ state }, wikiId) {
+  setPropertyMapping ({ commit }, mapping) {
+    commit('set_property_mapping', mapping)
+  },
+  saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
     return api.updateSetting(setting, {
       wiki: wikiId,

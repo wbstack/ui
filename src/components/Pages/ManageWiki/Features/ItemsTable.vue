@@ -161,7 +161,7 @@ export default {
           mapping[itemPair.wikidata] = itemPair.local
         })
         this.$store.dispatch('setItemMapping', mapping)
-        this.$store.dispatch('saveItemMapping', this.$route.params.id)
+        this.$store.dispatch('saveEntityMapping', this.$route.params.id)
       }
     }
   },
