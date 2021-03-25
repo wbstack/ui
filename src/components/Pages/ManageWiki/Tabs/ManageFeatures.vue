@@ -18,6 +18,7 @@ export default {
       wikiId: null
     }
   },
+
   created () {
     this.wikiId = this.$route.params.id
   }

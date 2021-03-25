@@ -1,5 +1,6 @@
 <template>
     <div>
+      <div v-if="isReady">
         <v-tabs v-model="tab">
             <v-tab>Wiki Settings</v-tab>
             <v-tab>Features</v-tab>
@@ -12,6 +13,11 @@
                 <ManageFeatures />
             </v-tab-item>
         </v-tabs-items>
+      </div>
+      <div class="text-center" v-if="!isReady">
+        <br/>
+        <v-progress-circular indeterminate color="primary"></v-progress-circular>
+      </div>
     </div>
 </template>
 
@@ -22,12 +28,18 @@ import ManageFeatures from './Tabs/ManageFeatures.vue'
 export default {
   name: 'TabSettings',
   components: {
+
     ManageWiki,
     ManageFeatures
   },
   data () {
     return {
       tab: null
+    }
+  },
+  computed: {
+    isReady () {
+      return this.$store.state.wikis.currentWikiSettings !== null
     }
   },
   created () {
