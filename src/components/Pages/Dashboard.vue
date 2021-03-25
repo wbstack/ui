@@ -84,6 +84,9 @@ export default {
     wikis: function () {
       return this.$store.getters.wikis
     }
+  },
+  created () {
+    this.$store.dispatch('refreshWikis')
   }
 }
 </script>
