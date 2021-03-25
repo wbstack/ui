@@ -8,9 +8,6 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <template v-if="isLoggedIn">
-        <template v-if="currentUser.isAdmin">
-          <v-btn text to="/admin">Admin</v-btn>
-        </template>
         <v-btn class="text-none no-button-pointer-events" text> Hi {{ currentUser.email }}</v-btn>
         <v-btn text to="/dashboard">Dashboard</v-btn>
         <v-btn text to="/user">Account</v-btn>
