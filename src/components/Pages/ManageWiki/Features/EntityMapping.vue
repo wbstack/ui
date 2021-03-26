@@ -46,12 +46,12 @@ export default {
   computed: {
     propertiesList: {
       get () {
-        return this.$store.state.wikis.currentWikiSettings.entityMapping.properties
+        return this.$store.state.wikis.currentWikiSettings.wikibaseManifestEquivEntities.properties
       }
     },
     itemsList: {
       get () {
-        return this.$store.state.wikis.currentWikiSettings.entityMapping.items
+        return this.$store.state.wikis.currentWikiSettings.wikibaseManifestEquivEntities.items
       }
     }
   },
