@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     logo () {
-      return this.$store.state.wikis.currentWikiSettings.logoUrl
+      return this.$store.state.wikis.currentWikiSettings.wgLogo
     }
   }
 }

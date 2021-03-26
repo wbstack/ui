@@ -53,13 +53,13 @@ const mutations = {
 
     const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
     const defaultMapping = { properties: { P31: MAPPING_SUGGESTION_PLACEHOLDER, P279: MAPPING_SUGGESTION_PLACEHOLDER }, items: {} }
-    const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
+    const wikibaseManifestEquivEntities = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
 
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
     const logoSetting = details.public_settings.find(setting => setting.name === 'wgLogo')
-    const logoUrl = logoSetting ? logoSetting.value : null
+    const wgLogo = logoSetting ? logoSetting.value : null
 
     const wwWikibaseStringLengthStringSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthString')
     const wwWikibaseStringLengthString = wwWikibaseStringLengthStringSetting ? parseInt(wwWikibaseStringLengthStringSetting.value) : 400
@@ -74,9 +74,9 @@ const mutations = {
     const wwExtEnableConfirmAccount = wwExtEnableConfirmAccountSetting ? parseInt(wwExtEnableConfirmAccountSetting.value) === 1 : false
 
     state.currentWikiSettings = {
-      entityMapping,
+      wikibaseManifestEquivEntities,
       wikibaseFedPropsEnable,
-      logoUrl,
+      wgLogo,
       wgDefaultSkin,
       wwWikibaseStringLengthString,
       wwWikibaseStringLengthMonolingualText,
@@ -88,16 +88,16 @@ const mutations = {
     state.currentWikiSettings = null
   },
   set_item_mapping (state, mapping) {
-    state.currentWikiSettings.entityMapping.items = mapping
+    state.currentWikiSettings.wikibaseManifestEquivEntities.items = mapping
   },
   set_property_mapping (state, mapping) {
-    state.currentWikiSettings.entityMapping.properties = mapping
+    state.currentWikiSettings.wikibaseManifestEquivEntities.properties = mapping
   },
   set_federated_properties_enabled (state, enabled) {
     state.currentWikiSettings.wikibaseFedPropsEnable = enabled
   },
   set_logo (state, url) {
-    state.currentWikiSettings.logoUrl = url
+    state.currentWikiSettings.wgLogo = url
   },
   set_skin (state, skin) {
     state.currentWikiSettings.wgDefaultSkin = skin
@@ -162,7 +162,7 @@ const actions = {
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
-    const mapping = state.currentWikiSettings.entityMapping
+    const mapping = state.currentWikiSettings.wikibaseManifestEquivEntities
     return api.updateSetting(setting, {
       wiki: wikiId,
       setting,
