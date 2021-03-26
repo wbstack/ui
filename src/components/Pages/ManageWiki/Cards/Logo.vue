@@ -16,7 +16,7 @@
     <v-card-actions>
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
-        <v-btn :disabled="this.selectedLogoFile === null" v-bind="attrs" v-on="on" @click="doLogoUpload">Set Logo</v-btn>
+        <v-btn :disabled="selectedLogoFile === null" v-bind="attrs" v-on="on" @click="doLogoUpload">Set Logo</v-btn>
         </template>
         <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
       </v-tooltip>
