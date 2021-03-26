@@ -1,7 +1,8 @@
 <template>
   <v-main>
-    <EntityMapping :wikiId="wikiId" />
-    <v-divider class="space"></v-divider>
+    <div class="space"></div>
+    <EntityMapping :wikiId="wikiId"/>
+    <div class="space"></div>
     <FederatedProperties :wikiId="wikiId" />
   </v-main>
 </template>
