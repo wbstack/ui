@@ -107,7 +107,9 @@ const actions = {
     return api.updateLogo(payload)
   },
   updateSkin ({ commit }, payload) {
-    return api.updateSkin(payload)
+    return api.updateSkin(payload).then(() => {
+      commit('set_skin', payload.value)
+    })
   },
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
@@ -120,9 +122,6 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
-  },
-  setSkin ({ commit }, skin) {
-    commit('set_skin', skin)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'

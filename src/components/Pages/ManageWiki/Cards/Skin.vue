@@ -51,7 +51,7 @@ export default {
       this.$store
         .dispatch('updateSkin', { wiki, value })
         .then(() => {
-          this.$store.dispatch('setSkin', value)
+          alert('Update success!')
         })
         .catch(err => {
           console.log(err.response)
