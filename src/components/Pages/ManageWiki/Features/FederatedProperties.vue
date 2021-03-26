@@ -4,10 +4,12 @@
       <v-card-title>Federated properties</v-card-title>
       <v-card-text>
       Federated properties allows you to use the properties of Wikidata on your Wikibase instance.<br>
-      If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!
+      <span v-if="isEnabled">If you turn this off, and confirm the warning, federated properties used on your wikibase will no longer be accessible!</span>
+      <span v-else>If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!</span>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="showModal" color="red">Enable Federated Properties</v-btn>
+        <v-btn @click="showModal" color="red" v-if="isEnabled">Disable Federated Properties</v-btn>
+        <v-btn @click="showModal" color="red" v-else>Enable Federated Properties</v-btn>
       </v-card-actions>
     </v-card>
     <v-dialog v-model="dialog" width="500" v-if="dialog">
@@ -20,7 +22,10 @@
             </v-btn>
           </v-toolbar>
         <br />
-        <v-card-text>If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!</v-card-text>
+        <v-card-text>
+          <span v-if="isEnabled">If you turn this off, and confirm the warning, federated properties used on your wikibase will no longer be accessible!</span>
+          <span v-else>If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!</span>
+        </v-card-text>
         <v-card-text>
           <v-text-field
             :label="`Please type ${userConfirmationString} to confirm`"
@@ -58,18 +63,22 @@ export default {
       }
     }
   },
+  computed: {
+    isEnabled () {
+      return this.$store.state.wikis.currentWikiSettings.wikibaseFedPropsEnable
+    }
+  },
   methods: {
     enableFeature () {
       const wiki = this.wikiId
       const setting = 'wikibaseFedPropsEnable'
-      const value = 1
+      const value = !this.isEnabled
 
       this.$store.dispatch('updateSetting', { wiki, setting, value })
-        .then(() => this.hideModal())
+        .then(() => this.$store.dispatch('setFederatedPropertiesEnabled', value))
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
-          this.$router.push('/dashboard')
         })
 
       this.hideModal()
