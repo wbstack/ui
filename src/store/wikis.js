@@ -51,7 +51,14 @@ const mutations = {
     const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
     const defaultMapping = { properties: { P31: MAPPING_SUGGESTION_PLACEHOLDER, P279: MAPPING_SUGGESTION_PLACEHOLDER }, items: {} }
     const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
-    state.currentWikiSettings = { entityMapping }
+
+    const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
+    const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
+
+    state.currentWikiSettings = {
+      entityMapping,
+      wikibaseFedPropsEnable
+    }
   },
   clear_current_wiki_settings (state) {
     state.currentWikiSettings = null
@@ -61,6 +68,9 @@ const mutations = {
   },
   set_property_mapping (state, mapping) {
     state.currentWikiSettings.entityMapping.properties = mapping
+  },
+  set_federated_properties_enabled (state, enabled) {
+    state.currentWikiSettings.wikibaseFedPropsEnable = enabled
   }
 }
 
@@ -100,6 +110,9 @@ const actions = {
   },
   setPropertyMapping ({ commit }, mapping) {
     commit('set_property_mapping', mapping)
+  },
+  setFederatedPropertiesEnabled ({ commit }, enabled) {
+    commit('set_federated_properties_enabled', enabled)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
