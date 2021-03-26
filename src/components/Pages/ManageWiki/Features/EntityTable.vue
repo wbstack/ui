@@ -1,11 +1,6 @@
 <template>
 <div>
-  <v-data-table
-    :headers="headers"
-    :items="entities"
-    sort-by="wikidata"
-    class="elevation-1"
-  >
+  <v-data-table :headers="headers" :items="entities" sort-by="wikidata" class="elevation-1">
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>{{ mappingName }}</v-toolbar-title>
@@ -37,6 +32,7 @@
             Add New Mapping
         </v-btn>
     </template>
+
     <v-card>
       <v-card-title>
           <span class="headline">{{ formTitle }}</span>
@@ -80,7 +76,7 @@
 <script>
 export default {
   name: 'EntityTable',
-  props: ['mappingName', 'entityValidation', 'entityName', 'storeAction'],
+  props: ['mappingName', 'entityValidation', 'entityName', 'entitiesList'],
   data: () => ({
     dialog: false,
     dialogDelete: false,
@@ -111,18 +107,15 @@ export default {
     },
     entities: {
       get () {
-        const mapping = this.$store.state.wikis.currentWikiSettings.entityMapping[this.mappingName]
-
-        return Object.keys(mapping)
-          .map((wikidataId) => ({ local: mapping[wikidataId], wikidata: wikidataId }))
+        return Object.keys(this.entitiesList)
+          .map((wikidataId) => ({ local: this.entitiesList[wikidataId], wikidata: wikidataId }))
       },
-      set (itemMapping) {
+      set (entityMapping) {
         const mapping = {}
-        itemMapping.forEach(itemPair => {
-          mapping[itemPair.wikidata] = itemPair.local
+        entityMapping.forEach(entityPair => {
+          mapping[entityPair.wikidata] = entityPair.local
         })
-        this.$store.dispatch(this.storeAction, mapping)
-        this.$store.dispatch('saveEntityMapping', this.$route.params.id)
+        this.$emit('setEntityMapping', mapping)
       }
     }
   },
