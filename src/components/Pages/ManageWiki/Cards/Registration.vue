@@ -34,7 +34,7 @@ export default {
       const wiki = this.wikiId
       const promises = []
 
-      const setting = 'extConfirmAccount'
+      const setting = 'wwExtEnableConfirmAccount'
       const value = this.requestAccount
       promises.push(
         this.$store.dispatch('updateSetting', { wiki, setting, value })

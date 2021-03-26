@@ -41,7 +41,7 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
 // TODO the api should get the setting from the path (so it isn't needed in the payload)
 // payload needs 'wiki', 'setting' and 'value' keys
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
-export const updateSkin = async payload => updateSetting('skin', payload)
+export const updateSkin = async payload => updateSetting('wgDefaultSkin', payload)
 export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
 
 /* Admin endpoints */
