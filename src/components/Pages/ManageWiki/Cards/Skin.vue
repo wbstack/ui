@@ -15,7 +15,12 @@
       ></v-select>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="doSetSkin">Set Skin</v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+        <v-btn v-bind="attrs" v-on="on" @click="doSetSkin">Set Skin</v-btn>
+        </template>
+        <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+      </v-tooltip>
     </v-card-actions>
   </v-card>
 </template>
@@ -38,6 +43,10 @@ export default {
       error: ''
     }
   },
+  created () {
+    const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
+    this.skin = skin.charAt(0).toUpperCase() + skin.slice(1)
+  },
   methods: {
     doSetSkin () {
       const wiki = this.wikiId
@@ -48,12 +57,10 @@ export default {
         .dispatch('updateSkin', { wiki, value })
         .then(() => {
           alert('Update success!')
-          this.$router.go()
         })
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
-          this.$router.go()
         })
     }
   }
