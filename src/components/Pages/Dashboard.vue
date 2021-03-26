@@ -50,7 +50,6 @@
         <v-col cols="3">
           <BlogPostList headerElement="h4" ></BlogPostList>
           <HeadedSpanList headerElement="h4" headerText="Manual Stats (Feb 2021)" :items="stats" ></HeadedSpanList>
-          <HeadedSpanList headerElement="h4" headerText="Notices" emptyText="Not yet implemented" ></HeadedSpanList>
         </v-col>
       </v-row>
     </v-container>
