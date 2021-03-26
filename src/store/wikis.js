@@ -53,6 +53,9 @@ const mutations = {
     const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
     state.currentWikiSettings = { entityMapping }
   },
+  clear_current_wiki_settings (state) {
+    state.currentWikiSettings = null
+  },
   set_item_mapping (state, mapping) {
     state.currentWikiSettings.entityMapping.items = mapping
   },
@@ -63,6 +66,7 @@ const mutations = {
 
 const actions = {
   initializeSettings ({ commit }, wikiId) {
+    commit('clear_current_wiki_settings')
     api.wikiDetails({ wiki: wikiId })
       .then(details => commit('set_current_wiki_settings', details))
   },
