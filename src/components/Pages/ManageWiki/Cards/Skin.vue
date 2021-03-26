@@ -38,6 +38,10 @@ export default {
       error: ''
     }
   },
+  created () {
+    const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
+    this.skin = skin.charAt(0).toUpperCase() + skin.slice(1)
+  },
   methods: {
     doSetSkin () {
       const wiki = this.wikiId
@@ -47,13 +51,11 @@ export default {
       this.$store
         .dispatch('updateSkin', { wiki, value })
         .then(() => {
-          alert('Update success!')
-          this.$router.go()
+          this.$store.dispatch('setSkin', value)
         })
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
-          this.$router.go()
         })
     }
   }

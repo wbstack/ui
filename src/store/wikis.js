@@ -48,6 +48,9 @@ const mutations = {
     state.status = 'error'
   },
   set_current_wiki_settings (state, details) {
+    const wgDefaultSkinSetting = details.public_settings.find(setting => setting.name === 'wgDefaultSkin')
+    const wgDefaultSkin = wgDefaultSkinSetting ? wgDefaultSkinSetting.value : 'Vector'
+
     const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
     const defaultMapping = { properties: { P31: MAPPING_SUGGESTION_PLACEHOLDER, P279: MAPPING_SUGGESTION_PLACEHOLDER }, items: {} }
     const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
@@ -57,7 +60,8 @@ const mutations = {
 
     state.currentWikiSettings = {
       entityMapping,
-      wikibaseFedPropsEnable
+      wikibaseFedPropsEnable,
+      wgDefaultSkin
     }
   },
   clear_current_wiki_settings (state) {
@@ -71,6 +75,9 @@ const mutations = {
   },
   set_federated_properties_enabled (state, enabled) {
     state.currentWikiSettings.wikibaseFedPropsEnable = enabled
+  },
+  set_skin (state, skin) {
+    state.currentWikiSettings.wgDefaultSkin = skin
   }
 }
 
@@ -113,6 +120,9 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
+  },
+  setSkin ({ commit }, skin) {
+    commit('set_skin', skin)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
