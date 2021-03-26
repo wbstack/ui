@@ -1,6 +1,28 @@
 
 # ui
 
+## 2.6 - 26 March 2021
+
+- New Feature setting tab
+  - [Swap order of features](https://github.com/wbstack/ui/pull/70)
+  - [Improve spacing](https://github.com/wbstack/ui/pull/81)
+  - [Feedback banner](https://github.com/wbstack/ui/pull/83)
+  - [Federated properties now toggles to 2 states](https://github.com/wbstack/ui/pull/76)
+- Get old / existing setting values from the API
+  - [Drop the red warning banner](https://github.com/wbstack/ui/pull/86) 
+  - [Skin](https://github.com/wbstack/ui/pull/78)
+  - [Confirm account](https://github.com/wbstack/ui/pull/85)
+  - [Wikibase string lengths](https://github.com/wbstack/ui/pull/79)
+- General
+  - [Enlarge login form :D](https://github.com/wbstack/ui/pull/82)
+  - [Login form shows error in error state](https://github.com/wbstack/ui/pull/88)
+  - [Submit internal setting names to the API](https://github.com/wbstack/ui/pull/73)
+  - [Privacy updates](https://github.com/wbstack/ui/pull/89)
+  - [Updated stats](https://github.com/wbstack/ui/pull/87)
+  - [Remove unused "notices" section](https://github.com/wbstack/ui/pull/92)
+
+https://github.com/wbstack/ui/pull/89
+
 ## 2.5.1 - 25 March 2021
 
 - Fix env file for production
