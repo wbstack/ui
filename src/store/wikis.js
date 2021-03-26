@@ -58,6 +58,9 @@ const mutations = {
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
+    const logoSetting = details.public_settings.find(setting => setting.name === 'wgLogo')
+    const logoUrl = logoSetting ? logoSetting.value : null
+
     const wwWikibaseStringLengthStringSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthString')
     const wwWikibaseStringLengthString = wwWikibaseStringLengthStringSetting ? parseInt(wwWikibaseStringLengthStringSetting.value) : 400
 
@@ -70,6 +73,7 @@ const mutations = {
     state.currentWikiSettings = {
       entityMapping,
       wikibaseFedPropsEnable,
+      logoUrl,
       wgDefaultSkin,
       wwWikibaseStringLengthString,
       wwWikibaseStringLengthMonolingualText,
@@ -87,6 +91,9 @@ const mutations = {
   },
   set_federated_properties_enabled (state, enabled) {
     state.currentWikiSettings.wikibaseFedPropsEnable = enabled
+  },
+  set_logo (state, url) {
+    state.currentWikiSettings.logoUrl = url
   },
   set_skin (state, skin) {
     state.currentWikiSettings.wgDefaultSkin = skin
@@ -119,7 +126,9 @@ const actions = {
     return api.deleteWiki(payload).finally(() => commit('wikis_resetState'))
   },
   updateLogo ({ commit }, payload) {
-    return api.updateLogo(payload)
+    return api.updateLogo(payload).then((response) => {
+      commit('set_logo', response.data.url)
+    })
   },
   updateSkin ({ commit }, payload) {
     return api.updateSkin(payload).then(() => {

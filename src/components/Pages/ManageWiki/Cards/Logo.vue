@@ -11,6 +11,7 @@
         :persistent-hint="true"
         @change="onLogoFileChanged"
       ></v-file-input>
+      <v-img v-if="logo" :src="logo" max-width="135" />
     </v-card-text>
     <v-card-actions>
       <v-btn :disabled="this.selectedLogoFile === null" @click="doLogoUpload">Set Logo</v-btn>
@@ -42,13 +43,17 @@ export default {
         .dispatch('updateLogo', { wikiId, file, fileName })
         .then(() => {
           alert('Upload success!')
-          this.$router.go()
         })
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
           this.$router.go()
         })
+    }
+  },
+  computed: {
+    logo () {
+      return this.$store.state.wikis.currentWikiSettings.logoUrl
     }
   }
 }
