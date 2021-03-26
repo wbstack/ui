@@ -5,7 +5,7 @@
        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXI4SmbNVV0cF5gxpUalHYhvmrRudbALr5fmTjMxLnUihXug/viewform?usp=sf_link" target="_blank">
           Please give us feedback
         </a>
-        on Federated Properties to help direct Wikimedia Germany's future development efforts.
+        on Federated Properties to help direct future development efforts.
     </v-banner>
     <div class="space"></div>
     <EntityMapping :wikiId="wikiId"/>
