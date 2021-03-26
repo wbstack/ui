@@ -1,9 +1,9 @@
 <template>
-  <v-content>
+  <v-main>
     <FederatedProperties :wikiId="wikiId" />
     <v-divider class="space"></v-divider>
     <EntityMapping :wikiId="wikiId" />
-  </v-content>
+  </v-main>
 </template>
 
 <script>

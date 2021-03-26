@@ -1,5 +1,5 @@
 <template>
-    <v-content>
+    <v-main>
       <v-card>
         <v-toolbar dark :color=state.color>
           <v-toolbar-title>Email Verification</v-toolbar-title>
@@ -8,7 +8,7 @@
           {{state.message}}
         </v-card-text>
       </v-card>
-    </v-content>
+    </v-main>
 </template>
 
 <script>
