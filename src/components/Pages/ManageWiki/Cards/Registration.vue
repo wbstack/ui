@@ -11,7 +11,12 @@
       </v-switch>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="doSubmit">Set Options</v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" @click="doSubmit">Set Options</v-btn>
+        </template>
+        <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+      </v-tooltip>
     </v-card-actions>
   </v-card>
 </template>
@@ -29,6 +34,9 @@ export default {
       error: ''
     }
   },
+  created () {
+    this.requestAccount = this.$store.state.wikis.currentWikiSettings.wwExtEnableConfirmAccount
+  },
   methods: {
     doSubmit () {
       const wiki = this.wikiId
@@ -42,13 +50,12 @@ export default {
 
       Promise.all(promises)
         .then(() => {
+          this.$store.dispatch('setEnableConfirmAccount', value)
           alert('Update success!')
-          this.$router.go()
         })
         .catch(err => {
           console.log(err.response)
           alert('Something went wrong.')
-          this.$router.go()
         })
     }
   }
