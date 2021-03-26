@@ -51,10 +51,11 @@ const actions = {
         localStorage.setItem('user', JSON.stringify(user))
         commit('auth_success', { token, user })
       })
-      .catch(() => {
+      .catch((error) => {
         commit('auth_error')
         localStorage.removeItem('auth')
         localStorage.removeItem('user')
+        throw error
       })
   },
   logout ({ commit }) {
