@@ -58,10 +58,22 @@ const mutations = {
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
+    const wwWikibaseStringLengthStringSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthString')
+    const wwWikibaseStringLengthString = wwWikibaseStringLengthStringSetting ? parseInt(wwWikibaseStringLengthStringSetting.value) : 400
+
+    const wwWikibaseStringLengthMonolingualTextSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMonolingualText')
+    const wwWikibaseStringLengthMonolingualText = wwWikibaseStringLengthMonolingualTextSetting ? parseInt(wwWikibaseStringLengthMonolingualTextSetting.value) : 400
+
+    const wwWikibaseStringLengthMultilangSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMultilang')
+    const wwWikibaseStringLengthMultilang = wwWikibaseStringLengthMultilangSetting ? parseInt(wwWikibaseStringLengthMultilangSetting.value) : 250
+
     state.currentWikiSettings = {
       entityMapping,
       wikibaseFedPropsEnable,
-      wgDefaultSkin
+      wgDefaultSkin,
+      wwWikibaseStringLengthString,
+      wwWikibaseStringLengthMonolingualText,
+      wwWikibaseStringLengthMultilang
     }
   },
   clear_current_wiki_settings (state) {
@@ -78,6 +90,9 @@ const mutations = {
   },
   set_skin (state, skin) {
     state.currentWikiSettings.wgDefaultSkin = skin
+  },
+  set_wikibase_string_lengths (state, { variableName, value }) {
+    state.currentWikiSettings[variableName] = value
   }
 }
 
@@ -122,6 +137,9 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
+  },
+  setWikibaseStringLengths ({ commit }, { setting, value }) {
+    commit('set_wikibase_string_lengths', setting, value)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
