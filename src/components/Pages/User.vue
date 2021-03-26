@@ -1,5 +1,5 @@
   <template>
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid >
         <v-row justify="center">
           <v-col cols="6">
@@ -22,7 +22,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
 </template>
 
 <script>
