@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-12">
+  <v-card class="elevation-12 my-16" width="500">
     <v-toolbar dark color="primary">
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
