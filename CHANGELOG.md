@@ -11,6 +11,7 @@
 - Get old / existing setting values from the API
   - [Drop the red warning banner](https://github.com/wbstack/ui/pull/86) 
   - [Skin](https://github.com/wbstack/ui/pull/78)
+  - [Logo](https://github.com/wbstack/ui/pull/80)
   - [Confirm account](https://github.com/wbstack/ui/pull/85)
   - [Wikibase string lengths](https://github.com/wbstack/ui/pull/79)
 - General
