@@ -53,7 +53,8 @@
     "shelljs": "^0.8.4",
     "vue-template-compiler": "^2.6.11",
     "wdio-chromedriver-service": "^6.0.3",
-    "wdio-geckodriver-service": "^1.1.2"
+    "wdio-geckodriver-service": "^1.1.2",
+    "wdio-mediawiki": "^1.0.0"
   },
   "browserslist": [
     "> 1%",
