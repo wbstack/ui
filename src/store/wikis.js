@@ -55,9 +55,13 @@ const mutations = {
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
+    const logoSetting = details.public_settings.find(setting => setting.name === 'wgLogo')
+    const logoUrl = logoSetting ? logoSetting.value : null
+
     state.currentWikiSettings = {
       entityMapping,
-      wikibaseFedPropsEnable
+      wikibaseFedPropsEnable,
+      logoUrl
     }
   },
   clear_current_wiki_settings (state) {
@@ -71,6 +75,9 @@ const mutations = {
   },
   set_federated_properties_enabled (state, enabled) {
     state.currentWikiSettings.wikibaseFedPropsEnable = enabled
+  },
+  set_logo (state, url) {
+    state.currentWikiSettings.logoUrl = url
   }
 }
 
@@ -97,7 +104,9 @@ const actions = {
     return api.deleteWiki(payload).finally(() => commit('wikis_resetState'))
   },
   updateLogo ({ commit }, payload) {
-    return api.updateLogo(payload)
+    return api.updateLogo(payload).then((response) => {
+      commit('set_logo', response.data.url)
+    })
   },
   updateSkin ({ commit }, payload) {
     return api.updateSkin(payload)
