@@ -1,33 +1,40 @@
 <template>
-  <v-card>
-    <v-card-title>Wikibase Options</v-card-title>
-    <v-card-text>
-      <h4>Value lengths</h4>
-      <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
-      <p>The default values for both fo these fields is <strong>400 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
-      <v-text-field
-        v-model="stringLengthString"
-        label="String"
-        :rules="[rules.min(400), rules.max(2500)]"
-      ></v-text-field>
-      <v-text-field
-        v-model="stringLengthMonoText"
-        label="Monolingual text"
-        :rules="[rules.min(400), rules.max(2500)]"
-      ></v-text-field>
-      <h4>Multilang (term) lengths</h4>
-      <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
-      <p>The default values for this field is <strong>250 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
-      <v-text-field
-        v-model="stringLengthMultilang"
-        :rules="[rules.min(250), rules.max(2500)]"
-        label="Multilang (labels, descriptions and such)"
-      ></v-text-field>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn :disabled="this.stringLengthString == '' && this.stringLengthMonoText == '' && this.stringLengthMultilang == ''" @click="doSubmit">Set Options</v-btn>
-    </v-card-actions>
-  </v-card>
+  <v-form ref="form">
+    <v-card>
+      <v-card-title>Wikibase Options</v-card-title>
+      <v-card-text>
+        <h4>Value lengths</h4>
+        <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
+        <p>The default values for both fo these fields is <strong>400 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
+        <v-text-field
+          v-model="stringLengthString"
+          label="String"
+          :rules="[rules.min(400), rules.max(2500)]"
+        ></v-text-field>
+        <v-text-field
+          v-model="stringLengthMonoText"
+          label="Monolingual text"
+          :rules="[rules.min(400), rules.max(2500)]"
+        ></v-text-field>
+        <h4>Multilang (term) lengths</h4>
+        <p>Longer than default lengths (which are used on Wikidata) is generally untested and might have some unexpected outcomes.</p>
+        <p>The default values for this field is <strong>250 characters</strong>. The maximum you can set here is <strong>2500</strong></p>
+        <v-text-field
+          v-model="stringLengthMultilang"
+          :rules="[rules.min(250), rules.max(2500)]"
+          label="Multilang (labels, descriptions and such)"
+        ></v-text-field>
+      </v-card-text>
+      <v-card-actions>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" @click="doSubmit">Set Options</v-btn>
+          </template>
+          <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+        </v-tooltip>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
@@ -61,6 +68,11 @@ export default {
     doSubmit () {
       const wiki = this.wikiId
       const promises = []
+
+      const formValidation = this.$refs.form.validate()
+      if (!formValidation) {
+        return
+      }
 
       if (this.stringLengthString) {
         const setting = 'wwWikibaseStringLengthString'
