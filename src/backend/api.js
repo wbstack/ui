@@ -43,28 +43,3 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
 export const updateSkin = async payload => updateSetting('wgDefaultSkin', payload)
 export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
-
-/* Admin endpoints */
-export const listInterests = async () => (await axios.post('/admin/interest/list')).data.data
-export const registerInterest = async payload => {
-  const { success, message } = (await axios.post('/interest/register', payload).catch(ex => {
-    let error = 'Something went wrong, please try again.'
-
-    if (ex.response.data.email) {
-      error = ex.response.data.email[0]
-    }
-
-    throw error
-  })).data
-
-  if (!success) {
-    throw message
-  }
-}
-export const listInvitations = async () => (await axios.post('/admin/invitation/list')).data.data
-export const createInvitation = async payload => {
-  return (await axios.post('/admin/invitation/create', payload).catch(ex => {
-    throw ex.response.data.code
-  })).data.code
-}
-export const deleteInvitation = async payload => (await axios.post('/admin/invitation/delete', payload)).data.code

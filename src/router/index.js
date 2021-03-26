@@ -17,7 +17,6 @@ import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
-import Admin from '@/components/Pages/Admin/Admin'
 
 import NotYetImplemented from '@/components/NotYetImplemented'
 
@@ -128,14 +127,6 @@ const router = new Router({
       path: '/wikis/manage/:id',
       name: 'TabSettings',
       component: TabSettings,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/admin',
-      name: 'Admin',
-      component: Admin,
       meta: {
         requiresAuth: true
       }
