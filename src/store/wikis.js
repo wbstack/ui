@@ -90,6 +90,9 @@ const mutations = {
   },
   set_skin (state, skin) {
     state.currentWikiSettings.wgDefaultSkin = skin
+  },
+  set_wikibase_string_lengths (state, { variableName, value }) {
+    state.currentWikiSettings[variableName] = value
   }
 }
 
@@ -134,6 +137,9 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
+  },
+  setWikibaseStringLengths ({ commit }, { setting, value }) {
+    commit('set_wikibase_string_lengths', setting, value)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'

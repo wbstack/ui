@@ -67,6 +67,7 @@ export default {
         const value = this.stringLengthString
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
         )
       }
 
@@ -75,6 +76,7 @@ export default {
         const value = this.stringLengthMonoText
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
         )
       }
 
@@ -83,6 +85,7 @@ export default {
         const value = this.stringLengthMultilang
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
         )
       }
 
