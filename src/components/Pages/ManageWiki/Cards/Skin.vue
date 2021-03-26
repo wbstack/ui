@@ -15,7 +15,12 @@
       ></v-select>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="doSetSkin">Set Skin</v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+        <v-btn v-bind="attrs" v-on="on" @click="doSetSkin">Set Skin</v-btn>
+        </template>
+        <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
+      </v-tooltip>
     </v-card-actions>
   </v-card>
 </template>
