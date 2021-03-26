@@ -67,13 +67,17 @@ const mutations = {
     const wwWikibaseStringLengthMultilangSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMultilang')
     const wwWikibaseStringLengthMultilang = wwWikibaseStringLengthMultilangSetting ? parseInt(wwWikibaseStringLengthMultilangSetting.value) : 250
 
+    const wwExtEnableConfirmAccountSetting = details.public_settings.find(setting => setting.name === 'wwExtEnableConfirmAccount')
+    const wwExtEnableConfirmAccount = wwExtEnableConfirmAccountSetting ? parseInt(wwExtEnableConfirmAccountSetting.value) === 1 : false
+
     state.currentWikiSettings = {
       entityMapping,
       wikibaseFedPropsEnable,
       wgDefaultSkin,
       wwWikibaseStringLengthString,
       wwWikibaseStringLengthMonolingualText,
-      wwWikibaseStringLengthMultilang
+      wwWikibaseStringLengthMultilang,
+      wwExtEnableConfirmAccount
     }
   },
   clear_current_wiki_settings (state) {
@@ -93,6 +97,9 @@ const mutations = {
   },
   set_wikibase_string_lengths (state, { variableName, value }) {
     state.currentWikiSettings[variableName] = value
+  },
+  set_enable_confirm_account (state, { value }) {
+    state.currentWikiSettings.wwExtEnableConfirmAccount = value
   }
 }
 
@@ -140,6 +147,9 @@ const actions = {
   },
   setWikibaseStringLengths ({ commit }, { setting, value }) {
     commit('set_wikibase_string_lengths', setting, value)
+  },
+  setEnableConfirmAccount ({ commit }, value) {
+    commit('set_enable_confirm_account', value)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
