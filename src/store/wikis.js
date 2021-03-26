@@ -58,10 +58,22 @@ const mutations = {
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
+    const wwWikibaseStringLengthStringSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthString')
+    const wwWikibaseStringLengthString = wwWikibaseStringLengthStringSetting ? parseInt(wwWikibaseStringLengthStringSetting.value) : 400
+
+    const wwWikibaseStringLengthMonolingualTextSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMonolingualText')
+    const wwWikibaseStringLengthMonolingualText = wwWikibaseStringLengthMonolingualTextSetting ? parseInt(wwWikibaseStringLengthMonolingualTextSetting.value) : 400
+
+    const wwWikibaseStringLengthMultilangSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMultilang')
+    const wwWikibaseStringLengthMultilang = wwWikibaseStringLengthMultilangSetting ? parseInt(wwWikibaseStringLengthMultilangSetting.value) : 250
+
     state.currentWikiSettings = {
       entityMapping,
       wikibaseFedPropsEnable,
-      wgDefaultSkin
+      wgDefaultSkin,
+      wwWikibaseStringLengthString,
+      wwWikibaseStringLengthMonolingualText,
+      wwWikibaseStringLengthMultilang
     }
   },
   clear_current_wiki_settings (state) {
