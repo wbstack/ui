@@ -17,7 +17,7 @@
         />
     </v-card>
 
-    <v-divider class="space"></v-divider>
+    <div class="space"></div>
 
     <v-card elevation="1" class="padding" outlined>
         <v-card-title>Mapping Items to Wikidata</v-card-title>
