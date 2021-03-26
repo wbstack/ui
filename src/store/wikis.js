@@ -48,6 +48,9 @@ const mutations = {
     state.status = 'error'
   },
   set_current_wiki_settings (state, details) {
+    const wgDefaultSkinSetting = details.public_settings.find(setting => setting.name === 'wgDefaultSkin')
+    const wgDefaultSkin = wgDefaultSkinSetting ? wgDefaultSkinSetting.value : 'Vector'
+
     const entityMappingSetting = details.public_settings.find(setting => setting.name === 'wikibaseManifestEquivEntities')
     const defaultMapping = { properties: { P31: MAPPING_SUGGESTION_PLACEHOLDER, P279: MAPPING_SUGGESTION_PLACEHOLDER }, items: {} }
     const entityMapping = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
@@ -58,10 +61,23 @@ const mutations = {
     const logoSetting = details.public_settings.find(setting => setting.name === 'wgLogo')
     const logoUrl = logoSetting ? logoSetting.value : null
 
+    const wwWikibaseStringLengthStringSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthString')
+    const wwWikibaseStringLengthString = wwWikibaseStringLengthStringSetting ? parseInt(wwWikibaseStringLengthStringSetting.value) : 400
+
+    const wwWikibaseStringLengthMonolingualTextSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMonolingualText')
+    const wwWikibaseStringLengthMonolingualText = wwWikibaseStringLengthMonolingualTextSetting ? parseInt(wwWikibaseStringLengthMonolingualTextSetting.value) : 400
+
+    const wwWikibaseStringLengthMultilangSetting = details.public_settings.find(setting => setting.name === 'wwWikibaseStringLengthMultilang')
+    const wwWikibaseStringLengthMultilang = wwWikibaseStringLengthMultilangSetting ? parseInt(wwWikibaseStringLengthMultilangSetting.value) : 250
+
     state.currentWikiSettings = {
       entityMapping,
       wikibaseFedPropsEnable,
-      logoUrl
+      logoUrl,
+      wgDefaultSkin,
+      wwWikibaseStringLengthString,
+      wwWikibaseStringLengthMonolingualText,
+      wwWikibaseStringLengthMultilang
     }
   },
   clear_current_wiki_settings (state) {
@@ -78,6 +94,12 @@ const mutations = {
   },
   set_logo (state, url) {
     state.currentWikiSettings.logoUrl = url
+  },
+  set_skin (state, skin) {
+    state.currentWikiSettings.wgDefaultSkin = skin
+  },
+  set_wikibase_string_lengths (state, { variableName, value }) {
+    state.currentWikiSettings[variableName] = value
   }
 }
 
@@ -109,7 +131,9 @@ const actions = {
     })
   },
   updateSkin ({ commit }, payload) {
-    return api.updateSkin(payload)
+    return api.updateSkin(payload).then(() => {
+      commit('set_skin', payload.value)
+    })
   },
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
@@ -122,6 +146,9 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
+  },
+  setWikibaseStringLengths ({ commit }, { setting, value }) {
+    commit('set_wikibase_string_lengths', setting, value)
   },
   saveEntityMapping ({ state }, wikiId) {
     const setting = 'wikibaseManifestEquivEntities'
