@@ -32,7 +32,7 @@ export default {
       items: [
         {
           name: 'Google Cloud',
-          description: 'Data hosting',
+          description: 'Data & Service hosting',
           location: 'United States'
         },
         {
@@ -44,6 +44,11 @@ export default {
           name: 'Recaptcha',
           description: 'Authentication captcha provider',
           location: 'United States'
+        },
+        {
+          name: 'Wikimedia Germany',
+          description: 'Collaboration around Wikibase development',
+          location: 'Germany'
         }
       ]
     }
