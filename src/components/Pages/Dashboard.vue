@@ -49,7 +49,7 @@
         </v-col>
         <v-col cols="3">
           <BlogPostList headerElement="h4" ></BlogPostList>
-          <HeadedSpanList headerElement="h4" headerText="Manual Stats (Dec 2020)" :items="stats" ></HeadedSpanList>
+          <HeadedSpanList headerElement="h4" headerText="Manual Stats (Feb 2021)" :items="stats" ></HeadedSpanList>
           <HeadedSpanList headerElement="h4" headerText="Notices" emptyText="Not yet implemented" ></HeadedSpanList>
         </v-col>
       </v-row>
@@ -70,10 +70,9 @@ export default {
   data () {
     return {
       stats: [
-        'Users: 100+',
-        'Wikis: 200+',
-        'Edits: 1.5+ million',
-        'Entities: 1+ million'
+        'Active Wikis: 100+',
+        'Edits: 1.7+ million',
+        'Pages: 1.3+ million'
       ]
     }
   },
