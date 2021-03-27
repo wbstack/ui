@@ -68,4 +68,8 @@ h1 {
 .what-can-you-do__card {
   height: 100%;
 }
+
+.what-can-you-do__card h3 {
+  word-break: normal;
+}
 </style>
