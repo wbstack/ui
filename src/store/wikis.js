@@ -58,6 +58,9 @@ const mutations = {
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
+    const lexemeSetting = details.public_settings.find(setting => setting.name === 'wwExtEnableWikibaseLexeme')
+    const wwExtEnableWikibaseLexeme = lexemeSetting ? parseInt(lexemeSetting.value) === 1 : false
+
     const logoSetting = details.public_settings.find(setting => setting.name === 'wgLogo')
     const wgLogo = logoSetting ? logoSetting.value : null
 
@@ -76,6 +79,7 @@ const mutations = {
     state.currentWikiSettings = {
       wikibaseManifestEquivEntities,
       wikibaseFedPropsEnable,
+      wwExtEnableWikibaseLexeme,
       wgLogo,
       wgDefaultSkin,
       wwWikibaseStringLengthString,
@@ -95,6 +99,9 @@ const mutations = {
   },
   set_federated_properties_enabled (state, enabled) {
     state.currentWikiSettings.wikibaseFedPropsEnable = enabled
+  },
+  set_lexeme_enabled (state, enabled) {
+    state.currentWikiSettings.wwExtEnableWikibaseLexeme = enabled
   },
   set_logo (state, url) {
     state.currentWikiSettings.wgLogo = url
@@ -153,6 +160,9 @@ const actions = {
   },
   setFederatedPropertiesEnabled ({ commit }, enabled) {
     commit('set_federated_properties_enabled', enabled)
+  },
+  setLexemeEnabled ({ commit }, enabled) {
+    commit('set_lexeme_enabled', enabled)
   },
   setWikibaseStringLengths ({ commit }, { setting, value }) {
     commit('set_wikibase_string_lengths', setting, value)
