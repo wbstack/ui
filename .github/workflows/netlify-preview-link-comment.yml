@@ -16,7 +16,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@1.0.1
         with:
           message: |
-            Deployment previews on netlify for branch `${{ github.ref }}`:
+            Deployment previews on netlify for branch `${{ github.ref }}` will be at the following locations (when build is done):
 
             - UI with mock store: <https://${{ steps.get_hash.outputs.hash }}-mock--wbstack-ui.netlify.app/>
             - UI pointing to prod: <https://${{ steps.get_hash.outputs.hash }}-prod--wbstack-ui.netlify.app/>
