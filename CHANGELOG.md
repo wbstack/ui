@@ -1,6 +1,10 @@
 
 # ui
 
+## 2.7 - 2 April 2021
+
+- [Setting Lexeme in the UI](https://github.com/wbstack/ui/pull/107)
+
 ## 2.6 - 26 March 2021
 
 - New Feature setting tab
