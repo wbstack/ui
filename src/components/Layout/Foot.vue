@@ -29,8 +29,8 @@
     <v-row class="text-center white-footer-links" no-gutters>
       <v-col>
       &copy;2020 — <a href="https://wbstack.com/">WBStack</a>
-      - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a>
-      - Hosting funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a>
+      - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a> & Others
+      - Hosting funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a> & <a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/">Wikimedia Germany</a>
       </v-col>
     </v-row>
     </v-container>
