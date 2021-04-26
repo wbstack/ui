@@ -1,6 +1,12 @@
 
 # ui
 
+## 2.8 - 26 April 2021
+
+- [Make "What can you do" more mobile friendly](https://github.com/wbstack/ui/pull/109)
+- [Add WMDE funding bits](https://github.com/wbstack/ui/pull/91)
+- Various dependency updates
+
 ## 2.7 - 2 April 2021
 
 - [Setting Lexeme in the UI](https://github.com/wbstack/ui/pull/107)
