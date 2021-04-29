@@ -20,6 +20,10 @@ export default {
     return {
       posts: [
         {
+          name: '2021 Infrastructure overview',
+          url: 'https://addshore.com/2021/04/wbstack-infrastructure-2021/'
+        },
+        {
           name: 'Open Sourcing WBStack',
           url: 'https://addshore.com/2020/12/open-sourcing-wbstack/'
         },
@@ -30,10 +34,6 @@ export default {
         {
           name: '2020 Update #1',
           url: 'https://addshore.com/2020/04/wbstack-2020-update-1/'
-        },
-        {
-          name: 'Infrastructure overview',
-          url: 'https://addshore.com/2020/01/wbstack-infrastructure/'
         },
         {
           name: '2019 November review',

@@ -1,6 +1,10 @@
 
 # ui
 
+## 2.9 - 29 April 2021
+
+- Update Infrastructure blog post list
+
 ## 2.8 - 26 April 2021
 
 - [Make "What can you do" more mobile friendly](https://github.com/wbstack/ui/pull/109)
