@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="6">
+      <v-col cols="12" md="6">
         <v-row>
           <h1 class="header-main">Your open data..</h1>
         </v-row>
@@ -30,7 +30,7 @@
 
           <BlogPostList headerElement="h3" headerText="Blog Posts"></BlogPostList>
       </v-col>
-      <v-col cols="6">
+      <v-col cols="12" md="6">
         <!-- TODO trim images to all be a set size or ratio.... -->
         <v-carousel class="carousel-drop-shadow" interval="5500" height="460" cycle :show-arrows="false" :hide-delimiters="true" :touchless="true">
           <v-carousel-item
