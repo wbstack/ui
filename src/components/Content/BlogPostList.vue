@@ -20,6 +20,10 @@ export default {
     return {
       posts: [
         {
+          name: 'WikibaseManifest, Federated Properties, Lexeme',
+          url: 'https://addshore.com/2021/05/wbstack-setting-changes-federated-properties-wikidata-entity-mapping-more/'
+        },
+        {
           name: '2021 Infrastructure overview',
           url: 'https://addshore.com/2021/04/wbstack-infrastructure-2021/'
         },
