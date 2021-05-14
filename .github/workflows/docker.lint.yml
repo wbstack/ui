@@ -13,8 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2.3.4
     - name: lint
-      uses: luke142367/Docker-Lint-Action@v1.1.1
+      uses: hadolint/hadolint-action@v1.5.0
       with:
-        target: Dockerfile
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        dockerfile: Dockerfile
