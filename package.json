@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.11.1",
+    "core-js": "^3.12.1",
     "typeface-roboto": "1.1.13",
     "vue": "^2.6.12",
     "vue-recaptcha-v3": "^1.9.0",
