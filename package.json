@@ -42,7 +42,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.9.0",
-    "geckodriver": "^1.22.3",
+    "geckodriver": "^2.0.0",
     "lint-staged": "^11.0.0",
     "material-design-icons-iconfont": "^6.1.0",
     "msw": "^0.28.2",
