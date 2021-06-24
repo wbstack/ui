@@ -1,6 +1,13 @@
 
 # ui
 
+## 2.10 - 24 June 2021
+
+- Fix password reset form
+- Add new blog post
+- Make home and dash nicer on mobile
+- Fix typos
+
 ## 2.9 - 29 April 2021
 
 - Update Infrastructure blog post list
