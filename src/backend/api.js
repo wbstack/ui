@@ -10,7 +10,7 @@ export const register = async payload => {
 
   return resp.data.success
 }
-export const forgottenPassword = async () => axios.post('/user/forgotPassword')
+export const forgottenPassword = async email => axios.post('/user/forgotPassword', email)
 export const resetPassword = async payload => axios.post('/user/resetPassword', payload)
 export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified!'
 export const verifyEmail = async payload => {
