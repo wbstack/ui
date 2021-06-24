@@ -20,7 +20,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn @click="reset" color="primary" :disabled="inFlight">{{buttonText}}</v-btn>
+      <v-btn @click="reset" id="resetButton" color="primary" :disabled="inFlight">{{buttonText}}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
