@@ -30,8 +30,8 @@ const mutations = {
 }
 
 const actions = {
-  forgottenPassword ({ commit }) {
-    return api.forgottenPassword()
+  forgottenPassword ({ commit }, email) {
+    return api.forgottenPassword(email)
       .then(() => commit('user_setForgottenPasswordSubmitSuccessTrue'))
       .catch(() => commit('user_setForgottenPasswordSubmitSuccessFalse'))
   },
