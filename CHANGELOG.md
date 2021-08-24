@@ -1,6 +1,10 @@
 
 # ui
 
+## 2.11 - 24 August 2021
+
+- Add notice on data deletion (hard deletion) for wikis
+
 ## 2.10 - 24 June 2021
 
 - Fix password reset form
