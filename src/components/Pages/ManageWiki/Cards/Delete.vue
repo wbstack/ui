@@ -2,8 +2,10 @@
   <v-card color="#fad1d0">
     <v-card-title>Delete Site</v-card-title>
     <v-card-text>
-      This will permanently delete the selected wiki.<br>
-      <strong>The used domain will NOT be available for re use.</strong>
+      Selecting Confirm Deletion will permanently delete the selected Wikibase instance.<br>
+      All data associated with this instance will be purged permanently in 30 days.<br>
+      <br>
+      The domain will <strong>not</strong> be available for reuse.
     </v-card-text>
     <v-card-actions>
       <v-btn v-if="!expandDelete" @click="expandDelete = true" color="red">Delete site</v-btn>
