@@ -9,14 +9,8 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 15
   ignore:
-  - dependency-name: vuetify
-    versions:
-    - 2.4.10
-  - dependency-name: core-js
-    versions:
-    - 3.10.2
   - dependency-name: vue-recaptcha-v3
     versions:
     - 2.0.0
