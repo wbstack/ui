@@ -13,7 +13,7 @@ jobs:
         id: get_hash
         run: echo "::set-output name=hash::$(echo '${{ github.ref }}' | shasum | awk '{print $1}' | head -c 10 )"
       - name: Comment on PR
-        uses: thollander/actions-comment-pull-request@1.0.2
+        uses: thollander/actions-comment-pull-request@1.0.3
         continue-on-error: true
         with:
           message: |
