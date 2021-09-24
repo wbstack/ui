@@ -1,6 +1,10 @@
 
 # ui
 
+## 2.12 - 24 September 2021
+
+- Just dep updates
+
 ## 2.11 - 24 August 2021
 
 - Add notice on data deletion (hard deletion) for wikis
