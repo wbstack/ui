@@ -3,5 +3,6 @@
 const config = {
   RECAPTCHA_KEY: '',
   API_URL: 'http://localhost:8082',
-  SUBDOMAIN_SUFFIX: '.wiki.localhost'
+  SUBDOMAIN_SUFFIX: '.wiki.localhost',
+  MOCK_API: false,
 }
