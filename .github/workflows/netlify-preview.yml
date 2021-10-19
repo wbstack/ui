@@ -19,6 +19,7 @@ jobs:
       with:
         node-version: 14.x
     - run: npm ci
+    - run: cp config.mock-api.js public/config.js
     - run: npm run build
 
     - name: Deploy branch preview to Netlify
@@ -49,6 +50,7 @@ jobs:
       with:
         node-version: 14.x
     - run: npm ci
+    - run: cp config.wbstack.js public/config.js
     - run: npm run build
 
     - name: Deploy branch preview to Netlify
