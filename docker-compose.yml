@@ -1,8 +1,6 @@
 version: '3.3'
 services:
   ui:
-    env_file:
-      - .env
     image: node:15
     user: "node"
     working_dir: /home/node/app
