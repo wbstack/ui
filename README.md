@@ -8,6 +8,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 This app uses https://cli.vuejs.org.
 
+### Configuration
+
+`cp public/config.example.js public/config.js` and modify its contents accordingly.
+
 ### Install dependencies
 
 `npm install`
