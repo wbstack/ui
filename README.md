@@ -10,7 +10,7 @@ This app uses https://cli.vuejs.org.
 
 ### Configuration
 
-`cp public/config.example.js public/config.js` and modify its contents accordingly.
+`cp config.example.js public/config.js` and modify its contents accordingly.
 
 ### Install dependencies
 
