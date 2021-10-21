@@ -1,9 +1,10 @@
 /* global localStorage */
 
 import Axios from 'axios'
+import config from '~/config'
 
 const axios = Axios.create({
-  baseURL: process.env.VUE_APP_API_URL,
+  baseURL: config.API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
