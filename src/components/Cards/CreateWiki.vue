@@ -49,7 +49,7 @@
                       name="subdomain"
                       label="E.g. goat-collective"
                       v-model="subdomain"
-                      suffix=".wiki.opencura.com"
+                      :suffix="SUBDOMAIN_SUFFIX"
                       :disabled="inFlight"
                       :error-messages="error['siteaddress']"
         />
@@ -130,6 +130,8 @@
 </template>
 
 <script>
+import config from '~/config'
+
 export default {
   name: 'CreateWiki',
   props: [
@@ -151,7 +153,8 @@ export default {
       terms: false,
       hasError: false,
       error: [],
-      inFlight: false
+      inFlight: false,
+      SUBDOMAIN_SUFFIX: config.SUBDOMAIN_SUFFIX
     }
   },
   created () {
@@ -182,7 +185,7 @@ export default {
       // Figure out the actual domain to submit to the api!
       let domainToSubmit = ''
       if (this.domainRadioChoice === 'sub') {
-        domainToSubmit = this.subdomain + '.wiki.opencura.com'
+        domainToSubmit = this.subdomain + this.SUBDOMAIN_SUFFIX
       }
       if (this.domainRadioChoice === 'own') {
         domainToSubmit = this.domain
