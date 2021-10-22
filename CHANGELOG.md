@@ -1,6 +1,11 @@
 
 # ui
 
+## 3.0 - 22 October 2021
+
+- Allow config vars to be set at runtime
+- Add configuration for domain suffix
+
 ## 2.12 - 24 September 2021
 
 - Just dep updates
