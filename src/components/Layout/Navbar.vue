@@ -2,7 +2,7 @@
   <v-toolbar>
     <v-toolbar-title>
       <!-- TODO remove link styling...-->
-      <router-link to="/"><span>WbStack</span></router-link>
+      <router-link to="/"><span>{{ this.$config.NAME }}</span></router-link>
       <sub>Alpha</sub>
     </v-toolbar-title>
     <v-spacer></v-spacer>

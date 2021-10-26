@@ -38,7 +38,7 @@
           </v-container>
         </v-col>
         <v-col cols="12" lg="6" md="4">
-          <h3>Welcome to WBStack</h3>
+          <h3>Welcome to {{ this.$config.NAME }}</h3>
           <p>Feel free to try out the platform!</p>
           <p>Create wikis using the + button to the left</p>
           <p>Stay up to date with the blog posts on the right</p>

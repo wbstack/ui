@@ -54,7 +54,7 @@ export default {
     return {
       valid: false,
       dialog: false,
-      userConfirmationString: 'wbstack-important-change',
+      userConfirmationString: 'wiki-important-change',
       rules: {
         match: (value) =>
           value === this.userConfirmationString || 'Please enter the confirmation'

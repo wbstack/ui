@@ -17,6 +17,10 @@ This app uses https://cli.vuejs.org.
 You can choose to run the ui via npm.
 
 ```sh
+
+# source app default details into shell (or any other configuration)
+set -o allexport; source defaults.env; set +o allexport
+
 # run dev server
 npm run serve
 

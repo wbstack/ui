@@ -3,6 +3,7 @@ services:
   ui:
     env_file:
       - .env
+      - details.env
     image: node:15
     user: "node"
     working_dir: /home/node/app

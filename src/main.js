@@ -27,6 +27,9 @@ Vue.use(VueReCaptcha, { siteKey: config.RECAPTCHA_SITE_KEY })
 // allow components to access api without importing it
 Vue.prototype.$api = api
 
+// allow all components to access config
+Vue.prototype.$config = config
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

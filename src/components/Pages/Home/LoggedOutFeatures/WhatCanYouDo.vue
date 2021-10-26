@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-row><v-col>
-      <h1 class="text-center">What can you do with WbStack?</h1>
+      <h1 class="text-center">What can you do with {{ this.$config.NAME }}?</h1>
     </v-col></v-row>
     <v-row><v-col>
-      <p class="text-center">WbStack allows you to easily curate data in your own Wikibase instance, without worrying about the technical side of things.</p>
+      <p class="text-center">{{ this.$config.NAME }} allows you to easily curate data in your own Wikibase instance, without worrying about the technical side of things.</p>
     </v-col></v-row>
     <v-row class="lists">
       <v-row align="stretch">

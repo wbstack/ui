@@ -17,7 +17,7 @@
         <h5>Organization</h5>
         <ul class="footer-list">
           <li><router-link to="/about">About</router-link></li>
-          <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" :href="this.$config.SOURCE">Source code</a></li>
           <li><router-link to="/privacy-policy">Privacy</router-link></li>
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
           <li><router-link to="/contact">Contact</router-link></li>
@@ -28,7 +28,7 @@
 
     <v-row class="text-center white-footer-links" no-gutters>
       <v-col>
-      &copy;2020 — <a href="https://wbstack.com/">WBStack</a>
+      &copy;2021 — <a :href="this.$config.URL">{{ this.$config.NAME }}</a>
       - Developed by <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/">Addshore</a> & Others
       - Hosting funded by <a target="_blank" rel="noopener noreferrer" href="https://rhizome.org/">Rhizome</a> & <a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/">Wikimedia Germany</a>
       </v-col>

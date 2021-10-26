@@ -17,7 +17,7 @@
         </v-row>
 
         <v-row>
-          <p>WbStack is an <a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">open source</a> alpha release platform for shared hosting of Wikibase sites.</p>
+          <p>{{ this.$config.NAME }} is an <a target="_blank" rel="noopener noreferrer" :href="this.$config.SOURCE">open source</a> alpha release platform for shared hosting of Wikibase sites.</p>
         </v-row>
 
         <v-row>
