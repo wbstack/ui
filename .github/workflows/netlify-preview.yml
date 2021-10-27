@@ -14,6 +14,10 @@ jobs:
       with:
         env-file: .env.development.mock
 
+    - uses: c-py/action-dotenv-to-setenv@v3
+      with:
+        env-file: details.env
+
     - name: Use Node.js 14.x
       uses: actions/setup-node@v2.4.1
       with:
@@ -43,6 +47,10 @@ jobs:
     - uses: c-py/action-dotenv-to-setenv@v3
       with:
         env-file: .env.development.prod
+
+    - uses: c-py/action-dotenv-to-setenv@v3
+      with:
+        env-file: details.env
 
     - name: Use Node.js 14.x
       uses: actions/setup-node@v2.4.1
