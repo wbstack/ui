@@ -20,6 +20,10 @@ export default {
     return {
       posts: [
         {
+          name: 'WBStack in 2021, and the future',
+          url: 'https://addshore.com/2021/12/wbstack-in-2021-and-the-future/'
+        },
+        {
           name: 'WikibaseManifest, Federated Properties, Lexeme',
           url: 'https://addshore.com/2021/05/wbstack-setting-changes-federated-properties-wikidata-entity-mapping-more/'
         },
