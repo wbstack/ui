@@ -2,8 +2,7 @@
   <v-toolbar>
     <v-toolbar-title>
       <!-- TODO remove link styling...-->
-      <router-link to="/"><span>WbStack</span></router-link>
-      <sub>Alpha</sub>
+      <router-link to="/"><span>wikibase.cloud</span></router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
