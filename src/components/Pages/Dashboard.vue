@@ -38,18 +38,11 @@
           </v-container>
         </v-col>
         <v-col cols="12" lg="6" md="4">
-          <h3>Welcome to WBStack</h3>
+          <h3>Welcome to wikibase.cloud</h3>
           <p>Feel free to try out the platform!</p>
           <p>Create wikis using the + button to the left</p>
-          <p>Stay up to date with the blog posts on the right</p>
-          <p>Join the telegram group <a target="_blank" rel="noopener noreferrer" href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g">here</a>.</p>
-          <h4>Wikimedia Germany & The Future</h4>
           <p>Wikimedia Germany work around “Wikibase as a Service” is continuing in the first half of 2021</p>
           <p>For more info contact <a href="mailto:samantha.alipio@wikimedia.de">Samantha Alipio</a></p>
-        </v-col>
-        <v-col cols="12" lg="3" md="4">
-          <BlogPostList headerElement="h4" ></BlogPostList>
-          <HeadedSpanList headerElement="h4" headerText="Manual Stats (Feb 2021)" :items="stats" ></HeadedSpanList>
         </v-col>
       </v-row>
     </v-container>
@@ -57,15 +50,8 @@
 </template>
 
 <script>
-import BlogPostList from '~/components/Content/BlogPostList'
-import HeadedSpanList from '~/components/Elements/HeadedSpanList'
-
 export default {
   name: 'Dashboard',
-  components: {
-    HeadedSpanList,
-    BlogPostList
-  },
   data () {
     return {
       stats: [

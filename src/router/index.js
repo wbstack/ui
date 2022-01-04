@@ -156,7 +156,7 @@ router.afterEach(({ title, name }) => {
       .join(' ')
   }
 
-  document.title = `WbStack ${title.length ? ' - ' + title : ''}`
+  document.title = `wikibase.cloud ${title.length ? ' - ' + title : ''}`
 })
 
 export default router
