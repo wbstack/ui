@@ -1,6 +1,14 @@
 
 # ui
 
+## 3.2 26 January 2022
+
+- New landing page for wikibase.cloud
+
+## 3.1 26 October 2021
+
+- Fix recaptcha site key config name
+
 ## 3.0 - 22 October 2021
 
 - Allow config vars to be set at runtime
