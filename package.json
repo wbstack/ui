@@ -43,7 +43,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.18.0",
     "geckodriver": "^2.0.4",
-    "lint-staged": "^11.2.3",
+    "lint-staged": "^12.3.3",
     "material-design-icons-iconfont": "^6.1.0",
     "msw": "^0.35.0",
     "node-notifier": "^10.0.0",
