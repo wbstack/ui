@@ -6,7 +6,6 @@ RUN npm install && npm cache clean --force
 COPY ./ .
 RUN VUE_APP_BUILD_FOR_DOCKER_IMAGE=1 npm run build
 
-
 FROM nginx:1-alpine
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/ui"
