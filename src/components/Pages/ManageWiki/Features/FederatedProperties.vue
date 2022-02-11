@@ -1,15 +1,14 @@
 <template>
   <v-form ref="form" v-model="valid">
-    <v-card color="#fad1d0">
+    <v-card disabled tile elevation="2" class="padding" outlined>
       <v-card-title>Federated properties</v-card-title>
+      <v-card-subtitle><br/>(currently not available)</v-card-subtitle>
       <v-card-text>
       Federated properties allows you to use the properties of Wikidata on your Wikibase instance.<br>
-      <span v-if="isEnabled">If you turn this off, and confirm the warning, federated properties used on your wikibase will no longer be accessible!</span>
-      <span v-else>If you turn this on, and confirm the warning, any existing properties on your wikibase will no longer be accessible!</span>
       </v-card-text>
       <v-card-actions>
         <v-btn @click="showModal" color="red" v-if="isEnabled">Disable Federated Properties</v-btn>
-        <v-btn @click="showModal" color="red" v-else>Enable Federated Properties</v-btn>
+        <v-btn disabled elevation="2" @click="showModal" v-else>Enable Federated Properties</v-btn>
       </v-card-actions>
     </v-card>
     <v-dialog v-model="dialog" width="500" v-if="dialog">
