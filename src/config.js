@@ -4,5 +4,5 @@ export default {
   API_URL: process.env.VUE_APP_API_URL,
   SUBDOMAIN_SUFFIX: process.env.VUE_APP_SUBDOMAIN_SUFFIX,
   MOCK_API: process.env.VUE_APP_MOCK_API,
-  CNAME_RECORD: process.VUE_APP_CNAME_RECORD
+  CNAME_RECORD: process.env.VUE_APP_CNAME_RECORD
 }
