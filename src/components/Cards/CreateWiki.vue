@@ -65,7 +65,7 @@
         />
 
         <p v-if="domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
-        <p v-if="domainRadioChoice === 'own'">"sites-1.dyna.wbstack.com"</p>
+        <p v-if="domainRadioChoice === 'own'">"{{ CNAME_RECORD }}"</p>
 
         <h3>Your User
           <v-tooltip right>
@@ -154,7 +154,8 @@ export default {
       hasError: false,
       error: [],
       inFlight: false,
-      SUBDOMAIN_SUFFIX: config.SUBDOMAIN_SUFFIX
+      SUBDOMAIN_SUFFIX: config.SUBDOMAIN_SUFFIX,
+      CNAME_RECORD: config.CNAME_RECORD
     }
   },
   created () {

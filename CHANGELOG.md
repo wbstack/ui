@@ -1,6 +1,10 @@
 
 # ui
 
+## 3.3 February 2022
+
+- Add support for specifying CNAME_RECORD hint in ui
+
 ## 3.2 26 January 2022
 
 - New landing page for wikibase.cloud
