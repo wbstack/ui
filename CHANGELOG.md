@@ -1,7 +1,11 @@
 
 # ui
 
-## 3.3 February 2022
+## 3.4 17 February 2022
+
+- Switch to recaptcha.net instead of google.com
+
+## 3.3 17 February 2022
 
 - Add support for specifying CNAME_RECORD hint in ui
 
