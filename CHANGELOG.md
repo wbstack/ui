@@ -1,6 +1,10 @@
 
 # ui
 
+## 3.5 21 February 2022
+
+- Disable Federated Properties setting
+
 ## 3.4 17 February 2022
 
 - Switch to recaptcha.net instead of google.com
