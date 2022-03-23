@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" md="6">
         <v-row>
-          <h1 class="header-main">Welcome to wikibase.cloud</h1>
+          <h2 class="header-main">Make your structured data available in our cloud</h2>
         </v-row>
       </v-col>
     </v-row>
