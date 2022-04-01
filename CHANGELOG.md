@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.6 01 April 2022
+
+- Remove old copy https://phabricator.wikimedia.org/T303589
 ## 3.5 21 February 2022
 
 - Disable Federated Properties setting
