@@ -3,9 +3,7 @@
     <v-container class="fill-height" fluid>
       <v-row justify="center">
         <v-col cols="8">
-          <h1>
-            Terms Of Use<sup><a href="#cmnt1">[a]</a></sup>
-          </h1>
+          <h1>Terms Of Use</h1>
           <p>
             PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THE SERVICES.
             BY ACCESSING THIS SITE OR USING ANY PART OF THE SITE OR ANY CONTENT
@@ -122,6 +120,7 @@
               infringes on the legal rights of others
             </li>
           </ul>
+          <br>
           <h2>Indemnity</h2>
           <p>
             You will indemnify and hold harmless Wikimedia Deutschland, its
@@ -137,9 +136,7 @@
           <h2>Data Protection</h2>
           <p>
             Wikimedia Deutschland processes your personal data according to its
-            privacy policy<sup><a href="#cmnt2">[b]</a></sup
-            ><sup><a href="#cmnt3">[c]</a></sup
-            >.
+            <a href="/privacy-policy">privacy policy</a>.
           </p>
           <p>
             Regarding the Content you upload to the Service, Wikimedia
@@ -260,15 +257,17 @@
             severable from these Terms of Use and shall not affect the validity
             and enforceability of any remaining provisions.
           </p>
-
+          <p></p>
+          <p></p>
+          <p></p>
           <h1>Appendix: Data Processing Agreement</h1>
-          <h4>Standard contractual clauses (Commission Implementing Decision (EU) 2021/915 of 4 June 202)
+          <h4>
+            Standard contractual clauses (Commission Implementing Decision (EU)
+            2021/915 of 4 June 202)
           </h4>
-          <br>
           <h5>SECTION I</h5>
           <h5>Clause 1</h5>
-          <h5><i>Purpose and scope</i></h5>
-          <p></p>
+          <h5 class="italic">Purpose and scope</h5>
           <table>
             <tbody>
               <tr>
@@ -347,8 +346,7 @@
             </tbody>
           </table>
           <h5>Clause 2</h5>
-          <h5>Invariability of the Clauses</h5>
-          <p></p>
+          <h5 class="italic">Invariability of the Clauses</h5>
           <table>
             <tbody>
               <tr>
@@ -381,8 +379,7 @@
             </tbody>
           </table>
           <h5>Clause 3</h5>
-          <h5>Interpretation</h5>
-          <p></p>
+          <h5 class="italic">Interpretation</h5>
           <table>
             <tbody>
               <tr>
@@ -426,28 +423,27 @@
             </tbody>
           </table>
           <h5>Clause 4</h5>
-          <h5>Hierarchy</h5>
+          <h5 class="italic">Hierarchy</h5>
           <p>
             In the event of a contradiction between these Clauses and the
             provisions of related agreements between the Parties existing at the
             time when these Clauses are agreed or entered into thereafter, these
             Clauses shall prevail.
           </p>
-          <p>Clause 5 – Optional [DELETED]</p>
-          <p>SECTION II</p>
-          <p>OBLIGATIONS OF THE PARTIES</p>
-          <p>Clause 6</p>
-          <p>Description of processing(s)</p>
+          <h5>SECTION II</h5>
+          <h5>OBLIGATIONS OF THE PARTIES</h5>
+          <h5>Clause 5</h5>
+          <h5 class="italic">Description of processing(s)</h5>
           <p>
             The details of the processing operations, in particular the
             categories of personal data and the purposes of processing for which
             the personal data is processed on behalf of the controller, are
             specified in Annex II.
           </p>
-          <p>Clause7</p>
-          <p>Obligations of the Parties</p>
-          <p>7.1. Instructions</p>
-          <p></p>
+          <h5>Clause 6</h5>
+          <h5 class="italic">Obligations of the Parties</h5>
+          <h5>6.1. Instructions</h5>
+          <br>
           <table>
             <tbody>
               <tr>
@@ -485,18 +481,18 @@
               </tr>
             </tbody>
           </table>
-          <p>7.2. Purpose limitation</p>
+          <h5>6.2. Purpose limitation</h5>
           <p>
             The processor shall process the personal data only for the specific
             purpose(s) of the processing, as set out in Annex II, unless it
             receives further instructions from the controller.
           </p>
-          <p>7.3. Duration of the processing of personal data</p>
+          <h5>6.3. Duration of the processing of personal data</h5>
           <p>
             Processing by the processor shall only take place for the duration
             specified in Annex II.
           </p>
-          <p>7.4. Security of processing</p>
+          <h5>6.4. Security of processing</h5>
           <p></p>
           <table>
             <tbody>
@@ -537,7 +533,7 @@
               </tr>
             </tbody>
           </table>
-          <p>7.5. Sensitive data</p>
+          <h5>6.5. Sensitive data</h5>
           <p>
             If the processing involves personal data revealing racial or ethnic
             origin, political opinions, religious or philosophical beliefs, or
@@ -548,7 +544,7 @@
             the processor shall apply specific restrictions and/or additional
             safeguards.
           </p>
-          <p>7.6. Documentation and compliance</p>
+          <h5>6.6. Documentation and compliance</h5>
           <p></p>
           <table>
             <tbody>
@@ -622,7 +618,7 @@
               </tr>
             </tbody>
           </table>
-          <p>7.7. Use of sub-processors</p>
+          <h5>6.7. Use of sub-processors</h5>
           <p></p>
           <table>
             <tbody>
@@ -712,8 +708,7 @@
               </tr>
             </tbody>
           </table>
-          <p>7.8. International transfers</p>
-          <p></p>
+          <h5>6.8. International transfers</h5>
           <table>
             <tbody>
               <tr>
@@ -755,9 +750,8 @@
               </tr>
             </tbody>
           </table>
-          <p>Clause 8</p>
-          <p>Assistance to the controller</p>
-          <p></p>
+          <h5>Clause 7</h5>
+          <h5 class="italic">Assistance to the controller</h5>
           <table>
             <tbody>
               <tr>
@@ -801,11 +795,10 @@
                     nature of the data processing and the information available
                     to the processor:
                   </p>
-                  <a></a><a></a>
                   <table>
                     <tbody>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(1)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -820,7 +813,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(2)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -835,7 +828,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(3)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -849,7 +842,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(4)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -880,8 +873,8 @@
               </tr>
             </tbody>
           </table>
-          <p>Clause 9</p>
-          <p>Notification of personal data breach</p>
+          <h5>Clause 8</h5>
+          <h5 class="italic">Notification of personal data breach</h5>
           <p>
             In the event of a personal data breach, the processor shall
             cooperate with and assist the controller for the controller to
@@ -890,7 +883,7 @@
             2018/1725, where applicable, taking into account the nature of
             processing and the information available to the processor.
           </p>
-          <p>9.1 Data breach concerning data processed by the controller</p>
+          <p>8.1 Data breach concerning data processed by the controller</p>
           <p>
             In the event of a personal data breach concerning data processed by
             the controller, the processor shall assist the controller:
@@ -922,11 +915,10 @@
                     Article 33(3) of Regulation (EU) 2016/679, shall be stated
                     in the controller’s notification, and must at least include:
                   </p>
-                  <a></a><a></a>
                   <table>
                     <tbody>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(1)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -940,7 +932,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(2)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -950,7 +942,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(3)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -994,7 +986,7 @@
               </tr>
             </tbody>
           </table>
-          <p>9.2 Data breach concerning data processed by the processor</p>
+          <h5>8.2 Data breach concerning data processed by the processor</h5>
           <p>
             In the event of a personal data breach concerning data processed by
             the processor, the processor shall notify the controller without
@@ -1053,12 +1045,11 @@
             compliance with the controller’s obligations under Articles 33 and
             34 of Regulation (EU) 2016/679.
           </p>
-          <p></p>
-          <p>SECTION III</p>
-          <p>FINAL PROVISIONS</p>
-          <p>Clause 10</p>
-          <p>Non-compliance with the Clauses and termination</p>
-          <p></p>
+          <br>
+          <h5>SECTION III</h5>
+          <h5>FINAL PROVISIONS</h5>
+          <h5>Clause 9</h5>
+          <h5 class="italic">Non-compliance with the Clauses and termination</h5>
           <table>
             <tbody>
               <tr>
@@ -1089,11 +1080,10 @@
                     insofar as it concerns processing of personal data in
                     accordance with these Clauses if:
                   </p>
-                  <a></a><a></a>
                   <table>
                     <tbody>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(1)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -1107,7 +1097,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(2)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -1119,7 +1109,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="1" rowspan="1">
+                        <td class="first-column">
                           <p>(3)</p>
                         </td>
                         <td colspan="1" rowspan="1">
@@ -1172,35 +1162,35 @@
             </tbody>
           </table>
           <hr />
-          <p></p>
-          <p>ANNEX I</p>
-          <p>List of parties</p>
+          <br>
+          <h5>ANNEX I</h5>
+          <h5>List of parties</h5>
           <p>
-            Controller(s): [Identity and contact details of the controller(s),
-            and, where applicable, of the controller’s data protection officer]
+            <b>Controller(s):</b> [<i>Identity and contact details of the controller(s),
+            and, where applicable, of the controller’s data protection officer</i>]
           </p>
           <p>The User who concluded the Agreement above.</p>
           <p>
-            Processor(s): [Identity and contact details of the processor(s) and,
-            where applicable, of the processor’s data protection officer]
+            <b>Processor(s):</b> [<i>Identity and contact details of the processor(s) and,
+            where applicable, of the processor’s data protection officer</i>]
           </p>
           <p>
             Wikimedia Deutschland e. V., Tempelhofer Ufer 23-24, 10369 Berlin
           </p>
-          <p></p>
-          <p>ANNEX II</p>
-          <p>Description of the processing</p>
-          <p>Categories of data subjects whose personal data is processed</p>
-          <p>
+          <br>
+          <h5>ANNEX II</h5>
+          <h5>Description of the processing</h5>
+          <p class="italic">Categories of data subjects whose personal data is processed</p>
+          <p class="processing">
             - Any categories of data subjects contained in the data uploaded by
             the User.
           </p>
-          <p>Categories of personal data processed</p>
-          <p>
+          <p class="italic">Categories of personal data processed</p>
+          <p class="processing">
             - Any categories of personal data contained in the data uploaded by
             the User.
           </p>
-          <p>
+          <p class="italic">
             Sensitive data processed (if applicable) and applied restrictions or
             safeguards that fully take into consideration the nature of the data
             and the risks involved, such as for instance strict purpose
@@ -1209,54 +1199,56 @@
             the data, restrictions for onward transfers or additional security
             measures.
           </p>
-          <p>
+          <p class="processing">
             - The categories of personal data may include sensitive data
             depending on the Content uploaded by the User. Since Wikimedia has
             no knowledge of the specific categories processed it lies in the
             User’s responsibility to ensure that the safeguards are sufficient
             to process the specific categories of personal data.
           </p>
-          <p>Nature of the processing</p>
-          <p>
+          <p class="italic">Nature of the processing</p>
+          <p class="processing">
             - Any processing necessary to fulfil the contractual purposes.
             Especially collection, storage, disclosure and dissemination and
             making publicly available as well as anonymization and/or deletion.
           </p>
-          <p>
+          <p class="italic">
             Purpose(s) for which the personal data is processed on behalf of the
             controller
           </p>
-          <p>
+          <p class="processing">
             - Publishing the Wikibase as well as the data uploaded to and
             contained in it and making it available to the public. Wikimedia
             does not act as a processor for the User with regard to the
             processing of personal data of persons browsing the Wikibase and any
             personal data that is processed to establish the connection.
           </p>
-          <p>Duration of the processing</p>
-          <p>
+          <p class="italic">Duration of the processing</p>
+          <p class="processing">
             - The rules of the Agreement regarding the Term and Termination
             apply.
           </p>
-          <p>
+          <p class="italic">
             For processing by (sub-) processors, also specify subject matter,
             nature and duration of the processing
           </p>
           <p></p>
           <p></p>
-          <p>ANNEX III</p>
+          <h5>ANNEX III</h5>
           <p>
+            <b>
             Technical and organisational measures including technical and
             organisational measures to ensure the security of the data
+            </b>
           </p>
           <p>
             You may obtain a copy of our technical and organisational measures
             on request, to do so please send an email to:
             datenschutz@wikimedia.de.
           </p>
-          <p>ANNEX IV</p>
-          <p>List of sub-processors</p>
-          <p>EXPLANATORY NOTE:</p>
+          <h5>ANNEX IV</h5>
+          <h5>List of sub-processors</h5>
+          <h5>EXPLANATORY NOTE:</h5>
           <p>
             This Annex needs to be completed in case of specific authorisation
             of sub-processors (Clause 7.7(a), Option 1).
@@ -1266,42 +1258,29 @@
             sub-processors:
           </p>
           <ol start="1">
-            <li>Name: Google Ireland Ltd.</li>
+            <li>
+              <p>Name: Google Ireland Ltd.</p>
+              <p>Address: Gordon House, Barrow Street, Dublin 4</p>
+              <p>Contact person’s name, position and contact details:</p>
+              <p>Google LLC</p>
+              <p>1600 Amphitheatre Parkway</p>
+              <p>Mountain View, CA 94043</p>
+              <p>USA</p>
+              <p>Tel: +1 650 253 0000</p>
+              <p>E-Mail: support-de@google.com</p>
+              <p>
+                Description of the processing (including a clear delimitation of
+                responsibilities in case several sub-processors are authorised):
+                Hosting of the Wikibase.cloud service
+              </p>
+            </li>
+            <li>
+              <p>Name: Mailgun Technologies, Inc</p>
+              <p>Address: 112 E Pecan St #1135, San Antonio, TX 78205</p>
+              <p>Description of the processing : Email service provisioning</p>
+            </li>
           </ol>
-          <p>Address: Gordon House, Barrow Street, Dublin 4</p>
-          <p>Contact person’s name, position and contact details:</p>
-          <p>Google LLC</p>
-          <p>1600 Amphitheatre Parkway</p>
-          <p>Mountain View, CA 94043</p>
-          <p>USA</p>
-          <p>Tel: +1 650 253 0000</p>
-          <p>E-Mail: support-de@google.com</p>
-          <p>
-            Description of the processing (including a clear delimitation of
-            responsibilities in case several sub-processors are authorised):
-            Hosting of the Wikibase.cloud service
-          </p>
-          <p>2. Name: Mailgun Technologies, Inc</p>
-          <p>Address: 112 E Pecan St #1135, San Antonio, TX 78205</p>
-          <p>Description of the processing : Email service provisioning</p>
-          <div>
-            <p>
-              <a href="#cmnt_ref1">[a]</a>Formatting in this document still
-              needs to be done
-            </p>
-          </div>
-          <div>
-            <p>
-              <a href="#cmnt_ref2">[b]</a>Bitte ergänze hier noch einen Link zu
-              der Datenschutzerklärung.
-            </p>
-          </div>
-          <div>
-            <p>
-              <a href="#cmnt_ref3">[c]</a>EN: Please add a link to the privacy
-              policy here.
-            </p>
-          </div>
+
         </v-col>
       </v-row>
     </v-container>
@@ -1316,8 +1295,17 @@ export default {
 </script>
 
 <style>
-.first-column{
+h5 {
+  margin-bottom: 16px;
+}
+.italic {
+  font-style: italic;
+}
+.first-column {
   text-align: center;
-  min-width: 100px;
+  min-width: 60px;
+}
+.processing {
+  padding: 20px;
 }
 </style>
