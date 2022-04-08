@@ -321,7 +321,7 @@
             </li>
             <li>
               <h4>Internet-specific data processing and cookies</h4>
-              <h5>Cookies</h5>
+              <h4>Cookies</h4>
               <p>
                 On our website, we use cookies and similar technologies. Cookies
                 are small text files that are stored on your hard drive and are
