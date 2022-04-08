@@ -332,7 +332,7 @@
                 functions safely. The specific cookies we or third parties store
                 on your device and their purposes are listed in the table below.
               </p>
-              <h5>Google reCaptcha</h5>
+              <h4>Google reCaptcha</h4>
               <p>
                 We use the Google reCaptcha service provided by Google Ireland
                 Limited, Gordon House, Barrow Street, Dublin 4, Ireland
