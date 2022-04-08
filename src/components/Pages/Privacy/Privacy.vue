@@ -49,7 +49,7 @@
 
               <p>Telephone: +49(0)30-21915826-0</p>
               <p>
-                Email:<a href="mailto:datenschutz@wikimedia.de"
+                Email: <a href="mailto:datenschutz@wikimedia.de"
                   >datenschutz@wikimedia.de</a
                 >
               </p>
@@ -66,7 +66,7 @@
 
               <p>Telephone: +49 30 443 765 0</p>
               <p>
-                E-Mail:<a href="mailto:datenschutz@wikimedia.de"
+                E-Mail: <a href="mailto:datenschutz@wikimedia.de"
                   >datenschutz@wikimedia.de</a
                 >
               </p>
@@ -487,7 +487,7 @@
                   <td>
                     <p>
                       To make sure your requests go to the correct datacenter
-                      and that you don't recieve outdated information if one
+                      and that you don't receive outdated information if one
                       datacenter has slightly older data than the other
                     </p>
                   </td>
@@ -508,7 +508,7 @@
                   <td>
                     <p>
                       To make sure your requests go to the correct datacenter
-                      and that you don't recieve outdated information if one
+                      and that you don't receive outdated information if one
                       datacenter has slightly older data than the other
                     </p>
                   </td>
