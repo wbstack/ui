@@ -633,7 +633,7 @@
                     sub-processors from an agreed list. The processor shall
                     specifically inform in writing the controller of any
                     intended changes of that list through the addition or
-                    replacement of sub-processors at least [SPECIFY TIME PERIOD]
+                    replacement of sub-processors at least two months
                     in advance, thereby giving the controller sufficient time to
                     be able to object to such changes prior to the engagement of
                     the concerned sub-processor(s). The processor shall provide
