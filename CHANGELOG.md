@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.8 11 April 2022
+- Fix missing time period in ToS
+
 ## 3.7 08 April 2022
 - Update Terms of Service https://phabricator.wikimedia.org/T303504
 - Update Privacy Policy https://phabricator.wikimedia.org/T303502
