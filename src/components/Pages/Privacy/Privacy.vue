@@ -47,7 +47,7 @@
               <p>Tempelhofer Ufer 23-24</p>
               <p>10963 Berlin</p>
 
-              <p>Telephone: +49(0)30-21915826-0</p>
+              <p>Telephone: 49 (0)30-577 11 62-0</p>
               <p>
                 Email:<a href="mailto:datenschutz@wikimedia.de"
                   >datenschutz@wikimedia.de</a
