@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.92 10 May 2022
+- Remove the call to provide feedback on Federated Properties https://phabricator.wikimedia.org/T307372
+
 ## 3.91 14 April 2022
 - Add Impressum link to footer https://phabricator.wikimedia.org/T306167
 
