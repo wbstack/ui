@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.93 12 May 2022
+- Add hint for valid subdomain naming https://phabricator.wikimedia.org/T306868
+
 ## 3.92 10 May 2022
 - Remove the call to provide feedback on Federated Properties https://phabricator.wikimedia.org/T307372
 
