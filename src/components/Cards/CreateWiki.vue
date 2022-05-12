@@ -35,6 +35,7 @@
             <span>A domain name is the site address people type into their browser to visit your site</span><br/>
             <span>If you already own a domain you can use it by selecting "Custom Domain"</span><br/>
             <span>If not you can use a "Free Subdomain"</span><br/>
+            <span>The subdomain must be at least five characters long, and can consist of small Latin letters, digits and hyphens</span><br/>
           </v-tooltip>
         </h3>
 
