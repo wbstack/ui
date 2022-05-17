@@ -41,8 +41,6 @@
           <h3>Welcome to wikibase.cloud</h3>
           <p>Feel free to try out the platform!</p>
           <p>Create wikis using the + button to the left</p>
-          <p>Wikimedia Germany work around “Wikibase as a Service” is continuing in the first half of 2021</p>
-          <p>For more info contact <a href="mailto:samantha.alipio@wikimedia.de">Samantha Alipio</a></p>
         </v-col>
       </v-row>
     </v-container>

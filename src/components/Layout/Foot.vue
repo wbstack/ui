@@ -11,6 +11,7 @@
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikibase.cloud/terms-of-use">Term of Use</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/contact/">Contact</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/impressum/">Imprint</a></li>
         </ul>
       </v-col>
     <v-col cols="1"></v-col>

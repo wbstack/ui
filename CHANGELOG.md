@@ -1,6 +1,27 @@
 
 # ui
 
+## 3.93 12 May 2022
+- Add hint for valid subdomain naming https://phabricator.wikimedia.org/T306868
+
+## 3.92 10 May 2022
+- Remove the call to provide feedback on Federated Properties https://phabricator.wikimedia.org/T307372
+
+## 3.91 14 April 2022
+- Add Impressum link to footer https://phabricator.wikimedia.org/T306167
+
+## 3.9 14 April 2022
+- Update phone number https://phabricator.wikimedia.org/T306161 
+## 3.8 11 April 2022
+- Fix missing time period in ToS
+
+## 3.7 08 April 2022
+- Update Terms of Service https://phabricator.wikimedia.org/T303504
+- Update Privacy Policy https://phabricator.wikimedia.org/T303502
+
+## 3.6 01 April 2022
+
+- Remove old copy https://phabricator.wikimedia.org/T303589
 ## 3.5 21 February 2022
 
 - Disable Federated Properties setting
