@@ -1,6 +1,11 @@
 
 # ui
 
+## 3.94 23 May 2022
+- Update footer with new links
+- Remove `GetStartedBanner`, `WikiCount`, `WhatCanYouDo` and `WhatIsIncluded`
+- Add new URL linked to wikibase community page and mailing list
+
 ## 3.93 12 May 2022
 - Add hint for valid subdomain naming https://phabricator.wikimedia.org/T306868
 
