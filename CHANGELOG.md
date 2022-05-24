@@ -3,7 +3,7 @@
 
 ## 3.94 23 May 2022
 - Update footer with new links
-- Disable GetStartedBanner
+- Remove `GetStartedBanner`, `WikiCount`, `WhatCanYouDo` and `WhatIsIncluded`
 - Add new URL linked to wikibase community page and mailing list
 
 ## 3.93 12 May 2022
