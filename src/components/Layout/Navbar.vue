@@ -2,7 +2,7 @@
   <v-toolbar>
     <v-toolbar-title>
       <!-- TODO remove link styling...-->
-      <router-link to="/">wikibase.cloud</router-link>
+      <router-link to="/"><span>wikibase.cloud</span></router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
@@ -37,11 +37,5 @@ export default {
 <style scoped>
 .no-button-pointer-events{
   pointer-events: none
-}
-a{
-text-decoration-line: none;
-}
-a:active, a:hover{
-text-decoration-line: underline;
 }
 </style>
