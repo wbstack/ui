@@ -228,6 +228,10 @@ export default {
         this.hasError = true
         this.error.terms = errors.terms[0]
       }
+      if (errors.tooManyWikis) {
+        this.hasError = true
+        this.displayGenericError(errors.message)
+      }
       if (errors.dbNotReady) {
         this.hasError = true
         this.displayGenericError('No databases ready, please report this!')

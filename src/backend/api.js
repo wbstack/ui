@@ -28,6 +28,7 @@ export const createWiki = async payload => {
   return (await axios.post('/wiki/create', payload).catch(({ response: { data: { message, errors = {} } } }) => {
     errors.message = message
     errors.dbNotReady = message === 'No databases ready'
+    errors.tooManyWikis = message !== null && message.includes('Too many wikis.')
     throw errors
   })).data.data
 }
