@@ -1,6 +1,10 @@
 
 # ui
 
+## 3.95 23 May 2022
+- Add error handling when user exceeds number of allowed wikis
+- Updates some github action versions related to building the docker image
+
 ## 3.94 23 May 2022
 - Update footer with new links
 - Remove `GetStartedBanner`, `WikiCount`, `WhatCanYouDo` and `WhatIsIncluded`
