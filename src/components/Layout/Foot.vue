@@ -12,6 +12,7 @@
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/contact/">Contact</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/impressum/">Imprint</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">Documentation</a></li>
         </ul>
       </v-col>
     <v-col cols="1"></v-col>
