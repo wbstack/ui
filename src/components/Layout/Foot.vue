@@ -7,12 +7,13 @@
     <v-col cols="10">
       <ul class="footer-list">
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/about-us/">About</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">Documentation</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
           <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
-          <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/contact/">Contact</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/impressum/">Imprint</a></li>
-        </ul>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/contact/">Contact</a></li>
+      </ul>
       </v-col>
     <v-col cols="1"></v-col>
     </v-row>
