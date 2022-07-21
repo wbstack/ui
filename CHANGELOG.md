@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.97 21 July 2022
+- Re-add waiting list link on landing page
+
 ## 3.96 13 June 2022
 - Add documentation link to footer
 
