@@ -22,7 +22,7 @@ export const verifyEmail = async payload => {
 export const checkVerified = async () => (await axios.post('/user/self')).data.data.verified
 
 /* Wiki endpoints */
-export const countWikis = async () => (await axios.get('/wiki/count')).data.data
+export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
 export const myWikis = async () => (await axios.post('/wiki/mine')).data
 export const createWiki = async payload => {
   return (await axios.post('/wiki/create', payload).catch(({ response: { data: { message, errors = {} } } }) => {

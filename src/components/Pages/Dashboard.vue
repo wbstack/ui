@@ -2,19 +2,12 @@
   <v-main>
     <v-container class="fill-height" fluid >
       <v-row>
-        <v-col cols="12" lg="3" md="4">
+        <v-col cols="12" lg="4" md="4">
           <v-container fluid class="rightpaddingonly">
             <v-row>
               <v-col>
-                <v-card>
-                  <v-toolbar>
-                    <v-toolbar-title>Your Wikis</v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-toolbar-items>
-                      <v-btn v-if="currentUser.verified == 1" fab small color="primary" to="/wikis/create"><v-icon dark>add</v-icon></v-btn>
-                      <v-btn v-if="currentUser.verified == 0" fab small color="red"><v-icon dark>warning</v-icon></v-btn>
-                    </v-toolbar-items>
-                  </v-toolbar>
+                <v-container>
+                    <h3 class="ml-4">Your Wikibases</h3>
                     <v-list v-if="currentUser.verified == 1">
                       <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
                         <v-list-item-content>
@@ -28,19 +21,29 @@
                             </v-list-item-icon>
                       </v-list-item>
                     </v-list>
+                  <v-container v-if="status == 'loading' && count == 0">
+                    <v-container class="d-flex justify-center">
+                      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                    </v-container>
+                  </v-container>
+                  <v-container v-if="currentUser.verified == 1">
+                        <v-btn color="primary mb-2" dark class="space" v-bind="attrs" v-on="on" to="/wikis/create">
+                            Create new Wiki
+                        </v-btn>
+                    <p class="caption">{{count}} of {{limit == false ? '∞' : limit}} Wikis used</p>
+                  </v-container>
                   <v-card-text v-if="currentUser.verified == 0" >
                     <p><strong>Your email address is not yet verified.</strong></p>
                     <p>You can trigger another verification link from the <router-link to="/user">account page</router-link>.</p>
                   </v-card-text>
-                </v-card>
+                </v-container>
               </v-col>
             </v-row>
           </v-container>
         </v-col>
-        <v-col cols="12" lg="6" md="4">
+        <v-col cols="12" lg="6" md="5" class="mt-3">
           <h3>Welcome to wikibase.cloud</h3>
           <p>Feel free to try out the platform!</p>
-          <p>Create wikis using the + button to the left</p>
         </v-col>
       </v-row>
     </v-container>
@@ -65,6 +68,15 @@ export default {
     },
     wikis: function () {
       return this.$store.getters.wikis
+    },
+    count: function () {
+      return this.$store.getters.wikiCount
+    },
+    limit: function () {
+      return this.$store.getters.wikiLimit
+    },
+    status: function () {
+      return this.$store.getters.wikisStatus
     }
   },
   created () {
