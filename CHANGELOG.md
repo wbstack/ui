@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.98 19 Aug 2022
+- Update wiki list with new design https://phabricator.wikimedia.org/T315438
+
 ## 3.97 21 July 2022
 - Re-add waiting list link on landing page
 
