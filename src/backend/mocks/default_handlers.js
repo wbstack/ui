@@ -66,7 +66,7 @@ export const handlers = [
 
   /* Wiki endpoints */
   rest.get(/\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
-  rest.post(/\/wiki\/mine$/, (_, res, ctx) => res(ctx.json(myWikis))),
+  rest.post(/\/wiki\/mine$/, (_, res, ctx) => res(ctx.json({ wikis: myWikis, count: myWikis.length, limit: false }))),
   rest.post(/\/wiki\/create$/, (req, res, ctx) => {
     return res(ctx.json({ data: makeNewWiki(req.body) }))
   }),

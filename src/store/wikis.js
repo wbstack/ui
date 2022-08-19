@@ -4,6 +4,8 @@ const getDefaultState = () => {
   return {
     status: '',
     wikis: [],
+    count: 0,
+    limit: 0,
     currentWikiSettings: null
   }
 }
@@ -29,7 +31,8 @@ const getters = {
   // TODO should add getter for a single wiki by id?
   wikisStatus: state => state.status,
   wikis: state => state.wikis,
-  wikiCount: state => state.wikis.length,
+  wikiCount: state => state.count,
+  wikiLimit: state => state.limit,
   hasLoaded: state => state.wikis.status !== ''
 }
 
@@ -40,9 +43,11 @@ const mutations = {
   wikis_request (state) {
     state.status = 'loading'
   },
-  wikis_success (state, wikiList) {
+  wikis_success (state, myWikisResponse) {
     state.status = 'success'
-    state.wikis = wikiList
+    state.wikis = myWikisResponse.wikis
+    state.limit = myWikisResponse.limit
+    state.count = myWikisResponse.count
   },
   wikis_error (state) {
     state.status = 'error'
@@ -129,8 +134,8 @@ const actions = {
   refreshWikis ({ commit, dispatch }) {
     commit('wikis_request')
     return api.myWikis()
-      .then(wikiList => {
-        commit('wikis_success', wikiList)
+      .then(myWikisResponse => {
+        commit('wikis_success', myWikisResponse)
       })
       .catch(() => {
         commit('wikis_error')
