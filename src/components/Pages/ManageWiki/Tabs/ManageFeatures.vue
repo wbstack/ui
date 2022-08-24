@@ -4,19 +4,16 @@
     <EntityMapping :wikiId="wikiId"/>
     <div class="space"></div>
     <Lexeme :wikiId="wikiId" />
-    <div class="space"></div>
-    <FederatedProperties :wikiId="wikiId" />
   </v-main>
 </template>
 
 <script>
-import FederatedProperties from '../Features/FederatedProperties.vue'
 import Lexeme from '../Features/Lexeme.vue'
 import EntityMapping from '../Features/EntityMapping.vue'
 
 export default {
   name: 'ManageFeatures',
-  components: { FederatedProperties, Lexeme, EntityMapping },
+  components: { Lexeme, EntityMapping },
   data () {
     return {
       wikiId: null
