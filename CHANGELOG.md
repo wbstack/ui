@@ -1,6 +1,9 @@
 
 # ui
 
+## 3.99 24 Aug 2022
+- Removed the unused option to enable Federated Properties
+
 ## 3.98 19 Aug 2022
 - Update wiki list with new design https://phabricator.wikimedia.org/T315438
 
