@@ -29,9 +29,9 @@
       <v-alert class="mt-8 mr-2 ml-2" outlined type="success" border="left" v-if="success">
         An email has been sent to <b>{{email}}</b>
       </v-alert>
-      <div class="mr-2 ml-2" v-if="success">If you do not receive this email within a few minutes, check your spam folder or check that you used the correct email address.</div>
+      <div class="mr-2 ml-2" v-if="success">If you do not receive this email within a few minutes, check your spam folder or verify that you used the correct email address.</div>
     </v-card-text>
-    
+
   </v-card>
 </template>
 
@@ -71,7 +71,7 @@ export default {
 
       this.$store
         .dispatch('forgottenPassword', { email })
-        .then(() => this.success = true)
+        .then(() => { this.success = true })
         .catch(err => {
           console.log(err.response)
           this.error = 'Something went wrong.'
