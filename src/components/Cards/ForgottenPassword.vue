@@ -6,7 +6,8 @@
     <v-card-subtitle>Enter the email address associated with your account. We will email you a link to reset your password. </v-card-subtitle>
 
     <v-card-text>
-      <v-form>
+      <v-form
+      ref="form">
         <v-text-field
         class="mr-2 ml-2"
         id="inputEmail"
@@ -17,6 +18,7 @@
         required
         v-model="email"
         :disabled="inFlight"
+        :rules="[() => !!email || 'This field is required']"
         />
       </v-form>
       <v-card-actions>
@@ -65,6 +67,9 @@ export default {
       }
     },
     reset () {
+      if ( this.$refs.form.validate() === false ) {
+        return
+      }
       this.inFlight = true
       const email = this.email
       this.error = ''
