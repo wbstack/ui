@@ -18,8 +18,6 @@ import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 
-import NotYetImplemented from '@/components/NotYetImplemented'
-
 Vue.use(Router)
 
 const router = new Router({
@@ -69,11 +67,6 @@ const router = new Router({
       path: '/privacy-policy',
       name: 'Privacy',
       component: Privacy
-    },
-    {
-      path: '/not-yet-implemented',
-      name: 'NotYetImplemented',
-      component: NotYetImplemented
     },
     {
       path: '/logout',
