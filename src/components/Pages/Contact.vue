@@ -5,7 +5,7 @@
           <v-col cols="8">
             <h1>Contact Us</h1>
             <v-col>
-              <p>The best contact point is currently Addshore on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/addshore">Twitter</a> or <a target="_blank" rel="noopener noreferrer" href="https://addshore.com/contact/" >by email</a></p>
+              <p>Redirecting to <a href="https://wikiba.se/contact/">https://wikiba.se/contact/</a></p>
             </v-col>
           </v-col>
         </v-row>
@@ -16,7 +16,9 @@
 <script>
 export default {
   name: 'Contact',
-  computed: {}
+  created () {
+    window.location.href = 'https://wikiba.se/contact/'
+  }
 }
 </script>
 
