@@ -15,12 +15,7 @@
 export default {
   name: 'Home',
   computed: {},
-  components: {
-    // GetStartedBanner
-    //    WikiCount,
-    // WhatCanYouDo
-    // WhatIsIncluded,
-  }
+  components: {}
 }
 </script>
 
