@@ -116,14 +116,6 @@ const router = new Router({
       }
     },
     {
-      path: '/wikis/create/success',
-      name: 'CreateWikiSuccess',
-      component: NotYetImplemented,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: '/wikis/manage/:id',
       name: 'TabSettings',
       component: TabSettings,
