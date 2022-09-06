@@ -59,7 +59,13 @@ export const handlers = [
       token: 'test_token'
     }))
   }),
-  rest.post(/\/user\/forgotPassword$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/user\/forgotPassword$/, (req, res, ctx) => {
+    if (req.body.email === "serverError@example.com"){
+      return res(ctx.status(400, 'Mocked Server Error'))
+    }
+    return res(ctx.status(200))
+  }
+    ),
   rest.post(/\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
   rest.post(/\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
   rest.post(/\/user\/verifyEmail$/, (_, res, ctx) => res(ctx.status(200))),

@@ -26,7 +26,7 @@
         <v-btn @click="reset" color="primary" :disabled="inFlight">{{buttonText}}</v-btn>
       </v-card-actions>
       <v-alert class="mt-8 mr-2 ml-2" outlined type="error" border="left" v-if="error">
-        {{error}}
+        There was a server error ( {{error}} ) sending email to <b>{{email}}</b>. Please double check it or try again later.
       </v-alert>
       <v-alert class="mt-8 mr-2 ml-2" outlined type="success" border="left" v-if="success">
         An email has been sent to <b>{{email}}</b>
@@ -47,17 +47,22 @@ export default {
   data () {
     return {
       email: '',
-      error: '',
-      inFlight: false,
-      success: false
+      inFlight: false
     }
   },
   created () {
     this.redirectIfLoggedIn()
+    this.$store.dispatch('clearForgottenPasswordState')
   },
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
+    },
+    success: function () {
+      return this.$store.getters.wasLastForgottenPasswordSubmitASuccess
+    },
+    error: function () {
+      return this.$store.getters.lastForgottenPasswordError
     }
   },
   methods: {
@@ -72,16 +77,9 @@ export default {
       }
       this.inFlight = true
       const email = this.email
-      this.error = ''
 
       this.$store
         .dispatch('forgottenPassword', { email })
-        .then(() => { this.success = true })
-        .catch(err => {
-          console.log(err.response)
-          this.error = 'Something went wrong.'
-          this.inFlight = false
-        })
     }
   }
 }
