@@ -53,6 +53,7 @@ const actions = {
   },
   clearForgottenPasswordState ( { commit } ) {
     commit('user_setForgottenPasswordSubmitSuccessNull')
+    commit('user_setForgottenPasswordError', null)
   }
 }
 
