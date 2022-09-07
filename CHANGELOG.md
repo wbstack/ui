@@ -1,6 +1,10 @@
 
 # ui
 
+## 3.100 7 Sept 2022
+- Add documentation links to main page
+- Remove some inaccessible code
+
 ## 3.99 24 Aug 2022
 - Removed the unused option to enable Federated Properties
 
