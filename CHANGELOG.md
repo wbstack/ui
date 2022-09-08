@@ -1,6 +1,10 @@
 
 # ui
 
+## 4.0 8 Sep 2022
+- Remove some unused components
+- Add reference to Wikibase(.cloud) documentation to the dashboards
+
 ## 3.99 24 Aug 2022
 - Removed the unused option to enable Federated Properties
 
