@@ -2,7 +2,7 @@
     <v-main>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-          <ForgottenPasswordCard title="Forgotten password" buttonText="Reset"/>
+          <ForgottenPasswordCard title="Reset your password" buttonText="Reset Password"/>
         </v-row>
         <v-row align="center" justify="center">
           <v-col class="needs-padding">
