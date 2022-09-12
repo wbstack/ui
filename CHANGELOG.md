@@ -1,6 +1,10 @@
 
 # ui
 
+## 4.1 12 Sep 2022
+- Add validation that email field is not empty
+- Use state to handle success and errors
+
 ## 4.0 8 Sep 2022
 - Remove some unused components
 - Add reference to Wikibase(.cloud) documentation to the dashboards
