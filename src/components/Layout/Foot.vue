@@ -12,7 +12,7 @@
           <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.wikimedia.de/impressum/">Imprint</a></li>
-          <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/contact/">Contact</a></li>
+          <li><router-link to="/contact">Contact</router-link></li>
       </ul>
       </v-col>
     <v-col cols="1"></v-col>
