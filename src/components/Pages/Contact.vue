@@ -13,6 +13,7 @@
               <v-text-field
                 id="Name"
                 v-model="name"
+                :rules="[() => !!name || 'This field is required']"
                 type="text"
                 label="Your Name"
               />
