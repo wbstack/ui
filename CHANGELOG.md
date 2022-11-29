@@ -1,6 +1,9 @@
 
 # ui
 
+## 4.2 29 Nov 2022
+- Bumps shell-quote from 1.7.2 to 1.7.3
+
 ## 4.1 12 Sep 2022
 - Add validation that email field is not empty
 - Use state to handle success and errors
