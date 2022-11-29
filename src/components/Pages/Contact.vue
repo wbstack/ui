@@ -1,7 +1,7 @@
 <template>
     <v-main>
       <v-container class="fill-height" >
-        <v-row justify="left">
+        <v-row>
           <v-col cols="8">
             <h1>Get in touch with the team</h1>
             <p class="mt-5">Thank you for your interest. We really want to hear what you've got to say. </p>
@@ -13,7 +13,6 @@
               <v-text-field
                 id="Name"
                 v-model="name"
-                :rules="[rules.required, rules.counter]"
                 type="text"
                 label="Your Name"
               />
@@ -42,12 +41,18 @@
             </div>
           </v-col>
         </v-row>
-        <v-row justify="center">
-          <v-alert color="success" elevation="24" class="white--text" v-if="successMessage">
+          <v-snackbar color="success" elevation="24" v-model="successMessage">
             Your message has been sent. Thanks!
-            <v-btn @click="closeAlert" class="white--text" text>Close</v-btn>
-          </v-alert>
-        </v-row>
+            <template v-slot:action>
+              <v-btn
+                text
+                variant="text"
+                @click="closeAlert"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
       </v-container>
     </v-main>
 </template>
