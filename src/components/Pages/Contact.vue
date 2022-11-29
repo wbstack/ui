@@ -13,6 +13,7 @@
               <v-text-field
                 id="Name"
                 v-model="name"
+                :rules="[rules.required, rules.counter]"
                 type="text"
                 label="Your Name"
               />
@@ -21,7 +22,6 @@
                 v-model="contactDetails"
                 label="How can we reach you? (optional)"
                 hint="For example: email address, Telegram handle, phone number"
-                persistent-hint
               />
               <v-select
                 :items=items
