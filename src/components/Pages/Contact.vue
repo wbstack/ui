@@ -13,13 +13,14 @@
               <v-text-field
                 id="Name"
                 v-model="name"
-                :rules="[() => !!name || 'This field is required']"
+                :rules="[() => !!name || 'This field is required', v => v.length <= 300 || 'Max 300 characters']"
                 type="text"
                 label="Your Name"
               />
               <v-text-field
                 id="contactDetail"
                 v-model="contactDetails"
+                :rules="[v => v.length <= 300 || 'Max 300 characters']"
                 label="How can we reach you? (optional)"
                 hint="For example: email address, Telegram handle, phone number"
               />
@@ -86,14 +87,14 @@ export default {
       const message = this.message
       const contactDetails = this.contactDetails
       // Recaptcha check
-      this.$recaptcha('contact').then((token) => {
+      this.$recaptcha('contact').then((recaptcha) => {
         this.$api.contact(
           {
             name: name,
             subject: subject,
             contactDetails: contactDetails,
             message: message,
-            recaptcha: token
+            recaptcha: recaptcha
           })
           .then(success => this.createSuccessful())
           .catch(errors => {
