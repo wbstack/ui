@@ -57,6 +57,18 @@
               </v-btn>
             </template>
           </v-snackbar>
+          <v-snackbar color="error" elevation="24" v-model="errorMessage" multi-line>
+            Something went wrong with sending your message. Please try again.
+            <template v-slot:action>
+              <v-btn
+                text
+                variant="text"
+                @click="closeAlert"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
       </v-container>
     </v-main>
 </template>
@@ -75,11 +87,13 @@ export default {
     contactDetails: '',
     subject: '',
     message: '',
-    successMessage: false
+    successMessage: false,
+    errorMessage: false
   }),
   methods: {
     closeAlert () {
       this.successMessage = false
+      this.errorMessage = false
     },
     send () {
       const name = this.name
@@ -99,6 +113,7 @@ export default {
           .then(success => this.createSuccessful())
           .catch(errors => {
             this.resetErrorState()
+            this.createError()
             // If the api gave use details of the error, then use them
             if (errors) {
               if (errors.name) {
@@ -119,6 +134,9 @@ export default {
     },
     createSuccessful () {
       this.successMessage = true
+    },
+    createError () {
+      this.errorMessage = true
     },
     resetErrorState () {
       this.hasError = false
