@@ -4,10 +4,16 @@
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
     <v-card-text>
+      <p>
+        Wikibase.cloud is in a closed beta. If you'd like to receive an invite code,
+        <a href="https://lime.wikimedia.de/index.php/717538">
+          sign up for early access.
+        </a>
+      </p>
       <v-form>
           <v-text-field
           id="inputInvite"
-          prepend-icon="email"
+          prepend-icon="vpn_key"
           name="invite"
           label="Invite code"
           v-model="invite"
@@ -32,6 +38,7 @@
         label="Password"
         type="password"
         required
+        hint="Your password must be at least 8 characters long."
         v-model="password"
         :disabled="inFlight"
         :error-messages="error['inputPassword']"
@@ -47,7 +54,6 @@
         :disabled="inFlight"
         :error-messages="error['inputPasswordConfirmation']"
         />
-        <p>Your password must be at least 8 characters long.</p>
         <v-checkbox
         required
         v-model="terms"
@@ -65,12 +71,11 @@
                     @click.stop
                     v-on="on"
                   >
-                    Terms of Use
+                    Terms of Use.
                   </a>
                 </template>
                 Opens in new window
               </v-tooltip>
-              .
             </div>
           </template>
         </v-checkbox>
