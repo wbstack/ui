@@ -6,7 +6,7 @@
       <v-row align="center" justify="center">
       <v-col class="needs-padding">
         <p>Already have an account?</p>
-        <router-link to="/login">Login now.</router-link>
+        <router-link to="/login">Log in now.</router-link>
       </v-col>
     </v-row>
   </v-container>
