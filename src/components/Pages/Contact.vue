@@ -26,6 +26,7 @@
                   :items=items
                   v-model="subject"
                   label="What's the main reason for your message?"
+                  :rules="[() => !!subject || 'This field is required']"
                 />
                 <v-textarea
                   id="inputMessage"
