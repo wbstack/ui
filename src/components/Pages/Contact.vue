@@ -1,8 +1,5 @@
 <template>
     <v-main>
-      <v-row>
-        <v-col></v-col>
-        <v-col align-self="center">
           <v-responsive max-width="840px" min-width="320px" >
               <h1>Get in touch with the team</h1>
               <p>Thank you for your interest. We really want to hear what you've got to say.</p>
@@ -69,9 +66,6 @@
             </template>
           </v-snackbar>
       </v-responsive>
-        </v-col>
-        <v-col></v-col>
-      </v-row>
     </v-main>
 </template>
 
