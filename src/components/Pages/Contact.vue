@@ -29,7 +29,7 @@
                 />
                 <v-textarea
                   id="inputMessage"
-                  counter
+                  counter="10000"
                   v-model="message"
                   :rules="[v => v.length <= 10000 || 'Message must be 10000 characters or less']"
                   auto-grow
