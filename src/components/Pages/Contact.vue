@@ -37,7 +37,7 @@
                   label="Message"
                 />
                 <div align="right">
-                  <v-btn color="primary" @click="send">
+                  <v-btn color="primary" @click="send" class="mt-6">
                     SEND MESSAGE
                   </v-btn>
                 </div>
