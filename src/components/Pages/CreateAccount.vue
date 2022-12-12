@@ -5,12 +5,15 @@
     </v-row>
       <v-row align="center" justify="center">
       <v-col class="needs-padding">
-        <p>Already have an account?</p>
-        <v-btn
-          to="/login"
-          :disabled="inFlight"
-        >Log in
-        </v-btn>
+        <div>
+          Already have an account?
+          <v-btn
+            class="ms-6"
+            to="/login"
+            :disabled="inFlight"
+          >Log in
+          </v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>
