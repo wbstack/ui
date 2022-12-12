@@ -13,8 +13,8 @@
         <v-btn id="nav-logout" text to="/logout">Logout</v-btn>
       </template>
       <template v-if="!isLoggedIn">
-        <v-btn id="nav-login" text to="/login">Login</v-btn>
-        <v-btn id="nav-create-account" ext color="primary" to="/create-account">Get Started</v-btn>
+        <v-btn id="nav-login" text to="/login">Log in</v-btn>
+        <v-btn id="nav-create-account" ext color="primary" to="/create-account">Sign up</v-btn>
       </template>
     </v-toolbar-items>
   </v-toolbar>
