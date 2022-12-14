@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-12">
+  <v-card class="elevation-12" max-width="477">
     <v-toolbar dark color="primary">
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
@@ -11,7 +11,7 @@
         </a>
       </p>
       <v-form>
-          <v-text-field
+        <v-text-field
           id="inputInvite"
           prepend-icon="vpn_key"
           name="invite"
@@ -19,46 +19,46 @@
           v-model="invite"
           :disabled="inFlight"
           :error-messages="error['inputInvite']"
-          />
-        <v-text-field
-        id="inputEmail"
-        prepend-icon="email"
-        name="login"
-        label="Email address"
-        type="email"
-        required
-        v-model="email"
-        :disabled="inFlight"
-        :error-messages="error['inputEmail']"
         />
         <v-text-field
-        id="inputPassword"
-        prepend-icon="lock"
-        name="password"
-        label="Password"
-        type="password"
-        required
-        hint="Your password must be at least 8 characters long."
-        v-model="password"
-        :disabled="inFlight"
-        :error-messages="error['inputPassword']"
+          id="inputEmail"
+          prepend-icon="email"
+          name="login"
+          label="Email address"
+          type="email"
+          required
+          v-model="email"
+          :disabled="inFlight"
+          :error-messages="error['inputEmail']"
         />
         <v-text-field
-        id="inputPasswordConfirmation"
-        prepend-icon="lock"
-        name="passwordConfirmation"
-        label="Confirm Password"
-        type="password"
-        required
-        v-model="passwordConfirmation"
-        :disabled="inFlight"
-        :error-messages="error['inputPasswordConfirmation']"
+          id="inputPassword"
+          prepend-icon="lock"
+          name="password"
+          label="Password"
+          type="password"
+          required
+          hint="Your password must be at least 8 characters long."
+          v-model="password"
+          :disabled="inFlight"
+          :error-messages="error['inputPassword']"
+        />
+        <v-text-field
+          id="inputPasswordConfirmation"
+          prepend-icon="lock"
+          name="passwordConfirmation"
+          label="Confirm Password"
+          type="password"
+          required
+          v-model="passwordConfirmation"
+          :disabled="inFlight"
+          :error-messages="error['inputPasswordConfirmation']"
         />
         <v-checkbox
-        required
-        v-model="terms"
-        :disabled="inFlight"
-        :error-messages="error['terms']"
+          required
+          v-model="terms"
+          :disabled="inFlight"
+          :error-messages="error['terms']"
         >
           <template v-slot:label>
             <div>
