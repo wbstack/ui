@@ -6,8 +6,15 @@
         </v-row>
         <v-row align="center" justify="center" >
           <v-col class="needs-padding">
-            <p>Not got an account yet?</p>
-            <router-link to="/create-account">Create one now.</router-link>
+            <div>
+              Need an account?
+              <v-btn
+                class="ms-6"
+                to="/create-account"
+                :disabled="inFlight"
+              >SIGN UP
+              </v-btn>
+            </div>
           </v-col>
         </v-row>
       </v-container>

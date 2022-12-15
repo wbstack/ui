@@ -1,12 +1,19 @@
 <template>
   <v-container class="fill-height" fluid >
     <v-row align="center" justify="center">
-      <CreateAccountCard title="Lets get started" buttonText="Create Account"/>
+      <CreateAccountCard title="Sign up" buttonText="Create Account"/>
     </v-row>
       <v-row align="center" justify="center">
       <v-col class="needs-padding">
-        <p>Already have an account?</p>
-        <router-link to="/login">Log in now.</router-link>
+        <div>
+          Already have an account?
+          <v-btn
+            class="ms-6"
+            to="/login"
+            :disabled="inFlight"
+          >Log in
+          </v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>
