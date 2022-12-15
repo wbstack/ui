@@ -6,7 +6,7 @@
     <v-card-text>
       <p>
         Wikibase.cloud is in a closed beta. If you'd like to receive an invite code,
-        <a href="https://lime.wikimedia.de/index.php/717538">
+        <a href="https://lime.wikimedia.de/index.php/717538" style="text-decoration: none">
           sign up for early access.
         </a>
       </p>
