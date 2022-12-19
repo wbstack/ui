@@ -32,7 +32,7 @@
                   id="inputMessage"
                   counter="10000"
                   v-model="message"
-                  :rules="[v => v.length <= 10000 || 'Message must be 10000 characters or less']"
+                  :rules="[v => v.length <= 10000 || 'Message must be 10000 characters or less', () => !!message || 'This field is required']"
                   auto-grow
                   label="Message"
                 />
