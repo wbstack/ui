@@ -2,7 +2,7 @@
     <v-main>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-            <LoginCard title="Log in to your account" buttonText="Login"/>
+            <LoginCard title="Log in to your account" buttonText="Log in"/>
         </v-row>
         <v-row align="center" justify="center" >
           <v-col class="needs-padding">
