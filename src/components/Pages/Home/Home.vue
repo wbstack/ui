@@ -6,7 +6,7 @@
     <p>Wikibase.cloud is in a closed beta. If you're interested in a Wikibase.cloud instance, sign up for early access <a href="https://lime.wikimedia.de/index.php/717538">here</a>. While you wait, consider joining the Wikibase community <a href="https://lists.wikimedia.org/postorius/lists/wikibase-cloud.lists.wikimedia.org/">mailing list</a>.</p>
 
     <h3>Still have questions?</h3>
-    <p>Drop us a line using our <a href="https://wikiba.se/contact/">contact form</a>. Now is also a great time to get involved in the <a href="https://meta.wikimedia.org/wiki/Wikibase_Community_User_Group">Wikibase community</a>. </p>
+    <p>Drop us a line using our <router-link to="/contact">contact form</router-link>. Now is also a great time to get involved in the <a href="https://meta.wikimedia.org/wiki/Wikibase_Community_User_Group">Wikibase community</a>. </p>
   </div>
 </template>
 
