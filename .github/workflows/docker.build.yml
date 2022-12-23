@@ -57,3 +57,18 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+      #Create PR on deploy repo from a merged PR
+      -
+        name: create pull request for deploy on staging
+        uses: actions/checkout@v3
+        with:
+          repository: rosalieper/wbaas-deploy
+      # Make changes to pull request here
+          run: |
+            yq -i '.image.tag = ${{ steps.docker_meta.outputs.tags }}' k8s/helmfile/env/local/ui.values.yaml.gotmpl
+            yq -i '.image.tag = ${{ steps.docker_meta.outputs.tags }}' k8s/helmfile/env/staging/ui.values.yaml.gotmpl
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Deploy new UI image
+          title: 'Deploy new UI image'
+          labels: automated pr
