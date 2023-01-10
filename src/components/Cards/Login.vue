@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-12 my-16" width="477px">
+  <v-card class="elevation-12 mt-16" width="477px">
     <v-toolbar dark color="primary">
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
@@ -30,9 +30,9 @@
       </v-form>
       <router-link to="/forgotten-password" style="text-decoration: none">Forgot your password?</router-link>
     </v-card-text>
-    <v-card-actions class="button-padding">
+    <v-card-actions class="pb-4 pr-4">
       <v-spacer></v-spacer>
-      <v-btn @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
+      <v-btn class="pr-4 pl-4" @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -98,8 +98,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.button-padding{
-  padding-right: 24px;
-  padding-bottom: 20px;
-}
 </style>
