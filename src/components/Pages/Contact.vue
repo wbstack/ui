@@ -1,6 +1,6 @@
 <template>
     <v-main>
-          <v-responsive max-width="840px" min-width="320px" >
+          <v-responsive max-width="840px" min-width="250px" >
               <h1>Get in touch with the team</h1>
               <p>Thank you for your interest. We really want to hear what you've got to say.</p>
               <p>Have you got a question? First, check our <a href="https://www.mediawiki.org/wiki/Talk:Wikibase/FAQ" target="_blank">FAQ</a> to see if we've already answered it. We're constantly  updating it with new questions. if you don't find an answer there, feel free to use the contact form below. Thanks!</p>
