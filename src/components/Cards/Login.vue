@@ -1,38 +1,38 @@
 <template>
-  <v-card class="elevation-12 my-16" width="500">
+  <v-card class="elevation-12 mt-16" width="477px">
     <v-toolbar dark color="primary">
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
     <v-card-text>
       <v-form>
         <v-text-field
-        id="inputEmail"
-        prepend-icon="email"
-        name="login"
-        label="Email address"
-        type="email"
-        required
-        v-model="email"
-        :disabled="loggingIn"
-        :error-messages="error['email']"
+          id="inputEmail"
+          prepend-icon="email"
+          name="login"
+          label="Email address"
+          type="email"
+          required
+          v-model="email"
+          :disabled="loggingIn"
+          :error-messages="error['email']"
         />
         <v-text-field
-        id="inputPassword"
-        prepend-icon="lock"
-        name="password"
-        label="Password"
-        type="password"
-        required
-        v-model="password"
-        :disabled="loggingIn"
-        :error-messages="error['password']"
+          id="inputPassword"
+          prepend-icon="lock"
+          name="password"
+          label="Password"
+          type="password"
+          required
+          v-model="password"
+          :disabled="loggingIn"
+          :error-messages="error['password']"
         />
       </v-form>
-      <router-link to="/forgotten-password">Forgotten password</router-link>
+      <router-link to="/forgotten-password" style="text-decoration: none">Forgot your password?</router-link>
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="pb-4 pr-4">
       <v-spacer></v-spacer>
-      <v-btn @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
+      <v-btn class="pr-4 pl-4" @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
