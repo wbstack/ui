@@ -8,28 +8,44 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 This app uses https://cli.vuejs.org.
 
-### Install dependencies
+### Docker Environment
 
-`npm install`
+#### Installing dependencies
 
-### Run (with npm)
-
-You can choose to run the ui via npm.
-
-```sh
-# run dev server
-npm run serve
-
-# build for production
-npm run build
+```
+docker compose run ui npm install
 ```
 
-### Run (with docker-compose)
+#### Starting the server
 
-You can also choose to run the ui in docker.
+```
+docker compose up -d
+```
 
-```sh
-docker-compose up -d
+#### Running scripts
+
+```
+docker compose run ui npm run <command>
+```
+
+### Bare-metal Environment
+
+#### Installing dependencies
+
+```
+npm install
+```
+
+#### Starting the server
+
+```
+npm run serve
+```
+
+#### Building for production
+
+```
+npm run build
 ```
 
 ### Mocked API
