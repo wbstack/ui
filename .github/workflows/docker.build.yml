@@ -59,14 +59,20 @@ jobs:
       -
         name: create pull request for deploy on staging
         uses: actions/checkout@v3
+        # remove this if statement after fixing the PR
+        if: 1==2
         with:
           repository: wmde/wbaas-deploy
       # Make changes to pull request here
-      - run: |
+      - # TODO: Remove this if statement after fixing the PR
+        if: 1==2
+        run: |
           get_tag=$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)
           yq -i '.image.tag=$get_tag' k8s/helmfile/env/local/ui.values.yaml.gotmpl
           yq -i '.image.tag=$get_tag' k8s/helmfile/env/staging/ui.values.yaml.gotmpl
       - uses: peter-evans/create-pull-request@v4
+        # TODO: Remove this if statement after fixing the PR
+        if: 1==2
         with:
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
@@ -78,13 +84,19 @@ jobs:
       #Production: Create pull request on deploy repo from a merged PR
       - name: create pull request for deploy on production
         uses: actions/checkout@v3
+        # remove this if statement after fixing the PR
+        if: 1==2
         with:
           repository: wmde/wbaas-deploy
       # Make changes to pull request here
-      - run: |
+      - # TODO: Remove this if statement after fixing the PR
+        if: 1==2
+        run: |
           get_tag=$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)
           yq -i '.image.tag=$get_tag' k8s/helmfile/env/production/ui.values.yaml.gotmpl
       - uses: peter-evans/create-pull-request@v4
+        # TODO: Remove this if statement after fixing the PR
+        if: 1==2
         with:
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
