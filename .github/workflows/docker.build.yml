@@ -70,7 +70,7 @@ jobs:
         with:
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-${{ steps.docker_meta.outputs.tags }}
+          branch: deploy-to-staging-${{env.GITHUB_RUN_ID}}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
@@ -88,7 +88,7 @@ jobs:
         with:
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-production-${{ steps.docker_meta.outputs.tags }}
+          branch: deploy-to-production-${{env.GITHUB_RUN_ID}}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
