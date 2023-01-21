@@ -1,6 +1,6 @@
 # wbstack UI
 
-The code for the https://www.wbstack.com/ website.
+The code for the orhttps://www.wbstack.com/ website.
 
 ## Development
 
