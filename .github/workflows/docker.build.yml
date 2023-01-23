@@ -88,11 +88,13 @@ jobs:
           path: ./repos/wbaas-deploy
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-${{ github.event.push.push_id }}
+          branch: deploy-to-staging-${{ github.event.push.after }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
+          body: |
+            This is an automated update for the `ui` image.
       #Production: Create pull request on deploy repo from a merged PR
 #      - name: create pull request for deploy on production
 #        uses: actions/checkout@v3
