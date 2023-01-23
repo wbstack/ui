@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: wmde/wbaas-deploy
-          path: wbaas-deploy
+          path: ./../wbaas-deploy
       # Make changes to pull request here
       - 
         name: Update values for local and staging
@@ -90,7 +90,7 @@ jobs:
             -p "image.tag"
       - uses: peter-evans/create-pull-request@v4
         with:
-          path: wbaas-deploy
+          path: ./../wbaas-deploy
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           branch: deploy-to-staging-$GITHUB_RUN_ID
