@@ -61,34 +61,27 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - run: pip install -r .github/workflows/requirements.txt
+      - run: pip install -r ./scripts/requirements.txt
       -
         name: create pull request for deploy on staging
         uses: actions/checkout@v3
         with:
           repository: wmde/wbaas-deploy
+          path: wbaas-deploy
       # Make changes to pull request here
       - run: |
           export GET_TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
-          python - <<EOF
-          from ruamel.yaml import YAML
-          import sys
-          import os
-
-          yaml=YAML()
-          with open("k8s/helmfile/env/local/ui.values.yaml.gotmpl") as doc:
-              data=yaml.load(doc)
-          data['image']['tag']=os.environ[GET_TAG]
-          with open("k8s/helmfile/env/local/ui.values.yaml.gotmpl", 'w') as doc:
-              yaml.dump(data, doc)
-          with open("k8s/helmfile/env/staging/ui.values.yaml.gotmpl") as doc:
-              data=yaml.load(doc)
-          data['image']['tag']=os.environ[GET_TAG]
-          with open("k8s/helmfile/env/staging/ui.values.yaml.gotmpl", 'w') as doc:
-              yaml.dump(data, doc)
-          EOF
+          ./scripts/update-yaml-doc.py \
+            -f ./../k8s/helmfile/env/local/ui.values.yaml.gotmpl \
+            -v "$GET_TAG" \
+            -p "image.tag"
+          ./scripts/update-yaml-doc.py \
+            -f ./../k8s/helmfile/env/staging/ui.values.yaml.gotmpl \
+            -v "$GET_TAG" \
+            -p "image.tag"
       - uses: peter-evans/create-pull-request@v4
         with:
+          path: wbaas-deploy
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           branch: deploy-to-staging-$GITHUB_RUN_ID
@@ -97,29 +90,29 @@ jobs:
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
       #Production: Create pull request on deploy repo from a merged PR
-      - name: create pull request for deploy on production
-        uses: actions/checkout@v3
-        with:
-          repository: wmde/wbaas-deploy
-      # Make changes to pull request here
-      -  run: |
-          python - <<EOF
-          from ruamel.yaml import YAML
-          import sys
+#      - name: create pull request for deploy on production
+#        uses: actions/checkout@v3
+#        with:
+#          repository: wmde/wbaas-deploy
+#      # Make changes to pull request here
+#      -  run: |
+#          python - <<EOF
+#          from ruamel.yaml import YAML
+#          import sys
 
-          yaml=YAML()
-          with open("k8s/helmfile/env/production/ui.values.yaml.gotmpl") as doc:
-              data=yaml.load(doc)
-          data['image']['tag']="sha-"+$GITHUB_SHA[:7]
-          with open("k8s/helmfile/env/production/ui.values.yaml.gotmpl", 'w') as doc:
-              yaml.dump(data, doc)
-          EOF
-      - uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-production-$GITHUB_RUN_ID
-          committer: wmdebot <github-bots@wikimedia.de>
-          author: ${{ github.actor }} <github-bots@wikimedia.de>
-          labels: automated pr
-          token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
+#          yaml=YAML()
+#          with open("k8s/helmfile/env/production/ui.values.yaml.gotmpl") as doc:
+#              data=yaml.load(doc)
+#          data['image']['tag']="sha-"+$GITHUB_SHA[:7]
+#          with open("k8s/helmfile/env/production/ui.values.yaml.gotmpl", 'w') as doc:
+#              yaml.dump(data, doc)
+#          EOF
+#      - uses: peter-evans/create-pull-request@v4
+#        with:
+#          commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
+#          title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
+#          branch: deploy-to-production-$GITHUB_RUN_ID
+#          committer: wmdebot <github-bots@wikimedia.de>
+#          author: ${{ github.actor }} <github-bots@wikimedia.de>
+#          labels: automated pr
+#          token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
