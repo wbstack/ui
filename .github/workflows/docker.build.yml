@@ -72,11 +72,11 @@ jobs:
       - run: |
           export GET_TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           ./scripts/update-yaml-doc.py \
-            -f ./../k8s/helmfile/env/local/ui.values.yaml.gotmpl \
+            -f "./../wbaas-deploy/k8s/helmfile/env/local/ui.values.yaml.gotmpl" \
             -v "$GET_TAG" \
             -p "image.tag"
           ./scripts/update-yaml-doc.py \
-            -f ./../k8s/helmfile/env/staging/ui.values.yaml.gotmpl \
+            -f "./../wbaas-deploy/k8s/helmfile/env/staging/ui.values.yaml.gotmpl" \
             -v "$GET_TAG" \
             -p "image.tag"
       - uses: peter-evans/create-pull-request@v4
