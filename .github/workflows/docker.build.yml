@@ -60,14 +60,6 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       -
-        name: Setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      -
-        name: Install Python dependencies
-        run: pip install -r ./scripts/requirements.txt
-      -
         name: Check out `wmde/wbaas-deploy` repository in staging child directory
         uses: actions/checkout@v3
         with:
@@ -85,18 +77,9 @@ jobs:
         run: |
           TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
-          ./scripts/update-yaml-doc.py \
-            -f "./repos/wbaas-deploy-staging/k8s/helmfile/env/local/ui.values.yaml.gotmpl" \
-            -v "$TAG" \
-            -p "image.tag"
-          ./scripts/update-yaml-doc.py \
-            -f "./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/ui.values.yaml.gotmpl" \
-            -v "$TAG" \
-            -p "image.tag"
-          ./scripts/update-yaml-doc.py \
-            -f "./repos/wbaas-deploy-production/k8s/helmfile/env/production/ui.values.yaml.gotmpl" \
-            -v "$TAG" \
-            -p "image.tag"
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/local/ui.values.yaml.gotmpl
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/ui.values.yaml.gotmpl
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-production/k8s/helmfile/env/production/ui.values.yaml.gotmpl
       - uses: peter-evans/create-pull-request@v4
         with:
           path: ./repos/wbaas-deploy-staging
