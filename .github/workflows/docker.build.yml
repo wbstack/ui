@@ -66,17 +66,14 @@ jobs:
           python-version: '3.9'
       - run: pip install -r ./scripts/requirements.txt
       -
-        name: create pull request for deploy on staging
+        name: Check out `wmde/wbaas-deploy` repository in child directory
         uses: actions/checkout@v3
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy
-      # Make changes to pull request here
       - 
         name: Update values for local and staging
         run: |
-          pwd
-          ls -lah
           export GET_TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           ./scripts/update-yaml-doc.py \
             -f "./repos/wbaas-deploy/k8s/helmfile/env/local/ui.values.yaml.gotmpl" \
@@ -91,7 +88,7 @@ jobs:
           path: ./repos/wbaas-deploy
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-$GITHUB_RUN_ID
+          branch: deploy-to-staging-${{ github.event.push.push_id }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
