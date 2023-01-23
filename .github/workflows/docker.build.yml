@@ -73,28 +73,30 @@ jobs:
           path: ./repos/wbaas-deploy
       - 
         name: Update values for local and staging
+        id: update-local-staging
         run: |
-          export GET_TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
+          TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
           ./scripts/update-yaml-doc.py \
             -f "./repos/wbaas-deploy/k8s/helmfile/env/local/ui.values.yaml.gotmpl" \
-            -v "$GET_TAG" \
+            -v "$TAG" \
             -p "image.tag"
           ./scripts/update-yaml-doc.py \
             -f "./repos/wbaas-deploy/k8s/helmfile/env/staging/ui.values.yaml.gotmpl" \
-            -v "$GET_TAG" \
+            -v "$TAG" \
             -p "image.tag"
       - uses: peter-evans/create-pull-request@v4
         with:
           path: ./repos/wbaas-deploy
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-${{ github.event.push.head.ref }}
+          branch: deploy-to-staging-${{ steps.update-local-staging.outputs.tag }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
-            This is an automated update for the `ui` image, using `${{ steps.docker_meta.outputs.tags }}`.
+            This is an automated update for the `ui` image, using `${{ steps.update-local-staging.outputs.tag }}`.
       #Production: Create pull request on deploy repo from a merged PR
 #      - name: create pull request for deploy on production
 #        uses: actions/checkout@v3
