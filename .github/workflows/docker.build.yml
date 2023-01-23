@@ -6,7 +6,10 @@ on:
     #  - 'main'
     #tags:
      # - '*'
-  pull_request:
+  # pull_request:
+  push:
+    branches:
+      - 'fr/github-action'
 jobs:
   docker-build:
     runs-on: ubuntu-latest
@@ -69,7 +72,13 @@ jobs:
           repository: wmde/wbaas-deploy
           path: wbaas-deploy
       # Make changes to pull request here
-      - run: |
+      - 
+        name: Update values for local and staging
+        run: |
+          pwd
+          ls -lah
+          ls -lah ./..
+          ls -lah ./../..
           export GET_TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           ./scripts/update-yaml-doc.py \
             -f "./../wbaas-deploy/k8s/helmfile/env/local/ui.values.yaml.gotmpl" \
