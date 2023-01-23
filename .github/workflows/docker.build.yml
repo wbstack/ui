@@ -92,6 +92,8 @@ jobs:
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
             This is an automated update for the `ui` image in staging and local, using `${{ steps.update-local-staging.outputs.tag }}`.
+
+            **Changes**: [${{ github.event.head_commit.message }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
       - uses: peter-evans/create-pull-request@v4
         with:
           path: ./repos/wbaas-deploy-production
@@ -104,3 +106,5 @@ jobs:
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
             This is an automated update for the `ui` image in production, using `${{ steps.update-local-staging.outputs.tag }}`.
+
+            **Changes**: [${{ github.event.head_commit.message }}](https://github.com/wbstack/ui/commit/${{ github.sha }})

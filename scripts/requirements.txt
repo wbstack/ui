@@ -1,4 +1,0 @@
-# This file contains required modules
-# to run some job steps in docker.build.yml, that helps to
-# make edits to the wbaas-deploy repo with open pull requests for deploys
-ruamel_yaml==0.17.21
