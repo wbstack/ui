@@ -1,6 +1,6 @@
 # wbstack UI
 
-The code for the orhttps://www.wbstack.com/ website.
+The code for the https://wikibase.cloud/ website (previously wbstack.com).
 
 ## Development
 
