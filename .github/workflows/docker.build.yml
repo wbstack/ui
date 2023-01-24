@@ -73,7 +73,14 @@ jobs:
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/local/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-production/k8s/helmfile/env/production/ui.values.yaml.gotmpl
-      - uses: peter-evans/create-pull-request@v4
+      -
+        name: Truncate commit message
+        id: truncate-commit-message
+        run: |
+          MSG=$(echo ${{ github.event.head_commit.message }} | head -n 1)
+          echo "msg=$MSG" >> $GITHUB_OUTPUT
+      -
+        uses: peter-evans/create-pull-request@v4
         with:
           path: ./repos/wbaas-deploy-staging
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
@@ -86,8 +93,9 @@ jobs:
           body: |
             This is an automated update for the `ui` image in staging and local, using `${{ steps.update-values.outputs.tag }}`.
 
-            **Changes**: [${{ github.event.head_commit.message }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
-      - uses: peter-evans/create-pull-request@v4
+            **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
+      -
+        uses: peter-evans/create-pull-request@v4
         with:
           path: ./repos/wbaas-deploy-production
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
@@ -100,4 +108,4 @@ jobs:
           body: |
             This is an automated update for the `ui` image in production, using `${{ steps.update-values.outputs.tag }}`.
 
-            **Changes**: [${{ github.event.head_commit.message }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
+            **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
