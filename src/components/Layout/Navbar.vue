@@ -1,9 +1,8 @@
 <template>
   <v-toolbar>
-    <v-toolbar-title>
-      <!-- TODO remove link styling...-->
-      <router-link to="/">wikibase.cloud</router-link>
-    </v-toolbar-title>
+    <a href="/" style="height:64px">
+      <img src="../../assets/logo.svg" style="height:64px">
+    </a>
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <template v-if="isLoggedIn">
