@@ -1,7 +1,7 @@
 <template>
   <v-toolbar>
-    <a href="/" style="height:64px">
-      <img src="../../assets/logo.svg" style="height:64px">
+    <a class="pr-4" href="/" style="height: 64px">
+      <img src="../../assets/logo.svg" style="height: 64px">
     </a>
     <v-spacer></v-spacer>
     <v-toolbar-items>
@@ -42,5 +42,8 @@ text-decoration-line: none;
 }
 a:active, a:hover{
 text-decoration-line: underline;
+}
+/deep/ .v-toolbar__content {
+  padding: 4px 0 4px 0 !important;
 }
 </style>
