@@ -1,9 +1,8 @@
 <template>
   <v-toolbar>
-    <v-toolbar-title>
-      <!-- TODO remove link styling...-->
-      <router-link to="/">wikibase.cloud</router-link>
-    </v-toolbar-title>
+    <a class="pr-4 logo" href="/">
+      <img class="logo" src="../../assets/logo.svg">
+    </a>
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <template v-if="isLoggedIn">
@@ -43,5 +42,11 @@ text-decoration-line: none;
 }
 a:active, a:hover{
 text-decoration-line: underline;
+}
+/deep/ .v-toolbar__content {
+  padding: 4px 0 4px 0 !important;
+}
+.logo{
+  height: 64px;
 }
 </style>
