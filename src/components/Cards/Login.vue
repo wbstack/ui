@@ -78,7 +78,10 @@ export default {
           console.log(err.response)
 
           // If the api gave use details of the error, then use them
-          if (err.response.data.errors) {
+          if (err.response !== undefined &&
+                err.response.data !== undefined &&
+                err.response.data.errors !== undefined
+          ) {
             if (err.response.data.errors.email) {
               this.error.email = err.response.data.errors.email[0]
             }
