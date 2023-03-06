@@ -1,10 +1,10 @@
 <template>
-  <v-card class="elevation-12 mt-16" width="477px">
-    <v-toolbar dark color="primary">
-      <v-toolbar-title>{{title}}</v-toolbar-title>
-    </v-toolbar>
-    <v-card-text>
-      <v-form>
+  <v-form @submit="login">
+    <v-card class="elevation-12 mt-16" width="477px">
+      <v-toolbar dark color="primary">
+        <v-toolbar-title>{{title}}</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
         <v-text-field
           id="inputEmail"
           prepend-icon="email"
@@ -27,14 +27,14 @@
           :disabled="loggingIn"
           :error-messages="error['password']"
         />
-      </v-form>
-      <router-link to="/forgotten-password" style="text-decoration: none">Forgot your password?</router-link>
-    </v-card-text>
-    <v-card-actions class="pb-4 pr-4">
-      <v-spacer></v-spacer>
-      <v-btn class="pr-4 pl-4" @click="login" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
-    </v-card-actions>
-  </v-card>
+        <router-link to="/forgotten-password" style="text-decoration: none">Forgot your password?</router-link>
+      </v-card-text>
+      <v-card-actions class="pb-4 pr-4">
+        <v-spacer></v-spacer>
+        <v-btn class="pr-4 pl-4" type="submit" color="primary" :disabled="loggingIn">{{buttonText}}</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
@@ -66,7 +66,9 @@ export default {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
     },
-    login () {
+    login (evt) {
+      evt.preventDefault()
+
       this.loggingIn = true
       const email = this.email
       const password = this.password

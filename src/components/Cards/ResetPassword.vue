@@ -1,10 +1,10 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
-      <v-toolbar-title>{{title}}</v-toolbar-title>
-    </v-toolbar>
-    <v-card-text>
-      <v-form>
+  <v-form @submit="reset">
+    <v-card class="elevation-12">
+      <v-toolbar dark color="primary">
+        <v-toolbar-title>{{title}}</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
         <v-text-field
           id="inputPassword"
           prepend-icon="lock"
@@ -27,13 +27,13 @@
           :disabled="inFlight"
           :error-messages="error['passwordConfirmation']"
         />
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn @click="reset" color="primary" :disabled="inFlight">{{buttonText}}</v-btn>
-    </v-card-actions>
-  </v-card>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn type="submit" color="primary" :disabled="inFlight">{{buttonText}}</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
@@ -68,7 +68,9 @@ export default {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
     },
-    reset () {
+    reset (evt) {
+      evt.preventDefault()
+
       this.inFlight = true
       this.error = []
 
