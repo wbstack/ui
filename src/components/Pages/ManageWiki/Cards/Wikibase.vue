@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" @submit="doSubmit">
     <v-card>
       <v-card-title>Wikibase Options</v-card-title>
       <v-card-text>
@@ -28,7 +28,7 @@
       <v-card-actions>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" v-on="on" @click="doSubmit">Set Options</v-btn>
+            <v-btn v-bind="attrs" v-on="on" type="submit">Set Options</v-btn>
           </template>
           <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
         </v-tooltip>
@@ -65,7 +65,9 @@ export default {
     this.stringLengthMultilang = this.$store.state.wikis.currentWikiSettings.wwWikibaseStringLengthMultilang
   },
   methods: {
-    doSubmit () {
+    doSubmit (evt) {
+      evt.preventDefault()
+
       const wiki = this.wikiId
       const promises = []
 

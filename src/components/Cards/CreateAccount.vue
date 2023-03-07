@@ -1,102 +1,102 @@
 <template>
-  <v-card class="elevation-12" max-width="477">
-    <v-toolbar dark color="primary">
-      <v-toolbar-title>{{title}}</v-toolbar-title>
-    </v-toolbar>
-    <v-card-text>
-      <p>
-        Wikibase.cloud is in a closed beta. If you'd like to receive an invite code,
-        <a href="https://lime.wikimedia.de/index.php/717538" style="text-decoration: none">
-          sign up for early access.
-        </a>
-      </p>
-      <v-form>
-        <v-text-field
-          id="inputInvite"
-          prepend-icon="vpn_key"
-          name="invite"
-          label="Invite code"
-          v-model="invite"
+  <v-form @submit="createaccount">
+    <v-card class="elevation-12" max-width="477">
+      <v-toolbar dark color="primary">
+        <v-toolbar-title>{{title}}</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
+        <p>
+          Wikibase.cloud is in a closed beta. If you'd like to receive an invite code,
+          <a href="https://lime.wikimedia.de/index.php/717538" style="text-decoration: none">
+            sign up for early access.
+          </a>
+        </p>
+          <v-text-field
+            id="inputInvite"
+            prepend-icon="vpn_key"
+            name="invite"
+            label="Invite code"
+            v-model="invite"
+            :disabled="inFlight"
+            :error-messages="error['inputInvite']"
+          />
+          <v-text-field
+            id="inputEmail"
+            prepend-icon="email"
+            name="login"
+            label="Email address"
+            type="email"
+            required
+            v-model="email"
+            :disabled="inFlight"
+            :error-messages="error['inputEmail']"
+          />
+          <v-text-field
+            id="inputPassword"
+            prepend-icon="lock"
+            name="password"
+            label="Password"
+            type="password"
+            required
+            hint="Your password must be at least 8 characters long."
+            v-model="password"
+            :disabled="inFlight"
+            :error-messages="error['inputPassword']"
+          />
+          <v-text-field
+            id="inputPasswordConfirmation"
+            prepend-icon="lock"
+            name="passwordConfirmation"
+            label="Confirm Password"
+            type="password"
+            required
+            v-model="passwordConfirmation"
+            :disabled="inFlight"
+            :error-messages="error['inputPasswordConfirmation']"
+          />
+          <v-checkbox
+            required
+            v-model="terms"
+            :disabled="inFlight"
+            :error-messages="error['terms']"
+          >
+            <template v-slot:label>
+              <div>
+                I agree to the
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <a
+                      target="_blank"
+                      href="/terms-of-use"
+                      @click.stop
+                      v-on="on"
+                    >
+                      Terms of Use.
+                    </a>
+                  </template>
+                  Opens in new window
+                </v-tooltip>
+              </div>
+            </template>
+          </v-checkbox>
+        <p>
+          This site is protected by reCAPTCHA and the Google
+          <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and
+          <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+        </p>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          type="submit"
+          color="primary"
           :disabled="inFlight"
-          :error-messages="error['inputInvite']"
-        />
-        <v-text-field
-          id="inputEmail"
-          prepend-icon="email"
-          name="login"
-          label="Email address"
-          type="email"
-          required
-          v-model="email"
-          :disabled="inFlight"
-          :error-messages="error['inputEmail']"
-        />
-        <v-text-field
-          id="inputPassword"
-          prepend-icon="lock"
-          name="password"
-          label="Password"
-          type="password"
-          required
-          hint="Your password must be at least 8 characters long."
-          v-model="password"
-          :disabled="inFlight"
-          :error-messages="error['inputPassword']"
-        />
-        <v-text-field
-          id="inputPasswordConfirmation"
-          prepend-icon="lock"
-          name="passwordConfirmation"
-          label="Confirm Password"
-          type="password"
-          required
-          v-model="passwordConfirmation"
-          :disabled="inFlight"
-          :error-messages="error['inputPasswordConfirmation']"
-        />
-        <v-checkbox
-          required
-          v-model="terms"
-          :disabled="inFlight"
-          :error-messages="error['terms']"
-        >
-          <template v-slot:label>
-            <div>
-              I agree to the
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <a
-                    target="_blank"
-                    href="/terms-of-use"
-                    @click.stop
-                    v-on="on"
-                  >
-                    Terms of Use.
-                  </a>
-                </template>
-                Opens in new window
-              </v-tooltip>
-            </div>
-          </template>
-        </v-checkbox>
-      </v-form>
-      <p>
-        This site is protected by reCAPTCHA and the Google
-        <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and
-        <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
-      </p>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn
-      @click="createaccount"
-      color="primary"
-      :disabled="inFlight"
-      >
-      {{buttonText}}
-    </v-btn>
-    </v-card-actions>
-  </v-card>
+          >
+          {{buttonText}}
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
@@ -145,7 +145,8 @@ export default {
       this.error.terms = error
       this.inFlight = false
     },
-    createaccount () {
+    createaccount (evt) {
+      evt.preventDefault()
       // Request is processing
       this.inFlight = true
 

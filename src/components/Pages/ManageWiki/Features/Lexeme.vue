@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" v-model="valid">
+  <v-form ref="form" v-model="valid" @submit="confirmAction">
     <v-card elevation="1" class="padding" outlined>
       <v-card-title>Lexeme</v-card-title>
       <v-card-text>
@@ -36,7 +36,9 @@
           <v-spacer></v-spacer>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" v-bind="attrs" v-on="on" text @click="confirmAction">I understand</v-btn>
+              <v-btn color="primary" v-bind="attrs" v-on="on" text type="submit">
+                I understand
+              </v-btn>
             </template>
             <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
           </v-tooltip>

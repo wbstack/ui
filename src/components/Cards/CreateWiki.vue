@@ -1,10 +1,10 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
-      <v-toolbar-title>{{title}}</v-toolbar-title>
-    </v-toolbar>
-    <v-card-text>
-      <v-form>
+  <v-form @submit="createwiki">
+    <v-card class="elevation-12">
+      <v-toolbar dark color="primary">
+        <v-toolbar-title>{{title}}</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
 
         <h3>Site Name
           <v-tooltip right>
@@ -115,19 +115,19 @@
           </template>
         </v-checkbox>
 
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn
-      @click="createwiki"
-      color="primary"
-      :disabled="inFlight"
-      >
-      {{buttonText}}
-    </v-btn>
-    </v-card-actions>
-  </v-card>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          type="submit"
+          color="primary"
+          :disabled="inFlight"
+        >
+          {{buttonText}}
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
@@ -166,7 +166,9 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    createwiki () {
+    createwiki (evt) {
+      evt.preventDefault()
+
       this.inFlight = true
       this.hasError = false
       this.error = []
