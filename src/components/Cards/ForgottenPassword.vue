@@ -29,7 +29,7 @@
           There was a server error ( {{error}} ) sending email to <b>{{email}}</b>. Please double check it or try again later.
         </v-alert>
         <v-alert class="mt-8 mr-2 ml-2" outlined type="success" border="left" v-if="success">
-          An email has been sent to <b>{{email}}</b>
+          If there is an account registered with the email <b>{{email}}</b> a password reset link will be sent to it.
         </v-alert>
         <div class="mr-2 ml-2" v-if="success">If you do not receive this email within a few minutes, check your spam folder or verify that you used the correct email address.</div>
       </v-card-text>
