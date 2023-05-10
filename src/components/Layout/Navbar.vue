@@ -11,7 +11,24 @@
         <v-btn id="nav-user" text to="/user">Account</v-btn>
         <v-btn id="nav-logout" text to="/logout">Logout</v-btn>
       </template>
-      <template v-if="!isLoggedIn">
+      <v-menu bottom left v-if="($vuetify.breakpoint.width < 400)  && !isLoggedIn">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on">
+            <v-icon>mdi-dots-horizontal</v-icon>
+          </v-btn>
+        </template>
+        <v-list >
+          <v-list-item-group v-model="model">
+            <v-list-item>
+              <v-btn id="nav-login" text to="/login">Log in</v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-btn id="nav-create-account" text to="/create-account">Sign up</v-btn>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+        </v-menu>
+      <template v-else>
         <v-btn id="nav-login" text to="/login">Log in</v-btn>
         <v-btn id="nav-create-account" ext color="primary" to="/create-account">Sign up</v-btn>
       </template>
