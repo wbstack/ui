@@ -28,8 +28,7 @@
           </v-list-item-group>
         </v-list>
         </v-menu>
-      </template>
-      <template v-else-if="!isLoggedIn">
+      <template v-else>
         <v-btn id="nav-create-account" text to="/create-account">Sign up</v-btn>
         <v-btn id="nav-login" color="primary" to="/login">Log in</v-btn>
       </template>
@@ -66,8 +65,5 @@ text-decoration-line: underline;
 }
 .logo{
   height: 64px;
-}
-.button{
-  padding: 16px 16px 16px 16px;
 }
 </style>
