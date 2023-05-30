@@ -7,7 +7,7 @@ import router from './router'
 import store from './store'
 import { api, axios } from './backend'
 import Vuetify from 'vuetify'
-import 'material-design-icons-iconfont/dist/material-design-icons.css' // Must be loaded before vuetify css
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 import config from '~/config'
@@ -36,7 +36,7 @@ new Vue({
   store,
   vuetify: new Vuetify({
     icons: {
-      iconfont: 'md'
+      iconfont: 'mdi'
     }
   }),
   components: { App },
