@@ -7,7 +7,7 @@
       <v-card-text>
         <v-text-field
           id="inputEmail"
-          prepend-icon="email"
+          prepend-icon="mdi-email"
           name="login"
           label="Email address"
           type="email"
@@ -18,7 +18,7 @@
         />
         <v-text-field
           id="inputPassword"
-          prepend-icon="lock"
+          prepend-icon="mdi-lock"
           name="password"
           label="Password"
           type="password"

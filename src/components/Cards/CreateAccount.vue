@@ -13,7 +13,7 @@
         </p>
           <v-text-field
             id="inputInvite"
-            prepend-icon="vpn_key"
+            prepend-icon="mdi-key"
             name="invite"
             label="Invite code"
             v-model="invite"
@@ -22,7 +22,7 @@
           />
           <v-text-field
             id="inputEmail"
-            prepend-icon="email"
+            prepend-icon="mdi-email"
             name="login"
             label="Email address"
             type="email"
@@ -33,7 +33,7 @@
           />
           <v-text-field
             id="inputPassword"
-            prepend-icon="lock"
+            prepend-icon="mdi-lock"
             name="password"
             label="Password"
             type="password"
@@ -45,7 +45,7 @@
           />
           <v-text-field
             id="inputPasswordConfirmation"
-            prepend-icon="lock"
+            prepend-icon="mdi-lock"
             name="passwordConfirmation"
             label="Confirm Password"
             type="password"

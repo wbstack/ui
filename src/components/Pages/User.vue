@@ -8,7 +8,7 @@
           <v-form @submit="sendVerifyEmail">
             <v-text-field
               id="inputEmail"
-              prepend-icon="email"
+              prepend-icon="mdi-email"
               label="Email address"
               type="email"
               v-model="currentUser.email"
