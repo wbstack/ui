@@ -80,7 +80,7 @@ jobs:
           MSG=$(echo "${{ github.event.head_commit.message }}" | head -n 1)
           echo "msg=$MSG" >> $GITHUB_OUTPUT
       -
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           path: ./repos/wbaas-deploy-staging
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
@@ -95,7 +95,7 @@ jobs:
 
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
       -
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           path: ./repos/wbaas-deploy-production
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
