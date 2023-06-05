@@ -9,7 +9,7 @@
         <h3>Site Name
           <v-tooltip right>
             <template v-slot:activator="{ on }">
-              <v-icon v-on="on">info_outline</v-icon>
+              <v-icon v-on="on">mdi-information-outline</v-icon>
             </template>
             <span>The main name of your site</span><br/>
             <span>Will appear in your page titles and can be changed at any time</span><br/>
@@ -19,7 +19,7 @@
 
         <v-text-field
         id="inputSiteName"
-        prepend-icon="title"
+        prepend-icon="mdi-format-title"
         name="sitename"
         label="E.g., Goat Collective"
         v-model="sitename"
@@ -30,7 +30,7 @@
         <h3>Site Domain
           <v-tooltip right>
             <template v-slot:activator="{ on }">
-              <v-icon v-on="on">info_outline</v-icon>
+              <v-icon v-on="on">mdi-information-outline</v-icon>
             </template>
             <span>A domain name is the site address people type into their browser to visit your site</span><br/>
             <span>If you already own a domain you can use it by selecting "Custom Domain"</span><br/>
@@ -46,7 +46,7 @@
 
         <v-text-field v-if="domainRadioChoice === 'sub'"
                       id="inputSubdomain"
-                      prepend-icon="web"
+                      prepend-icon="mdi-web"
                       name="subdomain"
                       label="E.g. goat-collective"
                       v-model="subdomain"
@@ -57,7 +57,7 @@
 
         <v-text-field v-if="domainRadioChoice === 'own'"
                       id="inputDomain"
-                      prepend-icon="web"
+                      prepend-icon="mdi-web"
                       name="domain"
                       label="E.g. goat-collective.com"
                       v-model="domain"
@@ -71,7 +71,7 @@
         <h3>Your User
           <v-tooltip right>
             <template v-slot:activator="{ on }">
-              <v-icon v-on="on">info_outline</v-icon>
+              <v-icon v-on="on">mdi-information-outline</v-icon>
             </template>
             <span>Choose the username of your user and the first admin user on the site</span><br/>
             <span>You will receive an email with log in details for this account</span><br/>
@@ -80,7 +80,7 @@
 
         <v-text-field
         id="inputUsername"
-        prepend-icon="person"
+        prepend-icon="mdi-account"
         name="username"
         label="E.g., Addshore"
         v-model="username"

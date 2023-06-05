@@ -8,7 +8,7 @@
         placeholder="Pick a Skin"
         hint="The default skin is Vector."
         persistent-hint
-        prepend-icon="web"
+        prepend-icon="mdi-web"
         v-model="skin"
         :disabled="inFlight"
         :error-messages="error"

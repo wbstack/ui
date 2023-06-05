@@ -17,7 +17,7 @@
             <v-toolbar-title>Change Lexeme settings</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon dark @click="hideModal">
-              <v-icon>close</v-icon>
+              <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
         <br />
