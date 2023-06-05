@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-tooltip right>
         <template v-slot:activator="{ on }">
-          <v-icon v-on="on">info_outline</v-icon>
+          <v-icon v-on="on">mdi-information-outline</v-icon>
         </template>
         <span>During Alpha if you would like to change these details please contact us.</span>
       </v-tooltip>

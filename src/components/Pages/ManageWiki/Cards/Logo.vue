@@ -5,7 +5,7 @@
       <v-file-input
         hint="Upload a square PNG logo that is at least 135x135 pixels."
         label="Logo"
-        prepend-icon="branding_watermark"
+        prepend-icon="mdi-watermark"
         accept="image/png"
         :show-size="true"
         :persistent-hint="true"
