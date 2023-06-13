@@ -13,7 +13,7 @@
       </template>
       <v-menu bottom left v-if="($vuetify.breakpoint.width < 400)  && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on">
+          <v-btn class="dots-button" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
         </template>
@@ -65,5 +65,9 @@ text-decoration-line: underline;
 }
 .logo{
   height: 64px;
+}
+.dots-button{
+  box-shadow: none;
+  background-color: transparent !important;
 }
 </style>
