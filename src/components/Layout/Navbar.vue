@@ -11,7 +11,7 @@
         <v-btn id="nav-user" text to="/user">Account</v-btn>
         <v-btn id="nav-logout" text to="/logout">Logout</v-btn>
       </template>
-      <v-menu bottom left v-if="($vuetify.breakpoint.width < 400)  && !isLoggedIn">
+      <v-menu bottom left v-if="($vuetify.breakpoint.width < 434)  && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="dots-button" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
