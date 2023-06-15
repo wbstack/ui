@@ -10,7 +10,7 @@
         <v-text-field
         class="mr-2 ml-2"
         id="inputEmail"
-        prepend-icon="email"
+        prepend-icon="mdi-email"
         name="reset"
         label="Email address"
         type="email"
