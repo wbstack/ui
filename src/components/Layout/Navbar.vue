@@ -19,10 +19,10 @@
         </template>
         <v-list>
           <v-list-item-group>
-            <v-list-item to="/login" style="text-decoration: none;">
+            <v-list-item class="text-no-wrap" to="/login" style="text-decoration: none;">
               Log in
             </v-list-item>
-            <v-list-item to="/create-account" style="text-decoration: none;">
+            <v-list-item class="text-no-wrap" to="/create-account" style="text-decoration: none;">
               Sign up
             </v-list-item>
           </v-list-item-group>
