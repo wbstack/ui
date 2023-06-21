@@ -17,17 +17,17 @@
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
         </template>
-        <v-list >
-          <v-list-item-group v-model="model">
-            <v-list-item>
-              <v-btn id="nav-login" text to="/login">Log in</v-btn>
+        <v-list>
+          <v-list-item-group>
+            <v-list-item to="/login" style="text-decoration: none;">
+              Log in
             </v-list-item>
-            <v-list-item>
-              <v-btn id="nav-create-account" text to="/create-account">Sign up</v-btn>
+            <v-list-item to="/create-account" style="text-decoration: none;">
+              Sign up
             </v-list-item>
           </v-list-item-group>
         </v-list>
-        </v-menu>
+      </v-menu>
       <template v-else>
         <v-btn id="nav-create-account" text to="/create-account">Sign up</v-btn>
         <v-btn id="nav-login" color="primary" to="/login">Log in</v-btn>
