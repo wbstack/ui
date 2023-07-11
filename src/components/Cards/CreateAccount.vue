@@ -206,7 +206,7 @@ export default {
 
             // Otherwise show a general error state
             if (!this.hasError) {
-              this.setGeneralErrorState()
+              this.setGeneralErrorState(errors)
             }
 
             this.$store.dispatch('logout')
