@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.3.0
+    - uses: actions/checkout@v3.5.3
 
     - uses: c-py/action-dotenv-to-setenv@v4
       with:
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.3.0
+    - uses: actions/checkout@v3.5.3
 
     - uses: c-py/action-dotenv-to-setenv@v4
       with:
