@@ -135,7 +135,8 @@ export default {
       this.hasError = false
       this.error = []
     },
-    setGeneralErrorState (error = 'Something went wrong.') {
+    setGeneralErrorState (error) {
+      error = error || 'Something went wrong'
       this.resetErrorState()
       this.hasError = true
       this.error.inputInvite = error
