@@ -10,7 +10,7 @@
         <v-btn id="nav-user" text to="/user">Account</v-btn>
         <v-btn id="nav-logout" text to="/logout">Logout</v-btn>
       </template>
-        <v-menu internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
+        <v-menu content-class="menu" internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="dots-button mr-4" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
@@ -65,5 +65,10 @@ text-decoration-line: underline;
 .dots-button{
   box-shadow: none;
   background-color: transparent !important;
+}
+.menu {
+  top: 25vh !important;
+  left: 50vw !important;
+  border-radius: 20%;
 }
 </style>
