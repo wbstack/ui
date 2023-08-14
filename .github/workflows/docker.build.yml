@@ -77,7 +77,7 @@ jobs:
         name: Truncate commit message
         id: truncate-commit-message
         run: |
-          MSG=$(echo "${{ github.event.head_commit.message }}" | head -n 1)
+          MSG=$(echo '${{ github.event.head_commit.message }}' | head -n 1)
           echo "msg=$MSG" >> $GITHUB_OUTPUT
       -
         uses: peter-evans/create-pull-request@v5
