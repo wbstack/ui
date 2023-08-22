@@ -4,14 +4,13 @@
       <img class="logo" src="../../assets/logo.svg">
     </a>
     <v-spacer></v-spacer>
-    <v-toolbar-items>
       <template v-if="isLoggedIn">
         <v-btn class="text-none no-button-pointer-events" text> Hi {{ currentUser.email }}</v-btn>
         <v-btn id="nav-dashboard" text to="/dashboard">Dashboard</v-btn>
         <v-btn id="nav-user" text to="/user">Account</v-btn>
         <v-btn id="nav-logout" text to="/logout">Logout</v-btn>
       </template>
-      <v-menu content-class="menu" transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
+      <v-menu content-class="menu" internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="dots-button mr-4" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
@@ -27,10 +26,9 @@
         </v-list>
       </v-menu>
       <template v-if="($vuetify.breakpoint.width >= 600) && !isLoggedIn">
-        <v-btn id="nav-create-account" large text to="/create-account">Sign up</v-btn>
+        <v-btn id="nav-create-account" class="mr-4" large text to="/create-account">Sign up</v-btn>
         <v-btn id="nav-login" class="mr-4" large color="primary" to="/login">Log in</v-btn>
       </template>
-    </v-toolbar-items>
   </v-toolbar>
 </template>
 
@@ -69,7 +67,7 @@ text-decoration-line: underline;
   background-color: transparent !important;
 }
 .menu{
-  margin-top: 40px;
+  margin-top: 10px;
   margin-left: -5px;
 }
 </style>
