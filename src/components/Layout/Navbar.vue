@@ -26,8 +26,27 @@
         </v-list>
       </v-menu>
       <template v-if="($vuetify.breakpoint.width >= 600) && !isLoggedIn">
-        <v-btn id="nav-create-account" class="mr-4" large text style="text-decoration: none;" to="/login">Log In</v-btn>
-        <v-btn id="nav-login" class="mr-4" large color="primary" style="text-decoration: none;" to="/create-account">Sign Up</v-btn>
+        <v-btn
+          id="nav-login"
+          class="mr-4"
+          large
+          text
+          style="text-decoration: none;"
+          to="/login"
+        >
+          Log In
+        </v-btn>
+        <v-btn
+          id="nav-create-account"
+          class="mr-4"
+          large
+          elevation="0"
+          color="primary"
+          style="text-decoration: none;"
+          to="/create-account"
+        >
+          Sign Up
+        </v-btn>
       </template>
   </v-toolbar>
 </template>
@@ -69,5 +88,8 @@ text-decoration-line: underline;
 .menu{
   margin-top: 2px;
   margin-left: -5px;
+}
+.v-btn:before {
+  opacity: 0 !important;
 }
 </style>
