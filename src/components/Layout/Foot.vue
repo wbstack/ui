@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer">
   <v-footer color="primary lighten-1">
     <v-container>
     <v-row dense>
@@ -7,6 +7,7 @@
     <v-col cols="10">
       <ul class="footer-list">
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/about-us/">About</a></li>
+          <li><router-link to="/discovery">Discovery</router-link></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">Documentation</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
           <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
@@ -39,5 +40,10 @@ export default {
   .white-footer-links a{
     color: white !important;
   }
-
+  .footer {
+    height: auto;
+  }
+  .v-footer, .container {
+    height: 100%;
+  }
 </style>

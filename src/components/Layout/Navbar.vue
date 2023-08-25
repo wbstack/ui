@@ -49,4 +49,7 @@ text-decoration-line: underline;
 .logo{
   height: 64px;
 }
+.v-toolbar {
+  max-height: 64px;
+}
 </style>

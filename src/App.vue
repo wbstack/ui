@@ -1,8 +1,8 @@
 <template>
   <v-app id="app">
       <Navbar></Navbar>
-
-      <v-container class="full-height-content">
+      <router-view v-if="customLayout"/>
+      <v-container v-else class="full-height-content">
         <v-row >
           <v-col cols="1"></v-col>
           <v-col cols="10">
@@ -11,9 +11,7 @@
           <v-col cols="1"></v-col>
         </v-row>
       </v-container>
-
-      <Foot></Foot>
-
+      <Foot :class="{'tall-footer': customLayout}"></Foot>
       <Interval
         v-if="this.$store.getters.isLoggedIn && !this.$store.getters.currentUser.verified"
         :callback="checkVerified"
@@ -34,6 +32,11 @@ export default {
     Foot,
     Interval
   },
+  computed: {
+    customLayout: function () {
+      return this.$route.meta.customLayout;
+    }
+  },
   methods: {
     checkVerified () {
       this.$api
@@ -51,4 +54,8 @@ export default {
   .full-height-content {
     height: 100%
   }
+
+.tall-footer.footer {
+  height: 100%;
+}
 </style>

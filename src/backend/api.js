@@ -52,3 +52,14 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
 export const updateSkin = async payload => updateSetting('wgDefaultSkin', payload)
 export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
+export const wikiDiscovery = async ({ sort, direction, active, currentPage, resultsPerPage }) => {
+  return (await axios.get('/wiki', {
+    params: {
+      sort: sort,
+      direction: direction,
+      // is_active: active,
+      page: currentPage,
+      per_page: resultsPerPage,
+    }
+  })).data
+}
