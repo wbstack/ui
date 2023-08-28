@@ -11,7 +11,7 @@
         <v-col class="details">
           <div class="text-h5 font-weight-regular">{{name}}</div>
           <div v-if="stats" class="text-body-2 pages">No. of pages: {{pages}}</div>
-          <div v-else class="text-body-2 pages">No. of pages: <i>available in 24h</i></div>
+          <div v-else class="text-body-2 pages">No. of pages: <i>currently unavailable</i></div>
         </v-col>
       </v-row>
     </v-container>
