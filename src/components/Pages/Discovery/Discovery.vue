@@ -188,7 +188,11 @@ export default {
   width: 185px;
 }
 .options > .v-input--checkbox {
+  margin-top: 0;
   margin-left: 24px;
+  padding-top: 0;
+  padding-bottom: 4px;
+  vertical-align: middle;
 }
 @media screen and (max-width: 632px) {
   /* 632 = 2 * 288 (card) + 2 * 16 (margin) + 24 (grid column gap) */
