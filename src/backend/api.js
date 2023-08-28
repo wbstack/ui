@@ -57,7 +57,7 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
     params: {
       sort: sort,
       direction: direction,
-      // is_active: active,
+      is_active: active,
       page: currentPage,
       per_page: resultsPerPage,
     }

@@ -101,7 +101,7 @@ export default {
         const response = await this.$api.wikiDiscovery({
           sort: this.sortValue.sort,
           direction: this.sortValue.direction,
-          active: this.excludeEmpty,
+          active: this.excludeEmpty ? 1 : 0,
           currentPage: this.currentPage,
           resultsPerPage: this.resultsPerPage
         });
