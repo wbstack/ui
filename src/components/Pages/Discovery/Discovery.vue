@@ -124,6 +124,13 @@ export default {
       } finally {
         this.inputDisabled = false;
       }
+    },
+    filter () {
+      if (this.currentPage === 1) {
+        this.update();
+      } else {
+        this.currentPage = 1;
+      }
     }
   },
   computed: {
@@ -133,10 +140,10 @@ export default {
   },
   watch: {
     sortValue: function () {
-      this.update();
+      this.filter();
     },
     excludeEmpty: function () {
-      this.update();
+      this.filter();
     },
     currentPage: function () {
       this.update();
