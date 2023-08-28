@@ -229,7 +229,7 @@ export default {
 @media screen and (min-width: 1680px) {
   .content {
     margin: 40px auto 0 auto;
-    width: 1680px;
+    width: 1514px;
   }
   .pagination {
     max-width: 50%;
