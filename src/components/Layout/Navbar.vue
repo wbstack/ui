@@ -89,7 +89,7 @@ text-decoration-line: underline;
   margin-top: 2px;
   margin-left: -5px;
 }
-.v-btn--active:before {
-  content: none;
+.theme--light.v-btn--active:before {
+  opacity: 0;
 }
 </style>
