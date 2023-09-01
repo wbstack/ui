@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Grid',
+  name: 'MasonryGrid',
   data () {
     return {
       timer: null

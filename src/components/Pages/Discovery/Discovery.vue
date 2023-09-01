@@ -26,8 +26,8 @@
     <span class="text-body-2">
       {{results}} results
     </span>
-    <Grid class="cards">
-      <Wiki v-for="(wiki, index) in wikis" :key="index"
+    <MasonryGrid class="cards">
+      <DiscoveryCard v-for="(wiki, index) in wikis" :key="index"
         class="card"
         :name="wiki.name"
         :url="wiki.url"
@@ -35,7 +35,7 @@
         :stats="wiki.stats"
         :pages="wiki.pages"
       />
-    </Grid>
+    </MasonryGrid>
     <div v-if="paginate" class="pagination">
       <v-pagination
         v-model="currentPage"
@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import Wiki from './Cards/Wiki.vue'
-import Grid from './Grid.vue'
+import DiscoveryCard from './Components/DiscoveryCard.vue'
+import MasonryGrid from './Components/MasonryGrid.vue'
 
 const SortOptions = {
   alphaAsc: {
@@ -77,8 +77,8 @@ const SortOptions = {
 export default {
   name: 'Discovery',
   components: {
-    Wiki,
-    Grid
+    DiscoveryCard,
+    MasonryGrid
   },
   data () {
     return {
