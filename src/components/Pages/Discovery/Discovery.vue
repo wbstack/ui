@@ -26,18 +26,16 @@
     <span class="text-body-2">
       {{results}} results
     </span>
-    <div class="wikis">
-      <div v-for="(wiki, index) in wikis" :key="index">
-        <Wiki
-          class="card"
-          :name="wiki.name"
-          :url="wiki.url"
-          :logo="wiki.logo"
-          :stats="wiki.stats"
-          :pages="wiki.pages"
-        />
-      </div>
-    </div>
+    <Grid class="cards">
+      <Wiki v-for="(wiki, index) in wikis" :key="index"
+        class="card"
+        :name="wiki.name"
+        :url="wiki.url"
+        :logo="wiki.logo"
+        :stats="wiki.stats"
+        :pages="wiki.pages"
+      />
+    </Grid>
     <div v-if="paginate" class="pagination">
       <v-pagination
         v-model="currentPage"
@@ -50,6 +48,7 @@
 
 <script>
 import Wiki from './Cards/Wiki.vue'
+import Grid from './Grid.vue'
 
 const SortOptions = {
   alphaAsc: {
@@ -78,7 +77,8 @@ const SortOptions = {
 export default {
   name: 'Discovery',
   components: {
-    Wiki
+    Wiki,
+    Grid
   },
   data () {
     return {
@@ -170,12 +170,8 @@ export default {
 .title {
   margin-bottom: 4px;
 }
-.wikis {
+.cards {
   margin-top: 24px;
-  display: grid;
-  row-gap: 16px;
-  column-gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
 }
 .options {
   padding: 0 !important;
@@ -196,7 +192,7 @@ export default {
 }
 @media screen and (max-width: 632px) {
   /* 632 = 2 * 288 (card) + 2 * 16 (margin) + 24 (grid column gap) */
-  .wikis {
+  .cards {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
