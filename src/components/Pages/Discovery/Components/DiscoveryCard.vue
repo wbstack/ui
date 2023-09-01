@@ -45,16 +45,16 @@ export default {
   },
   computed: {
     character: function () {
-      return this.name.substring(0, 1).toUpperCase();
+      return this.name.substring(0, 1).toUpperCase()
     },
     color: function () {
-      const colors = ['red', 'blue', 'green', 'purple'];
-      return this.logo ? 'white' : colors[Math.floor(Math.random() * colors.length)];
+      const colors = ['red', 'blue', 'green', 'purple']
+      return this.logo ? 'white' : colors[Math.floor(Math.random() * colors.length)]
     }
   },
   methods: {
     goToWiki () {
-      window.open(this.url.href, '_blank');
+      window.open(this.url.href, '_blank')
     }
   }
 }

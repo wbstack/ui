@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     customLayout: function () {
-      return this.$route.meta.customLayout;
+      return this.$route.meta.customLayout
     }
   },
   methods: {

@@ -18,34 +18,34 @@ export default {
         style = window.getComputedStyle(this.$refs.grid),
         rowGap = parseInt(style.getPropertyValue('row-gap')),
         gridAutoRows = parseInt(style.getPropertyValue('grid-auto-rows')),
-        rowHeight = rowGap + gridAutoRows;
+        rowHeight = rowGap + gridAutoRows
 
       Array.from(cards).forEach((card) => {
         const cardHeight = card.firstChild.getBoundingClientRect().height + rowGap,
-          numRows = Math.round(cardHeight / rowHeight);
-        card.style['grid-row'] = 'span ' + numRows;
-      });
+          numRows = Math.round(cardHeight / rowHeight)
+        card.style['grid-row'] = 'span ' + numRows
+      })
     },
     debounceResize (time) {
-      clearTimeout(this.timer);
+      clearTimeout(this.timer)
       this.timer = setTimeout(() => {
-        this.resizeCards();
-      }, time);
+        this.resizeCards()
+      }, time)
     },
     windowResized () {
-      this.debounceResize(50);
+      this.debounceResize(50)
     }
   },
   created () {
-    window.addEventListener('resize', this.windowResized);
+    window.addEventListener('resize', this.windowResized)
   },
   destroyed () {
-    window.removeEventListener('resize', this.windowResized);
+    window.removeEventListener('resize', this.windowResized)
   },
   updated () {
     this.$nextTick(() => {
-      this.resizeCards();
-    });
+      this.resizeCards()
+    })
   }
 }
 </script>

@@ -124,7 +124,7 @@ const router = new Router({
       meta: {
         customLayout: true
       }
-    },
+    }
   ]
 })
 

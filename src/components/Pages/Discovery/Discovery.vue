@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     async update () {
-      this.inputDisabled = true;
+      this.inputDisabled = true
 
       try {
         const response = await this.$api.wikiDiscovery({
@@ -104,11 +104,11 @@ export default {
           active: this.excludeEmpty ? 1 : 0,
           currentPage: this.currentPage,
           resultsPerPage: this.resultsPerPage
-        });
+        })
 
-        this.results = response.meta.total;
-        this.totalPages = response.meta.last_page;
-        this.wikis = response.data.map((wiki) => {
+        this.results = response.meta.total
+        this.totalPages = response.meta.last_page
+        this.wikis = await response.data.map((wiki) => {
           const stats = wiki.wiki_site_stats
           return {
             name: wiki.sitename,
@@ -117,40 +117,40 @@ export default {
             stats: !!stats,
             ...(stats && { pages: stats.pages })
           }
-        });
+        })
       } catch (error) {
-        console.log(error);
-        alert('Failed to collect Wikibase stats');
+        console.log(error)
+        alert('Failed to collect Wikibase stats')
       } finally {
-        this.inputDisabled = false;
+        this.inputDisabled = false
       }
     },
     filter () {
       if (this.currentPage === 1) {
-        this.update();
+        this.update()
       } else {
-        this.currentPage = 1;
+        this.currentPage = 1
       }
     }
   },
   computed: {
     paginate: function () {
-      return this.results > this.resultsPerPage;
+      return this.results > this.resultsPerPage
     }
   },
   watch: {
     sortValue: function () {
-      this.filter();
+      this.filter()
     },
     excludeEmpty: function () {
-      this.filter();
+      this.filter()
     },
     currentPage: function () {
-      this.update();
+      this.update()
     }
   },
   mounted () {
-    this.update();
+    this.update()
   }
 }
 </script>
