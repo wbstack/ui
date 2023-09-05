@@ -50,6 +50,83 @@ const removeWiki = wikiIndex => {
   localStorage.setItem('msw-myWikis', JSON.stringify(myWikis))
 }
 
+const wikiDiscovery = (referrer, params) => {
+  const pseudorandom = {
+    seed: 1,
+    next: function() {
+      const x = Math.sin(this.seed++) * 10000
+      return x - Math.floor(x)
+    }
+  }
+
+  const names = [
+    'Wikibase Name',
+    'A Very Long Wikibase Name'
+  ]
+
+  let wikis = [...Array(75).keys()].map((id) => {
+    const wiki = {
+      id: id,
+      domain: id + '-wikibase.wbaas.localhost',
+      sitename: id + ' - ' + names[id % names.length],
+      wiki_site_stats: null,
+      logo_url: null
+    }
+
+    if (pseudorandom.next() >= 0.1) {
+      wiki.wiki_site_stats = {
+        pages: Math.ceil(pseudorandom.next() * 250)
+      }
+    }
+
+    if (pseudorandom.next() >= 0.5) {
+      wiki.logo_url = referrer + 'favicon.ico'
+    }
+    return wiki
+  })
+
+  if (parseInt(params.get('is_active'))) {
+    wikis = wikis.filter((wiki) => {
+      const stats = wiki.wiki_site_stats
+      return stats && stats.pages > 1
+    })
+  }
+
+  if (params.get('sort') === 'sitename') {
+    wikis = wikis.sort((a, b) => {
+      let sort = a.sitename.localeCompare(b.sitename, 'en', { numeric: true })
+      if (params.get('direction') === 'desc') {
+        sort *= -1
+      }
+      return sort
+    })
+  }
+
+  if (params.get('sort') === 'pages') {
+    wikis = wikis.sort((a, b) => {
+      const aPages = a.wiki_site_stats ? a.wiki_site_stats.pages : 0
+      const bPages = b.wiki_site_stats ? b.wiki_site_stats.pages : 0
+      if (params.get('direction') === 'desc') {
+        return bPages - aPages
+      }
+      return aPages - bPages
+    })
+  }
+
+  const currentPage = parseInt(params.get('page'))
+  const resultsPerPage = parseInt(params.get('per_page'))
+  const start = (currentPage - 1) * resultsPerPage
+  const end = start + resultsPerPage
+
+  return {
+    data: wikis.slice(start, end),
+    meta: {
+      last_page: Math.ceil(wikis.length / resultsPerPage),
+      total: wikis.length
+    }
+  }
+}
+
 export const handlers = [
   /* User endpoints */
   rest.post(/\/auth\/login$/, (req, res, ctx) => {
@@ -108,5 +185,8 @@ export const handlers = [
       return res(ctx.status(404))
     }
     return res(ctx.json({ data: wikiDetails }), ctx.status(200))
+  }),
+  rest.get(/\/wiki$/, (req, res, ctx) => {
+    return res(ctx.json(wikiDiscovery(req.referrer, req.url.searchParams)))
   })
 ]
