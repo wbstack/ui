@@ -80,7 +80,7 @@ const wikiDiscovery = (referrer, params) => {
     }
 
     if (pseudorandom.next() >= 0.5) {
-      wiki.logo_url = referrer + 'favicon.ico'
+      wiki.logo_url = new URL(referrer).origin + '/favicon.ico'
     }
     return wiki
   })
