@@ -3,7 +3,7 @@ import Home from '@/components/Pages/Home/Home.vue'
 
 describe('Home.vue', () => {
   it('renders some text', () => {
-    const msg = 'Make your structured data available in our cloud'
+    const msg = 'Your own Wikibase in five minutes'
     const wrapper = shallowMount(Home)
     expect(wrapper.text()).toMatch(msg)
   })
