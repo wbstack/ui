@@ -87,7 +87,7 @@ export default {
       currentPage: 1,
       totalPages: 1,
       excludeEmpty: true,
-      sortValue: SortOptions.alphaAsc.value,
+      sortValue: SortOptions.pagesDesc.value,
       sortOptions: Object.values(SortOptions),
       inputDisabled: false,
       wikis: []
