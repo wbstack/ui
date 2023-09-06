@@ -1,5 +1,5 @@
 <template>
-  <v-card @click="goToWiki">
+  <v-card @click="goToWiki" @keyup.enter="goToWiki">
     <v-container class="content">
       <v-row no-gutters>
         <v-col class="flex-grow-0">
