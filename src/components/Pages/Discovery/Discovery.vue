@@ -1,10 +1,12 @@
 <template>
   <div class="content">
-    <span class="text-h4 title">
-      Discover other Wikibases on Cloud
-    </span>
-    <div class="text-subtitle-1">
-      Quick text explaining what this does and what it's good for.
+    <div class="intro">
+      <div class="text-h4 title">
+        A tour of Wikibases in the cloud
+      </div>
+      <div class="text-subtitle-1">
+        Have you ever wanted to take a look at other Wikibases, so you can see how other folks have set them up? Here's a list of other instances on Wikibase Cloud for your information and inspiration.
+      </div>
     </div>
     <v-container class="options">
       <v-select
@@ -159,6 +161,12 @@ export default {
 .content {
   margin: 16px 16px 0 16px;
 }
+.intro {
+  max-width: 601px;
+}
+.title {
+  margin-bottom: 4px;
+}
 .pagination {
   margin: 32px auto 16px auto;
   max-width: 85%;
@@ -166,9 +174,6 @@ export default {
 .card {
   min-width: 288px;
   max-width: 400px;
-}
-.title {
-  margin-bottom: 4px;
 }
 .cards {
   margin-top: 24px;
