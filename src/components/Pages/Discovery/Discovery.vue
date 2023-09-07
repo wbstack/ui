@@ -149,6 +149,13 @@ export default {
     },
     currentPage: function () {
       this.update()
+    },
+    wikis: function () {
+      this.$nextTick(() => {
+        this.$nextTick(() => {
+          document.documentElement.scrollIntoView({ behavior: 'smooth' })
+        })
+      })
     }
   },
   mounted () {
