@@ -53,7 +53,7 @@ const removeWiki = wikiIndex => {
 const wikiDiscovery = (referrer, params) => {
   const pseudorandom = {
     seed: 1,
-    next: function() {
+    next: function () {
       const x = Math.sin(this.seed++) * 10000
       return x - Math.floor(x)
     }

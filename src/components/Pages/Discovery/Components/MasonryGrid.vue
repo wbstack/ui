@@ -14,15 +14,15 @@ export default {
   },
   methods: {
     resizeCards () {
-      const cards = this.$refs.grid.children,
-        style = window.getComputedStyle(this.$refs.grid),
-        rowGap = parseInt(style.getPropertyValue('row-gap')),
-        gridAutoRows = parseInt(style.getPropertyValue('grid-auto-rows')),
-        rowHeight = rowGap + gridAutoRows
+      const cards = this.$refs.grid.children
+      const style = window.getComputedStyle(this.$refs.grid)
+      const rowGap = parseInt(style.getPropertyValue('row-gap'))
+      const gridAutoRows = parseInt(style.getPropertyValue('grid-auto-rows'))
+      const rowHeight = rowGap + gridAutoRows
 
       Array.from(cards).forEach((card) => {
-        const cardHeight = card.firstChild.getBoundingClientRect().height + rowGap,
-          numRows = Math.round(cardHeight / rowHeight)
+        const cardHeight = card.firstChild.getBoundingClientRect().height + rowGap
+        const numRows = Math.round(cardHeight / rowHeight)
         card.style['grid-row'] = 'span ' + numRows
       })
     },
