@@ -12,7 +12,7 @@
       </template>
       <v-menu content-class="menu" internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon="true" class="dots-button mr-4" v-bind="attrs" v-on="on">
+          <v-btn icon class="dots-button mr-4" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
         </template>
