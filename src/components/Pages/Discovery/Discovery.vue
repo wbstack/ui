@@ -185,6 +185,9 @@ export default {
 .cards {
   margin-top: 24px;
 }
+>>> .cards.grid {
+  column-gap: 24px;
+}
 .options {
   padding: 0 !important;
   margin: 56px 0 32px 0;
@@ -202,8 +205,12 @@ export default {
   padding-bottom: 4px;
   vertical-align: middle;
 }
-@media screen and (max-width: 632px) {
-  /* 632 = 2 * 288 (card) + 2 * 16 (margin) + 24 (grid column gap) */
+@media screen and (max-width: 648px) {
+  /*
+    648px = 2 * 288px (.card min-width)
+      + 2 * 24px (.content left/right margin at >= 640px)
+      + 24px (.grid column-gap)
+  */
   .cards {
     width: fit-content;
     margin-left: auto;
@@ -234,7 +241,11 @@ export default {
     max-width: 50%;
   }
 }
-@media screen and (min-width: 1680px) {
+@media screen and (min-width: 1578px) {
+  /*
+    1578px = 1514px (.content max-width)
+      + 2 * 32px (.content left/right margin at >= 1120px)
+  */
   .content {
     margin: 40px auto 0 auto;
     width: 1514px;

@@ -54,7 +54,6 @@ export default {
 .grid {
   display: grid;
   row-gap: 16px;
-  column-gap: 24px;
   grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
   grid-auto-rows: 1px;
 }
