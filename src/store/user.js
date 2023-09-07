@@ -44,14 +44,14 @@ const actions = {
       .catch((err) => {
         commit('user_setForgottenPasswordSubmitSuccessFalse')
         commit('user_setForgottenPasswordError', err)
-      } )
+      })
   },
   resetPassword ({ commit }, payload) {
     return api.resetPassword(payload)
       .then(() => commit('user_setResetPasswordSubmitSuccessTrue'))
       .catch(() => commit('user_setResetPasswordSubmitSuccessFalse'))
   },
-  clearForgottenPasswordState ( { commit } ) {
+  clearForgottenPasswordState ({ commit }) {
     commit('user_setForgottenPasswordSubmitSuccessNull')
     commit('user_setForgottenPasswordError', null)
   }
