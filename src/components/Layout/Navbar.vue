@@ -34,6 +34,9 @@ export default {
 </script>
 
 <style scoped>
+.v-toolbar {
+  max-height: 64px;
+}
 .no-button-pointer-events{
   pointer-events: none
 }
@@ -48,8 +51,5 @@ text-decoration-line: underline;
 }
 .logo{
   height: 64px;
-}
-.v-toolbar {
-  max-height: 64px;
 }
 </style>
