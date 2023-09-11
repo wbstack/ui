@@ -3,7 +3,7 @@
     <v-container class="content">
       <v-row no-gutters>
         <v-col class="flex-grow-0">
-          <v-avatar :color="color">
+          <v-avatar rounded :color="color">
             <img v-if="logo" :src="logo.href">
             <span v-else class="white--text">{{character}}</span>
           </v-avatar>
