@@ -17,6 +17,7 @@ import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
 import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
+import Discovery from '@/components/Pages/Discovery/Discovery'
 
 Vue.use(Router)
 
@@ -114,6 +115,14 @@ const router = new Router({
       component: TabSettings,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/discovery',
+      name: 'Discovery',
+      component: Discovery,
+      meta: {
+        customLayout: true
       }
     }
   ]

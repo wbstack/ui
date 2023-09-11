@@ -66,6 +66,9 @@ export default {
 </script>
 
 <style scoped>
+.v-toolbar {
+  max-height: 64px;
+}
 .no-button-pointer-events{
   pointer-events: none
 }
