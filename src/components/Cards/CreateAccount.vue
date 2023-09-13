@@ -5,21 +5,6 @@
         <v-toolbar-title>{{title}}</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
-        <p>
-          Wikibase.cloud is in a closed beta. If you'd like to receive an invite code,
-          <a href="https://lime.wikimedia.de/index.php/717538" style="text-decoration: none">
-            sign up for early access.
-          </a>
-        </p>
-          <v-text-field
-            id="inputInvite"
-            prepend-icon="mdi-key"
-            name="invite"
-            label="Invite code"
-            v-model="invite"
-            :disabled="inFlight"
-            :error-messages="error['inputInvite']"
-          />
           <v-text-field
             id="inputEmail"
             prepend-icon="mdi-email"
@@ -114,7 +99,6 @@ export default {
   },
   data () {
     return {
-      invite: '',
       email: '',
       password: '',
       passwordConfirmation: '',
@@ -139,7 +123,6 @@ export default {
       error = error || 'Something went wrong'
       this.resetErrorState()
       this.hasError = true
-      this.error.inputInvite = error
       this.error.inputEmail = error
       this.error.inputPassword = error
       this.error.inputPasswordConfirmation = error
@@ -182,7 +165,6 @@ export default {
           {
             email: this.email,
             password: this.password,
-            invite: this.invite,
             recaptcha: token
           })
           .then(success => this.createSuccessful(success))
@@ -191,10 +173,6 @@ export default {
 
             // If the api gave use details of the error, then use them
             if (errors) {
-              if (errors.invite) {
-                this.hasError = true
-                this.error.inputInvite = errors.invite[0]
-              }
               if (errors.email) {
                 this.hasError = true
                 this.error.inputEmail = errors.email[0]
