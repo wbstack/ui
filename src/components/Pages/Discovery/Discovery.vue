@@ -56,14 +56,14 @@ const SortOptions = {
   alphaAsc: {
     text: 'Alphabetically ↑',
     value: {
-      direction: 'asc',
+      direction: 'desc',
       sort: 'sitename'
     }
   },
   alphaDesc: {
     text: 'Alphabetically ↓',
     value: {
-      direction: 'desc',
+      direction: 'asc',
       sort: 'sitename'
     }
   },
