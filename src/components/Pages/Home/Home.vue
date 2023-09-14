@@ -7,6 +7,8 @@
 
     <h3>Still have questions?</h3>
     <p>Drop us a line using our <router-link to="/contact">contact form</router-link>. Now is also a great time to get involved in the <a href="https://meta.wikimedia.org/wiki/Wikibase_Community_User_Group">Wikibase community</a>. </p>
+    <h3>Want to get inspired?</h3>
+    <p><router-link to="/discovery">Discover other Wikibases</router-link> to see what's possible and get inspired to get started with your own.</p>
   </div>
 </template>
 
