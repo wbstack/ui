@@ -31,19 +31,7 @@ export const checkVerified = async () => (await axios.post('/user/self')).data.d
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
-
-export const myWikis = async payload => {
-  const data = (await axios.post('/wiki/mine', payload)).data
-
-  // The Platform API may return domain names in ASCII encoded IDN format according to ADR no. 11
-  // This bit decodes them gracefully
-  for (let index = 0; index < data.wikis.length; index++) {
-    data.wikis[index].domain = punycode.toUnicode(data.wikis[index].domain)
-  };
-
-  return data
-}
-
+export const myWikis = async () => (await axios.post('/wiki/mine')).data
 export const createWiki = async payload => {
   return (await axios.post('/wiki/create', payload).catch(({ response: { data: { message, errors = {} } } }) => {
     errors.message = message
