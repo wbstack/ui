@@ -1,4 +1,5 @@
 import axios from './axios'
+import punycode from 'punycode/'
 
 /* User endpoints */
 export const login = async user => (await axios.post('/auth/login', user)).data
@@ -51,7 +52,17 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
 // payload needs 'wiki', 'setting' and 'value' keys
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
 export const updateSkin = async payload => updateSetting('wgDefaultSkin', payload)
-export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
+
+export const wikiDetails = async payload => {
+  const data = (await axios.post('/wiki/details', payload)).data.data
+
+  // The Platform API may return domain names in ASCII encoded IDN format according to ADR no. 11
+  // This bit decodes them gracefully
+  data.domain = punycode.toUnicode(data.domain)
+
+  return data
+}
+
 export const wikiDiscovery = async ({ sort, direction, active, currentPage, resultsPerPage }) => {
   return (await axios.get('/wiki', {
     params: {
