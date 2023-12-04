@@ -18,7 +18,7 @@ export default {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.sideBySide = false
-        if (window.screen.width > 640) {
+        if (document.body.clientWidth > 640) {
           this.$nextTick(() => {
             const items = Array.from(this.$refs.view.children)
             this.sideBySide = items.at(0).offsetTop !== items.at(-1).offsetTop
