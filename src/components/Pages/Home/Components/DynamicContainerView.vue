@@ -1,5 +1,5 @@
 <template>
-  <div class="view" ref="view" v-resize="onResize">
+  <div class="view" :class="{wrapped: sideBySide}" ref="view" v-resize="onResize">
     <slot :sideBySide="sideBySide"/>
   </div>
 </template>
@@ -37,10 +37,13 @@ export default {
 .view {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 48px;
   margin-bottom: 48px;
   gap: 40px;
+}
+.view.wrapped {
+  justify-content: center;
 }
 @media screen and (min-width: 640px) {
   .view {

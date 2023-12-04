@@ -53,6 +53,9 @@ export default {
 }
 .item > .text-header {
   margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .alt-item {
   justify-content: center;
@@ -74,12 +77,21 @@ export default {
 }
 @media screen and (min-width: 640px) {
   .item {
+    flex: 1 1 326px;
     max-width: 326px;
   }
 }
 @media screen and (min-width: 1120px) {
   .item img {
     max-height: 208px;
+  }
+  .item {
+    max-width: initial;
+  }
+}
+@media screen and (min-width: 1680px) {
+  .item {
+    max-width: 450px;
   }
 }
 </style>
