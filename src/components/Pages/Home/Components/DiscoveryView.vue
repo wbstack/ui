@@ -115,7 +115,9 @@ export default {
 }
 .button {
   width: fit-content;
-  margin: auto;
+}
+.discovery.wrapped > .v-card {
+  max-width: 430px;
 }
 .discovery.wrapped {
   flex-direction: column;
