@@ -27,7 +27,7 @@ export default {
     },
     image: {
       type: String,
-      required: true,
+      required: true
     },
     header: {
       type: String,

@@ -19,7 +19,7 @@ export default {
   props: {
     image: {
       type: String,
-      required: true,
+      required: true
     },
     header: {
       type: String,

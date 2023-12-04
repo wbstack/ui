@@ -22,7 +22,7 @@ export default {
           this.$nextTick(() => {
             const items = Array.from(this.$refs.view.children)
             this.sideBySide = items.at(0).offsetTop !== items.at(-1).offsetTop
-        })
+          })
         }
       }, time)
     },
