@@ -55,7 +55,7 @@ export default {
       }, time)
     },
     onResize () {
-      this.debounceResize(50)
+      this.debounceResize(15)
     }
   }
 }
