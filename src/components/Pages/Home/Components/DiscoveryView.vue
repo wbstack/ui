@@ -129,6 +129,7 @@ export default {
   .view > .content {
     padding-top: 48px;
     padding-bottom: 48px;
+    max-width: 809px;
   }
   .discovery {
     margin-top: 48px;
@@ -138,6 +139,9 @@ export default {
   .view {
     margin-top: 48px;
     margin-bottom: 48px;
+  }
+  .view > .content {
+    max-width: none;
   }
   .discovery {
     margin-bottom: 40px;

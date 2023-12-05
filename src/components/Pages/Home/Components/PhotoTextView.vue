@@ -93,6 +93,7 @@ export default {
 }
 @media screen and (min-width: 640px) {
   .view {
+    max-width: 809px;
     margin: 96px auto;
     gap: 24px;
   }
@@ -103,6 +104,7 @@ export default {
 }
 @media screen and (min-width: 1120px) {
   .view {
+    max-width: none;
     margin: 96px auto;
     gap: 48px;
   }
