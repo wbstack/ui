@@ -115,12 +115,15 @@ export default {
 }
 .button {
   width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 .discovery.wrapped > .v-card {
   max-width: 430px;
 }
 .discovery.wrapped {
   flex-direction: column;
+  align-content: center;
 }
 @media screen and (min-width: 640px) {
   .view > .content {
