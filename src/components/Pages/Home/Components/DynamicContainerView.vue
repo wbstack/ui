@@ -14,16 +14,32 @@ export default {
     }
   },
   methods: {
+    setHeaderHeight() {
+      // TODO: Find a way to do this using only CSS
+      const items = Array.from(this.$refs.view.children)
+      const headers = items.map(item => item.__vue__.$refs.header).filter(item => item)
+      headers.forEach(header => {header.style.height = 'auto'})
+      if (document.body.clientWidth > 640) {
+        this.$nextTick(() => {
+          const maxHeight = Math.max.apply(Math, headers.map(header => header.offsetHeight))
+          headers.forEach(header => {header.style.height = maxHeight + 'px'})
+        })
+      }
+    },
+    setSideBySide () {
+      this.sideBySide = false
+      if (document.body.clientWidth > 640) {
+        this.$nextTick(() => {
+          const items = Array.from(this.$refs.view.children)
+          this.sideBySide = items.at(0).offsetTop !== items.at(-1).offsetTop
+        })
+      }
+    },
     debounceResize (time) {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
-        this.sideBySide = false
-        if (document.body.clientWidth > 640) {
-          this.$nextTick(() => {
-            const items = Array.from(this.$refs.view.children)
-            this.sideBySide = items.at(0).offsetTop !== items.at(-1).offsetTop
-          })
-        }
+        this.setSideBySide()
+        this.setHeaderHeight()
       }, time)
     },
     onResize () {

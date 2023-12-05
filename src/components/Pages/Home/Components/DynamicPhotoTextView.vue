@@ -12,7 +12,7 @@
   </div>
   <div v-else class="item">
     <img :src="image">
-    <div class="text-header text-h4 text-center">{{header}}</div>
+    <div class="text-header text-h4 text-center" ref="header">{{header}}</div>
     <div class="text-body-1 text-center">{{content}}</div>
   </div>
 </template>
@@ -55,7 +55,6 @@ export default {
   margin-top: 8px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 .alt-item {
   justify-content: center;
