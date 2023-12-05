@@ -1,13 +1,13 @@
 <template>
   <div class="content">
-    <HeroView
-      :background="require('../../../assets/components/pages/home/HeroBackground.png')"
-      header="Your own Wikibase in five minutes"
-      content="Simple & Secure"
-      button="Try it out"
-      target="/create-account"
-    />
     <div class="wrapper">
+      <HeroView
+        :background="require('../../../assets/components/pages/home/HeroBackground.png')"
+        header="Your own Wikibase in five minutes"
+        content="Simple & Secure"
+        button="Try it out"
+        target="/create-account"
+      />
       <DynamicContainerView
         v-slot="{sideBySide}"
       >

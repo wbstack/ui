@@ -1,7 +1,7 @@
 <template>
   <div
     class="view"
-    :style="{'background-image': 'url(' + background + ')'}"
+    :style="{'--background-image': 'url(' + background + ')'}"
   >
     <div class="content">
       <div
@@ -48,16 +48,25 @@ export default {
 .view {
   display: flex;
   align-items: center;
+  height: 485px;
+  position: relative;
+  justify-content: center;
+}
+.view::before {
+  background-image: var(--background-image);
+  position: absolute;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  color: white;
-  height: 485px;
+  content: "";
+  height: 100%;
+  width: 200vw;
+  left: -100vw;
 }
 .view > .content {
-  margin-left: 16px;
-  margin-right: 16px;
+  z-index: 1;
+  color: white;
 }
 .view > .content > .subtitle {
   margin-top: 24px;
@@ -71,23 +80,16 @@ export default {
     height: 820px;
   }
   .view > .content {
-    margin-left: 24px;
-    margin-right: 24px;
+    max-width: 809px;
   }
 }
 @media screen and (min-width: 1120px) {
   .view {
     height: 788px;
+    justify-content: left;
   }
   .view > .content {
     max-width: 851px;
-    margin-left: 96px;
-    margin-right: auto;
-  }
-}
-@media screen and (min-width: 1514px) {
-  .view > .content {
-    margin-left: 268px;
   }
 }
 </style>
