@@ -39,7 +39,9 @@ export default {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.setSideBySide()
-        this.setHeaderHeight()
+        this.$nextTick(() => {
+          this.setHeaderHeight()
+        })
       }, time)
     },
     onResize () {
