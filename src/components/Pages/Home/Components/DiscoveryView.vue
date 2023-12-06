@@ -10,7 +10,7 @@
           You can also get some inspiration by browsing some other Wikibases hosted on Wikibase Cloud.
         </div>
       </div>
-      <div class="discovery" ref="discovery" v-resize="onResize">
+      <div class="discovery" ref="flexbox" v-resize="onResizeFlexbox">
         <DiscoveryCard
           name="Qichwabase"
           url="https://qichwa.wikibase.cloud"
@@ -43,33 +43,14 @@
 </template>
 
 <script>
+import FlexboxWrapEvent from '../../../../mixins/FlexboxWrapEvent.js'
 import DiscoveryCard from './DiscoveryCard.vue'
 
 export default {
   name: 'DiscoveryView',
+  mixins: [FlexboxWrapEvent],
   components: {
     DiscoveryCard
-  },
-  data () {
-    return {
-      wrapped: false,
-      timer: null
-    }
-  },
-  methods: {
-    debounceResize (time) {
-      clearTimeout(this.timer)
-      this.timer = setTimeout(() => {
-        this.wrapped = false
-        this.$nextTick(() => {
-          const items = Array.from(this.$refs.discovery.children)
-          this.wrapped = items.at(0).offsetTop !== items.at(-1).offsetTop
-        })
-      }, time)
-    },
-    onResize () {
-      this.debounceResize(15)
-    }
   }
 }
 </script>

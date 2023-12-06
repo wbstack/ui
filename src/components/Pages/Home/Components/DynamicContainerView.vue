@@ -1,51 +1,37 @@
 <template>
-  <div class="view" :class="{wrapped: sideBySide}" ref="view" v-resize="onResize">
-    <slot :sideBySide="sideBySide"/>
+  <div class="view" :class="{wrapped: wrapped}" ref="flexbox" v-resize="onResize">
+    <slot :sideBySide="wrapped"/>
   </div>
 </template>
 
 <script>
+import FlexboxWrapEvent from '../../../../mixins/FlexboxWrapEvent.js'
+
 export default {
   name: 'DynamicContainerView',
-  data () {
-    return {
-      sideBySide: false,
-      timer: null
-    }
-  },
+  mixins: [FlexboxWrapEvent],
   methods: {
-    setHeaderHeight() {
+    setHeaderHeight () {
       // TODO: Find a way to do this using only CSS
-      const items = Array.from(this.$refs.view.children)
+      const items = Array.from(this.$refs.flexbox.children)
       const headers = items.map(item => item.__vue__.$refs.header).filter(item => item)
-      headers.forEach(header => {header.style.height = 'auto'})
+      headers.forEach(header => { header.style.height = 'auto' })
       if (document.body.clientWidth > 640) {
         this.$nextTick(() => {
           const maxHeight = Math.max.apply(Math, headers.map(header => header.offsetHeight))
-          headers.forEach(header => {header.style.height = maxHeight + 'px'})
+          headers.forEach(header => { header.style.height = maxHeight + 'px' })
         })
       }
     },
-    setSideBySide () {
-      this.sideBySide = false
+    async onResize () {
       if (document.body.clientWidth > 640) {
-        this.$nextTick(() => {
-          const items = Array.from(this.$refs.view.children)
-          this.sideBySide = items.at(0).offsetTop !== items.at(-1).offsetTop
-        })
+        await this.onResizeFlexbox()
+      } else {
+        this.wrapped = false
       }
-    },
-    debounceResize (time) {
-      clearTimeout(this.timer)
-      this.timer = setTimeout(() => {
-        this.setSideBySide()
-        this.$nextTick(() => {
-          this.setHeaderHeight()
-        })
-      }, time)
-    },
-    onResize () {
-      this.debounceResize(15)
+      this.$nextTick(() => {
+        this.setHeaderHeight()
+      })
     }
   }
 }

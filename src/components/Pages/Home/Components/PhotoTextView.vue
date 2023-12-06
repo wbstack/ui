@@ -1,5 +1,5 @@
 <template>
-  <div class="view" :class="{wrapped: wrapped}" ref="view" v-resize="onResize">
+  <div class="view" :class="{wrapped: wrapped}" ref="flexbox" v-resize="onResizeFlexbox">
     <div class="image">
       <img :src="image">
     </div>
@@ -14,8 +14,11 @@
 </template>
 
 <script>
+import FlexboxWrapEvent from '../../../../mixins/FlexboxWrapEvent.js'
+
 export default {
   name: 'PhotoTextView',
+  mixins: [FlexboxWrapEvent],
   props: {
     image: {
       type: String,
@@ -36,26 +39,6 @@ export default {
     target: {
       type: String,
       required: true
-    }
-  },
-  data () {
-    return {
-      wrapped: false
-    }
-  },
-  methods: {
-    debounceResize (time) {
-      clearTimeout(this.timer)
-      this.timer = setTimeout(() => {
-        this.wrapped = false
-        this.$nextTick(() => {
-          const items = Array.from(this.$refs.view.children)
-          this.wrapped = items.at(0).offsetTop !== items.at(-1).offsetTop
-        })
-      }, time)
-    },
-    onResize () {
-      this.debounceResize(15)
     }
   }
 }
