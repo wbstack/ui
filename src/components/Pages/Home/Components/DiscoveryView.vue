@@ -1,5 +1,5 @@
 <template>
-  <div class="view">
+  <div class="view" :class="{wrapped: wrapped}">
     <div class="content">
       <div class="header">
         <div class="text-h3 title">
@@ -10,7 +10,7 @@
           You can also get some inspiration by browsing some other Wikibases hosted on Wikibase Cloud.
         </div>
       </div>
-      <div class="discovery" :class="{wrapped: wrapped}" ref="discovery" v-resize="onResize">
+      <div class="discovery" ref="discovery" v-resize="onResize">
         <DiscoveryCard
           name="Qichwabase"
           url="https://qichwa.wikibase.cloud"
@@ -111,19 +111,25 @@ export default {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  min-width: 320px;
+  min-width: 288px;
 }
 .button {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
 }
-.discovery.wrapped > .v-card {
+.view.wrapped .discovery > .v-card {
   max-width: 430px;
 }
-.discovery.wrapped {
+.view.wrapped .discovery {
   flex-direction: column;
   align-content: center;
+}
+.view.wrapped .title,
+.view.wrapped .subtitle {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media screen and (min-width: 640px) {
   .view > .content {
