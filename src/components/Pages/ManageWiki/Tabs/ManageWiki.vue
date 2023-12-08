@@ -19,6 +19,11 @@
               <Logo :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col>
+              <QuestyCaptcha/>
+            </v-col>
+          </v-row>
         </v-col>
         <!--Col 2-->
         <v-col>
@@ -62,10 +67,12 @@ import Skin from '~/components/Pages/ManageWiki/Cards/Skin'
 import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
 import Wikibase from '~/components/Pages/ManageWiki/Cards/Wikibase'
 import Delete from '~/components/Pages/ManageWiki/Cards/Delete'
+import QuestyCaptcha from '../Cards/QuestyCaptcha'
 
 export default {
   name: 'ManageWiki',
   components: {
+    QuestyCaptcha,
     Details,
     Logo,
     Skin,
