@@ -27,7 +27,10 @@ const router = new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {
+        customLayout: true
+      }
     },
     {
       path: '/about',
