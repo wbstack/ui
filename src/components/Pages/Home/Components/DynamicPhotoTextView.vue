@@ -67,12 +67,14 @@ export default {
 }
 .alt-item > .image img {
   max-width: 100%;
+  width: 500px;
 }
 .alt-item > .text {
   max-width: 500px;
   flex: 1 1 100px;
   display: flex;
   align-items: center;
+  height: auto !important;
 }
 @media screen and (min-width: 640px) {
   .item {
