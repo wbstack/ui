@@ -23,18 +23,23 @@
           <div class="pt-10" v-for="(questy, index) in defaultQuestions" :key="index">
             Question
             <v-text-field
+              ref="question"
               v-model="questy.question"
               outlined
               append-outer-icon="mdi-delete-outline"
+              :rules="[() => !!questy.question || 'Field cannot be empty. Please provide a question']"
               @click:append-outer="removeQuestion(index)"
             ></v-text-field>
             Answer
             <v-combobox
-              v-model="questy.answer"
-              :items="questy.answer"
+              class="answer-box"
+              v-model="questy.answers"
+              :items="questy.answers"
               multiple
               outlined
+              :rules="[required]"
               hide-selected
+              hide-details
             >
               <template v-slot:selection="{ item }" >
                 <v-chip
@@ -63,6 +68,30 @@
           <div class="pt-4">
             <v-btn @click="recoverDefaultQuestions" width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
           </div>
+          <v-snackbar color="success" elevation="24" v-model="successMessage">
+            Your questions have been saved
+            <template v-slot:action>
+              <v-btn
+                text
+                variant="text"
+                @click="closeAlert"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
+          <v-snackbar color="error" elevation="24" v-model="errorMessage">
+            Something is wrong with saving your questions. Please try again
+            <template v-slot:action>
+              <v-btn
+                text
+                variant="text"
+                @click="closeAlert"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -80,14 +109,16 @@ export default {
           answers: ['12', 'twelve']
         },
         {
-          question: 'What is the chemical formula of water',
+          question: 'What is the chemical formula of water?',
           answers: ['H2O']
         },
         {
           question: '2 + 4 = ?',
           answers: ['6', 'six']
         }
-      ]
+      ],
+      successMessage: false,
+      errorMessage: false
     }
   },
   methods: {
@@ -103,11 +134,23 @@ export default {
     addQuestion () {
       this.defaultQuestions.push({
         question: '',
-        answers: ''
+        answers: []
       })
     },
-    saveQuestions () {},
-    recoverDefaultQuestions () {}
+    saveQuestions () {
+      this.successMessage = true
+    },
+    recoverDefaultQuestions () {},
+    required (value) {
+      if (value.length === 0) {
+        return 'Field cannot be empty. Please provide an answer'
+      }
+      return !!value || 'Field cannot be empty. Please provide an answer'
+    },
+    closeAlert () {
+      this.successMessage = false
+      this.errorMessage = false
+    }
   }
 }
 </script>
@@ -115,5 +158,8 @@ export default {
 <style lang="css" scoped>
 .checkbox {
   padding-left: 20px;
+}
+>>> .answer-box .v-input__append-inner {
+  display: none !important;
 }
 </style>
