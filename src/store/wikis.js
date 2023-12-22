@@ -60,6 +60,26 @@ const mutations = {
     const defaultMapping = { properties: { P31: MAPPING_SUGGESTION_PLACEHOLDER, P279: MAPPING_SUGGESTION_PLACEHOLDER }, items: {} }
     const wikibaseManifestEquivEntities = entityMappingSetting ? JSON.parse(entityMappingSetting.value) : defaultMapping
 
+    const wwUseQuestyCaptchaSetting = details.public_settings.find(setting => setting.name === 'wwUseQuestyCaptcha')
+    const wwUseQuestyCaptcha = wwUseQuestyCaptchaSetting ? parseInt(wwUseQuestyCaptchaSetting.value) === 1 : false
+
+    const captchaQuestionsSetting = details.public_settings.find(setting => setting.name === 'wwCaptchaQuestions')
+    const defaultQuestions = [
+      { question: 'How many vowels are in this question?', answers: ['12', 'twelve'] },
+      { question: 'What is the chemical formula of water?', answers: ['H2O'] },
+      { question: '2 + 4 = ?', answers: ['6', 'six'] }
+    ]
+    let captchaQuestions
+    let questionFromStoreAsArrayOfObjects
+    if (captchaQuestionsSetting) {
+      questionFromStoreAsArrayOfObjects = Object.keys(captchaQuestionsSetting).map(
+        (key) => { return { question: key, answers: captchaQuestionsSetting[key] } }
+      )
+      captchaQuestions = questionFromStoreAsArrayOfObjects
+    } else {
+      captchaQuestions = defaultQuestions
+    }
+
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
 
@@ -90,7 +110,10 @@ const mutations = {
       wwWikibaseStringLengthString,
       wwWikibaseStringLengthMonolingualText,
       wwWikibaseStringLengthMultilang,
-      wwExtEnableConfirmAccount
+      wwExtEnableConfirmAccount,
+      wwUseQuestyCaptcha,
+      captchaQuestions,
+      defaultQuestions
     }
   },
   clear_current_wiki_settings (state) {
@@ -119,6 +142,12 @@ const mutations = {
   },
   set_enable_confirm_account (state, { value }) {
     state.currentWikiSettings.wwExtEnableConfirmAccount = value
+  },
+  set_enable_questy_captcha (state, { value }) {
+    state.currentWikiSettings.wwUseQuestyCaptcha = value
+  },
+  set_questy_captcha_questions (state, value) {
+    state.currentWikiSettings.captchaQuestions = value
   }
 }
 
@@ -186,6 +215,12 @@ const actions = {
         items: filterOutPlaceholderMapping(mapping.items)
       })
     })
+  },
+  setEnabledQuestyCaptcha ({ commit }, enabled) {
+    commit('set_enable_questy_captcha', enabled)
+  },
+  setQuestyCaptchaQuestions ({ commit }, value) {
+    commit('set_questy_captcha_questions', value)
   }
 }
 
