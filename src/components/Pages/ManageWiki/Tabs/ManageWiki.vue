@@ -11,6 +11,11 @@
           </v-row>
           <v-row>
             <v-col>
+              <Registration :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
               <Skin :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
@@ -24,7 +29,7 @@
         <v-col>
           <v-row>
             <v-col>
-              <Registration :wikiId="this.wikiId"/>
+              <Template :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
@@ -62,6 +67,7 @@ import Skin from '~/components/Pages/ManageWiki/Cards/Skin'
 import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
 import Wikibase from '~/components/Pages/ManageWiki/Cards/Wikibase'
 import Delete from '~/components/Pages/ManageWiki/Cards/Delete'
+import Template from '~/components/Pages/ManageWiki/Cards/Template'
 
 export default {
   name: 'ManageWiki',
@@ -71,7 +77,8 @@ export default {
     Skin,
     Registration,
     Wikibase,
-    Delete
+    Delete,
+    Template
   },
   data () {
     return {
