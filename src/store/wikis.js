@@ -77,7 +77,7 @@ const mutations = {
       )
       captchaQuestions = questionFromStoreAsArrayOfObjects
     } else {
-      captchaQuestions = defaultQuestions
+      captchaQuestions = JSON.parse(JSON.stringify(defaultQuestions))
     }
 
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
