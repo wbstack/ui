@@ -29,7 +29,7 @@
               outlined
               append-outer-icon="mdi-delete-outline"
               :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question']"
-              :error-messages="getErrorMessages(entry, 'question')"
+              :error-messages="getSavingErrorMessages(entry, 'question')"
               @click:append-outer="removeQuestion(index)"
             ></v-text-field>
             Answer
@@ -40,7 +40,7 @@
               multiple
               outlined
               :rules="[required]"
-              :error-messages="getErrorMessages(entry, 'answers')"
+              :error-messages="getSavingErrorMessages(entry, 'answers')"
               hide-selected
             >
               <template v-slot:selection="{ item }" >
@@ -68,6 +68,7 @@
           <div class="pt-4">
             <v-btn @click="recoverDefaultQuestions" width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
           </div>
+<!--          Success/Error Message Snackbar-->
           <v-snackbar color="success" elevation="24" v-model="successMessage">
             Your questions have been saved
             <template v-slot:action>
@@ -132,30 +133,23 @@ export default {
         answers: []
       })
     },
-    getErrorMessages (entry, field) {
-      return entry.errorMessages ? [entry.errorMessages[field]] : []
-    },
-    clearErrorMessages (entry, field) {
-      return entry.errorMessages ? [entry.errorMessages[field]] : []
+    getSavingErrorMessages (entry, field) {
+      return entry.savingErrorMessages ? [entry.savingErrorMessages[field]] : []
     },
     saveForm () {
       const questionsList = this.questionsFromStore
       let isEmpty = 0
       for (let i = 0; i < questionsList.length; i++) {
         const entry = questionsList[i]
-        entry.errorMessages = {}
+        entry.savingErrorMessages = {}
         if (!entry.question.trim()) {
-          entry.errorMessages.question = 'Field cannot be empty. Please provide a question'
+          entry.savingErrorMessages.question = 'Field cannot be empty. Please provide a question!'
           isEmpty = isEmpty + 1
-        } else {
-          entry.errorMessages.question = ''
         }
 
         if (!entry.answers || entry.answers.length === 0) {
-          entry.errorMessages.answers = 'Field cannot be empty. Please provide an answer'
+          entry.savingErrorMessages.answers = 'Field cannot be empty. Please provide an answer!'
           isEmpty = isEmpty + 1
-        } else {
-          entry.errorMessages.answers = ''
         }
       }
       if (isEmpty === 0) {
