@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>Additional Spam Protection</v-card-title>
-    <v-card-text>
+    <v-card-text class="text">
       QuestyCaptcha offers an extra layer of protection against spam accounts. During account creation, users will have to answer a question, which can be defined in settings. For more information on QuestyCaptcha, please visit the documentation page
     </v-card-text>
     <v-col class="checkbox">
@@ -25,23 +25,21 @@
             <div class="pt-5" v-for="(entry, index) in questionsFromStore" :key="index">
               Question
               <v-text-field
-                class="input-field"
+                class="input-field trash-icon text-field"
                 v-model="entry.question"
                 outlined
-                append-outer-icon="mdi-delete-outline"
+                :append-outer-icon="showIcon ? 'mdi-delete-outline' : undefined"
                 :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question']"
-                :error-messages="getSavingErrorMessages(entry, 'question')"
                 @click:append-outer="removeQuestion(index)"
               ></v-text-field>
               Answer
               <v-combobox
-                class="answer-box input-field"
+                class="answer-box input-field text-field"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
                 outlined
                 :rules="[required]"
-                :error-messages="getSavingErrorMessages(entry, 'answers')"
                 hide-selected
               >
                 <template v-slot:selection="{ item }" >
@@ -60,7 +58,7 @@
               </v-combobox>
             </div>
 <!--          Buttons-->
-            <div class="d-flex pb-12 pt-3">
+            <div class="d-flex pb-12 pt-2">
               <v-btn @click="addQuestion" elevation=0 plain class="ml-auto">+ ADD QUESTION</v-btn>
             </div>
             <div>
@@ -112,7 +110,8 @@ export default {
       successMessage: false,
       errorMessage: false,
       captchaActivate: false,
-      questionsFromStore: []
+      questionsFromStore: [],
+      showIcon: true
     }
   },
   created () {
@@ -128,15 +127,20 @@ export default {
     },
     removeQuestion (index) {
       this.questionsFromStore.splice(index, 1)
+
+      if (this.questionsFromStore.length === 1) {
+        this.showIcon = false
+      }
     },
     addQuestion () {
       this.questionsFromStore.push({
         question: '',
         answers: []
       })
-    },
-    getSavingErrorMessages (entry, field) {
-      return entry.savingErrorMessages ? [entry.savingErrorMessages[field]] : []
+
+      if (this.questionsFromStore.length > 1) {
+        this.showIcon = true
+      }
     },
     saveForm () {
       if (!this.$refs.questyForm.validate()) {
@@ -188,6 +192,8 @@ export default {
 <style lang="css" scoped>
 .checkbox {
   padding-left: 20px;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 >>> .input-field .v-input__slot {
   min-height: 40px !important;
@@ -201,5 +207,14 @@ export default {
 }
 .chips {
   margin: 0 8px 0 0 !important;
+}
+.text {
+  padding-bottom: 0 !important;
+}
+>>> .trash-icon .v-input__append-outer {
+  margin-top: 0 !important;
+}
+>>> .text-field .v-text-field__details {
+  margin-bottom: -2px !important;
 }
 </style>
