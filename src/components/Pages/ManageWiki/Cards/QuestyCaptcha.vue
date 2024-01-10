@@ -143,8 +143,8 @@ export default {
     saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
         const entry = this.questionsFromStore[i]
-        if (!entry.question.trim() && !entry.answers) {
-          this.removeQuestion(i)
+        if (!entry.question.trim() && !entry.answers && this.questionsFromStore.length > 1) {
+          this.questionsFromStore.splice(i, 1)
         }
       }
       if (!this.$refs.questyForm.validate()) {
