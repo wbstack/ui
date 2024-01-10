@@ -127,7 +127,7 @@ export default {
     },
     removeQuestion (index) {
       this.questionsFromStore.splice(index, 1)
-
+      // hide trash icon when there is just one QA bundle
       if (this.questionsFromStore.length === 1) {
         this.showIcon = false
       }
@@ -137,12 +137,16 @@ export default {
         question: '',
         answers: []
       })
-
-      if (this.questionsFromStore.length > 1) {
-        this.showIcon = true
-      }
+      // show the trash icon again when there are more than one QA bundle
+      this.showIcon = true
     },
     saveForm () {
+      for (let i = 0; i < this.questionsFromStore.length; i++) {
+        const entry = this.questionsFromStore[i]
+        if (!entry.question.trim() && !entry.answers) {
+          this.removeQuestion(i)
+        }
+      }
       if (!this.$refs.questyForm.validate()) {
         return
       }
