@@ -21,7 +21,7 @@
           </v-row>
           <v-row>
             <v-col>
-              <QuestyCaptcha/>
+              <QuestyCaptcha :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
         </v-col>
