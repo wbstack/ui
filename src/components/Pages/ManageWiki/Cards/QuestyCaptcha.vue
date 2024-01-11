@@ -22,25 +22,27 @@
           </ul>
 <!--          Question/Answer Bundle-->
           <v-form ref="questyForm">
-            <div class="pt-5" v-for="(entry, index) in questionsFromStore" :key="index">
+            <div class="pt-10" v-for="(entry, index) in questionsFromStore" :key="index">
               Question
               <v-text-field
                 class="input-field trash-icon text-field"
                 v-model="entry.question"
                 outlined
+                hide-details="auto"
                 :append-outer-icon="showIcon ? 'mdi-delete-outline' : undefined"
                 :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question']"
                 @click:append-outer="removeQuestion(index)"
               ></v-text-field>
               Answer
               <v-combobox
-                class="answer-box input-field text-field"
+                class="answer-box input-field"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
                 outlined
                 :rules="[required]"
                 hide-selected
+                hide-details="auto"
               >
                 <template v-slot:selection="{ item }" >
                   <v-chip class="chips">
@@ -58,14 +60,14 @@
               </v-combobox>
             </div>
 <!--          Buttons-->
-            <div class="d-flex pb-12 pt-2">
+            <div class="d-flex pb-12 pt-10">
               <v-btn @click="addQuestion" elevation=0 plain class="ml-auto">+ ADD QUESTION</v-btn>
             </div>
             <div>
               <v-btn @click="saveForm" color="primary" width="100%">SAVE QUESTIONS</v-btn>
             </div>
             <div class="pt-4">
-              <v-btn @click="recoverDefaultQuestions" width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
+              <v-btn @click="recoverDefaultQuestions"  elevation=0 width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
             </div>
           </v-form>
 <!--          Success/Error Message Snackbar-->
@@ -224,7 +226,7 @@ export default {
 >>> .trash-icon .v-input__append-outer {
   margin-top: 0 !important;
 }
->>> .text-field .v-text-field__details {
-  margin-bottom: -2px !important;
+.text-field {
+  padding-bottom: 8px !important;
 }
 </style>
