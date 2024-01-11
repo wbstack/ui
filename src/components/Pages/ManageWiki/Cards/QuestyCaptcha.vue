@@ -35,7 +35,7 @@
               ></v-text-field>
               Answer
               <v-combobox
-                class="answer-box input-field"
+                class="answer-box input-field answer-input-field"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
@@ -209,6 +209,9 @@ export default {
 }
 >>> .input-field .v-input__slot {
   min-height: 40px !important;
+}
+>>> .answer-input-field .v-input__slot {
+  width: 95% !important;
 }
 >>> .answer-box .v-input__append-inner {
   display: none !important;
