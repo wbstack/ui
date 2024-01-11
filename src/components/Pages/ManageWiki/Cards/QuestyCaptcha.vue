@@ -210,8 +210,8 @@ export default {
 >>> .input-field .v-input__slot {
   min-height: 40px !important;
 }
->>> .answer-input-field .v-input__slot {
-  width: 95% !important;
+>>> .answer-input-field {
+  margin-right: 33px !important
 }
 >>> .answer-box .v-input__append-inner {
   display: none !important;
