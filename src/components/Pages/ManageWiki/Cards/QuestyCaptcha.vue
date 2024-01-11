@@ -100,6 +100,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'QuestyCaptcha',
   props: [
@@ -143,37 +144,42 @@ export default {
     saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
         const entry = this.questionsFromStore[i]
-        if (!entry.question.trim() && !entry.answers && this.questionsFromStore.length > 1) {
+        const noQuestion = entry.question.trim() === ''
+        const noAnswer = entry.answers && entry.answers.length === 0
+        if (noQuestion && noAnswer && this.questionsFromStore.length > 1) {
           this.questionsFromStore.splice(i, 1)
         }
       }
-      if (!this.$refs.questyForm.validate()) {
-        return
-      }
-      const wiki = this.wikiId
-      const promises = []
-      const captchaEnabledSetting = 'wwUseQuestyCaptcha'
-      const captchaQuestionsSetting = 'wwCaptchaQuestions'
-      const enableValue = this.captchaActivate
-      const questions = {}
-      this.questionsFromStore.forEach(item => {
-        questions[item.question] = item.answers
+      this.$nextTick(() => {
+        if (!this.$refs.questyForm.validate()) {
+          console.log('validation failss')
+          return
+        }
+        const wiki = this.wikiId
+        const promises = []
+        const captchaEnabledSetting = 'wwUseQuestyCaptcha'
+        const captchaQuestionsSetting = 'wwCaptchaQuestions'
+        const enableValue = this.captchaActivate
+        const questions = {}
+        this.questionsFromStore.forEach(item => {
+          questions[item.question] = item.answers
+        })
+        const JSONQuestions = JSON.stringify(questions)
+        promises.push(
+          this.$store.dispatch('updateSetting', { wiki, setting: captchaEnabledSetting, value: enableValue }),
+          this.$store.dispatch('updateSetting', { wiki, setting: captchaQuestionsSetting, value: JSONQuestions })
+        )
+        Promise.all(promises)
+          .then(() => {
+            this.$store.dispatch('setEnabledQuestyCaptcha', enableValue)
+            this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
+            this.successMessage = true
+          })
+          .catch(err => {
+            console.log(err.response)
+            this.errorMessage = true
+          })
       })
-      const JSONQuestions = JSON.stringify(questions)
-      promises.push(
-        this.$store.dispatch('updateSetting', { wiki, setting: captchaEnabledSetting, value: enableValue }),
-        this.$store.dispatch('updateSetting', { wiki, setting: captchaQuestionsSetting, value: JSONQuestions })
-      )
-      Promise.all(promises)
-        .then(() => {
-          this.$store.dispatch('setEnabledQuestyCaptcha', enableValue)
-          this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
-          this.successMessage = true
-        })
-        .catch(err => {
-          console.log(err.response)
-          this.errorMessage = true
-        })
     },
     recoverDefaultQuestions () {
       const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
