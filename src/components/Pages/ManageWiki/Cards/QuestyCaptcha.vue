@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>Additional Spam Protection</v-card-title>
-    <v-card-text class="text">
+    <v-card-text class="pb-2">
       QuestyCaptcha offers an extra layer of protection against spam accounts. During account creation, users will have to answer a question, which can be defined in settings. For more information on QuestyCaptcha, please visit the documentation page
     </v-card-text>
     <v-col class="checkbox">
@@ -25,17 +25,18 @@
             <div class="pt-10" v-for="(entry, index) in questionsFromStore" :key="index">
               Question
               <v-text-field
-                class="input-field trash-icon text-field"
+                class="trash-icon pb-2"
                 v-model="entry.question"
                 outlined
                 hide-details="auto"
                 :append-outer-icon="showIcon ? 'mdi-delete-outline' : undefined"
                 :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question']"
                 @click:append-outer="removeQuestion(index)"
+                dense
               ></v-text-field>
               Answer
               <v-combobox
-                class="answer-box input-field answer-input-field"
+                class="answer-box answer-input-field"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
@@ -43,6 +44,7 @@
                 :rules="[required]"
                 hide-selected
                 hide-details="auto"
+                dense
               >
                 <template v-slot:selection="{ item }" >
                   <v-chip class="chips">
@@ -154,7 +156,6 @@ export default {
       }
       this.$nextTick(() => {
         if (!this.$refs.questyForm.validate()) {
-          console.log('validation failss')
           return
         }
         const wiki = this.wikiId
@@ -207,29 +208,16 @@ export default {
   padding-bottom: 0;
   padding-top: 0;
 }
->>> .input-field .v-input__slot {
-  min-height: 40px !important;
-}
 >>> .answer-input-field {
   margin-right: 33px !important
 }
 >>> .answer-box .v-input__append-inner {
   display: none !important;
 }
->>> .answer-box .v-select__selections {
-  padding-bottom: 4px !important;
-  padding-top: 4px !important;
-}
 .chips {
   margin: 0 8px 0 0 !important;
 }
-.text {
-  padding-bottom: 0 !important;
-}
 >>> .trash-icon .v-input__append-outer {
   margin-top: 0 !important;
-}
-.text-field {
-  padding-bottom: 8px !important;
 }
 </style>
