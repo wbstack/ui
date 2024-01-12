@@ -8,7 +8,7 @@
       <v-checkbox label="Activate spam protection" v-model="captchaActivate"></v-checkbox>
     </v-col>
 <!--    Setting Panel-->
-    <v-expansion-panels>
+    <v-expansion-panels v-model="panel">
       <v-expansion-panel>
         <v-expansion-panel-header>
           <strong>SETTINGS</strong>
@@ -36,7 +36,7 @@
               ></v-text-field>
               Answer
               <v-combobox
-                class="answer-box answer-input-field"
+                :class="{'answer-box': true, 'answer-input-field': applyStyling}"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
@@ -116,7 +116,8 @@ export default {
       errorMessage: false,
       captchaActivate: false,
       questionsFromStore: [],
-      showIcon: true
+      showIcon: true,
+      applyStyling: true
     }
   },
   created () {
@@ -135,6 +136,7 @@ export default {
       // hide trash icon when there is just one QA bundle
       if (this.questionsFromStore.length === 1) {
         this.showIcon = false
+        this.applyStyling = false
       }
     },
     addQuestion () {
@@ -144,6 +146,7 @@ export default {
       })
       // show the trash icon again when there are more than one QA bundle
       this.showIcon = true
+      this.applyStyling = true
     },
     saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
@@ -182,6 +185,7 @@ export default {
             console.log(err.response)
             this.errorMessage = true
           })
+        this.panel = false
       })
     },
     recoverDefaultQuestions () {
@@ -208,8 +212,8 @@ export default {
   padding-bottom: 0;
   padding-top: 0;
 }
->>> .answer-input-field {
-  margin-right: 33px !important
+.answer-input-field {
+  margin-right: 33px !important;
 }
 >>> .answer-box .v-input__append-inner {
   display: none !important;
