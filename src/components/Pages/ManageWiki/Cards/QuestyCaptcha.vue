@@ -117,7 +117,8 @@ export default {
       captchaActivate: false,
       questionsFromStore: [],
       showIcon: true,
-      applyStyling: true
+      applyStyling: true,
+      panel: false
     }
   },
   created () {
