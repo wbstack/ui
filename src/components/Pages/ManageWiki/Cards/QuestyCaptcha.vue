@@ -129,7 +129,7 @@ export default {
     showMessage (status, message) {
       this.message = { status: status, text: message, show: true }
     },
-    saveForm () {
+    async saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
         const entry = this.questionsFromStore[i]
         const noQuestion = entry.question.trim() === ''
@@ -138,36 +138,30 @@ export default {
           this.questionsFromStore.splice(i, 1)
         }
       }
-      this.$nextTick(() => {
-        if (!this.$refs.questyForm.validate()) {
-          return
-        }
-        const wiki = this.wikiId
-        const promises = []
-        const captchaEnabledSetting = 'wwUseQuestyCaptcha'
-        const captchaQuestionsSetting = 'wwCaptchaQuestions'
-        const enableValue = this.captchaActivate
-        const questions = {}
-        this.questionsFromStore.forEach(item => {
-          questions[item.question] = item.answers
-        })
-        const JSONQuestions = JSON.stringify(questions)
-        promises.push(
-          this.$store.dispatch('updateSetting', { wiki, setting: captchaEnabledSetting, value: enableValue }),
-          this.$store.dispatch('updateSetting', { wiki, setting: captchaQuestionsSetting, value: JSONQuestions })
-        )
-        Promise.all(promises)
-          .then(() => {
-            this.$store.dispatch('setEnabledQuestyCaptcha', enableValue)
-            this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
-            this.showMessage('success', 'Your questions have been saved.')
-          })
-          .catch(err => {
-            console.log(err.response)
-            this.showMessage('error', 'Something went wrong with saving your questions. Please try again.')
-          })
-        this.panel = false
+
+      await this.$nextTick()
+      if (!this.$refs.questyForm.validate()) {
+        return
+      }
+
+      const questions = {}
+      this.questionsFromStore.forEach(item => {
+        questions[item.question] = item.answers
       })
+
+      try {
+        await Promise.all([
+          this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwUseQuestyCaptcha', value: this.captchaActivate }),
+          this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: JSON.stringify(questions) })
+        ])
+        await this.$store.dispatch('setEnabledQuestyCaptcha', this.captchaActivate)
+        await this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
+        this.showMessage('success', 'Your questions have been saved.')
+        this.panel = false
+      } catch (error) {
+        console.log(error.response)
+        this.showMessage('error', 'Something went wrong with saving your questions. Please try again.')
+      }
     },
     recoverDefaultQuestions () {
       const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
