@@ -29,14 +29,14 @@
                 v-model="entry.question"
                 outlined
                 hide-details="auto"
-                :append-outer-icon="showIcon ? 'mdi-delete-outline' : undefined"
+                :append-outer-icon="showDeleteButton ? 'mdi-delete-outline' : undefined"
                 :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question.']"
                 @click:append-outer="removeQuestion(index)"
                 dense
               ></v-text-field>
               Answer
               <v-combobox
-                :class="{'answer-box': true, 'answer-input-field': applyStyling}"
+                :class="{'answer-box': true, 'answer-input-field': showDeleteButton}"
                 v-model="entry.answers"
                 :items="entry.answers"
                 multiple
@@ -115,9 +115,12 @@ export default {
       errorMessage: false,
       captchaActivate: false,
       questionsFromStore: [],
-      showIcon: true,
-      applyStyling: true,
       panel: false
+    }
+  },
+  computed: {
+    showDeleteButton: function () {
+      return this.questionsFromStore.length > 1
     }
   },
   created () {
@@ -133,20 +136,12 @@ export default {
     },
     removeQuestion (index) {
       this.questionsFromStore.splice(index, 1)
-      // hide trash icon when there is just one QA bundle
-      if (this.questionsFromStore.length === 1) {
-        this.showIcon = false
-        this.applyStyling = false
-      }
     },
     addQuestion () {
       this.questionsFromStore.push({
         question: '',
         answers: []
       })
-      // show the trash icon again when there are more than one QA bundle
-      this.showIcon = true
-      this.applyStyling = true
     },
     saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
