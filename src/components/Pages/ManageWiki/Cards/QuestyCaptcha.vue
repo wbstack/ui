@@ -75,25 +75,13 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <v-snackbar color="success" elevation="24" v-model="successMessage">
-      Your questions have been saved
+    <v-snackbar :color="message.status" elevation="24" v-model="message.show">
+      {{ message.text }}
       <template v-slot:action>
         <v-btn
           text
           variant="text"
-          @click="closeAlert"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-    <v-snackbar color="error" elevation="24" v-model="errorMessage">
-      Something is wrong with saving your questions. Please try again
-      <template v-slot:action>
-        <v-btn
-          text
-          variant="text"
-          @click="closeAlert"
+          @click="message.show = false"
         >
           Close
         </v-btn>
@@ -111,8 +99,7 @@ export default {
   ],
   data () {
     return {
-      successMessage: false,
-      errorMessage: false,
+      message: false,
       captchaActivate: false,
       questionsFromStore: [],
       panel: false
@@ -142,6 +129,9 @@ export default {
         question: '',
         answers: []
       })
+    },
+    showMessage (status, message) {
+      this.message = { status: status, text: message, show: true }
     },
     saveForm () {
       for (let i = 0; i < this.questionsFromStore.length; i++) {
@@ -174,11 +164,11 @@ export default {
           .then(() => {
             this.$store.dispatch('setEnabledQuestyCaptcha', enableValue)
             this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
-            this.successMessage = true
+            this.showMessage('success', 'Your questions have been saved.')
           })
           .catch(err => {
             console.log(err.response)
-            this.errorMessage = true
+            this.showMessage('error', 'Something went wrong with saving your questions. Please try again.')
           })
         this.panel = false
       })
@@ -186,10 +176,6 @@ export default {
     recoverDefaultQuestions () {
       const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
       this.questionsFromStore = JSON.parse(JSON.stringify(recoveredDefaultQuestions))
-    },
-    closeAlert () {
-      this.successMessage = false
-      this.errorMessage = false
     }
   }
 }
