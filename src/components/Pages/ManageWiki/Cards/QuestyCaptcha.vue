@@ -30,7 +30,7 @@
                 outlined
                 hide-details="auto"
                 :append-outer-icon="showIcon ? 'mdi-delete-outline' : undefined"
-                :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question']"
+                :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question.']"
                 @click:append-outer="removeQuestion(index)"
                 dense
               ></v-text-field>
@@ -41,7 +41,7 @@
                 :items="entry.answers"
                 multiple
                 outlined
-                :rules="[required]"
+                :rules="[() => !!entry.answers.length || 'Field cannot be empty. Please provide an answer.']"
                 hide-selected
                 hide-details="auto"
                 dense
@@ -191,12 +191,6 @@ export default {
     recoverDefaultQuestions () {
       const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
       this.questionsFromStore = JSON.parse(JSON.stringify(recoveredDefaultQuestions))
-    },
-    required (value) {
-      if (value.length === 0) {
-        return 'Field cannot be empty. Please provide an answer'
-      }
-      return !!value || 'Field cannot be empty. Please provide an answer'
     },
     closeAlert () {
       this.successMessage = false
