@@ -7,7 +7,6 @@
     <v-col class="checkbox">
       <v-checkbox label="Activate spam protection" v-model="captchaActivate"></v-checkbox>
     </v-col>
-<!--    Setting Panel-->
     <v-expansion-panels v-model="panel">
       <v-expansion-panel>
         <v-expansion-panel-header>
@@ -20,7 +19,6 @@
             <li>Consider cultural bias. Use questions that rely on universal knowledge or knowledge related to your wiki.</li>
             <li>Keep the answers short and simple. Ideally, try to use questions with only one possible answer.</li>
           </ul>
-<!--          Question/Answer Bundle-->
           <v-form ref="questyForm">
             <div class="pt-10" v-for="(entry, index) in questionsFromStore" :key="index">
               Question
@@ -61,7 +59,6 @@
                 </template>
               </v-combobox>
             </div>
-<!--          Buttons-->
             <div class="d-flex pb-12 pt-10">
               <v-btn @click="addQuestion" elevation=0 plain class="ml-auto">+ ADD QUESTION</v-btn>
             </div>
@@ -91,7 +88,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'QuestyCaptcha',
   props: [
@@ -175,6 +171,7 @@ export default {
     },
     recoverDefaultQuestions () {
       const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
+      // parse() and stringify() are being used to make a copy
       this.questionsFromStore = JSON.parse(JSON.stringify(recoveredDefaultQuestions))
     }
   }
