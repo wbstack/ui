@@ -72,34 +72,33 @@
               <v-btn @click="recoverDefaultQuestions"  elevation=0 width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
             </div>
           </v-form>
-<!--          Success/Error Message Snackbar-->
-          <v-snackbar color="success" elevation="24" v-model="successMessage">
-            Your questions have been saved
-            <template v-slot:action>
-              <v-btn
-                text
-                variant="text"
-                @click="closeAlert"
-              >
-                Close
-              </v-btn>
-            </template>
-          </v-snackbar>
-          <v-snackbar color="error" elevation="24" v-model="errorMessage">
-            Something is wrong with saving your questions. Please try again
-            <template v-slot:action>
-              <v-btn
-                text
-                variant="text"
-                @click="closeAlert"
-              >
-                Close
-              </v-btn>
-            </template>
-          </v-snackbar>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+    <v-snackbar color="success" elevation="24" v-model="successMessage">
+      Your questions have been saved
+      <template v-slot:action>
+        <v-btn
+          text
+          variant="text"
+          @click="closeAlert"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="error" elevation="24" v-model="errorMessage">
+      Something is wrong with saving your questions. Please try again
+      <template v-slot:action>
+        <v-btn
+          text
+          variant="text"
+          @click="closeAlert"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
