@@ -1,6 +1,7 @@
 <template>
-  <v-card>
+  <v-card disabled>
     <v-card-title>Set Logo</v-card-title>
+    <v-card-text class="feature-disabled">This feature is undergoing maintenance!</v-card-text>
     <v-card-text>
       <v-file-input
         hint="Upload a square PNG logo that is at least 135x135 pixels."
@@ -65,4 +66,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.feature-disabled {
+  color: red !important;
+  padding-bottom: 0;
+}
 </style>
