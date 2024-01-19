@@ -69,14 +69,10 @@ const mutations = {
       { question: 'What is the chemical formula of water?', answers: ['H2O'] },
       { question: '2 + 4 = ?', answers: ['6', 'six'] }
     ]
-    let captchaQuestions
-    if (captchaQuestionsSetting) {
-      captchaQuestions = Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
+    const captchaQuestions = captchaQuestionsSetting ?
+      Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
         return { question: key, answers: value }
-      })
-    } else {
-      captchaQuestions = JSON.parse(JSON.stringify(defaultQuestions))
-    }
+      }) : undefined
 
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false

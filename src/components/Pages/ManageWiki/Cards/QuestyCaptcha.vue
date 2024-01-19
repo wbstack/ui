@@ -4,8 +4,14 @@
     <v-card-text class="pb-2">
       QuestyCaptcha offers an extra layer of protection against spam accounts. During account creation, users will have to answer a question, which can be defined in settings. For more information on QuestyCaptcha, please visit the documentation page
     </v-card-text>
-    <v-col class="checkbox">
-      <v-checkbox label="Activate spam protection" v-model="captchaActivate"></v-checkbox>
+    <v-col class="switch">
+      <v-switch
+        label="Activate spam protection"
+        v-model="isCaptchaActive"
+        @change="toggleCaptcha"
+        :loading="waitForToggleUpdate"
+        :disabled="waitForToggleUpdate"
+      />
     </v-col>
     <v-expansion-panels v-model="panel">
       <v-expansion-panel>
@@ -31,6 +37,7 @@
                 :rules="[() => !!entry.question || 'Field cannot be empty. Please provide a question.']"
                 @click:append-outer="removeQuestion(index)"
                 dense
+                :disabled="waitForQuestionsUpdate"
               ></v-text-field>
               Answer
               <v-combobox
@@ -43,15 +50,17 @@
                 hide-selected
                 hide-details="auto"
                 dense
+                :disabled="waitForQuestionsUpdate"
               >
                 <template v-slot:selection="{ item }" >
-                  <v-chip class="chips">
+                  <v-chip class="chips" :disabled="waitForQuestionsUpdate">
                   <span class="pr-1">
                     {{ item }}
                   </span>
                     <v-icon
                       small
                       @click="removeAnswer(entry, item)"
+                      :disabled="waitForQuestionsUpdate"
                     >
                       mdi-close-circle
                     </v-icon>
@@ -60,13 +69,13 @@
               </v-combobox>
             </div>
             <div class="d-flex pb-12 pt-10">
-              <v-btn @click="addQuestion" elevation=0 plain class="ml-auto">+ ADD QUESTION</v-btn>
+              <v-btn @click="addQuestion" :disabled="waitForQuestionsUpdate" elevation=0 plain class="ml-auto">+ ADD QUESTION</v-btn>
             </div>
             <div>
-              <v-btn @click="saveForm" color="primary" width="100%">SAVE QUESTIONS</v-btn>
+              <v-btn @click="saveForm" :disabled="waitForQuestionsUpdate" color="primary" width="100%">SAVE QUESTIONS</v-btn>
             </div>
             <div class="pt-4">
-              <v-btn @click="recoverDefaultQuestions"  elevation=0 width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
+              <v-btn @click="recoverDefaultQuestions" :disabled="waitForQuestionsUpdate" elevation=0 width="100%">RECOVER DEFAULT QUESTIONS</v-btn>
             </div>
           </v-form>
         </v-expansion-panel-content>
@@ -96,9 +105,13 @@ export default {
   data () {
     return {
       message: false,
-      captchaActivate: false,
       questionsFromStore: [],
-      panel: false
+      defaultQuestions: [],
+      isCaptchaActive: false,
+      hasNoQuestions: false,
+      panel: false,
+      waitForToggleUpdate: false,
+      waitForQuestionsUpdate: false
     }
   },
   computed: {
@@ -107,8 +120,13 @@ export default {
     }
   },
   created () {
+    this.defaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
+    this.isCaptchaActive = this.$store.state.wikis.currentWikiSettings.wwUseQuestyCaptcha
     this.questionsFromStore = this.$store.state.wikis.currentWikiSettings.captchaQuestions
-    this.captchaActivate = this.$store.state.wikis.currentWikiSettings.wwUseQuestyCaptcha
+    this.hasNoQuestions = !this.questionsFromStore
+    if (this.hasNoQuestions) {
+      this.recoverDefaultQuestions()
+    }
   },
   methods: {
     removeAnswer (question, answer) {
@@ -129,7 +147,35 @@ export default {
     showMessage (status, message) {
       this.message = { status: status, text: message, show: true }
     },
+    formatQuestionsForApi (questions) {
+      return JSON.stringify(questions.reduce((out, entry) => {
+        out[entry.question] = entry.answers
+        return out
+      }, {}))
+    },
+    async toggleCaptcha (enabled) {
+      try {
+        this.waitForToggleUpdate = true
+        if (enabled && this.hasNoQuestions) {
+          await this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.defaultQuestions)})
+          await this.$store.dispatch('setQuestyCaptchaQuestions', this.defaultQuestions)
+          this.hasNoQuestions = false
+        }
+        await this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwUseQuestyCaptcha', value: enabled })
+        await this.$store.dispatch('setEnabledQuestyCaptcha', enabled)
+        this.showMessage('success', `QuestyCaptcha has been successfully ${enabled ? 'enabled' : 'disabled'}.`)
+      } catch (error) {
+        console.log(error.response)
+        this.showMessage('error', `Something went wrong while ${enabled ? 'enabling' : 'disabling'} QuestyCaptcha. Please try again.`)
+        await this.$nextTick()
+        this.isCaptchaActive = !enabled
+      } finally {
+        this.waitForToggleUpdate = false
+      }
+    },
     async saveForm () {
+      this.waitForQuestionsUpdate = true
+
       for (let i = 0; i < this.questionsFromStore.length; i++) {
         const entry = this.questionsFromStore[i]
         const noQuestion = entry.question.trim() === ''
@@ -145,41 +191,35 @@ export default {
       })
       if (invalidField) {
         invalidField.$el.scrollIntoView({ behavior: 'smooth' })
+        this.waitForQuestionsUpdate = false
         return
       }
 
-      const questions = {}
-      this.questionsFromStore.forEach(item => {
-        questions[item.question] = item.answers
-      })
-
       try {
-        await Promise.all([
-          this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwUseQuestyCaptcha', value: this.captchaActivate }),
-          this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: JSON.stringify(questions) })
-        ])
-        await Promise.all([
-          this.$store.dispatch('setEnabledQuestyCaptcha', this.captchaActivate),
-          this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
-        ])
+        await this.$store.dispatch('updateSetting', {
+          wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.questionsFromStore)
+        })
+        await this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
         this.showMessage('success', 'Your questions have been saved.')
+        this.hasNoQuestions = false
         this.panel = false
       } catch (error) {
         console.log(error.response)
         this.showMessage('error', 'Something went wrong with saving your questions. Please try again.')
+      } finally {
+        this.waitForQuestionsUpdate = false
       }
     },
     recoverDefaultQuestions () {
-      const recoveredDefaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
       // parse() and stringify() are being used to make a copy
-      this.questionsFromStore = JSON.parse(JSON.stringify(recoveredDefaultQuestions))
+      this.questionsFromStore = JSON.parse(JSON.stringify(this.defaultQuestions))
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-.checkbox {
+.switch {
   padding-left: 20px;
   padding-bottom: 0;
   padding-top: 0;
