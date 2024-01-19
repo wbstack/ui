@@ -157,7 +157,9 @@ export default {
       try {
         this.waitForToggleUpdate = true
         if (enabled && this.hasNoQuestions) {
-          await this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.defaultQuestions)})
+          await this.$store.dispatch('updateSetting', {
+            wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.defaultQuestions)
+          })
           await this.$store.dispatch('setQuestyCaptchaQuestions', this.defaultQuestions)
           this.hasNoQuestions = false
         }

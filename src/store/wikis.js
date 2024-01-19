@@ -69,8 +69,8 @@ const mutations = {
       { question: 'What is the chemical formula of water?', answers: ['H2O'] },
       { question: '2 + 4 = ?', answers: ['6', 'six'] }
     ]
-    const captchaQuestions = captchaQuestionsSetting ?
-      Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
+    const captchaQuestions = captchaQuestionsSetting
+      ? Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
         return { question: key, answers: value }
       }) : undefined
 
