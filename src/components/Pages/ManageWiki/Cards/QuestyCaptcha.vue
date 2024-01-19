@@ -140,7 +140,11 @@ export default {
       }
 
       await this.$nextTick()
-      if (!this.$refs.questyForm.validate()) {
+      const invalidField = this.$refs.questyForm.$children.find((field) => {
+        return typeof field.validate === 'function' && !field.validate()
+      })
+      if (invalidField) {
+        invalidField.$el.scrollIntoView({ behavior: 'smooth' })
         return
       }
 
