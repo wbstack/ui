@@ -158,8 +158,10 @@ export default {
           this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwUseQuestyCaptcha', value: this.captchaActivate }),
           this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: JSON.stringify(questions) })
         ])
-        await this.$store.dispatch('setEnabledQuestyCaptcha', this.captchaActivate)
-        await this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
+        await Promise.all([
+          this.$store.dispatch('setEnabledQuestyCaptcha', this.captchaActivate),
+          this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
+        ])
         this.showMessage('success', 'Your questions have been saved.')
         this.panel = false
       } catch (error) {
