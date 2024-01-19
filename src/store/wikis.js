@@ -70,12 +70,10 @@ const mutations = {
       { question: '2 + 4 = ?', answers: ['6', 'six'] }
     ]
     let captchaQuestions
-    let questionFromStoreAsArrayOfObjects
     if (captchaQuestionsSetting) {
-      questionFromStoreAsArrayOfObjects = Object.keys(captchaQuestionsSetting).map(
-        (key) => { return { question: key, answers: captchaQuestionsSetting[key] } }
-      )
-      captchaQuestions = questionFromStoreAsArrayOfObjects
+      captchaQuestions = Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
+        return { question: key, answers: value }
+      })
     } else {
       captchaQuestions = JSON.parse(JSON.stringify(defaultQuestions))
     }
