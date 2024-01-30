@@ -7,17 +7,13 @@
       <v-switch
         v-model="requestAccount"
         label="Accounts must be requested"
+        hide-details="auto"
+        @change="toggle"
+        :loading="inFlight"
+        :disabled="inFlight"
       >
       </v-switch>
     </v-card-text>
-    <v-card-actions>
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on" @click="doSubmit">Set Options</v-btn>
-        </template>
-        <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
-      </v-tooltip>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -30,33 +26,26 @@ export default {
   data () {
     return {
       requestAccount: false,
-      inFlight: false,
-      error: ''
+      inFlight: false
     }
   },
   created () {
     this.requestAccount = this.$store.state.wikis.currentWikiSettings.wwExtEnableConfirmAccount
   },
   methods: {
-    doSubmit () {
-      const wiki = this.wikiId
-      const promises = []
-
-      const setting = 'wwExtEnableConfirmAccount'
-      const value = this.requestAccount
-      promises.push(
-        this.$store.dispatch('updateSetting', { wiki, setting, value })
-      )
-
-      Promise.all(promises)
-        .then(() => {
-          this.$store.dispatch('setEnableConfirmAccount', value)
-          alert('Update success!')
-        })
-        .catch(err => {
-          console.log(err.response)
-          alert('Something went wrong.')
-        })
+    async toggle (enabled) {
+      try {
+        this.inFlight = true
+        await this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwExtEnableConfirmAccount', value: enabled })
+        await this.$store.dispatch('setEnableConfirmAccount', enabled)
+      } catch (error) {
+        console.log(error.response)
+        alert('Something went wrong.')
+        await this.$nextTick()
+        this.requestAccount = !enabled
+      } finally {
+        this.inFlight = false
+      }
     }
   }
 }
