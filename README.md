@@ -10,6 +10,12 @@ This app uses https://cli.vuejs.org.
 
 ### Docker Environment
 
+#### Setting up .env file
+
+Copy one of the many `.env` files to `.env` and adjust the values to your needs.
+
+Each `.env` file provides some sinsible defaults for the environment it is named after.
+
 #### Installing dependencies
 
 ```
