@@ -14,7 +14,7 @@ This app uses https://cli.vuejs.org.
 
 Copy one of the many `.env` files to `.env` and adjust the values to your needs.
 
-Each `.env` file provides some sinsible defaults for the environment it is named after.
+Each `.env` file provides some sensible defaults for the environment it is named after.
 
 #### Installing dependencies
 
