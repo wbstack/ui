@@ -3,8 +3,7 @@
   <v-footer color="primary lighten-1">
     <v-container>
     <v-row dense>
-    <v-col cols="1"></v-col>
-    <v-col cols="10">
+    <v-col>
       <ul class="footer-list">
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/about-us/">About</a></li>
           <li><router-link to="/discovery">Discovery</router-link></li>
