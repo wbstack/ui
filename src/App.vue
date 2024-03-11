@@ -3,11 +3,7 @@
       <Navbar></Navbar>
       <router-view v-if="customLayout"/>
       <v-container v-else class="full-height-content">
-        <v-row >
-          <v-col>
-            <router-view></router-view>
-          </v-col>
-        </v-row>
+        <router-view></router-view>
       </v-container>
       <Foot :class="{'tall-footer': customLayout}"></Foot>
       <Interval
