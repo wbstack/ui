@@ -7,7 +7,7 @@
       <v-card-text>
         <v-text-field
           id="inputPassword"
-          prepend-icon="lock"
+          prepend-icon="mdi-lock"
           name="password"
           label="Password"
           type="password"
@@ -18,7 +18,7 @@
         />
         <v-text-field
           id="inputPasswordConfirmation"
-          prepend-icon="lock"
+          prepend-icon="mdi-lock"
           name="passwordConfirmation"
           label="Confirm Password"
           type="password"
