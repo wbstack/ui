@@ -68,6 +68,7 @@ import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
 import Wikibase from '~/components/Pages/ManageWiki/Cards/Wikibase'
 import Delete from '~/components/Pages/ManageWiki/Cards/Delete'
 import QuestyCaptcha from '../Cards/QuestyCaptcha'
+import ConfirmDelete from "@/components/Pages/ManageWiki/Cards/ConfirmDelete.vue";
 
 export default {
   name: 'ManageWiki',
@@ -78,7 +79,8 @@ export default {
     Skin,
     Registration,
     Wikibase,
-    Delete
+    Delete,
+    ConfirmDelete
   },
   data () {
     return {
