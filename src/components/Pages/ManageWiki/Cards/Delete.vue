@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ConfirmDelete from '@/components/Pages/ManageWiki/Cards/ConfirmDelete.vue';
+import ConfirmDelete from '@/components/Pages/ManageWiki/Cards/ConfirmDelete.vue'
 
 export default {
   name: 'Delete',

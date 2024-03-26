@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <div class="modal-backdrop">
     <div class="modal">
       <section class="modal-body dark-grey--text">
@@ -9,10 +9,10 @@
           <v-card-text>
             <p>Before you delete your wikibase instance, <br/> please let us know the reason for your deletion.<br/>
             Please select all that apply.<p/>
-            <v-checkbox class="ma-0" type="checkbox" label="Was only used for testing" />
-            <v-checkbox class="ma-0" type="checkbox" label="Lacking essential functionality" />
-            <v-checkbox class="ma-0" type="checkbox" label="Too complex to work with" />
-            <v-checkbox class="ma-0" type="checkbox" label="Other reasons (please specify)" />
+            <v-checkbox class="ma-0" type="checkbox"  id="testing" value="testing" v-model="checkedNames" label="Was only used for testing" />
+            <v-checkbox class="ma-0" type="checkbox" id="lackingFunctionality" value="lackingFunctionality" v-model="checkedNames" label="Lacking essential functionality" />
+            <v-checkbox class="ma-0" type="checkbox" id="tooComplex" value="tooComplex" v-model="checkedNames" label="Too complex to work with" />
+            <v-checkbox class="ma-0" type="checkbox" id="otherReason" value="otherReason" v-model="checkedNames" label="Other reasons (please specify)" />
             <!--input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
                 <label for="mike" class="grey--text"> </label><br/-->
             <p>Please elaborate:</p>
