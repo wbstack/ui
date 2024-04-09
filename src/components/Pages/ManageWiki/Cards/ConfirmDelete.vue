@@ -1,32 +1,59 @@
 <template>
-  <div class="modal-backdrop">
-    <div class="modal">
-      <section class="modal-body dark-grey--text">
-        <slot name="body">
-          <v-card-title>
-            Confirm Deletion
-          </v-card-title>
-          <v-card-text>
-            <p>Before you delete your wikibase instance, <br/> please let us know the reason for your deletion.<br/>
-            Please select all that apply.<p/>
-            <v-checkbox class="ma-0" type="checkbox"  id="testing" value="testing" v-model="checkedNames" label="Was only used for testing" />
-            <v-checkbox class="ma-0" type="checkbox" id="lackingFunctionality" value="lackingFunctionality" v-model="checkedNames" label="Lacking essential functionality" />
-            <v-checkbox class="ma-0" type="checkbox" id="tooComplex" value="tooComplex" v-model="checkedNames" label="Too complex to work with" />
-            <v-checkbox class="ma-0" type="checkbox" id="otherReason" value="otherReason" v-model="checkedNames" label="Other reasons (please specify)" />
-            <!--input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-                <label for="mike" class="grey--text"> </label><br/-->
-            <p>Please elaborate:</p>
-            <v-text-field class="ma-0 pa-0" type="text" placeholder="e.g. ran out of space to create new wiki"/>
-          </v-card-text>
-        </slot>
-      </section>
-      <div class="modal-footer text-right">
+  <v-dialog v-model="open_dialog" width="auto" persistent>
+    <v-card>
+      <v-card-title>
+        Confirm Deletion
+      </v-card-title>
+      <v-card-text>
+        Before you delete your wikibase instance, <br/>please let us know the reason for your deletion.<br/>
+        Please select all that apply. </v-card-text>
+      <v-card-text>
+        <v-checkbox
+          class="ma-0"
+          id="testing"
+          value="testing"
+          v-model="checkedNames"
+          @click="deletion_reason='Was only used for testing'"
+          label="Was only used for testing"/>
+        <v-checkbox
+          class="ma-0"
+          id="lackingFunctionality"
+          value="lackingFunctionality"
+          v-model="checkedNames"
+          @click="deletion_reason='Lacking essential functionality'"
+          label="Lacking essential functionality" />
+        <v-checkbox
+          class="ma-0"
+          id="tooComplex"
+          value="tooComplex"
+          v-model="checkedNames"
+          @click="deletion_reason='Too complex to work with'"
+          label="Too complex to work with" />
+        <div>
+          <v-checkbox
+            class="ma-0"
+            id="otherReason"
+            value="otherReason"
+            v-model="checkedNames"
+            @click="deletion_reason=''"
+            label="Other reasons (please specify)" />
+          <p class="ma-0 pa-0 black--text">Please elaborate:</p>
+          <v-text-field
+            class="ma-0 pa-0"
+            variant="outlined"
+            hide-details
+            single-line
+            placeholder="e.g. ran out of space to create new wiki"
+          ></v-text-field>
+        </div>
+      </v-card-text>
+      <v-card-actions class="">
+        <v-spacer></v-spacer>
         <v-btn text @click='close'>Cancel</v-btn>
-        <v-btn  text @click="doDelete" variant="light" class="red--text">Delete Wikibase</v-btn>
-      </div>
-    </div>
-  </div>
-
+        <v-btn text @click="doDelete" variant="light" class="red--text">Delete Wikibase</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 <script>
 export default {
@@ -34,12 +61,19 @@ export default {
   props: [
     'wikiId'
   ],
+  data () {
+    return {
+      deletion_reason: 'false',
+      open_dialog: true
+    }
+  },
   methods: {
     doDelete () {
       const wiki = this.wikiId
+      const deletionReason = this.deletion_reason
 
       this.$store
-        .dispatch('deleteWiki', { wiki })
+        .dispatch('deleteWiki', { wiki, deletionReason })
         .then(() => this.$router.push('/dashboard'))
         .catch(err => {
           console.log(err.response)
@@ -54,30 +88,4 @@ export default {
 }
 </script>
 <style>
-.modal-backdrop {
-  position: fixed;
-  top: 0px;
-  bottom: 30%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: inherit;
-}
-
-.modal {
-  background: #FFFFFF;
-  box-shadow: 0px 0px 25px 0px;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  border-radius:4px;
-}
-.modal-body {
-  position: relative;
-  padding: 10px 10px;
-}
-.modal-footer {
-  margin-bottom: 10px;
-}
 </style>
