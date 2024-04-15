@@ -4,51 +4,28 @@
       <v-card-title>
         Confirm Deletion
       </v-card-title>
-      <v-card-text>
-        Before you delete your wikibase instance, <br/>please let us know the reason for your deletion.<br/>
-        Please select all that apply. </v-card-text>
-      <v-card-text>
-        <v-checkbox
-          class="ma-0"
-          id="testing"
-          value="testing"
-          v-model="checkedNames"
-          @click="deletion_reason='Was only used for testing'"
-          label="Was only used for testing"/>
-        <v-checkbox
-          class="ma-0"
-          id="lackingFunctionality"
-          value="lackingFunctionality"
-          v-model="checkedNames"
-          @click="deletion_reason='Lacking essential functionality'"
-          label="Lacking essential functionality" />
-        <v-checkbox
-          class="ma-0"
-          id="tooComplex"
-          value="tooComplex"
-          v-model="checkedNames"
-          @click="deletion_reason='Too complex to work with'"
-          label="Too complex to work with" />
-        <div>
-          <v-checkbox
-            class="ma-0"
-            id="otherReason"
-            value="otherReason"
-            v-model="checkedNames"
-            @click="deletion_reason=''"
-            label="Other reasons (please specify)" />
-          <p class="ma-0 pa-0 black--text">Please elaborate:</p>
+      <v-card-text class="align-start">
+        Before you delete your Wikibase instance, <br/>please let us know the reason for your deletion.<br/>
+        Please select all that apply.
+      </v-card-text>
+      <div class="ma-5">
+        <v-checkbox class="ma-0" hide-details label="Was only used for Testing" @click="deletion_reason='Was only used for testing'"/>
+        <v-checkbox class="ma-0" hide-details label="Lacking essential functionality" @click="deletion_reason='Lacking essential functionality'"/>
+        <v-checkbox class="ma-0" hide-details label="Too complex to work with" @click="deletion_reason='Too complex to work with'"/>
+        <v-checkbox class="ma-0" hide-details label="Other reasons (please specify)" @click="deletion_reason='Other Reason'"/>
+      </div>
+        <div class="ma-4">
+          <p class="black--text ma-0">Please elaborate:</p>
           <v-text-field
-            class="ma-0 pa-0"
-            variant="outlined"
+            class="ma-0"
+            outlined
+            dense
             hide-details
-            single-line
+            v-model="inputReason"
             placeholder="e.g. ran out of space to create new wiki"
           ></v-text-field>
         </div>
-      </v-card-text>
-      <v-card-actions class="">
-        <v-spacer></v-spacer>
+      <v-card-actions class="justify-end">
         <v-btn text @click='close'>Cancel</v-btn>
         <v-btn text @click="doDelete" variant="light" class="red--text">Delete Wikibase</v-btn>
       </v-card-actions>
@@ -64,14 +41,18 @@ export default {
   data () {
     return {
       deletion_reason: 'false',
-      open_dialog: true
+      open_dialog: true,
+      inputReason: ''
     }
   },
   methods: {
     doDelete () {
       const wiki = this.wikiId
-      const deletionReason = this.deletion_reason
+      let deletionReason = this.deletion_reason
 
+      if (deletionReason === 'Other Reason') {
+        deletionReason = this.inputReason
+      }
       this.$store
         .dispatch('deleteWiki', { wiki, deletionReason })
         .then(() => this.$router.push('/dashboard'))
