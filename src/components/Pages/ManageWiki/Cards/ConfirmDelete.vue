@@ -4,18 +4,18 @@
       <v-card-title>
         Confirm Deletion
       </v-card-title>
-      <v-card-text class="align-start">
+      <v-card-text class="align-start pb-4">
         Before you delete your Wikibase instance, <br/>please let us know the reason for your deletion.<br/>
         Please select all that apply.
       </v-card-text>
-      <div class="ma-5">
+      <div class="px-4 pb-2">
         <v-checkbox class="ma-0" hide-details label="Was only used for Testing" @click="deletion_reason='Was only used for testing'"/>
         <v-checkbox class="ma-0" hide-details label="Lacking essential functionality" @click="deletion_reason='Lacking essential functionality'"/>
         <v-checkbox class="ma-0" hide-details label="Too complex to work with" @click="deletion_reason='Too complex to work with'"/>
         <v-checkbox class="ma-0" hide-details label="Other reasons (please specify)" @click="deletion_reason='Other Reason'"/>
       </div>
-        <div class="ma-4">
-          <p class="black--text ma-0">Please elaborate:</p>
+        <div class="px-4 align-self-stretch align-start">
+          <p class="ma-0">Please elaborate:</p>
           <v-text-field
             class="ma-0"
             outlined
