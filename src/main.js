@@ -29,35 +29,45 @@ Vue.use(VueReCaptcha, {
 // allow components to access api without importing it
 Vue.prototype.$api = api
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  vuetify: new Vuetify({
-    icons: {
-      iconfont: 'mdi'
-    }
-  }),
-  components: { App },
-  template: '<App/>',
-  created: function () {
-    axios.interceptors.response.use(undefined, function (err) {
-      return new Promise(function (resolve, reject) {
-        // Unauthenticated. is the exact error message returned by the API for the auth middle ware
-        // which is why we check for that message here...
-        if (err.response.config && !err.response.config.__isRetryRequest && err.response.data && err.response.data.error && err.response.data.error === 'Unauthenticated.') {
-          // TODO this IF should also have a condition for is logged in....
-          console.log('Detected logged out state, so logging out...')
-          store
-            .dispatch('logout')
-            .then(() => router.push('/login'))
-            .catch(err => {
-              console.log(err)
-            })
-        }
-        reject(err)
-      })
+Promise.race(
+  [
+    store.dispatch('login', null),
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve(), 2500)
     })
-  }
-})
+  ]
+)
+  .then(() => {
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      router,
+      store,
+      vuetify: new Vuetify({
+        icons: {
+          iconfont: 'mdi'
+        }
+      }),
+      components: { App },
+      template: '<App/>',
+      created: function () {
+        axios.interceptors.response.use(undefined, function (err) {
+          return new Promise(function (resolve, reject) {
+            // Unauthenticated. is the exact error message returned by the API for the auth middle ware
+            // which is why we check for that message here...
+            if (err.response.config && !err.response.config.__isRetryRequest && err.response.data && err.response.data.error && err.response.data.error === 'Unauthenticated.') {
+              // TODO this IF should also have a condition for is logged in....
+              console.log('Detected logged out state, so logging out...')
+              store
+                .dispatch('logout')
+                .then(() => router.push('/login'))
+                .catch(err => {
+                  console.log(err)
+                })
+            }
+            reject(err)
+          })
+        })
+      }
+    })
+  })
