@@ -1,10 +1,9 @@
 /* global localStorage */
 
 import Axios from 'axios'
-import config from '~/config'
 
 const axios = Axios.create({
-  baseURL: config.API_URL,
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json'
   }
