@@ -135,9 +135,7 @@ const router = new Router({
 // From https://pusher.com/tutorials/authentication-vue-vuex
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (Store.getters.isInitializing) {
-      await Store.dispatch('login', null)
-    }
+    await Store.getters.initialized
     if (Store.getters.isLoggedIn) {
       next()
       return

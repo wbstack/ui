@@ -61,7 +61,7 @@ export default {
       return this.$store.getters.isLoggedIn
     },
     isInitializing: function () {
-      return this.$store.getters.isInitializing
+      return this.$store.getters.authStatus === 'initializing'
     },
     currentUser: function () {
       return this.$store.getters.currentUser

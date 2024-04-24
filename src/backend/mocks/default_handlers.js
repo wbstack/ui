@@ -2,15 +2,17 @@ import { rest } from 'msw'
 
 let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
-let user = JSON.parse(localStorage.getItem('user'))
+let user = makeUser()
 
-const makeUser = (email = 'test@local') => ({
-  id: 1,
-  email: email,
-  verified: true,
-  created_at: '2020-01-01',
-  updated_at: '2020-01-01'
-})
+function makeUser (email = 'test@local') {
+  return {
+    id: 1,
+    email: email,
+    verified: true,
+    created_at: '2020-01-01',
+    updated_at: '2020-01-01'
+  }
+}
 
 const makeNewWiki = ({ domain, sitename }) => {
   const newWiki = {
@@ -129,24 +131,37 @@ const wikiDiscovery = (referrer, params) => {
 
 export const handlers = [
   /* User endpoints */
-  rest.post(/\/auth\/login$/, (req, res, ctx) => {
+  rest.post(/\/api\/auth\/login$/, (req, res, ctx) => {
     user = makeUser(req.body.email)
     return res(ctx.json({
-      user,
-      token: 'test_token'
+      user
+    }), ctx.cookie('authToken', 'token_value'))
+  }),
+  rest.get(/\/api\/auth\/login$/, (req, res, ctx) => {
+    const { authToken } = req.cookies
+    if (authToken !== 'token_value') {
+      return res(ctx.status(401))
+    }
+    user = makeUser(req.body.email)
+    return res(ctx.json({
+      user
     }))
   }),
-  rest.post(/\/user\/forgotPassword$/, (req, res, ctx) => {
+  rest.delete(/\/api\/auth\/login$/, (req, res, ctx) => {
+    user = makeUser(req.body.email)
+    return res(ctx.status(204))
+  }),
+  rest.post(/\/api\/user\/forgotPassword$/, (req, res, ctx) => {
     if (req.body.email === 'serverError@example.com') {
       return res(ctx.status(400, 'Mocked Server Error'))
     }
     return res(ctx.status(200))
   }
   ),
-  rest.post(/\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
-  rest.post(/\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
-  rest.post(/\/user\/verifyEmail$/, (_, res, ctx) => res(ctx.status(200))),
-  rest.post(/\/contact\/sendMessage$/, (req, res, ctx) => {
+  rest.post(/\/api\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/api\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
+  rest.post(/\/api\/user\/verifyEmail$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/api\/contact\/sendMessage$/, (req, res, ctx) => {
     if (req.body.name === 'recaptchaError') {
       return res(ctx.status(401, 'Mocked recaptcha Error'))
     }
@@ -161,12 +176,12 @@ export const handlers = [
   ),
 
   /* Wiki endpoints */
-  rest.get(/\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
-  rest.post(/\/wiki\/mine$/, (_, res, ctx) => res(ctx.json({ wikis: myWikis, count: myWikis.length, limit: false }))),
-  rest.post(/\/wiki\/create$/, (req, res, ctx) => {
+  rest.get(/\/api\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
+  rest.post(/\/api\/wiki\/mine$/, (_, res, ctx) => res(ctx.json({ wikis: myWikis, count: myWikis.length, limit: false }))),
+  rest.post(/\/api\/wiki\/create$/, (req, res, ctx) => {
     return res(ctx.json({ data: makeNewWiki(req.body) }))
   }),
-  rest.post(/\/wiki\/delete$/, (req, res, ctx) => {
+  rest.post(/\/api\/wiki\/delete$/, (req, res, ctx) => {
     const wikiId = req.body.wiki
     const wikiIndex = myWikis.findIndex(w => w.id === Number(wikiId))
     if (wikiIndex < 0) {
@@ -176,9 +191,9 @@ export const handlers = [
     removeWiki(wikiIndex)
     return res(ctx.status(200))
   }),
-  rest.post(/\/wiki\/logo\/update$/, (_, res, ctx) => res(ctx.status(200))),
-  rest.post(/\/wiki\/setting\/.*?\/update$/, (_, res, ctx) => res(ctx.status(200))),
-  rest.post(/\/wiki\/details$/, (req, res, ctx) => {
+  rest.post(/\/api\/wiki\/logo\/update$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/api\/wiki\/setting\/.*?\/update$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/api\/wiki\/details$/, (req, res, ctx) => {
     const wikiId = req.body.wiki
     const wikiDetails = myWikis.find(w => w.id === Number(wikiId))
     if (!wikiDetails) {
@@ -186,7 +201,7 @@ export const handlers = [
     }
     return res(ctx.json({ data: wikiDetails }), ctx.status(200))
   }),
-  rest.get(/\/wiki$/, (req, res, ctx) => {
+  rest.get(/\/api\/wiki$/, (req, res, ctx) => {
     return res(ctx.json(wikiDiscovery(req.referrer, req.url.searchParams)))
   })
 ]

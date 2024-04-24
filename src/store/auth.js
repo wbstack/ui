@@ -1,9 +1,12 @@
 import { api } from './../backend'
 
+const initialized = getDeferred()
+
 const getDefaultState = () => {
   return {
     status: 'initializing',
-    user: null
+    user: null,
+    initialized
   }
 }
 
@@ -11,7 +14,7 @@ const state = getDefaultState()
 
 const getters = {
   isLoggedIn: state => state.status === 'success' && !!state.user,
-  isInitializing: state => state.status === 'initializing',
+  initialized: state => state.initialized,
   authStatus: state => state.status,
   currentUser: state => state.user
 }
@@ -23,8 +26,10 @@ const mutations = {
   auth_success (state, { user }) {
     state.status = 'success'
     state.user = user
+    state.initialized.resolve()
   },
   auth_error (state) {
+    state.initialized.resolve()
     state.status = 'error'
   },
   auth_isVerified (state) {
@@ -70,4 +75,16 @@ export default {
   mutations,
   getters,
   actions
+}
+
+function getDeferred () {
+  let _resolve
+  let _reject
+  const deferred = new Promise((resolve, reject) => {
+    _resolve = resolve
+    _reject = reject
+  })
+  deferred.resolve = _resolve
+  deferred.reject = _reject
+  return deferred
 }
