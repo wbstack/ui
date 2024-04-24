@@ -2,7 +2,7 @@ import { api } from './../backend'
 
 const getDefaultState = () => {
   return {
-    status: '',
+    status: 'initializing',
     user: null
   }
 }
@@ -10,17 +10,15 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const getters = {
-  isLoggedIn: state => !!state.user,
+  isLoggedIn: state => state.status === 'success' && !!state.user,
+  isInitializing: state => state.status === 'initializing',
   authStatus: state => state.status,
   currentUser: state => state.user
 }
 
 const mutations = {
   auth_resetState (state) {
-    Object.assign(state, getDefaultState())
-  },
-  auth_request (state) {
-    state.status = 'loading'
+    Object.assign(state, getDefaultState(), { status: 'success' })
   },
   auth_success (state, { user }) {
     state.status = 'success'
@@ -39,7 +37,6 @@ const actions = {
     commit('auth_resetState')
   },
   login ({ commit }, user) {
-    commit('auth_request')
     return api.login(user)
       .then(({ user }) => {
         commit('auth_success', { user })

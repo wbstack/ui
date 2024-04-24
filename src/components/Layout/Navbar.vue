@@ -4,6 +4,7 @@
       <img class="logo" src="../../assets/logo.svg">
     </a>
     <v-spacer></v-spacer>
+    <template v-if="!isInitializing">
       <template v-if="isLoggedIn">
         <v-btn class="text-none no-button-pointer-events" text> Hi {{ currentUser.email }}</v-btn>
         <v-btn id="nav-dashboard" text to="/dashboard">Dashboard</v-btn>
@@ -48,6 +49,7 @@
           Sign Up
         </v-btn>
       </template>
+    </template>
   </v-toolbar>
 </template>
 
@@ -57,6 +59,9 @@ export default {
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
+    },
+    isInitializing: function () {
+      return this.$store.getters.isInitializing
     },
     currentUser: function () {
       return this.$store.getters.currentUser
