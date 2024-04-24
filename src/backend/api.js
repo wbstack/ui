@@ -1,7 +1,28 @@
 import axios from './axios'
 
 /* User endpoints */
-export const login = async user => (await axios.post('/auth/login', user)).data
+export const login = async (user) => {
+  let call
+  if (user) {
+    call = axios.post('/auth/login', user)
+  } else {
+    call = axios.get('/auth/login')
+  }
+  try {
+    const { data } = await call
+    return data
+  } catch (err) {
+    if (err.response.code === '401') {
+      return null
+    }
+    throw err
+  }
+}
+
+export const logout = async (user) => {
+  return await axios.delete('/auth/login', user)
+}
+
 export const register = async payload => {
   const resp = await axios.post('/user/register', payload).catch(ex => {
     const { errors = {} } = ex.response.data
@@ -27,7 +48,10 @@ export const verifyEmail = async payload => {
     throw expired
   })
 }
-export const checkVerified = async () => (await axios.post('/user/self')).data.data.verified
+export const checkVerified = async () => {
+  const { data } = await axios.get('/auth/login')
+  return data.verified
+}
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
