@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.source="https://github.com/wbstack/ui"
 COPY --from=builder --chown=nginx:nginx /src/app/dist /usr/share/nginx/html
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/config.template.js /config.template.js
-COPY ./nginx/default.conf /default.template.conf
+COPY ./nginx/default.template.conf /default.template.conf
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
