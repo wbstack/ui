@@ -42,6 +42,7 @@ new Vue({
   components: { App },
   template: '<App/>',
   created: function () {
+    store.dispatch('login', null)
     axios.interceptors.response.use(undefined, function (err) {
       return new Promise(function (resolve, reject) {
         // Unauthenticated. is the exact error message returned by the API for the auth middle ware

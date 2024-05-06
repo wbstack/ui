@@ -9,10 +9,10 @@ RUN VUE_APP_BUILD_FOR_DOCKER_IMAGE=1 npm run build
 FROM nginx:1-alpine
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/ui"
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder --chown=nginx:nginx /src/app/dist /usr/share/nginx/html
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 COPY src/config.template.js /config.template.js
+COPY ./nginx/default.template.conf /default.template.conf
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 

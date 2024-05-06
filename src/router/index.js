@@ -133,8 +133,9 @@ const router = new Router({
 
 // Require some routes to be logged in only.
 // From https://pusher.com/tutorials/authentication-vue-vuex
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
+    await Store.getters.initialized
     if (Store.getters.isLoggedIn) {
       next()
       return
