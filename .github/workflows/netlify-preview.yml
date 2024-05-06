@@ -58,7 +58,7 @@ jobs:
     - name: Enable SPA routing and API proxying on Netlify
       run: |
         echo "/api/*  https://api.wikibase.cloud/:splat  200" > ./dist/_redirects
-        echo "/*    /index.html   200" > ./dist/_redirects
+        echo "/*    /index.html   200" >> ./dist/_redirects
 
     - name: Deploy branch preview to Netlify
       id: netlify_deploy
