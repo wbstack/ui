@@ -6,12 +6,6 @@
   "author": {
     "name": "Addshore"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true,
-      "mocha": true
-    },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -101,6 +95,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "readme": "ERROR: No README data found!"
+  }
 }
