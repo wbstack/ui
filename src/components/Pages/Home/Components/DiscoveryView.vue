@@ -12,6 +12,7 @@
       </div>
       <div class="discovery" ref="flexbox" v-resize="onResizeFlexbox">
         <DiscoveryCard
+          id="featured-wiki-1"
           name="Qichwabase"
           url="https://qichwa.wikibase.cloud"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/cabd56b39c5401450a34dd5c9ea93149/logos/135.png"
@@ -19,6 +20,7 @@
           Qichwabase models <a href="https://www.wikidata.org/wiki/Q5218" target="_blank">Quechua language</a>, a language family spoken primarily in the Andes region of South America. It is a product of a miniproject worked on at <a href="https://datathon2022.linkeddata.es/" target="_blank">SD-LLOD-22</a> in June 2022, where it was awarded the Best Project Prize.
         </DiscoveryCard>
         <DiscoveryCard
+          id="featured-wiki-2"
           name="Beyond Notability"
           url="https://beyond-notability.wikibase.cloud"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/09daa4b3e2ceb1869bc81a21efc230b4/logos/135.png"
@@ -26,6 +28,7 @@
           Beyond Notability re-evaluates women's work in archaeology, history and heritage between 1870 and 1950. This community-driven LOD project experiences their knowledge graph as a living resource where any results are temporary until their final publication in 2024.
         </DiscoveryCard>
         <DiscoveryCard
+          id="featured-wiki-3"
           name="Wikibase World"
           url="https://wikibase.world"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/5de9f42a956f72a8375f03260e597f58/logos/135.png"

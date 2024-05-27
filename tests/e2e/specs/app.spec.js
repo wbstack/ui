@@ -10,4 +10,14 @@ describe('Vue.js app', () => {
     App.open()
     App.navLogin.click()
   })
+  it('should open and render some text', () => {
+    App.open()
+    expect(App.wbcloudIntro).toExist()
+  })
+  it('should open and show 3 featured wikis', () => {
+    App.open()
+    expect(App.featuredWiki1).toExist()
+    expect(App.featuredWiki2).toExist()
+    expect(App.featuredWiki3).toExist()
+  })
 })

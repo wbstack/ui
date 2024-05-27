@@ -6,6 +6,12 @@
   "author": {
     "name": "Addshore"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "mocha": true
+    },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

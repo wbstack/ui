@@ -12,6 +12,7 @@
         v-slot="{sideBySide}"
       >
         <DynamicPhotoTextView
+          id="wbcloud-intro"
           :sideBySide="sideBySide"
           :image="require('../../../assets/components/pages/home/BlueGraph.svg')"
           header="What is Wikibase Cloud?"
