@@ -1,5 +1,7 @@
+node_modules/
+dist/
+coverage/
 /build/
 /config/
-/dist/
 /*.js
 /test/unit/coverage/
