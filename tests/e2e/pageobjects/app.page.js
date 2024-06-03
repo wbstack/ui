@@ -8,6 +8,10 @@ class App {
   get navCreateAccount () { return $('#nav-create-account') }
   get navUser () { return $('#nav-user') }
   get navDashboard () { return $('#nav-dashboard') }
+  get wbcloudIntro () { return $('#wbcloud-intro') }
+  get featuredWiki1 () { return $('#featured-wiki-1') }
+  get featuredWiki2 () { return $('#featured-wiki-2') }
+  get featuredWiki3 () { return $('#featured-wiki-4') }
 
   /**
    * methods
