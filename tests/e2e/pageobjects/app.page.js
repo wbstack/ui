@@ -11,7 +11,7 @@ class App {
   get wbcloudIntro () { return $('#wbcloud-intro') }
   get featuredWiki1 () { return $('#featured-wiki-1') }
   get featuredWiki2 () { return $('#featured-wiki-2') }
-  get featuredWiki3 () { return $('#featured-wiki-4') }
+  get featuredWiki3 () { return $('#featured-wiki-3') }
 
   /**
    * methods
