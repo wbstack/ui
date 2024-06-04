@@ -1,0 +1,16 @@
+name: Browser tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  browser-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4.1.6
+      - run: docker compose run ui npm install
+      - run: docker compose --profile browser-tests up -d
+      - run: docker compose exec -it ui npm run test:e2e
