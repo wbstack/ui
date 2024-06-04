@@ -71,3 +71,13 @@ Backend api mocks live in `/src/backend/mocks/default_handlers.js`.
 **Note**
 Firefox blocks service workers as long as we use `localhost` for local development. The only solution is to use
 chrom(ium) for now.
+
+### Running browser tests
+
+```sh
+rm -r node_modules
+docker compose run ui npm install
+docker compose --profile browser-tests up -d
+docker compose exec -it ui npm run test:e2e
+docker compose --profile browser-tests down
+```

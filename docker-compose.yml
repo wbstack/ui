@@ -1,4 +1,5 @@
 version: '3.3'
+
 services:
   ui:
     env_file:
@@ -8,6 +9,14 @@ services:
     working_dir: /home/node/app
     volumes:
     - ./:/home/node/app
-    command: npm run serve -- --port 8081
+    command: npm run serve -- --port 8081 --host ui
     ports:
       - 8081:8081
+
+  selenium-firefox:
+    profiles: [browser-tests]
+    image: selenium/standalone-firefox:4.21.0
+    shm_size: 2gb
+    ports:
+      - 4444:4444
+      - 7900:7900
