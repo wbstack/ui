@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4.1.6
+      - run: cp .env.development.prod .env
       - run: docker compose run ui npm install
       - run: docker compose --profile browser-tests up -d
       - run: docker compose exec -it ui npm run test:e2e
