@@ -12,6 +12,10 @@ services:
     command: npm run serve -- --port 8081 --host ui
     ports:
       - 8081:8081
+    healthcheck:
+      test: curl --fail http://ui:8081 || exit 1
+      interval: 5s
+      start_period: 0s
 
   selenium-firefox:
     profiles: [browser-tests]
@@ -20,3 +24,7 @@ services:
     ports:
       - 4444:4444
       - 7900:7900
+    healthcheck:
+      test: curl --fail http://selenium-firefox:4444 || exit 1
+      interval: 5s
+      start_period: 0s
