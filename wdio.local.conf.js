@@ -8,6 +8,8 @@ exports.config = {
   /**
    * config for local testing
    */
+  logLevel: 'debug',
+  outputDir: '',
   maxInstances: 1,
   hostname: 'selenium-firefox',
   port: 4444,
