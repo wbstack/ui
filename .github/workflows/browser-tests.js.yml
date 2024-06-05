@@ -15,4 +15,5 @@ jobs:
       - run: sudo chown -R 1000:1000 ${GITHUB_WORKSPACE}
       - run: docker compose run ui npm install
       - run: docker compose --profile browser-tests up -d
+      - run: sleep 25
       - run: docker compose exec -it ui npm run test:e2e
