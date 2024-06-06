@@ -80,6 +80,7 @@ describe('Vue.js app', () => {
   })
 
   it('should open and render some text to introduce WBCloud', () => {
+    App.open()
     expect(App.wbcloudIntro).toExist()
   })
 
