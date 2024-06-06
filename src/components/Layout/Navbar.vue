@@ -1,7 +1,7 @@
 <template>
   <v-toolbar height="64px">
     <a class="pr-4 logo" href="/">
-      <img class="logo" src="../../assets/logo.svg">
+      <img id="logo" class="logo" src="../../assets/logo.svg">
     </a>
     <v-spacer></v-spacer>
     <template v-if="!isInitializing">
@@ -13,7 +13,7 @@
       </template>
       <v-menu content-class="menu" internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon class="dots-button mr-4" v-bind="attrs" v-on="on">
+          <v-btn id="dots-button" icon class="dots-button mr-4" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
         </template>

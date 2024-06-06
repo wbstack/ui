@@ -37,7 +37,7 @@
         </DiscoveryCard>
         </div>
       <div class="button">
-        <v-btn to="/discovery" large outlined>
+        <v-btn id="discovery-button" to="/discovery" large outlined>
           Discover more wikibases
         </v-btn>
       </div>
