@@ -1,11 +1,23 @@
 const App = require('../pageobjects/app.page')
 
 describe('Vue.js app', () => {
-  it('should render the WBC logo', async () => {
+  it('should render mainpage with all elements', async () => {
     beforeEach(async () => {
       App.open()
     })
+    // Logo
     expect(App.logo).toExist()
+
+    // Footer
+    expect(App.footer).toExist()
+
+    // WBCloud introduction
+    expect(App.wbcloudIntro).toExist()
+
+    // featured wikis
+    expect(App.featuredWiki1).toExist()
+    expect(App.featuredWiki2).toExist()
+    expect(App.featuredWiki3).toExist()
   })
 
   it('should open and render with Login button', async () => {
@@ -74,28 +86,5 @@ describe('Vue.js app', () => {
     await openBetaButton.click()
     // Wait for the URL to change to the signup URL
     await expect(browser).toHaveUrlContaining('/create-account', { wait: 5000 })
-  })
-
-  it('should open and render some text to introduce WBCloud', () => {
-    beforeEach(async () => {
-      App.open()
-    })
-    expect(App.wbcloudIntro).toExist()
-  })
-
-  it('should open and render a footer element', () => {
-    beforeEach(async () => {
-      App.open()
-    })
-    expect(App.footer).toExist()
-  })
-
-  it('should open and show 3 featured wikis', () => {
-    beforeEach(async () => {
-      App.open()
-    })
-    expect(App.featuredWiki1).toExist()
-    expect(App.featuredWiki2).toExist()
-    expect(App.featuredWiki3).toExist()
   })
 })
