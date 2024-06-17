@@ -4,6 +4,7 @@ describe('Vue.js app', () => {
   it('should render mainpage with all elements', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     // Logo
     expect(App.logo).toExist()
@@ -23,6 +24,7 @@ describe('Vue.js app', () => {
   it('should open and render with Login button', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     const navLogin = await $('#nav-login')
 
@@ -36,6 +38,7 @@ describe('Vue.js app', () => {
   it('should open and render with Signup button', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     const navCreateAccount = await $('#nav-create-account')
 
@@ -49,6 +52,7 @@ describe('Vue.js app', () => {
   it('should collapse Login and Signup buttons into a dots-button icon when screen width < 600px', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     await browser.setWindowSize(599, 800)
     const dotsButton = await $('#dots-button')
@@ -61,6 +65,7 @@ describe('Vue.js app', () => {
   it('should have a button linking to Discovery page', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     const discoveryButton = await $('#discovery-button')
     await discoveryButton.waitForDisplayed()
@@ -76,6 +81,7 @@ describe('Vue.js app', () => {
   it('should prompt users to sign up for open Beta', async () => {
     beforeEach(async () => {
       App.open()
+      App.waitForDisplayed({ timeout: 2000 })
     })
     const openBetaButton = await $('#open-beta-button')
     await openBetaButton.waitForDisplayed()
