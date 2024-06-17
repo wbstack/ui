@@ -24,7 +24,7 @@ describe('Vue.js app', () => {
 
     // Assert the new URL
     const signupUrl = await browser.getUrl()
-    expect(signupUrl).toContain('/create-account')
+    expect(signupUrl).toContain('/login')
   })
 
   it('should open and render with Signup button', async () => {
