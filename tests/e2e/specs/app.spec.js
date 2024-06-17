@@ -7,24 +7,49 @@ describe('Vue.js app', () => {
   })
 
   it('should open and render with Login button', async () => {
+    App.open()
     const navLogin = await $('#nav-login')
-    // await navLogin.waitForDisplayed()
 
     // Assert that the element is clickable
     expect(await navLogin.isClickable()).toBe(true)
     await navLogin.click()
+    // Wait for the URL to change to the signup URL
+    await browser.waitUntil(
+      async () => (await browser.getUrl()).includes('/login'),
+      {
+        timeout: 10000,
+        timeoutMsg: 'expected to be redirected to /login within 5s'
+      }
+    )
+
+    // Assert the new URL
+    const signupUrl = await browser.getUrl()
+    expect(signupUrl).toContain('/create-account')
   })
 
   it('should open and render with Signup button', async () => {
+    App.open()
     const navCreateAccount = await $('#nav-create-account')
-    // await navCreateAccount.waitForDisplayed()
 
     // Assert that the element is clickable
     expect(await navCreateAccount.isClickable()).toBe(true)
     await navCreateAccount.click()
+    // Wait for the URL to change to the signup URL
+    await browser.waitUntil(
+      async () => (await browser.getUrl()).includes('/create-account'),
+      {
+        timeout: 10000,
+        timeoutMsg: 'expected to be redirected to /create-account within 5s'
+      }
+    )
+
+    // Assert the new URL
+    const signupUrl = await browser.getUrl()
+    expect(signupUrl).toContain('/create-account')
   })
 
   it('should collapse Login and Signup buttons into a dots-button icon when screen width < 600px', async () => {
+    App.open()
     await browser.setWindowSize(599, 800)
     const dotsButton = await $('#dots-button')
     await dotsButton.waitForDisplayed()
@@ -85,10 +110,12 @@ describe('Vue.js app', () => {
   })
 
   it('should open and render a footer element', () => {
+    App.open()
     expect(App.footer).toExist()
   })
 
   it('should open and show 3 featured wikis', () => {
+    App.open()
     expect(App.featuredWiki1).toExist()
     expect(App.featuredWiki2).toExist()
     expect(App.featuredWiki3).toExist()
