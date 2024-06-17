@@ -3,6 +3,7 @@ const App = require('../pageobjects/app.page')
 describe('Vue.js app', () => {
   beforeEach(async () => {
     App.open()
+    await browser.setWindowSize(1360, 973)
   })
 
   it('should render mainpage with all elements', async () => {
