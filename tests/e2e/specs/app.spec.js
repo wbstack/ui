@@ -23,7 +23,7 @@ describe('Vue.js app', () => {
   })
 
   it('should open and render with Login button', async () => {
-    const navLogin = await $('#nav-login')
+    const navLogin = await App.navLogin
     await navLogin.waitForDisplayed()
 
     expect(await navLogin.isClickable()).toBe(true)
@@ -33,7 +33,7 @@ describe('Vue.js app', () => {
   })
 
   it('should open and render with Signup button', async () => {
-    const navCreateAccount = await $('#nav-create-account')
+    const navCreateAccount = await App.navCreateAccount
     await navCreateAccount.waitForDisplayed()
 
     expect(await navCreateAccount.isClickable()).toBe(true)
@@ -44,14 +44,14 @@ describe('Vue.js app', () => {
 
   it('should collapse Login and Signup buttons into a dots-button icon when screen width < 600px', async () => {
     await browser.setWindowSize(599, 800)
-    const dotsButton = await $('#dots-button')
+    const dotsButton = await App.dotsButton
     await dotsButton.waitForDisplayed()
 
     expect(await dotsButton.isDisplayed()).toBe(true)
   })
 
   it('should have a button linking to Discovery page', async () => {
-    const discoveryButton = await $('#discovery-button')
+    const discoveryButton = await App.discoveryButton
     await discoveryButton.waitForDisplayed()
 
     expect(await discoveryButton.isClickable()).toBe(true)
@@ -61,7 +61,7 @@ describe('Vue.js app', () => {
   })
 
   it('should prompt users to sign up for open Beta', async () => {
-    const openBetaButton = await $('#open-beta-button')
+    const openBetaButton = await App.openBetaButton
     await openBetaButton.waitForDisplayed()
 
     expect(await openBetaButton.isClickable()).toBe(true)
