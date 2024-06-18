@@ -3,17 +3,17 @@ class App {
    * elements
    */
   get heading () { return $('h1') }
-  get logo () { return $('#logo') }
-  get wbcloudIntro () { return $('#wbcloud-intro') }
-  get featuredWiki1 () { return $('#featured-wiki-1') }
-  get featuredWiki2 () { return $('#featured-wiki-2') }
-  get featuredWiki3 () { return $('#featured-wiki-3') }
-  get footer () { return $('#footer') }
-  get navLogin () { return $('#nav-login') }
-  get navCreateAccount () { return $('#nav-create-account') }
-  get dotsButton () { return $('#dots-button') }
-  get discoveryButton () { return $('#discovery-button') }
-  get openBetaButton () { return $('#open-beta-button') }
+  get logo () { return $('[data-test-id="logo"]') }
+  get wbcloudIntro () { return $('[data-test-id="wbcloud-intro"]') }
+  get featuredWiki1 () { return $('[data-test-id="featured-wiki-1"]') }
+  get featuredWiki2 () { return $('[data-test-id="featured-wiki-2"]') }
+  get featuredWiki3 () { return $('[data-test-id="featured-wiki-3"]') }
+  get footer () { return $('[data-test-id="footer"]') }
+  get navLogin () { return $('[data-test-id="nav-login"]') }
+  get navCreateAccount () { return $('[data-test-id="nav-create-account"]') }
+  get dotsButton () { return $('[data-test-id="dots-button"]') }
+  get discoveryButton () { return $('[data-test-id="discovery-button"]') }
+  get openBetaButton () { return $('[data-test-id="open-beta-button"]') }
   /**
    * methods
    */

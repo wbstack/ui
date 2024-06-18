@@ -1,7 +1,7 @@
 <template>
   <v-toolbar height="64px">
     <a class="pr-4 logo" href="/">
-      <img id="logo" class="logo" src="../../assets/logo.svg">
+      <img data-test-id="logo" class="logo" src="../../assets/logo.svg">
     </a>
     <v-spacer></v-spacer>
     <template v-if="!isInitializing">
@@ -13,7 +13,7 @@
       </template>
       <v-menu content-class="menu" internal-activator offset-y transition="scale-transition" v-if="($vuetify.breakpoint.width < 600) && !isLoggedIn">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn id="dots-button" icon class="dots-button mr-4" v-bind="attrs" v-on="on">
+          <v-btn data-test-id="dots-button" icon class="dots-button mr-4" v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
         </template>
@@ -28,7 +28,7 @@
       </v-menu>
       <template v-if="($vuetify.breakpoint.width >= 600) && !isLoggedIn">
         <v-btn
-          id="nav-login"
+          data-test-id="nav-login"
           class="mr-4"
           large
           text
@@ -38,7 +38,7 @@
           Log In
         </v-btn>
         <v-btn
-          id="nav-create-account"
+          data-test-id="nav-create-account"
           class="mr-4"
           large
           elevation="0"

@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer" class="footer">
+  <footer data-test-id="footer" class="footer">
   <v-footer color="primary lighten-1">
     <v-container>
       <ul class="footer-list">
