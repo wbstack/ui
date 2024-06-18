@@ -24,7 +24,7 @@ describe('Vue.js app', () => {
 
   it('should open and render with Login button', async () => {
     const navLogin = await App.navLogin
-    await navLogin.waitForDisplayed()
+    await navLogin.waitForDisplayed({ timeout: 5000 })
 
     expect(await navLogin.isClickable()).toBe(true)
     await navLogin.click()
@@ -34,7 +34,7 @@ describe('Vue.js app', () => {
 
   it('should open and render with Signup button', async () => {
     const navCreateAccount = await App.navCreateAccount
-    await navCreateAccount.waitForDisplayed()
+    await navCreateAccount.waitForDisplayed({ timeout: 5000 })
 
     expect(await navCreateAccount.isClickable()).toBe(true)
     await navCreateAccount.click()
@@ -45,14 +45,14 @@ describe('Vue.js app', () => {
   it('should collapse Login and Signup buttons into a dots-button icon when screen width < 600px', async () => {
     await browser.setWindowSize(599, 800)
     const dotsButton = await App.dotsButton
-    await dotsButton.waitForDisplayed()
+    await dotsButton.waitForDisplayed({ timeout: 5000 })
 
     expect(await dotsButton.isDisplayed()).toBe(true)
   })
 
   it('should have a button linking to Discovery page', async () => {
     const discoveryButton = await App.discoveryButton
-    await discoveryButton.waitForDisplayed()
+    await discoveryButton.waitForDisplayed({ timeout: 5000 })
 
     expect(await discoveryButton.isClickable()).toBe(true)
     await discoveryButton.click()
@@ -62,7 +62,7 @@ describe('Vue.js app', () => {
 
   it('should prompt users to sign up for open Beta', async () => {
     const openBetaButton = await App.openBetaButton
-    await openBetaButton.waitForDisplayed()
+    await openBetaButton.waitForDisplayed({ timeout: 5000 })
 
     expect(await openBetaButton.isClickable()).toBe(true)
     await openBetaButton.click()
