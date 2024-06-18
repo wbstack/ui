@@ -6,6 +6,7 @@
           <li><a target="_blank" rel="noopener noreferrer" href="https://wikiba.se/about-us/">About</a></li>
           <li><router-link to="/discovery">Discovery</router-link></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">Documentation</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://status.wikibase.cloud">Platform Status</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">Github</a></li>
           <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
           <li><router-link to="/terms-of-use">Terms of Use</router-link></li>
