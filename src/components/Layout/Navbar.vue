@@ -28,6 +28,7 @@
       </v-menu>
       <template v-if="($vuetify.breakpoint.width >= 600) && !isLoggedIn">
         <v-btn
+          id="nav-login"
           data-test-id="nav-login"
           class="mr-4"
           large
@@ -38,6 +39,7 @@
           Log In
         </v-btn>
         <v-btn
+          id="nav-create-account"
           data-test-id="nav-create-account"
           class="mr-4"
           large
