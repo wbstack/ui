@@ -13,6 +13,7 @@
       <div class="discovery" ref="flexbox" v-resize="onResizeFlexbox">
         <DiscoveryCard
           name="Qichwabase"
+          data-test-id="featured-wiki-1"
           url="https://qichwa.wikibase.cloud"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/cabd56b39c5401450a34dd5c9ea93149/logos/135.png"
         >
@@ -20,6 +21,7 @@
         </DiscoveryCard>
         <DiscoveryCard
           name="Beyond Notability"
+          data-test-id="featured-wiki-2"
           url="https://beyond-notability.wikibase.cloud"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/09daa4b3e2ceb1869bc81a21efc230b4/logos/135.png"
         >
@@ -27,6 +29,7 @@
         </DiscoveryCard>
         <DiscoveryCard
           name="Wikibase World"
+          data-test-id="featured-wiki-3"
           url="https://wikibase.world"
           logo="https://storage.googleapis.com/wikibase-cloud-static/sites/5de9f42a956f72a8375f03260e597f58/logos/135.png"
         >
@@ -34,7 +37,7 @@
         </DiscoveryCard>
         </div>
       <div class="button">
-        <v-btn to="/discovery" large outlined>
+        <v-btn data-test-id="discovery-button" to="/discovery" large outlined>
           Discover more wikibases
         </v-btn>
       </div>

@@ -8,14 +8,21 @@ exports.config = {
   /**
    * config for local testing
    */
+  logLevel: 'debug',
+  outputDir: '',
   maxInstances: 1,
-  services: ['geckodriver'],
+  hostname: 'selenium-firefox',
+  port: 4444,
+  path: '/wd/hub',
   capabilities: [
     {
       browserName: 'firefox',
       'moz:firefoxOptions': {
         args: ['-headless']
       },
+      'alwaysMatch': {
+        'moz:debuggerAddress': true
+      }
     }
   ]
 }

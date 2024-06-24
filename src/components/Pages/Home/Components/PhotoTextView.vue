@@ -7,7 +7,7 @@
       <div>
         <div class="text-h3">{{header}}</div>
         <div class="text-body text-body-1">{{content}}</div>
-        <v-btn :to="target" color="primary" x-large>{{button}}</v-btn>
+        <v-btn data-test-id="open-beta-button" :to="target" color="primary" x-large>{{button}}</v-btn>
       </div>
     </div>
   </div>
