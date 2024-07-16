@@ -37,6 +37,11 @@
               <Wikibase :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col>
+              <EntityImport :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
       <v-row>
@@ -66,6 +71,7 @@ import Logo from '~/components/Pages/ManageWiki/Cards/Logo'
 import Skin from '~/components/Pages/ManageWiki/Cards/Skin'
 import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
 import Wikibase from '~/components/Pages/ManageWiki/Cards/Wikibase'
+import EntityImport from '~/components/Pages/ManageWiki/Cards/EntityImport'
 import Delete from '~/components/Pages/ManageWiki/Cards/Delete'
 import QuestyCaptcha from '../Cards/QuestyCaptcha'
 
@@ -78,7 +84,8 @@ export default {
     Skin,
     Registration,
     Wikibase,
-    Delete
+    Delete,
+    EntityImport
   },
   data () {
     return {
