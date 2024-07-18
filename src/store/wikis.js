@@ -6,7 +6,7 @@ const getDefaultState = () => {
     wikis: [],
     count: 0,
     limit: 0,
-    entityImports: [],
+    currentWikiEntityImports: [],
     currentWikiSettings: null
   }
 }
@@ -34,7 +34,7 @@ const getters = {
   wikis: state => state.wikis,
   wikiCount: state => state.count,
   wikiLimit: state => state.limit,
-  hasEntityImport: state => state.entityImports.some((i) => i.status === 'success' || i.status === 'pending'),
+  currentWikiEntityImports: state => state.currentWikiEntityImports,
   hasLoaded: state => state.wikis.status !== ''
 }
 
@@ -53,12 +53,6 @@ const mutations = {
   },
   wikis_error (state) {
     state.status = 'error'
-  },
-  entityImports_success (state, response) {
-    state.entityImports = response
-  },
-  entityImports_error (state) {
-    state.entityImports = []
   },
   set_current_wiki_settings (state, details) {
     const wgDefaultSkinSetting = details.public_settings.find(setting => setting.name === 'wgDefaultSkin')
@@ -150,15 +144,17 @@ const mutations = {
   },
   set_questy_captcha_questions (state, value) {
     state.currentWikiSettings.captchaQuestions = value
+  },
+  set_current_wiki_entityImports (state, response) {
+    state.currentWikiEntityImports = response
   }
 }
 
 const actions = {
   initializeSettings ({ commit }, wikiId) {
     commit('clear_current_wiki_settings')
-    api.getEntityImports({ wiki: wikiId })
-      .then(res => commit('entityImports_success', res))
-      .catch(err => commit('entityImports_error', err))
+    api.getEntityImports({ wikiId })
+      .then(res => commit('set_current_wiki_entityImports', res))
     api.wikiDetails({ wiki: wikiId })
       .then(details => commit('set_current_wiki_settings', details))
   },
@@ -191,8 +187,16 @@ const actions = {
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
   },
-  triggerEntityImport (_, wikiId) {
+  triggerEntityImport ({ commit }, wikiId) {
     return api.importEntities({ wikiId })
+      .then(() => {
+        return api.getEntityImports({ wikiId })
+      })
+      .then(res => commit('set_current_wiki_entityImports', res))
+  },
+  updateEntityImports ({ commit }, wikiId) {
+    return api.getEntityImports({ wikiId })
+      .then(res => commit('set_current_wiki_entityImports', res))
   },
   setItemMapping ({ commit }, mapping) {
     commit('set_item_mapping', mapping)
