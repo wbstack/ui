@@ -32,6 +32,7 @@ export default {
   methods: {
     doSubmit (evt) {
       evt.preventDefault()
+      this.$store.dispatch('triggerEntityImport', this.wikiId)
     }
   }
 }

@@ -176,6 +176,8 @@ export const handlers = [
   ),
 
   /* Wiki endpoints */
+  rest.post(/\/api\/wiki\/entityImport$/, (_, res, ctx) => res(ctx.json({ data: { status: 'pending', payload: {}, started_at: new Date().toJSON() } }))),
+  rest.get(/\/api\/wiki\/entityImport$/, (_, res, ctx) => res(ctx.json({ data: [] }))),
   rest.get(/\/api\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
   rest.post(/\/api\/wiki\/mine$/, (_, res, ctx) => res(ctx.json({ wikis: myWikis, count: myWikis.length, limit: false }))),
   rest.post(/\/api\/wiki\/create$/, (req, res, ctx) => {
