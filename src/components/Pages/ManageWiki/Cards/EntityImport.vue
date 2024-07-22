@@ -9,7 +9,7 @@
       <v-card-actions>
         <v-btn :disabled="hasPending || hasSuccess" type="submit">Copy entities</v-btn>
       </v-card-actions>
-      <v-card-text v-if="!hasPending && !hasSuccess && hasFailed">
+      <v-card-text v-if="hasError || (!hasPending && !hasSuccess && hasFailed)">
         <span class="font-italic">Your entity import failed. Please try again.</span>
       </v-card-text>
       <v-card-text v-if="!hasPending && hasSuccess">
@@ -39,6 +39,9 @@ export default {
     'wikiId'
   ],
   computed: {
+    hasError () {
+      return this.$store.getters.currentWikiEntityImportError !== null
+    },
     hasPending () {
       return this.$store.getters.currentWikiEntityImports.some((i) => i.status === 'pending')
     },

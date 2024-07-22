@@ -7,6 +7,7 @@ const getDefaultState = () => {
     count: 0,
     limit: 0,
     currentWikiEntityImports: [],
+    currentWikiEntityImportError: null,
     currentWikiSettings: null
   }
 }
@@ -35,6 +36,7 @@ const getters = {
   wikiCount: state => state.count,
   wikiLimit: state => state.limit,
   currentWikiEntityImports: state => state.currentWikiEntityImports,
+  currentWikiEntityImportError: state => state.currentWikiEntityImportError,
   hasLoaded: state => state.wikis.status !== ''
 }
 
@@ -147,6 +149,9 @@ const mutations = {
   },
   set_current_wiki_entityImports (state, response) {
     state.currentWikiEntityImports = response
+  },
+  set_current_wiki_entityImportError (state, error) {
+    state.currentWikiEntityImportError = error
   }
 }
 
@@ -154,7 +159,11 @@ const actions = {
   initializeSettings ({ commit }, wikiId) {
     commit('clear_current_wiki_settings')
     api.getEntityImports({ wikiId })
-      .then(res => commit('set_current_wiki_entityImports', res))
+      .then(res => {
+        commit('set_current_wiki_entityImports', res)
+        commit('set_current_wiki_entityImportError', null)
+      })
+      .catch(err => commit('set_current_wiki_entityImportError', err))
     api.wikiDetails({ wiki: wikiId })
       .then(details => commit('set_current_wiki_settings', details))
   },
@@ -192,7 +201,11 @@ const actions = {
       .then(() => {
         return api.getEntityImports({ wikiId })
       })
-      .then(res => commit('set_current_wiki_entityImports', res))
+      .then(res => {
+        commit('set_current_wiki_entityImports', res)
+        commit('set_current_wiki_entityImportError', null)
+      })
+      .catch(err => commit('set_current_wiki_entityImportError', err))
   },
   updateEntityImports ({ commit }, wikiId) {
     return api.getEntityImports({ wikiId })
