@@ -4,8 +4,25 @@ class Discovery {
   get sortValue () { return $('.options .v-select__selection') }
   get excludeEmptyCheckbox () { return $('.options .v-input--checkbox input') }
   get cards () { return $('.grid.cards') }
-  get firstCard () { return $('.card:first-child .text-h5') }
-  get lastCard () { return $('.card:last-child .text-h5') }
+  get firstCard () { return $('.card:first-child') }
+  get lastCard () { return $('.card:last-child') }
+  get footer () { return $('.footer') }
+  get header () { return $('.intro .text-h4.title') }
+
+  async getCardDetails (card) {
+    return {
+      name: await (await card.$('.text-h5')).getText(),
+      pages: await (await card.$('.pages')).getText()
+    }
+  }
+
+  async getFirstCard () {
+    return await this.getCardDetails(await this.firstCard)
+  }
+
+  async getLastCard () {
+    return await this.getCardDetails(await this.lastCard)
+  }
 
   getCardByWikiName (name) {
     return $('//div[contains(text(), "' + name + '")]')

@@ -6,6 +6,15 @@ describe('Discovery page', () => {
     await browser.setWindowSize(1360, 973)
   })
 
+  it('should render header and footer', async () => {
+    const header = await Discovery.header
+    const footer = await Discovery.footer
+
+    expect(await header.isDisplayed()).toBe(true)
+    expect(await header.getText()).toStrictEqual('A tour of Wikibases in the cloud')
+    expect(await footer.isDisplayed()).toBe(true)
+  })
+
   it('should paginate results', async () => {
     const page = await Discovery.pagination
     expect(await page.isDisplayed()).toBe(true)
@@ -55,11 +64,11 @@ describe('Discovery page', () => {
 
         const cards = await Discovery.cards
         await cards.waitForDisplayed({ timeout: 5000 })
-        const firstCard = await Discovery.firstCard
-        const lastCard = await Discovery.lastCard
+        const firstCard = await Discovery.getFirstCard()
+        const lastCard = await Discovery.getLastCard()
 
-        expect(await firstCard.getText()).toStrictEqual(test.cards.first)
-        expect(await lastCard.getText()).toStrictEqual(test.cards.last)
+        expect(await firstCard.name).toStrictEqual(test.cards.first)
+        expect(await lastCard.name).toStrictEqual(test.cards.last)
       })
     })
   })
@@ -90,5 +99,21 @@ describe('Discovery page', () => {
 
     expect(await excludeEmptyCheckbox.isSelected()).toBe(false)
     expect(await cardWithLeastPages.isDisplayed()).toBe(true)
+  })
+
+  it('should render card details', async () => {
+    const { name, pages } = await Discovery.getFirstCard()
+
+    expect(name).toStrictEqual('seededsite-49')
+    expect(pages).toStrictEqual('No. of pages: 49')
+  })
+
+  it('should open new tab when card is clicked', async () => {
+    const firstCard = await Discovery.firstCard
+    await firstCard.click()
+
+    const url = 'https://seededsite-49.nodomain.example/'
+    await browser.switchWindow(url)
+    await expect(browser).toHaveUrlContaining(url, { wait: 5000 })
   })
 })
