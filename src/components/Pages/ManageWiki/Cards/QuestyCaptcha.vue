@@ -13,7 +13,7 @@
         :disabled="waitForToggleUpdate"
       />
     </v-col>
-    <v-expansion-panels class="settings-panel" v-model="panel">
+    <v-expansion-panels v-model="panel">
       <v-expansion-panel>
         <v-expansion-panel-header>
           <strong>SETTINGS</strong>
@@ -226,9 +226,6 @@ export default {
   padding-left: 20px;
   padding-bottom: 0;
   padding-top: 0;
-}
-.settings-panel {
-  position: static;
 }
 .answer-input-field {
   margin-right: 33px !important;
