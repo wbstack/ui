@@ -14,6 +14,8 @@ jobs:
         with:
           repository: wbstack/api
           path: api
+          # TODO: Temporary until branch is merged
+          ref: skip-throttle-local
 
       - run: cp .env.example .env
         working-directory: api
