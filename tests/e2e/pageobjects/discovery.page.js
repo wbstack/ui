@@ -34,6 +34,7 @@ class Discovery {
 
   async setSortValue (value) {
     const sortDropdown = await this.sortDropdown
+    await sortDropdown.waitForClickable({ timeout: 5000 })
     await sortDropdown.click()
 
     const dropdownOption = await $(
