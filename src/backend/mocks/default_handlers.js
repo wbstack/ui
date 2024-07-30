@@ -3,6 +3,7 @@ import { rest } from 'msw'
 let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
 let user = makeUser()
+let getEntityImportCalledTimes = 0
 
 function makeUser (email = 'test@local') {
   return {
@@ -176,6 +177,20 @@ export const handlers = [
   ),
 
   /* Wiki endpoints */
+  rest.post(/\/api\/wiki\/entityImport$/, (_, res, ctx) => {
+    return res(ctx.json({ data: { status: 'pending', payload: {}, started_at: new Date().toJSON() } }))
+  }),
+  rest.get(/\/api\/wiki\/entityImport$/, (_, res, ctx) => {
+    getEntityImportCalledTimes++
+    switch (getEntityImportCalledTimes) {
+      case 1:
+        return res(ctx.json({ data: [] }))
+      case 2:
+        return res(ctx.json({ data: [{ status: 'pending' }] }))
+      default:
+        return res(ctx.json({ data: [{ status: 'success' }] }))
+    }
+  }),
   rest.get(/\/api\/wiki\/count$/, (_, res, ctx) => res(ctx.json({ data: 1 }))),
   rest.post(/\/api\/wiki\/mine$/, (_, res, ctx) => res(ctx.json({ wikis: myWikis, count: myWikis.length, limit: false }))),
   rest.post(/\/api\/wiki\/create$/, (req, res, ctx) => {

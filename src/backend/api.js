@@ -87,3 +87,21 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
     }
   })).data
 }
+
+export const importEntities = async ({
+  wikiId,
+  entityIds = ['P22', 'P25', 'P40', 'P18', 'P31', 'P279', 'Q1', 'Q2', 'Q5', 'Q64', 'Q42', 'Q3107329'],
+  sourceWikiUrl = 'https://www.wikidata.org'
+}) => {
+  const { data: { data } } = await axios.post('/wiki/entityImport', {
+    wiki: wikiId,
+    entity_ids: entityIds.join(','),
+    source_wiki_url: sourceWikiUrl
+  })
+  return data
+}
+
+export const getEntityImports = async ({ wikiId }) => {
+  const { data: { data } } = await axios.get(`/wiki/entityImport?wiki=${wikiId}`)
+  return data
+}
