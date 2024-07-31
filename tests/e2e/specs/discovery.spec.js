@@ -2,7 +2,7 @@ const Discovery = require('../pageobjects/discovery.page')
 
 describe('Discovery page', () => {
   beforeEach(async () => {
-    Discovery.open()
+    await Discovery.open()
     await browser.setWindowSize(1360, 973)
   })
 
@@ -58,17 +58,15 @@ describe('Discovery page', () => {
       }
     ]
 
-    cases.forEach(async (test) => {
-      await it(test.description, async () => {
-        await Discovery.setSortValue(test.order)
+    cases.forEach(({ description, order, cards }) => {
+      it(`... ${description}`, async () => {
+        await Discovery.setSortValue(order)
 
-        const cards = await Discovery.cards
-        await cards.waitForDisplayed({ timeout: 5000 })
         const firstCard = await Discovery.getFirstCard()
         const lastCard = await Discovery.getLastCard()
 
-        expect(await firstCard.name).toStrictEqual(test.cards.first)
-        expect(await lastCard.name).toStrictEqual(test.cards.last)
+        expect(await firstCard.name).toStrictEqual(cards.first)
+        expect(await lastCard.name).toStrictEqual(cards.last)
       })
     })
   })
