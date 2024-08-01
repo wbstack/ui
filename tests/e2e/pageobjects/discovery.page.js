@@ -10,6 +10,7 @@ class Discovery {
   get header () { return $('.intro .text-h4.title') }
 
   async getCardDetails (card) {
+    await card.waitForDisplayed({ timeout: 5000 })
     return {
       name: await (await card.$('.text-h5')).getText(),
       pages: await (await card.$('.pages')).getText()
@@ -44,8 +45,8 @@ class Discovery {
     await dropdownOption.click()
   }
 
-  open (path = '/discovery') {
-    browser.url(path)
+  async open (path = '/discovery') {
+    await browser.url(path)
   }
 }
 
