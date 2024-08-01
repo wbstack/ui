@@ -11,18 +11,19 @@ exports.config = {
   logLevel: 'debug',
   outputDir: '',
   maxInstances: 1,
-  hostname: 'selenium-firefox',
   port: 4444,
   path: '/wd/hub',
   capabilities: [
     {
       browserName: 'firefox',
-      'moz:firefoxOptions': {
-        args: ['-headless']
-      },
-      'alwaysMatch': {
+      hostname: 'selenium-firefox',
+      alwaysMatch: {
         'moz:debuggerAddress': true
       }
+    },
+    {
+      browserName: 'chrome',
+      hostname: 'selenium-chrome'
     }
   ]
 }
