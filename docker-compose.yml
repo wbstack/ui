@@ -22,11 +22,19 @@ services:
     profiles: [ browser-tests ]
     image: selenium/standalone-firefox:4.21.0
     shm_size: 2gb
-    ports:
-     - 4444:4444
-     - 7900:7900
     healthcheck:
       test: curl --fail http://selenium-firefox:4444
+      interval: 5s
+      start_period: 0s
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  selenium-chrome:
+    profiles: [ browser-tests ]
+    image: selenium/standalone-chrome:4.23.0
+    shm_size: 2gb
+    healthcheck:
+      test: curl --fail http://selenium-chrome:4444
       interval: 5s
       start_period: 0s
     extra_hosts:

@@ -73,10 +73,9 @@ describe('Discovery page', () => {
 
   it('should filter out empty instances by default', async () => {
     await Discovery.setSortValue('Alphabetically ↑')
+    await Discovery.waitForCards()
 
     const excludeEmptyCheckbox = await Discovery.excludeEmptyCheckbox
-    const cards = await Discovery.cards
-    await cards.waitForDisplayed({ timeout: 5000 })
     const cardWithLeastPages = await Discovery.getCardByPageCount(0)
 
     expect(await excludeEmptyCheckbox.isSelected()).toBe(true)
@@ -91,8 +90,7 @@ describe('Discovery page', () => {
     const excludeEmptyCheckboxWrapper = await excludeEmptyCheckbox.parentElement()
     await excludeEmptyCheckboxWrapper.click()
 
-    const cards = await Discovery.cards
-    await cards.waitForDisplayed({ timeout: 5000 })
+    await Discovery.waitForCards()
     const cardWithLeastPages = await Discovery.getCardByPageCount(0)
 
     expect(await excludeEmptyCheckbox.isSelected()).toBe(false)
