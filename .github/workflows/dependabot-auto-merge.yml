@@ -9,7 +9,11 @@ on:
 jobs:
     auto-merge:
         runs-on: ubuntu-latest
-        if: ${{ github.actor == 'dependabot[bot]' && github.event.pull_request.merged == true && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_commit.message == 'Bump'}}
+        if: >
+            github.event.workflow_run.conclusion == 'success' &&
+            github.actor == 'dependabot[bot]' &&
+            github.event.pull_request.merged == true
+
         steps:
             - name: Checkout code
               uses: action/checkout@v3
