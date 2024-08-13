@@ -37,21 +37,13 @@
     "@vue/eslint-config-standard": "^8.0.1",
     "@vue/test-utils": "^1.2.2",
     "@vue/vue2-jest": "^27.0.0",
-    "chromedriver": "^93.0.1",
-    "cross-env": "^7.0.3",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^9.27.0",
     "geckodriver": "^3.0.1",
-    "lint-staged": "^13.2.3",
     "msw": "^0.35.0",
-    "node-notifier": "^10.0.0",
-    "semver": "^7.3.5",
-    "shelljs": "^0.8.5",
-    "vue-template-compiler": "^2.6.14",
     "wdio-chromedriver-service": "^7.3.2",
     "wdio-geckodriver-service": "^2.0.3"
   },
@@ -65,15 +57,6 @@
   "engines": {
     "node": ">= 11.0.0",
     "npm": ">= 6.4.1"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   },
   "readme": "ERROR: No README data found!"
 }
