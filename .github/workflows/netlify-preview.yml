@@ -14,10 +14,10 @@ jobs:
       with:
         env-file: .env.development.mock
 
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v3.7.0
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4.0.3
       with:
-        node-version: 14.x
+        node-version: 22.x
     - run: npm ci
     - run: npm run build
 
@@ -48,10 +48,10 @@ jobs:
       with:
         env-file: .env.development.prod
 
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v3.7.0
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4.0.3
       with:
-        node-version: 14.x
+        node-version: 22.x
     - run: npm ci
     - run: npm run build
 
