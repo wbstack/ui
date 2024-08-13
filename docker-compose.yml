@@ -3,7 +3,7 @@ services:
   ui:
     env_file:
       - .env
-    image: node:15
+    image: node:22
     user: "node"
     working_dir: /home/node/app
     volumes:
