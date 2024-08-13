@@ -8,18 +8,18 @@ describe('Vue.js app', () => {
 
   it('should render mainpage with all elements', async () => {
     // Logo
-    expect(App.logo).toExist()
+    await expect(App.logo).toExist()
 
     // Footer
-    expect(App.footer).toExist()
+    await expect(App.footer).toExist()
 
     // WBCloud introduction
-    expect(App.wbcloudIntro).toExist()
+    await expect(App.wbcloudIntro).toExist()
 
     // featured wikis
-    expect(App.featuredWiki1).toExist()
-    expect(App.featuredWiki2).toExist()
-    expect(App.featuredWiki3).toExist()
+    await expect(App.featuredWiki1).toExist()
+    await expect(App.featuredWiki2).toExist()
+    await expect(App.featuredWiki3).toExist()
   })
 
   it('should open and render with Login button', async () => {
