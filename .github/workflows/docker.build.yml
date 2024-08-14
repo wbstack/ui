@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - main
-  pull_request:
 
 jobs:
   docker-build:
@@ -54,7 +53,6 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          push: true
       -
         name: Check out `wmde/wbaas-deploy` repository in staging child directory
         uses: actions/checkout@v3.5.3
