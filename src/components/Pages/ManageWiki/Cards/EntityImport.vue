@@ -11,21 +11,21 @@
           <v-card-text>
             <h4 class="mb-0 mt-4">Properties</h4>
             <ul>
-              <li><a href="https://www.wikidata.org/wiki/Q1" target="_blank" rel="noopener nofollow">Universe</a></li>
-              <li><a href="https://www.wikidata.org/wiki/Q2" target="_blank" rel="noopener nofollow">World</a></li>
-              <li><a href="https://www.wikidata.org/wiki/Q5" target="_blank" rel="noopener nofollow">Human</a></li>
-              <li><a href="https://www.wikidata.org/wiki/Q64" target="_blank" rel="noopener nofollow">Berlin</a></li>
-              <li><a href="https://www.wikidata.org/wiki/Q42" target="_blank" rel="noopener nofollow">Douglas Adams</a></li>
-              <li><a href="https://www.wikidata.org/wiki/Q3107329" target="_blank" rel="noopener nofollow">The Hitchhiker's Guide to the Galaxy</a></li>
-            </ul>
-            <h4 class="mb-0 mt-4">Items</h4>
-            <ul>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P25">Mother</a></li>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P22">Father</a></li>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P40">Child</a></li>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P18">Image</a></li>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P31">Instance of</a></li>
               <li><a target="_blank" rel="noopener nofollow" href="https://www.wikidata.org/wiki/Property:P279">Subclass of</a></li>
+            </ul>
+            <h4 class="mb-0 mt-4">Items</h4>
+            <ul>
+              <li><a href="https://www.wikidata.org/wiki/Q1" target="_blank" rel="noopener nofollow">Universe</a></li>
+              <li><a href="https://www.wikidata.org/wiki/Q2" target="_blank" rel="noopener nofollow">World</a></li>
+              <li><a href="https://www.wikidata.org/wiki/Q5" target="_blank" rel="noopener nofollow">Human</a></li>
+              <li><a href="https://www.wikidata.org/wiki/Q64" target="_blank" rel="noopener nofollow">Berlin</a></li>
+              <li><a href="https://www.wikidata.org/wiki/Q42" target="_blank" rel="noopener nofollow">Douglas Adams</a></li>
+              <li><a href="https://www.wikidata.org/wiki/Q3107329" target="_blank" rel="noopener nofollow">The Hitchhiker's Guide to the Galaxy</a></li>
             </ul>
           </v-card-text>
           <v-card-actions>
