@@ -53,10 +53,10 @@
         </v-btn>
       </v-card-title>
       <v-card-text>
-        You can import a preselected subset of items and properties to help you get started with your Wikibase instance.
+        You can import a curated subset of items and properties to help you get started with your Wikibase instance.
       </v-card-text>
       <v-card-actions>
-        <v-btn :disabled="hasPending || hasSuccess" type="submit">Copy entities</v-btn>
+        <v-btn :disabled="hasPending || hasSuccess" type="submit">Import entities</v-btn>
       </v-card-actions>
       <v-card-text v-if="hasError || (!hasPending && !hasSuccess && hasFailed)">
         <span class="font-italic">Your entity import failed. Please try again.</span>
