@@ -66,6 +66,7 @@ jobs:
           path: ./repos/wbaas-deploy-production
       - name: Create helmfile docker shim
         run: |
+          mkdir -p ~/.local/bin
           docker pull ghcr.io/helmfile/helmfile:latest
           echo 'docker run \
             --rm \
