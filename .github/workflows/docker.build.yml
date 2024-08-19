@@ -26,6 +26,12 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2.9.1
       -
+        name: Set up yq
+        uses: frenck/action-setup-yq@v1
+      -
+        name: Set up helmfile
+        uses: helmfile/helmfile-action@v1.0.0
+      -
         name: Cache Docker layers
         uses: actions/cache@v3.3.1
         with:
@@ -64,32 +70,6 @@ jobs:
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-production
-      - name: Create helmfile docker shim
-        run: |
-          mkdir -p ~/.local/bin
-          docker pull ghcr.io/helmfile/helmfile:latest
-          echo 'docker run \
-            --rm \
-            --volume "${TMP_DIR}:${TMP_DIR}" \
-            --volume "${PWD}:/workdir" \
-            --workdir /workdir \
-            --user $(id -u):$(id -g) \
-            ghcr.io/helmfile/helmfile:latest helmfile $*' \
-            | tee ~/.local/bin/helmfile
-          chmod +x ~/.local/bin/helmfile
-      - name: Create yq docker shim
-        run: |
-          docker pull mikefarah/yq:latest
-          echo 'docker run \
-            --rm \
-            --volume "${TMP_DIR}:${TMP_DIR}" \
-            --volume "${PWD}:/workdir" \
-            --workdir /workdir \
-            --user $(id -u):$(id -g) \
-            mikefarah/yq:latest $*' \
-            | tee ~/.local/bin/yq
-          chmod +x ~/.local/bin/yq
-          
       - 
         name: Update helmfile values for local, staging and production
         id: update-helmfile-values
@@ -106,13 +86,13 @@ jobs:
         run: |
           cd ./repos/wbaas-deploy-staging
           # run generate values script for local from staging folder
-          ./bin/generate-values local ui
+          ./bin/generate-values local ui -- TODO: set OUTPUT_TEMPLATE here 
           # run generate values script for staging from staging folder
-          ./bin/generate-values staging ui
+          ./bin/generate-values staging ui -- TODO: set OUTPUT_TEMPLATE here
 
           # run generate values script for prod from prod folder
           cd ../wbaas-deploy-production
-          ./bin/generate-values production ui
+          ./bin/generate-values production ui -- TODO: set OUTPUT_TEMPLATE here
       -
         name: Truncate commit message
         id: truncate-commit-message
