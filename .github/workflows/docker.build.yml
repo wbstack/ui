@@ -64,15 +64,51 @@ jobs:
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-production
+      - name: Create helmfile docker shim
+        run: |
+          docker pull ghcr.io/helmfile/helmfile:latest
+          echo 'docker run \
+            --rm \
+            --volume "${TMP_DIR}:${TMP_DIR}" \
+            --volume "${PWD}:/workdir" \
+            --workdir /workdir \
+            --user $(id -u):$(id -g) \
+            ghcr.io/helmfile/helmfile:latest helmfile $*' \
+            | tee ~/.local/bin/helmfile
+          chmod +x ~/.local/bin/helmfile
+      - name: Create yq docker shim
+        run: |
+          docker pull mikefarah/yq:latest
+          echo 'docker run \
+            --rm \
+            --volume "${TMP_DIR}:${TMP_DIR}" \
+            --volume "${PWD}:/workdir" \
+            --workdir /workdir \
+            --user $(id -u):$(id -g) \
+            mikefarah/yq:latest $*' \
+            | tee ~/.local/bin/yq
+          chmod +x ~/.local/bin/yq
+          
       - 
-        name: Update values for local, staging and production
-        id: update-values
+        name: Update helmfile values for local, staging and production
+        id: update-helmfile-values
         run: |
           TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/local/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-production/k8s/helmfile/env/production/ui.values.yaml.gotmpl
+          # run the values script for local, prod and staging
+      -
+        name: Update argo values for local, staging and production
+        id: update-argo-values
+        run: |
+          # run generate values script for local from staging folder
+          ./repos/wbaas-deploy-staging/bin/generate-values.sh local ui
+          # run generate values script for staging from staging folder
+          ./repos/wbaas-deploy-staging/bin/generate-values.sh staging ui
+          # run generate values script for prod from prod folder
+          ./repos/wbaas-deploy-production/bin/generate-values.sh production ui
       -
         name: Truncate commit message
         id: truncate-commit-message
