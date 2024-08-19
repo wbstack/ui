@@ -104,12 +104,15 @@ jobs:
         name: Update argo values for local, staging and production
         id: update-argo-values
         run: |
+          cd ./repos/wbaas-deploy-staging
           # run generate values script for local from staging folder
-          ./repos/wbaas-deploy-staging/bin/generate-values local ui
+          ./bin/generate-values local ui
           # run generate values script for staging from staging folder
-          ./repos/wbaas-deploy-staging/bin/generate-values staging ui
+          ./bin/generate-values staging ui
+
           # run generate values script for prod from prod folder
-          ./repos/wbaas-deploy-production/bin/generate-values production ui
+          cd ../wbaas-deploy-production
+          ./bin/generate-values production ui
       -
         name: Truncate commit message
         id: truncate-commit-message
