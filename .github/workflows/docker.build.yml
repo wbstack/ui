@@ -57,8 +57,7 @@ jobs:
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-production
-      - 
-        name: Update helmfile values for local, staging and production
+      - name: Update helmfile values for local, staging and production
         id: update-helmfile-values
         run: |
           TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
