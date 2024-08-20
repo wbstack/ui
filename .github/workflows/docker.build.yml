@@ -104,13 +104,13 @@ jobs:
           path: ./repos/wbaas-deploy-staging
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-${{ steps.update-values.outputs.tag }}
+          branch: deploy-to-staging-${{ steps.update-helmfile-values.outputs.tag }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
-            This is an automated update for the `ui` image in staging and local, using `${{ steps.update-values.outputs.tag }}`.
+            This is an automated update for the `ui` image in staging and local, using `${{ steps.update-helmfile-values.outputs.tag }}`.
 
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
       -
@@ -119,12 +119,12 @@ jobs:
           path: ./repos/wbaas-deploy-production
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-production-${{ steps.update-values.outputs.tag }}
+          branch: deploy-to-production-${{ steps.update-helmfile-values.outputs.tag }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
-            This is an automated update for the `ui` image in production, using `${{ steps.update-values.outputs.tag }}`.
+            This is an automated update for the `ui` image in production, using `${{ steps.update-helmfile-values.outputs.tag }}`.
 
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
