@@ -30,7 +30,7 @@ jobs:
         uses: frenck/action-setup-yq@v1
       -
         name: Set up helmfile
-        uses: helmfile/helmfile-action@v1.0.0
+        uses: helmfile/helmfile-action@v1.9.1
       -
         name: Cache Docker layers
         uses: actions/cache@v3.3.1
