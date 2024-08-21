@@ -28,7 +28,7 @@ exports.config = {
       browserName: 'chrome',
       hostname: 'selenium-chrome',
       'goog:chromeOptions': {
-        args: ['--headless', '--disable-gpu', '--no-sandbox']
+        args: ['--headless']
       }
   ]
 }
