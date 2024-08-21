@@ -30,5 +30,6 @@ exports.config = {
       'goog:chromeOptions': {
         args: ['--headless']
       }
+    }
   ]
 }
