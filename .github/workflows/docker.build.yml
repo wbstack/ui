@@ -50,16 +50,19 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       - name: Check out `wmde/wbaas-deploy` repository in staging child directory
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v3.5.3
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-staging
       - name: Check out `wmde/wbaas-deploy` repository in production child directory
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v3.5.3
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-production
       - name: Update helmfile values for local, staging and production
+        if: github.event_name != 'pull_request'
         id: update-helmfile-values
         run: |
           TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
@@ -80,12 +83,14 @@ jobs:
           cd ../wbaas-deploy-production
           ./bin/generate-values production ui
       - name: Truncate commit message
+        if: github.event_name != 'pull_request'
         id: truncate-commit-message
         run: |
           MSG=$(git log -1 --pretty=format:%s)
           echo "msg=$MSG" >> $GITHUB_OUTPUT
       - name: Create Staging+Local Pull Request
         uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
         with:
           path: ./repos/wbaas-deploy-staging
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
@@ -101,6 +106,7 @@ jobs:
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
       - name: Create Production Pull Request
         uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
         with:
           path: ./repos/wbaas-deploy-production
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
