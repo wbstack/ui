@@ -12,7 +12,7 @@
       <div class="px-4 pb-2">
         <v-checkbox
           class="ma-0" hide-details
-          label="Was only used for Testing"
+          label="Was only used for testing"
           v-model="checkboxReasons"
           value="Was only used for testing"
         />
