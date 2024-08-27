@@ -76,7 +76,8 @@ const mutations = {
     const captchaQuestions = captchaQuestionsSetting
       ? Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
         return { question: key, answers: value }
-      }) : undefined
+      })
+      : undefined
 
     const federatedPropertiesSetting = details.public_settings.find(setting => setting.name === 'wikibaseFedPropsEnable')
     const wikibaseFedPropsEnable = federatedPropertiesSetting ? parseInt(federatedPropertiesSetting.value) === 1 : false
