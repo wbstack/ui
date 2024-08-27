@@ -8,15 +8,8 @@ export const login = async (user) => {
   } else {
     call = axios.get('/auth/login')
   }
-  try {
-    const { data } = await call
-    return data
-  } catch (err) {
-    if (err.response.code === '401') {
-      return null
-    }
-    throw err
-  }
+  const { data } = await call
+  return data
 }
 
 export const logout = async (user) => {

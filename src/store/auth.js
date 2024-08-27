@@ -48,7 +48,9 @@ const actions = {
       })
       .catch((error) => {
         commit('auth_error')
-        throw error
+        if (error.response.status !== 401) {
+          throw error
+        }
       })
   },
   logout ({ commit }) {

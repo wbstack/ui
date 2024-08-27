@@ -12,8 +12,8 @@
       <div class="px-4 pb-2">
         <v-checkbox
           class="ma-0" hide-details
-          label="Was only used for Testing"
-          v-model="deletion_reasons"
+          label="Was only used for testing"
+          v-model="checkboxReasons"
           value="Was only used for testing"
         />
         <v-checkbox
@@ -21,22 +21,22 @@
           hide-details
           label="Lacking essential
           functionality"
-          v-model="deletion_reasons"
+          v-model="checkboxReasons"
           value="Lacking essential functionality"
         />
         <v-checkbox
           class="ma-0"
           hide-details
           label="Too complex to work with"
-          v-model="deletion_reasons"
+          v-model="checkboxReasons"
           value="Too complex to work with"
         />
         <v-checkbox
           class="ma-0"
           hide-details
           label="Other reasons (please specify)"
-          v-model="deletion_reasons"
-          value="Other Reason"
+          v-model="checkboxReasons"
+          value="Other reason"
         />
       </div>
         <div class="px-4 align-self-stretch align-start">
@@ -46,7 +46,7 @@
             outlined
             dense
             hide-details
-            v-model="inputReason"
+            v-model="freeformReason"
             placeholder="e.g. ran out of space to create new wiki"
           ></v-text-field>
         </div>
@@ -73,18 +73,17 @@ export default {
   ],
   data () {
     return {
-      deletion_reasons: [],
       open_dialog: true,
-      inputReason: ''
+      checkboxReasons: [],
+      freeformReason: ''
     }
   },
   methods: {
     doDelete () {
       const wiki = this.wikiId
-      const deletionReasons = this.deletion_reasons
-
-      if (deletionReasons.includes('Other Reason')) {
-        deletionReasons[deletionReasons.indexOf('Other Reason')] = this.inputReason
+      const deletionReasons = [...this.checkboxReasons]
+      if (this.freeformReason) {
+        deletionReasons.push(this.freeformReason)
       }
       this.$store
         .dispatch('deleteWiki', { wiki, deletionReasons })
