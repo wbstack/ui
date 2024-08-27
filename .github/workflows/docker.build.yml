@@ -4,44 +4,41 @@ on:
   push:
     branches:
     - main
+  pull_request:
+
 jobs:
   docker-build:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v3.5.3
-      -
-        name: Docker meta
+      - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v4.6.0
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=sha
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.2.0
-      -
-        name: Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2.9.1
-      -
-        name: Cache Docker layers
+      - name: Set up helmfile
+        uses: helmfile/helmfile-action@v1.9.1
+      - name: Cache Docker layers
         uses: actions/cache@v3.3.1
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      -
-        name: Login to GitHub Container Registry
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v2.2.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      -
-        name: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v4.1.1
         with:
           context: .
@@ -49,63 +46,78 @@ jobs:
           platforms: linux/amd64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          push: true
-      -
-        name: Check out `wmde/wbaas-deploy` repository in staging child directory
+      - name: Check out `wmde/wbaas-deploy` repository in staging child directory
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v3.5.3
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-staging
-      -
-        name: Check out `wmde/wbaas-deploy` repository in production child directory
+      - name: Check out `wmde/wbaas-deploy` repository in production child directory
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v3.5.3
         with:
           repository: wmde/wbaas-deploy
           path: ./repos/wbaas-deploy-production
-      - 
-        name: Update values for local, staging and production
-        id: update-values
+      - name: Update helmfile values for local, staging and production
+        if: github.event_name != 'pull_request'
+        id: update-helmfile-values
         run: |
           TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/local/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/ui.values.yaml.gotmpl
           sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-production/k8s/helmfile/env/production/ui.values.yaml.gotmpl
-      -
-        name: Truncate commit message
+          # run the values script for local, prod and staging
+      - name: Update argo values for local, staging and production
+        if: github.event_name != 'pull_request'
+        id: update-argo-values
+        run: |
+          cd ./repos/wbaas-deploy-staging
+          # run generate values script for local from staging folder
+          ./bin/generate-values local ui
+          # run generate values script for staging from staging folder
+          ./bin/generate-values staging ui
+          # run generate values script for prod from prod folder
+          cd ../wbaas-deploy-production
+          ./bin/generate-values production ui
+      - name: Truncate commit message
+        if: github.event_name != 'pull_request'
         id: truncate-commit-message
         run: |
           MSG=$(git log -1 --pretty=format:%s)
           echo "msg=$MSG" >> $GITHUB_OUTPUT
-      -
+      - name: Create Staging+Local Pull Request
         uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
         with:
           path: ./repos/wbaas-deploy-staging
           commit-message: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Staging+Local: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-staging-${{ steps.update-values.outputs.tag }}
+          branch: deploy-to-staging-${{ steps.update-helmfile-values.outputs.tag }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
-            This is an automated update for the `ui` image in staging and local, using `${{ steps.update-values.outputs.tag }}`.
+            This is an automated update for the `ui` image in staging and local, using `${{ steps.update-helmfile-values.outputs.tag }}`.
 
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
-      -
+      - name: Create Production Pull Request
         uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
         with:
           path: ./repos/wbaas-deploy-production
           commit-message: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
           title: 'Production: Deploy new UI image ${{ steps.docker_meta.outputs.tags }}'
-          branch: deploy-to-production-${{ steps.update-values.outputs.tag }}
+          branch: deploy-to-production-${{ steps.update-helmfile-values.outputs.tag }}
           committer: wmdebot <github-bots@wikimedia.de>
           author: ${{ github.actor }} <github-bots@wikimedia.de>
           labels: automated pr
           token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
           body: |
-            This is an automated update for the `ui` image in production, using `${{ steps.update-values.outputs.tag }}`.
+            This is an automated update for the `ui` image in production, using `${{ steps.update-helmfile-values.outputs.tag }}`.
 
             **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/ui/commit/${{ github.sha }})
