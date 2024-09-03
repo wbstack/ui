@@ -62,7 +62,15 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
   const form = new FormData()
   form.append('logo', file, fileName)
   form.append('wiki', wikiId)
-  return axios.post('/wiki/logo/update', form)
+  return axios.post(
+    '/wiki/logo/update',
+    form,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+  )
 }
 // TODO the api should get the setting from the path (so it isn't needed in the payload)
 // payload needs 'wiki', 'setting' and 'value' keys
