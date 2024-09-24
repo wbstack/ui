@@ -6,12 +6,10 @@
         :items="items"
         label="Skin"
         placeholder="Pick a Skin"
-        hint="The default skin is Vector."
+        hint="The default skin is Vector legacy (2010)."
         persistent-hint
         prepend-icon="mdi-web"
         v-model="skin"
-        :disabled="inFlight"
-        :error-messages="error"
       ></v-select>
     </v-card-text>
     <v-card-actions>
@@ -22,6 +20,18 @@
         <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
       </v-tooltip>
     </v-card-actions>
+    <v-snackbar :color="message.status" elevation="24" v-model="message.show">
+      {{ message.text }}
+      <template v-slot:action>
+        <v-btn
+          text
+          variant="text"
+          @click="message.show = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -33,35 +43,45 @@ export default {
   ],
   data () {
     return {
-      items: [
-        'Vector',
-        'Modern',
-        'Timeless'
-      ],
+      skins: {
+        'Vector legacy (2010)':'vector',
+        'Vector (2022)':'vector-2022',
+        'MinervaNeue':'minerva',
+        'Modern':'modern',
+        'Timeless':'timeless'
+      },
       skin: '',
-      inFlight: false,
-      error: ''
+      message: false
+    }
+  },
+  computed: {
+    items() {
+      return Object.entries(this.skins).map(([key, value]) => key);
     }
   },
   created () {
     const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
-    this.skin = skin.charAt(0).toUpperCase() + skin.slice(1)
+    this.skin = Object.entries(this.skins).find(
+      ([key, value]) => value === skin
+    )?.[0]; // use first result from 'find' if it exists
   },
   methods: {
     doSetSkin () {
       const wiki = this.wikiId
-      // API needs the skin ID which is lower case..
-      const value = this.skin.toLowerCase()
+      const value = this.skins[this.skin]
 
       this.$store
         .dispatch('updateSkin', { wiki, value })
         .then(() => {
-          alert('Update success!')
+          this.showMessage('success', 'Your default skin has been updated.')
         })
         .catch(err => {
           console.log(err.response)
-          alert('Something went wrong.')
+          this.showMessage('error', `Something went wrong while saving your default skin. Please try again.`)
         })
+    },
+    showMessage (status, message) {
+      this.message = { status: status, text: message, show: true }
     }
   }
 }
