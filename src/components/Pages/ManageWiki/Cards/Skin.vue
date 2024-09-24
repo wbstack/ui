@@ -44,11 +44,11 @@ export default {
   data () {
     return {
       skins: {
-        'Vector legacy (2010)':'vector',
-        'Vector (2022)':'vector-2022',
-        'MinervaNeue':'minerva',
-        'Modern':'modern',
-        'Timeless':'timeless'
+        'Vector legacy (2010)': 'vector',
+        'Vector (2022)': 'vector-2022',
+        MinervaNeue: 'minerva',
+        Modern: 'modern',
+        Timeless: 'timeless'
       },
       skin: '',
       message: false
@@ -56,14 +56,14 @@ export default {
   },
   computed: {
     items() {
-      return Object.entries(this.skins).map(([key, value]) => key);
+      return Object.entries(this.skins).map(([key, value]) => key)
     }
   },
   created () {
     const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
     this.skin = Object.entries(this.skins).find(
       ([key, value]) => value === skin
-    )?.[0]; // use first result from 'find' if it exists
+    )?.[0] // use first result from 'find' if it exists
   },
   methods: {
     doSetSkin () {
@@ -77,7 +77,7 @@ export default {
         })
         .catch(err => {
           console.log(err.response)
-          this.showMessage('error', `Something went wrong while saving your default skin. Please try again.`)
+          this.showMessage('error', 'Something went wrong while saving your default skin. Please try again.')
         })
     },
     showMessage (status, message) {
