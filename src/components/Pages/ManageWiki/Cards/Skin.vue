@@ -55,7 +55,7 @@ export default {
     }
   },
   computed: {
-    items() {
+    items () {
       return Object.entries(this.skins).map(([key, value]) => key)
     }
   },
