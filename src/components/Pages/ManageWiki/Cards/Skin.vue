@@ -62,8 +62,8 @@ export default {
   created () {
     const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
     this.skin = Object.entries(this.skins).find(
-      ([key, value]) => value === skin
-    )?.[0] // use key from 'find' result if it not undefined, see `skins` object above
+      ([skinName, skinId]) => skinName === skin
+    )?.[0]
   },
   methods: {
     doSetSkin () {
