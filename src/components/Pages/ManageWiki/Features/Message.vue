@@ -27,9 +27,6 @@ export default {
       this.status = status
       this.text = message
       this.visible = true
-
-      console.log(message)
-      console.log(status)
     },
 
     hide () {

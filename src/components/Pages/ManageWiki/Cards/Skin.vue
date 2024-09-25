@@ -86,7 +86,6 @@ export default {
           this.$refs.message.show('error', 'Something went wrong while updating your default skin. Please try again.')
         })
     },
-
   }
 }
 </script>
