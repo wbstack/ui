@@ -40,15 +40,7 @@ export default {
       skins: [
         {
           value: 'vector',
-          text: 'Vector legacy (2010)'
-        },
-        {
-          value: 'vector-2022',
-          text: 'Vector (2022)'
-        },
-        {
-          value: 'minerva',
-          text: 'MinervaNeue'
+          text: 'Vector'
         },
         {
           value: 'modern',
