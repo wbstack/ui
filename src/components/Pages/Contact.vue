@@ -101,11 +101,11 @@ export default {
       this.$recaptcha('contact').then((recaptcha) => {
         this.$api.contact(
           {
-            name,
-            subject,
-            contactDetails,
-            message,
-            recaptcha
+            name: name,
+            subject: subject,
+            contactDetails: contactDetails,
+            message: message,
+            recaptcha: recaptcha
           })
           .then(success => this.createSuccessful())
           .catch(errors => {

@@ -8,7 +8,7 @@ let getEntityImportCalledTimes = 0
 function makeUser (email = 'test@local') {
   return {
     id: 1,
-    email,
+    email: email,
     verified: true,
     created_at: '2020-01-01',
     updated_at: '2020-01-01'
@@ -69,7 +69,7 @@ const wikiDiscovery = (referrer, params) => {
 
   let wikis = [...Array(75).keys()].map((id) => {
     const wiki = {
-      id,
+      id: id,
       domain: id + '-wikibase.wbaas.localhost',
       sitename: id + ' - ' + names[id % names.length],
       wiki_site_stats: null,

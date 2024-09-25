@@ -57,7 +57,7 @@ export default {
         {
           value: 'timeless',
           text: 'Timeless'
-        }
+        },
       ],
       skinId: '',
       message: false
