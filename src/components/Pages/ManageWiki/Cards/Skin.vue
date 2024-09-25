@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Message from '../Features/Message.vue';
+import Message from '../Features/Message.vue'
 
 export default {
   name: 'Skin',
@@ -40,23 +40,23 @@ export default {
       skins: [
         {
           value: 'vector',
-          text:  'Vector legacy (2010)'
+          text: 'Vector legacy (2010)'
         },
         {
           value: 'vector-2022',
-          text:  'Vector (2022)'
+          text: 'Vector (2022)'
         },
         {
           value: 'minerva',
-          text:  'MinervaNeue'
+          text: 'MinervaNeue'
         },
         {
           value: 'modern',
-          text:  'Modern'
+          text: 'Modern'
         },
         {
           value: 'timeless',
-          text:  'Timeless'
+          text: 'Timeless'
         },
       ],
       skinId: '',
@@ -67,7 +67,7 @@ export default {
     this.skinId = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
   },
   computed: {
-    skin() {
+    skin () {
       return this.skins.find(skin => skin.value === this.skinId)
     }
   },
@@ -82,10 +82,10 @@ export default {
           this.$refs.message.show('success', `Your default skin has been updated to ${this.skin.text}.`)
         })
         .catch(err => {
-          console.log(err.response)
+          console.error(err.response)
           this.$refs.message.show('error', 'Something went wrong while updating your default skin. Please try again.')
         })
-    },
+    }
   }
 }
 </script>

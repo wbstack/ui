@@ -15,12 +15,12 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       visible: false,
       text: 'Hello, this is a snackbar message!',
       status: 'success'
-    };
+    }
   },
   methods: {
     show (status, message) {
@@ -30,7 +30,7 @@ export default {
     },
 
     hide () {
-      this.visible = false;
+      this.visible = false
     }
   }
 }

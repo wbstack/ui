@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import Message from '../Features/Message.vue';
+import Message from '../Features/Message.vue'
 
 export default {
   name: 'QuestyCaptcha',
