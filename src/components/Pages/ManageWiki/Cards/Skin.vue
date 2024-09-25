@@ -20,24 +20,18 @@
         <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
       </v-tooltip>
     </v-card-actions>
-    <v-snackbar :color="message.status" elevation="24" v-model="message.show">
-      {{ message.text }}
-      <template v-slot:action>
-        <v-btn
-          text
-          variant="text"
-          @click="message.show = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
+    <Message ref="message" />
   </v-card>
 </template>
 
 <script>
+import Message from '../Features/Message.vue';
+
 export default {
   name: 'Skin',
+  components: {
+    Message
+  },
   props: [
     'wikiId'
   ],
@@ -70,35 +64,29 @@ export default {
     }
   },
   created () {
-    const defaultSkin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
-    this.skinId = this.getSkinBySkinId(defaultSkin).value
+    this.skinId = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
+  },
+  computed: {
+    skin() {
+      return this.skins.find(skin => skin.value === this.skinId)
+    }
   },
   methods: {
-    getSkinBySkinId (skinId) {
-      const skin = Object.entries(this.skins).find(
-        ([key, skinObject]) => skinObject.value === skinId
-      )?.[1]
-
-      return skin
-    },
     doSetSkin () {
       const wiki = this.wikiId
-      const skin = this.getSkinBySkinId(this.skinId)
-      const value = skin.value
+      const value = this.skin.value
 
       this.$store
         .dispatch('updateSkin', { wiki, value })
         .then(() => {
-          this.showMessage('success', `Your default skin has been updated to ${skin.text}.`)
+          this.$refs.message.show('success', `Your default skin has been updated to ${this.skin.text}.`)
         })
         .catch(err => {
           console.log(err.response)
-          this.showMessage('error', 'Something went wrong while updating your default skin. Please try again.')
+          this.$refs.message.show('error', 'Something went wrong while updating your default skin. Please try again.')
         })
     },
-    showMessage (status, message) {
-      this.message = { status: status, text: message, show: true }
-    }
+
   }
 }
 </script>
