@@ -9,7 +9,7 @@
         hint="The default skin is Vector legacy (2010)."
         persistent-hint
         prepend-icon="mdi-web"
-        v-model="skin"
+        v-model="skinName"
       ></v-select>
     </v-card-text>
     <v-card-actions>
@@ -50,34 +50,34 @@ export default {
         Modern: 'modern',
         Timeless: 'timeless'
       },
-      skin: '',
+      skinName: '',
       message: false
     }
   },
   computed: {
     items () {
-      return Object.entries(this.skins).map(([key, value]) => key)
+      return Object.entries(this.skins).map(([skinName, skin]) => skinName)
     }
   },
   created () {
-    const skin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
-    this.skin = Object.entries(this.skins).find(
-      ([skinName, skinId]) => skinName === skin
+    const defaultSkin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
+    this.skinName = Object.entries(this.skins).find(
+      ([skinName, skin]) => defaultSkin === skin
     )?.[0]
   },
   methods: {
     doSetSkin () {
       const wiki = this.wikiId
-      const value = this.skins[this.skin]
+      const skin = this.skins[this.skinName]
 
       this.$store
-        .dispatch('updateSkin', { wiki, value })
+        .dispatch('updateSkin', { wiki, skin })
         .then(() => {
-          this.showMessage('success', 'Your default skin has been updated.')
+          this.showMessage('success', `Your default skin has been updated to ${this.skinName}.`)
         })
         .catch(err => {
           console.log(err.response)
-          this.showMessage('error', 'Something went wrong while saving your default skin. Please try again.')
+          this.showMessage('error', 'Something went wrong while updating your default skin. Please try again.')
         })
     },
     showMessage (status, message) {
