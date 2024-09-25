@@ -6,7 +6,7 @@
         :items="skins"
         label="Skin"
         placeholder="Pick a Skin"
-        hint="The default skin is Vector legacy (2010)."
+        hint="The default skin is Vector."
         persistent-hint
         prepend-icon="mdi-web"
         v-model="skinId"
