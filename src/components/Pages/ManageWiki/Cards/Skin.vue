@@ -9,6 +9,8 @@
         hint="The default skin is Vector."
         persistent-hint
         prepend-icon="mdi-web"
+        :disabled="inFlight"
+        :error-messages="error"
         v-model="skinId"
       ></v-select>
     </v-card-text>
