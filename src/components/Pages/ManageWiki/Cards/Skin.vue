@@ -3,13 +3,13 @@
     <v-card-title>Set Skin</v-card-title>
     <v-card-text>
       <v-select
-        :items="items"
+        :items="skins"
         label="Skin"
         placeholder="Pick a Skin"
         hint="The default skin is Vector legacy (2010)."
         persistent-hint
         prepend-icon="mdi-web"
-        v-model="skinName"
+        v-model="skinId"
       ></v-select>
     </v-card-text>
     <v-card-actions>
@@ -43,37 +43,53 @@ export default {
   ],
   data () {
     return {
-      skins: {
-        'Vector legacy (2010)': 'vector',
-        'Vector (2022)': 'vector-2022',
-        MinervaNeue: 'minerva',
-        Modern: 'modern',
-        Timeless: 'timeless'
-      },
-      skinName: '',
+      skins: [
+        {
+          value: 'vector',
+          text:  'Vector legacy (2010)'
+        },
+        {
+          value: 'vector-2022',
+          text:  'Vector (2022)'
+        },
+        {
+          value: 'minerva',
+          text:  'MinervaNeue'
+        },
+        {
+          value: 'modern',
+          text:  'Modern'
+        },
+        {
+          value: 'timeless',
+          text:  'Timeless'
+        },
+      ],
+      skinId: '',
       message: false
-    }
-  },
-  computed: {
-    items () {
-      return Object.entries(this.skins).map(([skinName, skin]) => skinName)
     }
   },
   created () {
     const defaultSkin = this.$store.state.wikis.currentWikiSettings.wgDefaultSkin
-    this.skinName = Object.entries(this.skins).find(
-      ([skinName, skin]) => defaultSkin === skin
-    )?.[0]
+    this.skinId = this.getSkinBySkinId(defaultSkin).value
   },
   methods: {
+    getSkinBySkinId (skinId) {
+      const skin = Object.entries(this.skins).find(
+        ([key, skinObject]) => skinObject.value === skinId
+      )?.[1]
+
+      return skin
+    },
     doSetSkin () {
       const wiki = this.wikiId
-      const skin = this.skins[this.skinName]
+      const skin = this.getSkinBySkinId(this.skinId)
+      const value = skin.value
 
       this.$store
-        .dispatch('updateSkin', { wiki, skin })
+        .dispatch('updateSkin', { wiki, value })
         .then(() => {
-          this.showMessage('success', `Your default skin has been updated to ${this.skinName}.`)
+          this.showMessage('success', `Your default skin has been updated to ${skin.text}.`)
         })
         .catch(err => {
           console.log(err.response)
