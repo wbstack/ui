@@ -3,7 +3,7 @@
           <v-responsive max-width="840px" min-width="250px" >
               <h1>Get in touch with the team</h1>
               <p>Thank you for your interest. We really want to hear what you've got to say.</p>
-              <p>Have you got a question? First, check our <a href="https://www.mediawiki.org/wiki/Talk:Wikibase/FAQ" target="_blank">FAQ</a> to see if we've already answered it. We're constantly  updating it with new questions. if you don't find an answer there, feel free to use the contact form below. Thanks!</p>
+              <p>Have you got a question? First, check our <a href="https://www.mediawiki.org/wiki/Wikibase/FAQ" target="_blank">FAQ</a> to see if we've already answered it. We're constantly  updating it with new questions. if you don't find an answer there, feel free to use the contact form below. Thanks!</p>
               <h3>Want to connect with the Wikibase.cloud community?</h3>
               <p>You can visit our <a href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g" target="_blank">Telegram channel</a> or join our <a href="https://lists.wikimedia.org/postorius/lists/wikibase-cloud.lists.wikimedia.org/" target="_blank">mailing list</a>.</p>
               <v-responsive max-width="512px">
