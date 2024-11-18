@@ -1,5 +1,5 @@
 <template>
-  <v-col>
+  <v-col class="card-column">
     <v-form ref="form" v-model="valid" @submit="handleSubmit" id="formLexeme">
       <v-card class="padding">
         <v-card-title>Lexeme</v-card-title>

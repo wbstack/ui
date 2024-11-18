@@ -49,9 +49,11 @@ export default {
 </script>
 
 <style scoped>
+.tab-container >>> .card-column {
+  padding: 8px;
+}
 .tab-container >>> .col {
   max-width: 740px;
-  padding: 12px;
 }
 .tab-container >>> .v-card {
   min-width: 288px;
@@ -60,5 +62,8 @@ export default {
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
+}
+.v-tabs {
+  padding-bottom: 4px;
 }
 </style>

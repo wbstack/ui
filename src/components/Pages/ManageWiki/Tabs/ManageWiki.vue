@@ -5,22 +5,22 @@
         <!--Col 1-->
         <v-col>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Details :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Skin :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Logo :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <QuestyCaptcha :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
@@ -28,29 +28,29 @@
         <!--Col 2-->
         <v-col>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Registration :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Wikibase :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <EntityImport :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col class="card-column">
           <Delete :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
       <v-row v-if="wikiId == 0">
-        <v-col>
+        <v-col class="card-column">
           <v-card>
             <v-toolbar dark color="primary">
               <v-toolbar-title>Wiki Management</v-toolbar-title>

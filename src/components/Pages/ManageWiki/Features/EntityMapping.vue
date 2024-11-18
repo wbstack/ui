@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-col>
+  <v-col class="card-column">
     <v-card>
         <v-card-title>Mapping Properties to Wikidata</v-card-title>
         <v-card-text>
@@ -19,7 +19,7 @@
         />
     </v-card>
   </v-col>
-  <v-col>
+  <v-col class="card-column">
     <v-card>
         <v-card-title>Mapping Items to Wikidata</v-card-title>
         <v-card-text>
