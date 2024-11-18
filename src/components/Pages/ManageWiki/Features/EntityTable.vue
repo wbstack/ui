@@ -28,7 +28,7 @@
 
   <v-dialog v-model="dialog" max-width="500px">
     <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark class="space" v-bind="attrs" v-on="on">
+        <v-btn class="space" v-bind="attrs" v-on="on">
             Add New Mapping
         </v-btn>
     </template>
@@ -188,6 +188,6 @@ export default {
 
 <style lang="css" scoped>
 .space {
-  margin: 20px;
+  margin-top: 24px;
 }
 </style>

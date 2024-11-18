@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="tab-container">
       <div v-if="isReady">
         <v-tabs v-model="tab">
             <v-tab>Wiki Settings</v-tab>
@@ -49,5 +49,16 @@ export default {
 </script>
 
 <style scoped>
-
+.tab-container >>> .col {
+  max-width: 740px;
+  padding: 12px;
+}
+.tab-container >>> .v-card {
+  min-width: 288px;
+}
+.tab-container >>> .v-card__actions {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
 </style>
