@@ -1,4 +1,5 @@
 <template>
+  <div class="content">
     <div class="tab-container">
       <div v-if="isReady">
         <v-tabs v-model="tab">
@@ -19,6 +20,7 @@
         <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -49,6 +51,9 @@ export default {
 </script>
 
 <style scoped>
+.content {
+  padding: 8px;
+}
 .tab-container >>> .card-column {
   padding: 8px;
 }
@@ -62,8 +67,5 @@ export default {
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
-}
-.v-tabs {
-  padding-bottom: 4px;
 }
 </style>
