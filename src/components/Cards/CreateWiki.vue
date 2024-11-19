@@ -156,8 +156,8 @@ export default {
       SUBDOMAIN_SUFFIX: config.SUBDOMAIN_SUFFIX,
       CNAME_RECORD: config.CNAME_RECORD,
       errorMessages: {
-        domainTaken: "The domain has already been taken.",
-        domainFormat: "The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-)."
+        domainTaken: 'The domain has already been taken.',
+        domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
       }
     }
   },
@@ -222,7 +222,7 @@ export default {
       }
       if (errors.domain) {
         this.hasError = true
-        if (errors.domain[0] === "The domain has already been taken.") {
+        if (errors.domain[0] === 'The domain has already been taken.') {
           this.error.siteaddress = this.errorMessages.domainTaken
         } else {
           this.error.siteaddress = this.errorMessages.domainFormat
