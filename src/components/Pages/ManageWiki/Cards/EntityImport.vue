@@ -44,7 +44,7 @@
     <v-card>
       <v-card-title class="card-title">
         <span>Import base entities</span>
-        <v-btn class="info-btn" x-small plain @click="showOverlay = true">
+        <v-btn class="info-btn" x-small text @click="showOverlay = true">
           <v-icon small>
             mdi-information-outline
           </v-icon>
@@ -125,10 +125,6 @@ export default {
 }
 .card-title > span {
   flex-grow: 1;
-}
-.info-btn {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
 }
 .info-btn .v-icon {
   margin-right: 4px;
