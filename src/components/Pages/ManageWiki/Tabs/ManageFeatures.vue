@@ -23,3 +23,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-main >>> .col {
+  max-width: 896px;
+}
+</style>

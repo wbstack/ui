@@ -57,9 +57,6 @@ export default {
 .tab-container >>> .card-column {
   padding: 8px;
 }
-.tab-container >>> .col {
-  max-width: 740px;
-}
 .tab-container >>> .v-card {
   min-width: 288px;
 }

@@ -102,5 +102,7 @@ export default {
   .red-notice-highlight{
     background-color: red;
   }
-
+.v-main >>> .col {
+  max-width: 640px;
+}
 </style>
