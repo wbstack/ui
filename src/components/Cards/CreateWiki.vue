@@ -272,4 +272,7 @@ export default {
 >>> .v-messages__message {
   margin-bottom: 10px;
 }
+.v-tooltip__content {
+  max-width: 448px;
+}
 </style>
