@@ -1,6 +1,6 @@
 <template>
   <v-form @submit="login">
-    <v-card class="elevation-12 mt-16" width="477px">
+    <v-card class="elevation-12 mt-16 card-width">
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{title}}</v-toolbar-title>
       </v-toolbar>
@@ -100,4 +100,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.card-width {
+  width: 477px;
+}
+
+@media (max-width: 480px) {
+  .card-width {
+    width: calc(100% - 2px);
+    max-width: 320px; /* Limit to 320px for very small screens */
+  }
+}
 </style>
