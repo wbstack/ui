@@ -1,8 +1,6 @@
 <template>
   <v-main>
-    <div class="space"></div>
     <EntityMapping :wikiId="wikiId"/>
-    <div class="space"></div>
     <Lexeme :wikiId="wikiId" />
   </v-main>
 </template>
@@ -27,8 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.space {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.v-main >>> .col {
+  max-width: 912px;
 }
 </style>

@@ -117,7 +117,8 @@ const router = new Router({
       name: 'TabSettings',
       component: TabSettings,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        customLayout: true
       }
     },
     {

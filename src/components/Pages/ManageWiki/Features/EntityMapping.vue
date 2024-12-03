@@ -1,6 +1,7 @@
 <template>
 <div>
-    <v-card elevation="1" class="padding" outlined>
+  <v-col class="card-column">
+    <v-card>
         <v-card-title>Mapping Properties to Wikidata</v-card-title>
         <v-card-text>
             Some tools assume properties with special meanings under certain identifiers.
@@ -9,6 +10,7 @@
             on your Wikibase you can create a mapping between them.
         </v-card-text>
         <EntityTable
+            class="padding"
             mappingName="Properties"
             entityName="Property"
             :entityValidation="/^P\d+$/"
@@ -16,16 +18,16 @@
             @setEntityMapping="setPropertiesMapping( $event )"
         />
     </v-card>
-
-    <div class="space"></div>
-
-    <v-card elevation="1" class="padding" outlined>
+  </v-col>
+  <v-col class="card-column">
+    <v-card>
         <v-card-title>Mapping Items to Wikidata</v-card-title>
         <v-card-text>
             Some tools assume items with special meanings under certain identifiers.
             Here, you can map a item on your Wikibase instance to an item on Wikidata.
         </v-card-text>
         <EntityTable
+            class="padding"
             mappingName="Items"
             entityName="Item"
             :entityValidation="/^Q\d+$/"
@@ -33,6 +35,7 @@
             @setEntityMapping="setItemsMapping( $event )"
         />
     </v-card>
+  </v-col>
 </div>
 </template>
 
@@ -74,6 +77,6 @@ export default {
   margin-bottom: 20px;
 }
 .padding {
-  padding: 15px;
+  padding: 0 16px 16px 16px;
 }
 </style>
