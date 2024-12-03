@@ -6,7 +6,7 @@
       </v-toolbar>
       <v-card-text>
 
-        <h3>Site Name
+        <h3>Site name
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">mdi-information-outline</v-icon>
@@ -21,21 +21,20 @@
         id="inputSiteName"
         prepend-icon="mdi-format-title"
         name="sitename"
-        label="E.g., Goat Collective"
+        label="e.g., Goat Collective"
         v-model="sitename"
         :disabled="inFlight"
         :error-messages="error['sitename']"
         />
 
-        <h3>Site Domain
+        <h3>Site domain
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">mdi-information-outline</v-icon>
             </template>
-            <span>A domain name is the site address people type into their browser to visit your site</span><br/>
-            <span>If you already own a domain you can use it by selecting "Custom Domain"</span><br/>
-            <span>If not you can use a "Free Subdomain"</span><br/>
-            <span>The subdomain must be at least five characters long, and can consist of small Latin letters, digits and hyphens</span><br/>
+            <span>A domain name is what people type into their browser to visit your site.</span><br/>
+            <span>If you own your own domain, you can use it for Wikibase Cloud by selecting "Custom Domain".</span><br/>
+            <span>Otherwise, choose your own name to be a subdomain of wikibase.cloud (five characters minimum, only a-z, 0-9 and "-") by selecting "Free Subdomain". Example: your-name-here1.wikibase.cloud</span><br/>
           </v-tooltip>
         </h3>
 
@@ -48,18 +47,19 @@
                       id="inputSubdomain"
                       prepend-icon="mdi-web"
                       name="subdomain"
-                      label="E.g. goat-collective"
+                      label="e.g., goat-collective"
                       v-model="subdomain"
                       :suffix="SUBDOMAIN_SUFFIX"
                       :disabled="inFlight"
                       :error-messages="error['siteaddress']"
+                      :hint="errorMessages.domainFormat"
         />
 
         <v-text-field v-if="domainRadioChoice === 'own'"
                       id="inputDomain"
                       prepend-icon="mdi-web"
                       name="domain"
-                      label="E.g. goat-collective.com"
+                      label="e.g., goat-collective.com"
                       v-model="domain"
                       :disabled="inFlight"
                       :error-messages="error['siteaddress']"
@@ -68,7 +68,7 @@
         <p v-if="domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
         <p v-if="domainRadioChoice === 'own'">"{{ CNAME_RECORD }}"</p>
 
-        <h3>Your User
+        <h3>Your user
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <v-icon v-on="on">mdi-information-outline</v-icon>
@@ -82,13 +82,13 @@
         id="inputUsername"
         prepend-icon="mdi-account"
         name="username"
-        label="E.g., Addshore"
+        label="e.g., Addshore"
         v-model="username"
         :disabled="inFlight"
         :error-messages="error['username']"
         />
 
-        <h3>Terms of Use</h3>
+        <h3>Terms of use</h3>
         <v-checkbox
         v-model="terms"
         :disabled="inFlight"
@@ -105,12 +105,10 @@
                     @click.stop
                     v-on="on"
                   >
-                    Terms of Use
-                  </a>
+                    Terms of Use</a>
                 </template>
                 Opens in new window
-              </v-tooltip>
-              .
+              </v-tooltip>.
             </div>
           </template>
         </v-checkbox>
@@ -156,7 +154,11 @@ export default {
       error: [],
       inFlight: false,
       SUBDOMAIN_SUFFIX: config.SUBDOMAIN_SUFFIX,
-      CNAME_RECORD: config.CNAME_RECORD
+      CNAME_RECORD: config.CNAME_RECORD,
+      errorMessages: {
+        domainTaken: 'The domain has already been taken.',
+        domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
+      }
     }
   },
   created () {
@@ -220,7 +222,11 @@ export default {
       }
       if (errors.domain) {
         this.hasError = true
-        this.error.siteaddress = errors.domain[0]
+        if (errors.domain[0] === 'The domain has already been taken.') {
+          this.error.siteaddress = this.errorMessages.domainTaken
+        } else {
+          this.error.siteaddress = this.errorMessages.domainFormat
+        }
       }
       if (errors.username) {
         this.hasError = true
@@ -262,5 +268,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+>>> .v-messages__message {
+  margin-bottom: 10px;
+}
+.v-tooltip__content {
+  max-width: 448px;
+}
 </style>
