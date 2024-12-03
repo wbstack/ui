@@ -24,6 +24,11 @@
               <QuestyCaptcha :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col class="card-column">
+              <EntityImport :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
         </v-col>
         <!--Col 2-->
         <v-col>
@@ -39,14 +44,9 @@
           </v-row>
           <v-row>
             <v-col class="card-column">
-              <EntityImport :wikiId="this.wikiId"/>
+              <Delete :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="card-column">
-          <Delete :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
       <v-row v-if="wikiId == 0">
