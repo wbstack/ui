@@ -103,6 +103,6 @@ export default {
     background-color: red;
   }
 .v-main >>> .col {
-  max-width: 640px;
+  max-width: 656px;
 }
 </style>

@@ -26,6 +26,6 @@ export default {
 
 <style scoped>
 .v-main >>> .col {
-  max-width: 896px;
+  max-width: 912px;
 }
 </style>
