@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-container class="fill-height" fluid>
+    <v-container>
       <v-row v-if="wikiId != 0">
         <!--Col 1-->
         <v-col>

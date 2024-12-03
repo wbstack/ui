@@ -1,26 +1,28 @@
 <template>
-  <div class="content">
-    <div class="tab-container">
-      <div v-if="isReady">
-        <v-tabs v-model="tab">
-            <v-tab>Wiki Settings</v-tab>
-            <v-tab>Features</v-tab>
-        </v-tabs>
-        <v-tabs-items v-model="tab">
-            <v-tab-item>
-                <ManageWiki />
-            </v-tab-item>
-            <v-tab-item>
-                <ManageFeatures />
-            </v-tab-item>
-        </v-tabs-items>
-      </div>
-      <div class="text-center" v-if="!isReady">
-        <br/>
-        <v-progress-circular indeterminate color="primary"></v-progress-circular>
+  <v-container class="container">
+    <div class="content">
+      <div class="tab-container">
+        <div v-if="isReady">
+          <v-tabs v-model="tab">
+              <v-tab>Wiki Settings</v-tab>
+              <v-tab>Features</v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="tab">
+              <v-tab-item>
+                  <ManageWiki />
+              </v-tab-item>
+              <v-tab-item>
+                  <ManageFeatures />
+              </v-tab-item>
+          </v-tabs-items>
+        </div>
+        <div class="text-center" v-if="!isReady">
+          <br/>
+          <v-progress-circular indeterminate color="primary"></v-progress-circular>
+        </div>
       </div>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -51,6 +53,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  padding: 0;
+  max-width: fit-content;
+}
 .content {
   padding: 8px;
 }
