@@ -42,11 +42,10 @@
       </v-dialog>
     </v-overlay>
     <v-card>
-      <v-card-title>
-        Import base entities
-        <v-spacer />
-        <v-btn plain right @click="showOverlay = true">
-          <v-icon>
+      <v-card-title class="card-title">
+        <span>Import base entities</span>
+        <v-btn class="info-btn" x-small text @click="showOverlay = true">
+          <v-icon small>
             mdi-information-outline
           </v-icon>
             More info
@@ -119,4 +118,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.card-title {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 0 24px;
+}
+.card-title > span {
+  flex-grow: 1;
+}
+.info-btn .v-icon {
+  margin-right: 4px;
+}
 </style>
