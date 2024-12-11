@@ -102,12 +102,14 @@ export default {
 <style lang="css" scoped>
 .card-width {
   width: 477px;
+  padding: 16px;
+
 }
 
-@media (max-width: 480px) {
+@media (max-width: 620px) {
   .card-width {
-    width: calc(100% - 2px);
-    max-width: 320px; /* Limit to 320px for very small screens */
+    width: calc(100%);
+    margin-right: 110px;
   }
 }
 </style>
