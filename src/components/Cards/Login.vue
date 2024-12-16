@@ -102,7 +102,6 @@ export default {
 <style lang="css" scoped>
 .card-width {
   width: 477px;
-  padding: 16px;
 
 }
 
