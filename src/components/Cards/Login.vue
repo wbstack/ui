@@ -87,13 +87,13 @@ export default {
         .catch(err => {
           console.log(err.response)
 
-          this.errorMessage = "Incorrect username or password. Please try again."
+          this.errorMessage = 'Incorrect username or password. Please try again.'
 
-          this.password = ""
+          this.password = ''
 
           this.$nextTick(() => {
-            this.$refs.passwordField.$el.querySelector("input").focus();
-          });
+            this.$refs.passwordField.$el.querySelector('input').focus()
+          })
 
           this.loggingIn = false
         })
