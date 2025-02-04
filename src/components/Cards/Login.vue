@@ -5,6 +5,17 @@
         <v-toolbar-title>{{title}}</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
+        <v-alert
+          v-if="errorMessage"
+          outlined
+          color="error"
+          type="error"
+          dense
+          border="left"
+          :icon=false
+        >
+        {{ errorMessage }}
+        </v-alert>
         <v-text-field
           id="inputEmail"
           prepend-icon="mdi-email"
@@ -13,8 +24,6 @@
           type="email"
           required
           v-model="email"
-          :disabled="loggingIn"
-          :error-messages="error['email']"
         />
         <v-text-field
           id="inputPassword"
@@ -24,8 +33,7 @@
           type="password"
           required
           v-model="password"
-          :disabled="loggingIn"
-          :error-messages="error['password']"
+          ref="passwordField"
         />
         <router-link to="/forgotten-password" style="text-decoration: none">Forgot your password?</router-link>
       </v-card-text>
@@ -48,7 +56,7 @@ export default {
     return {
       email: '',
       password: '',
-      error: [],
+      errorMessage: '',
       loggingIn: false
     }
   },
@@ -68,29 +76,24 @@ export default {
     },
     login (evt) {
       evt.preventDefault()
-
       this.loggingIn = true
       const email = this.email
       const password = this.password
-      this.error = []
+      this.errorMessage = ''
+
       this.$store
         .dispatch('login', { email, password })
         .then(() => this.$router.push('/dashboard'))
         .catch(err => {
           console.log(err.response)
 
-          // If the api gave use details of the error, then use them
-          if (err.response && err.response.data && err.response.data.errors) {
-            if (err.response.data.errors.email) {
-              this.error.email = err.response.data.errors.email[0]
-            }
-            if (err.response.data.errors.password) {
-              this.error.password = err.response.data.errors.password[0]
-            }
-          } else {
-            this.error.email = 'Could not log in.'
-            this.error.password = 'Could not log in.'
-          }
+          this.errorMessage = 'Incorrect username or password. Please try again.'
+
+          this.password = ''
+
+          this.$nextTick(() => {
+            this.$refs.passwordField.$el.querySelector('input').focus()
+          })
 
           this.loggingIn = false
         })
@@ -102,7 +105,6 @@ export default {
 <style lang="css" scoped>
 .card-width {
   width: 477px;
-
 }
 
 @media (max-width: 620px) {
