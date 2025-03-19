@@ -114,7 +114,64 @@
         </v-checkbox>
 
       </v-card-text>
+
+<!--        
+        purpose', ['data_hub', 'data_lab', 'tool_lab', 'test_drive', 'decide_later', 'other']);
+        temporality', ['permanent', 'temporary', 'decide_later', 'other']);
+
+        'purpose',
+        'purpose_other',
+        'audience',
+        'audience_other',
+        'temporality',
+        'temporality_other',
+        
+        -->
+
+      <v-card-text>
+        <h3>What best describes how you intend to use this Wikibase?</h3>
+        <v-radio-group>
+          <v-radio key="purpose" value="data_hub">
+            <template v-slot:label><!-- TODO CSS vlabel display block -->
+              <span>To</span><b>publish potentially useful data</b>
+            </template>
+          </v-radio>
+          <v-radio key="purpose" value="data_lab">
+            <template v-slot:label>
+              <span>To refine, back up, or </span>
+              <b>experiment with data in an isolated environment</b>
+            </template>
+          </v-radio>
+          <v-radio key="purpose" value="tool_lab">
+            <template v-slot:label>
+              To build tools, write documentation, or <b>contribute</b> to the Wikidata & Wikibase ecosystem <b>in ways other than data</b>
+            </template>
+          </v-radio>
+          <v-radio key="purpose" value="test_drive">
+            <template v-slot:label>
+              To <b>learn about the tool</b>, or <b>evaluate</b> whether it works for my use case
+            </v-radio>
+          <v-radio key="purpose" value="decide_later">
+            <template v-slot:label>
+              I will decide later
+            </template>
+          </v-radio>
+          <v-radio key="purpose" value="other">
+            <template v-slot:label>
+              Other: <v-text-field></v-text-field>
+            </template>
+          </v-radio>
+        </v-radio-group>
+      </v-card-text>
+
       <v-card-actions>
+        <v-btn
+          type="submit"
+          color="secondary"
+          :disabled="inFlight"
+        >
+          < Previous
+        </v-btn>
         <v-spacer></v-spacer>
         <v-btn
           type="submit"
@@ -162,6 +219,7 @@ export default {
     }
   },
   created () {
+    this.buttonText = this.buttonTexts.next;
     this.checkCurrentLogin()
   },
   updated () {
