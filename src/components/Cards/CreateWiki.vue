@@ -1,195 +1,38 @@
 <template>
-  <v-form @submit="createwiki">
-    <v-card class="elevation-12">
-      <v-toolbar dark color="primary">
-        <v-toolbar-title>{{title}}</v-toolbar-title>
-      </v-toolbar>
-      <v-card-text>
-
-        <h3>Site name
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>The main name of your site</span><br/>
-            <span>Will appear in your page titles and can be changed at any time</span><br/>
-            <span>In MediaWiki terms this is $wgSitename</span><br/>
-          </v-tooltip>
-        </h3>
-
-        <v-text-field
-        id="inputSiteName"
-        prepend-icon="mdi-format-title"
-        name="sitename"
-        label="e.g., Goat Collective"
-        v-model="sitename"
-        :disabled="inFlight"
-        :error-messages="error['sitename']"
-        />
-
-        <h3>Site domain
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>A domain name is what people type into their browser to visit your site.</span><br/>
-            <span>If you own your own domain, you can use it for Wikibase Cloud by selecting "Custom Domain".</span><br/>
-            <span>Otherwise, choose your own name to be a subdomain of wikibase.cloud (five characters minimum, only a-z, 0-9 and "-") by selecting "Free Subdomain". Example: your-name-here1.wikibase.cloud</span><br/>
-          </v-tooltip>
-        </h3>
-
-        <v-radio-group row v-model="domainRadioChoice" :mandatory="true">
-          <v-radio label="Free Subdomain" value="sub"></v-radio>
-          <v-radio label="Custom Domain" value="own"></v-radio>
-        </v-radio-group>
-
-        <v-text-field v-if="domainRadioChoice === 'sub'"
-                      id="inputSubdomain"
-                      prepend-icon="mdi-web"
-                      name="subdomain"
-                      label="e.g., goat-collective"
-                      v-model="subdomain"
-                      :suffix="SUBDOMAIN_SUFFIX"
-                      :disabled="inFlight"
-                      :error-messages="error['siteaddress']"
-                      :hint="errorMessages.domainFormat"
-        />
-
-        <v-text-field v-if="domainRadioChoice === 'own'"
-                      id="inputDomain"
-                      prepend-icon="mdi-web"
-                      name="domain"
-                      label="e.g., goat-collective.com"
-                      v-model="domain"
-                      :disabled="inFlight"
-                      :error-messages="error['siteaddress']"
-        />
-
-        <p v-if="domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
-        <p v-if="domainRadioChoice === 'own'">"{{ CNAME_RECORD }}"</p>
-
-        <h3>Your user
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>Choose the username of your user and the first admin user on the site</span><br/>
-            <span>You will receive an email with log in details for this account</span><br/>
-          </v-tooltip>
-        </h3>
-
-        <v-text-field
-        id="inputUsername"
-        prepend-icon="mdi-account"
-        name="username"
-        label="e.g., Addshore"
-        v-model="username"
-        :disabled="inFlight"
-        :error-messages="error['username']"
-        />
-
-        <h3>Terms of use</h3>
-        <v-checkbox
-        v-model="terms"
-        :disabled="inFlight"
-        :error-messages="error['terms']"
-        >
-          <template v-slot:label>
-            <div>
-              I agree to the
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <a
-                    target="_blank"
-                    href="/terms-of-use"
-                    @click.stop
-                    v-on="on"
-                  >
-                    Terms of Use</a>
-                </template>
-                Opens in new window
-              </v-tooltip>.
-            </div>
-          </template>
-        </v-checkbox>
-
-      </v-card-text>
-
-<!--        
-        purpose', ['data_hub', 'data_lab', 'tool_lab', 'test_drive', 'decide_later', 'other']);
-        temporality', ['permanent', 'temporary', 'decide_later', 'other']);
-
-        'purpose',
-        'purpose_other',
-        'audience',
-        'audience_other',
-        'temporality',
-        'temporality_other',
-        
-        -->
-
-      <v-card-text>
-        <h3>What best describes how you intend to use this Wikibase?</h3>
-        <v-radio-group>
-          <v-radio key="purpose" value="data_hub">
-            <template v-slot:label><!-- TODO CSS vlabel display block -->
-              <span>To</span><b>publish potentially useful data</b>
-            </template>
-          </v-radio>
-          <v-radio key="purpose" value="data_lab">
-            <template v-slot:label>
-              <span>To refine, back up, or </span>
-              <b>experiment with data in an isolated environment</b>
-            </template>
-          </v-radio>
-          <v-radio key="purpose" value="tool_lab">
-            <template v-slot:label>
-              To build tools, write documentation, or <b>contribute</b> to the Wikidata & Wikibase ecosystem <b>in ways other than data</b>
-            </template>
-          </v-radio>
-          <v-radio key="purpose" value="test_drive">
-            <template v-slot:label>
-              To <b>learn about the tool</b>, or <b>evaluate</b> whether it works for my use case
-            </v-radio>
-          <v-radio key="purpose" value="decide_later">
-            <template v-slot:label>
-              I will decide later
-            </template>
-          </v-radio>
-          <v-radio key="purpose" value="other">
-            <template v-slot:label>
-              Other: <v-text-field></v-text-field>
-            </template>
-          </v-radio>
-        </v-radio-group>
-      </v-card-text>
-
-      <v-card-actions>
-        <v-btn
-          type="submit"
-          color="secondary"
-          :disabled="inFlight"
-        >
-          < Previous
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-btn
-          type="submit"
-          color="primary"
-          :disabled="inFlight"
-        >
-          {{buttonText}}
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+  <v-form @submit="createWiki">
+    <step-one-card 
+      v-if="step === 1" 
+      :title="title"
+      :inFlight="inFlight"
+      v-model="stepOneData"
+      :error="error"
+      :SUBDOMAIN_SUFFIX="SUBDOMAIN_SUFFIX"
+      :CNAME_RECORD="CNAME_RECORD"
+      :errorMessages="errorMessages"
+      @next-step="goToStep(2)"
+    />
+    
+    <step-two-card 
+      v-if="step === 2" 
+      :title="title"
+      :inFlight="inFlight"
+      v-model="stepTwoData"
+      @previous-step="goToStep(1)"
+      @submit="createWiki"    />
   </v-form>
 </template>
 
 <script>
 import config from '~/config'
+import StepOneCard from './CreateWikiWizardStepOne.vue'
+import StepTwoCard from './CreateWikiWizardStepTwo.vue'
 
 export default {
   name: 'CreateWiki',
+  components: {
+    StepOneCard,
+    StepTwoCard
+  },
   props: [
     'title',
     'buttonText'
@@ -197,6 +40,38 @@ export default {
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
+    },
+    stepOneData: {
+      get() {
+        return {
+          sitename: this.sitename,
+          domainRadioChoice: this.domainRadioChoice,
+          subdomain: this.subdomain,
+          domain: this.domain,
+          username: this.username,
+          terms: this.terms
+        }
+      },
+      set(data) {
+        this.sitename = data.sitename
+        this.domainRadioChoice = data.domainRadioChoice
+        this.subdomain = data.subdomain
+        this.domain = data.domain
+        this.username = data.username
+        this.terms = data.terms
+      }
+    },
+    stepTwoData: {
+      get() {
+        return {
+          purpose: this.purpose,
+          otherPurpose: this.otherPurpose
+        }
+      },
+      set(data) {
+        this.purpose = data.purpose
+        this.otherPurpose = data.otherPurpose
+      }
     }
   },
   data () {
@@ -207,6 +82,8 @@ export default {
       domain: '',
       username: '',
       terms: false,
+      purpose: '',
+      otherPurpose: '',
       hasError: false,
       error: [],
       inFlight: false,
@@ -215,27 +92,34 @@ export default {
       errorMessages: {
         domainTaken: 'The domain has already been taken.',
         domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
-      }
+      },
+      step: 1
     }
   },
-  created () {
-    this.buttonText = this.buttonTexts.next;
+  created () { 
+    // what's this for?
+    // this.buttonText = this.buttonTexts.next;
     this.checkCurrentLogin()
   },
   updated () {
     this.checkCurrentLogin()
   },
   methods: {
-    createwiki (evt) {
-      evt.preventDefault()
+    goToStep(stepNumber) {
+      this.step = stepNumber
+    },
+    createWiki (evt) {
+      // is this needed?
+      if (evt) {
+        evt.preventDefault()
+      }
 
       this.inFlight = true
       this.hasError = false
       this.error = []
 
       // Terms are not checked by the API? so check this here...?
-      // TODO do an initial round of validation here too!
-      // https://vuejs.org/v2/cookbook/form-validation.html
+      // Probably should be moved to form validation?
       if (!this.terms) {
         this.hasError = true
         this.error.terms = 'You must accept the Terms of Service.'
@@ -259,7 +143,7 @@ export default {
         {
           domain: domainToSubmit,
           sitename: this.sitename,
-          username: this.username
+          username: this.username,
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))

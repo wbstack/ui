@@ -1,0 +1,2 @@
+<!-- Presumably should contain the final c-card including submit. Feels a bit odd to work out what out be passed in here?
+Should we actually emit the button click and have it handled in the parent? -->
