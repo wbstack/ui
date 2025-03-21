@@ -32,9 +32,33 @@
               To learn about the tool, or evaluate whether it works for my use case
             </template>
           </v-radio>
+          <v-radio value="other">
+            <template v-slot:label>
+              Other: <v-text-field v-model="value.otherPurpose"></v-text-field>
+            </template>
+          </v-radio>
           <v-radio value="decide_later">
             <template v-slot:label>
               I will decide later
+            </template>
+          </v-radio>
+        </v-radio-group>
+      
+        <h3>Who is the intended audience for this data?</h3>
+  
+        <v-radio-group
+          v-model="value.purpose"
+          :error-messages=error
+          :rules="[() => !!value.purpose || 'This field is required']"
+        >
+          <v-radio value="data_hub" ref="test">
+            <template v-slot:label>
+              Anyone interested
+            </template>
+          </v-radio>
+          <v-radio value="data_lab">
+            <template v-slot:label>
+              Myself or my organization
             </template>
           </v-radio>
           <v-radio value="other">
