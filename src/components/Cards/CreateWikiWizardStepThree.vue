@@ -5,6 +5,7 @@
       </v-toolbar>
   
       <v-card-text>
+      <v-form ref="inputForm">
         <h3>How long do you plan to use this Wikibase?</h3>
 
         <v-radio-group
@@ -24,7 +25,10 @@
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherPurpose"></v-text-field>
+              Other: <v-text-field
+              v-model="value.otherPurpose"
+              :rules="[() => !(value.purpose === 'other' && !!value.otherPurpose) || 'This field is required']"
+              ></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
@@ -38,7 +42,7 @@
         <v-checkbox
           v-model="value.terms"
           :disabled="inFlight"
-          :error-messages="error['termssas']"
+          :rules="[() => !!value.terms || 'You must accept the Terms of Service.']"
         >
           <template v-slot:label>
             <div>
@@ -58,6 +62,7 @@
             </div>
           </template>
         </v-checkbox>
+      </v-form>
       </v-card-text>
       <v-card-actions>
         <v-btn
@@ -69,10 +74,10 @@
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn
-          type="submit"
+          type="button"
           color="primary"
           :disabled="inFlight"
-          @click="$emit('submit')"
+          @click="submitWholeForm"
         >
           Create Wiki
         </v-btn>
@@ -88,6 +93,15 @@
       inFlight: Boolean,
       value: Object,
       error: Array,
+    },
+    methods: {
+      submitWholeForm () {
+        this.$refs.inputForm.validate()
+        if (this.$refs.inputForm.validate() === true) {
+          // this.$emit('submit');
+          console.log("submitting form");
+        } 
+      }
     }
 
   }

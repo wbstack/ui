@@ -109,14 +109,6 @@ export default {
       this.hasError = false
       this.error = []
 
-      // Terms are not checked by the API? so check this here...?
-      // Probably should be moved to form validation?
-      // This probably needs to move to where it's called (step 3)
-      if (!this.stepThree.terms) {
-        this.hasError = true
-        this.error.terms = 'You must accept the Terms of Service.'
-      }
-
       if (this.hasError) {
         this.inFlight = false
         return

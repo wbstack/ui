@@ -33,7 +33,7 @@
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherPurpose"></v-text-field>
+              Other: <v-text-field v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
@@ -62,7 +62,7 @@
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherAudience"></v-text-field>
+              Other: <v-text-field v-model="value.otherAudience" :error-messages="audienceOtherError"></v-text-field>
             </template>
           </v-radio>
         </v-radio-group>
@@ -97,18 +97,29 @@
       inFlight: Boolean,
       value: Object,
     },
-    data: {
-      purposeError: ''
-    },
+    data () {
+    return {
+      purposeError: '',
+      audienceError: '',
+      purposeOtherError: '',
+      audienceOtherError: '',
+    }
+  },
     methods: {
       nextStep() {
-        console.log(this.value.purpose)
+        this.purposeError=''
+        this.audienceError=''
+        this.purposeOtherError=''
+        this.audienceOtherError=''
+
         if (this.value.purpose === "") {
           this.purposeError = "pick one"
         } else if (this.value.purpose === "other" && this.value.otherPurpose === "") {
-          this.purposeOthererror = "other please tpye something"
-        } else if (this.value.audience === "") {
+          this.purposeOtherError = "Add a purpose"
+        } else if (this.value.purpose ==='data_hub' && this.value.audience === "") {
           this.audienceError = "pick one"
+        } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && this.value.otherAudience === "") {
+          this.audienceOtherError = "Add an audience"
         }
         else {
           this.$emit('next-step')
