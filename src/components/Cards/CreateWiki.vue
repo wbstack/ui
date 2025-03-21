@@ -67,9 +67,13 @@ export default {
       stepTwo: {
         purpose: '',
         otherPurpose: '',
+        audience: '',
+        otherAudience: '',
       },
       stepThree: {
-        // terms: false,
+        temporality: '',
+        otherTemporality: '',
+        terms: false,
       },
       hasError: false,
       error: [],

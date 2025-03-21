@@ -9,8 +9,7 @@
   
         <v-radio-group
           v-model="value.purpose"
-          :error-messages=error
-          :rules="[() => !!value.purpose || 'This field is required']"
+          :error-messages=purposeError
         >
           <v-radio value="data_hub" ref="test">
             <template v-slot:label>
@@ -43,50 +42,41 @@
             </template>
           </v-radio>
         </v-radio-group>
-      
+        </v-card-text>
+        <v-card-text v-if="value.purpose==='data_hub'">
         <h3>Who is the intended audience for this data?</h3>
   
         <v-radio-group
-          v-model="value.purpose"
-          :error-messages=error
-          :rules="[() => !!value.purpose || 'This field is required']"
+          v-model="value.audience"
+          :error-messages=audienceError
         >
-          <v-radio value="data_hub" ref="test">
+          <v-radio value="wide" ref="test">
             <template v-slot:label>
               Anyone interested
             </template>
           </v-radio>
-          <v-radio value="data_lab">
+          <v-radio value="narrow">
             <template v-slot:label>
               Myself or my organization
             </template>
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherPurpose"></v-text-field>
+              Other: <v-text-field v-model="value.otherAudience"></v-text-field>
             </template>
           </v-radio>
         </v-radio-group>
       </v-card-text>
-      <!-- Second Question to go here depending on status of the purpose; fix radio selection first though -->
   
       <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn
           type="button"
-          color="secondary"
-          :disabled="inFlight"
-        >
-          Spam
-        </v-btn>
-        <v-btn
-          type="button"
-          color="secondary"
           :disabled="inFlight"
           @click="$emit('previous-step')"
         >
-          &lt; BACK
+          &lt; PREVIOUS
         </v-btn>
-        <v-spacer></v-spacer>
         <v-btn
           type="button"
           color="primary"
@@ -106,16 +96,21 @@
       title: String,
       inFlight: Boolean,
       value: Object,
-      error: String,
+    },
+    data: {
+      purposeError: ''
     },
     methods: {
       nextStep() {
         console.log(this.value.purpose)
         if (this.value.purpose === "") {
-          this.error = "pick one"
+          this.purposeError = "pick one"
         } else if (this.value.purpose === "other" && this.value.otherPurpose === "") {
-          this.error = "other please tpye something"
-        } else {
+          this.purposeOthererror = "other please tpye something"
+        } else if (this.value.audience === "") {
+          this.audienceError = "pick one"
+        }
+        else {
           this.$emit('next-step')
         }
       }
