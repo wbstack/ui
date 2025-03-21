@@ -52,14 +52,14 @@
           &lt; BACK
         </v-btn>
         <v-spacer></v-spacer>
-        <!-- <v-btn
-          type="submit"
+        <v-btn
+          type="button"
           color="primary"
           :disabled="inFlight"
-          @click="$emit('submit')"
+          @click="$emit('next-step')"
         >
-          Create Wiki
-        </v-btn> -->
+          Next &gt;
+        </v-btn>
       </v-card-actions>
     </v-card>
   </template>

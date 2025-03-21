@@ -1,7 +1,7 @@
 <template>
   <v-form @submit="createWiki">
     <step-one-card 
-      v-if="step === 1" 
+      v-show="step === 1" 
       :title="title"
       :inFlight="inFlight"
       v-model="stepOneData"
@@ -13,12 +13,22 @@
     />
     
     <step-two-card 
-      v-if="step === 2" 
+      v-show="step === 2" 
       :title="title"
       :inFlight="inFlight"
       v-model="stepTwoData"
       @previous-step="goToStep(1)"
-      @submit="createWiki"    />
+      @next-step="goToStep(3)"
+    />
+
+    <step-three-card 
+      v-show="step === 3" 
+      :title="title"
+      :inFlight="inFlight"
+      v-model="stepThreeData"
+      @previous-step="goToStep(2)"
+      @submit="createWiki"
+    />
   </v-form>
 </template>
 
@@ -26,12 +36,14 @@
 import config from '~/config'
 import StepOneCard from './CreateWikiWizardStepOne.vue'
 import StepTwoCard from './CreateWikiWizardStepTwo.vue'
+import StepThreeCard from './CreateWikiWizardStepThree.vue'
 
 export default {
   name: 'CreateWiki',
   components: {
     StepOneCard,
-    StepTwoCard
+    StepTwoCard,
+    StepThreeCard,
   },
   props: [
     'title',
@@ -72,7 +84,19 @@ export default {
         this.purpose = data.purpose
         this.otherPurpose = data.otherPurpose
       }
-    }
+    },
+    stepThreeData: {
+      get() {
+        return {
+          purpose: this.purpose,
+          otherPurpose: this.otherPurpose
+        }
+      },
+      set(data) {
+        this.purpose = data.purpose
+        this.otherPurpose = data.otherPurpose
+      }
+    },
   },
   data () {
     return {
@@ -109,7 +133,7 @@ export default {
       this.step = stepNumber
     },
     createWiki (evt) {
-      // is this needed?
+      console.log('creating wiki');
       if (evt) {
         evt.preventDefault()
       }
@@ -120,7 +144,8 @@ export default {
 
       // Terms are not checked by the API? so check this here...?
       // Probably should be moved to form validation?
-      if (!this.terms) {
+      // This probably needs to move to where it's called (step 3)
+      if (!this.stepOneData.terms) {
         this.hasError = true
         this.error.terms = 'You must accept the Terms of Service.'
       }
@@ -132,30 +157,36 @@ export default {
 
       // Figure out the actual domain to submit to the api!
       let domainToSubmit = ''
-      if (this.domainRadioChoice === 'sub') {
-        domainToSubmit = this.subdomain + this.SUBDOMAIN_SUFFIX
+      if (this.stepOneData.domainRadioChoice === 'sub') {
+        domainToSubmit = this.stepOneData.subdomain + this.SUBDOMAIN_SUFFIX
       }
-      if (this.domainRadioChoice === 'own') {
-        domainToSubmit = this.domain
+      if (this.stepOneData.domainRadioChoice === 'own') {
+        domainToSubmit = this.stepOneData.domain
       }
+
+      // Figure out  what the profile blob should looklike
 
       this.$api.createWiki(
         {
           domain: domainToSubmit,
-          sitename: this.sitename,
-          username: this.username,
+          sitename: this.stepOneData.sitename,
+          username: this.stepOneData.username,
+          // add the profile blob of data here
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))
         .catch(errors => this.createFail(errors))
     },
     createSuccess (wikiDetails) {
+      console.log('in create success')
       this.hasError = false
       this.error = []
       // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
       this.$router.replace('/wikis/manage/' + wikiDetails.id)
     },
     createFail (errors) {
+      // Probably we want to go back to the first step that has an error in this case.
+      console.log('createFail');
       this.error = []
 
       if (errors.sitename) {
