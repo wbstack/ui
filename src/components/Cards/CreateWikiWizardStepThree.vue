@@ -5,8 +5,33 @@
       </v-toolbar>
   
       <v-card-text>
-        <h3>333333333What best describes how you intend to use this Wikibase?</h3>
-        </v-card-text>
+        <h3>What best describes how you intend to use this Wikibase?</h3>
+
+        <h3>Terms of use</h3>
+        <v-checkbox
+          v-model="value.terms"
+          :disabled="inFlight"
+          :error-messages="error['termssas']"
+        >
+          <template v-slot:label>
+            <div>
+              I agree to the
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <a
+                    target="_blank"
+                    href="/terms-of-use"
+                    @click.stop
+                    v-on="on"
+                  >
+                    Terms of Use</a>
+                </template>
+                Opens in new window
+              </v-tooltip>.
+            </div>
+          </template>
+        </v-checkbox>
+      </v-card-text>
       <v-card-actions>
         <v-btn
           type="button"
@@ -35,7 +60,9 @@
     props: {
       title: String,
       inFlight: Boolean,
-      value: Object
+      value: Object,
+      error: Array,
     }
+
   }
   </script>

@@ -23,6 +23,7 @@
           v-model="value.sitename"
           :disabled="inFlight"
           :error-messages="error['sitename']"
+          :rules="[() => !!value.sitename || 'This field is required']"
         />
   
         <h3>Site domain
@@ -55,6 +56,7 @@
           :disabled="inFlight"
           :error-messages="error['siteaddress']"
           :hint="errorMessages.domainFormat"
+          :rules="[() => !!value.subdomain || 'This field is required']"
         />
   
         <v-text-field v-if="value.domainRadioChoice === 'own'"
@@ -65,6 +67,7 @@
           v-model="value.domain"
           :disabled="inFlight"
           :error-messages="error['siteaddress']"
+          :rules="[() => !!value.domain || 'This field is required']"
         />
   
         <p v-if="value.domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
@@ -88,32 +91,8 @@
           v-model="value.username"
           :disabled="inFlight"
           :error-messages="error['username']"
+          :rules="[() => !!value.username || 'This field is required']"
         />
-        <!-- I should be on card three -->
-        <h3>Terms of use</h3>
-        <v-checkbox
-          v-model="value.terms"
-          :disabled="inFlight"
-          :error-messages="error['terms']"
-        >
-          <template v-slot:label>
-            <div>
-              I agree to the
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <a
-                    target="_blank"
-                    href="/terms-of-use"
-                    @click.stop
-                    v-on="on"
-                  >
-                    Terms of Use</a>
-                </template>
-                Opens in new window
-              </v-tooltip>.
-            </div>
-          </template>
-        </v-checkbox>
       </v-card-text>
       
       <v-card-actions>

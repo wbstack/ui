@@ -4,7 +4,7 @@
       v-show="step === 1" 
       :title="title"
       :inFlight="inFlight"
-      v-model="stepOneData"
+      v-model="stepOne"
       :error="error"
       :SUBDOMAIN_SUFFIX="SUBDOMAIN_SUFFIX"
       :CNAME_RECORD="CNAME_RECORD"
@@ -16,7 +16,7 @@
       v-show="step === 2" 
       :title="title"
       :inFlight="inFlight"
-      v-model="stepTwoData"
+      v-model="stepTwo"
       @previous-step="goToStep(1)"
       @next-step="goToStep(3)"
     />
@@ -25,7 +25,8 @@
       v-show="step === 3" 
       :title="title"
       :inFlight="inFlight"
-      v-model="stepThreeData"
+      :error="error"
+      v-model="stepThree"
       @previous-step="goToStep(2)"
       @submit="createWiki"
     />
@@ -53,61 +54,23 @@ export default {
     currentUser: function () {
       return this.$store.getters.currentUser
     },
-    stepOneData: {
-      get() {
-        return {
-          sitename: this.sitename,
-          domainRadioChoice: this.domainRadioChoice,
-          subdomain: this.subdomain,
-          domain: this.domain,
-          username: this.username,
-          terms: this.terms
-        }
-      },
-      set(data) {
-        this.sitename = data.sitename
-        this.domainRadioChoice = data.domainRadioChoice
-        this.subdomain = data.subdomain
-        this.domain = data.domain
-        this.username = data.username
-        this.terms = data.terms
-      }
-    },
-    stepTwoData: {
-      get() {
-        return {
-          purpose: this.purpose,
-          otherPurpose: this.otherPurpose
-        }
-      },
-      set(data) {
-        this.purpose = data.purpose
-        this.otherPurpose = data.otherPurpose
-      }
-    },
-    stepThreeData: {
-      get() {
-        return {
-          purpose: this.purpose,
-          otherPurpose: this.otherPurpose
-        }
-      },
-      set(data) {
-        this.purpose = data.purpose
-        this.otherPurpose = data.otherPurpose
-      }
-    },
   },
   data () {
     return {
-      sitename: '',
-      domainRadioChoice: 'sub',
-      subdomain: '',
-      domain: '',
-      username: '',
-      terms: false,
-      purpose: '',
-      otherPurpose: '',
+      stepOne: {
+        sitename: '',
+        domainRadioChoice: 'sub',
+        subdomain: '',
+        domain: '',
+        username: '',
+      },
+      stepTwo: {
+        purpose: '',
+        otherPurpose: '',
+      },
+      stepThree: {
+        // terms: false,
+      },
       hasError: false,
       error: [],
       inFlight: false,
@@ -145,7 +108,7 @@ export default {
       // Terms are not checked by the API? so check this here...?
       // Probably should be moved to form validation?
       // This probably needs to move to where it's called (step 3)
-      if (!this.stepOneData.terms) {
+      if (!this.stepThree.terms) {
         this.hasError = true
         this.error.terms = 'You must accept the Terms of Service.'
       }
@@ -157,11 +120,11 @@ export default {
 
       // Figure out the actual domain to submit to the api!
       let domainToSubmit = ''
-      if (this.stepOneData.domainRadioChoice === 'sub') {
-        domainToSubmit = this.stepOneData.subdomain + this.SUBDOMAIN_SUFFIX
+      if (this.stepOne.domainRadioChoice === 'sub') {
+        domainToSubmit = this.stepOne.subdomain + this.SUBDOMAIN_SUFFIX
       }
-      if (this.stepOneData.domainRadioChoice === 'own') {
-        domainToSubmit = this.stepOneData.domain
+      if (this.stepOne.domainRadioChoice === 'own') {
+        domainToSubmit = this.stepOne.domain
       }
 
       // Figure out  what the profile blob should looklike
@@ -169,8 +132,8 @@ export default {
       this.$api.createWiki(
         {
           domain: domainToSubmit,
-          sitename: this.stepOneData.sitename,
-          username: this.stepOneData.username,
+          sitename: this.stepOne.sitename,
+          username: this.stepOne.username,
           // add the profile blob of data here
         }
       )

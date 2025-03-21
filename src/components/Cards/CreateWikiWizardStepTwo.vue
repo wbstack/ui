@@ -7,8 +7,12 @@
       <v-card-text>
         <h3>What best describes how you intend to use this Wikibase?</h3>
   
-        <v-radio-group v-model="value.purpose">
-          <v-radio value="data_hub">
+        <v-radio-group
+          v-model="value.purpose"
+          :error-messages=error
+          :rules="[() => !!value.purpose || 'This field is required']"
+        >
+          <v-radio value="data_hub" ref="test">
             <template v-slot:label>
               To publish potentially useful data
             </template>
@@ -47,6 +51,13 @@
           type="button"
           color="secondary"
           :disabled="inFlight"
+        >
+          Spam
+        </v-btn>
+        <v-btn
+          type="button"
+          color="secondary"
+          :disabled="inFlight"
           @click="$emit('previous-step')"
         >
           &lt; BACK
@@ -55,8 +66,8 @@
         <v-btn
           type="button"
           color="primary"
-          :disabled="inFlight"
-          @click="$emit('next-step')"
+          :disabled="inFlight" 
+          @click="nextStep"
         >
           Next &gt;
         </v-btn>
@@ -70,7 +81,20 @@
     props: {
       title: String,
       inFlight: Boolean,
-      value: Object
+      value: Object,
+      error: String,
+    },
+    methods: {
+      nextStep() {
+        console.log(this.value.purpose)
+        if (this.value.purpose === "") {
+          this.error = "pick one"
+        } else if (this.value.purpose === "other" && this.value.otherPurpose === "") {
+          this.error = "other please tpye something"
+        } else {
+          this.$emit('next-step')
+        }
+      }
     }
   }
   </script>
