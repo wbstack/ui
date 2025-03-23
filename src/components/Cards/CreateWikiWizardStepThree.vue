@@ -9,25 +9,25 @@
         <h3>How long do you plan to use this Wikibase?</h3>
 
         <v-radio-group
-          v-model="value.purpose"
+          v-model="value.temporality"
           :error-messages=error
-          :rules="[() => !!value.purpose || 'This field is required']"
+          :rules="[() => !!value.temporality || 'This field is required']"
         >
-          <v-radio value="data_hub" ref="test">
+          <v-radio value="permanent" ref="test">
             <template v-slot:label>
-              Anyone interested
+              I would prefer to keep it on a permanent basis
             </template>
           </v-radio>
-          <v-radio value="data_lab">
+          <v-radio value="temporary">
             <template v-slot:label>
-              Myself or my organization
+              It is temporary/disposable. I will no longer need it after it served its purpose
             </template>
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
               Other: <v-text-field
-              v-model="value.otherPurpose"
-              :rules="[() => !(value.purpose === 'other' && !!value.otherPurpose) || 'This field is required']"
+              v-model="value.otherTemporality"
+              :rules="[() => !(value.temporality === 'other' && !!value.otherTemporality) || 'This field is required']"
               ></v-text-field>
             </template>
           </v-radio>
@@ -98,8 +98,7 @@
       submitWholeForm () {
         this.$refs.inputForm.validate()
         if (this.$refs.inputForm.validate() === true) {
-          // this.$emit('submit');
-          console.log("submitting form");
+          this.$emit('submit');
         } 
       }
     }

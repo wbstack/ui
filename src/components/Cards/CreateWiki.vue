@@ -123,14 +123,22 @@ export default {
         domainToSubmit = this.stepOne.domain
       }
 
-      // Figure out  what the profile blob should looklike
+      const profileJSObject = {
+            purpose: this.stepTwo.purpose,
+            ...(this.stepTwo.otherPurpose && {purpose_other:this.stepTwo.otherPurpose}),
+            audience: this.stepTwo.audience,
+            ...(this.stepTwo.otherAudience && {audience_other: this.stepTwo.otherAudience}),
+            temporality: this.stepThree.temporality,
+            ...(this.stepThree.otherTemporality && {temporality_other: this.stepThree.otherTemporality}),
+          };
+      const profileJsonString = JSON.stringify(profileJSObject);
 
       this.$api.createWiki(
         {
           domain: domainToSubmit,
           sitename: this.stepOne.sitename,
           username: this.stepOne.username,
-          // add the profile blob of data here
+          profile: profileJsonString,
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))
