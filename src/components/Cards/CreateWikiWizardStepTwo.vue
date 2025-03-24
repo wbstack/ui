@@ -18,22 +18,22 @@
           </v-radio>
           <v-radio value="data_lab">
             <template v-slot:label>
-              To refine, back up, or experiment with data in an isolated environment
+              <div>To refine, back up, or <b>experiment with data in an isolated environment</b></div>
             </template>
           </v-radio>
           <v-radio value="tool_lab">
             <template v-slot:label>
-              To build tools, write documentation, or contribute to the Wikidata & Wikibase ecosystem in ways other than data
+              <div>To build tools, write documentation, or <b>contribute</b> to the Wikidata & Wikibase ecosystem <b>in ways other than data</b></div>
             </template>
           </v-radio>
           <v-radio value="test_drive">
             <template v-slot:label>
-              To learn about the tool, or evaluate whether it works for my use case
+              <div>To <b>learn about the tool</b>, or <b>evaluate</b> whether it works for my use case</div>
             </template>
           </v-radio>
-          <v-radio value="other" class="mt-n5 mb-n2">
+          <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field class="pl-1" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
+              Other: <v-text-field class="pl-1 mt-n5 mb-n2" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
