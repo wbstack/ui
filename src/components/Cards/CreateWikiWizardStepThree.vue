@@ -11,7 +11,7 @@
         <v-radio-group
           v-model="value.temporality"
           :error-messages=error
-          :rules="[() => !!value.temporality || 'This field is required']"
+          :rules="[() => !!value.temporality || 'Please select an option.']"
         >
           <v-radio value="permanent" ref="test">
             <template v-slot:label>
@@ -25,11 +25,15 @@
           </v-radio>
 
           <v-radio value="other">
-            <template v-slot:label><!-- TODO validation for empty field -->
+            <template v-slot:label>
               Other: <v-text-field
               class="mt-n5 mb-n2 pl-1"
               v-model="value.otherTemporality"
-              :rules="[() => !!(value.temporality === 'other' && !!value.otherTemporality) || 'This field is required']"
+              :rules="[() => !!
+              (
+                  (value.temporality === 'other' && !!value.otherTemporality)
+                  || value.temporality !== 'other'
+              ) || 'This field is required']"
               ></v-text-field>
             </template>
           </v-radio>
