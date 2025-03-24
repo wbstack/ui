@@ -18,14 +18,16 @@
               I would prefer to keep it on a permanent basis
             </template>
           </v-radio>
-          <v-radio value="temporary">
+          <v-radio value="temporary" messages="spam">
             <template v-slot:label>
               It is temporary/disposable. I will no longer need it after it served its purpose
             </template>
           </v-radio>
+
           <v-radio value="other">
-            <template v-slot:label>
+            <template v-slot:label><!-- TODO validation for empty field -->
               Other: <v-text-field
+              class="mt-n5 mb-n2 pl-1"
               v-model="value.otherTemporality"
               :rules="[() => !(value.temporality === 'other' && !!value.otherTemporality) || 'This field is required']"
               ></v-text-field>
@@ -38,7 +40,7 @@
           </v-radio>
         </v-radio-group>
 
-        <h3>Terms of uses</h3>
+        <h3 class="mt-6">Terms of uses</h3>
         <v-checkbox
           v-model="value.terms"
           :disabled="inFlight"
@@ -65,6 +67,8 @@
       </v-form>
       </v-card-text>
       <v-card-actions>
+        <v-spacer></v-spacer>
+
         <v-btn
           type="button"
           :disabled="inFlight"
@@ -72,7 +76,7 @@
         >
           &lt; Previous
         </v-btn>
-        <v-spacer></v-spacer>
+
         <v-btn
           type="button"
           color="primary"

@@ -13,7 +13,7 @@
         >
           <v-radio value="data_hub" ref="test">
             <template v-slot:label>
-              To publish potentially useful data
+              <div>To <b>publish potentially useful data</b></div>
             </template>
           </v-radio>
           <v-radio value="data_lab">
@@ -31,9 +31,9 @@
               To learn about the tool, or evaluate whether it works for my use case
             </template>
           </v-radio>
-          <v-radio value="other">
+          <v-radio value="other" class="mt-n5 mb-n2">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
+              Other: <v-text-field class="pl-1" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
@@ -42,8 +42,8 @@
             </template>
           </v-radio>
         </v-radio-group>
-        </v-card-text>
-        <v-card-text v-if="value.purpose==='data_hub'">
+
+        <div v-if="value.purpose==='data_hub'" class="pt-3">
         <h3>Who is the intended audience for this data?</h3>
   
         <v-radio-group
@@ -60,12 +60,13 @@
               Myself or my organization
             </template>
           </v-radio>
-          <v-radio value="other">
+          <v-radio value="other" class="mt-n3">
             <template v-slot:label>
-              Other: <v-text-field v-model="value.otherAudience" :error-messages="audienceOtherError"></v-text-field>
+              Other: <v-text-field dense class="pl-1" v-model="value.otherAudience" :error-messages="audienceOtherError"></v-text-field>
             </template>
           </v-radio>
         </v-radio-group>
+        </div>
       </v-card-text>
   
       <v-card-actions>
@@ -113,11 +114,11 @@
         this.audienceOtherError=''
 
         if (this.value.purpose === "") {
-          this.purposeError = "pick one"
+          this.purposeError = "Please select an option."
         } else if (this.value.purpose === "other" && this.value.otherPurpose === "") {
           this.purposeOtherError = "Add a purpose"
         } else if (this.value.purpose ==='data_hub' && this.value.audience === "") {
-          this.audienceError = "pick one"
+          this.audienceError = "Please select an option."
         } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && this.value.otherAudience === "") {
           this.audienceOtherError = "Add an audience"
         }
