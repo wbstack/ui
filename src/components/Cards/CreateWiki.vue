@@ -100,7 +100,6 @@ export default {
       this.step = stepNumber
     },
     createWiki (evt) {
-      console.log('creating wiki');
       if (evt) {
         evt.preventDefault()
       }
@@ -145,7 +144,6 @@ export default {
         .catch(errors => this.createFail(errors))
     },
     createSuccess (wikiDetails) {
-      console.log('in create success')
       this.hasError = false
       this.error = []
       // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
@@ -153,7 +151,6 @@ export default {
     },
     createFail (errors) {
       // Probably we want to go back to the first step that has an error in this case.
-      console.log('createFail');
       this.error = []
 
       if (errors.sitename) {
