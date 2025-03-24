@@ -29,7 +29,7 @@
               Other: <v-text-field
               class="mt-n5 mb-n2 pl-1"
               v-model="value.otherTemporality"
-              :rules="[() => !(value.temporality === 'other' && !!value.otherTemporality) || 'This field is required']"
+              :rules="[() => !!(value.temporality === 'other' && !!value.otherTemporality) || 'This field is required']"
               ></v-text-field>
             </template>
           </v-radio>
