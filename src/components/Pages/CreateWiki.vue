@@ -3,7 +3,7 @@
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
           <v-col class="card-column">
-            <CreateWikiCard title="Create a wiki" buttonText="Create Wiki"/>
+            <CreateWikiCard title="Create a wiki" buttonText="Next >"/>
           </v-col>
         </v-row>
       </v-container>

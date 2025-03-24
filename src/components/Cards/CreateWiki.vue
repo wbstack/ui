@@ -1,138 +1,51 @@
 <template>
-  <v-form @submit="createwiki">
-    <v-card class="elevation-12">
-      <v-toolbar dark color="primary">
-        <v-toolbar-title>{{title}}</v-toolbar-title>
-      </v-toolbar>
-      <v-card-text>
+  <v-form @submit="createWiki">
+    <step-one-card
+      v-show="step === 1"
+      :title="title"
+      :inFlight="inFlight"
+      v-model="stepOne"
+      :error="error"
+      :SUBDOMAIN_SUFFIX="SUBDOMAIN_SUFFIX"
+      :CNAME_RECORD="CNAME_RECORD"
+      :errorMessages="errorMessages"
+      @next-step="goToStep(2)"
+    />
 
-        <h3>Site name
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>The main name of your site</span><br/>
-            <span>Will appear in your page titles and can be changed at any time</span><br/>
-            <span>In MediaWiki terms this is $wgSitename</span><br/>
-          </v-tooltip>
-        </h3>
+    <step-two-card
+      v-show="step === 2"
+      :title="title"
+      :inFlight="inFlight"
+      v-model="stepTwo"
+      @previous-step="goToStep(1)"
+      @next-step="goToStep(3)"
+    />
 
-        <v-text-field
-        id="inputSiteName"
-        prepend-icon="mdi-format-title"
-        name="sitename"
-        label="e.g., Goat Collective"
-        v-model="sitename"
-        :disabled="inFlight"
-        :error-messages="error['sitename']"
-        />
-
-        <h3>Site domain
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>A domain name is what people type into their browser to visit your site.</span><br/>
-            <span>If you own your own domain, you can use it for Wikibase Cloud by selecting "Custom Domain".</span><br/>
-            <span>Otherwise, choose your own name to be a subdomain of wikibase.cloud (five characters minimum, only a-z, 0-9 and "-") by selecting "Free Subdomain". Example: your-name-here1.wikibase.cloud</span><br/>
-          </v-tooltip>
-        </h3>
-
-        <v-radio-group row v-model="domainRadioChoice" :mandatory="true">
-          <v-radio label="Free Subdomain" value="sub"></v-radio>
-          <v-radio label="Custom Domain" value="own"></v-radio>
-        </v-radio-group>
-
-        <v-text-field v-if="domainRadioChoice === 'sub'"
-                      id="inputSubdomain"
-                      prepend-icon="mdi-web"
-                      name="subdomain"
-                      label="e.g., goat-collective"
-                      v-model="subdomain"
-                      :suffix="SUBDOMAIN_SUFFIX"
-                      :disabled="inFlight"
-                      :error-messages="error['siteaddress']"
-                      :hint="errorMessages.domainFormat"
-        />
-
-        <v-text-field v-if="domainRadioChoice === 'own'"
-                      id="inputDomain"
-                      prepend-icon="mdi-web"
-                      name="domain"
-                      label="e.g., goat-collective.com"
-                      v-model="domain"
-                      :disabled="inFlight"
-                      :error-messages="error['siteaddress']"
-        />
-
-        <p v-if="domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
-        <p v-if="domainRadioChoice === 'own'">"{{ CNAME_RECORD }}"</p>
-
-        <h3>Your user
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-icon v-on="on">mdi-information-outline</v-icon>
-            </template>
-            <span>Choose the username of your user and the first admin user on the site</span><br/>
-            <span>You will receive an email with log in details for this account</span><br/>
-          </v-tooltip>
-        </h3>
-
-        <v-text-field
-        id="inputUsername"
-        prepend-icon="mdi-account"
-        name="username"
-        label="e.g., Addshore"
-        v-model="username"
-        :disabled="inFlight"
-        :error-messages="error['username']"
-        />
-
-        <h3>Terms of use</h3>
-        <v-checkbox
-        v-model="terms"
-        :disabled="inFlight"
-        :error-messages="error['terms']"
-        >
-          <template v-slot:label>
-            <div>
-              I agree to the
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <a
-                    target="_blank"
-                    href="/terms-of-use"
-                    @click.stop
-                    v-on="on"
-                  >
-                    Terms of Use</a>
-                </template>
-                Opens in new window
-              </v-tooltip>.
-            </div>
-          </template>
-        </v-checkbox>
-
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn
-          type="submit"
-          color="primary"
-          :disabled="inFlight"
-        >
-          {{buttonText}}
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+    <step-three-card
+      v-show="step === 3"
+      :title="title"
+      :inFlight="inFlight"
+      :error="error"
+      v-model="stepThree"
+      @previous-step="goToStep(2)"
+      @submit="createWiki"
+    />
   </v-form>
 </template>
 
 <script>
 import config from '~/config'
+import StepOneCard from './CreateWikiWizardStepOne.vue'
+import StepTwoCard from './CreateWikiWizardStepTwo.vue'
+import StepThreeCard from './CreateWikiWizardStepThree.vue'
 
 export default {
   name: 'CreateWiki',
+  components: {
+    StepOneCard,
+    StepTwoCard,
+    StepThreeCard
+  },
   props: [
     'title',
     'buttonText'
@@ -144,12 +57,24 @@ export default {
   },
   data () {
     return {
-      sitename: '',
-      domainRadioChoice: 'sub',
-      subdomain: '',
-      domain: '',
-      username: '',
-      terms: false,
+      stepOne: {
+        sitename: '',
+        domainRadioChoice: 'sub',
+        subdomain: '',
+        domain: '',
+        username: ''
+      },
+      stepTwo: {
+        purpose: '',
+        otherPurpose: '',
+        audience: '',
+        otherAudience: ''
+      },
+      stepThree: {
+        temporality: '',
+        otherTemporality: '',
+        terms: false
+      },
       hasError: false,
       error: [],
       inFlight: false,
@@ -158,30 +83,30 @@ export default {
       errorMessages: {
         domainTaken: 'The domain has already been taken.',
         domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
-      }
+      },
+      step: 1
     }
   },
   created () {
+    // what's this for?
+    // this.buttonText = this.buttonTexts.next;
     this.checkCurrentLogin()
   },
   updated () {
     this.checkCurrentLogin()
   },
   methods: {
-    createwiki (evt) {
-      evt.preventDefault()
+    goToStep (stepNumber) {
+      this.step = stepNumber
+    },
+    createWiki (evt) {
+      if (evt) {
+        evt.preventDefault()
+      }
 
       this.inFlight = true
       this.hasError = false
       this.error = []
-
-      // Terms are not checked by the API? so check this here...?
-      // TODO do an initial round of validation here too!
-      // https://vuejs.org/v2/cookbook/form-validation.html
-      if (!this.terms) {
-        this.hasError = true
-        this.error.terms = 'You must accept the Terms of Service.'
-      }
 
       if (this.hasError) {
         this.inFlight = false
@@ -190,18 +115,29 @@ export default {
 
       // Figure out the actual domain to submit to the api!
       let domainToSubmit = ''
-      if (this.domainRadioChoice === 'sub') {
-        domainToSubmit = this.subdomain + this.SUBDOMAIN_SUFFIX
+      if (this.stepOne.domainRadioChoice === 'sub') {
+        domainToSubmit = this.stepOne.subdomain + this.SUBDOMAIN_SUFFIX
       }
-      if (this.domainRadioChoice === 'own') {
-        domainToSubmit = this.domain
+      if (this.stepOne.domainRadioChoice === 'own') {
+        domainToSubmit = this.stepOne.domain
       }
+
+      const profileJSObject = {
+        purpose: this.stepTwo.purpose,
+        ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
+        ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
+        ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
+        temporality: this.stepThree.temporality,
+        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
+      }
+      const profileJsonString = JSON.stringify(profileJSObject)
 
       this.$api.createWiki(
         {
           domain: domainToSubmit,
-          sitename: this.sitename,
-          username: this.username
+          sitename: this.stepOne.sitename,
+          username: this.stepOne.username,
+          profile: profileJsonString
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))
@@ -214,8 +150,10 @@ export default {
       this.$router.replace('/wikis/manage/' + wikiDetails.id)
     },
     createFail (errors) {
+      // Probably we want to go back to the first step that has an error in this case.
       this.error = []
-
+      // all these errors are shown on the first step.
+      this.goToStep(1)
       if (errors.sitename) {
         this.hasError = true
         this.error.sitename = errors.sitename[0]
