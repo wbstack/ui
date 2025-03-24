@@ -27,7 +27,8 @@
           <v-radio value="other">
             <template v-slot:label>
               Other: <v-text-field
-              class="mt-n5 mb-n2 pl-1"
+              dense
+              class="pl-1 mt-n1 mb-n2"
               v-model="value.otherTemporality"
               :rules="[() => !!
               (
