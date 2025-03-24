@@ -152,7 +152,8 @@ export default {
     createFail (errors) {
       // Probably we want to go back to the first step that has an error in this case.
       this.error = []
-
+      // all these errors are shown on the first step.
+      this.goToStep(1);
       if (errors.sitename) {
         this.hasError = true
         this.error.sitename = errors.sitename[0]
