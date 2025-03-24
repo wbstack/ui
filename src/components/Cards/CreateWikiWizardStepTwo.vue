@@ -113,13 +113,13 @@
         this.purposeOtherError=''
         this.audienceOtherError=''
 
-        if (this.value.purpose === "") {
+        if (!this.value.purpose) {
           this.purposeError = "Please select an option."
-        } else if (this.value.purpose === "other" && this.value.otherPurpose === "") {
+        } else if (this.value.purpose === "other" && !this.value.otherPurpose) {
           this.purposeOtherError = "Add a purpose"
-        } else if (this.value.purpose ==='data_hub' && this.value.audience === "") {
+        } else if (this.value.purpose ==='data_hub' && !this.value.audience) {
           this.audienceError = "Please select an option."
-        } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && this.value.otherAudience === "") {
+        } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && !this.value.otherAudience) {
           this.audienceOtherError = "Add an audience"
         }
         else {
