@@ -111,6 +111,10 @@
         this.$emit('previous-step')
       },
       submitWholeForm () {
+        if (this.value.temporality !== 'other') {
+          this.value.otherTemporality = undefined
+        }
+
         this.$refs.inputForm.validate()
         if (this.$refs.inputForm.validate() === true) {
           this.$emit('submit');
