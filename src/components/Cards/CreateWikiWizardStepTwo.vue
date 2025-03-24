@@ -3,12 +3,12 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
-  
+
       <v-card-text>
         <h3>What best describes how you intend to use this Wikibase?</h3>
-  
+
         <v-radio-group
-          v-model="value.purpose"
+          :value="value.purpose"
           :error-messages=purposeError
         >
           <v-radio value="data_hub" ref="test">
@@ -33,7 +33,7 @@
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field dense class="pl-1 mt-n1 mb-n2" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
+              Other: <v-text-field ref="otherPurpose" dense class="pl-1 mt-n1 mb-n2" :value="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
@@ -45,9 +45,9 @@
 
         <div v-if="value.purpose==='data_hub'" class="pt-3">
         <h3>Who is the intended audience for this data?</h3>
-  
+
         <v-radio-group
-          v-model="value.audience"
+          :value="value.audience"
           :error-messages=audienceError
         >
           <v-radio value="wide" ref="test">
@@ -60,15 +60,15 @@
               Myself or my organization
             </template>
           </v-radio>
-          <v-radio value="other" class="mt-n3">
+          <v-radio value="other" class="mt-n3" ref="otherAudience">
             <template v-slot:label>
-              Other: <v-text-field dense class="pl-1" v-model="value.otherAudience" :error-messages="audienceOtherError"></v-text-field>
+              Other: <v-text-field ref="otherAudience" dense class="pl-1" :value="value.otherAudience" :error-messages="audienceOtherError"></v-text-field>
             </template>
           </v-radio>
         </v-radio-group>
         </div>
       </v-card-text>
-  
+
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -81,7 +81,7 @@
         <v-btn
           type="button"
           color="primary"
-          :disabled="inFlight" 
+          :disabled="inFlight"
           @click="nextStep"
         >
           Next &gt;
@@ -89,51 +89,50 @@
       </v-card-actions>
     </v-card>
   </template>
-  
-  <script>
-  export default {
-    name: 'StepTwoCard',
-    props: {
-      title: String,
-      inFlight: Boolean,
-      value: Object,
-    },
-    data () {
+
+<script>
+export default {
+  name: 'StepTwoCard',
+  props: {
+    title: String,
+    inFlight: Boolean,
+    value: Object
+  },
+  data () {
     return {
       purposeError: '',
       audienceError: '',
       purposeOtherError: '',
-      audienceOtherError: '',
+      audienceOtherError: ''
     }
   },
-    methods: {
-      nextStep() {
-        this.purposeError=''
-        this.audienceError=''
-        this.purposeOtherError=''
-        this.audienceOtherError=''
+  methods: {
+    nextStep () {
+      this.purposeError = ''
+      this.audienceError = ''
+      this.purposeOtherError = ''
+      this.audienceOtherError = ''
 
-        if (!this.value.purpose) {
-          this.purposeError = "Please select an option."
-        } else if (this.value.purpose === "other" && !this.value.otherPurpose) {
-          this.purposeOtherError = "Add a purpose"
-        } else if (this.value.purpose ==='data_hub' && !this.value.audience) {
-          this.audienceError = "Please select an option."
-        } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && !this.value.otherAudience) {
-          this.audienceOtherError = "Add an audience"
+      if (!this.value.purpose) {
+        this.purposeError = 'Please select an option.'
+      } else if (this.value.purpose === 'other' && !this.value.otherPurpose) {
+        this.purposeOtherError = 'Add a purpose'
+      } else if (this.value.purpose === 'data_hub' && !this.value.audience) {
+        this.audienceError = 'Please select an option.'
+      } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && !this.value.otherAudience) {
+        this.audienceOtherError = 'Add an audience'
+      } else {
+        if (this.value.purpose !== 'other') {
+          this.$refs.otherPurpose = undefined
         }
-        else {
-          if (this.value.purpose !== 'other') {
-            this.value.otherPurpose = undefined
-          }
 
-          if (this.value.audience !== 'other') {
-            this.value.otherAudience = undefined
-          }
-
-          this.$emit('next-step')
+        if (this.value.audience !== 'other') {
+          this.$refs.otherAudience.value = undefined
         }
+
+        this.$emit('next-step')
       }
     }
   }
-  </script>
+}
+</script>

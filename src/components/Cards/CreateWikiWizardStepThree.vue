@@ -3,13 +3,13 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
-  
+
       <v-card-text>
       <v-form ref="inputForm">
         <h3>How long do you plan to use this Wikibase?</h3>
 
         <v-radio-group
-          v-model="value.temporality"
+          :value="value.temporality"
           :error-messages=error
           :rules="[() => !!value.temporality || 'Please select an option.']"
         >
@@ -29,7 +29,8 @@
               Other: <v-text-field
               dense
               class="pl-1 mt-n1 mb-n2"
-              v-model="value.otherTemporality"
+              ref="otherTemporality"
+              :value="value.otherTemporality"
               :rules="[() => !!
               (
                   (value.temporality === 'other' && !!value.otherTemporality)
@@ -47,7 +48,7 @@
 
         <h3 class="mt-6">Terms of uses</h3>
         <v-checkbox
-          v-model="value.terms"
+          :value="value.terms"
           :disabled="inFlight"
           :rules="[() => !!value.terms || 'You must accept the Terms of Service.']"
         >
@@ -93,35 +94,35 @@
       </v-card-actions>
     </v-card>
   </template>
-  
-  <script>
-  export default {
-    name: 'StepThreeCard',
-    props: {
-      title: String,
-      inFlight: Boolean,
-      value: Object,
-      error: Array,
+
+<script>
+export default {
+  name: 'StepThreeCard',
+  props: {
+    title: String,
+    inFlight: Boolean,
+    value: Object,
+    error: Array
+  },
+  methods: {
+    previousStep () {
+      if (this.value.temporality !== 'other') {
+        this.$refs.otherTemporality = undefined
+      }
+
+      this.$emit('previous-step')
     },
-    methods: {
-      previousStep () {
-        if (this.value.temporality !== 'other') {
-          this.value.otherTemporality = undefined
-        }
+    submitWholeForm () {
+      if (this.value.temporality !== 'other') {
+        this.$refs.otherTemporality = undefined
+      }
 
-        this.$emit('previous-step')
-      },
-      submitWholeForm () {
-        if (this.value.temporality !== 'other') {
-          this.value.otherTemporality = undefined
-        }
-
-        this.$refs.inputForm.validate()
-        if (this.$refs.inputForm.validate() === true) {
-          this.$emit('submit');
-        } 
+      this.$refs.inputForm.validate()
+      if (this.$refs.inputForm.validate() === true) {
+        this.$emit('submit')
       }
     }
-
   }
-  </script>
+
+}
+</script>
