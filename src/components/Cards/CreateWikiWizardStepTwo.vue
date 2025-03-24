@@ -3,10 +3,10 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
-  
+
       <v-card-text>
         <h3>What best describes how you intend to use this Wikibase?</h3>
-  
+
         <v-radio-group
           v-model="value.purpose"
           :error-messages=purposeError
@@ -45,7 +45,7 @@
 
         <div v-if="value.purpose==='data_hub'" class="pt-3">
         <h3>Who is the intended audience for this data?</h3>
-  
+
         <v-radio-group
           v-model="value.audience"
           :error-messages=audienceError
@@ -68,7 +68,7 @@
         </v-radio-group>
         </div>
       </v-card-text>
-  
+
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -81,7 +81,7 @@
         <v-btn
           type="button"
           color="primary"
-          :disabled="inFlight" 
+          :disabled="inFlight"
           @click="nextStep"
         >
           Next &gt;
@@ -89,51 +89,50 @@
       </v-card-actions>
     </v-card>
   </template>
-  
-  <script>
-  export default {
-    name: 'StepTwoCard',
-    props: {
-      title: String,
-      inFlight: Boolean,
-      value: Object,
-    },
-    data () {
+
+<script>
+export default {
+  name: 'StepTwoCard',
+  props: {
+    title: String,
+    inFlight: Boolean,
+    value: Object
+  },
+  data () {
     return {
       purposeError: '',
       audienceError: '',
       purposeOtherError: '',
-      audienceOtherError: '',
+      audienceOtherError: ''
     }
   },
-    methods: {
-      nextStep() {
-        this.purposeError=''
-        this.audienceError=''
-        this.purposeOtherError=''
-        this.audienceOtherError=''
+  methods: {
+    nextStep () {
+      this.purposeError = ''
+      this.audienceError = ''
+      this.purposeOtherError = ''
+      this.audienceOtherError = ''
 
-        if (!this.value.purpose) {
-          this.purposeError = "Please select an option."
-        } else if (this.value.purpose === "other" && !this.value.otherPurpose) {
-          this.purposeOtherError = "Add a purpose"
-        } else if (this.value.purpose ==='data_hub' && !this.value.audience) {
-          this.audienceError = "Please select an option."
-        } else if (this.value.purpose ==='data_hub' && this.value.audience === "other" && !this.value.otherAudience) {
-          this.audienceOtherError = "Add an audience"
+      if (!this.value.purpose) {
+        this.purposeError = 'Please select an option.'
+      } else if (this.value.purpose === 'other' && !this.value.otherPurpose) {
+        this.purposeOtherError = 'Add a purpose'
+      } else if (this.value.purpose === 'data_hub' && !this.value.audience) {
+        this.audienceError = 'Please select an option.'
+      } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && !this.value.otherAudience) {
+        this.audienceOtherError = 'Add an audience'
+      } else {
+        if (this.value.purpose !== 'other') {
+          this.value.otherPurpose = undefined
         }
-        else {
-          if (this.value.purpose !== 'other') {
-            this.value.otherPurpose = undefined
-          }
 
-          if (this.value.audience !== 'other') {
-            this.value.otherAudience = undefined
-          }
-
-          this.$emit('next-step')
+        if (this.value.audience !== 'other') {
+          this.value.otherAudience = undefined
         }
+
+        this.$emit('next-step')
       }
     }
   }
-  </script>
+}
+</script>
