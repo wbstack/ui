@@ -125,7 +125,7 @@ export default {
       const profileJSObject = {
             purpose: this.stepTwo.purpose,
             ...(this.stepTwo.otherPurpose && {purpose_other:this.stepTwo.otherPurpose}),
-            audience: this.stepTwo.audience,
+            ...(this.stepTwo.audience && {audience: this.stepTwo.audience}),
             ...(this.stepTwo.otherAudience && {audience_other: this.stepTwo.otherAudience}),
             temporality: this.stepThree.temporality,
             ...(this.stepThree.otherTemporality && {temporality_other: this.stepThree.otherTemporality}),
