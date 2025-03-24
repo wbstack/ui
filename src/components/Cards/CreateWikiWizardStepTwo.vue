@@ -127,6 +127,10 @@
             this.value.otherPurpose = undefined
           }
 
+          if (this.value.audience !== 'other') {
+            this.value.otherAudience = undefined
+          }
+
           this.$emit('next-step')
         }
       }
