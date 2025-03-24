@@ -1,7 +1,7 @@
 <template>
   <v-form @submit="createWiki">
-    <step-one-card
-      v-show="step === 1"
+    <step-one-card 
+      v-show="step === 1" 
       :title="title"
       :inFlight="inFlight"
       v-model="stepOne"
@@ -11,9 +11,9 @@
       :errorMessages="errorMessages"
       @next-step="goToStep(2)"
     />
-
-    <step-two-card
-      v-show="step === 2"
+    
+    <step-two-card 
+      v-show="step === 2" 
       :title="title"
       :inFlight="inFlight"
       v-model="stepTwo"
@@ -21,8 +21,8 @@
       @next-step="goToStep(3)"
     />
 
-    <step-three-card
-      v-show="step === 3"
+    <step-three-card 
+      v-show="step === 3" 
       :title="title"
       :inFlight="inFlight"
       :error="error"
@@ -44,7 +44,7 @@ export default {
   components: {
     StepOneCard,
     StepTwoCard,
-    StepThreeCard
+    StepThreeCard,
   },
   props: [
     'title',
@@ -53,7 +53,7 @@ export default {
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
-    }
+    },
   },
   data () {
     return {
@@ -62,18 +62,18 @@ export default {
         domainRadioChoice: 'sub',
         subdomain: '',
         domain: '',
-        username: ''
+        username: '',
       },
       stepTwo: {
         purpose: '',
         otherPurpose: '',
         audience: '',
-        otherAudience: ''
+        otherAudience: '',
       },
       stepThree: {
         temporality: '',
         otherTemporality: '',
-        terms: false
+        terms: false,
       },
       hasError: false,
       error: [],
@@ -87,7 +87,7 @@ export default {
       step: 1
     }
   },
-  created () {
+  created () { 
     // what's this for?
     // this.buttonText = this.buttonTexts.next;
     this.checkCurrentLogin()
@@ -96,7 +96,7 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    goToStep (stepNumber) {
+    goToStep(stepNumber) {
       this.step = stepNumber
     },
     createWiki (evt) {
@@ -123,21 +123,21 @@ export default {
       }
 
       const profileJSObject = {
-        purpose: this.stepTwo.purpose,
-        ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
-        ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
-        ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
-        temporality: this.stepThree.temporality,
-        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
-      }
-      const profileJsonString = JSON.stringify(profileJSObject)
+            purpose: this.stepTwo.purpose,
+            ...(this.stepTwo.otherPurpose && {purpose_other:this.stepTwo.otherPurpose}),
+            ...(this.stepTwo.audience && {audience: this.stepTwo.audience}),
+            ...(this.stepTwo.otherAudience && {audience_other: this.stepTwo.otherAudience}),
+            temporality: this.stepThree.temporality,
+            ...(this.stepThree.otherTemporality && {temporality_other: this.stepThree.otherTemporality}),
+          };
+      const profileJsonString = JSON.stringify(profileJSObject);
 
       this.$api.createWiki(
         {
           domain: domainToSubmit,
           sitename: this.stepOne.sitename,
           username: this.stepOne.username,
-          profile: profileJsonString
+          profile: profileJsonString,
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))
@@ -153,7 +153,7 @@ export default {
       // Probably we want to go back to the first step that has an error in this case.
       this.error = []
       // all these errors are shown on the first step.
-      this.goToStep(1)
+      this.goToStep(1);
       if (errors.sitename) {
         this.hasError = true
         this.error.sitename = errors.sitename[0]

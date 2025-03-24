@@ -15,19 +15,19 @@
               <span>In MediaWiki terms this is $wgSitename</span><br/>
             </v-tooltip>
           </h3>
-
+    
           <v-text-field
             id="inputSiteName"
             prepend-icon="mdi-format-title"
             name="sitename"
-
+            
             label="e.g., Goat Collective"
-            :value="value.sitename"
+            v-model="value.sitename"
             :disabled="inFlight"
             :error-messages="error['sitename']"
             :rules="[() => !!value.sitename || 'This field is required']"
           />
-
+    
           <h3>Site domain
             <v-tooltip right>
               <template v-slot:activator="{ on }">
@@ -38,43 +38,43 @@
               <span>Otherwise, choose your own name to be a subdomain of wikibase.cloud (five characters minimum, only a-z, 0-9 and "-") by selecting "Free Subdomain". Example: your-name-here1.wikibase.cloud</span><br/>
             </v-tooltip>
           </h3>
-
-          <v-radio-group
-            row
-            :value="value.domainRadioChoice"
+    
+          <v-radio-group 
+            row 
+            v-model="value.domainRadioChoice" 
             :mandatory="true"
           >
             <v-radio label="Free Subdomain" value="sub"></v-radio>
             <v-radio label="Custom Domain" value="own"></v-radio>
           </v-radio-group>
-
+    
           <v-text-field v-if="value.domainRadioChoice === 'sub'"
             id="inputSubdomain"
             prepend-icon="mdi-web"
             name="subdomain"
             label="e.g., goat-collective"
-            :value="value.subdomain"
+            v-model="value.subdomain"
             :suffix="SUBDOMAIN_SUFFIX"
             :disabled="inFlight"
             :error-messages="error['siteaddress']"
             :hint="errorMessages.domainFormat"
             :rules="[() => !!value.subdomain || 'This field is required']"
           />
-
+    
           <v-text-field v-if="value.domainRadioChoice === 'own'"
             id="inputDomain"
             prepend-icon="mdi-web"
             name="domain"
             label="e.g., goat-collective.com"
-            :value="value.domain"
+            v-model="value.domain"
             :disabled="inFlight"
             :error-messages="error['siteaddress']"
             :rules="[() => !!value.domain || 'This field is required']"
           />
-
+    
           <p v-if="value.domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
           <p v-if="value.domainRadioChoice === 'own'">"{{ CNAME_RECORD }}"</p>
-
+    
           <h3>Your user
             <v-tooltip right>
               <template v-slot:activator="{ on }">
@@ -84,20 +84,20 @@
               <span>You will receive an email with log in details for this account</span><br/>
             </v-tooltip>
           </h3>
-
+    
           <v-text-field
             id="inputUsername"
             prepend-icon="mdi-account"
             name="username"
             label="e.g., Addshore"
-            :value="value.username"
+            v-model="value.username"
             :disabled="inFlight"
             :error-messages="error['username']"
             :rules="[() => !!value.username || 'This field is required']"
           />
       </v-form>
       </v-card-text>
-
+      
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -111,25 +111,25 @@
       </v-card-actions>
     </v-card>
   </template>
-
-<script>
-export default {
-  name: 'StepOneCard',
-  props: {
-    title: String,
-    inFlight: Boolean,
-    value: Object,
-    error: Array,
-    SUBDOMAIN_SUFFIX: String,
-    CNAME_RECORD: String,
-    errorMessages: Object
-  },
-  methods: {
-    nextStep () {
-      if (this.$refs.inputForm.validate() === true) {
-        this.$emit('next-step')
+  
+  <script>
+  export default {
+    name: 'StepOneCard',
+    props: {
+      title: String,
+      inFlight: Boolean,
+      value: Object,
+      error: Array,
+      SUBDOMAIN_SUFFIX: String,
+      CNAME_RECORD: String,
+      errorMessages: Object
+    },
+    methods: {
+      nextStep() {
+        if (this.$refs.inputForm.validate() === true) {
+          this.$emit('next-step');
+        }
       }
     }
   }
-}
-</script>
+  </script>
