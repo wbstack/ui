@@ -33,7 +33,7 @@
           </v-radio>
           <v-radio value="other">
             <template v-slot:label>
-              Other: <v-text-field class="pl-1 mt-n5 mb-n2" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
+              Other: <v-text-field dense class="pl-1 mt-n1 mb-n2" v-model="value.otherPurpose" :error-messages="purposeOtherError"></v-text-field>
             </template>
           </v-radio>
           <v-radio value="decide_later">
