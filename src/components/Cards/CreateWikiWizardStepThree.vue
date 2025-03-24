@@ -18,7 +18,7 @@
               I would prefer to keep it on a permanent basis
             </template>
           </v-radio>
-          <v-radio value="temporary" messages="spam">
+          <v-radio value="temporary">
             <template v-slot:label>
               It is temporary/disposable. I will no longer need it after it served its purpose
             </template>
