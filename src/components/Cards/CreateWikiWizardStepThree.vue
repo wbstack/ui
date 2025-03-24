@@ -72,7 +72,7 @@
         <v-btn
           type="button"
           :disabled="inFlight"
-          @click="$emit('previous-step')"
+          @click="previousStep"
         >
           &lt; Previous
         </v-btn>
@@ -99,6 +99,13 @@
       error: Array,
     },
     methods: {
+      previousStep () {
+        if (this.value.temporality !== 'other') {
+          this.value.otherTemporality = undefined
+        }
+
+        this.$emit('previous-step')
+      },
       submitWholeForm () {
         this.$refs.inputForm.validate()
         if (this.$refs.inputForm.validate() === true) {

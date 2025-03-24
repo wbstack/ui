@@ -123,6 +123,10 @@
           this.audienceOtherError = "Add an audience"
         }
         else {
+          if (this.value.purpose !== 'other') {
+            this.value.otherPurpose = undefined
+          }
+
           this.$emit('next-step')
         }
       }
