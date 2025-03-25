@@ -116,11 +116,11 @@ export default {
       if (!this.value.purpose) {
         this.purposeError = 'Please select an option.'
       } else if (this.value.purpose === 'other' && !this.value.otherPurpose) {
-        this.purposeOtherError = 'Add a purpose'
+        this.purposeOtherError = 'Please provide a response'
       } else if (this.value.purpose === 'data_hub' && !this.value.audience) {
         this.audienceError = 'Please select an option.'
       } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && !this.value.otherAudience) {
-        this.audienceOtherError = 'Add an audience'
+        this.audienceOtherError = 'Please provide a response'
       } else {
         if (this.value.purpose !== 'other') {
           this.value.otherPurpose = undefined
