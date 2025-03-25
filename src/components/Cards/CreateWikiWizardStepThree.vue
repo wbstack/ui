@@ -34,7 +34,7 @@
               (
                   (value.temporality === 'other' && !!value.otherTemporality)
                   || value.temporality !== 'other'
-              ) || 'Please provide a response']"
+              ) || 'Please provide a response.']"
               ></v-text-field>
             </template>
           </v-radio>
