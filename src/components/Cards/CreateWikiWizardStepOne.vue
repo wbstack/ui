@@ -25,7 +25,7 @@
             v-model="value.sitename"
             :disabled="inFlight"
             :error-messages="error['sitename']"
-            :rules="[() => !!value.sitename || 'This field is required']"
+            :rules="[() => !!value.sitename || 'This field is required.']"
           />
 
           <h3>Site domain
@@ -58,7 +58,7 @@
             :disabled="inFlight"
             :error-messages="error['siteaddress']"
             :hint="errorMessages.domainFormat"
-            :rules="[() => !!value.subdomain || 'This field is required']"
+            :rules="[() => !!value.subdomain || 'This field is required.']"
           />
 
           <v-text-field v-if="value.domainRadioChoice === 'own'"
@@ -69,7 +69,7 @@
             v-model="value.domain"
             :disabled="inFlight"
             :error-messages="error['siteaddress']"
-            :rules="[() => !!value.domain || 'This field is required']"
+            :rules="[() => !!value.domain || 'This field is required.']"
           />
 
           <p v-if="value.domainRadioChoice === 'own'">This domain should have a CNAME record pointing to:</p>
@@ -93,7 +93,7 @@
             v-model="value.username"
             :disabled="inFlight"
             :error-messages="error['username']"
-            :rules="[() => !!value.username || 'This field is required']"
+            :rules="[() => !!value.username || 'This field is required.']"
           />
       </v-form>
       </v-card-text>

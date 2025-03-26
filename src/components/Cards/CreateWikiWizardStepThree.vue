@@ -34,7 +34,7 @@
               (
                   (value.temporality === 'other' && !!value.otherTemporality)
                   || value.temporality !== 'other'
-              ) || 'This field is required']"
+              ) || 'Please provide a response.']"
               ></v-text-field>
             </template>
           </v-radio>
@@ -45,7 +45,7 @@
           </v-radio>
         </v-radio-group>
 
-        <h3 class="mt-6">Terms of uses</h3>
+        <h3 class="mt-6">Terms of Use</h3>
         <v-checkbox
           v-model="value.terms"
           :disabled="inFlight"
