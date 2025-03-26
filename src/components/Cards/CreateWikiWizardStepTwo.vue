@@ -111,13 +111,13 @@ export default {
       } else if (this.value.purpose === 'other' && !this.value.otherPurpose) {
         this.purposeOtherError = 'Please provide a response.'
       } else if (this.value.purpose === 'other' && this.value.otherPurpose.length > 200) {
-        this.purposeOtherError = 'Text too long.'
+        this.purposeOtherError = 'Text must be 200 characters or less.'
       } else if (this.value.purpose === 'data_hub' && !this.value.audience) {
         this.audienceError = 'Please select an option.'
       } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && !this.value.otherAudience) {
         this.audienceOtherError = 'Please provide a response.'
       } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && this.value.otherAudience.length > 200) {
-        this.audienceOtherError = 'Text too long.'
+        this.audienceOtherError = 'Text must be 200 characters or less.'
       } else {
         if (this.value.purpose !== 'data_hub') {
           this.value.audience = undefined
