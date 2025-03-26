@@ -119,6 +119,10 @@ export default {
       } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && this.value.otherAudience.length > 200) {
         this.audienceOtherError = 'Text too long.'
       } else {
+        if (this.value.purpose !== 'data_hub') {
+          this.value.audience = undefined
+        }
+
         if (this.value.purpose !== 'other') {
           this.value.otherPurpose = undefined
         }
