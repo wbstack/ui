@@ -58,7 +58,7 @@
         <h3>Who is the intended audience for this data?</h3>
 
         <v-radio-group v-model="value.audience" :rules="[
-          !(value.purpose === 'data_hub' && !value.audience) || 'Please select an option.'
+          !!(value.purpose === 'data_hub' && !!value.audience) || 'Please select an option.'
         ]">
           <v-radio value="wide" ref="test">
             <template v-slot:label>
@@ -74,8 +74,9 @@
             <template v-slot:label>
               Other: <v-text-field counter="200" dense class="pl-1" v-model="value.otherAudience"
                 :rules="[
-                  () => (value.purpose === 'data_hub' && value.audience === 'other' && !value.otherAudience) || 'Please provide a response.',
-                  () => (value.purpose === 'data_hub' && value.audience === 'other'&& value.otherAudience && value.otherAudience.length > 200) || 'Text must be 200 characters or less.'
+                  () => !!((value.purpose === 'data_hub' && value.audience === 'other') && !!value.otherAudience || value.audience !== 'other' ) || 'Please provide a response.',
+                  () => !!(((value.purpose === 'data_hub' && value.audience === 'other' ) && ( !!value.otherAudience && value.otherAudience.length < 201)))||(!((value.purpose === 'data_hub' && value.audience === 'other') && !!value.otherAudience || value.audience !== 'other' ))||(value.audience !== 'other')
+  || 'Text must be 200 characters or less.'
                 ]"></v-text-field>
             </template>
           </v-radio>
