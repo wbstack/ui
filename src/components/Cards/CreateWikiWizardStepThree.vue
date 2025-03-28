@@ -31,13 +31,15 @@
               counter="200"
               class="pl-1 mt-n1 mb-n2"
               v-model="value.otherTemporality"
-              :rules="[
-                () => !!
-              (
-                  (value.temporality === 'other' && !!value.otherTemporality)
-                  || value.temporality !== 'other'
-              ) || 'Please provide a response.',
-              () => !! ((value.temporality === 'other' && value.otherTemporality && value.otherTemporality.length < 201) || value.temporality !== 'other') || 'Text must be 200 characters or less.'
+              :rules="
+              [
+                () => value.temporality !== 'other'
+                  || !! value.otherTemporality
+                  || 'Please provide a response.',
+
+                () => value.temporality !== 'other'
+                  || (!! value.otherTemporality && value.otherTemporality.length < 201)
+                  || 'Text must be 200 characters or less.'
               ]"
               ></v-text-field>
             </template>

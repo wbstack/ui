@@ -37,12 +37,15 @@
               dense class="pl-1
               mt-n1 mb-n2"
               v-model="value.otherPurpose"
-              :rules="[
-                () => !!(
-                          (value.purpose === 'other' && !!value.otherPurpose)
-                          || value.purpose !== 'other'
-                        ) || 'Please provide a response.',
-                () => !! ((value.purpose === 'other' && !!value.otherPurpose && value.otherPurpose.length < 201) || value.purpose !== 'other') || 'Text must be 200 characters or less.'
+              :rules="
+              [
+                () => value.purpose !== 'other'
+                  || !! value.otherPurpose
+                  || 'Please provide a response.',
+
+                () => value.purpose !== 'other'
+                  || (!! value.otherPurpose && value.otherPurpose.length < 201)
+                  || 'Text must be 200 characters or less.'
               ]"
               ></v-text-field>
           </template>
@@ -57,8 +60,11 @@
       <div v-if="value.purpose==='data_hub'" class="pt-3">
         <h3>Who is the intended audience for this data?</h3>
 
-        <v-radio-group v-model="value.audience" :rules="[
-          !!(value.purpose === 'data_hub' && !!value.audience) || 'Please select an option.'
+        <v-radio-group v-model="value.audience" :rules="
+        [
+          value.purpose !== 'data_hub'
+          || !! value.audience
+          || 'Please select an option.'
         ]">
           <v-radio value="wide" ref="test">
             <template v-slot:label>
@@ -73,10 +79,17 @@
           <v-radio value="other" class="mt-n3">
             <template v-slot:label>
               Other: <v-text-field counter="200" dense class="pl-1" v-model="value.otherAudience"
-                :rules="[
-                  () => !!((value.purpose === 'data_hub' && value.audience === 'other') && !!value.otherAudience || value.audience !== 'other' ) || 'Please provide a response.',
-                  () => !!(((value.purpose === 'data_hub' && value.audience === 'other' ) && ( !!value.otherAudience && value.otherAudience.length < 201)))||(!((value.purpose === 'data_hub' && value.audience === 'other') && !!value.otherAudience || value.audience !== 'other' ))||(value.audience !== 'other')
-  || 'Text must be 200 characters or less.'
+                :rules="
+                [
+                  () => value.purpose !== 'data_hub'
+                    || value.audience !== 'other'
+                    || !! value.otherAudience
+                    || 'Please provide a response.',
+
+                  () => value.purpose !== 'data_hub'
+                    || value.audience !== 'other'
+                    || (!! value.otherAudience && value.otherAudience.length < 201)
+                    || 'Text must be 200 characters or less.'
                 ]"></v-text-field>
             </template>
           </v-radio>
