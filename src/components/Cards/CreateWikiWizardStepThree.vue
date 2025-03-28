@@ -38,7 +38,7 @@
                   || 'Please provide a response.',
 
                 () => value.temporality !== 'other'
-                  || !! (!! value.otherTemporality && value.otherTemporality.length < 201)
+                  || !! (value.otherTemporality && value.otherTemporality.length < 201)
                   || 'Text must be 200 characters or less.'
               ]"
               ></v-text-field>
