@@ -44,7 +44,7 @@
                   || 'Please provide a response.',
 
                 () => value.purpose !== 'other'
-                  || (!! value.otherPurpose && value.otherPurpose.length < 201)
+                  || !! (!! value.otherPurpose && value.otherPurpose.length < 201)
                   || 'Text must be 200 characters or less.'
               ]"
               ></v-text-field>
@@ -88,7 +88,7 @@
 
                   () => value.purpose !== 'data_hub'
                     || value.audience !== 'other'
-                    || (!! value.otherAudience && value.otherAudience.length < 201)
+                    || !! (!! value.otherAudience && value.otherAudience.length < 201)
                     || 'Text must be 200 characters or less.'
                 ]"></v-text-field>
             </template>
