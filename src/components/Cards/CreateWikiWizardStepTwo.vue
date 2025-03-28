@@ -6,8 +6,8 @@
 
     <v-card-text>
       <h3>What best describes how you intend to use this Wikibase?</h3>
-
-      <v-radio-group v-model="value.purpose" :error-messages=purposeError>
+      <v-form ref="inputForm">
+      <v-radio-group v-model="value.purpose" :rules="[() => !!value.purpose || 'Please select an option.']">
         <v-radio value="data_hub" ref="test">
           <template v-slot:label>
             <div>To <b>publish potentially useful data</b></div>
@@ -37,7 +37,17 @@
               dense class="pl-1
               mt-n1 mb-n2"
               v-model="value.otherPurpose"
-              :error-messages="purposeOtherError"></v-text-field>
+              :rules="
+              [
+                () => value.purpose !== 'other'
+                  || !! value.otherPurpose
+                  || 'Please provide a response.',
+
+                () => value.purpose !== 'other'
+                  || (!! value.otherPurpose && value.otherPurpose.length < 201)
+                  || 'Text must be 200 characters or less.'
+              ]"
+              ></v-text-field>
           </template>
         </v-radio>
         <v-radio value="decide_later">
@@ -50,7 +60,12 @@
       <div v-if="value.purpose==='data_hub'" class="pt-3">
         <h3>Who is the intended audience for this data?</h3>
 
-        <v-radio-group v-model="value.audience" :error-messages=audienceError>
+        <v-radio-group v-model="value.audience" :rules="
+        [
+          value.purpose !== 'data_hub'
+          || !! value.audience
+          || 'Please select an option.'
+        ]">
           <v-radio value="wide" ref="test">
             <template v-slot:label>
               Anyone interested
@@ -64,11 +79,23 @@
           <v-radio value="other" class="mt-n3">
             <template v-slot:label>
               Other: <v-text-field counter="200" dense class="pl-1" v-model="value.otherAudience"
-                :error-messages="audienceOtherError"></v-text-field>
+                :rules="
+                [
+                  () => value.purpose !== 'data_hub'
+                    || value.audience !== 'other'
+                    || !! value.otherAudience
+                    || 'Please provide a response.',
+
+                  () => value.purpose !== 'data_hub'
+                    || value.audience !== 'other'
+                    || (!! value.otherAudience && value.otherAudience.length < 201)
+                    || 'Text must be 200 characters or less.'
+                ]"></v-text-field>
             </template>
           </v-radio>
         </v-radio-group>
       </div>
+    </v-form>
     </v-card-text>
 
     <v-card-actions>
@@ -101,36 +128,17 @@ export default {
   },
   methods: {
     nextStep () {
-      this.purposeError = ''
-      this.audienceError = ''
-      this.purposeOtherError = ''
-      this.audienceOtherError = ''
-
-      if (!this.value.purpose) {
-        this.purposeError = 'Please select an option.'
-      } else if (this.value.purpose === 'other' && !this.value.otherPurpose) {
-        this.purposeOtherError = 'Please provide a response.'
-      } else if (this.value.purpose === 'other' && this.value.otherPurpose.length > 200) {
-        this.purposeOtherError = 'Text must be 200 characters or less.'
-      } else if (this.value.purpose === 'data_hub' && !this.value.audience) {
-        this.audienceError = 'Please select an option.'
-      } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && !this.value.otherAudience) {
-        this.audienceOtherError = 'Please provide a response.'
-      } else if (this.value.purpose === 'data_hub' && this.value.audience === 'other' && this.value.otherAudience.length > 200) {
-        this.audienceOtherError = 'Text must be 200 characters or less.'
-      } else {
-        if (this.value.purpose !== 'data_hub') {
-          this.value.audience = undefined
-        }
-
-        if (this.value.purpose !== 'other') {
-          this.value.otherPurpose = undefined
-        }
-
-        if (this.value.audience !== 'other') {
-          this.value.otherAudience = undefined
-        }
-
+      if (this.value.purpose !== 'data_hub') {
+        this.value.audience = undefined
+      }
+      if (this.value.purpose !== 'other') {
+        this.value.otherPurpose = undefined
+      }
+      if (this.value.audience !== 'other') {
+        this.value.otherAudience = undefined
+      }
+      this.$refs.inputForm.validate()
+      if (this.$refs.inputForm.validate() === true) {
         this.$emit('next-step')
       }
     }
