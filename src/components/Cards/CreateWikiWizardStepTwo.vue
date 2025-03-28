@@ -123,40 +123,25 @@ export default {
       purposeError: '',
       audienceError: '',
       purposeOtherError: '',
-      audienceOtherError: '',
+      audienceOtherError: ''
     }
   },
   methods: {
-    clearErrors () {
-      this.purposeError = ''
-      this.audienceError = ''
-      this.purposeOtherError = ''
-      this.audienceOtherError = ''
-    },
-    checkPurposeOtherIsNotTooLong () {},
-    checkAudienceIsSetIfdataHub () {},
-    checkAudienceOtherIsSet () {},
-    checkPurposeOtherIsNotTooLong () {},
-    removeAudienceIfNotDataHub () {},
-    removeOtherPurpose () {},
-    rmeoveOtherAudience () {},
-
     nextStep () {
-      this.clearErrors
-        if (this.value.purpose !== 'data_hub') {
-          this.value.audience = undefined
-        }
-        if (this.value.purpose !== 'other') {
-          this.value.otherPurpose = undefined
-        }
-        if (this.value.audience !== 'other') {
-          this.value.otherAudience = undefined
-        }
-        this.$refs.inputForm.validate()
-        if (this.$refs.inputForm.validate() === true) {
-            this.$emit('next-step')
-          }
-        }
+      if (this.value.purpose !== 'data_hub') {
+        this.value.audience = undefined
+      }
+      if (this.value.purpose !== 'other') {
+        this.value.otherPurpose = undefined
+      }
+      if (this.value.audience !== 'other') {
+        this.value.otherAudience = undefined
+      }
+      this.$refs.inputForm.validate()
+      if (this.$refs.inputForm.validate() === true) {
+        this.$emit('next-step')
+      }
     }
   }
+}
 </script>
