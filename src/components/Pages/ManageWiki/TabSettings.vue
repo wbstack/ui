@@ -4,11 +4,15 @@
       <div class="tab-container">
         <div v-if="isReady">
           <v-tabs v-model="tab">
-              <v-tab>Wiki Settings</v-tab>
+              <v-tab>Profile</v-tab>
+              <v-tab>Settings</v-tab>
               <v-tab>Features</v-tab>
           </v-tabs>
           <v-tabs-items v-model="tab">
-              <v-tab-item>
+            <v-tab-item>
+                  <ManageProfile />
+              </v-tab-item>
+            <v-tab-item>
                   <ManageWiki />
               </v-tab-item>
               <v-tab-item>
@@ -26,6 +30,7 @@
 </template>
 
 <script>
+import ManageProfile from './Tabs/ManageProfile.vue'
 import ManageWiki from './Tabs/ManageWiki.vue'
 import ManageFeatures from './Tabs/ManageFeatures.vue'
 
