@@ -37,7 +37,7 @@ import ManageFeatures from './Tabs/ManageFeatures.vue'
 export default {
   name: 'TabSettings',
   components: {
-
+    ManageProfile,
     ManageWiki,
     ManageFeatures
   },
