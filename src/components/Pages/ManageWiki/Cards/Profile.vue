@@ -1,5 +1,34 @@
 <template>
   <v-form ref="form">
+    <v-overlay :value="dialog.show">
+      <v-dialog
+        content-class="update-wiki-profile-dialog"
+        v-model="dialog.show"
+      >
+        <step-two-card
+          v-show="dialog.step === 1"
+          :title="dialog.title"
+          :inFlight="inFlight"
+          :dismissable="true"
+          v-model="dialog.data.stepOne"
+          @close-dialog="dialog.show = false"
+          @next-step="goToStep(2)"
+        />
+        <step-three-card
+          v-show="dialog.step === 2"
+          :title="dialog.title"
+          :inFlight="inFlight"
+          :error="dialog.error"
+          :dismissable="true"
+          :showTerms="false"
+          submitButtonText="Set intended use"
+          v-model="dialog.data.stepTwo"
+          @close-dialog="dialog.show = false"
+          @previous-step="goToStep(1)"
+          @submit="updateProfile"
+        />
+      </v-dialog>
+    </v-overlay>
     <v-card>
       <v-card-title class="card-title">
         <span>Intended use</span>
@@ -40,12 +69,17 @@
         <span v-if="updatedAt" class="updated-at">{{ updatedAt }}</span>
       </v-card-text>
       <Message ref="message" />
+      <v-card-actions>
+        <v-btn :disabled="inFlight" @click="showDialog()">Set intended use</v-btn>
+      </v-card-actions>
     </v-card>
   </v-form>
 </template>
 
 <script>
 import Message from '../Features/Message.vue'
+import StepTwoCard from '~/components/Cards/CreateWikiWizardStepTwo'
+import StepThreeCard from '~/components/Cards/CreateWikiWizardStepThree'
 
 const providedResponses = {
   purpose: {
@@ -69,14 +103,36 @@ const providedResponses = {
 export default {
   name: 'Profile',
   components: {
-    Message
+    Message,
+    StepTwoCard,
+    StepThreeCard
   },
   props: [
     'wikiId'
   ],
   data () {
     return {
-      profile: {}
+      inFlight: false,
+      profile: {},
+      dialog: {
+        show: false,
+        title: 'Set intended use',
+        error: [],
+        step: 1,
+        data: {},
+        dataTemplate: {
+          stepOne: {
+            purpose: '',
+            otherPurpose: '',
+            audience: '',
+            otherAudience: ''
+          },
+          stepTwo: {
+            temporality: '',
+            otherTemporality: ''
+          }
+        }
+      }
     }
   },
   computed: {
@@ -107,6 +163,40 @@ export default {
         return providedResponses[question][providedResponse]
       }
       return 'No answer selected.'
+    },
+    showDialog () {
+      this.dialog.step = 1
+      this.dialog.data = JSON.parse(JSON.stringify(this.dialog.dataTemplate))
+      this.dialog.show = true
+    },
+    goToStep (stepNumber) {
+      this.dialog.step = stepNumber
+    },
+    async updateProfile () {
+      this.inFlight = true
+
+      try {
+        const profile = {
+          purpose: this.dialog.data.stepOne.purpose,
+          ...(this.dialog.data.stepOne.otherPurpose && { purpose_other: this.dialog.data.stepOne.otherPurpose }),
+          ...(this.dialog.data.stepOne.audience && { audience: this.dialog.data.stepOne.audience }),
+          ...(this.dialog.data.stepOne.otherAudience && { audience_other: this.dialog.data.stepOne.otherAudience }),
+          temporality: this.dialog.data.stepTwo.temporality,
+          ...(this.dialog.data.stepTwo.otherTemporality && { temporality_other: this.dialog.data.stepTwo.otherTemporality })
+        }
+
+        this.profile = (await this.$store.dispatch('updateProfile', {
+          wiki: this.wikiId, profile: JSON.stringify(profile)
+        })).data.data ?? {}
+
+        this.$refs.message.show('success', 'Intended use has been updated.')
+        this.dialog.show = false
+      } catch (error) {
+        console.log(error)
+        this.$refs.message.show('error', 'Something went wrong with updating your intended use. Please try again.')
+      } finally {
+        this.inFlight = false
+      }
     }
   },
   async created () {
@@ -120,6 +210,15 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+.update-wiki-profile-dialog {
+  max-width: 356px;
+}
+.update-wiki-profile-dialog.v-dialog > .v-card > .v-card__text {
+  padding: 16px;
+}
+</style>
 
 <style lang="css" scoped>
 .card-title {
