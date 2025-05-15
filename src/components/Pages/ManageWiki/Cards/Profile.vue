@@ -52,7 +52,8 @@ const providedResponses = {
     data_hub: 'To publish potentially useful data.',
     data_lab: 'To refine, back up, or experiment with data in an isolated environment.',
     tool_lab: 'To build tools, write documentation, or contribute to the Wikidata & Wikibase ecosystem in ways other than data.',
-    test_drive: 'To learn about the tool, or evaluate whether it works for my use case.'
+    test_drive: 'To learn about the tool, or evaluate whether it works for my use case.',
+    decide_later: 'I will decide later.'
   },
   audience: {
     wide: 'Anyone interested.',
@@ -60,7 +61,8 @@ const providedResponses = {
   },
   temporality: {
     permanent: 'I would prefer to keep it on a permanent basis.',
-    temporary: 'It is temporary/disposable. I will no longer need it after it served its purpose.'
+    temporary: 'It is temporary/disposable. I will no longer need it after it served its purpose.',
+    decide_later: 'I will decide later.'
   }
 }
 
@@ -103,7 +105,7 @@ export default {
       if (providedResponse) {
         return providedResponses[question][providedResponse]
       }
-      return 'No answer selected'
+      return 'No answer selected.'
     }
   },
   async created () {
@@ -161,7 +163,7 @@ export default {
 }
 .profile .question {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .profile .response {
   font-size: 16px;
