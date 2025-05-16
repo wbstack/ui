@@ -197,6 +197,9 @@ const actions = {
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
   },
+  updateProfile ({ commit }, payload) {
+    return api.updateProfile(payload)
+  },
   triggerEntityImport ({ commit }, wikiId) {
     return api.importEntities({ wikiId })
       .then(() => {

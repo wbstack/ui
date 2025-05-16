@@ -2,6 +2,10 @@
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn v-if="dismissable" icon @click="$emit('close-dialog')">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
       </v-toolbar>
 
       <v-card-text>
@@ -51,11 +55,12 @@
           </v-radio>
         </v-radio-group>
 
-        <h3 class="mt-6">Terms of Use</h3>
+        <h3 v-if="showTerms" class="mt-6">Terms of Use</h3>
         <v-checkbox
           v-model="value.terms"
           :disabled="inFlight"
           :rules="[() => !!value.terms || 'You must accept the Terms of Service.']"
+          v-if="showTerms"
         >
           <template v-slot:label>
             <div>
@@ -94,7 +99,7 @@
           :disabled="inFlight"
           @click="submitWholeForm"
         >
-          Create Wiki
+          {{ submitButtonText }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -107,7 +112,10 @@ export default {
     title: String,
     inFlight: Boolean,
     value: Object,
-    error: Array
+    error: Array,
+    dismissable: Boolean,
+    showTerms: Boolean,
+    submitButtonText: String
   },
   methods: {
     previousStep () {
