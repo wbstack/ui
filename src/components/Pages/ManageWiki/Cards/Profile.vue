@@ -93,10 +93,11 @@ export default {
       if (this.profile.updated_at) {
         return `Last updated on ${new Date(this.profile.updated_at).toLocaleString()}`
       }
+      return false
     }
   },
   methods: {
-    getQuestionResponse(question) {
+    getQuestionResponse (question) {
       const customResponse = this.profile[question + '_other']
       if (customResponse) {
         return `Other: ${customResponse}`
