@@ -153,6 +153,9 @@ const mutations = {
   },
   set_current_wiki_entityImportError (state, error) {
     state.currentWikiEntityImportError = error
+  },
+  set_current_wiki_profile (state, value) {
+    state.currentWikiProfile = value
   }
 }
 
@@ -166,7 +169,10 @@ const actions = {
       })
       .catch(err => commit('set_current_wiki_entityImportError', err))
     api.wikiDetails({ wiki: wikiId })
-      .then(details => commit('set_current_wiki_settings', details))
+      .then(details => {
+        commit('set_current_wiki_settings', details)
+        commit('set_current_wiki_profile', details.wiki_latest_profile)
+      })
   },
   resetWikisState ({ commit }) {
     commit('wikis_resetState')
@@ -197,8 +203,9 @@ const actions = {
   updateSetting ({ commit }, payload) {
     return api.updateSetting(payload.setting, payload)
   },
-  updateProfile ({ commit }, payload) {
-    return api.updateProfile(payload)
+  async updateProfile ({ commit }, payload) {
+    const response = await api.updateProfile(payload)
+    commit('set_current_wiki_profile', response)
   },
   triggerEntityImport ({ commit }, wikiId) {
     return api.importEntities({ wikiId })
