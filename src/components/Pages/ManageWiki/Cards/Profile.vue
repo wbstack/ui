@@ -137,16 +137,16 @@ export default {
   },
   computed: {
     hasProfile: function () {
-      return !!this.profile.updated_at
+      return !!this.profile?.updated_at
     },
     hasAudience: function () {
-      return !!this.profile.audience
+      return !!this.profile?.audience
     },
     isWikiTemporary: function () {
-      return this.profile.temporality === 'temporary'
+      return this.profile?.temporality === 'temporary'
     },
     updatedAt: function () {
-      if (this.profile.updated_at) {
+      if (this.profile?.updated_at) {
         return `Last updated on ${new Date(this.profile.updated_at).toLocaleString()}`
       }
       return false
@@ -154,13 +154,15 @@ export default {
   },
   methods: {
     getQuestionResponse (question) {
-      const customResponse = this.profile[question + '_other']
-      if (customResponse) {
-        return `Other: ${customResponse}`
-      }
-      const providedResponse = this.profile[question]
-      if (providedResponse) {
-        return providedResponses[question][providedResponse]
+      if (this.profile) {
+        const customResponse = this.profile[question + '_other']
+        if (customResponse) {
+          return `Other: ${customResponse}`
+        }
+        const providedResponse = this.profile[question]
+        if (providedResponse) {
+          return providedResponses[question][providedResponse]
+        }
       }
       return 'No answer selected.'
     },
@@ -184,11 +186,8 @@ export default {
           temporality: this.dialog.data.stepTwo.temporality,
           ...(this.dialog.data.stepTwo.otherTemporality && { temporality_other: this.dialog.data.stepTwo.otherTemporality })
         }
-
-        this.profile = (await this.$store.dispatch('updateProfile', {
-          wiki: this.wikiId, profile: JSON.stringify(profile)
-        })).data.data ?? {}
-
+        await this.$store.dispatch('updateProfile', { wiki: this.wikiId, profile: JSON.stringify(profile) })
+        this.profile = this.$store.state.wikis.currentWikiProfile
         this.$refs.message.show('success', 'Intended use has been updated.')
         this.dialog.show = false
       } catch (error) {
@@ -200,13 +199,7 @@ export default {
     }
   },
   async created () {
-    try {
-      const details = await this.$api.wikiDetails({ wiki: this.wikiId })
-      this.profile = details.wiki_latest_profile ?? {}
-    } catch (error) {
-      console.log(error)
-      this.$refs.message.show('error', 'Something went wrong with fetching your intended use.')
-    }
+    this.profile = this.$store.state.wikis.currentWikiProfile
   }
 }
 </script>
