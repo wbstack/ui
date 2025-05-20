@@ -10,7 +10,7 @@
 
     <v-card-text>
       <h3>What best describes how you intend to use this Wikibase?</h3>
-      <v-form ref="inputForm">
+      <v-form ref="inputForm" v-on:submit.prevent>
       <v-radio-group v-model="value.purpose" :rules="[() => !!value.purpose || 'Please select an option.']">
         <v-radio value="data_hub" ref="test">
           <template v-slot:label>
