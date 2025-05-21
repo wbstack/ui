@@ -9,7 +9,7 @@
       </v-toolbar>
 
       <v-card-text>
-      <v-form ref="inputForm">
+      <v-form ref="inputForm" v-on:submit.prevent>
         <h3>How long do you plan to use this Wikibase?</h3>
 
         <v-radio-group
