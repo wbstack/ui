@@ -147,7 +147,20 @@ export default {
     },
     updatedAt: function () {
       if (this.profile?.updated_at) {
-        return `Last updated on ${new Date(this.profile.updated_at).toLocaleString()}`
+        const rawDate = new Date(this.profile.updated_at)
+        const date = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'UTC',
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        }).format(rawDate)
+        const time = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'UTC',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        }).format(rawDate)
+        return `Last updated on ${date}, at ${time} (UTC)`;
       }
       return false
     }
@@ -229,13 +242,14 @@ export default {
   padding-top: 0;
 }
 .no-profile-banner {
+  display: flex;
+  align-items: flex-start;
   background-color: rgba(255, 236, 179, 1);
   border-radius: 4px;
   padding: 8px 16px;
   font-size: 16px;
 }
 .no-profile-banner > .v-icon {
-  float: left;
   margin-right: 16px;
 }
 .profile {

@@ -103,7 +103,6 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer></v-spacer>
       <v-btn v-if="$listeners['previous-step']" type="button" :disabled="inFlight" @click="$emit('previous-step')">
         &lt; PREVIOUS
       </v-btn>
@@ -150,3 +149,11 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+.v-card__actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+</style>
