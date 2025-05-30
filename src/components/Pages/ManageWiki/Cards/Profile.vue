@@ -160,7 +160,7 @@ export default {
           minute: '2-digit',
           hour12: false
         }).format(rawDate)
-        return `Last updated on ${date}, at ${time} (UTC)`;
+        return `Last updated on ${date}, at ${time} (UTC)`
       }
       return false
     }
