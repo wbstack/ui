@@ -83,8 +83,6 @@
       </v-form>
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
-
         <v-btn
           type="button"
           :disabled="inFlight"
@@ -139,3 +137,11 @@ export default {
 
 }
 </script>
+
+<style lang="css" scoped>
+.v-card__actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+</style>
