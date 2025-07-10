@@ -32,6 +32,14 @@ export const contact = async payload => {
 
   return resp.data.success
 }
+export const complaint = async payload => {
+  const resp = await axios.post('/complaint/sendMessage', payload).catch(ex => {
+    const { errors = {} } = ex.response.data
+    throw errors
+  })
+
+  return resp.data.success
+}
 export const forgottenPassword = async email => axios.post('/user/forgotPassword', email)
 export const resetPassword = async payload => axios.post('/user/resetPassword', payload)
 export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified!'
