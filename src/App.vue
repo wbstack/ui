@@ -5,7 +5,7 @@
       <v-container v-else class="full-height-content">
         <router-view></router-view>
       </v-container>
-      <Foot :class="{'tall-footer': customLayout}"></Foot>
+      <Foot></Foot>
       <Interval
         v-if="this.$store.getters.isLoggedIn && !this.$store.getters.currentUser.verified"
         :callback="checkVerified"
@@ -46,10 +46,7 @@ export default {
 .grecaptcha-badge { opacity:0;}
 
   .full-height-content {
-    height: 100%
+    height: 100%;
+    padding-bottom: "56px"
   }
-
-.tall-footer.footer {
-  height: 100%;
-}
 </style>
