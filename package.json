@@ -44,7 +44,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-vue": "^9.27.0",
     "geckodriver": "^3.0.1",
-    "msw": "^0.35.0",
+    "msw": "^2.10.4",
     "wdio-chromedriver-service": "^7.3.2",
     "wdio-geckodriver-service": "^2.0.3"
   },
