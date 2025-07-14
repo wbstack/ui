@@ -18,7 +18,7 @@ import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
-import Complaint from "@/components/Pages/complaint.vue";
+import Complaint from '@/components/Pages/Complaint.vue'
 
 Vue.use(Router)
 

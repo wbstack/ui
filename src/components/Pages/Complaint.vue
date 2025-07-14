@@ -22,7 +22,7 @@
 
             <v-textarea
               id="inputMessage"
-              counter="10000"
+              counter="1000"
               v-model="message"
               :rules="[v => v.length <= 1000 || 'Message must be 1000 characters or less', () => !!message || 'This field is required']"
               auto-grow
@@ -54,8 +54,6 @@
             :rules="[() => !!accepted || '']"
             required
           />
-
-
           <div align="right">
             <v-btn color="primary" @click="send" class="mt-6">
               Report illegal content
@@ -91,8 +89,6 @@
 </template>
 
 <script>
-import {complaint} from "@/backend/api";
-
 export default {
   data: () => ({
     contenturl: '',
@@ -114,10 +110,10 @@ export default {
       const email = this.email
       this.$api.complaint(
         {
-          name: name,
-          url: url,
-          email: email,
-          message: message,
+          name,
+          url,
+          email,
+          message
         })
         .then(success => this.createSuccessful())
         .catch(errors => {
