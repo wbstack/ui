@@ -32,34 +32,34 @@
 <script>
 export default {
   name: 'Foot',
-  data() {
+  data () {
     return {
       isNarrow: false,
       totalColsWidth: 0
     }
   },
-  mounted() {
-    this.updateWidths();
-    window.addEventListener('resize', this.updateWidths);
+  mounted () {
+    this.updateWidths()
+    window.addEventListener('resize', this.updateWidths)
   },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.updateWidths);
+  beforeDestroy () {
+    window.removeEventListener('resize', this.updateWidths)
   },
   methods: {
-    updateWidths() {
+    updateWidths () {
       // Get widths of both columns
-      const col1 = this.$refs.col1?.$el || this.$refs.col1;
-      const col2 = this.$refs.col2?.$el || this.$refs.col2;
-      const col1Width = col1 ? col1.offsetWidth : 0;
-      const col2Width = col2 ? col2.offsetWidth : 0;
-      this.totalColsWidth = col1Width + col2Width;
+      const col1 = this.$refs.col1?.$el || this.$refs.col1
+      const col2 = this.$refs.col2?.$el || this.$refs.col2
+      const col1Width = col1 ? col1.offsetWidth : 0
+      const col2Width = col2 ? col2.offsetWidth : 0
+      this.totalColsWidth = col1Width + col2Width
 
       // Calculate threshold in px (11rem)
-      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-      const threshold = this.totalColsWidth + 2 * 3 * rem + 5 * rem;
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
+      const threshold = this.totalColsWidth + 2 * 3 * rem + 5 * rem
 
       // Set isNarrow based on window width
-      this.isNarrow = window.innerWidth < threshold;
+      this.isNarrow = window.innerWidth < threshold
     }
   }
 }
