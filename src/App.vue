@@ -5,7 +5,7 @@
       <v-container v-else class="full-height-content">
         <router-view></router-view>
       </v-container>
-      <Foot :class="{'tall-footer': customLayout}"></Foot>
+      <Foot></Foot>
       <Interval
         v-if="this.$store.getters.isLoggedIn && !this.$store.getters.currentUser.verified"
         :callback="checkVerified"
@@ -48,8 +48,4 @@ export default {
   .full-height-content {
     height: 100%
   }
-
-.tall-footer.footer {
-  height: 100%;
-}
 </style>
