@@ -18,8 +18,6 @@
               label="URL(s) for the content in question"
               required
             />
-            <!--v-divider/-->
-
             <v-textarea
               id="inputMessage"
               counter="1000"
@@ -108,35 +106,35 @@ export default {
       const message = this.message
       const name = this.name
       const email = this.email
-      this.$api.complaint(
-        {
-          name,
-          url,
-          email,
-          message
-        })
-        .then(success => this.createSuccessful())
-        .catch(errors => {
-          this.resetErrorState()
-          this.createError()
-          // If the api gave use details of the error, then use them
-          if (errors) {
-            if (errors.name) {
-              this.hasError = true
-              this.error.inputUrl = errors.url[0]
-            }
-            if (errors.subject) {
-              this.hasError = true
-              this.error.inputMessage = errors.Message[0]
-            }
-          }
-          // Otherwise show a general error state
-          if (!this.hasError) {
-            this.setGeneralErrorState()
-          }
-        })
       if (this.$refs.form.validate() === true) {
-        this.$emit('submit')
+      //  this.$emit('send')
+        this.$api.complaint(
+          {
+            name,
+            url,
+            email,
+            message
+          })
+          .then(success => this.createSuccessful())
+          .catch(errors => {
+            this.resetErrorState()
+            this.createError()
+            // If the api gave use details of the error, then use them
+            if (errors) {
+              if (errors.name) {
+                this.hasError = true
+                this.error.inputUrl = errors.url[0]
+              }
+              if (errors.subject) {
+                this.hasError = true
+                this.error.inputMessage = errors.Message[0]
+              }
+            }
+            // Otherwise show a general error state
+            if (!this.hasError) {
+              this.setGeneralErrorState()
+            }
+          })
       }
     },
     createSuccessful () {

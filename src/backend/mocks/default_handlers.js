@@ -162,6 +162,7 @@ export const handlers = [
   rest.post(/\/api\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
   rest.post(/\/api\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
   rest.post(/\/api\/user\/verifyEmail$/, (_, res, ctx) => res(ctx.status(200))),
+  rest.post(/\/api\/complaint\/sendMessage$/, (req, res, ctx) => res(ctx.status(200))),
   rest.post(/\/api\/contact\/sendMessage$/, (req, res, ctx) => {
     if (req.body.name === 'recaptchaError') {
       return res(ctx.status(401, 'Mocked recaptcha Error'))
