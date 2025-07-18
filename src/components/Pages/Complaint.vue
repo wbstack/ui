@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-responsive max-width="600px" min-width="250px" >
+    <v-responsive max-width="616px" min-width="250px" >
       <div class="body">
       <p id="titleReportIllegalContent">Reporting illegal content</p>
         <p id="pageContent">Please use this form to report any content that you consider to be illegal. After sending the email,
@@ -142,14 +142,14 @@ export default {
         })
       }
     },
-    resetForm() {
+    resetForm () {
       this.name = ''
       this.email = ''
       this.message = ''
       this.contenturl = ''
     },
     createSuccessful () {
-      this.resetForm();
+      this.resetForm()
       this.successMessage = true
     },
     createError () {
