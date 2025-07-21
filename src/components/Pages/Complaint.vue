@@ -143,14 +143,12 @@ export default {
       }
     },
     resetForm () {
-      this.name = ''
-      this.email = ''
-      this.message = ''
-      this.contenturl = ''
+      this.$refs.form.reset();           // Reset field values to their initial model values
+      this.$refs.form.resetValidation(); // Clear error messages
     },
     createSuccessful () {
-      this.resetForm()
       this.successMessage = true
+      this.resetForm()
     },
     createError () {
       this.errorMessage = true
