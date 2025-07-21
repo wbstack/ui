@@ -1,7 +1,14 @@
 <template>
   <v-footer data-test-id="footer" class="footer">
-    <v-row :class="['row-margin', { 'small-row-margin': isNarrow }]" no-gutters>
-      <v-col :class="['col-margin', { 'small-col-margin': isNarrow }]" ref="col1" cols="auto">
+    <v-row
+      :class="isNarrow ? 'small-row-margin stack-vertical' : 'row-margin'"
+      no-gutters
+    >
+      <v-col
+        :class="isNarrow ? 'small-col-margin' : 'col-margin'"
+        ref="col1"
+        cols="auto"
+      >
         <nav aria-label="Wikibase Cloud links">
           <h3 class="footer-list-title">Wikibase Cloud</h3>
           <ul class="footer-list">
@@ -31,35 +38,31 @@
 
 <script>
 export default {
-  name: 'Foot',
-  data () {
+  name: 'Footer',
+  data() {
     return {
       isNarrow: false,
-      totalColsWidth: 0
+      initialThreshold: 0
     }
   },
-  mounted () {
-    this.updateWidths()
-    window.addEventListener('resize', this.updateWidths)
-  },
-  beforeDestroy () {
-    window.removeEventListener('resize', this.updateWidths)
-  },
-  methods: {
-    updateWidths () {
-      // Get widths of both columns
+  mounted() {
+    this.$nextTick(() => {
       const col1 = this.$refs.col1?.$el || this.$refs.col1
       const col2 = this.$refs.col2?.$el || this.$refs.col2
       const col1Width = col1 ? col1.offsetWidth : 0
       const col2Width = col2 ? col2.offsetWidth : 0
-      this.totalColsWidth = col1Width + col2Width
-
-      // Calculate threshold in px (11rem)
-      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
-      const threshold = this.totalColsWidth + 2 * 3 * rem + 5 * rem
-
-      // Set isNarrow based on window width
-      this.isNarrow = window.innerWidth < threshold
+      const threshold = col1Width + col2Width + 176
+      this.initialThreshold = threshold
+      this.updateIsNarrow()
+      window.addEventListener('resize', this.updateIsNarrow)
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateIsNarrow)
+  },
+  methods: {
+    updateIsNarrow() {
+      this.isNarrow = window.innerWidth <= this.initialThreshold
     }
   }
 }
@@ -74,11 +77,11 @@ export default {
 .footer-list-title {
   font-weight: bold;
   color: white;
-  margin-bottom: 0.5em;
+  margin-bottom: 8px;
 }
 
 .footer-list li {
-  margin-bottom: 0.3em;
+  margin-bottom: 5px;
 }
 
 .footer-list a, .footer-list :deep(a) {
@@ -99,15 +102,21 @@ export default {
 }
 
 .row-margin {
-  margin: 3rem !important;
+  margin: 48px !important;
 }
 .small-row-margin {
-  margin: 1.5rem !important;
+  margin: 24px !important;
 }
+
 .col-margin {
-  margin-right: 5rem !important;
+  margin-right: 80px !important;
 }
 .small-col-margin {
-  margin-bottom: 2.5rem !important;
+  margin-bottom: 40px !important;
+  margin-right: 0 !important;
+}
+
+.stack-vertical {
+  flex-direction: column !important;
 }
 </style>
