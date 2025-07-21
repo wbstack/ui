@@ -39,13 +39,13 @@
 <script>
 export default {
   name: 'Footer',
-  data() {
+  data () {
     return {
       isNarrow: false,
       initialThreshold: 0
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       const col1 = this.$refs.col1?.$el || this.$refs.col1
       const col2 = this.$refs.col2?.$el || this.$refs.col2
@@ -57,11 +57,11 @@ export default {
       window.addEventListener('resize', this.updateIsNarrow)
     })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     window.removeEventListener('resize', this.updateIsNarrow)
   },
   methods: {
-    updateIsNarrow() {
+    updateIsNarrow () {
       this.isNarrow = window.innerWidth <= this.initialThreshold
     }
   }
