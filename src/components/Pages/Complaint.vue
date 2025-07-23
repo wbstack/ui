@@ -143,8 +143,8 @@ export default {
       }
     },
     resetForm () {
-      this.$refs.form.reset();           // Reset field values to their initial model values
-      this.$refs.form.resetValidation(); // Clear error messages
+      this.$refs.form.reset()
+      this.$refs.form.resetValidation()
     },
     createSuccessful () {
       this.successMessage = true
