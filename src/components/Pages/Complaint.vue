@@ -171,7 +171,7 @@ export default {
 #pageContent{
   color: #000;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: Lato;
+  font-family: Lato, Segoe UI, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -181,7 +181,7 @@ export default {
   align-self: stretch;
   color: #000;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: Lato;
+  font-family: Lato, Segoe UI, sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
