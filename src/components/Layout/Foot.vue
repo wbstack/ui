@@ -40,43 +40,34 @@ export default {
   list-style: none;
   padding-left: 0;
 }
-
 .footer-list-title {
   font-weight: bold;
   color: white;
   margin-bottom: 8px;
 }
-
 .footer-list li {
   margin-bottom: 5px;
 }
-
 .footer-list a, .footer-list :deep(a) {
   color: white !important;
   text-decoration: none;
   transition: text-decoration 0.2s, color 0.2s;
 }
-
 .footer-list a:hover, .footer-list :deep(a:hover) {
   text-decoration: underline;
   color: white !important;
 }
-
 .v-footer {
   background-color: #0063BF !important;
-  height: 100%;
   padding: 0;
 }
-
 .row-margin {
   margin: 48px !important;
   display: flex;
 }
-
 .col-margin {
   margin-right: 80px !important;
 }
-
 @media (max-width: 480px) {
   .row-margin {
     margin: 24px !important;
