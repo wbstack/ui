@@ -58,7 +58,7 @@
             </v-btn>
           </div>
       </v-form>
-      <v-snackbar color="success" elevation="24" v-model="successMessage">
+      <v-snackbar class="alert-text" color="success" elevation="24" v-model="successMessage">
         Report successfully submitted. Thanks!
         <template v-slot:action>
           <v-btn
@@ -71,7 +71,7 @@
         </template>
       </v-snackbar>
       <v-snackbar color="error" elevation="24" v-model="errorMessage" multi-line>
-        Something went wrong with sending your message. Please try again.
+        <p class="alert-text" >Something went wrong with submitting your report. Please try again.</p>
         <template v-slot:action>
           <v-btn
             text
@@ -189,5 +189,18 @@ export default {
 }
 .body{
   padding: 8px;
+}
+
+.alert-text{
+  color: var(--shades-white, #FFF);
+
+  /* v-text/body-1 */
+  font-family: Roboto, sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+  max-width: 443px;
 }
 </style>
