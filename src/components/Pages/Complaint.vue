@@ -171,7 +171,7 @@ export default {
 #pageContent{
   color: #000;
   font-feature-settings: 'liga' off, 'clig' off;
-  font-family: Lato, Segoe UI, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -195,7 +195,7 @@ export default {
   color: var(--shades-white, #FFF);
 
   /* v-text/body-1 */
-  font-family: Roboto, sans-serif !important;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
