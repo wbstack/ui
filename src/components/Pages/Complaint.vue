@@ -58,8 +58,8 @@
             </v-btn>
           </div>
       </v-form>
-      <v-snackbar class="alert-text" color="success" elevation="24" v-model="successMessage">
-        Report successfully submitted. Thanks!
+      <v-snackbar color="success" elevation="24" v-model="successMessage">
+        <p class="alert-text" >Report successfully submitted. Thanks!</p>
         <template v-slot:action>
           <v-btn
             text
@@ -169,38 +169,22 @@ export default {
 
 <style>
 #pageContent{
-  color: #000;
-  font-feature-settings: 'liga' off, 'clig' off;
-  font-family: Roboto, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 171.429% */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 #titleReportIllegalContent{
   align-self: stretch;
-  color: #000;
-  font-feature-settings: 'liga' off, 'clig' off;
-  font-family: Lato, Segoe UI, sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 40px; /* 125% */
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 40px;
 }
 .body{
   padding: 8px;
 }
 
 .alert-text{
-  color: var(--shades-white, #FFF);
-
-  /* v-text/body-1 */
-  font-family: Roboto, sans-serif;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
   letter-spacing: 0.5px;
-  max-width: 443px;
 }
 </style>
