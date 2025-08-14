@@ -5,7 +5,7 @@
       <v-container v-else class="full-height-content">
         <router-view></router-view>
       </v-container>
-      <Foot :class="{'tall-footer': customLayout}"></Foot>
+      <Foot :class="['padding-footer', { 'tall-footer': customLayout }]"></Foot>
       <Interval
         v-if="this.$store.getters.isLoggedIn && !this.$store.getters.currentUser.verified"
         :callback="checkVerified"
@@ -45,10 +45,12 @@ export default {
 /* https://brizzo.net/tips/hide-recaptcha-v3-badge/ */
 .grecaptcha-badge { opacity:0;}
 
-  .full-height-content {
-    height: 100%
-  }
-
+.full-height-content {
+  height: 100%
+}
+.padding-footer.footer {
+  margin-top: 56px;
+}
 .tall-footer.footer {
   height: 100%;
 }
