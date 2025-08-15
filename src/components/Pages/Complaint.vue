@@ -2,6 +2,13 @@
   <v-main>
     <v-responsive max-width="616px" min-width="250px" >
       <div class="body">
+        <p class="text-body-1 font-weight-bold mb-2">
+          Points of contact under the Digital Services Act (Regulation 2022/2065/EU)
+        </p>
+        <p class="text-subtitle-2 font-weight-regular mb-8">
+          Point of contact for public authorities under Art. 11 DSA: dsa-meldung@wikimedia.de<br/>
+          Point of contact for recipients under Art. 12 DSA: dsa-meldung@wikimedia.de
+        </p>
         <h1 class="text-h4 mb-4">Reporting illegal content</h1>
         <p class="text-body-1 mb-9">
           Please use this form to report any content that you consider to be illegal. After sending the email,
