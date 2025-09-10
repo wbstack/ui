@@ -1,7 +1,8 @@
 <template>
     <v-main>
           <v-responsive max-width="840px" min-width="250px" >
-              <h1>Get in touch with the team</h1>
+              <h4 class="page-heading">Get in touch with the team</h4>
+
               <p>Thank you for your interest. We want to hear what you've got to say.</p>
               <p>Have you got a question? First, check our <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/FAQ" target="_blank">FAQ</a> to see if we've already answered it. We're constantly  updating it with new questions. If you don't find an answer there, feel free to use the contact form below. Thanks!</p>
               <p>Please note that despite our best efforts it can take up to two weeks to receive a response. Thank you for your patience.</p>
