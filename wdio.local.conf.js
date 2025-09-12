@@ -17,13 +17,19 @@ exports.config = {
     {
       browserName: 'firefox',
       hostname: 'selenium-firefox',
+      'moz:firefoxOptions': {
+        args: ['-headless']
+      },
       alwaysMatch: {
         'moz:debuggerAddress': true
       }
     },
     {
       browserName: 'chrome',
-      hostname: 'selenium-chrome'
+      hostname: 'selenium-chrome',
+      'goog:chromeOptions': {
+        args: ['--headless','--disable-gpu', '--no-sandbox']
+      }
     }
   ]
 }
