@@ -54,17 +54,9 @@
             </template>
           </v-radio>
         </v-radio-group>
-
-        <h3 v-if="showTerms" class="mt-6">Terms of Use</h3>
-        <v-checkbox
-          v-model="value.terms"
-          :disabled="inFlight"
-          :rules="[() => !!value.terms || 'You must accept the Terms of Service.']"
-          v-if="showTerms"
-        >
           <template v-slot:label>
             <div>
-              I agree to the
+              Previously accepted
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <a
@@ -76,10 +68,9 @@
                     Terms of Use</a>
                 </template>
                 Opens in new window
-              </v-tooltip>.
+              </v-tooltip>still apply.
             </div>
           </template>
-        </v-checkbox>
       </v-form>
       </v-card-text>
       <v-card-actions>
@@ -112,7 +103,6 @@ export default {
     value: Object,
     error: Array,
     dismissable: Boolean,
-    showTerms: Boolean,
     submitButtonText: String
   },
   methods: {
