@@ -54,23 +54,21 @@
             </template>
           </v-radio>
         </v-radio-group>
-          <template v-slot:label>
-            <div>
-              Previously accepted
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <a
-                    target="_blank"
-                    href="/terms-of-use"
-                    @click.stop
-                    v-on="on"
-                  >
-                    Terms of Use</a>
-                </template>
-                Opens in new window
-              </v-tooltip>still apply.
-            </div>
-          </template>
+        <div>
+          Previously accepted
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <a
+                target="_blank"
+                href="/terms-of-use"
+                @click.stop
+                v-on="on"
+              >
+                Terms of Use</a>
+            </template>
+            Opens in new window
+          </v-tooltip> still apply.
+        </div>
       </v-form>
       </v-card-text>
       <v-card-actions>
