@@ -75,7 +75,7 @@ export default {
       },
       stepThree: {
         temporality: '',
-        otherTemporality: '',
+        otherTemporality: ''
       },
       hasError: false,
       error: [],
