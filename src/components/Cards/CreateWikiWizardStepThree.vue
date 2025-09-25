@@ -54,9 +54,10 @@
             </template>
           </v-radio>
         </v-radio-group>
-        <div>
+        <h3 class="mt-6">Terms of Use</h3>
+        <div class="body-2">
           Previously accepted
-          <v-tooltip bottom>
+          <v-tooltip top>
             <template v-slot:activator="{ on }">
               <a
                 target="_blank"
