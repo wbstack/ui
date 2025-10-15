@@ -6,7 +6,7 @@
               <p>Have you got a question? First, check our <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/FAQ" target="_blank">FAQ</a> to see if we've already answered it. We're constantly  updating it with new questions. If you don't find an answer there, feel free to use the contact form below. Thanks!</p>
               <p>Please note that despite our best efforts it can take up to two weeks to receive a response. Thank you for your patience.</p>
               <h3>Want to connect with the Wikibase.cloud community?</h3>
-              <p>You can visit our <a href="https://t.me/joinchat/FgqAnxNQYOeAKmyZTIId9g" target="_blank">Telegram group</a> or join our <a href="https://lists.wikimedia.org/postorius/lists/wikibase-cloud.lists.wikimedia.org/" target="_blank">mailing list</a>.</p>
+              <p>You can visit our <a href="https://t.me/+Ts03CeiwgPY4MDI0" target="_blank">Telegram group</a> or join our <a href="https://lists.wikimedia.org/postorius/lists/wikibase-cloud.lists.wikimedia.org/" target="_blank">mailing list</a>.</p>
               <v-responsive max-width="512px">
                 <h2 class="mt-10 mb-2">Contact Us</h2>
                 <v-text-field
