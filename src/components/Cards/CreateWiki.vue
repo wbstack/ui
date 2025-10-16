@@ -28,7 +28,6 @@
       :inFlight="inFlight"
       :error="error"
       :dismissable="false"
-      :showTerms="true"
       submitButtonText="Create Wiki"
       v-model="stepThree"
       @previous-step="goToStep(2)"
@@ -76,8 +75,7 @@ export default {
       },
       stepThree: {
         temporality: '',
-        otherTemporality: '',
-        terms: false
+        otherTemporality: ''
       },
       hasError: false,
       error: [],
@@ -174,10 +172,6 @@ export default {
         this.hasError = true
         this.error.username = errors.username[0]
       }
-      if (errors.terms) {
-        this.hasError = true
-        this.error.terms = errors.terms[0]
-      }
       if (errors.tooManyWikis) {
         this.hasError = true
         this.displayGenericError(errors.message)
@@ -199,7 +193,6 @@ export default {
       this.error.sitename = message
       this.error.siteaddress = message
       this.error.username = message
-      this.error.terms = message
     },
     checkCurrentLogin () {
       if (!this.currentUser) {
