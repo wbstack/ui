@@ -18,6 +18,7 @@ import TermsOfUse from '@/components/Pages/TermsOfUse'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
+import Complaint from '@/components/Pages/Complaint.vue'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const router = new Router({
       path: '/contact',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path: '/complaint',
+      name: 'Complaint',
+      component: Complaint
     },
     {
       path: '/create-account',
@@ -117,7 +123,8 @@ const router = new Router({
       name: 'TabSettings',
       component: TabSettings,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        customLayout: true
       }
     },
     {

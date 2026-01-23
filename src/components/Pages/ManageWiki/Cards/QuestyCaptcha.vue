@@ -81,24 +81,18 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <v-snackbar :color="message.status" elevation="24" v-model="message.show">
-      {{ message.text }}
-      <template v-slot:action>
-        <v-btn
-          text
-          variant="text"
-          @click="message.show = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
+    <Message ref="message" />
   </v-card>
 </template>
 
 <script>
+import Message from '../Features/Message.vue'
+
 export default {
   name: 'QuestyCaptcha',
+  components: {
+    Message
+  },
   props: [
     'wikiId'
   ],
@@ -144,9 +138,6 @@ export default {
         answers: []
       })
     },
-    showMessage (status, message) {
-      this.message = { status: status, text: message, show: true }
-    },
     formatQuestionsForApi (questions) {
       return JSON.stringify(questions.reduce((out, entry) => {
         out[entry.question] = entry.answers
@@ -165,10 +156,10 @@ export default {
         }
         await this.$store.dispatch('updateSetting', { wiki: this.wikiId, setting: 'wwUseQuestyCaptcha', value: enabled })
         await this.$store.dispatch('setEnabledQuestyCaptcha', enabled)
-        this.showMessage('success', `QuestyCaptcha has been successfully ${enabled ? 'enabled' : 'disabled'}.`)
+        this.$refs.message.show('success', `QuestyCaptcha has been successfully ${enabled ? 'enabled' : 'disabled'}.`)
       } catch (error) {
-        console.log(error.response)
-        this.showMessage('error', `Something went wrong while ${enabled ? 'enabling' : 'disabling'} QuestyCaptcha. Please try again.`)
+        console.error(error.response)
+        this.$refs.message('error', `Something went wrong while ${enabled ? 'enabling' : 'disabling'} QuestyCaptcha. Please try again.`)
         await this.$nextTick()
         this.isCaptchaActive = !enabled
       } finally {
@@ -203,12 +194,12 @@ export default {
           wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.questionsFromStore)
         })
         await this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
-        this.showMessage('success', 'Your questions have been saved.')
+        this.$refs.message.show('success', 'Your questions have been saved.')
         this.hasNoQuestions = false
         this.panel = false
       } catch (error) {
-        console.log(error.response)
-        this.showMessage('error', 'Something went wrong with saving your questions. Please try again.')
+        console.error(error.response)
+        this.$refs.message.show('error', 'Something went wrong with saving your questions. Please try again.')
       } finally {
         this.waitForQuestionsUpdate = false
       }

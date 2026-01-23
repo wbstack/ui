@@ -1,26 +1,26 @@
 <template>
   <v-main>
-    <v-container class="fill-height" fluid>
+    <v-container>
       <v-row v-if="wikiId != 0">
         <!--Col 1-->
         <v-col>
           <v-row>
-            <v-col>
-              <Details :wikiId="this.wikiId"/>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Skin :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Logo :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
+              <Registration :wikiId="this.wikiId"/>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="card-column">
               <QuestyCaptcha :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
@@ -28,29 +28,24 @@
         <!--Col 2-->
         <v-col>
           <v-row>
-            <v-col>
-              <Registration :wikiId="this.wikiId"/>
+            <v-col class="card-column">
+              <EntityImport :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="card-column">
               <Wikibase :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
-              <EntityImport :wikiId="this.wikiId"/>
+            <v-col class="card-column">
+              <Delete :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
-          <Delete :wikiId="this.wikiId"/>
-        </v-col>
-      </v-row>
       <v-row v-if="wikiId == 0">
-        <v-col>
+        <v-col class="card-column">
           <v-card>
             <v-toolbar dark color="primary">
               <v-toolbar-title>Wiki Management</v-toolbar-title>
@@ -66,7 +61,6 @@
 </template>
 
 <script>
-import Details from '~/components/Pages/ManageWiki/Cards/Details'
 import Logo from '~/components/Pages/ManageWiki/Cards/Logo'
 import Skin from '~/components/Pages/ManageWiki/Cards/Skin'
 import Registration from '~/components/Pages/ManageWiki/Cards/Registration'
@@ -79,7 +73,6 @@ export default {
   name: 'ManageWiki',
   components: {
     QuestyCaptcha,
-    Details,
     Logo,
     Skin,
     Registration,
@@ -102,5 +95,7 @@ export default {
   .red-notice-highlight{
     background-color: red;
   }
-
+.v-main >>> .col {
+  max-width: 656px;
+}
 </style>

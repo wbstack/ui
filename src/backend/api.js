@@ -32,6 +32,14 @@ export const contact = async payload => {
 
   return resp.data.success
 }
+export const complaint = async payload => {
+  const resp = await axios.post('/complaint/sendMessage', payload).catch(ex => {
+    const { errors = {} } = ex.response.data
+    throw errors
+  })
+
+  return resp.data.success
+}
 export const forgottenPassword = async email => axios.post('/user/forgotPassword', email)
 export const resetPassword = async payload => axios.post('/user/resetPassword', payload)
 export const sendVerifyEmail = async () => (await axios.post('/user/sendVerifyEmail')).data.message === 'Already verified!'
@@ -62,13 +70,22 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
   const form = new FormData()
   form.append('logo', file, fileName)
   form.append('wiki', wikiId)
-  return axios.post('/wiki/logo/update', form)
+  return axios.post(
+    '/wiki/logo/update',
+    form,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+  )
 }
 // TODO the api should get the setting from the path (so it isn't needed in the payload)
 // payload needs 'wiki', 'setting' and 'value' keys
 export const updateSetting = async (setting, payload) => axios.post(`/wiki/setting/${setting}/update`, { ...payload, setting })
 export const updateSkin = async payload => updateSetting('wgDefaultSkin', payload)
 export const wikiDetails = async payload => (await axios.post('/wiki/details', payload)).data.data
+export const updateProfile = async payload => (await axios.post('/wiki/profile', payload)).data.data
 export const wikiDiscovery = async ({ sort, direction, active, currentPage, resultsPerPage }) => {
   return (await axios.get('/wiki', {
     params: {

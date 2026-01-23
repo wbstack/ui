@@ -2,8 +2,8 @@
     <v-main>
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
-            <CreateWikiCard title="Create a Wiki" buttonText="Create Wiki"/>
+          <v-col class="card-column">
+            <CreateWikiCard title="Create a wiki" buttonText="Next >"/>
           </v-col>
         </v-row>
       </v-container>
@@ -24,5 +24,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
+.card-column {
+  max-width: 387px;
+}
 </style>

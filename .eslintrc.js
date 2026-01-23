@@ -14,7 +14,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'warn',
-    'vue/no-reserved-component-names': 'warn'
+    'vue/no-reserved-component-names': 'warn',
+    'vue/no-mutating-props': 'warn'
   },
   overrides: [
     {

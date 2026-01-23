@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.5.3
+    - uses: actions/checkout@v6.0.1
 
     - uses: c-py/action-dotenv-to-setenv@v4
       with:
         env-file: .env.development.mock
 
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4.0.3
+      uses: actions/setup-node@v6.1.0
       with:
         node-version: 22.x
     - run: npm ci
@@ -42,14 +42,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.5.3
+    - uses: actions/checkout@v6.0.1
 
     - uses: c-py/action-dotenv-to-setenv@v4
       with:
         env-file: .env.development.prod
 
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4.0.3
+      uses: actions/setup-node@v6.1.0
       with:
         node-version: 22.x
     - run: npm ci
