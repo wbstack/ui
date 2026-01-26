@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
+    "@babel/eslint-parser": "^7.28.6",
     "@mdi/font": "^7.2.96",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-webdriverio": "^5.0.8",
