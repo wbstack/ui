@@ -50,7 +50,7 @@ import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
 import TemporalityProfileEditWizardStep from './TemporalityProfileEditWizardStep.vue'
-import TemporalityCreateWikiWizardStep from "@/components/Cards/TemporalityCreateWikiWizardStep.vue";
+import TemporalityCreateWikiWizardStep from '@/components/Cards/TemporalityCreateWikiWizardStep.vue'
 
 export default {
   name: 'CreateWiki',

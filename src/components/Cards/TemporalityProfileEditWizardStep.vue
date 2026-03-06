@@ -101,7 +101,7 @@ export default {
     inFlight: Boolean,
     value: Object,
     error: Array,
-    dismissable: Boolean,
+    dismissable: Boolean
   },
   methods: {
     previousStep () {
