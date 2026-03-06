@@ -28,9 +28,18 @@
       :inFlight="inFlight"
       :error="error"
       :dismissable="false"
-      submitButtonText="Create Wiki"
       v-model="stepThree"
       @previous-step="goToStep(2)"
+      @submit="createWiki"
+    />
+    <step-four-card
+      v-show="step === 4"
+      :title="title"
+      :inFlight="inFlight"
+      :error="error"
+      :dismissable="false"
+      v-model="stepThree"
+      @previous-step="goToStep(3)"
       @submit="createWiki"
     />
   </v-form>
@@ -38,16 +47,18 @@
 
 <script>
 import config from '~/config'
-import StepOneCard from './CreateWikiWizardStepOne.vue'
-import StepTwoCard from './CreateWikiWizardStepTwo.vue'
-import StepThreeCard from './CreateWikiWizardStepThree.vue'
+import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
+import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
+import TemporalityProfileEditWizardStep from './TemporalityProfileEditWizardStep.vue'
+import TemporalityCreateWikiWizardStep from "@/components/Cards/TemporalityCreateWikiWizardStep.vue";
 
 export default {
   name: 'CreateWiki',
   components: {
-    StepOneCard,
-    StepTwoCard,
-    StepThreeCard
+    StepOneCard: SiteDetailsCreateWikiWizardStep,
+    StepTwoCard: AudienceAndPurposeWizardStep,
+    StepThreeCard: TemporalityProfileEditWizardStep,
+    StepFourCard: TemporalityCreateWikiWizardStep
   },
   props: [
     'title',
@@ -76,6 +87,10 @@ export default {
       stepThree: {
         temporality: '',
         otherTemporality: ''
+      },
+      stepFour: {
+        selectedOption: '',
+        freeTextResponse: ''
       },
       hasError: false,
       error: [],

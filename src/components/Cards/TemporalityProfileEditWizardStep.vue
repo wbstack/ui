@@ -87,7 +87,7 @@
           :disabled="inFlight"
           @click="submitWholeForm"
         >
-          {{ submitButtonText }}
+          Create Wiki
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -102,7 +102,6 @@ export default {
     value: Object,
     error: Array,
     dismissable: Boolean,
-    submitButtonText: String
   },
   methods: {
     previousStep () {

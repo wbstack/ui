@@ -78,8 +78,8 @@
 
 <script>
 import Message from '../Features/Message.vue'
-import StepTwoCard from '~/components/Cards/CreateWikiWizardStepTwo'
-import StepThreeCard from '~/components/Cards/CreateWikiWizardStepThree'
+import AudienceAndPurposeWizardStep from '@/components/Cards/AudienceAndPurposeWizardStep.vue'
+import TemporalityProfileEditWizardStep from '@/components/Cards/TemporalityProfileEditWizardStep.vue'
 
 const providedResponses = {
   purpose: {
@@ -104,8 +104,8 @@ export default {
   name: 'Profile',
   components: {
     Message,
-    StepTwoCard,
-    StepThreeCard
+    StepTwoCard: AudienceAndPurposeWizardStep,
+    StepThreeCard: TemporalityProfileEditWizardStep
   },
   props: [
     'wikiId'
