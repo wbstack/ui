@@ -95,7 +95,7 @@
 
 <script>
 export default {
-  name: 'StepFourCard',
+  name: 'TemporalityCreateWikiWizardStep',
   props: {
     title: String,
     inFlight: Boolean,

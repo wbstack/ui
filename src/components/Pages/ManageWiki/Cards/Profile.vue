@@ -21,8 +21,7 @@
           :error="dialog.error"
           :dismissable="true"
           :showTerms="false"
-          submitButtonText="Set intended use"
-          v-model="dialog.data.stepTwo"
+            v-model="dialog.data.stepTwo"
           @close-dialog="dialog.show = false"
           @previous-step="goToStep(1)"
           @submit="updateProfile"
@@ -78,8 +77,8 @@
 
 <script>
 import Message from '../Features/Message.vue'
-import AudienceAndPurposeWizardStep from '@/components/Cards/AudienceAndPurposeWizardStep.vue'
-import TemporalityProfileEditWizardStep from '@/components/Cards/TemporalityProfileEditWizardStep.vue'
+import AudienceAndPurposeWizardStep from '../../../Cards/AudienceAndPurposeWizardStep.vue'
+import TemporalityProfileEditWizardStep from '../../../Cards/TemporalityProfileEditWizardStep.vue'
 
 const providedResponses = {
   purpose: {

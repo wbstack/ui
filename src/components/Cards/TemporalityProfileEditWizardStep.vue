@@ -95,7 +95,7 @@
 
 <script>
 export default {
-  name: 'StepThreeCard',
+  name: 'TemporalityProfileEditWizardStep',
   props: {
     title: String,
     inFlight: Boolean,
