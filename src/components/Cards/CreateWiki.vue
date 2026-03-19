@@ -1,35 +1,35 @@
 <template>
   <v-form @submit="createWiki">
     <SiteDetailsCreateWikiWizardStep
-      v-show="step === 1"
+      v-show="step === Steps.SITE_DETAILS"
       :title="title"
       :inFlight="inFlight"
-      v-model="stepOne"
+      v-model="siteDetails"
       :error="error"
       :SUBDOMAIN_SUFFIX="SUBDOMAIN_SUFFIX"
       :CNAME_RECORD="CNAME_RECORD"
       :errorMessages="errorMessages"
-      @next-step="goToStep(2)"
+      @next-step="goToStep(Steps.AUDIENCE_AND_PURPOSE)"
     />
 
     <AudienceAndPurposeWizardStep
-      v-show="step === 2"
+      v-show="step === Steps.AUDIENCE_AND_PURPOSE"
       :title="title"
       :inFlight="inFlight"
       :dismissable="false"
-      v-model="stepTwo"
-      @previous-step="goToStep(1)"
-      @next-step="goToStep(3)"
+      v-model="audienceAndPurpose"
+      @previous-step="goToStep(Steps.SITE_DETAILS)"
+      @next-step="goToStep(Steps.TEMPORALITY)"
     />
 
     <TemporalityCreateWikiWizardStep
-      v-show="step === 3"
+      v-show="step === Steps.TEMPORALITY"
       :title="title"
       :inFlight="inFlight"
       :error="error"
       :dismissable="false"
-      v-model="stepThree"
-      @previous-step="goToStep(2)"
+      v-model="temporality"
+      @previous-step="goToStep(Steps.AUDIENCE_AND_PURPOSE)"
       @submit="createWiki"
     />
   </v-form>
@@ -40,6 +40,12 @@ import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
 import TemporalityCreateWikiWizardStep from './TemporalityCreateWikiWizardStep.vue'
+
+const Steps = Object.freeze({
+  SITE_DETAILS: 'SiteDetails',
+  AUDIENCE_AND_PURPOSE: 'AudienceAndPurpose',
+  TEMPORALITY: 'Temporality'
+});
 
 export default {
   name: 'CreateWiki',
@@ -58,20 +64,20 @@ export default {
   },
   data () {
     return {
-      stepOne: {
+      siteDetails: {
         sitename: '',
         domainRadioChoice: 'sub',
         subdomain: '',
         domain: '',
         username: ''
       },
-      stepTwo: {
+      audienceAndPurpose: {
         purpose: '',
         otherPurpose: '',
         audience: '',
         otherAudience: ''
       },
-      stepThree: {
+      temporality: {
         temporality: '',
         otherTemporality: ''
       },
@@ -84,7 +90,8 @@ export default {
         domainTaken: 'The domain has already been taken.',
         domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
       },
-      step: 1
+      Steps,
+      step: Steps.SITE_DETAILS
     }
   },
   created () {
@@ -94,8 +101,8 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    goToStep (stepNumber) {
-      this.step = stepNumber
+    goToStep (stepName) {
+      this.step = stepName
     },
     createWiki (evt) {
       if (evt) {
@@ -113,28 +120,28 @@ export default {
 
       // Figure out the actual domain to submit to the api!
       let domainToSubmit = ''
-      if (this.stepOne.domainRadioChoice === 'sub') {
-        domainToSubmit = this.stepOne.subdomain + this.SUBDOMAIN_SUFFIX
+      if (this.siteDetails.domainRadioChoice === 'sub') {
+        domainToSubmit = this.siteDetails.subdomain + this.SUBDOMAIN_SUFFIX
       }
-      if (this.stepOne.domainRadioChoice === 'own') {
-        domainToSubmit = this.stepOne.domain
+      if (this.siteDetails.domainRadioChoice === 'own') {
+        domainToSubmit = this.siteDetails.domain
       }
 
       const profileJSObject = {
-        purpose: this.stepTwo.purpose,
-        ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
-        ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
-        ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
-        temporality: this.stepThree.temporality,
-        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
+        purpose: this.audienceAndPurpose.purpose,
+        ...(this.audienceAndPurpose.otherPurpose && { purpose_other: this.audienceAndPurpose.otherPurpose }),
+        ...(this.audienceAndPurpose.audience && { audience: this.audienceAndPurpose.audience }),
+        ...(this.audienceAndPurpose.otherAudience && { audience_other: this.audienceAndPurpose.otherAudience }),
+        temporality: this.temporality.temporality,
+        ...(this.temporality.otherTemporality && { temporality_other: this.temporality.otherTemporality })
       }
       const profileJsonString = JSON.stringify(profileJSObject)
 
       this.$api.createWiki(
         {
           domain: domainToSubmit,
-          sitename: this.stepOne.sitename,
-          username: this.stepOne.username,
+          sitename: this.siteDetails.sitename,
+          username: this.siteDetails.username,
           profile: profileJsonString
         }
       )
@@ -151,7 +158,7 @@ export default {
       // Probably we want to go back to the first step that has an error in this case.
       this.error = []
       // all these errors are shown on the first step.
-      this.goToStep(1)
+      this.goToStep(Steps.SITE_DETAILS)
       if (errors.sitename) {
         this.hasError = true
         this.error.sitename = errors.sitename[0]
