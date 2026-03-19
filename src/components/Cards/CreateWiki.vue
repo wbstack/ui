@@ -1,6 +1,6 @@
 <template>
   <v-form @submit="createWiki">
-    <step-one-card
+    <SiteDetailsCreateWikiWizardStep
       v-show="step === 1"
       :title="title"
       :inFlight="inFlight"
@@ -12,7 +12,7 @@
       @next-step="goToStep(2)"
     />
 
-    <step-two-card
+    <AudienceAndPurposeWizardStep
       v-show="step === 2"
       :title="title"
       :inFlight="inFlight"
@@ -22,7 +22,7 @@
       @next-step="goToStep(3)"
     />
 
-    <step-three-card
+    <TemporalityCreateWikiWizardStep
       v-show="step === 3"
       :title="title"
       :inFlight="inFlight"
@@ -39,17 +39,17 @@
 import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
-import TemporalityProfileEditWizardStep from './TemporalityProfileEditWizardStep.vue'
+import TemporalityCreateWikiWizardStep from './TemporalityCreateWikiWizardStep.vue'
+
 export default {
   name: 'CreateWiki',
   components: {
-    StepOneCard: SiteDetailsCreateWikiWizardStep,
-    StepTwoCard: AudienceAndPurposeWizardStep,
-    StepThreeCard: TemporalityProfileEditWizardStep,
+    SiteDetailsCreateWikiWizardStep,
+    AudienceAndPurposeWizardStep,
+    TemporalityCreateWikiWizardStep
   },
   props: [
-    'title',
-    'buttonText'
+    'title'
   ],
   computed: {
     currentUser: function () {
@@ -88,8 +88,6 @@ export default {
     }
   },
   created () {
-    // what's this for?
-    // this.buttonText = this.buttonTexts.next;
     this.checkCurrentLogin()
   },
   updated () {
