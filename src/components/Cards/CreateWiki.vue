@@ -27,7 +27,6 @@
       :title="title"
       :inFlight="inFlight"
       :error="error"
-      :dismissable="false"
       v-model="stepThree"
       @previous-step="goToStep(2)"
       @submit="createWiki"
