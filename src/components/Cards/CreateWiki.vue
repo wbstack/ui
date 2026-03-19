@@ -29,6 +29,17 @@
       :error="error"
       v-model="stepThree"
       @previous-step="goToStep(2)"
+      @next-step="goToStep(4)"
+      @submit="createWiki"
+    />
+
+    <KnowledgeEquityCreateWikiWizardStep
+      v-show="step === 4"
+      v-model="stepFour"
+      :title="title"
+      :inFlight="inFlight"
+      :error="error"
+      @previous-step="goToStep(3)"
       @submit="createWiki"
     />
   </v-form>
@@ -39,13 +50,15 @@ import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
 import TemporalityCreateWikiWizardStep from './TemporalityCreateWikiWizardStep.vue'
+import KnowledgeEquityCreateWikiWizardStep from './KnowledgeEquityCreateWikiWizardStep.vue'
 
 export default {
   name: 'CreateWiki',
   components: {
     SiteDetailsCreateWikiWizardStep,
     AudienceAndPurposeWizardStep,
-    TemporalityCreateWikiWizardStep
+    TemporalityCreateWikiWizardStep,
+    KnowledgeEquityCreateWikiWizardStep
   },
   props: [
     'title'
