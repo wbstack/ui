@@ -115,7 +115,7 @@
 
 <script>
 export default {
-  name: 'StepTwoCard',
+  name: 'AudienceAndPurposeWizardStep',
   props: {
     title: String,
     inFlight: Boolean,

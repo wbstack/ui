@@ -3,7 +3,7 @@
       <v-toolbar dark color="primary">
         <v-toolbar-title>{{ title }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn v-if="dismissable" icon @click="$emit('close-dialog')">
+        <v-btn icon @click="$emit('close-dialog')">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
@@ -87,7 +87,7 @@
           :disabled="inFlight"
           @click="submitWholeForm"
         >
-          {{ submitButtonText }}
+          Set intended use
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -95,14 +95,12 @@
 
 <script>
 export default {
-  name: 'StepThreeCard',
+  name: 'TemporalityProfileEditWizardStep',
   props: {
     title: String,
     inFlight: Boolean,
     value: Object,
-    error: Array,
-    dismissable: Boolean,
-    submitButtonText: String
+    error: Array
   },
   methods: {
     previousStep () {

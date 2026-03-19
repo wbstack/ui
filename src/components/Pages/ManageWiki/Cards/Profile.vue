@@ -5,7 +5,7 @@
         content-class="update-wiki-profile-dialog"
         v-model="dialog.show"
       >
-        <step-two-card
+        <AudienceAndPurposeWizardStep
           v-show="dialog.step === 1"
           :title="dialog.title"
           :inFlight="inFlight"
@@ -14,14 +14,12 @@
           @close-dialog="dialog.show = false"
           @next-step="goToStep(2)"
         />
-        <step-three-card
+        <TemporalityProfileEditWizardStep
           v-show="dialog.step === 2"
           :title="dialog.title"
           :inFlight="inFlight"
           :error="dialog.error"
-          :dismissable="true"
           :showTerms="false"
-          submitButtonText="Set intended use"
           v-model="dialog.data.stepTwo"
           @close-dialog="dialog.show = false"
           @previous-step="goToStep(1)"
@@ -78,8 +76,8 @@
 
 <script>
 import Message from '../Features/Message.vue'
-import StepTwoCard from '~/components/Cards/CreateWikiWizardStepTwo'
-import StepThreeCard from '~/components/Cards/CreateWikiWizardStepThree'
+import AudienceAndPurposeWizardStep from '../../../Cards/AudienceAndPurposeWizardStep.vue'
+import TemporalityProfileEditWizardStep from './TemporalityProfileEditWizardStep.vue'
 
 const providedResponses = {
   purpose: {
@@ -104,8 +102,8 @@ export default {
   name: 'Profile',
   components: {
     Message,
-    StepTwoCard,
-    StepThreeCard
+    AudienceAndPurposeWizardStep,
+    TemporalityProfileEditWizardStep
   },
   props: [
     'wikiId'

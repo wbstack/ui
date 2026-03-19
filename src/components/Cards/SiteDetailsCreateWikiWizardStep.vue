@@ -114,7 +114,7 @@
 
 <script>
 export default {
-  name: 'StepOneCard',
+  name: 'SiteDetailsCreateWikiWizardStep',
   props: {
     title: String,
     inFlight: Boolean,
