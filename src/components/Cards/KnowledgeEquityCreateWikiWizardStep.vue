@@ -43,7 +43,8 @@
           type="warning"
           icon="mdi-alert-outline"
         >
-          Please avoid sharing any personal or sensitive information. This information will be visible to WMDE employees and external members of the <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Hosting_policy_draft_v0.1#4.7_Review_Committee" target="_blank">review committee</a>.
+          Please avoid sharing any personal or sensitive information. This information will be visible to WMDE employees and external members of the
+          <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Hosting_policy_draft_v0.1#4.7_Review_Committee" target="_blank">review committee</a>.
         </v-alert>
       </v-form>
     </v-card-text>
