@@ -29,6 +29,18 @@
           <v-radio value="unsure" label="I'm not sure"/>
           <v-radio value="unsaid" label="I prefer not to say"/>
         </v-radio-group>
+        <v-textarea
+          placeholder="If you’d like, please tell us in what way(s). For example, through the knowledge it contributes and/or the people holding and sharing it."
+          counter="3000"
+          v-model="value.freeTextResponse"
+          :rules="[() => !!(value.freeTextResponse && value.freeTextResponse.length < 3001) || 'Text must be 3000 characters or less.' ]"
+        ></v-textarea>
+        <v-alert
+          outlined
+          type="warning"
+        >
+          Please avoid sharing any personal or sensitive information. This information will be visible to WMDE employees and external members of the review committee.
+        </v-alert>
       </v-form>
     </v-card-text>
 

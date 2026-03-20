@@ -151,7 +151,11 @@ export default {
           domain: domainToSubmit,
           sitename: this.stepOne.sitename,
           username: this.stepOne.username,
-          profile: profileJsonString
+          profile: profileJsonString,
+          knowledgeEquityResponse: {
+            selectedOption: this.stepFour.selectedOption,
+            freeTextResponse: this.stepFour.freeTextResponse
+          }
         }
       )
         .then(wikiDetails => this.createSuccess(wikiDetails))
