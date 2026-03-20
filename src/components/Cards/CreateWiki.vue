@@ -136,7 +136,7 @@ export default {
         domainToSubmit = this.stepOne.domain
       }
 
-      const profileJSObject = {
+      const profileObject = {
         purpose: this.stepTwo.purpose,
         ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
         ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
@@ -144,20 +144,22 @@ export default {
         temporality: this.stepThree.temporality,
         ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
       }
-      const profileJsonString = JSON.stringify(profileJSObject)
 
-      this.$api.createWiki(
-        {
-          domain: domainToSubmit,
-          sitename: this.stepOne.sitename,
-          username: this.stepOne.username,
-          profile: profileJsonString,
-          knowledgeEquityResponse: {
-            selectedOption: this.stepFour.selectedOption,
-            freeTextResponse: this.stepFour.freeTextResponse
-          }
+      const requestBody = {
+        domain: domainToSubmit,
+        sitename: this.stepOne.sitename,
+        username: this.stepOne.username,
+        profile: JSON.stringify(profileObject)
+      }
+
+      if (this.stepThree.temporality === 'permanent' && this.stepFour.selectedOption) {
+        requestBody.knowledgeEquityResponse = {
+          selectedOption: this.stepFour.selectedOption,
+          freeTextResponse: this.stepFour.freeTextResponse
         }
-      )
+      }
+
+      this.$api.createWiki(requestBody)
         .then(wikiDetails => this.createSuccess(wikiDetails))
         .catch(errors => this.createFail(errors))
     },
