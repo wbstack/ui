@@ -104,7 +104,7 @@ export default {
     email: '',
     successMessage: false,
     errorMessage: false,
-    accepted: false
+    accepted: false,
 
   }),
   methods: {
@@ -125,7 +125,7 @@ export default {
               url,
               email,
               message,
-              recaptcha
+              recaptcha,
             })
             .then(success => this.createSuccessful())
             .catch(errors => {
@@ -170,8 +170,8 @@ export default {
       this.hasError = true
       this.error.inputName = error
       this.error.inputSubject = error
-    }
-  }
+    },
+  },
 }
 </script>
 

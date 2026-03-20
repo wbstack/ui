@@ -75,9 +75,9 @@ export const updateLogo = async ({ file, fileName, wikiId }) => {
     form,
     {
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }
+        'Content-Type': 'multipart/form-data',
+      },
+    },
   )
 }
 // TODO the api should get the setting from the path (so it isn't needed in the payload)
@@ -93,8 +93,8 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
       direction,
       is_active: active,
       page: currentPage,
-      per_page: resultsPerPage
-    }
+      per_page: resultsPerPage,
+    },
   })).data
 }
 
@@ -112,14 +112,14 @@ export const importEntities = async ({
     'Q5@2212749099',
     'Q64@2215506799',
     'Q42@2213635313',
-    'Q3107329@2211072210'
+    'Q3107329@2211072210',
   ],
-  sourceWikiUrl = 'https://www.wikidata.org'
+  sourceWikiUrl = 'https://www.wikidata.org',
 }) => {
   const { data: { data } } = await axios.post('/wiki/entityImport', {
     wiki: wikiId,
     entity_ids: entityIds.join(','),
-    source_wiki_url: sourceWikiUrl
+    source_wiki_url: sourceWikiUrl,
   })
   return data
 }

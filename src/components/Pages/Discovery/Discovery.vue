@@ -57,30 +57,30 @@ const SortOptions = {
     text: 'Alphabetically ↑',
     value: {
       direction: 'asc',
-      sort: 'sitename'
-    }
+      sort: 'sitename',
+    },
   },
   alphaDesc: {
     text: 'Alphabetically ↓',
     value: {
       direction: 'desc',
-      sort: 'sitename'
-    }
+      sort: 'sitename',
+    },
   },
   pagesDesc: {
     text: 'No. of pages ↓',
     value: {
       direction: 'desc',
-      sort: 'pages'
-    }
-  }
+      sort: 'pages',
+    },
+  },
 }
 
 export default {
   name: 'Discovery',
   components: {
     DiscoveryCard,
-    MasonryGrid
+    MasonryGrid,
   },
   data () {
     return {
@@ -92,7 +92,7 @@ export default {
       sortValue: SortOptions.pagesDesc.value,
       sortOptions: Object.values(SortOptions),
       inputDisabled: false,
-      wikis: []
+      wikis: [],
     }
   },
   methods: {
@@ -105,7 +105,7 @@ export default {
           direction: this.sortValue.direction,
           active: this.excludeEmpty ? 1 : 0,
           currentPage: this.currentPage,
-          resultsPerPage: this.resultsPerPage
+          resultsPerPage: this.resultsPerPage,
         })
 
         this.results = response.meta.total
@@ -117,7 +117,7 @@ export default {
             url: new URL('https://' + wiki.domain),
             logo: wiki.logo_url ? new URL(wiki.logo_url) : undefined,
             stats: !!stats,
-            ...(stats && { pages: stats.pages })
+            ...(stats && { pages: stats.pages }),
           }
         })
       } catch (error) {
@@ -133,12 +133,12 @@ export default {
       } else {
         this.currentPage = 1
       }
-    }
+    },
   },
   computed: {
     paginate: function () {
       return this.results > this.resultsPerPage
-    }
+    },
   },
   watch: {
     sortValue: function () {
@@ -156,11 +156,11 @@ export default {
           document.documentElement.scrollIntoView({ behavior: 'smooth' })
         })
       })
-    }
+    },
   },
   mounted () {
     this.update()
-  }
+  },
 }
 </script>
 

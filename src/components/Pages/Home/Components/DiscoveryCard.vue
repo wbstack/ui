@@ -22,24 +22,24 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     url: {
       type: String,
-      required: true
+      required: true,
     },
     logo: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   methods: {
     goToWiki (event) {
       if (event.target.tagName !== 'A') {
         window.open(this.url, '_blank')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

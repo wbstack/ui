@@ -43,7 +43,7 @@ export default {
     'title',
     'email',
     'token',
-    'buttonText'
+    'buttonText',
   ],
   data () {
     return {
@@ -51,7 +51,7 @@ export default {
       passwordConfirmation: '',
       error: [],
       hasError: false,
-      inFlight: false
+      inFlight: false,
     }
   },
   created () {
@@ -60,7 +60,7 @@ export default {
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
-    }
+    },
   },
   methods: {
     redirectIfLoggedIn () {
@@ -116,8 +116,8 @@ export default {
 
           this.inFlight = false
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

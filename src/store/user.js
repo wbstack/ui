@@ -4,7 +4,7 @@ const getDefaultState = () => {
   return {
     forgottenPasswordSubmitSuccess: null,
     resetPasswordSubmitSuccess: null,
-    forgottenPasswordSubmitError: null
+    forgottenPasswordSubmitError: null,
   }
 }
 
@@ -13,7 +13,7 @@ const state = getDefaultState()
 const getters = {
   wasLastForgottenPasswordSubmitASuccess: state => state.forgottenPasswordSubmitSuccess,
   wasLastResetPasswordSubmitASuccess: state => state.resetPasswordSubmitSuccess,
-  lastForgottenPasswordError: state => state.forgottenPasswordSubmitError
+  lastForgottenPasswordError: state => state.forgottenPasswordSubmitError,
 }
 
 const mutations = {
@@ -34,7 +34,7 @@ const mutations = {
   },
   user_setForgottenPasswordError (state, payload) {
     state.forgottenPasswordSubmitError = payload
-  }
+  },
 }
 
 const actions = {
@@ -54,12 +54,12 @@ const actions = {
   clearForgottenPasswordState ({ commit }) {
     commit('user_setForgottenPasswordSubmitSuccessNull')
     commit('user_setForgottenPasswordError', null)
-  }
+  },
 }
 
 export default {
   state,
   mutations,
   getters,
-  actions
+  actions,
 }

@@ -78,16 +78,16 @@ export default {
     Registration,
     Wikibase,
     Delete,
-    EntityImport
+    EntityImport,
   },
   data () {
     return {
-      wikiId: 0
+      wikiId: 0,
     }
   },
   created () {
     this.wikiId = this.$route.params.id
-  }
+  },
 }
 </script>
 

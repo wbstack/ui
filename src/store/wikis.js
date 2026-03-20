@@ -8,7 +8,7 @@ const getDefaultState = () => {
     limit: 0,
     currentWikiEntityImports: [],
     currentWikiEntityImportError: null,
-    currentWikiSettings: null
+    currentWikiSettings: null,
   }
 }
 
@@ -37,7 +37,7 @@ const getters = {
   wikiLimit: state => state.limit,
   currentWikiEntityImports: state => state.currentWikiEntityImports,
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
-  hasLoaded: state => state.wikis.status !== ''
+  hasLoaded: state => state.wikis.status !== '',
 }
 
 const mutations = {
@@ -71,7 +71,7 @@ const mutations = {
     const defaultQuestions = [
       { question: 'How many vowels are in this question?', answers: ['12', 'twelve'] },
       { question: 'What is the chemical formula of water?', answers: ['H2O'] },
-      { question: '2 + 4 = ?', answers: ['6', 'six'] }
+      { question: '2 + 4 = ?', answers: ['6', 'six'] },
     ]
     const captchaQuestions = captchaQuestionsSetting
       ? Object.entries(JSON.parse(captchaQuestionsSetting.value)).map(([key, value]) => {
@@ -112,7 +112,7 @@ const mutations = {
       wwExtEnableConfirmAccount,
       wwUseQuestyCaptcha,
       captchaQuestions,
-      defaultQuestions
+      defaultQuestions,
     }
   },
   clear_current_wiki_settings (state) {
@@ -156,7 +156,7 @@ const mutations = {
   },
   set_current_wiki_profile (state, value) {
     state.currentWikiProfile = value
-  }
+  },
 }
 
 const actions = {
@@ -248,8 +248,8 @@ const actions = {
       setting,
       value: JSON.stringify({
         properties: filterOutPlaceholderMapping(mapping.properties),
-        items: filterOutPlaceholderMapping(mapping.items)
-      })
+        items: filterOutPlaceholderMapping(mapping.items),
+      }),
     })
   },
   setEnabledQuestyCaptcha ({ commit }, enabled) {
@@ -257,12 +257,12 @@ const actions = {
   },
   setQuestyCaptchaQuestions ({ commit }, value) {
     commit('set_questy_captcha_questions', value)
-  }
+  },
 }
 
 export default {
   state,
   mutations,
   getters,
-  actions
+  actions,
 }

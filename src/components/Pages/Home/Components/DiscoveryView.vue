@@ -53,8 +53,8 @@ export default {
   name: 'DiscoveryView',
   mixins: [FlexboxWrapEvent],
   components: {
-    DiscoveryCard
-  }
+    DiscoveryCard,
+  },
 }
 </script>
 

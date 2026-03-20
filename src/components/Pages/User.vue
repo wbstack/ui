@@ -32,13 +32,13 @@ export default {
   name: 'User',
   data () {
     return {
-      sentVerifyEmail: false
+      sentVerifyEmail: false,
     }
   },
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
-    }
+    },
   },
   methods: {
     buildData (data) {
@@ -55,8 +55,8 @@ export default {
           }
         })
         .catch(() => { alert('Failed to send user verification email!') })
-    }
-  }
+    },
+  },
 }
 </script>
 

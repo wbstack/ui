@@ -6,7 +6,7 @@ const getDefaultState = () => {
   return {
     status: 'initializing',
     user: null,
-    initialized
+    initialized,
   }
 }
 
@@ -16,7 +16,7 @@ const getters = {
   isLoggedIn: state => state.status === 'success' && !!state.user,
   initialized: state => state.initialized,
   authStatus: state => state.status,
-  currentUser: state => state.user
+  currentUser: state => state.user,
 }
 
 const mutations = {
@@ -34,7 +34,7 @@ const mutations = {
   },
   auth_isVerified (state) {
     state.user.verified = true
-  }
+  },
 }
 
 const actions = {
@@ -69,14 +69,14 @@ const actions = {
       commit('auth_isVerified')
       resolve()
     })
-  }
+  },
 }
 
 export default {
   state,
   mutations,
   getters,
-  actions
+  actions,
 }
 
 function getDeferred () {

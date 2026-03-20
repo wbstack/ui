@@ -24,24 +24,24 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     url: {
       type: URL,
-      required: true
+      required: true,
     },
     logo: {
       type: URL,
-      required: false
+      required: false,
     },
     stats: {
       type: Boolean,
-      required: true
+      required: true,
     },
     pages: {
       type: Number,
-      required: false
-    }
+      required: false,
+    },
   },
   computed: {
     character: function () {
@@ -50,13 +50,13 @@ export default {
     color: function () {
       const colors = ['red', 'blue', 'green', 'purple']
       return this.logo ? 'white' : colors[Math.floor(Math.random() * colors.length)]
-    }
+    },
   },
   methods: {
     goToWiki () {
       window.open(this.url.href, '_blank')
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -19,7 +19,7 @@ export default {
     return {
       visible: false,
       text: 'Hello, this is a snackbar message!',
-      status: 'success'
+      status: 'success',
     }
   },
   methods: {
@@ -31,8 +31,8 @@ export default {
 
     hide () {
       this.visible = false
-    }
-  }
+    },
+  },
 }
 </script>
 

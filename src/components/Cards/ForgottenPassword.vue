@@ -42,12 +42,12 @@ export default {
   name: 'ForgottenPasswordCard',
   props: [
     'title',
-    'buttonText'
+    'buttonText',
   ],
   data () {
     return {
       email: '',
-      inFlight: false
+      inFlight: false,
     }
   },
   created () {
@@ -63,7 +63,7 @@ export default {
     },
     error: function () {
       return this.$store.getters.lastForgottenPasswordError
-    }
+    },
   },
   methods: {
     redirectIfLoggedIn () {
@@ -81,8 +81,8 @@ export default {
 
       this.$store
         .dispatch('forgottenPassword', { email })
-    }
-  }
+    },
+  },
 }
 </script>
 

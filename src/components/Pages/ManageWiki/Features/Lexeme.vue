@@ -60,7 +60,7 @@ export default {
       valid: false,
       dialog: false,
       userConfirmationString: 'wbstack-important-change',
-      rules: {}
+      rules: {},
     }
     data.rules.match = (v) => {
       v = v && v.trim()
@@ -71,7 +71,7 @@ export default {
   computed: {
     isEnabled () {
       return this.$store.state.wikis.currentWikiSettings.wwExtEnableWikibaseLexeme
-    }
+    },
   },
   methods: {
     toggleSetting (validationPassed) {
@@ -103,8 +103,8 @@ export default {
     },
     showModal () {
       this.dialog = true
-    }
-  }
+    },
+  },
 }
 </script>
 

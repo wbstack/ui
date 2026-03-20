@@ -16,11 +16,11 @@ import CreateWikiCard from '~/components/Cards/CreateWiki'
 export default {
   name: 'CreateWiki',
   components: {
-    CreateWikiCard
+    CreateWikiCard,
   },
   data () {
     return {}
-  }
+  },
 }
 </script>
 

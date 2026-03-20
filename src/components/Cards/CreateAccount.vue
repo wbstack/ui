@@ -89,13 +89,13 @@ export default {
   name: 'CreateAccountCard',
   props: [
     'title',
-    'buttonText'
+    'buttonText',
   ],
   components: {},
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
-    }
+    },
   },
   data () {
     return {
@@ -105,7 +105,7 @@ export default {
       terms: false,
       hasError: false,
       error: [],
-      inFlight: false
+      inFlight: false,
     }
   },
   created () {
@@ -165,7 +165,7 @@ export default {
           {
             email: this.email,
             password: this.password,
-            recaptcha: token
+            recaptcha: token,
           })
           .then(success => this.createSuccessful(success))
           .catch(errors => {
@@ -214,8 +214,8 @@ export default {
       if (this.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/dashboard')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

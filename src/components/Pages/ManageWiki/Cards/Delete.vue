@@ -20,13 +20,13 @@ export default {
   name: 'Delete',
   components: { ConfirmDelete },
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
-      expandDelete: false
+      expandDelete: false,
     }
-  }
+  },
 }
 </script>
 

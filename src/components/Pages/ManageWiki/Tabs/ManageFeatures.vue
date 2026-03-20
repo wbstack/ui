@@ -14,13 +14,13 @@ export default {
   components: { Lexeme, EntityMapping },
   data () {
     return {
-      wikiId: null
+      wikiId: null,
     }
   },
 
   created () {
     this.wikiId = this.$route.params.id
-  }
+  },
 }
 </script>
 

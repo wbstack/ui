@@ -21,12 +21,12 @@
 export default {
   name: 'Registration',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
       requestAccount: false,
-      inFlight: false
+      inFlight: false,
     }
   },
   created () {
@@ -46,8 +46,8 @@ export default {
       } finally {
         this.inFlight = false
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

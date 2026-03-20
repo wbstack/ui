@@ -32,29 +32,29 @@ import Message from '../Features/Message.vue'
 export default {
   name: 'Skin',
   components: {
-    Message
+    Message,
   },
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
       skins: [
         {
           value: 'vector',
-          text: 'Vector'
+          text: 'Vector',
         },
         {
           value: 'modern',
-          text: 'Modern'
+          text: 'Modern',
         },
         {
           value: 'timeless',
-          text: 'Timeless'
-        }
+          text: 'Timeless',
+        },
       ],
       skinId: '',
-      message: false
+      message: false,
     }
   },
   created () {
@@ -63,7 +63,7 @@ export default {
   computed: {
     skin () {
       return this.skins.find(skin => skin.value === this.skinId)
-    }
+    },
   },
   methods: {
     doSetSkin () {
@@ -79,8 +79,8 @@ export default {
           console.error(err.response)
           this.$refs.message.show('error', 'Something went wrong while updating your default skin. Please try again.')
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

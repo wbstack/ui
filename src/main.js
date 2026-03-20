@@ -23,7 +23,7 @@ Vue.use(Vuetify)
 
 Vue.use(VueReCaptcha, {
   siteKey: config.RECAPTCHA_SITE_KEY,
-  loaderOptions: { useRecaptchaNet: true }
+  loaderOptions: { useRecaptchaNet: true },
 })
 
 // allow components to access api without importing it
@@ -36,8 +36,8 @@ new Vue({
   store,
   vuetify: new Vuetify({
     icons: {
-      iconfont: 'mdi'
-    }
+      iconfont: 'mdi',
+    },
   }),
   components: { App },
   template: '<App/>',
@@ -60,5 +60,5 @@ new Vue({
         reject(err)
       })
     })
-  }
+  },
 })

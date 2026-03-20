@@ -37,25 +37,25 @@ describe('Discovery page', () => {
         order: 'Alphabetically ↓',
         cards: {
           first: 'seededsite-9',
-          last: 'seededsite-32'
-        }
+          last: 'seededsite-32',
+        },
       },
       {
         description: 'in ascending alphabetical order',
         order: 'Alphabetically ↑',
         cards: {
           first: 'seededsite-10',
-          last: 'seededsite-31'
-        }
+          last: 'seededsite-31',
+        },
       },
       {
         description: 'by descending page count',
         order: 'No. of pages ↓',
         cards: {
           first: 'seededsite-49',
-          last: 'seededsite-26'
-        }
-      }
+          last: 'seededsite-26',
+        },
+      },
     ]
 
     cases.forEach(async ({ description, order, cards }) => {

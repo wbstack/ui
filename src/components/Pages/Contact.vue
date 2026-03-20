@@ -79,14 +79,14 @@ export default {
       { text: 'Feature request', value: 'feature-request' },
       { text: 'Report a problem', value: 'report-a-problem' },
       { text: 'Give feedback', value: 'give-feedback' },
-      { text: 'Other', value: 'other' }
+      { text: 'Other', value: 'other' },
     ],
     name: '',
     contactDetails: '',
     subject: '',
     message: '',
     successMessage: false,
-    errorMessage: false
+    errorMessage: false,
   }),
   methods: {
     closeAlert () {
@@ -106,7 +106,7 @@ export default {
             subject,
             contactDetails,
             message,
-            recaptcha
+            recaptcha,
           })
           .then(success => this.createSuccessful())
           .catch(errors => {
@@ -145,8 +145,8 @@ export default {
       this.hasError = true
       this.error.inputName = error
       this.error.inputSubject = error
-    }
-  }
+    },
+  },
 }
 </script>
 

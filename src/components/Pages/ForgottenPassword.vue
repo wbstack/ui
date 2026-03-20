@@ -20,11 +20,11 @@ import ForgottenPasswordCard from '~/components/Cards/ForgottenPassword'
 export default {
   name: 'ForgottenPassword',
   components: {
-    ForgottenPasswordCard
+    ForgottenPasswordCard,
   },
   data () {
     return {}
-  }
+  },
 }
 </script>
 

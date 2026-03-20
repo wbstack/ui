@@ -11,7 +11,7 @@ function makeUser (email = 'test@local') {
     email,
     verified: true,
     created_at: '2020-01-01',
-    updated_at: '2020-01-01'
+    updated_at: '2020-01-01',
   }
 }
 
@@ -25,21 +25,21 @@ const makeNewWiki = ({ domain, sitename }) => {
     updated_at: '2020-01-01',
     pivot: {
       user_id: user.id,
-      wiki_id: lastWikiId
+      wiki_id: lastWikiId,
     },
     wiki_managers: [{
       email: user.email,
       pivot: {
         user_id: user.id,
-        wiki_id: lastWikiId
-      }
+        wiki_id: lastWikiId,
+      },
     }],
     wiki_db_version: {
       id: 101,
       wiki_id: lastWikiId,
-      version: 'mw1.33-wbs1'
+      version: 'mw1.33-wbs1',
     },
-    public_settings: []
+    public_settings: [],
   }
 
   myWikis.push(newWiki)
@@ -59,12 +59,12 @@ const wikiDiscovery = (referrer, params) => {
     next: function () {
       const x = Math.sin(this.seed++) * 10000
       return x - Math.floor(x)
-    }
+    },
   }
 
   const names = [
     'Wikibase Name',
-    'A Very Long Wikibase Name'
+    'A Very Long Wikibase Name',
   ]
 
   let wikis = [...Array(75).keys()].map((id) => {
@@ -73,12 +73,12 @@ const wikiDiscovery = (referrer, params) => {
       domain: id + '-wikibase.wbaas.localhost',
       sitename: id + ' - ' + names[id % names.length],
       wiki_site_stats: null,
-      logo_url: null
+      logo_url: null,
     }
 
     if (pseudorandom.next() >= 0.1) {
       wiki.wiki_site_stats = {
-        pages: Math.ceil(pseudorandom.next() * 250)
+        pages: Math.ceil(pseudorandom.next() * 250),
       }
     }
 
@@ -125,8 +125,8 @@ const wikiDiscovery = (referrer, params) => {
     data: wikis.slice(start, end),
     meta: {
       last_page: Math.ceil(wikis.length / resultsPerPage),
-      total: wikis.length
-    }
+      total: wikis.length,
+    },
   }
 }
 
@@ -135,7 +135,7 @@ export const handlers = [
   rest.post(/\/api\/auth\/login$/, (req, res, ctx) => {
     user = makeUser(req.body.email)
     return res(ctx.json({
-      user
+      user,
     }), ctx.cookie('authToken', 'token_value'))
   }),
   rest.get(/\/api\/auth\/login$/, (req, res, ctx) => {
@@ -145,7 +145,7 @@ export const handlers = [
     }
     user = makeUser(req.body.email)
     return res(ctx.json({
-      user
+      user,
     }))
   }),
   rest.delete(/\/api\/auth\/login$/, (req, res, ctx) => {
@@ -157,7 +157,7 @@ export const handlers = [
       return res(ctx.status(400, 'Mocked Server Error'))
     }
     return res(ctx.status(200))
-  }
+  },
   ),
   rest.post(/\/api\/user\/resetPassword$/, (_, res, ctx) => res(ctx.status(200))),
   rest.post(/\/api\/user\/sendVerifyEmail$/, (_, res, ctx) => res(ctx.json({ message: 'Already verified' }))),
@@ -174,7 +174,7 @@ export const handlers = [
       return res(ctx.status(400, 'Mocked recaptcha empty Error'))
     }
     return res(ctx.status(200))
-  }
+  },
   ),
 
   /* Wiki endpoints */
@@ -219,5 +219,5 @@ export const handlers = [
   }),
   rest.get(/\/api\/wiki$/, (req, res, ctx) => {
     return res(ctx.json(wikiDiscovery(req.referrer, req.url.searchParams)))
-  })
+  }),
 ]
