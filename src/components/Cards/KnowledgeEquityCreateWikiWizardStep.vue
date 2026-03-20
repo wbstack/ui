@@ -35,7 +35,7 @@
           placeholder="If you’d like, please tell us in what way(s). For example, through the knowledge it contributes and/or the people holding and sharing it."
           counter="3000"
           v-model="value.freeTextResponse"
-          :rules="[() => !!(value.freeTextResponse && value.freeTextResponse.length <= 3000) || 'Text must be 3000 characters or less.' ]"
+          :rules="[() => value.freeTextResponse.length <= 3000 || 'Text must be 3000 characters or less.' ]"
         />
         <v-alert
           outlined
