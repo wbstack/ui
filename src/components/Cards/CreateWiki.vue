@@ -87,6 +87,10 @@ export default {
         temporality: '',
         otherTemporality: ''
       },
+      stepFour: {
+        selectedOption: '',
+        freeTextResponse: ''
+      },
       hasError: false,
       error: [],
       inFlight: false,
