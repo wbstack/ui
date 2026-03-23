@@ -29,6 +29,17 @@
       :error="error"
       v-model="stepThree"
       @previous-step="goToStep(2)"
+      @next-step="goToStep(4)"
+      @submit="createWiki"
+    />
+
+    <KnowledgeEquityCreateWikiWizardStep
+      v-show="step === 4"
+      v-model="stepFour"
+      :title="title"
+      :inFlight="inFlight"
+      :error="error"
+      @previous-step="goToStep(3)"
       @submit="createWiki"
     />
   </v-form>
@@ -39,13 +50,15 @@ import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
 import TemporalityCreateWikiWizardStep from './TemporalityCreateWikiWizardStep.vue'
+import KnowledgeEquityCreateWikiWizardStep from './KnowledgeEquityCreateWikiWizardStep.vue'
 
 export default {
   name: 'CreateWiki',
   components: {
     SiteDetailsCreateWikiWizardStep,
     AudienceAndPurposeWizardStep,
-    TemporalityCreateWikiWizardStep
+    TemporalityCreateWikiWizardStep,
+    KnowledgeEquityCreateWikiWizardStep
   },
   props: [
     'title'
@@ -73,6 +86,10 @@ export default {
       stepThree: {
         temporality: '',
         otherTemporality: ''
+      },
+      stepFour: {
+        selectedOption: '',
+        freeTextResponse: ''
       },
       hasError: false,
       error: [],
@@ -119,7 +136,7 @@ export default {
         domainToSubmit = this.stepOne.domain
       }
 
-      const profileJSObject = {
+      const profileObject = {
         purpose: this.stepTwo.purpose,
         ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
         ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
@@ -127,16 +144,22 @@ export default {
         temporality: this.stepThree.temporality,
         ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
       }
-      const profileJsonString = JSON.stringify(profileJSObject)
 
-      this.$api.createWiki(
-        {
-          domain: domainToSubmit,
-          sitename: this.stepOne.sitename,
-          username: this.stepOne.username,
-          profile: profileJsonString
+      const requestBody = {
+        domain: domainToSubmit,
+        sitename: this.stepOne.sitename,
+        username: this.stepOne.username,
+        profile: JSON.stringify(profileObject)
+      }
+
+      if (this.stepThree.temporality === 'permanent' && this.stepFour.selectedOption) {
+        requestBody.knowledgeEquityResponse = {
+          selectedOption: this.stepFour.selectedOption,
+          freeTextResponse: this.stepFour.freeTextResponse
         }
-      )
+      }
+
+      this.$api.createWiki(requestBody)
         .then(wikiDetails => this.createSuccess(wikiDetails))
         .catch(errors => this.createFail(errors))
     },

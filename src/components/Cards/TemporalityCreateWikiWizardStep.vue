@@ -81,9 +81,9 @@
         type="button"
         color="primary"
         :disabled="inFlight"
-        @click="submitWholeForm"
+        @click="primaryBtnAction"
       >
-        Create Wiki
+        {{primaryBtnLabel}}
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -98,26 +98,39 @@ export default {
     value: Object,
     error: Array
   },
+  computed: {
+    primaryBtnLabel () {
+      if (this.value.temporality === 'permanent') {
+        return 'Next >'
+      } else {
+        return 'Create Wiki'
+      }
+    }
+  },
   methods: {
+    primaryBtnAction () {
+      if (this.value.temporality !== 'other') {
+        this.value.otherTemporality = undefined
+      }
+
+      if (this.$refs.inputForm.validate() === false) {
+        return
+      }
+
+      if (this.value.temporality === 'permanent') {
+        this.$emit('next-step')
+      } else {
+        this.$emit('submit')
+      }
+    },
     previousStep () {
       if (this.value.temporality !== 'other') {
         this.value.otherTemporality = undefined
       }
 
       this.$emit('previous-step')
-    },
-    submitWholeForm () {
-      if (this.value.temporality !== 'other') {
-        this.value.otherTemporality = undefined
-      }
-
-      this.$refs.inputForm.validate()
-      if (this.$refs.inputForm.validate() === true) {
-        this.$emit('submit')
-      }
     }
   }
-
 }
 </script>
 
