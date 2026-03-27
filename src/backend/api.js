@@ -89,8 +89,8 @@ export const updateProfile = async payload => (await axios.post('/wiki/profile',
 export const wikiDiscovery = async ({ sort, direction, active, currentPage, resultsPerPage }) => {
   return (await axios.get('/wiki', {
     params: {
-      sort: sort,
-      direction: direction,
+      sort,
+      direction,
       is_active: active,
       page: currentPage,
       per_page: resultsPerPage
