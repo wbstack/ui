@@ -12,11 +12,19 @@ import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 import config from '~/config'
 
-if (process.env.NODE_ENV !== 'production' && config.API_MOCK === '1') {
-  const { worker } = require('./backend/mocks/browser')
-  worker.start()
+async function enableMocking() {
+  if (process.env.NODE_ENV !== 'development') {
+    return
+  }
+ 
+  const { worker } = await import('./backend/mocks/browser')
+ 
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start()
 }
 
+enableMocking().then(() => {
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
@@ -61,4 +69,5 @@ new Vue({
       })
     })
   },
+})
 })
