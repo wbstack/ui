@@ -1290,7 +1290,7 @@
 <script>
 export default {
   name: 'TermsOfUse',
-  computed: {}
+  computed: {},
 }
 </script>
 

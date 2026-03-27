@@ -85,20 +85,20 @@ export default {
         text: 'My Wikibase (Your Instance)',
         align: 'start',
         sortable: true,
-        value: 'local'
+        value: 'local',
       },
       { text: 'Wikidata', value: 'wikidata' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Actions', value: 'actions', sortable: false },
     ],
     editedIndex: -1,
     editedItem: {
       local: '',
-      wikidata: ''
+      wikidata: '',
     },
     defaultItem: {
       local: '',
-      wikidata: ''
-    }
+      wikidata: '',
+    },
   }),
 
   computed: {
@@ -116,8 +116,8 @@ export default {
           mapping[entityPair.wikidata] = entityPair.local
         })
         this.$emit('setEntityMapping', mapping)
-      }
-    }
+      },
+    },
   },
 
   watch: {
@@ -126,7 +126,7 @@ export default {
     },
     dialogDelete (val) {
       val || this.closeDelete()
-    }
+    },
   },
 
   methods: {
@@ -181,8 +181,8 @@ export default {
         this.entities = [...this.entities, this.editedItem]
       }
       this.close()
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -19,7 +19,7 @@ export default {
   name: 'About',
   created () {
     window.location.href = 'https://wikiba.se/about-us/'
-  }
+  },
 }
 </script>
 

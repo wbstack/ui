@@ -35,17 +35,17 @@
 export default {
   name: 'Details',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
-      apiData: []
+      apiData: [],
     }
   },
   created () {
     // TODO get the data about the wiki if the user can see it...
     this.$api.wikiDetails(
-      { wiki: this.wikiId }
+      { wiki: this.wikiId },
     )
       .then(details => this.buildDataFromDetails(details))
       .catch(() => { alert('Failed to retrieve wiki details!') })
@@ -53,8 +53,8 @@ export default {
   methods: {
     buildDataFromDetails (data) {
       this.apiData = data
-    }
-  }
+    },
+  },
 }
 </script>
 

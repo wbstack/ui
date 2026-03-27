@@ -91,10 +91,10 @@ import Message from '../Features/Message.vue'
 export default {
   name: 'QuestyCaptcha',
   components: {
-    Message
+    Message,
   },
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
@@ -105,13 +105,13 @@ export default {
       hasNoQuestions: false,
       panel: false,
       waitForToggleUpdate: false,
-      waitForQuestionsUpdate: false
+      waitForQuestionsUpdate: false,
     }
   },
   computed: {
     showDeleteButton: function () {
       return this.questionsFromStore.length > 1
-    }
+    },
   },
   created () {
     this.defaultQuestions = this.$store.state.wikis.currentWikiSettings.defaultQuestions
@@ -135,7 +135,7 @@ export default {
     addQuestion () {
       this.questionsFromStore.push({
         question: '',
-        answers: []
+        answers: [],
       })
     },
     formatQuestionsForApi (questions) {
@@ -149,7 +149,7 @@ export default {
         this.waitForToggleUpdate = true
         if (enabled && this.hasNoQuestions) {
           await this.$store.dispatch('updateSetting', {
-            wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.defaultQuestions)
+            wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.defaultQuestions),
           })
           await this.$store.dispatch('setQuestyCaptchaQuestions', this.defaultQuestions)
           this.hasNoQuestions = false
@@ -191,7 +191,7 @@ export default {
 
       try {
         await this.$store.dispatch('updateSetting', {
-          wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.questionsFromStore)
+          wiki: this.wikiId, setting: 'wwCaptchaQuestions', value: this.formatQuestionsForApi(this.questionsFromStore),
         })
         await this.$store.dispatch('setQuestyCaptchaQuestions', this.questionsFromStore)
         this.$refs.message.show('success', 'Your questions have been saved.')
@@ -207,8 +207,8 @@ export default {
     recoverDefaultQuestions () {
       // parse() and stringify() are being used to make a copy
       this.questionsFromStore = JSON.parse(JSON.stringify(this.defaultQuestions))
-    }
-  }
+    },
+  },
 }
 </script>
 

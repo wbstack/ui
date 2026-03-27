@@ -100,7 +100,7 @@ export default {
     title: String,
     inFlight: Boolean,
     value: Object,
-    error: Array
+    error: Array,
   },
   methods: {
     previousStep () {
@@ -119,8 +119,8 @@ export default {
       if (this.$refs.inputForm.validate() === true) {
         this.$emit('submit')
       }
-    }
-  }
+    },
+  },
 
 }
 </script>

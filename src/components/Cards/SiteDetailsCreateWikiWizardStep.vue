@@ -122,14 +122,14 @@ export default {
     error: Array,
     SUBDOMAIN_SUFFIX: String,
     CNAME_RECORD: String,
-    errorMessages: Object
+    errorMessages: Object,
   },
   methods: {
     nextStep () {
       if (this.$refs.inputForm.validate() === true) {
         this.$emit('next-step')
       }
-    }
-  }
+    },
+  },
 }
 </script>

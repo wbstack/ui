@@ -58,15 +58,15 @@ export default {
     SiteDetailsCreateWikiWizardStep,
     AudienceAndPurposeWizardStep,
     TemporalityCreateWikiWizardStep,
-    KnowledgeEquityCreateWikiWizardStep
+    KnowledgeEquityCreateWikiWizardStep,
   },
   props: [
-    'title'
+    'title',
   ],
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
-    }
+    },
   },
   data () {
     return {
@@ -75,21 +75,21 @@ export default {
         domainRadioChoice: 'sub',
         subdomain: '',
         domain: '',
-        username: ''
+        username: '',
       },
       stepTwo: {
         purpose: '',
         otherPurpose: '',
         audience: '',
-        otherAudience: ''
+        otherAudience: '',
       },
       stepThree: {
         temporality: '',
-        otherTemporality: ''
+        otherTemporality: '',
       },
       stepFour: {
         selectedOption: '',
-        freeTextResponse: ''
+        freeTextResponse: '',
       },
       hasError: false,
       error: [],
@@ -98,9 +98,9 @@ export default {
       CNAME_RECORD: config.CNAME_RECORD,
       errorMessages: {
         domainTaken: 'The domain has already been taken.',
-        domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).'
+        domainFormat: 'The subdomain must be at least five characters long and may contain only lowercase Latin letters (a-z), digits (0-9) and hyphens (-).',
       },
-      step: 1
+      step: 1,
     }
   },
   created () {
@@ -142,20 +142,20 @@ export default {
         ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
         ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
         temporality: this.stepThree.temporality,
-        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality })
+        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality }),
       }
 
       const requestBody = {
         domain: domainToSubmit,
         sitename: this.stepOne.sitename,
         username: this.stepOne.username,
-        profile: JSON.stringify(profileObject)
+        profile: JSON.stringify(profileObject),
       }
 
       if (this.stepThree.temporality === 'permanent' && this.stepFour.selectedOption) {
         requestBody.knowledgeEquityResponse = {
           selectedOption: this.stepFour.selectedOption,
-          freeTextResponse: this.stepFour.freeTextResponse
+          freeTextResponse: this.stepFour.freeTextResponse,
         }
       }
 
@@ -216,8 +216,8 @@ export default {
       if (!this.currentUser) {
         this.$router.replace(this.$route.query.redirect || '/')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

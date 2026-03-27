@@ -57,8 +57,8 @@ export default {
     DynamicContainerView,
     DynamicPhotoTextView,
     DiscoveryView,
-    PhotoTextView
-  }
+    PhotoTextView,
+  },
 }
 </script>
 

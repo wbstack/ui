@@ -16,18 +16,18 @@ import ResetPasswordCard from '~/components/Cards/ResetPassword'
 export default {
   name: 'ResetPassword',
   components: {
-    ResetPasswordCard
+    ResetPasswordCard,
   },
   data () {
     return {
       email: null,
-      token: null
+      token: null,
     }
   },
   created () {
     this.email = this.$route.query.email
     this.token = this.$route.query.token
-  }
+  },
 }
 </script>
 

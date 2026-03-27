@@ -12,7 +12,7 @@ class Discovery {
     await card.waitForDisplayed({ timeout: 5000 })
     return {
       name: await (await card.$('.text-h5')).getText(),
-      pages: await (await card.$('.pages')).getText()
+      pages: await (await card.$('.pages')).getText(),
     }
   }
 
@@ -39,9 +39,7 @@ class Discovery {
     await sortDropdown.waitForClickable({ timeout: 5000 })
     await sortDropdown.click()
 
-    const dropdownOption = await $(
-      '//div[contains(@class, "v-list-item__title") and contains(text(), "' + value + '")]'
-    )
+    const dropdownOption = await $('//div[contains(@class, "v-list-item__title") and contains(text(), "' + value + '")]')
     await dropdownOption.waitForDisplayed({ timeout: 5000 })
     await dropdownOption.click()
     await this.waitForCards()

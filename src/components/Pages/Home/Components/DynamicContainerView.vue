@@ -32,8 +32,8 @@ export default {
       this.$nextTick(() => {
         this.setHeaderHeight()
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -22,25 +22,25 @@ export default {
   props: {
     image: {
       type: String,
-      required: true
+      required: true,
     },
     header: {
       type: String,
-      required: true
+      required: true,
     },
     content: {
       type: String,
-      required: true
+      required: true,
     },
     button: {
       type: String,
-      required: true
+      required: true,
     },
     target: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

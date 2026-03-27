@@ -10,7 +10,7 @@
 export default {
   props: {
     callback: Function,
-    interval: Number
+    interval: Number,
   },
 
   beforeDestroy () {
@@ -35,8 +35,8 @@ export default {
 
     stop () {
       this.$refs.elm.interval && clearInterval(this.$refs.elm.interval)
-    }
-  }
+    },
+  },
 }
 </script>
 

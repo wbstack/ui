@@ -9,7 +9,7 @@ export default {
   name: 'MasonryGrid',
   data () {
     return {
-      timer: null
+      timer: null,
     }
   },
   methods: {
@@ -34,7 +34,7 @@ export default {
     },
     windowResized () {
       this.debounceResize(50)
-    }
+    },
   },
   created () {
     window.addEventListener('resize', this.windowResized)
@@ -46,7 +46,7 @@ export default {
     this.$nextTick(() => {
       this.resizeCards()
     })
-  }
+  },
 }
 </script>
 

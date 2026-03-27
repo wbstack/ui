@@ -120,14 +120,14 @@ export default {
     title: String,
     inFlight: Boolean,
     value: Object,
-    dismissable: Boolean
+    dismissable: Boolean,
   },
   data () {
     return {
       purposeError: '',
       audienceError: '',
       purposeOtherError: '',
-      audienceOtherError: ''
+      audienceOtherError: '',
     }
   },
   methods: {
@@ -145,8 +145,8 @@ export default {
       if (this.$refs.inputForm.validate() === true) {
         this.$emit('next-step')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

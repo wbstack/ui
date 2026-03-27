@@ -59,8 +59,8 @@ export default {
       stats: [
         'Active Wikis: 100+',
         'Edits: 1.7+ million',
-        'Pages: 1.3+ million'
-      ]
+        'Pages: 1.3+ million',
+      ],
     }
   },
   computed: {
@@ -78,11 +78,11 @@ export default {
     },
     status: function () {
       return this.$store.getters.wikisStatus
-    }
+    },
   },
   created () {
     this.$store.dispatch('refreshWikis')
-  }
+  },
 }
 </script>
 

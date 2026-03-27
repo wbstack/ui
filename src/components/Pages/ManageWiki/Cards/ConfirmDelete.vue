@@ -69,13 +69,13 @@
 export default {
   name: 'ConfirmDelete',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
       open_dialog: true,
       checkboxReasons: [],
-      freeformReason: ''
+      freeformReason: '',
     }
   },
   methods: {
@@ -96,8 +96,8 @@ export default {
     },
     close () {
       this.$emit('close')
-    }
-  }
+    },
+  },
 }
 </script>
 <style>

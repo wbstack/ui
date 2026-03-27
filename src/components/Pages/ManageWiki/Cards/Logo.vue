@@ -28,11 +28,11 @@
 export default {
   name: 'Logo',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
-      selectedLogoFile: null
+      selectedLogoFile: null,
     }
   },
   methods: {
@@ -54,13 +54,13 @@ export default {
           alert('Something went wrong.')
           this.$router.go()
         })
-    }
+    },
   },
   computed: {
     logo () {
       return this.$store.state.wikis.currentWikiSettings.wgLogo
-    }
-  }
+    },
+  },
 }
 </script>
 

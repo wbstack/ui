@@ -3,5 +3,5 @@ import axios from './axios'
 
 export {
   api,
-  axios
+  axios,
 }

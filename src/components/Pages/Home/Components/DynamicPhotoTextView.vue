@@ -23,21 +23,21 @@ export default {
   props: {
     sideBySide: {
       type: Boolean,
-      default: false
+      default: false,
     },
     image: {
       type: String,
-      required: true
+      required: true,
     },
     header: {
       type: String,
-      required: true
+      required: true,
     },
     content: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

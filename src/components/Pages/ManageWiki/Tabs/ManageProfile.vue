@@ -23,13 +23,13 @@ export default {
   name: 'ManageWiki',
   components: {
     Details,
-    Profile
+    Profile,
   },
   computed: {
     wikiId: function () {
       return this.$route.params.id
-    }
-  }
+    },
+  },
 }
 </script>
 

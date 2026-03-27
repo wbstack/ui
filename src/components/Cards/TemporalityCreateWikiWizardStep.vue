@@ -96,7 +96,7 @@ export default {
     title: String,
     inFlight: Boolean,
     value: Object,
-    error: Array
+    error: Array,
   },
   computed: {
     primaryBtnLabel () {
@@ -105,7 +105,7 @@ export default {
       } else {
         return 'Create Wiki'
       }
-    }
+    },
   },
   methods: {
     primaryBtnAction () {
@@ -129,8 +129,8 @@ export default {
       }
 
       this.$emit('previous-step')
-    }
-  }
+    },
+  },
 }
 </script>
 

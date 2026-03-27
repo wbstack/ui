@@ -39,21 +39,21 @@ export default {
   components: {
     ManageProfile,
     ManageWiki,
-    ManageFeatures
+    ManageFeatures,
   },
   data () {
     return {
-      tab: null
+      tab: null,
     }
   },
   computed: {
     isReady () {
       return this.$store.state.wikis.currentWikiSettings !== null
-    }
+    },
   },
   created () {
     this.$store.dispatch('initializeSettings', this.$route.params.id)
-  }
+  },
 }
 </script>
 

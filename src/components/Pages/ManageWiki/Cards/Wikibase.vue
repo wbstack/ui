@@ -41,7 +41,7 @@
 export default {
   name: 'Wikibase',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
@@ -55,8 +55,8 @@ export default {
         },
         max (maxNum) {
           return v => v <= maxNum || `Maximum ${maxNum} exceeded`
-        }
-      }
+        },
+      },
     }
   },
   created () {
@@ -81,7 +81,7 @@ export default {
         const value = this.stringLengthString
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
-            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value })),
         )
       }
 
@@ -90,7 +90,7 @@ export default {
         const value = this.stringLengthMonoText
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
-            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value })),
         )
       }
 
@@ -99,7 +99,7 @@ export default {
         const value = this.stringLengthMultilang
         promises.push(
           this.$store.dispatch('updateSetting', { wiki, setting, value })
-            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value }))
+            .then(() => this.$store.dispatch('setWikibaseStringLengths', { setting, value })),
         )
       }
 
@@ -111,8 +111,8 @@ export default {
           console.log(err.response)
           alert('Something went wrong.')
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

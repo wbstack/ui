@@ -50,14 +50,14 @@ export default {
   name: 'LoginCard',
   props: [
     'title',
-    'buttonText'
+    'buttonText',
   ],
   data () {
     return {
       email: '',
       password: '',
       errorMessage: '',
-      loggingIn: false
+      loggingIn: false,
     }
   },
   created () {
@@ -66,7 +66,7 @@ export default {
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
-    }
+    },
   },
   methods: {
     redirectIfLoggedIn () {
@@ -97,8 +97,8 @@ export default {
 
           this.loggingIn = false
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

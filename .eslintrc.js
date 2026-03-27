@@ -11,6 +11,7 @@ module.exports = {
     parser: '@babel/eslint-parser'
   },
   rules: {
+    'comma-dangle': ['error', 'always-multiline'],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'warn',

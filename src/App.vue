@@ -24,20 +24,20 @@ export default {
   components: {
     Navbar,
     Foot,
-    Interval
+    Interval,
   },
   computed: {
     customLayout: function () {
       return this.$route.meta.customLayout
-    }
+    },
   },
   methods: {
     checkVerified () {
       this.$api
         .checkVerified()
         .then(verified => verified && this.$store.dispatch('markAsVerified'))
-    }
-  }
+    },
+  },
 }
 </script>
 

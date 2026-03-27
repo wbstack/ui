@@ -17,7 +17,7 @@ const STATES = Object.freeze({
   PENDING: { color: 'primary', message: 'Verifying...' },
   EXPIRED_TOKEN: { color: 'orange', message: 'Verification token expired, or you are already verified!' },
   FAILED: { color: 'red', message: 'Verification failed for unknown reason!' },
-  VERIFIED: { color: '', message: 'Email verified!' }
+  VERIFIED: { color: '', message: 'Email verified!' },
 })
 
 export default {
@@ -25,7 +25,7 @@ export default {
   computed: {},
   data () {
     return {
-      state: this.$store.getters.currentUser.verified ? STATES.VERIFIED : STATES.PENDING
+      state: this.$store.getters.currentUser.verified ? STATES.VERIFIED : STATES.PENDING,
     }
   },
   created () {
@@ -46,8 +46,8 @@ export default {
       } else {
         this.state = STATES.FAILED
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

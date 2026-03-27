@@ -50,13 +50,13 @@ export default {
     propertiesList: {
       get () {
         return this.$store.state.wikis.currentWikiSettings.wikibaseManifestEquivEntities.properties
-      }
+      },
     },
     itemsList: {
       get () {
         return this.$store.state.wikis.currentWikiSettings.wikibaseManifestEquivEntities.items
-      }
-    }
+      },
+    },
   },
   methods: {
     setPropertiesMapping (mapping) {
@@ -66,8 +66,8 @@ export default {
     setItemsMapping (mapping) {
       this.$store.dispatch('setItemMapping', mapping)
       this.$store.dispatch('saveEntityMapping', this.$route.params.id)
-    }
-  }
+    },
+  },
 }
 </script>
 

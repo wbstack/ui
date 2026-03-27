@@ -3,7 +3,7 @@ export default {
     return {
       wrapped: false,
       timer: null,
-      debounce: 15
+      debounce: 15,
     }
   },
   methods: {
@@ -19,6 +19,6 @@ export default {
           })
         }, this.debounce)
       })
-    }
-  }
+    },
+  },
 }

@@ -85,17 +85,17 @@ const providedResponses = {
     data_lab: 'To refine, back up, or experiment with data in an isolated environment.',
     tool_lab: 'To build tools, write documentation, or contribute to the Wikidata & Wikibase ecosystem in ways other than data.',
     test_drive: 'To learn about the tool, or evaluate whether it works for my use case.',
-    decide_later: 'I will decide later.'
+    decide_later: 'I will decide later.',
   },
   audience: {
     wide: 'Anyone interested.',
-    narrow: 'Myself or my organization.'
+    narrow: 'Myself or my organization.',
   },
   temporality: {
     permanent: 'I would prefer to keep it on a permanent basis.',
     temporary: 'It is temporary/disposable. I will no longer need it after it served its purpose.',
-    decide_later: 'I will decide later.'
-  }
+    decide_later: 'I will decide later.',
+  },
 }
 
 export default {
@@ -103,10 +103,10 @@ export default {
   components: {
     Message,
     AudienceAndPurposeWizardStep,
-    TemporalityProfileEditWizardStep
+    TemporalityProfileEditWizardStep,
   },
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
@@ -123,14 +123,14 @@ export default {
             purpose: '',
             otherPurpose: '',
             audience: '',
-            otherAudience: ''
+            otherAudience: '',
           },
           stepTwo: {
             temporality: '',
-            otherTemporality: ''
-          }
-        }
-      }
+            otherTemporality: '',
+          },
+        },
+      },
     }
   },
   computed: {
@@ -150,18 +150,18 @@ export default {
           timeZone: 'UTC',
           day: '2-digit',
           month: 'long',
-          year: 'numeric'
+          year: 'numeric',
         }).format(rawDate)
         const time = new Intl.DateTimeFormat('en-GB', {
           timeZone: 'UTC',
           hour: '2-digit',
           minute: '2-digit',
-          hour12: false
+          hour12: false,
         }).format(rawDate)
         return `Last updated on ${date}, at ${time} (UTC)`
       }
       return false
-    }
+    },
   },
   methods: {
     getQuestionResponse (question) {
@@ -195,7 +195,7 @@ export default {
           ...(this.dialog.data.stepOne.audience && { audience: this.dialog.data.stepOne.audience }),
           ...(this.dialog.data.stepOne.otherAudience && { audience_other: this.dialog.data.stepOne.otherAudience }),
           temporality: this.dialog.data.stepTwo.temporality,
-          ...(this.dialog.data.stepTwo.otherTemporality && { temporality_other: this.dialog.data.stepTwo.otherTemporality })
+          ...(this.dialog.data.stepTwo.otherTemporality && { temporality_other: this.dialog.data.stepTwo.otherTemporality }),
         }
         await this.$store.dispatch('updateProfile', { wiki: this.wikiId, profile: JSON.stringify(profile) })
         this.profile = this.$store.state.wikis.currentWikiProfile
@@ -207,11 +207,11 @@ export default {
       } finally {
         this.inFlight = false
       }
-    }
+    },
   },
   async created () {
     this.profile = this.$store.state.wikis.currentWikiProfile
-  }
+  },
 }
 </script>
 

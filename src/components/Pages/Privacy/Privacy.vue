@@ -788,7 +788,7 @@
 export default {
   name: 'Privacy',
   components: {
-  }
+  },
 }
 </script>
 

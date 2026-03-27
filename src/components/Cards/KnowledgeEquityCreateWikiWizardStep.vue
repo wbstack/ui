@@ -76,7 +76,7 @@ export default {
     title: String,
     inFlight: Boolean,
     value: Object,
-    error: Array
+    error: Array,
   },
   methods: {
     previousStep () {
@@ -88,8 +88,8 @@ export default {
       }
 
       this.$emit('submit')
-    }
-  }
+    },
+  },
 }
 </script>
 

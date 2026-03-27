@@ -80,15 +80,15 @@ import Interval from '@/components/Util/Interval'
 
 export default {
   components: {
-    Interval
+    Interval,
   },
   name: 'EntityImport',
   props: [
-    'wikiId'
+    'wikiId',
   ],
   data () {
     return {
-      showOverlay: false
+      showOverlay: false,
     }
   },
   computed: {
@@ -103,7 +103,7 @@ export default {
     },
     hasFailed () {
       return this.$store.getters.currentWikiEntityImports.some((i) => i.status === 'failed')
-    }
+    },
   },
   methods: {
     doSubmit (evt) {
@@ -112,8 +112,8 @@ export default {
     },
     pollForStatus () {
       this.$store.dispatch('updateEntityImports', this.wikiId)
-    }
-  }
+    },
+  },
 }
 </script>
 
