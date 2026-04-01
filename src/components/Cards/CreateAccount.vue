@@ -65,8 +65,8 @@
             </template>
           </v-checkbox>
         <p>
-          This site is protected by reCAPTCHA and the Google
-          <a target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and
+          This site is protected by reCAPTCHA. Wikibase Cloud
+          <a target="_blank" href="https://www.wikibase.cloud/privacy-policy">Privacy Policy</a> and Google
           <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
         </p>
       </v-card-text>
