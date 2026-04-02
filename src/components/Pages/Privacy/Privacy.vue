@@ -334,7 +334,7 @@
               <h4>Google reCaptcha</h4>
                 <p>We use the Google ReCAPTCHA service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland ("Google"). The purpose of ReCAPTCHA is to verify whether data entered on our website is entered by a human or by an automated program. For this purpose, reCAPTCHA analyses various information (e.g. IP address, user behavior, browser and device information).</p>
                 <p>Google processes this data on our behalf as a processor pursuant to Art. 28 GDPR. We have concluded a <a href="https://cloud.google.com/terms/data-processing-addendum">data processing agreement</a> with Google.</p>
-                <p>In the context of the use of reCAPTCHA, personal data may be transferred to countries outside the EU/ EEA. However, Google LLC is certified under the Data Privacy Framework, ensuring an adequate level of protection during processing. Privacy Policy: <a href="https://policies.google.com/privacy?hl=de">https://policies.google.com/privacy?hl=de</a>.</p>
+                <p>In the context of the use of reCAPTCHA, personal data may be transferred to countries outside the EU/ EEA. However, Google LLC is certified under the Data Privacy Framework, ensuring an adequate level of protection during processing. Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>.</p>
                 <p>The legal basis for this data processing is Art. 6 para. 1 lit. f) GDPR. Our legitimate interest lies in protecting our website from misuse and automated attacks.</p>
                 <p>The data will be stored as long as necessary to achieve the purposes of protecting our website and to ensure the security of our service.</p>
             </li>
