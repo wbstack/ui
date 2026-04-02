@@ -60,11 +60,10 @@
               </p>
 
               <p>Thorsten Feldmann, LL.M.</p>
-              <p>JBB Rechtsanwälte Jaschinski Biere Brexl Partnerschaft mbB</p>
-              <p>Christinenstr. 18/19</p>
-              <p>10119 Berlin</p>
-
-              <p>Telephone: +49 30 443 765 0</p>
+              <p>JBViniol Jaschinski Brexl Viniol Partnerschaft mbB</p>
+              <p>Sophienstraße 14</p>
+              <p>10178 Berlin</p>
+              <p>+49 30 2000 458 0</p>
               <p>
                 E-Mail: <a href="mailto:datenschutz@wikimedia.de"
                   >datenschutz@wikimedia.de</a
@@ -333,25 +332,11 @@
                 on your device and their purposes are listed in the table below.
               </p>
               <h4>Google reCaptcha</h4>
-              <p>
-                We use the Google reCaptcha service provided by Google Ireland
-                Limited, Gordon House, Barrow Street, Dublin 4, Ireland
-                ("Google"). Google reCaptcha uses the following data to check
-                whether you are a human or a computer: IP address of the end
-                device used, the website that you visit with us and on which the
-                captcha is embedded, the date and duration of the visit, the
-                recognition data of the browser and operating system type used,
-                mouse movements and possibly other technical data. In addition,
-                Google sets cookies on your device. We do not gain any knowledge
-                of the data collected and processed by Google. The legal basis
-                for the data processing described above is Art. 6 para. 1 lit.
-                f) DS-GVO. We have a legitimate interest in ensuring the
-                security of our website and protecting ourselves against
-                automated entries (attacks). For this reason, we cannot offer
-                you the option to object here, but must point out that you
-                should not use the function protected by the reCaptcha function
-                in this case and should not call up the associated page.
-              </p>
+                <p>We use the Google ReCAPTCHA service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland ("Google"). The purpose of ReCAPTCHA is to verify whether data entered on our website is entered by a human or by an automated program. For this purpose, reCAPTCHA analyses various information (e.g. IP address, user behavior, browser and device information).</p>
+                <p>Google processes this data on our behalf as a processor pursuant to Art. 28 GDPR. We have concluded a <a href="https://cloud.google.com/terms/data-processing-addendum">data processing agreement</a> with Google.</p>
+                <p>In the context of the use of reCAPTCHA, personal data may be transferred to countries outside the EU/ EEA. However, Google LLC is certified under the Data Privacy Framework, ensuring an adequate level of protection during processing. Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>.</p>
+                <p>The legal basis for this data processing is Art. 6 para. 1 lit. f) GDPR. Our legitimate interest lies in protecting our website from misuse and automated attacks.</p>
+                <p>The data will be stored as long as necessary to achieve the purposes of protecting our website and to ensure the security of our service.</p>
             </li>
             <div></div>
             <table
