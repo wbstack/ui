@@ -57,7 +57,7 @@
           <p><strong>If after discussion the committee cannot reach a shared decision</strong>, this indicates that certain criteria are not defined clearly enough. In such cases, the Review Committee will initiate clarification of the hosting policy before proceeding.</p>
           <h3 id="prerequisites">3.1 Prerequisites</h3>
           <p>The following conditions must be satisfied before an instance can be hosted on Wikibase Cloud. These conditions are non-negotiable and cannot be offset by positive signals.</p>
-          <h4 id="required-conditions">🟢 Required Conditions (must be true)</h4>
+          <h4 id="required-conditions">Required Conditions (must be true)</h4>
           <p>These conditions must be met for an instance to be eligible for hosting.</p>
           <ul>
             <li>All fields of the <em><a href="#wiki-profile">Wiki Profile</a></em> are complete, providing sufficient detail for the Review Committee to evaluate the intended use.</li>
@@ -67,10 +67,10 @@
             <li>The structured data is in the public domain or released under CC-0.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
           </ul>
-          <h4 id="disqualifying-conditions">🔴 Disqualifying Conditions (must not be true)</h4>
+          <h4 id="disqualifying-conditions">Disqualifying Conditions (must not be true)</h4>
           <p>If any of the following conditions apply, the instance cannot be hosted.</p>
           <ul>
-            <li>Any indication that the dataset or behaviour may violate or already violates the <a href="https://www.wikibase.cloud/terms-of-use">Terms of Use</a> (e.g., copyright violations, prohibited content, abusive behavior, harassment, privacy violations). ⚠️ Violations of the Terms of Use are governed exclusively by the Terms of Use and are not subject to the procedures described in this policy.</li>
+            <li>Any indication that the dataset or behaviour may violate or already violates the <a href="https://www.wikibase.cloud/terms-of-use">Terms of Use</a> (e.g., copyright violations, prohibited content, abusive behavior, harassment, privacy violations). Violations of the Terms of Use are governed exclusively by the Terms of Use and are not subject to the procedures described in this policy.</li>
             <li>Misinformation, disinformation, or impersonation.</li>
             <li>Primarily commercial or promotional purpose (for example, e-Commerce databases, a dataset for SEO optimization).</li>
             <li>The instance manager is unreachable or unresponsive for over 3 months.</li>
@@ -84,7 +84,7 @@
             <p>Wikibase Cloud does not operate with fixed numerical limits for dataset size or traffic at this stage. Decisions about size and load will be made empirically, based on observed platform behavior and past incidents. When an instance creates significant strain on the infrastructure, the situation will be investigated, discussed with the instance manager and documented in a public log together with the decision taken.</p>
             <p>If a high-load use case is meaningful, the Review Committee may assess whether technical improvements and the effort to make them are reasonable. If they are, the use case will only produce a <em><a href="#concerning-signals">Concerning Signal</a></em>. Over time, documented cases will inform future decisions, creating a growing body of precedent. In all cases, instance managers will be contacted and involved in finding a reasonable solution before further action is taken.</p>
           </div>
-          <h3 id="concerning-signals">➖ 3.2 Concerning Signals</h3>
+          <h3 id="concerning-signals">3.2 Concerning Signals</h3>
           <p>These signals indicate potential risk or misalignment. They do not automatically lead to rejection, but must be counterbalanced by positive signals.</p>
           <div class="note warn">
             <ul class="signal-rule-list">
@@ -103,7 +103,7 @@
             <li>Used purely as a MediaWiki, no structured data involved</li>
             <li>Data infested with spammers and other vandalism</li>
           </ul>
-          <h3>➕ 3.3 Positive Signals</h3>
+          <h3>3.3 Positive Signals</h3>
           <p>These signals indicate alignment with the value proposition of Wikibase Cloud and provide a chance for instances that raised concerning signals to recover from them and stay hosted.</p>
           <ul>
             <li>The instance advances knowledge equity or representation of marginalized or underrepresented knowledge domains and use cases (this one produces <strong>2 positive signals</strong>).</li>
