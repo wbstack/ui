@@ -15,12 +15,12 @@
           <h3 id="relationship-to-other-governance-documents">1.2 Relationship to other governance documents</h3>
           <p><em>(These relationships matter to ensure hosting criteria remain coherent with other governance documents, prevent contradictory expectations for contributors, and avoid overlap between responsibilities of WMDE, WMF, and individual communities.)</em></p>
           <ul>
-            <li>This policy complements the <strong><a href="https://www.wikibase.cloud/terms-of-use">Wikibase Cloud Terms of Use</a></strong>, which define the legal and compliance conditions for using the platform.</li>
+            <li>This policy complements the <strong><a href="/terms-of-use">Wikibase Cloud Terms of Use</a></strong>, which define the legal and compliance conditions for using the platform.</li>
             <li><strong>Local policies</strong> set by individual communities for their Cloud instances are out of scope for this document; they can operate independently, but within the boundaries defined here.</li>
             <li>In a broader context of the Wikibase ecosystem, it also complements:</li>
             <ul>
-              <li><strong>Wikidata policies</strong>, such as the <a href="https://www.wikidata.org/wiki/Wikidata:Notability">Notability Policy</a>, the emerging <a href="https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Mass-editing_policy">Mass Editing Policy</a>, <a href="https://www.wikidata.org/wiki/Wikidata:Living_people">Living People Policy</a> which govern activity on Wikidata (as decided by the Wikidata community),</li>
-              <li><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use">WMF Terms of Use</a> and the <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies_of_living_people">board resolution about biographies of living people</a> (as set by WMF in its role as the platform operator).</li>
+              <li><strong>Wikidata policies</strong>, such as the <a href="https://www.wikidata.org/wiki/Wikidata:Notability" target="_blank">Notability Policy</a>, the emerging <a href="https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Mass-editing_policy" target="_blank">Mass Editing Policy</a>, <a href="https://www.wikidata.org/wiki/Wikidata:Living_people" target="_blank">Living People Policy</a> which govern activity on Wikidata (as decided by the Wikidata community),</li>
+              <li><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use" target="_blank">WMF Terms of Use</a> and the <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies_of_living_people" target="_blank">board resolution about biographies of living people</a> (as set by WMF in its role as the platform operator).</li>
             </ul>
           </ul>
           <p>References to Wikidata policies are included for context only. Wikidata’s content policies, including notability criteria, <strong>do not apply</strong> to Wikibase Cloud instances. Wikibase Cloud exists specifically to support use cases that may not fit Wikidata’s scope, including non-notable, domain-specific, or preparatory datasets, while still aligning with the broader Wikimedia mission.</p>
@@ -32,7 +32,7 @@
           <h2 id="principles">2. Principles</h2>
           <p>The following principles guide WMDE’s decisions about what can be hosted on Wikibase Cloud. They reflect WMDE’s mission, resource limitations and responsibilities as the platform operator, as well as Wikibase Cloud's intended role in the Wikibase Ecosystem.</p>
           <p><strong>Mission alignment</strong></p>
-          <p>Wikibase Cloud prioritizes use cases that contribute to the creation, preservation, or sharing of open knowledge in ways that align with the <a href="https://www.wikimedia.de/ueber-uns/der-verein/satzung-ordnungen-und-beschluesse/">WMDE statutes</a> and support <a href="https://wikimediafoundation.org/who-we-are/mission/">Wikimedia’s mission</a> and the public good.</p>
+          <p>Wikibase Cloud prioritizes use cases that contribute to the creation, preservation, or sharing of open knowledge in ways that align with the <a href="https://www.wikimedia.de/ueber-uns/der-verein/satzung-ordnungen-und-beschluesse/" target="_blank">WMDE statutes</a> and support <a href="https://wikimediafoundation.org/who-we-are/mission/" target="_blank">Wikimedia’s mission</a> and the public good.</p>
           <p><strong>Wikibase Cloud's intended role: Lowering barriers to participation and experimentation</strong></p>
           <p>Wikibase Cloud exists to reduce barriers for people who want to work with structured data using Wikibase, especially those who cannot self‑host. It supports:</p>
           <ul>
@@ -70,12 +70,12 @@
           <h4 id="disqualifying-conditions">🔴 Disqualifying Conditions (must not be true)</h4>
           <p>If any of the following conditions apply, the instance cannot be hosted.</p>
           <ul>
-            <li>Any indication that the dataset or behaviour may violate or already violates the <a href="https://www.wikibase.cloud/terms-of-use">Terms of Use</a> (e.g., copyright violations, prohibited content, abusive behavior, harassment, privacy violations). ⚠️ Violations of the Terms of Use are governed exclusively by the Terms of Use and are not subject to the procedures described in this policy.</li>
+            <li>Any indication that the dataset or behaviour may violate or already violates the <a href="/terms-of-use">Terms of Use</a> (e.g., copyright violations, prohibited content, abusive behavior, harassment, privacy violations). ⚠️ Violations of the Terms of Use are governed exclusively by the Terms of Use and are not subject to the procedures described in this policy.</li>
             <li>Misinformation, disinformation, or impersonation.</li>
             <li>Primarily commercial or promotional purpose (for example, e-Commerce databases, a dataset for SEO optimization).</li>
             <li>The instance manager is unreachable or unresponsive for over 3 months.</li>
             <li>The instance manager failed to confirm either their intention to take further care of the instance, or agreement to pass it over to another manager with Terms of Use-based responsibility.</li>
-            <li>The instance contains (or is intended to contain) <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies%20of%20living%20people">data about living people</a>  and other sensitive topics without appropriate local rules and processes to handle the content responsibly and ensure respectful collaboration.</li>
+            <li>The instance contains (or is intended to contain) <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies%20of%20living%20people" target="_blank">data about living people</a>  and other sensitive topics without appropriate local rules and processes to handle the content responsibly and ensure respectful collaboration.</li>
             <li>The observed dataset size, traffic patterns, or write/read load are abusive and unjustified.</li>
             <li>The intended or observed dataset size or load exceeds the technical capacity that Wikibase Cloud can realistically support. For example, the hosting of this dataset would require significant technical changes or infrastructure expansion, and WMDE determines that such effort is not justified for this use case.</li>
           </ul>
@@ -112,7 +112,7 @@
             <li>Despite the current access to skills and resources to self-host, their existence in the future is uncertain. The project can only realistically proceed and survive because Wikibase Cloud removes financial, technical, or infrastructural barriers in the long-term.</li>
           </ul>
           <h2 id="decision-process">4. Decision Process</h2>
-          <p><i><a href="https://commons.wikimedia.org/wiki/File:Wikibase_Cloud_Hosting_Decisions_Process_v0.1.png">See a visual overview of the process for reference</a></i></p>
+          <p><i><a href="https://commons.wikimedia.org/wiki/File:Wikibase_Cloud_Hosting_Decisions_Process_v0.1.png" target="_blank">See a visual overview of the process for reference</a></i></p>
           <h3 id="temporary-by-default-rule">4.1 Temporary-by-Default Rule</h3>
           <p>Once these policies come into force, all instances on Wikibase Cloud will be <strong>temporary by default</strong>. This ensures people can experiment with Wikibase or Cloud’s capabilities — a core part of the platform's value proposition — without needing to go through a full application process.</p>
           <p>To remain hosted on Cloud permanently, instance managers must submit an application. Temporary instances that never applied for prolonged or permanent hosting get suspended after 3 months.</p>
