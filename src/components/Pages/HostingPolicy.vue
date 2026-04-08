@@ -79,7 +79,7 @@
             <li>The observed dataset size, traffic patterns, or write/read load are abusive and unjustified.</li>
             <li>The intended or observed dataset size or load exceeds the technical capacity that Wikibase Cloud can realistically support. For example, the hosting of this dataset would require significant technical changes or infrastructure expansion, and WMDE determines that such effort is not justified for this use case.</li>
           </ul>
-          <div>
+          <div class="note info">
             <p id="assessing-size-and-load"><strong>Assessment of size and load</strong></p>
             <p>Wikibase Cloud does not operate with fixed numerical limits for dataset size or traffic at this stage. Decisions about size and load will be made empirically, based on observed platform behavior and past incidents. When an instance creates significant strain on the infrastructure, the situation will be investigated, discussed with the instance manager and documented in a public log together with the decision taken.</p>
             <p>If a high-load use case is meaningful, the Review Committee may assess whether technical improvements and the effort to make them are reasonable. If they are, the use case will only produce a <em><a href="#concerning-signals">Concerning Signal</a></em>. Over time, documented cases will inform future decisions, creating a growing body of precedent. In all cases, instance managers will be contacted and involved in finding a reasonable solution before further action is taken.</p>
@@ -88,8 +88,8 @@
           <p>These signals indicate potential risk or misalignment. They do not automatically lead to rejection, but must be counterbalanced by positive signals.</p>
           <div class="note warn">
             <ul class="signal-rule-list">
-              <li><strong>2 concerning signals</strong> lead to disqualification.</li>
-              <li><strong>1 concerning signal</strong> must be counterbalanced with 2 positive signals.</li>
+              <big><li><strong>2 concerning signals</strong> lead to disqualification.</li>
+              <li><strong>1 concerning signal</strong> must be counterbalanced with 2 positive signals.</li></big>
             </ul>
           </div>
           <ul>
