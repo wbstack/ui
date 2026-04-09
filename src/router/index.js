@@ -19,6 +19,7 @@ import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
+import HostingPolicy from '@/components/Pages/HostingPolicy.vue'
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ const router = new Router({
       path: '/terms-of-use',
       name: 'TermsOfUse',
       component: TermsOfUse,
+    },
+    {
+      path: '/hosting-policy/pilot',
+      name: 'Hosting Policy',
+      component: HostingPolicy,
     },
     {
       path: '/privacy-policy',
