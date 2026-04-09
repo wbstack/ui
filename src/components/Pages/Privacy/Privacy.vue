@@ -777,7 +777,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 h5,
 h4 {
   margin-bottom: 16px;
