@@ -1,9 +1,5 @@
 <template>
-  <span :class="[
-      'CheckVerification',
-      `CheckVerification--${interval}`
-    ]"
-    ref="elm" />
+  <span class="d-none" ref="elm" />
 </template>
 
 <script>
@@ -39,9 +35,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.CheckVerification {
-  display: none;
-}
-</style>
