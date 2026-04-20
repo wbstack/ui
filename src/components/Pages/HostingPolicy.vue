@@ -92,7 +92,7 @@
           <div>
             <v-alert colored-border type="warning" prominent border="left"  elevation="2">
               <ul>
-                <li><span class="font-weight-bold">2 concerning signals</span>g> lead to disqualification.</li>
+                <li><span class="font-weight-bold">2 concerning signals</span> lead to disqualification.</li>
                 <li><span class="font-weight-bold">1 concerning signal</span> must be counterbalanced with 2 positive signals.</li>
               </ul>
             </v-alert>
