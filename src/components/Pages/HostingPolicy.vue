@@ -8,7 +8,7 @@
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
           <p>The policy exists to ensure that Wikibase Cloud technical and financial resources, as well as staff capacity are used responsibly, intentionally, in alignment with WMDE’s mission. Wikibase Cloud is not intended to be a generic free hosting service for any purpose. The policy helps us maintain visibility into how the platform is used and provides a framework to support and encourage use cases aligned with the role we want Wikibase Cloud to play in the Wikibase Ecosystem, and to address cases that clearly fall outside that role.</p>
           <h3 class="mb-3 mt-6" id="target-audience">1.1 Target Audience</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>Primary audience: the <a class="font-weight-bold font-italic" href="#review-committee">Review Committee</a> responsible for reviewing and approving Wikibase Cloud hosting requests for continued use. The policy provides a shared framework for making consistent, transparent decisions grounded in mission alignment, resource realities, and inclusivity goals.</li>
             <li>Secondary audience: <span class="font-weight-bold">Wikibase Cloud's current and prospective users</span>, who can use this document to understand the reasoning behind WMDE’s hosting criteria and to self-assess whether their use case is likely to be accepted.</li>
           </ul>
@@ -17,15 +17,17 @@
           <ul class="mb-4">
             <li>This policy complements the <a class="font-weight-bold" href="/terms-of-use">Wikibase Cloud Terms of Use</a>, which define the legal and compliance conditions for using the platform.</li>
             <li><span class="font-weight-bold">Local policies</span> set by individual communities for their Cloud instances are out of scope for this document; they can operate independently, but within the boundaries defined here.</li>
-            <li>In a broader context of the Wikibase ecosystem, it also complements:</li>
-            <ul>
-              <li><span class="font-weight-bold">Wikidata policies</span>, such as the <a href="https://www.wikidata.org/wiki/Wikidata:Notability" target="_blank">Notability Policy</a>, the emerging <a href="https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Mass-editing_policy" target="_blank">Mass Editing Policy</a>, <a href="https://www.wikidata.org/wiki/Wikidata:Living_people" target="_blank">Living People Policy</a> which govern activity on Wikidata (as decided by the Wikidata community),</li>
-              <li><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use" target="_blank">WMF Terms of Use</a> and the <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies_of_living_people" target="_blank">board resolution about biographies of living people</a> (as set by WMF in its role as the platform operator).</li>
-            </ul>
+            <li>
+              In a broader context of the Wikibase ecosystem, it also complements:
+              <ul>
+                <li><span class="font-weight-bold">Wikidata policies</span>, such as the <a href="https://www.wikidata.org/wiki/Wikidata:Notability" target="_blank">Notability Policy</a>, the emerging <a href="https://www.wikidata.org/wiki/Wikidata:Requests_for_comment/Mass-editing_policy" target="_blank">Mass Editing Policy</a>, <a href="https://www.wikidata.org/wiki/Wikidata:Living_people" target="_blank">Living People Policy</a> which govern activity on Wikidata (as decided by the Wikidata community),</li>
+                <li><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use" target="_blank">WMF Terms of Use</a> and the <a href="https://foundation.wikimedia.org/wiki/Resolution:Biographies_of_living_people" target="_blank">board resolution about biographies of living people</a> (as set by WMF in its role as the platform operator).</li>
+              </ul>
+            </li>
           </ul>
           <p>References to Wikidata policies are included for context only. Wikidata’s content policies, including notability criteria, <span class="font-weight-bold">do not apply</span> to Wikibase Cloud instances. Wikibase Cloud exists specifically to support use cases that may not fit Wikidata’s scope, including non-notable, domain-specific, or preparatory datasets, while still aligning with the broader Wikimedia mission.</p>
           <h3 class="mb-3" id="what-this-policy-is-not">1.3 What This Policy is Not</h3>
-          <ul class="mb-4">
+          <ul>
             <li>The policy defines WMDE’s own hosting criteria as the platform operator. It does not replace the policies of individual communities running their instances on Wikibase Cloud.</li>
             <li>It does not describe the technical capabilities of Wikibase as a software or Wikibase Cloud as a platform.</li>
           </ul>
@@ -53,13 +55,13 @@
           <h2 class="mt-7 mb-3" id="hosting-criteria">3. Hosting Criteria</h2>
           <p>Wikibase Cloud hosting decisions are based on distinct types of criteria, each serving a different purpose in the evaluation process.</p>
           <p>Members of the <a class="font-italic" href="#review-committee">Review Committee</a> will independently assess these criteria. To ensure decisions are fair, consistent, and repeatable, each member reviews the application individually and documents the results with respect to each criterion. These assessments are then compared and discussed to reach a shared decision.</p>
-          <p class="font-weight-bold">If information is insufficient to evaluate an instance, the reviewers request clarification before making a final decision.</p>
-          <p class="font-weight-bold">If after discussion the committee cannot reach a shared decision, this indicates that certain criteria are not defined clearly enough. In such cases, the Review Committee will initiate clarification of the hosting policy before proceeding.</p>
+          <p><span class="font-weight-bold">If information is insufficient to evaluate an instance,</span> the reviewers request clarification before making a final decision.</p>
+          <p><span class="font-weight-bold">If after discussion the committee cannot reach a shared decision,</span> this indicates that certain criteria are not defined clearly enough. In such cases, the Review Committee will initiate clarification of the hosting policy before proceeding.</p>
           <h3 class="mb-3" id="prerequisites">3.1 Prerequisites</h3>
           <p>The following conditions must be satisfied before an instance can be hosted on Wikibase Cloud. These conditions are non-negotiable and cannot be offset by positive signals.</p>
-          <h4 class="mt-4 mb-3" id="required-conditions"><v-icon color="green">mdi-circle</v-icon> Required Conditions (must be true)</h4>
+          <h4 class="mb-3" id="required-conditions"><v-icon color="green">mdi-circle</v-icon> Required Conditions (must be true)</h4>
           <p>These conditions must be met for an instance to be eligible for hosting.</p>
-          <ul class="mb-4">
+          <ul>
             <li>All fields of the <a class="font-italic" href="#wiki-profile">Wiki Profile</a> are complete, providing sufficient detail for the Review Committee to evaluate the intended use.</li>
             <li>The instance's observed use matches the description in the Wiki Profile.</li>
             <li>The main page or the "About the wiki" page have sufficient information describing the intended use of the instance for potential visitors of the instance.</li>
@@ -97,20 +99,22 @@
               </ul>
             </v-alert>
           </div>
-          <ul class="mb-4">
-            <li>The dataset is only intended to be used by the contributing individual or organization with no clear external audience (people or groups who meaningfully benefit from accessing or reusing this data), including use cases that support purely internal workflows, private organisational processes, or personal documentation, like internal CRM systems, business asset management. <br />The <u>exceptions</u> that do not produce this concerning signal are:</li>
-            <ul class="mb-2">
-              <li>The instance is a staging ground for a dataset being prepared for later contribution to the other parts of the Wikibase Ecosystem (for example, to Wikidata)</li>
-              <li>The instance supports teaching Wikibase as a software</li>
-              <li>The instance is used to build and test tools for Wikidata or Wikibase</li>
-            </ul>
+          <ul class="mb-3">
+            <li>
+              The dataset is only intended to be used by the contributing individual or organization with no clear external audience (people or groups who meaningfully benefit from accessing or reusing this data), including use cases that support purely internal workflows, private organisational processes, or personal documentation, like internal CRM systems, business asset management. <br />The <u>exceptions</u> that do not produce this concerning signal are:
+              <ul>
+                <li>The instance is a staging ground for a dataset being prepared for later contribution to the other parts of the Wikibase Ecosystem (for example, to Wikidata)</li>
+                <li>The instance supports teaching Wikibase as a software</li>
+                <li>The instance is used to build and test tools for Wikidata or Wikibase</li>
+              </ul>
+            </li>
             <li>The intended or observed dataset size or read/write load exceeds or approaches excess of current sustainable limits, or the instance exhibits sudden or disproportionate spikes in traffic that strain infrastructure. WMDE decides that allocating additional technical effort to support the use case in the future is justified (see the explanation of how the assessment of size and load happens <a href="#assessing-size-and-load">above</a>).</li>
             <li>Used purely as a MediaWiki, no structured data involved</li>
             <li>Data infested with spammers and other vandalism</li>
           </ul>
           <h3 class="mb-3" id="positive-signals">➕ 3.3 Positive Signals</h3>
           <p>These signals indicate alignment with the value proposition of Wikibase Cloud and provide a chance for instances that raised concerning signals to recover from them and stay hosted.</p>
-          <ul class="mb-4">
+          <ul>
             <li>The instance advances knowledge equity or representation of marginalized or underrepresented knowledge domains and use cases (this one produces <span class="font-weight-bold">2 positive signals</span>).</li>
             <li>The instance contributes to education, cultural preservation, research or public benefit.</li>
             <li>The contributing individual, organization or community has limited technical skills, hosting capacity or financial resources to run and maintain a self-hosted Wikibase.</li>
@@ -129,14 +133,16 @@
             <li>take steps to meet the <a class="font-italic" href="#hosting-criteria">Hosting Criteria</a>.</li>
           </ul>
           <h3 class="mb-3" id="review">4.3 Review</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>The <a class="font-italic" href="#review-committee">Review Committee</a>  reviews new applications on an ongoing basis, subject to the availability of its members.</li>
             <li>Each reviewer evaluates the use case independently against the <a class="font-italic" href="#hosting-criteria">Hosting Criteria</a>, noting the situations where essential information is missing or unclear.</li>
-            <li>Reviewers compare their evaluation and decide on the next steps.</li>
-            <ul class="mb-2"  >
-              <li>If essential information is missing or unclear, reviewers request clarification from the applicant.</li>
-              <li>Applicants may be asked to make adjustments before the review can continue.</li>
-            </ul>
+            <li>
+              Reviewers compare their evaluation and decide on the next steps.
+              <ul>
+                <li>If essential information is missing or unclear, reviewers request clarification from the applicant.</li>
+                <li>Applicants may be asked to make adjustments before the review can continue.</li>
+              </ul>
+            </li>
             <li>Reviewers discuss and, once confident, reach a final decision on whether the instance may remain hosted on Cloud on a long-term basis.</li>
             <li>If the instance cannot remain hosted on Cloud, it is scheduled for suspension in 2 weeks, but not earlier than 3 months from its creation (see <a class="font-italic font-weight-bold" href="#suspended-instances">Suspended Instances</a>).</li>
           </ul>
@@ -176,90 +182,100 @@
           </ul>
           <h3 class="mb-3" id="wiki-profile">4.9 Wiki Profile</h3>
           <p>The following information needs to be provided in the application to make the instance permanent:</p>
-          <ul class="mb-4">
-            <li class="font-weight-bold">Intended purpose</li>
-            <ul>
-              <li>Does the instance publish a real dataset?</li>
-              <li>Is it intended for reuse by audiences beyond the contributing community?</li>
-              <li>Does the instance serve as an isolated sandbox for preparing data before export elsewhere? If so, where will the data flow afterwards?</li>
-              <li>Is it intended for learning, experimentation, or something else?</li>
-            </ul>
+          <ul>
+            <li>
+              <span class="font-weight-bold">Intended purpose</span>
+              <ul>
+                <li>Does the instance publish a real dataset?</li>
+                <li>Is it intended for reuse by audiences beyond the contributing community?</li>
+                <li>Does the instance serve as an isolated sandbox for preparing data before export elsewhere? If so, where will the data flow afterwards?</li>
+                <li>Is it intended for learning, experimentation, or something else?</li>
+              </ul>
+            </li>
           </ul>
-          <ul class="mb-4">
-            <li><span class="font-weight-bold">Description of the dataset</span> (for projects intended for sharing and reuse, and for data staging)</li>
-            <ul>
-              <li>What kind of data will be hosted? (topic, domain, scope)</li>
-              <li>Rough size and expected growth (if known)</li>
-              <li>Expected contribution workflows (manual, imports, bots)</li>
-              <li>Anticipated approach to taking care of this dataset</li>
-              <li>Perceived contribution to knowledge equity through data (if any)</li>
-            </ul>
+          <ul>
+            <li>
+              <span class="font-weight-bold">Description of the dataset</span> (for projects intended for sharing and reuse, and for data staging)
+              <ul>
+                <li>What kind of data will be hosted? (topic, domain, scope)</li>
+                <li>Rough size and expected growth (if known)</li>
+                <li>Expected contribution workflows (manual, imports, bots)</li>
+                <li>Anticipated approach to taking care of this dataset</li>
+                <li>Perceived contribution to knowledge equity through data (if any)</li>
+              </ul>
+            </li>
           </ul>
-          <ul class="mb-4">
-            <li><span class="font-weight-bold">Intended audience</span> (for projects intended for sharing and reuse)</li>
-            <ul>
-              <li>Who is expected to benefit from this data?</li>
-              <li>Potential application and tools that will be built on top of it</li>
-            </ul>
+          <ul>
+            <li>
+              <span class="font-weight-bold">Intended audience</span> (for projects intended for sharing and reuse)
+              <ul>
+                <li>Who is expected to benefit from this data?</li>
+                <li>Potential application and tools that will be built on top of it</li>
+              </ul>
+            </li>
           </ul>
-          <ul class="mb-4">
-            <li class="font-weight-bold">Contributor information</li>
-            <ul>
-              <li>Brief description of the individual(s), informal group or organization expected to contribute to the project</li>
-              <li>Their mission, economical sector, field of work, approximate size, shared interests that bring them together in this project</li>
-              <li>Any relevant constraints (funding, technical skills, infrastructure)</li>
-              <li>Perceived contribution to knowledge equity through the people holding and sharing the data (if any)</li>
-            </ul>
+          <ul>
+            <li>
+              <span class="font-weight-bold">Contributor information</span>
+              <ul>
+                <li>Brief description of the individual(s), informal group or organization expected to contribute to the project</li>
+                <li>Their mission, economical sector, field of work, approximate size, shared interests that bring them together in this project</li>
+                <li>Any relevant constraints (funding, technical skills, infrastructure)</li>
+                <li>Perceived contribution to knowledge equity through the people holding and sharing the data (if any)</li>
+              </ul>
+            </li>
           </ul>
           <h2 class="mt-7 mb-3" id="transparency-and-communication">5. Transparency and Communication</h2>
           <p>We aim to make hosting decisions clear, predictable, and respectful for all applicants.</p>
           <h3 class="mb-3" id="communication-of-decisions-to-applicants">5.1 Communication of Decisions to Applicants</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>Applicants receive a written decision summarizing the Review Committee’s assessment.</li>
             <li>When an instance is not accepted, the decision references relevant criteria, provides the minimum necessary reasoning for suspension without revealing internal deliberations, and any actions required to bring the instance into compliance.</li>
           </ul>
           <h3 class="mb-3" id="public-log-of-decisions">5.2 Public Log of Decisions</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>To support transparency and trust, WMDE will maintain a public log summarizing hosting decisions made by the Review Committee. Its purpose is to help the community understand how the policy is applied in practice.</li>
             <li>Sensitive or private information will not be published.</li>
           </ul>
           <h3 class="mb-3" id="requests-for-clarification">5.3 Requests for Clarification</h3>
-          <ul class="mb-4">
+          <ul>
             <li>Applicants may request clarification about the decision, the interpretation of criteria, or what changes might improve future eligibility.</li>
             <li>The Review Committee provides clear, concise answers, but does not engage in negotiation or redefining criteria.</li>
           </ul>
           <h2 class="mt-7 mb-3" id="policy-revision-and-updates">6. Policy Revision and Updates</h2>
           <p>To ensure this policy remains accurate, effective, and aligned with WMDE’s mission and operational realities, it will be revised and updated on a regular basis.</p>
           <h3 class="mb-3" id="revision-cycle">6.1 Revision Cycle</h3>
-          <ul class="mb-4">
-            <li>The policy will undergo a formal revision <span class="font-weight-bold">at least once per year</span>, or sooner if:</li>
-            <ul class="mb-2">
-              <li>significant changes in infrastructure, mission priorities, ecosystem needs, or WMDE’s resource constraints arise,</li>
-              <li>the decision process is found unsustainable, too time‑consuming, unclear, or inconsistent to apply in practice,</li>
-              <li>the criteria do not reliably lead to aligned decisions within the Review Committee.</li>
-            </ul>
+          <ul class="mb-3">
+            <li>
+              The policy will undergo a formal revision <span class="font-weight-bold">at least once per year</span>, or sooner if:
+              <ul>
+                <li>significant changes in infrastructure, mission priorities, ecosystem needs, or WMDE’s resource constraints arise,</li>
+                <li>the decision process is found unsustainable, too time‑consuming, unclear, or inconsistent to apply in practice,</li>
+                <li>the criteria do not reliably lead to aligned decisions within the Review Committee.</li>
+              </ul>
+            </li>
             <li>Interim updates may be made if issues are identified during application reviews, re‑evaluations or appeals.</li>
           </ul>
           <h3 class="mb-3" id="responsible-parties">6.2 Responsible Parties</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>The Review Committee performs the policy revision.</li>
             <li>Community members may be consulted on proposed updates, especially when changes affect expectations for contributors or project eligibility.</li>
           </ul>
           <h3 class="mb-3" id="update-process">6.3 Update Process</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>Proposed changes are drafted by the Review Committee based on identified needs, operational learnings, or feedback.</li>
             <li>Draft updates are shared internally and externally for review and alignment.</li>
             <li>Once approved, updates are published on the relevant documentation pages.</li>
             <li>A summary of changes is added to the public decision log, ensuring transparency and traceability.</li>
           </ul>
           <h3 class="mb-3" id="previously-suspended-instances">6.4 Previously Suspended Instances</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>Instances suspended under an earlier version of this policy are not automatically re‑evaluated retrospectively.</li>
             <li>However, users may submit an appeal requesting a new review.</li>
             <li>Appeals for previously suspended instances are assessed according to the updated policy</li>
           </ul>
           <h3 class="mb-3" id="versioning">6.5 Versioning</h3>
-          <ul class="mb-4">
+          <ul class="mb-3">
             <li>Major outdated versions are archived but remain accessible for reference.</li>
           </ul>
         </v-col>
