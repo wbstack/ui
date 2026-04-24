@@ -69,7 +69,7 @@
             <li>The structured data is in the public domain or released under CC-0.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
           </ul>
-          <h4 class="align-center d-flex mt-4 mb-3" id="disqualifying-conditions"><v-icon color="red">mdi-circle</v-icon> Disqualifying Conditions (must not be true)</h4>
+          <h4 class="align-center d-flex mt-4 mb-3" id="disqualifying-conditions"><v-icon class="mr-1" color="red">mdi-circle</v-icon> Disqualifying Conditions (must not be true)</h4>
           <p>If any of the following conditions apply, the instance cannot be hosted.</p>
           <ul class="mb-4">
             <li>Any indication that the dataset or behaviour may violate or already violates the <a href="/terms-of-use">Terms of Use</a> (e.g., copyright violations, prohibited content, abusive behavior, harassment, privacy violations). <v-icon color="orange">mdi-alert</v-icon> Violations of the Terms of Use are governed exclusively by the Terms of Use and are not subject to the procedures described in this policy.</li>
