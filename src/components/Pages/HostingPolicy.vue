@@ -59,7 +59,7 @@
           <p><span class="font-weight-bold">If after discussion the committee cannot reach a shared decision,</span> this indicates that certain criteria are not defined clearly enough. In such cases, the Review Committee will initiate clarification of the hosting policy before proceeding.</p>
           <h3 class="mb-3" id="prerequisites">3.1 Prerequisites</h3>
           <p>The following conditions must be satisfied before an instance can be hosted on Wikibase Cloud. These conditions are non-negotiable and cannot be offset by positive signals.</p>
-          <h4 class="mb-3 align-center d-flex" id="required-conditions"><v-icon color="green">mdi-circle</v-icon> Required Conditions (must be true)</h4>
+          <h4 class="mb-3 align-center d-flex" id="required-conditions"><v-icon class="mr-1" color="green">mdi-circle</v-icon> Required Conditions (must be true)</h4>
           <p>These conditions must be met for an instance to be eligible for hosting.</p>
           <ul>
             <li>All fields of the <a class="font-italic" href="#wiki-profile">Wiki Profile</a> are complete, providing sufficient detail for the Review Committee to evaluate the intended use.</li>
