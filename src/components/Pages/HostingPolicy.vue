@@ -101,7 +101,7 @@
           </div>
           <ul class="mb-4">
             <li>
-              The dataset is only intended to be used by the contributing individual or organization with no clear external audience (people or groups who meaningfully benefit from accessing or reusing this data), including use cases that support purely internal workflows, private organisational processes, or personal documentation, like internal CRM systems, business asset management. <br />The <u>exceptions</u> that do not produce this concerning signal are:
+              The dataset is only intended to be used by the contributing individual or organization with no clear external audience (people or groups who meaningfully benefit from accessing or reusing this data), including use cases that support purely internal workflows, private organisational processes, or personal documentation, like internal CRM systems, business asset management. <br />The <span class="text-decoration-underline">exceptions</span> that do not produce this concerning signal are:
               <ul>
                 <li>The instance is a staging ground for a dataset being prepared for later contribution to the other parts of the Wikibase Ecosystem (for example, to Wikidata)</li>
                 <li>The instance supports teaching Wikibase as a software</li>
