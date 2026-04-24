@@ -89,7 +89,7 @@
               <p>Over time, documented cases will inform future decisions, creating a growing body of precedent. In all cases, instance managers will be contacted and involved in finding a reasonable solution before further action is taken.</p>
             </v-alert>
           </div>
-          <h3 class="mb-3" id="concerning-signals">➖ 3.2 Concerning Signals</h3>
+          <h3 class="mb-3" id="concerning-signals"><v-icon class="mr-1" color="black">mdi-minus</v-icon>3.2 Concerning Signals</h3>
           <p>These signals indicate potential risk or misalignment. They do not automatically lead to rejection, but must be counterbalanced by positive signals.</p>
           <div>
             <v-alert colored-border type="warning" prominent border="left"  elevation="2">
@@ -112,7 +112,7 @@
             <li>Used purely as a MediaWiki, no structured data involved</li>
             <li>Data infested with spammers and other vandalism</li>
           </ul>
-          <h3 class="mb-3" id="positive-signals">➕ 3.3 Positive Signals</h3>
+          <h3 class="mb-3" id="positive-signals"><v-icon class="mr-1" color="black">mdi-plus</v-icon>3.3 Positive Signals</h3>
           <p>These signals indicate alignment with the value proposition of Wikibase Cloud and provide a chance for instances that raised concerning signals to recover from them and stay hosted.</p>
           <ul>
             <li>The instance advances knowledge equity or representation of marginalized or underrepresented knowledge domains and use cases (this one produces <span class="font-weight-bold">2 positive signals</span>).</li>
