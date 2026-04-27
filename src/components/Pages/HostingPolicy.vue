@@ -4,7 +4,7 @@
       <v-row justify="center">
         <v-col cols="8" class="policy-content text-body-1">
           <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud (pilot version)</h1>
-          <h2  id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
+          <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
           <p>The policy exists to ensure that Wikibase Cloud technical and financial resources, as well as staff capacity are used responsibly, intentionally, in alignment with WMDE’s mission. Wikibase Cloud is not intended to be a generic free hosting service for any purpose. The policy helps us maintain visibility into how the platform is used and provides a framework to support and encourage use cases aligned with the role we want Wikibase Cloud to play in the Wikibase Ecosystem, and to address cases that clearly fall outside that role.</p>
           <h3 id="target-audience" class="mb-3 mt-6">1.1 Target Audience</h3>
