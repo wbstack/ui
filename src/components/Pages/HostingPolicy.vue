@@ -134,7 +134,7 @@
           </ul>
           <h3 id="review" class="mb-3">4.3 Review</h3>
           <ul class="mb-4">
-            <li>The <a class="font-italic" href="#review-committee">Review Committee</a>  reviews new applications on an ongoing basis, subject to the availability of its members.</li>
+            <li>The <a class="font-italic" href="#review-committee">Review Committee</a> reviews new applications on an ongoing basis, subject to the availability of its members.</li>
             <li>Each reviewer evaluates the use case independently against the <a class="font-italic" href="#hosting-criteria">Hosting Criteria</a>, noting the situations where essential information is missing or unclear.</li>
             <li>
               Reviewers compare their evaluation and decide on the next steps.
