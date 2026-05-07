@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM node:22 AS builder
+=======
+FROM node:26 as builder
+>>>>>>> dc59b1e (chore(deps): bump node from 22 to 26)
 
 WORKDIR /src/app
 COPY ./package.json ./package-lock.json ./
