@@ -7,24 +7,55 @@
 
       <v-expansion-panels>
         <v-expansion-panel>
-          <v-expansion-panel-header>Inhalte</v-expansion-panel-header>
+          <v-expansion-panel-header>
+            Inhalt
+          </v-expansion-panel-header>
+
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-one' }" class="text-decoration-none">1. Allgemeines</router-link>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-two' }" class="text-decoration-none">2. Kontaktstelle für Behörden und
-              Nutzer</router-link>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-three' }" class="text-decoration-none">3. Durchschnittliche monatliche
-              Zahl der aktiven Nutzer in der EU</router-link>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-four' }" class="text-decoration-none">4. Außergerichtliche
-              Streitbeilegungsstelle</router-link>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-five' }" class="text-decoration-none">5. Transparenzbericht</router-link>
+            <v-list dense>
+              <v-list-item>
+                <v-list-item-content>
+                  <router-link :to="{ hash: '#dsa-de-one' }" class="text-decoration-none">
+                    <v-list-item-title>1. Allgemeines</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <router-link :to="{ hash: '#dsa-de-two' }" class="text-decoration-none">
+                    <v-list-item-title>2. Kontaktstelle für Behörden und
+                      Nutzer</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <router-link :to="{ hash: '#dsa-de-three' }" class="text-decoration-none">
+                    <v-list-item-title>3. Durchschnittliche monatliche
+                      Zahl der aktiven Nutzer in der EU</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <router-link :to="{ hash: '#dsa-de-four' }" class="text-decoration-none">
+                    <v-list-item-title>4. Außergerichtliche
+                      Streitbeilegungsstelle</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <router-link :to="{ hash: '#dsa-de-five' }" class="text-decoration-none">
+                    <v-list-item-title>5. Transparenzbericht</v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
