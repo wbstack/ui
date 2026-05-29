@@ -1,7 +1,15 @@
 <template>
   <v-main>
-    <DsaEnglish id="dsa-en" />
-    <DsaGerman id="dsa-de" />
+    <v-container class="fill-height" fluid>
+      <v-row justify="center">
+          <v-col cols="8">
+            <h1>Digital Services Act (DSA) Information Page</h1>
+          </v-col>
+          <DsaEnglish id="dsa-en" />
+          <v-divider class="mt-16 mb-8" />
+          <DsaGerman id="dsa-de" />
+      </v-row>
+    </v-container>
   </v-main>
 </template>
 
@@ -19,18 +27,4 @@ export default {
 }
 </script>
 
-<style scoped>
-h5 {
-  margin-bottom: 16px;
-}
-.italic {
-  font-style: italic;
-}
-.first-column {
-  text-align: center;
-  min-width: 60px;
-}
-.processing {
-  padding: 20px;
-}
-</style>
+<style scoped></style>
