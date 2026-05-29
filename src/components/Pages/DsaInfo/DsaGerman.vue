@@ -12,7 +12,7 @@
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>
-            <v-list dense>
+            <v-list>
               <v-list-item>
                 <v-list-item-content>
                   <router-link :to="{ hash: '#dsa-de-one' }" class="text-decoration-none">
