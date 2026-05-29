@@ -148,7 +148,7 @@ const router = new Router({
       },
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior (to, from, savedPosition) {
     // brings viewport back to where it was when using Back button
     if (savedPosition) return savedPosition
 
@@ -159,7 +159,7 @@ const router = new Router({
 
     // default: scroll to the top of the page
     return { x: 0, y: 0, behavior: 'smooth' }
-  }
+  },
 })
 
 // Require some routes to be logged in only.
