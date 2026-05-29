@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-col cols="11" md="4" order-md="last">
       <div class="px-6 py-4">
-              <router-link :to="{ hash: '#dsa-en' }" class="text-decoration-none">Go to the English version</router-link>
+        <router-link :to="{ hash: '#dsa-en' }" class="text-decoration-none">Go to the English version</router-link>
       </div>
 
       <v-expansion-panels>
@@ -12,13 +12,16 @@
             <router-link :to="{ hash: '#dsa-de-one' }" class="text-decoration-none">1. Allgemeines</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-two' }" class="text-decoration-none">2. Kontaktstelle für Behörden und Nutzer</router-link>
+            <router-link :to="{ hash: '#dsa-de-two' }" class="text-decoration-none">2. Kontaktstelle für Behörden und
+              Nutzer</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-three' }" class="text-decoration-none">3. Durchschnittliche monatliche Zahl der aktiven Nutzer in der EU</router-link>
+            <router-link :to="{ hash: '#dsa-de-three' }" class="text-decoration-none">3. Durchschnittliche monatliche
+              Zahl der aktiven Nutzer in der EU</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-de-four' }" class="text-decoration-none">4. Außergerichtliche Streitbeilegungsstelle</router-link>
+            <router-link :to="{ hash: '#dsa-de-four' }" class="text-decoration-none">4. Außergerichtliche
+              Streitbeilegungsstelle</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
             <router-link :to="{ hash: '#dsa-de-five' }" class="text-decoration-none">5. Transparenzbericht</router-link>
@@ -30,10 +33,15 @@
     <v-col cols="11" md="8">
       <p class="text-h6 font-weight-regular">Deutsch</p>
 
-      <p>Der Digital Services Act (DSA) ist eine EU-Verordnung, die 2022 in Kraft getreten ist und einen umfassenden Rahmen für die Rechenschaftspflicht digitaler Dienste,
-        die Moderation von Inhalten und die Transparenz von Plattformen in der gesamten Europäischen Union schafft. Er aktualisiert die Richtlinie über den elektronischen Geschäftsverkehr
-        aus dem Jahr 2000 im EU-Recht erheblich, indem er abgestufte Verpflichtungen je nach Größe des Dienstes und Risikostufe einführt, und wurde zusammen mit dem Digital Markets Act (DMA) vorgeschlagen.
-        Weitere Informationen zum DSA finden Sie <a href="https://de.wikipedia.org/wiki/Gesetz_%C3%BCber_digitale_Dienste" target="_blank">hier<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>.</p>
+      <p>Der Digital Services Act (DSA) ist eine EU-Verordnung, die 2022 in Kraft getreten ist und einen umfassenden
+        Rahmen für die Rechenschaftspflicht digitaler Dienste,
+        die Moderation von Inhalten und die Transparenz von Plattformen in der gesamten Europäischen Union schafft. Er
+        aktualisiert die Richtlinie über den elektronischen Geschäftsverkehr
+        aus dem Jahr 2000 im EU-Recht erheblich, indem er abgestufte Verpflichtungen je nach Größe des Dienstes und
+        Risikostufe einführt, und wurde zusammen mit dem Digital Markets Act (DMA) vorgeschlagen.
+        Weitere Informationen zum DSA finden Sie <a
+          href="https://de.wikipedia.org/wiki/Gesetz_%C3%BCber_digitale_Dienste" target="_blank">hier<v-icon small
+            color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>.</p>
 
       <v-divider class="my-6" />
 
@@ -42,8 +50,8 @@
       <h3 id="dsa-de-one" class="font-weight-regular my-2">1. Allgemeines</h3>
       <p>Auf dieser Seite findest du alle erforderlichen Informationen nach
         dem Digital Services Act (das heißt nach Artikel 11, Artikel 12, Artikel
-        21 und Artikel 24 der <a
-          href="https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32022R2065" target="_blank">Verordnung
+        21 und Artikel 24 der <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32022R2065"
+          target="_blank">Verordnung
           (EU) 2022/2065<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>).</p>
 
       <h3 id="dsa-de-two" class="font-weight-regular my-2">2. Kontaktstelle für Behörden und Nutzer</h3>
@@ -62,7 +70,8 @@
         aufgeführt. Mit der Kontaktaufnahme wird bestätigt, die Informationen
         zur Kenntnis genommen zu haben.</p>
 
-      <h3 id="dsa-de-three" class="font-weight-regular my-2">3. Durchschnittliche monatliche Zahl der aktiven Nutzer in der EU</h3>
+      <h3 id="dsa-de-three" class="font-weight-regular my-2">3. Durchschnittliche monatliche Zahl der aktiven Nutzer in
+        der EU</h3>
       <p>Die geschätzte durchschnittliche Anzahl monatlich aktiver Nutzer in
         der EU beträgt 20,000 Millionen, basierend auf dem Durchschnitt der
         vergangenen sechs Monate bis zum <strong>Januar 2026</strong>.</p>
@@ -91,7 +100,8 @@
         außergerichtliche Streitbeilegungsstelle wählen. Die EU-Kommission
         verfügt zu diesem Zweck über eine Liste außergerichtlicher
         Streitbeilegungsstellen, die du <a
-          href="https://digital-strategy.ec.europa.eu/de/policies/dsa-out-court-dispute-settlement" target="_blank">hier<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>
+          href="https://digital-strategy.ec.europa.eu/de/policies/dsa-out-court-dispute-settlement"
+          target="_blank">hier<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>
         findest.</p>
 
       <h3 id="dsa-de-five" class="font-weight-regular my-2">5. Transparenzbericht</h3>

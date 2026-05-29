@@ -2,12 +2,12 @@
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-          <v-col cols="8">
-            <h1>Digital Services Act (DSA) Information Page</h1>
-          </v-col>
-          <DsaEnglish id="dsa-en" />
-          <v-divider class="mt-16 mb-8" />
-          <DsaGerman id="dsa-de" />
+        <v-col cols="8">
+          <h1>Digital Services Act (DSA) Information Page</h1>
+        </v-col>
+        <DsaEnglish id="dsa-en" />
+        <v-divider class="mt-16 mb-8" />
+        <DsaGerman id="dsa-de" />
       </v-row>
     </v-container>
   </v-main>

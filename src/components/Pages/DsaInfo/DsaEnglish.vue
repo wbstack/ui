@@ -12,17 +12,21 @@
             <router-link :to="{ hash: '#dsa-en-one' }" class="text-decoration-none">1. General</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-en-two' }" class="text-decoration-none">2. Contact point for authorities and users</router-link>
+            <router-link :to="{ hash: '#dsa-en-two' }" class="text-decoration-none">2. Contact point for authorities and
+              users</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-en-three' }" class="text-decoration-none">3. Average monthly number of active users in the
-        EU</router-link>
+            <router-link :to="{ hash: '#dsa-en-three' }" class="text-decoration-none">3. Average monthly number of
+              active users in the
+              EU</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-en-four' }" class="text-decoration-none">4. Out-of-court dispute resolution body</router-link>
+            <router-link :to="{ hash: '#dsa-en-four' }" class="text-decoration-none">4. Out-of-court dispute resolution
+              body</router-link>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
-            <router-link :to="{ hash: '#dsa-en-five' }" class="text-decoration-none">5. Transparency report</router-link>
+            <router-link :to="{ hash: '#dsa-en-five' }" class="text-decoration-none">5. Transparency
+              report</router-link>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -35,7 +39,8 @@
         across the European Union.
         It significantly updates the Electronic Commerce Directive 2000 in EU law by introducing graduated obligations
         based on service size and risk levels, and was proposed alongside the Digital Markets Act (DMA).
-        You can read more about DSA <a href="https://en.wikipedia.org/wiki/Digital_Services_Act" class="external" target="_blank">here<v-icon small color="primary" class="pl-1 pb-2"> mdi-open-in-new</v-icon></a>.
+        You can read more about DSA <a href="https://en.wikipedia.org/wiki/Digital_Services_Act" class="external"
+          target="_blank">here<v-icon small color="primary" class="pl-1 pb-2"> mdi-open-in-new</v-icon></a>.
       </p>
 
       <v-divider class="my-6" />
@@ -77,7 +82,8 @@
         on Wikidata to proportionally scale <a
           href="https://foundation.wikimedia.org/wiki/Legal:EU_DSA_Userbase_Statistics#Average_monthly_active_recipients_of_the_service,_in_the_EU_region,_over_the_prior_6_months"
           target="_blank">Wikidata’s
-          published estimate<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a> of average monthly recipients
+          published estimate<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a> of average
+        monthly recipients
         (1,337,000 in Aug
         2025-Jan 2026). With 337 monthly editors on Wikibase Cloud and 25,000 on
         Wikidata in January 2026, this results in an estimated average of
@@ -94,7 +100,8 @@
         have made in the context of content moderation in accordance with
         Article 21 of the DSA. The EU Commission has a list of out-of-court
         dispute resolution bodies for this purpose, which you can find <a
-          href="https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement" target="_blank">here<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>.</p>
+          href="https://digital-strategy.ec.europa.eu/en/policies/dsa-out-court-dispute-settlement"
+          target="_blank">here<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>.</p>
 
       <h3 id="dsa-en-five" class="font-weight-regular my-2">5. Transparency report</h3>
       <p>In accordance with the provisions of Article 15 of the DSA, Wikimedia
