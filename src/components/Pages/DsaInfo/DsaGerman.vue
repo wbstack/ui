@@ -8,7 +8,7 @@
       <v-expansion-panels>
         <v-expansion-panel>
           <v-expansion-panel-header>
-            Inhalt
+            Inhalte
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>
