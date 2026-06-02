@@ -734,7 +734,8 @@
           <p>(a) The purpose of these standard contractual clauses is to ensure compliance with the requirements of
             Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of
             natural persons with regard to the processing of personal data and on the free movement of such data
-            (General Data Protection Regulation)<router-link :to="{ hash: '#tou-footnote-1' }">[1]</router-link> for the transfer of personal data to a third country.</p>
+            (General Data Protection Regulation)<router-link :to="{ hash: '#tou-footnote-1' }">[1]</router-link> for the
+            transfer of personal data to a third country.</p>
           <p>(b) The Parties:</p>
           <div class="pl-8">
             <p>(i) the natural or legal person(s), public authority/ies, agency/ies or other body/ies (hereinafter
@@ -753,44 +754,55 @@
           <h4>Clause 2 &mdash; Effect and invariability of the Clauses</h4>
           <ul>
             <li>
-              (a) These Clauses set out appropriate safeguards, including enforceable data subject rights and effective legal remedies, pursuant to Article 46(1) and Article 46 (2)(c) of Regulation (EU) 2016/679 and, with respect to data transfers from controllers to processors and/or processors to processors, standard contractual clauses pursuant to Article 28(7) of Regulation (EU) 2016/679, provided they are not modified, except to select the appropriate Module(s) or to add or update information in the Appendix. This does not prevent the Parties from including the standard contractual clauses laid down in these Clauses in a wider contract and/or to add other clauses or additional safeguards, provided that they do not contradict, directly or indirectly, these Clauses or prejudice the fundamental rights or freedoms of data subjects.
+              (a) These Clauses set out appropriate safeguards, including enforceable data subject rights and effective
+              legal remedies, pursuant to Article 46(1) and Article 46 (2)(c) of Regulation (EU) 2016/679 and, with
+              respect to data transfers from controllers to processors and/or processors to processors, standard
+              contractual clauses pursuant to Article 28(7) of Regulation (EU) 2016/679, provided they are not modified,
+              except to select the appropriate Module(s) or to add or update information in the Appendix. This does not
+              prevent the Parties from including the standard contractual clauses laid down in these Clauses in a wider
+              contract and/or to add other clauses or additional safeguards, provided that they do not contradict,
+              directly or indirectly, these Clauses or prejudice the fundamental rights or freedoms of data subjects.
             </li>
             <li>
-              (b) These Clauses are without prejudice to obligations to which the data exporter is subject by virtue of Regulation (EU) 2016/679.
+              (b) These Clauses are without prejudice to obligations to which the data exporter is subject by virtue of
+              Regulation (EU) 2016/679.
             </li>
           </ul>
 
           <h4>Clause 3 &mdash; Third-party beneficiaries</h4>
           <ul>
             <li>
-              (a) Data subjects may invoke and enforce these Clauses, as third-party beneficiaries, against the data exporter and/or data importer, with the following exceptions:
+              (a) Data subjects may invoke and enforce these Clauses, as third-party beneficiaries, against the data
+              exporter and/or data importer, with the following exceptions:
             </li>
-          <ul>
-            <li>
-              (i) Clause 1, Clause 2, Clause 3, Clause 6, Clause 7;
-            </li>
-            <li>
-              (ii) Clause 8 - Module One: Clause 8.5 (e) and Clause 8.9(b); Module Two: Clause 8.1(b), 8.9(a), (c), (d) and (e); Module Three: Clause 8.1(a), (c) and (d) and Clause 8.9(a), (c), (d), (e), (f) and (g); Module Four: Clause 8.1 (b) and Clause 8.3(b);
-            </li>
-            <li>
-              (iii) Clause 9 - Module Two: Clause 9(a), (c), (d) and (e); Module Three: Clause 9(a), (c), (d) and (e);
-            </li>
-            <li>
-              (iv) Clause 12 - Module One: Clause 12(a) and (d); Modules Two and Three: Clause 12(a), (d) and (f);
-            </li>
-            <li>
-              (v) Clause 13;
-            </li>
-            <li>
-              (vi) Clause 15.1(c), (d) and (e);
-            </li>
-            <li>
-              (vii) Clause 16(e);
-            </li>
-            <li>
-              (viii) Clause 18 - Modules One, Two and Three: Clause 18(a) and (b); Module Four: Clause 18.
-            </li>
-          </ul>
+            <ul>
+              <li>
+                (i) Clause 1, Clause 2, Clause 3, Clause 6, Clause 7;
+              </li>
+              <li>
+                (ii) Clause 8 - Module One: Clause 8.5 (e) and Clause 8.9(b); Module Two: Clause 8.1(b), 8.9(a), (c),
+                (d) and (e); Module Three: Clause 8.1(a), (c) and (d) and Clause 8.9(a), (c), (d), (e), (f) and (g);
+                Module Four: Clause 8.1 (b) and Clause 8.3(b);
+              </li>
+              <li>
+                (iii) Clause 9 - Module Two: Clause 9(a), (c), (d) and (e); Module Three: Clause 9(a), (c), (d) and (e);
+              </li>
+              <li>
+                (iv) Clause 12 - Module One: Clause 12(a) and (d); Modules Two and Three: Clause 12(a), (d) and (f);
+              </li>
+              <li>
+                (v) Clause 13;
+              </li>
+              <li>
+                (vi) Clause 15.1(c), (d) and (e);
+              </li>
+              <li>
+                (vii) Clause 16(e);
+              </li>
+              <li>
+                (viii) Clause 18 - Modules One, Two and Three: Clause 18(a) and (b); Module Four: Clause 18.
+              </li>
+            </ul>
             <li>
               (b) Paragraph (a) is without prejudice to rights of data subjects under Regulation (EU) 2016/679.
             </li>
@@ -799,13 +811,16 @@
           <h4>Clause 4 &mdash; Interpretation</h4>
           <ul>
             <li>
-              (a) Where these Clauses use terms that are defined in Regulation (EU) 2016/679, those terms shall have the same meaning as in that Regulation.
+              (a) Where these Clauses use terms that are defined in Regulation (EU) 2016/679, those terms shall have the
+              same meaning as in that Regulation.
             </li>
             <li>
-              (b) These Clauses shall be read and interpreted in the light of the provisions of Regulation (EU) 2016/679.
+              (b) These Clauses shall be read and interpreted in the light of the provisions of Regulation (EU)
+              2016/679.
             </li>
             <li>
-              (c) These Clauses shall not be interpreted in a way that conflicts with rights and obligations provided for in Regulation (EU) 2016/679.
+              (c) These Clauses shall not be interpreted in a way that conflicts with rights and obligations provided
+              for in Regulation (EU) 2016/679.
             </li>
           </ul>
 
@@ -823,13 +838,18 @@
           <h4>Clause 7 &mdash; Optional Docking clause</h4>
           <ul>
             <li>
-              (a) An entity that is not a Party to these Clauses may, with the agreement of the Parties, accede to these Clauses at any time, either as a data exporter or as a data importer, by completing the Appendix and signing Annex I.A.
+              (a) An entity that is not a Party to these Clauses may, with the agreement of the Parties, accede to these
+              Clauses at any time, either as a data exporter or as a data importer, by completing the Appendix and
+              signing Annex I.A.
             </li>
             <li>
-              (b) Once it has completed the Appendix and signed Annex I.A, the acceding entity shall become a Party to these Clauses and have the rights and obligations of a data exporter or data importer in accordance with its designation in Annex I.A.
+              (b) Once it has completed the Appendix and signed Annex I.A, the acceding entity shall become a Party to
+              these Clauses and have the rights and obligations of a data exporter or data importer in accordance with
+              its designation in Annex I.A.
             </li>
             <li>
-              (c) The acceding entity shall have no rights or obligations arising under these Clauses from the period prior to becoming a Party.
+              (c) The acceding entity shall have no rights or obligations arising under these Clauses from the period
+              prior to becoming a Party.
             </li>
           </ul>
 
@@ -846,121 +866,175 @@
             appropriate technical and organisational measures, to satisfy its
             obligations under these Clauses.</p>
 
-          <p>8.1 Instructions</p>
+          <h5>8.1 Instructions</h5>
           <ul>
             <li>
-              (a) The data exporter shall process the personal data only on documented instructions from the data importer acting as its controller.
+              (a) The data exporter shall process the personal data only on documented instructions from the data
+              importer acting as its controller.
             </li>
             <li>
-              (b) The data exporter shall immediately inform the data importer if it is unable to follow those instructions, including if such instructions infringe Regulation (EU) 2016/679 or other Union or Member State data protection law.
+              (b) The data exporter shall immediately inform the data importer if it is unable to follow those
+              instructions, including if such instructions infringe Regulation (EU) 2016/679 or other Union or Member
+              State data protection law.
             </li>
             <li>
-              (c) The data importer shall refrain from any action that would prevent the data exporter from fulfilling its obligations under Regulation (EU) 2016/679, including in the context of sub-processing or as regards cooperation with competent supervisory authorities.
+              (c) The data importer shall refrain from any action that would prevent the data exporter from fulfilling
+              its obligations under Regulation (EU) 2016/679, including in the context of sub-processing or as regards
+              cooperation with competent supervisory authorities.
             </li>
             <li>
-              (d) After the end of the provision of the processing services, the data exporter shall, at the choice of the data importer, delete all personal data processed on behalf of the data importer and certify to the data importer that it has done so, or return to the data importer all personal data processed on its behalf and delete existing copies.
+              (d) After the end of the provision of the processing services, the data exporter shall, at the choice of
+              the data importer, delete all personal data processed on behalf of the data importer and certify to the
+              data importer that it has done so, or return to the data importer all personal data processed on its
+              behalf and delete existing copies.
             </li>
           </ul>
 
-          <p>8.2 Security of processing</p>
+          <h5>8.2 Security of processing</h5>
           <ul>
             <li>
-              (a) The Parties shall implement appropriate technical and organisational measures to ensure the security of the data, including during transmission, and protection against a breach of security leading to accidental or unlawful destruction, loss, alteration, unauthorised disclosure or access (hereinafter “personal data breach”). In assessing the appropriate level of security, they shall take due account of the state of the art, the costs of implementation, the nature of the personal data[2], the nature, scope, context and purpose(s) of processing and the risks involved in the processing for the data subjects, and in particular consider having recourse to encryption or pseudonymisation, including during transmission, where the purpose of processing can be fulfilled in that manner.
+              (a) The Parties shall implement appropriate technical and organisational measures to ensure the security
+              of the data, including during transmission, and protection against a breach of security leading to
+              accidental or unlawful destruction, loss, alteration, unauthorised disclosure or access (hereinafter
+              “personal data breach”). In assessing the appropriate level of security, they shall take due account of
+              the state of the art, the costs of implementation, the nature of the personal data<router-link
+                :to="{ hash: '#tou-footnote-2' }">[2]</router-link>, the nature, scope, context and purpose(s) of
+              processing and the risks involved in the processing for the data subjects, and in particular consider
+              having recourse to encryption or pseudonymisation, including during transmission, where the purpose of
+              processing can be fulfilled in that manner.
             </li>
             <li>
-              (b) The data exporter shall assist the data importer in ensuring appropriate security of the data in accordance with paragraph (a). In case of a personal data breach concerning the personal data processed by the data exporter under these Clauses, the data exporter shall notify the data importer without undue delay after becoming aware of it and assist the data importer in addressing the breach.
+              (b) The data exporter shall assist the data importer in ensuring appropriate security of the data in
+              accordance with paragraph (a). In case of a personal data breach concerning the personal data processed by
+              the data exporter under these Clauses, the data exporter shall notify the data importer without undue
+              delay after becoming aware of it and assist the data importer in addressing the breach.
             </li>
             <li>
-              (c) The data exporter shall ensure that persons authorised to process the personal data   have committed themselves to confidentiality or are under an appropriate statutory obligation of confidentiality.
+              (c) The data exporter shall ensure that persons authorised to process the personal data have committed
+              themselves to confidentiality or are under an appropriate statutory obligation of confidentiality.
             </li>
           </ul>
 
-          <p>8.3 Documentation and compliance</p>
+          <h5>8.3 Documentation and compliance</h5>
           <ul>
             <li>
               (a) The Parties shall be able to demonstrate compliance with these Clauses.
             </li>
             <li>
-              (b) The data exporter shall make available to the data importer all information necessary to demonstrate compliance with its obligations under these Clauses and allow for and contribute to audits.
+              (b) The data exporter shall make available to the data importer all information necessary to demonstrate
+              compliance with its obligations under these Clauses and allow for and contribute to audits.
             </li>
           </ul>
 
-          <h4>Clause 9 [not applicable] Use of sub-processors</h4>
+          <h4>Clause 9 [not applicable] &mdash; Use of sub-processors</h4>
 
-          <h4>Clause 10 Data subject rights</h4>
+          <h4>Clause 10 &mdash; Data subject rights</h4>
           <p>The Parties shall assist each other in responding to enquiries and
             requests made by data subjects under the local law applicable to the
             data importer or, for data processing by the data exporter in the EU,
             under Regulation (EU) 2016/679.</p>
 
-          <h4>Clause 11 Redress</h4>
+          <h4>Clause 11 &mdash; Redress</h4>
+          <p>
           <ul>
             <li>
-              (a) The data importer shall inform data subjects in a transparent and easily accessible format, through individual notice or on its website, of a contact point authorised to handle complaints. It shall deal promptly with any complaints it receives from a data subject.
+              (a) The data importer shall inform data subjects in a transparent and easily accessible format, through
+              individual notice or on its website, of a contact point authorised to handle complaints. It shall deal
+              promptly with any complaints it receives from a data subject.
             </li>
           </ul>
+          </p>
 
-          <h4>Clause 12 Liability</h4>
+          <h4>Clause 12 &mdash; Liability</h4>
+          <p>
           <ul>
             <li>
-              (a) Each Party shall be liable to the other Party/ies for any damages it causes the other Party/ies by any breach of these Clauses.
+              (a) Each Party shall be liable to the other Party/ies for any damages it causes the other Party/ies by any
+              breach of these Clauses.
             </li>
             <li>
-              (b) Each Party shall be liable to the data subject, and the data subject shall be entitled to receive compensation, for any material or non-material damages that the Party causes the data subject by breaching the third-party beneficiary rights under these Clauses. This is without prejudice to the liability of the data exporter under Regulation (EU) 2016/679.
+              (b) Each Party shall be liable to the data subject, and the data subject shall be entitled to receive
+              compensation, for any material or non-material damages that the Party causes the data subject by breaching
+              the third-party beneficiary rights under these Clauses. This is without prejudice to the liability of the
+              data exporter under Regulation (EU) 2016/679.
             </li>
             <li>
-              (c) Where more than one Party is responsible for any damage caused to the data subject as a result of a breach of these Clauses, all responsible Parties shall be jointly and severally liable and the data subject is entitled to bring an action in court against any of these Parties.
+              (c) Where more than one Party is responsible for any damage caused to the data subject as a result of a
+              breach of these Clauses, all responsible Parties shall be jointly and severally liable and the data
+              subject is entitled to bring an action in court against any of these Parties.
             </li>
             <li>
-              (d) The Parties agree that if one Party is held liable under paragraph (c), it shall be entitled to claim back from the other Party/ies that part of the compensation corresponding to its / their responsibility for the damage.
+              (d) The Parties agree that if one Party is held liable under paragraph (c), it shall be entitled to claim
+              back from the other Party/ies that part of the compensation corresponding to its / their responsibility
+              for the damage.
             </li>
             <li>
-              (e) The data importer may not invoke the conduct of a processor or sub-processor to avoid its own liability.
+              (e) The data importer may not invoke the conduct of a processor or sub-processor to avoid its own
+              liability.
             </li>
           </ul>
+          </p>
 
-          <h4>Clause 13 [not applicable] Supervision</h4>
+          <h4>Clause 13 [not applicable] &mdash; Supervision</h4>
 
           <h3>SECTION III &mdash; LOCAL LAWS AND OBLIGATIONS IN CASE OF ACCESS BY PUBLIC
             AUTHORITIES</h3>
           <h4>Clause 14 [not applicable]</h4>
           <h4>Clause 15 [not applicable]</h4>
 
-          <h3>SECTION IV – FINAL PROVISIONS</h3>
+          <h3>SECTION IV &mdash; FINAL PROVISIONS</h3>
           <h4>Clause 16 &mdash; Non-compliance with the Clauses and termination</h4>
           <ul>
             <li>
-              (a) The data importer shall promptly inform the data exporter if it is unable to comply with these Clauses, for whatever reason.
+              (a) The data importer shall promptly inform the data exporter if it is unable to comply with these
+              Clauses, for whatever reason.
             </li>
             <li>
-              (b) In the event that the data importer is in breach of these Clauses or unable to comply with these Clauses, the data exporter shall suspend the transfer of personal data to the data importer until compliance is again ensured or the contract is terminated. This is without prejudice to Clause 14(f).
+              (b) In the event that the data importer is in breach of these Clauses or unable to comply with these
+              Clauses, the data exporter shall suspend the transfer of personal data to the data importer until
+              compliance is again ensured or the contract is terminated. This is without prejudice to Clause 14(f).
             </li>
             <li>
-              (c) The data exporter shall be entitled to terminate the contract, insofar as it concerns the processing of personal data under these Clauses, where:
+              (c) The data exporter shall be entitled to terminate the contract, insofar as it concerns the processing
+              of personal data under these Clauses, where:
             </li>
 
 
-          <ul>
+            <ul>
+              <li>
+                (i) the data exporter has suspended the transfer of personal data to the data importer pursuant to
+                paragraph (b) and compliance with these Clauses is not restored within a reasonable time and in any
+                event within one month of suspension;
+              </li>
+              <li>
+                (ii) the data importer is in substantial or persistent breach of these Clauses; or
+              </li>
+              <li>
+                (iii) the data importer fails to comply with a binding decision of a competent court or supervisory
+                authority regarding its obligations under these Clauses.
+                In these cases, it shall inform the competent supervisory authority of
+                such non-compliance. Where the contract involves more than two Parties,
+                the data exporter may exercise this right to termination only with
+                respect to the relevant Party, unless the Parties have agreed
+                otherwise.
+              </li>
+            </ul>
             <li>
-              (i) the data exporter has suspended the transfer of personal data to the data importer pursuant to paragraph (b) and compliance with these Clauses is not restored within a reasonable time and in any event within one month of suspension;
+              (d) Personal data collected by the data exporter in the EU that has been transferred prior to the
+              termination of the contract pursuant to paragraph (c) shall immediately be deleted in its entirety,
+              including any copy thereof. The data importer shall certify the deletion of the data to the data exporter.
+              Until the data is deleted or returned, the data importer shall continue to ensure compliance with these
+              Clauses. In case of local laws applicable to the data importer that prohibit the return or deletion of the
+              transferred personal data, the data importer warrants that it will continue to ensure compliance with
+              these Clauses and will only process the data to the extent and for as long as required under that local
+              law.
             </li>
             <li>
-              (ii) the data importer is in substantial or persistent breach of these Clauses; or
-            </li>
-            <li>
-              (iii) the data importer fails to comply with a binding decision of a competent court or supervisory authority regarding its obligations under these Clauses.
-              In these cases, it shall inform the competent supervisory authority of
-              such non-compliance. Where the contract involves more than two Parties,
-              the data exporter may exercise this right to termination only with
-              respect to the relevant Party, unless the Parties have agreed
-              otherwise.
-            </li>
-          </ul>
-            <li>
-              (d) Personal data collected by the data exporter in the EU that has been transferred prior to the termination of the contract pursuant to paragraph (c) shall immediately be deleted in its entirety, including any copy thereof. The data importer shall certify the deletion of the data to the data exporter. Until the data is deleted or returned, the data importer shall continue to ensure compliance with these Clauses. In case of local laws applicable to the data importer that prohibit the return or deletion of the transferred personal data, the data importer warrants that it will continue to ensure compliance with these Clauses and will only process the data to the extent and for as long as required under that local law.
-            </li>
-            <li>
-              (e) Either Party may revoke its agreement to be bound by these Clauses where (i) the European Commission adopts a decision pursuant to Article 45(3) of Regulation (EU) 2016/679 that covers the transfer of personal data to which these Clauses apply; or (ii) Regulation (EU) 2016/679 becomes part of the legal framework of the country to which the personal data is transferred. This is without prejudice to other obligations applying to the processing in question under Regulation (EU) 2016/679.
+              (e) Either Party may revoke its agreement to be bound by these Clauses where (i) the European Commission
+              adopts a decision pursuant to Article 45(3) of Regulation (EU) 2016/679 that covers the transfer of
+              personal data to which these Clauses apply; or (ii) Regulation (EU) 2016/679 becomes part of the legal
+              framework of the country to which the personal data is transferred. This is without prejudice to other
+              obligations applying to the processing in question under Regulation (EU) 2016/679.
             </li>
           </ul>
 
@@ -975,35 +1049,25 @@
 
           <v-divider class="my-4" />
 
-          <p id="tou-footnote-1">[1] Where the data exporter is a processor subject to Regulation (EU)
-            2016/679 acting on behalf of a Union institution or body as controller,
-            reliance on these Clauses when engaging another processor
-            (sub-processing) not subject to Regulation (EU) 2016/679 also ensures
-            compliance with Article 29(4) of Regulation (EU) 2018/1725 of the
-            European Parliament and of the Council of 23 October 2018 on the
-            protection of natural persons with regard to the processing of personal
-            data by the Union institutions, bodies, offices and agencies and on the
-            free movement of such data, and repealing Regulation (EC) No 45/2001 and
-            Decision No 1247/2002/EC (OJ L 295 of 21.11.2018, p. 39), to the extent
-            these Clauses and the data protection obligations as set out in the
-            contract or other legal act between the controller and the processor
-            pursuant to Article 29(3) of Regulation (EU) 2018/1725 are aligned. This
-            will in particular be the case where the controller and processor rely
-            on the standard contractual clauses included in Decision 2021/915. [2]
-            This includes whether the transfer and further processing involves
-            personal data revealing racial or ethnic origin, political opinions,
-            religious or philosophical beliefs, or trade union membership, genetic
-            data or biometric data for the purpose of uniquely identifying a natural
-            person, data concerning health or a person’s sex life or sexual
-            orientation, or data relating to criminal convictions or offences.</p>
-          <p>[a]This should only be visible when the policy becomes enforced
-            [b]This will only be included if we have to include minor immaterial
-            changes to an existing version [c]Such changes can also be appended to
-            ‘what changed’ with a note like:</p>
-          <p>Revisions marked with an asterisk reflect minor clarifications that
-            do not affect your rights or obligations and did not require
-            re-acceptance. [d]shown only for outdated or upcoming versions</p>
+          <p id="tou-footnote-1">
+            [1] Where the data exporter is a processor subject to Regulation (EU) 2016/679 acting on behalf of a Union
+            institution or body as controller, reliance on these Clauses when engaging another processor
+            (sub-processing) not subject to Regulation (EU) 2016/679 also ensures compliance with Article 29(4) of
+            Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection
+            of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices
+            and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No
+            1247/2002/EC (OJ L 295 of 21.11.2018, p. 39), to the extent these Clauses and the data protection
+            obligations as set out in the contract or other legal act between the controller and the processor pursuant
+            to Article 29(3) of Regulation (EU) 2018/1725 are aligned. This will in particular be the case where the
+            controller and processor rely on the standard contractual clauses included in Decision 2021/915.
+          </p>
 
+          <p id="tou-footnote-2">
+            [2] This includes whether the transfer and further processing involves personal data revealing racial or
+            ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, genetic
+            data or biometric data for the purpose of uniquely identifying a natural person, data concerning health or a
+            person’s sex life or sexual orientation, or data relating to criminal convictions or offences.
+          </p>
         </v-col>
       </v-row>
     </v-container>
@@ -1018,4 +1082,12 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+  margin-top: 8px;
+}
+
+h4,
+h5 {
+  margin-top: 4px;
+}
 </style>
