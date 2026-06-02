@@ -89,6 +89,7 @@
             any Content on their Wikibase Instance that infringes the intellectual
             property rights of third persons or that is otherwise unlawful.</p>
           <p>5.3 It is specifically prohibited to:</p>
+
           <ul>
             <li>Upload or distribute Content that is
               insulting, abusive, offensive, racist, threatening, harmful to minors,
@@ -113,9 +114,11 @@
               information of third parties; or</li>
             <li>Sell or otherwise transfer the User Account to another person.</li>
           </ul>
+
           <p>5.4 The User should be aware that the sites
             may be edited by the public and, as such, may contain inappropriate
             Content at any time.</p>
+
           <h2>6. Moderation of Content</h2>
           <p>6.1 Wikimedia does not
             monitor Content on the Platform, but reserves the right to conduct
@@ -148,7 +151,7 @@
             <li>The User is not entitled to file a
               complaint if the User has already been warned for improper use of
               Wikimedia’s complaint system. This is the case, for example, if the User
-              repeatedly submits identical complaints without justification.
+              repeatedly submits identical complaints without justification.</li>
             <li>A
               complaint must be made within six months of the date on which the User
               was notified of our decision.</li>
