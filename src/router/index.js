@@ -20,7 +20,7 @@ import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
 import HostingPolicy from '@/components/Pages/HostingPolicy.vue'
-import TermsOfUseUpcoming from "@/components/Pages/TermsOfUseUpcoming.vue";
+import TermsOfUseUpcoming from '@/components/Pages/TermsOfUseUpcoming.vue'
 
 Vue.use(Router)
 

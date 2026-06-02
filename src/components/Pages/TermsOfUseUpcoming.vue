@@ -3,6 +3,51 @@
     <v-container class="fill-height" fluid>
       <v-row justify="center">
         <v-col cols="8">
+          <v-card class="mx-auto" color="light-blue">
+            <v-card-title>
+              What changed from <a> previous version</a>
+            </v-card-title>
+
+            <v-card-text>
+              <p>The Terms of Use were revised to ensure compliance with the European Union’s
+              Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud
+                operates.</p>
+              <v-expand-transition>
+                <div v-if="show || !isMobile">
+                  Key updates:
+                  <ul>
+                    <li>
+                      We have clarified when and how user accounts or individual instances may
+                      be suspended or terminated, including notice periods and proportionality
+                      principles.
+                    </li>
+                    <li>
+                      The new version explains more clearly how decisions are made, including
+                      how users can raise concerns or file complaints about moderation actions.
+                    </li>
+                    <li>
+                      The responsibilities of instance managers and contributors are described
+                      in more detail.
+                    </li>
+                    <li>
+                      The Terms now explicitly reference applicable GDPR requirements.
+                    </li>
+                    <li>
+                      The document has been reorganized and clarified.
+                    </li>
+                  </ul>
+                </div>
+              </v-expand-transition>
+            </v-card-text>
+            <v-card-actions v-if="isMobile">
+              <v-btn
+                variant="text"
+                @click="show = !show"
+              >
+                {{ show ? 'See less' : 'See more' }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
           <h1>Terms Of Use</h1>
           <h2>1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
@@ -1081,7 +1126,15 @@
 <script>
 export default {
   name: 'TermsOfUseUpcoming',
-  computed: {},
+  computed: {
+    isMobile() {
+       return this.$vuetify.breakpoint.smAndDown
+    }
+  },
+  data: () => ({
+    show: false,
+  }),
+
 }
 </script>
 
