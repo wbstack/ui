@@ -198,7 +198,7 @@
             termination of the User’s Account, the User’s right to use the Platform
             will immediately cease.</p>
 
-            <h2>9. Availability and Maintenance</h2>
+          <h2>9. Availability and Maintenance</h2>
           <p>9.1 Wikimedia shall implement appropriate measures to ensure the availability and
             error free functionality of the Platform. However, the User acknowledges
             that for technical reasons and due to the dependence on external
@@ -210,7 +210,7 @@
             Insofar Wikimedia shall carry out the maintenance work during periods of
             low use.</p>
 
-            <h2>10. Liability</h2>
+          <h2>10. Liability</h2>
           <p>10.1 Wikimedia provides a free service that allows
             the User to create their own Wikibase Instance. Wikimedia assumes no
             responsibility for any material posted by the User. However, in
@@ -529,7 +529,7 @@
             breach to the data subject, when the personal data breach is likely to
             result in a high risk to the rights and freedoms of natural persons.</p>
 
-            <h5>8.2 Data breach concerning data processed by the processor</h5>
+          <h5>8.2 Data breach concerning data processed by the processor</h5>
           <p>In the event of a
             personal data breach concerning data processed by the processor, the
             processor shall notify the controller without undue delay after the
@@ -554,7 +554,7 @@
             2016/679.</p>
 
           <h3>
-            SECTION III  &mdash; FINAL PROVISIONS
+            SECTION III &mdash; FINAL PROVISIONS
           </h3>
 
           <h4>
@@ -598,9 +598,10 @@
           <h4>ANNEX I</h4>
           <h5>List of parties</h5>
           <p>
-          <b>Controller(s):</b> [Identity and contact details
-          of the controller(s), and, where applicable, of the controller’s data
-          protection officer]</p>
+            <b>Controller(s):</b> [Identity and contact details
+            of the controller(s), and, where applicable, of the controller’s data
+            protection officer]
+          </p>
           <p>The User as specified in the Terms of Use.</p>
 
           <p><b>Processor(s):</b>
@@ -612,55 +613,67 @@
           <h4>ANNEX II</h4>
           <h5>Description of the processing</h5>
           <p>
-          <i>Categories of data subjects
-            whose personal data is processed</i>
-          <ul class="pl-8"><li>Any categories of data subjects
-            contained in the data uploaded by the User.</li></ul>
+            <i>Categories of data subjects
+              whose personal data is processed</i>
+          <ul class="pl-8">
+            <li>Any categories of data subjects
+              contained in the data uploaded by the User.</li>
+          </ul>
           </p>
 
           <p>
-          <i>Categories of personal data
-            processed</i>
-          <ul class="pl-8"><li>Any categories of personal data contained in the data
-            uploaded by the User.</li></ul>
+            <i>Categories of personal data
+              processed</i>
+          <ul class="pl-8">
+            <li>Any categories of personal data contained in the data
+              uploaded by the User.</li>
+          </ul>
           </p>
 
           <p>
-          <i>Sensitive data processed (if applicable) and
-            applied restrictions or safeguards that fully take into consideration
-            the nature of the data and the risks involved, such as for instance
-            strict purpose limitation, access restrictions (including access only
-            for staff having followed specialised training), keeping a record of
-            access to the data, restrictions for onward transfers or additional
-            security measures.</i>
-          <ul class="pl-8"><li>The categories of personal data may include
-            sensitive data depending on the Content uploaded by the User. Since
-            Wikimedia has no knowledge of the specific categories processed it lies
-            in the User’s responsibility to ensure that the safeguards are
-            sufficient to process the specific categories of personal data.</li></ul>
-            </p>
+            <i>Sensitive data processed (if applicable) and
+              applied restrictions or safeguards that fully take into consideration
+              the nature of the data and the risks involved, such as for instance
+              strict purpose limitation, access restrictions (including access only
+              for staff having followed specialised training), keeping a record of
+              access to the data, restrictions for onward transfers or additional
+              security measures.</i>
+          <ul class="pl-8">
+            <li>The categories of personal data may include
+              sensitive data depending on the Content uploaded by the User. Since
+              Wikimedia has no knowledge of the specific categories processed it lies
+              in the User’s responsibility to ensure that the safeguards are
+              sufficient to process the specific categories of personal data.</li>
+          </ul>
+          </p>
 
           <p>
             <i>Nature of the processing</i>
-            <ul class="pl-8"><li>Any processing necessary to fulfil the contractual
+          <ul class="pl-8">
+            <li>Any processing necessary to fulfil the contractual
               purposes. Especially collection, storage, disclosure and dissemination
-              and making publicly available as well as anonymization and/or deletion.</li></ul>
+              and making publicly available as well as anonymization and/or deletion.</li>
+          </ul>
           </p>
 
           <p>
             <i>Purpose(s) for which the personal data is processed on behalf of the
               controller</i>
-            <ul class="pl-8"><li>Publishing the Wikibase as well as the data uploaded to and
+          <ul class="pl-8">
+            <li>Publishing the Wikibase as well as the data uploaded to and
               contained in it and making it available to the public. Wikimedia does
               not act as a processor for the User with regard to the processing of
               personal data of persons browsing the Wikibase and any personal data
-              that is processed to establish the connection.</li></ul>
+              that is processed to establish the connection.</li>
+          </ul>
           </p>
 
           <p>
             <i>Duration of the processing</i>
-            <ul class="pl-8"><li>The rules of the Agreement regarding the
-              Term and Termination apply.</li></ul>
+          <ul class="pl-8">
+            <li>The rules of the Agreement regarding the
+              Term and Termination apply.</li>
+          </ul>
           </p>
 
           <p>
@@ -669,13 +682,13 @@
           </p>
 
           <h4>ANNEX III</h4>
-            <p>Technical and organisational measures including technical
-              and organisational measures to ensure the security of the data</p>
+          <p>Technical and organisational measures including technical
+            and organisational measures to ensure the security of the data</p>
 
-              <p>
-                <i>You may obtain a copy of our technical and organisational measures on request,
-                to do so please send an email to: datenschutz@wikimedia.de.</i>
-              </p>
+          <p>
+            <i>You may obtain a copy of our technical and organisational measures on request,
+              to do so please send an email to: datenschutz@wikimedia.de.</i>
+          </p>
 
           <h4>ANNEX IV</h4>
           <p class="font-weight-bold">List of sub-processors</p>
@@ -683,7 +696,8 @@
 
           <p>This Annex needs to
             be completed in case of specific authorisation of sub-processors (Clause
-            7.7(a), Option 1).</p><p>The controller has authorised the use of the
+            7.7(a), Option 1).</p>
+          <p>The controller has authorised the use of the
             following sub-processors:</p>
 
           <ul class="pl-8">
@@ -691,22 +705,23 @@
               <p><b>1. Name: Google Ireland Ltd.</b></p>
               <p>Address: Gordon House, Barrow Street, Dublin 4</p>
 
-            <p>Contact person’s name, position and contact details: Please contact Wikimedia for the contact information</p>
+              <p>Contact person’s name, position and contact details: Please contact Wikimedia for the contact
+                information</p>
 
-            <p>Description of the processing (including a clear delimitation of
-            responsibilities in case several sub-processors are authorised): Hosting
-            of the Wikibase.cloud service</p>
-          </li>
+              <p>Description of the processing (including a clear delimitation of
+                responsibilities in case several sub-processors are authorised): Hosting
+                of the Wikibase.cloud service</p>
+            </li>
 
             <li>
               <p><b>2. Name: Mailgun Technologies, Inc</b></p>
 
               <p>Address: 112 E Pecan St #1135, San Antonio, TX 78205</p>
               <p>Contact person’s name, position and contact details: Please contact Wikimedia for the
-              contact information</p>
+                contact information</p>
 
               <p>Description of the processing: Email service
-              provisioning</p>
+                provisioning</p>
             </li>
           </ul>
 
