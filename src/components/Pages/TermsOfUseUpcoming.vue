@@ -734,7 +734,8 @@
           <p>(a) The purpose of these standard contractual clauses is to ensure compliance with the requirements of
             Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of
             natural persons with regard to the processing of personal data and on the free movement of such data
-            (General Data Protection Regulation)<router-link :to="{ hash: '#tou-footnote-1' }" id="tou-footnote-link-1">[1]</router-link> for the
+            (General Data Protection Regulation)<router-link :to="{ hash: '#tou-footnote-1' }"
+              id="tou-footnote-link-1">[1]</router-link> for the
             transfer of personal data to a third country.</p>
           <p>(b) The Parties:</p>
           <div class="pl-8">
@@ -898,7 +899,8 @@
               accidental or unlawful destruction, loss, alteration, unauthorised disclosure or access (hereinafter
               “personal data breach”). In assessing the appropriate level of security, they shall take due account of
               the state of the art, the costs of implementation, the nature of the personal data<router-link
-                :to="{ hash: '#tou-footnote-2' }" id="tou-footnote-link-2">[2]</router-link>, the nature, scope, context and purpose(s) of
+                :to="{ hash: '#tou-footnote-2' }" id="tou-footnote-link-2">[2]</router-link>, the nature, scope, context
+              and purpose(s) of
               processing and the risks involved in the processing for the data subjects, and in particular consider
               having recourse to encryption or pseudonymisation, including during transmission, where the purpose of
               processing can be fulfilled in that manner.
@@ -1050,7 +1052,8 @@
           <v-divider class="my-4" />
 
           <p id="tou-footnote-1">
-            <router-link :to="{ hash: '#tou-footnote-link-1' }">[1]</router-link> Where the data exporter is a processor subject to Regulation (EU) 2016/679 acting on behalf of a Union
+            <router-link :to="{ hash: '#tou-footnote-link-1' }">[1]</router-link> Where the data exporter is a processor
+            subject to Regulation (EU) 2016/679 acting on behalf of a Union
             institution or body as controller, reliance on these Clauses when engaging another processor
             (sub-processing) not subject to Regulation (EU) 2016/679 also ensures compliance with Article 29(4) of
             Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection
@@ -1063,7 +1066,8 @@
           </p>
 
           <p id="tou-footnote-2">
-            <router-link :to="{ hash: '#tou-footnote-link-2' }">[2]</router-link> This includes whether the transfer and further processing involves personal data revealing racial or
+            <router-link :to="{ hash: '#tou-footnote-link-2' }">[2]</router-link> This includes whether the transfer and
+            further processing involves personal data revealing racial or
             ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, genetic
             data or biometric data for the purpose of uniquely identifying a natural person, data concerning health or a
             person’s sex life or sexual orientation, or data relating to criminal convictions or offences.
