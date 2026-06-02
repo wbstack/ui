@@ -88,28 +88,31 @@
             create, publish or share Content. The User agrees not to upload or share
             any Content on their Wikibase Instance that infringes the intellectual
             property rights of third persons or that is otherwise unlawful.</p>
-          <p>5.3 It is
-            specifically prohibited to:
-            * Upload or distribute Content that is
+          <p>5.3 It is specifically prohibited to:</p>
+            <ul>
+            <li>Upload or distribute Content that is
             insulting, abusive, offensive, racist, threatening, harmful to minors,
             pornographic, violates personal rights, promotes violence or sedition,
             incites criminal acts, provides instructions on how to commit criminal
             acts, or provides services that involve pornographic and/or erotic
-            Content or any other illegal Content;<br />
-            * Upload or distribute Content
+            Content or any other illegal Content</li>
+
+            <li>Upload or distribute Content
             that is copied as a whole or in part from another protected work or
             material without the permission of the respective copyright owner;
             *Upload or distribute Content that violates or infringes the rights of
             third parties, in particular personal rights, copyrights or other
-            intellectual property rights or any other rights of third parties;
-            *Upload or distribute Content that contains personal, confidential or
-            non-public information;<br />
-            * Contact other users of the Platform in a
+            intellectual property rights or any other rights of third parties</li>
+
+            <li>Upload or distribute Content that contains personal, confidential or
+            non-public information</li>
+            <li>Contact other users of the Platform in a
             disrespectful and rude manner, as well as to buy or sell products or
-            services;<br />
-            * Provide false data or information, as well as false data or
-            information of third parties; or<br />
-            * Sell or otherwise transfer the User Account to another person.</p>
+            services;</li>
+            <li>Provide false data or information, as well as false data or
+            information of third parties; or</li>
+            <li>Sell or otherwise transfer the User Account to another person.</li>
+            </ul>
           <p>5.4 The User should be aware that the sites
             may be edited by the public and, as such, may contain inappropriate
             Content at any time.</p>
@@ -136,30 +139,32 @@
             that Wikimedia has erred in one of the measures mentioned above in this
             section 6, the User may request a review using the complaint functions
             and Wikimedia will review and reconsider the decision. The following
-            rules apply to complaints<br />
-            * The User may file a complaint against the
+            rules apply to complaints:</p>
+            <ul>
+            <li>The User may file a complaint against the
             removal of the Content, the suspension or termination of the Account, or
             the rejection of a report submitted by the User regarding Content that
-            the User considers to be illegal.<br />
-              * The User is not entitled to file a
+            the User considers to be illegal.</li>
+              <li>The User is not entitled to file a
             complaint if the User has already been warned for improper use of
             Wikimedia’s complaint system. This is the case, for example, if the User
-            repeatedly submits identical complaints without justification. * A
+            repeatedly submits identical complaints without justification. <li>A
             complaint must be made within six months of the date on which the User
-            was notified of our decision.<br />
-              * Wikimedia deals with complaints
+            was notified of our decision.</li>
+              <li>Wikimedia deals with complaints
             promptly, carefully and without discrimination or arbitrariness. In
             order to do this, Wikimedia needs all relevant information from the User
             to understand the complaint. Complaints with offensive or inappropriate
-            language may result in the suspension of complaints after a warning.<br />
-              * Wikimedia shall promptly decide whether to reverse or uphold the
-            original action. The User will receive the reasoned decision promptly.<br />
-              * In considering the complaint, Wikimedia will take into account the
+            language may result in the suspension of complaints after a warning.</li>
+              <li>Wikimedia shall promptly decide whether to reverse or uphold the
+            original action. The User will receive the reasoned decision promptly.</li>
+              <li>In considering the complaint, Wikimedia will take into account the
             seriousness of the breach, the reason for the complaint, the frequency
-            and impact of the breaches and the intention behind the breach.<br />
-              * This section is without prejudice to the rights of EU users to take their
+            and impact of the breaches and the intention behind the breach.</li>
+              <li>This section is without prejudice to the rights of EU users to take their
             case to certified out-of-court complaint bodies. For more information,
-            please click here.</p>
+            <router-link to="/dsa-info">please click here</router-link>.</li>
+            </ul>
           <h2>7. Grant of rights of use</h2>
           <p>7.1 The User grants
             Wikimedia the rights of use to the uploaded Content for the purpose of
@@ -210,7 +215,8 @@
           <h2>11. Data Protection</h2>
           <p>1.11 For comprehensive information on how Wikimedia
             collects, processes or uses personal data of the User, please refer to
-            our Privacy Policy.</p>
+            our <router-link to="/privacy-policy">Privacy
+          Policy</router-link>.</p>
           <p>11.2 To the extent that the Content provided by the
             User or by contributors and users of the User’s Wikimedia Instance
             contains personal data of third parties, the User remains the controller
@@ -609,7 +615,7 @@
             and duration of the processing</i>
           <h4>ANNEX III</h4>
           <b>Technical and organisational measures including technical
-            and organisational measures to ensure the security of the data</b><br />
+            and organisational measures to ensure the security of the data</b></p>
           <i>You may
             obtain a copy of our technical and organisational measures on request,
             to do so please send an email to: datenschutz@wikimedia.de.</i>
@@ -620,18 +626,19 @@
             be completed in case of specific authorisation of sub-processors (Clause
             7.7(a), Option 1). The controller has authorised the use of the
             following sub-processors:</p>
-          <ol class="pl-8">
-            <li><b>Name: Google Ireland Ltd.</b><br /> Address: Gordon
+          <ul class="pl-8">
+            <li><b>1. Name: Google Ireland Ltd.</b></li> Address: Gordon
             House, Barrow Street, Dublin 4 Contact person’s name, position and
             contact details: Please contact Wikimedia for the contact information
             Description of the processing (including a clear delimitation of
             responsibilities in case several sub-processors are authorised): Hosting
-              of the Wikibase.cloud service</li> <li><b>Name: Mailgun Technologies, Inc</b><br />
+              of the Wikibase.cloud service</p>
+              <li><b>2. Name: Mailgun Technologies, Inc</b></li>
             Address: 112 E Pecan St #1135, San Antonio, TX 78205 Contact person’s
             name, position and contact details: Please contact Wikimedia for the
             contact information Description of the processing : Email service
             provisioning</li>
-          </ol>
+          </ul>
           <h2>Appendix 2: International Standard Contractual Clauses : MODULE FOUR:
             Transfer processor to controller</h2>
           <h3>SECTION I</h3>
