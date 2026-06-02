@@ -170,6 +170,7 @@
               <router-link to="/dsa-info">please click here</router-link>.
             </li>
           </ul>
+
           <h2>7. Grant of rights of use</h2>
           <p>7.1 The User grants
             Wikimedia the rights of use to the uploaded Content for the purpose of
@@ -177,6 +178,7 @@
           <p>7.2 Wikimedia reserves the right to close, move, merge, or rename a site
             for any reason. Wikimedia shall not be held liable for any modification,
             suspension or discontinuance of any site, or of the Platform as a whole.</p>
+
           <h2>8. Term and Termination</h2>
           <p>8.1 The terms of this Agreement commence upon the
             User’s registration.</p>
@@ -195,7 +197,8 @@
             breaches any of the terms and conditions of the Terms of Use. Upon
             termination of the User’s Account, the User’s right to use the Platform
             will immediately cease.</p>
-          <h2>9. Availability and Maintenance</h2>
+
+            <h2>9. Availability and Maintenance</h2>
           <p>9.1 Wikimedia shall implement appropriate measures to ensure the availability and
             error free functionality of the Platform. However, the User acknowledges
             that for technical reasons and due to the dependence on external
@@ -206,7 +209,8 @@
             may result in a temporary impairment of the usability of the Platform.
             Insofar Wikimedia shall carry out the maintenance work during periods of
             low use.</p>
-          <h2>10. Liability</h2>
+
+            <h2>10. Liability</h2>
           <p>10.1 Wikimedia provides a free service that allows
             the User to create their own Wikibase Instance. Wikimedia assumes no
             responsibility for any material posted by the User. However, in
@@ -217,6 +221,7 @@
           <p>10.3 The User agrees to indemnify
             and hold harmless Wikimedia from any claims by third parties arising
             from Content they publish or actions they take while using our Platform.</p>
+
           <h2>11. Data Protection</h2>
           <p>1.11 For comprehensive information on how Wikimedia
             collects, processes or uses personal data of the User, please refer to
@@ -239,6 +244,7 @@
             Appendix 2 (the “International Standard Contractual Clauses”) in form of
             Module 4 (Processor to Controller). The Annexes I, II, III and IV of
             Appendix 1 apply accordingly.</p>
+
           <h2>12. Miscellaneous</h2>
           <p>12.1 This Agreement is
             governed by, and shall be interpreted in accordance with, the laws of,
@@ -258,11 +264,14 @@
             enforceable provision that comes as close as possible to the economic
             purpose that both parties had in mind with the invalid or unenforceable
             provision.</p>
+
+          <v-divider class="my-8" />
+
           <h2>Appendix 1: Standard contractual clauses (Commission Implementing
             Decision (EU) 2021/915 of 4 June 2021)</h2>
           <h3>SECTION I</h3>
-          <h4>Clause 1</h4>
-          <h4>Purpose and scope</h4>
+
+          <h4>Clause 1 &mdash; Purpose and scope</h4>
           <p>(a) The purpose of these Standard
             Contractual Clauses (the Clauses) is to ensure compliance with Article
             28(3) and (4) of Regulation (EU) 2016/679 of the European Parliament and
@@ -285,8 +294,9 @@
             by themselves ensure compliance with obligations related to
             international transfers in accordance with Chapter V of Regulation (EU)
             2016/679 and/or Regulation (EU) 2018/1725.</p>
-          <h4>Clause 2</h4>
-          <h4>Invariability of the Clauses</h4>
+
+          <h4>Clause 2 &mdash; Invariability of the Clauses
+          </h4>
           <p>(a) The Parties undertake not to modify the Clauses, except for
             adding information to the Annexes or updating information in them.</p>
           <p>(b)This does not prevent the Parties from including the standard
@@ -294,8 +304,8 @@
             from adding other clauses or additional safeguards provided that they do
             not directly or indirectly contradict the Clauses or detract from the
             fundamental rights or freedoms of data subjects.</p>
-          <h4>Clause 3</h4>
-          <h4>Interpretation</h4>
+
+          <h4>Clause 3 &mdash; Interpretation</h4>
           <p>(a) Where these Clauses use the terms defined in Regulation (EU)
             2016/679 or Regulation (EU) 2018/1725 respectively, those terms shall
             have the same meaning as in that Regulation.</p>
@@ -307,21 +317,22 @@
             obligations provided for in Regulation (EU) 2016/679 / Regulation (EU)
             2018/1725 or in a way that prejudices the fundamental rights or freedoms
             of the data subjects.</p>
-          <h3>Clause 4</h3>
-          <h4>Hierarchy</h4>
+
+          <h4>Clause 4 &mdash; Hierarchy</h4>
           <p>In the event of a contradiction
             between these Clauses and the provisions of related agreements between
             the Parties existing at the time when these Clauses are agreed or
             entered into thereafter, these Clauses shall prevail.</p>
-          <h3>SECTION II</h3>
-          <h3>OBLIGATIONS OF THE PARTIES</h3>
-          <h4>Clause 5</h4>
-          <h4>Description of processing(s)</h4>
+
+
+          <h3>SECTION II &mdash; OBLIGATIONS OF THE PARTIES</h3>
+
+          <h4>Clause 5 &mdash; Description of processing(s)</h4>
           <p>The details of the processing operations, in particular the categories of
             personal data and the purposes of processing for which the personal data
             is processed on behalf of the controller, are specified in Annex II.</p>
-          <h4>Clause 6</h4>
-          <h4>Obligations of the Parties</h4>
+
+          <h4>Clause 6 &mdash; Obligations of the Parties</h4>
           <h5>6.1. Instructions</h5>
           <p>(a) The processor
             shall process personal data only on documented instructions from the
@@ -433,8 +444,7 @@
             fulfil a specific requirement under Union or Member State law to which
             the processor is subject and shall take place in compliance with Chapter
             V of Regulation (EU) 2016/679 or Regulation (EU) 2018/1725.</p>
-          <p>(b) The
-            controller agrees that where the processor engages a sub-processor in
+          <p>(b) The controller agrees that where the processor engages a sub-processor in
             accordance with Clause 7.7. for carrying out specific processing
             activities (on behalf of the controller) and those processing activities
             involve a transfer of personal data within the meaning of Chapter V of
@@ -443,6 +453,7 @@
             contractual clauses adopted by the Commission in accordance with of
             Article 46(2) of Regulation (EU) 2016/679, provided the conditions for
             the use of those standard contractual clauses are met.</p>
+
           <h4>Clause 7</h4>
           <h4>Assistance to the controller</h4>
           <p>(a) The processor shall promptly notify the
@@ -454,8 +465,7 @@
             exercise their rights, taking into account the nature of the processing.
             In fulfilling its obligations in accordance with (a) and (b), the
             processor shall comply with the controller’s instructions</p>
-          <p>(c) In
-            addition to the processor’s obligation to assist the controller pursuant
+          <p>(c) In addition to the processor’s obligation to assist the controller pursuant
             to Clause 8(b), the processor shall furthermore assist the controller in
             ensuring compliance with the following obligations, taking into account
             the nature of the data processing and the information available to the
@@ -480,8 +490,7 @@
           <p>(d) The Parties shall set out in Annex III the appropriate technical and organisational measures by which
             the processor is required to assist the controller in the application of this Clause as well as the scope
             and the extent of the assistance required.</p>
-          <h4>Clause 8</h4>
-          <h4>Notification of personal data breach</h4>
+          <h4>Clause 8 &mdash; Notification of personal data breach</h4>
           <p>In the event of a personal data
             breach, the processor shall cooperate with and assist the controller for
             the controller to comply with its obligations under Articles 33 and 34
@@ -519,7 +528,8 @@
             with the obligation to communicate without undue delay the personal data
             breach to the data subject, when the personal data breach is likely to
             result in a high risk to the rights and freedoms of natural persons.</p>
-          <h5>8.2 Data breach concerning data processed by the processor</h5>
+
+            <h5>8.2 Data breach concerning data processed by the processor</h5>
           <p>In the event of a
             personal data breach concerning data processed by the processor, the
             processor shall notify the controller without undue delay after the
@@ -530,7 +540,7 @@
             data records concerned);</p>
           <p>(b)the details of a contact point where more information concerning the
             personal data breach can be obtained;</p>
-          <p>(c)its likely consequences and the measures taken or proposed to be
+          <p>(c) its likely consequences and the measures taken or proposed to be
             taken to address the breach, including to mitigate its possible adverse
             effects.</p>
           <p>Where, and insofar as, it is not possible to provide all this
@@ -542,10 +552,14 @@
             processor when assisting the controller in the compliance with the
             controller’s obligations under Articles 33 and 34 of Regulation (EU)
             2016/679.</p>
-          <h3>SECTION III</h3>
-          <h3> FINAL PROVISIONS</h3>
-          <h4>Clause 9</h4>
-          <h4>Non-compliance with the Clauses and termination</h4>
+
+          <h3>
+            SECTION III  &mdash; FINAL PROVISIONS
+          </h3>
+
+          <h4>
+            Clause 9 &mdash; Non-compliance with the Clauses and termination
+          </h4>
           <p>(a) Without prejudice to any provisions of Regulation
             (EU) 2016/679 and/or Regulation (EU) 2018/1725, in the event that the
             processor is in breach of its obligations under these Clauses, the
@@ -580,28 +594,38 @@
             return all the personal data to the controller and delete existing copies unless Union or Member State law
             requires storage of the personal data. Until the data is deleted or returned, the processor shall continue
             to ensure compliance with these Clauses.</p>
+
           <h4>ANNEX I</h4>
           <h5>List of parties</h5>
-          <p></p><b>Controller(s):</b> [Identity and contact details
+          <p>
+          <b>Controller(s):</b> [Identity and contact details
           of the controller(s), and, where applicable, of the controller’s data
-          protection officer]
-          <p />
+          protection officer]</p>
           <p>The User as specified in the Terms of Use.</p>
+
           <p><b>Processor(s):</b>
             [Identity and contact details of the processor(s) and,
             where applicable, of the processor’s data protection officer]</p>
           <p>Wikimedia
             Deutschland e. V., Tempelhofer Ufer 23-24, 10369 Berlin</p>
+
           <h4>ANNEX II</h4>
           <h5>Description of the processing</h5>
+          <p>
           <i>Categories of data subjects
             whose personal data is processed</i>
-          <li class="pl-8"> Any categories of data subjects
-            contained in the data uploaded by the User</li>.
+          <ul class="pl-8"><li>Any categories of data subjects
+            contained in the data uploaded by the User.</li></ul>
+          </p>
+
+          <p>
           <i>Categories of personal data
             processed</i>
-          <li class="pl-8">Any categories of personal data contained in the data
-            uploaded by the User.</li>
+          <ul class="pl-8"><li>Any categories of personal data contained in the data
+            uploaded by the User.</li></ul>
+          </p>
+
+          <p>
           <i>Sensitive data processed (if applicable) and
             applied restrictions or safeguards that fully take into consideration
             the nature of the data and the risks involved, such as for instance
@@ -609,53 +633,85 @@
             for staff having followed specialised training), keeping a record of
             access to the data, restrictions for onward transfers or additional
             security measures.</i>
-          <li class="pl-8">The categories of personal data may include
+          <ul class="pl-8"><li>The categories of personal data may include
             sensitive data depending on the Content uploaded by the User. Since
             Wikimedia has no knowledge of the specific categories processed it lies
             in the User’s responsibility to ensure that the safeguards are
-            sufficient to process the specific categories of personal data.</li>
-          <i>Nature of the processing</i>
-          <li class="pl-8">Any processing necessary to fulfil the contractual
-            purposes. Especially collection, storage, disclosure and dissemination
-            and making publicly available as well as anonymization and/or deletion.</li>
-          <i>Purpose(s) for which the personal data is processed on behalf of the
-            controller</i>
-          <li class="pl-8">Publishing the Wikibase as well as the data uploaded to and
-            contained in it and making it available to the public. Wikimedia does
-            not act as a processor for the User with regard to the processing of
-            personal data of persons browsing the Wikibase and any personal data
-            that is processed to establish the connection.</li>
-          <i>Duration of the processing</i>
-          <li class="pl-8">The rules of the Agreement regarding the
-            Term and Termination apply.</li>
-          <i>For processing by (sub-) processors, also specify subject matter, nature
-            and duration of the processing</i>
+            sufficient to process the specific categories of personal data.</li></ul>
+            </p>
+
+          <p>
+            <i>Nature of the processing</i>
+            <ul class="pl-8"><li>Any processing necessary to fulfil the contractual
+              purposes. Especially collection, storage, disclosure and dissemination
+              and making publicly available as well as anonymization and/or deletion.</li></ul>
+          </p>
+
+          <p>
+            <i>Purpose(s) for which the personal data is processed on behalf of the
+              controller</i>
+            <ul class="pl-8"><li>Publishing the Wikibase as well as the data uploaded to and
+              contained in it and making it available to the public. Wikimedia does
+              not act as a processor for the User with regard to the processing of
+              personal data of persons browsing the Wikibase and any personal data
+              that is processed to establish the connection.</li></ul>
+          </p>
+
+          <p>
+            <i>Duration of the processing</i>
+            <ul class="pl-8"><li>The rules of the Agreement regarding the
+              Term and Termination apply.</li></ul>
+          </p>
+
+          <p>
+            <i>For processing by (sub-) processors, also specify subject matter, nature
+              and duration of the processing</i>
+          </p>
+
           <h4>ANNEX III</h4>
-          <b>Technical and organisational measures including technical
-            and organisational measures to ensure the security of the data</b></p>
-          <i>You may
-            obtain a copy of our technical and organisational measures on request,
-            to do so please send an email to: datenschutz@wikimedia.de.</i>
+            <p>Technical and organisational measures including technical
+              and organisational measures to ensure the security of the data</p>
+
+              <p>
+                <i>You may obtain a copy of our technical and organisational measures on request,
+                to do so please send an email to: datenschutz@wikimedia.de.</i>
+              </p>
+
           <h4>ANNEX IV</h4>
-          <b>List of sub-processors</b>
-          <b>EXPLANATORY NOTE:</b>
+          <p class="font-weight-bold">List of sub-processors</p>
+          <p class="font-weight-bold">EXPLANATORY NOTE:</p>
+
           <p>This Annex needs to
             be completed in case of specific authorisation of sub-processors (Clause
-            7.7(a), Option 1). The controller has authorised the use of the
+            7.7(a), Option 1).</p><p>The controller has authorised the use of the
             following sub-processors:</p>
+
           <ul class="pl-8">
-            <li><b>1. Name: Google Ireland Ltd.</b></li> Address: Gordon
-            House, Barrow Street, Dublin 4 Contact person’s name, position and
-            contact details: Please contact Wikimedia for the contact information
-            Description of the processing (including a clear delimitation of
+            <li>
+              <p><b>1. Name: Google Ireland Ltd.</b></p>
+              <p>Address: Gordon House, Barrow Street, Dublin 4</p>
+
+            <p>Contact person’s name, position and contact details: Please contact Wikimedia for the contact information</p>
+
+            <p>Description of the processing (including a clear delimitation of
             responsibilities in case several sub-processors are authorised): Hosting
             of the Wikibase.cloud service</p>
-            <li><b>2. Name: Mailgun Technologies, Inc</b></li>
-            Address: 112 E Pecan St #1135, San Antonio, TX 78205 Contact person’s
-            name, position and contact details: Please contact Wikimedia for the
-            contact information Description of the processing : Email service
-            provisioning</li>
+          </li>
+
+            <li>
+              <p><b>2. Name: Mailgun Technologies, Inc</b></p>
+
+              <p>Address: 112 E Pecan St #1135, San Antonio, TX 78205</p>
+              <p>Contact person’s name, position and contact details: Please contact Wikimedia for the
+              contact information</p>
+
+              <p>Description of the processing: Email service
+              provisioning</p>
+            </li>
           </ul>
+
+          <v-divider class="my-8" />
+
           <h2>Appendix 2: International Standard Contractual Clauses : MODULE FOUR:
             Transfer processor to controller</h2>
           <h3>SECTION I</h3>
