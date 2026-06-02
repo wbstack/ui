@@ -142,6 +142,18 @@ const router = new Router({
       },
     },
   ],
+  scrollBehavior (to, from, savedPosition) {
+    // brings viewport back to where it was when using Back button
+    if (savedPosition) return savedPosition
+
+    // scroll to in-page router-link anchor if used
+    if (to.hash) {
+      return { selector: to.hash, behavior: 'smooth' }
+    }
+
+    // default: scroll to the top of the page
+    return { x: 0, y: 0, behavior: 'smooth' }
+  },
 })
 
 // Require some routes to be logged in only.
