@@ -1,19 +1,22 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-        <v-col cols="8">
-          <v-card class="mx-auto" color="light-blue">
-            <v-card-title>
-              What changed from <a> previous version</a>
+        <v-col cols="12">
+          <h1>Terms Of Use</h1>
+          <p>last updated on: November 9, 2025</p>
+          <v-card class="mx-auto card-design text--info">
+            <v-card-title class="text--primary">
+              <span>What changed from <a> previous version</a></span>
             </v-card-title>
 
             <v-card-text>
-              <p>The Terms of Use were revised to ensure compliance with the European Union’s
-              Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud
-                operates.</p>
+              The Terms of Use were revised to ensure compliance with the
+              European Union’s Digital Services Act (DSA) and to
               <v-expand-transition>
                 <div v-if="show || !isMobile">
+                  improve transparency about how Wikibase Cloud
+                  operates.<br /><br/>
                   Key updates:
                   <ul>
                     <li>
@@ -41,14 +44,14 @@
             </v-card-text>
             <v-card-actions v-if="isMobile">
               <v-btn
-                variant="text"
+                class=""
+                text
                 @click="show = !show"
               >
                 {{ show ? 'See less' : 'See more' }}
               </v-btn>
             </v-card-actions>
           </v-card>
-          <h1>Terms Of Use</h1>
           <h2>1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
             Agreement, the following terms have the following meanings:</p>
@@ -368,7 +371,6 @@
             between these Clauses and the provisions of related agreements between
             the Parties existing at the time when these Clauses are agreed or
             entered into thereafter, these Clauses shall prevail.</p>
-
 
           <h3>SECTION II &mdash; OBLIGATIONS OF THE PARTIES</h3>
 
@@ -1046,7 +1048,6 @@
               of personal data under these Clauses, where:
             </li>
 
-
             <ul>
               <li>
                 (i) the data exporter has suspended the transfer of personal data to the data importer pursuant to
@@ -1134,7 +1135,6 @@ export default {
   data: () => ({
     show: false,
   }),
-
 }
 </script>
 
@@ -1146,5 +1146,8 @@ h3 {
 h4,
 h5 {
   margin-top: 4px;
+}
+.card-design {
+  background-color: #E5EDF6 !important;
 }
 </style>
