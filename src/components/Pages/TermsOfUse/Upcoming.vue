@@ -907,7 +907,6 @@
             </li>
           </ul>
 
-
           <h3>SECTION II &mdash; OBLIGATIONS OF THE PARTIES</h3>
 
           <h4>
@@ -1134,9 +1133,9 @@
 export default {
   name: 'TermsOfUseUpcoming',
   computed: {
-    isMobile() {
-       return this.$vuetify.breakpoint.xs
-    }
+    isMobile () {
+      return this.$vuetify.breakpoint.xs
+    },
   },
   data: () => ({
     show: false,
