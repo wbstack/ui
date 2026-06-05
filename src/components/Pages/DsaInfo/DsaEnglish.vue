@@ -5,7 +5,7 @@
         <router-link :to="{ hash: '#dsa-de' }" class="text-decoration-none">Zur deutschen Fassung</router-link>
       </div>
 
-      <v-expansion-panels>
+      <v-expansion-panels v-model="contentPanel">
         <v-expansion-panel>
           <v-expansion-panel-header>
             Contents
@@ -141,6 +141,16 @@
 export default {
   name: 'DsaEnglish',
   computed: {},
+
+  data: () => ({
+    contentPanel: null, // closed by default, https://v2.vuetifyjs.com/en/components/expansion-panels/#model
+  }),
+
+  mounted() {
+    if (this.$vuetify.breakpoint.mdAndUp) {
+      this.contentPanel = 0 // open the first (and only) panel
+    }
+  }
 }
 </script>
 
