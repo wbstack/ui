@@ -8,7 +8,14 @@
       </v-row>
 
       <DsaEnglish id="dsa-en" />
-      <v-divider class="mt-16 mb-8" />
+      
+
+      <v-row justify="center">
+        <v-col cols="12">
+          <v-divider class="mt-16 mb-8" />
+        </v-col>
+      </v-row>
+
       <DsaGerman id="dsa-de" />
     </v-container>
   </v-main>
