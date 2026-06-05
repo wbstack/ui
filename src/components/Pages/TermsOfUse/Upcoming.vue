@@ -4,33 +4,30 @@
       <v-row justify="center">
         <v-col cols="12">
           <h1>Terms Of Use</h1>
-          <p>last updated on: November 9, 2025</p>
-          <v-card class="mx-auto card-design text--info">
-            <v-card-title class="text--primary">
-              <span>What changed from <a> previous version</a></span>
-            </v-card-title>
-
-            <v-card-text>
-              The Terms of Use were revised to ensure compliance with the
-              European Union’s Digital Services Act (DSA) and to
-              <v-expand-transition>
-                <div v-if="show || !isMobile">
-                  improve transparency about how Wikibase Cloud
-                  operates.<br /><br/>
-                  Key updates:
+          <p class="grey--text text--darken-1">last updated on: November 9, 2025</p>
+          <v-alert
+            text
+            color="info"
+          >
+            <div class="text-h6 mb-3 blue--text text--darken-2">
+              What changed from <a class=""><u>previous version</u></a></div>
+            <p>The Terms of Use were revised to ensure compliance with the European Union’s
+              Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud operates.</p>
+            <v-expand-transition>
+              <div v-if="show || !isMobile">
+                <div>
+                  <div>Key updates:</div>
                   <ul>
                     <li>
-                      We have clarified when and how user accounts or individual instances may
-                      be suspended or terminated, including notice periods and proportionality
-                      principles.
+                      We have clarified when and how user accounts or individual instances
+                      may be suspended or terminated.
                     </li>
                     <li>
-                      The new version explains more clearly how decisions are made, including
-                      how users can raise concerns or file complaints about moderation actions.
+                      The new version explains more clearly how decisions are made.
                     </li>
                     <li>
-                      The responsibilities of instance managers and contributors are described
-                      in more detail.
+                      The responsibilities of instance managers and contributors are
+                      described in more detail.
                     </li>
                     <li>
                       The Terms now explicitly reference applicable GDPR requirements.
@@ -40,19 +37,28 @@
                     </li>
                   </ul>
                 </div>
-              </v-expand-transition>
-            </v-card-text>
-            <v-card-actions v-if="isMobile">
+              </div>
+            </v-expand-transition>
+
+            <div v-if="isMobile" class="mt-2 d-flex justify-space-between">
               <v-btn
-                class=""
                 text
+                class="blue--text text-darken-2"
+                variant="text"
+                size="small"
                 @click="show = !show"
               >
                 {{ show ? 'See less' : 'See more' }}
               </v-btn>
-            </v-card-actions>
-          </v-card>
-          <h2>1. Definitions</h2>
+              <v-btn
+                class="pa-2 mt-auto d-flex justify-end"
+                icon
+                @click="show = !show"
+              >
+                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              </v-btn>
+            </div>
+          </v-alert>          <h2>1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
             Agreement, the following terms have the following meanings:</p>
           <p>1.1 “Manager Account” or “Account”: The personal Account provided by Wikibase.cloud
@@ -1129,7 +1135,7 @@ export default {
   name: 'TermsOfUseUpcoming',
   computed: {
     isMobile() {
-       return this.$vuetify.breakpoint.smAndDown
+       return this.$vuetify.breakpoint.xs
     }
   },
   data: () => ({
