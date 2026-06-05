@@ -32,8 +32,7 @@
               <v-list-item>
                 <v-list-item-content>
                   <router-link :to="{ hash: '#dsa-en-three' }" class="text-decoration-none">
-                    <v-list-item-title>3. Average monthly number of active users in the
-        EU</v-list-item-title>
+                    <v-list-item-title>3. Average monthly number of active users in the EU</v-list-item-title>
                   </router-link>
                 </v-list-item-content>
               </v-list-item>
