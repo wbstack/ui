@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
