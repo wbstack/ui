@@ -9,55 +9,59 @@
             text
             color="info"
           >
-            <div class="text-h6 mb-3 blue--text text--darken-2">
-              What changed from <a class=""><u>previous version</u></a></div>
-            <p>The Terms of Use were revised to ensure compliance with the European Union’s
-              Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud operates.</p>
-            <v-expand-transition>
-              <div v-if="show || !isMobile">
-                <div>
-                  <div>Key updates:</div>
-                  <ul>
-                    <li>
-                      We have clarified when and how user accounts or individual instances
-                      may be suspended or terminated.
-                    </li>
-                    <li>
-                      The new version explains more clearly how decisions are made.
-                    </li>
-                    <li>
-                      The responsibilities of instance managers and contributors are
-                      described in more detail.
-                    </li>
-                    <li>
-                      The Terms now explicitly reference applicable GDPR requirements.
-                    </li>
-                    <li>
-                      The document has been reorganized and clarified.
-                    </li>
-                  </ul>
-                </div>
+            <div class="light-blue--text text--darken-4">
+              <div class="text-h6 mb-3">What changed from
+                <router-link class="text-decoration-none light-blue--text text--darken-4" to="/terms-of-use">
+                  previous version</router-link>
               </div>
-            </v-expand-transition>
-
-            <div v-if="isMobile" class="mt-2 d-flex justify-space-between">
-              <v-btn
-                text
-                class="blue--text text-darken-2"
-                variant="text"
-                size="small"
-                @click="show = !show"
-              >
-                {{ show ? 'See less' : 'See more' }}
-              </v-btn>
-              <v-btn
-                class="pa-2 mt-auto d-flex justify-end"
-                icon
-                @click="show = !show"
-              >
-                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-              </v-btn>
+              <p>The Terms of Use were revised to ensure compliance with the European Union’s
+                Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud operates.</p>
+              <v-expand-transition>
+                <div v-if="show || !isMobile">
+                  <div>
+                    <div>Key updates:</div>
+                    <ul>
+                      <li>
+                        We have clarified when and how user accounts or individual instances
+                        may be suspended or terminated.
+                      </li>
+                      <li>
+                        The new version explains more clearly how decisions are made.
+                      </li>
+                      <li>
+                        The responsibilities of instance managers and contributors are
+                        described in more detail.
+                      </li>
+                      <li>
+                        The Terms now explicitly reference applicable GDPR requirements.
+                      </li>
+                      <li>
+                        The document has been reorganized and clarified.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </v-expand-transition>
             </div>
+
+              <div v-if="isMobile" class="mt-2 d-flex justify-space-between">
+                <v-btn
+                  text
+                  class="light-blue--text text-darken-2"
+                  variant="text"
+                  size="small"
+                  @click="show = !show"
+                >
+                  {{ show ? 'See less' : 'See more' }}
+                </v-btn>
+                <v-btn
+                  class="pa-2 mt-auto d-flex justify-end"
+                  icon
+                  @click="show = !show"
+                >
+                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                </v-btn>
+              </div>
           </v-alert>          <h2>1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
             Agreement, the following terms have the following meanings:</p>
