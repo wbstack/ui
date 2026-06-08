@@ -97,7 +97,7 @@
       <h3 id="dsa-en-three" class="font-weight-regular my-2">3. Average monthly number of active users in the
         EU</h3>
       <p>The estimated average number of monthly active users in the EU is
-        20,000, based on the average of the previous six months up to
+        18,000, based on the average of the previous six months up to
         <strong>January 2026</strong>.
       </p>
       <p>Until the EU Commission specifies the exact calculation method in
