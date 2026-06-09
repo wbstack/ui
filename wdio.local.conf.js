@@ -8,7 +8,7 @@ exports.config = {
   /**
    * config for local testing
    */
-  logLevel: 'debug',
+  logLevel: 'error',
   outputDir: '',
   maxInstances: 1,
   port: 4444,
