@@ -26,7 +26,7 @@ jobs:
 
       - run: sleep 10
 
-      - run: docker compose exec api bash -c 'php artisan migrate:fresh && php artisan passport:install && php artisan db:seed && php artisan key:generate && php artisan storage:link'
+      - run: docker compose exec api bash -c 'php artisan migrate:fresh && php artisan passport:install --no-interaction && php artisan db:seed && php artisan key:generate && php artisan storage:link'
         working-directory: api
 
       - uses: actions/checkout@v6.0.1
