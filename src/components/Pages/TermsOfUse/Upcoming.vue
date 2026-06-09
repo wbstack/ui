@@ -47,8 +47,7 @@
               <div v-if="isMobile" class="mt-2 d-flex justify-space-between">
                 <v-btn
                   text
-                  class="light-blue--text text-darken-2"
-                  variant="text"
+                  class="light-blue--text text--darken-2"
                   size="small"
                   @click="show = !show"
                 >
@@ -62,7 +61,8 @@
                   <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
                 </v-btn>
               </div>
-          </v-alert>          <h2>1. Definitions</h2>
+          </v-alert>
+          <h2>1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
             Agreement, the following terms have the following meanings:</p>
           <p>1.1 “Manager Account” or “Account”: The personal Account provided by Wikibase.cloud
@@ -281,7 +281,7 @@
             from Content they publish or actions they take while using our Platform.</p>
 
           <h2>11. Data Protection</h2>
-          <p>1.11 For comprehensive information on how Wikimedia
+          <p>11.1 For comprehensive information on how Wikimedia
             collects, processes or uses personal data of the User, please refer to
             our <router-link to="/privacy-policy">Privacy
               Policy</router-link>.</p>
@@ -1155,8 +1155,5 @@ h3 {
 h4,
 h5 {
   margin-top: 4px;
-}
-.card-design {
-  background-color: #E5EDF6 !important;
 }
 </style>
