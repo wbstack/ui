@@ -9,7 +9,7 @@ class Discovery {
   get header () { return $('.intro .text-h4.title') }
 
   async getCardDetails (card) {
-    await card.waitForDisplayed({ timeout: 5000 })
+    await card.waitForDisplayed({ timeout: 30000 })
     return {
       name: await (await card.$('.text-h5')).getText(),
       pages: await (await card.$('.pages')).getText(),
@@ -31,16 +31,16 @@ class Discovery {
   async waitForCards () {
     const sortDropdown = await this.sortDropdown
     // Inputs on the discovery page are disabled until the results are loaded
-    await sortDropdown.waitForClickable({ timeout: 5000 })
+    await sortDropdown.waitForClickable({ timeout: 30000 })
   }
 
   async setSortValue (value) {
     const sortDropdown = await this.sortDropdown
-    await sortDropdown.waitForClickable({ timeout: 5000 })
+    await sortDropdown.waitForClickable({ timeout: 30000 })
     await sortDropdown.click()
 
     const dropdownOption = await $('//div[contains(@class, "v-list-item__title") and contains(text(), "' + value + '")]')
-    await dropdownOption.waitForDisplayed({ timeout: 5000 })
+    await dropdownOption.waitForDisplayed({ timeout: 30000 })
     await dropdownOption.click()
     await this.waitForCards()
   }

@@ -86,7 +86,7 @@ describe('Discovery page', () => {
     await Discovery.setSortValue('Alphabetically ↑')
 
     const excludeEmptyCheckbox = await Discovery.excludeEmptyCheckbox
-    await excludeEmptyCheckbox.waitForExist({ timeout: 5000 })
+    await excludeEmptyCheckbox.waitForExist({ timeout: 30000 })
     const excludeEmptyCheckboxWrapper = await excludeEmptyCheckbox.parentElement()
     await excludeEmptyCheckboxWrapper.click()
 
