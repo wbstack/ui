@@ -42,7 +42,7 @@ jobs:
       - run: docker compose run --rm ui npm install
         working-directory: ui
 
-      - run: docker compose --profile browser-tests up --wait
+      - run: docker compose --profile browser-tests up
         working-directory: ui
 
       - run: docker compose exec -it ui npm run test:e2e
