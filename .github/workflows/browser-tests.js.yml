@@ -42,9 +42,6 @@ jobs:
       - run: docker compose run --rm --env NODE_ENV=development ui npm ci
         working-directory: ui
 
-      - run: docker compose run --rm ui npm run build
-        working-directory: ui
-
       - run: docker compose --profile browser-tests up --wait
         working-directory: ui
 
