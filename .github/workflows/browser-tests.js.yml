@@ -42,6 +42,9 @@ jobs:
       - run: docker compose run --rm ui npm install
         working-directory: ui
 
+      - run: docker compose run --rm ui npm run build
+        working-directory: ui
+
       - run: docker compose --profile browser-tests up --wait
         working-directory: ui
 
