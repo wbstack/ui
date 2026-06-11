@@ -104,7 +104,7 @@
       <h3 id="dsa-de-three" class="font-weight-regular my-2">3. Durchschnittliche monatliche Zahl der aktiven Nutzer in
         der EU</h3>
       <p>Die geschätzte durchschnittliche Anzahl monatlich aktiver Nutzer in
-        der EU beträgt 18.000 Millionen, basierend auf dem Durchschnitt der
+        der EU beträgt 18.000, basierend auf dem Durchschnitt der
         vergangenen sechs Monate bis zum <strong>Januar 2026</strong>.</p>
       <p>Bis die EU-Kommission gemäß Art. 24 Abs. 2 und Art. 33 Abs. 3 DSGVO
         die genaue Berechnungsmethode in den delegierten Rechtsakten festlegt,
