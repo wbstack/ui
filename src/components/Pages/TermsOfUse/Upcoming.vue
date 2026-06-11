@@ -669,25 +669,25 @@
 
           <h4>ANNEX II</h4>
           <h5>Description of the processing</h5>
-          <p>
+          <div>
             <i>Categories of data subjects
               whose personal data is processed</i>
           <ul class="pl-8">
             <li>Any categories of data subjects
               contained in the data uploaded by the User.</li>
           </ul>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <i>Categories of personal data
               processed</i>
           <ul class="pl-8">
             <li>Any categories of personal data contained in the data
               uploaded by the User.</li>
           </ul>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <i>Sensitive data processed (if applicable) and
               applied restrictions or safeguards that fully take into consideration
               the nature of the data and the risks involved, such as for instance
@@ -702,18 +702,18 @@
               in the User’s responsibility to ensure that the safeguards are
               sufficient to process the specific categories of personal data.</li>
           </ul>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <i>Nature of the processing</i>
           <ul class="pl-8">
             <li>Any processing necessary to fulfil the contractual
               purposes. Especially collection, storage, disclosure and dissemination
               and making publicly available as well as anonymization and/or deletion.</li>
           </ul>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <i>Purpose(s) for which the personal data is processed on behalf of the
               controller</i>
           <ul class="pl-8">
@@ -723,15 +723,15 @@
               personal data of persons browsing the Wikibase and any personal data
               that is processed to establish the connection.</li>
           </ul>
-          </p>
+          </div>
 
-          <p>
+          <div>
             <i>Duration of the processing</i>
           <ul class="pl-8">
             <li>The rules of the Agreement regarding the
               Term and Termination apply.</li>
           </ul>
-          </p>
+          </div>
 
           <p>
             <i>For processing by (sub-) processors, also specify subject matter, nature
@@ -993,7 +993,7 @@
             under Regulation (EU) 2016/679.</p>
 
           <h4>Clause 11 &mdash; Redress</h4>
-          <p>
+          <div>
           <ul>
             <li>
               (a) The data importer shall inform data subjects in a transparent and easily accessible format, through
@@ -1001,10 +1001,10 @@
               promptly with any complaints it receives from a data subject.
             </li>
           </ul>
-          </p>
+          </div>
 
           <h4>Clause 12 &mdash; Liability</h4>
-          <p>
+          <div>
           <ul>
             <li>
               (a) Each Party shall be liable to the other Party/ies for any damages it causes the other Party/ies by any
@@ -1031,7 +1031,7 @@
               liability.
             </li>
           </ul>
-          </p>
+          </div>
 
           <h4>Clause 13 [not applicable] &mdash; Supervision</h4>
 
