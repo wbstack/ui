@@ -79,7 +79,7 @@
       <p class="font-weight-light">Stand: Januar 2026</p>
 
       <h3 id="dsa-de-one" class="font-weight-regular my-2">1. Allgemeines</h3>
-      <p>Auf dieser Seite findest du alle erforderlichen Informationen nach
+      <p>Auf dieser Seite finden Sie alle erforderlichen Informationen nach
         dem Digital Services Act (das heißt nach Artikel 11, Artikel 12, Artikel
         21 und Artikel 24 der <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32022R2065"
           target="_blank">Verordnung
@@ -114,7 +114,7 @@
       <p>Wir verwenden das Verhältnis der monatlich aktiven Editierenden auf
         Wikibase Cloud zu denen auf Wikidata, um die von Wikidata
         veröffentlichte Schätzung der durchschnittlichen monatlichen Anzahl von
-        Empfängern (1,337,000 im August 2025-January 2026) proportional zu
+        Empfängern (1,337,000 im August 2025-Januar 2026) proportional zu
         skalieren. Bei 337 monatlichen Editierenden auf Wikibase Cloud und
         25.000 auf Wikidata im Januar 2026 ergibt sich daraus eine geschätzte
         durchschnittliche Zahl von ungefähr 18.000 monatlich aktiven Nutzern in
@@ -130,10 +130,10 @@
         Inhalten gemäß Artikel 21 des DSA auch eine zertifizierte
         außergerichtliche Streitbeilegungsstelle wählen. Die EU-Kommission
         verfügt zu diesem Zweck über eine Liste außergerichtlicher
-        Streitbeilegungsstellen, die du <a
+        Streitbeilegungsstellen, die Sie <a
           href="https://digital-strategy.ec.europa.eu/de/policies/dsa-out-court-dispute-settlement"
           target="_blank">hier<v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon></a>
-        findest.</p>
+        finden.</p>
 
       <h3 id="dsa-de-five" class="font-weight-regular my-2">5. Transparenzbericht</h3>
       <p>Gemäß den Vorgaben von Artikel 15 des DSA veröffentlicht Wikimedia
