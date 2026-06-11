@@ -34,4 +34,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+.v-list.wrap .v-list-item__title {
+  white-space: wrap;
+}
+</style>
