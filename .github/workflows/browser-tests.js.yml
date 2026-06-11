@@ -39,10 +39,10 @@ jobs:
       - run: sudo chown -R 1000:1000 .
         working-directory: ui
 
-      - run: docker compose run --rm ui npm install
+      - run: docker compose run --rm --env NODE_ENV=development ui npm ci
         working-directory: ui
 
-      - run: docker compose --profile browser-tests up -d --wait
+      - run: docker compose --profile browser-tests up --wait
         working-directory: ui
 
       - run: docker compose exec -it ui npm run test:e2e
