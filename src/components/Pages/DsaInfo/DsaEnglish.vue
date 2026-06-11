@@ -140,7 +140,7 @@
 <script>
 export default {
   name: 'DsaEnglish',
-  computed: {}
+  computed: {},
 }
 </script>
 

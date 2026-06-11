@@ -146,7 +146,7 @@
 <script>
 export default {
   name: 'DsaGerman',
-  computed: {}
+  computed: {},
 }
 </script>
 

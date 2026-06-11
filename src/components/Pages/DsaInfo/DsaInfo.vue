@@ -8,7 +8,6 @@
       </v-row>
 
       <DsaEnglish id="dsa-en" />
-      
 
       <v-row justify="center">
         <v-col cols="12">
