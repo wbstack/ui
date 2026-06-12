@@ -34,8 +34,8 @@ export default {
 }
 </script>
 
-<style>
-.v-list.wrap .v-list-item__title {
+<style scoped>
+:deep(.v-list.wrap .v-list-item__title) {
   white-space: wrap;
 }
 </style>
