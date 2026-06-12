@@ -292,7 +292,7 @@
             data under the GDPR. To this end, the Parties enter into the Standard
             Contractual Clauses (Commission Implementing Decision (EU) 2021/915 of 4
             June 2021) attached hereto in the Appendix 1.</p>
-          <p>11.3 If and sofar the User
+          <p>11.3 If and to the extent that the User
             resides and/or processes personal data in a state outside of the EU and
             the data transfers between Wikimedia and the User constitute an
             international data transfer according to Chapter 5 of the GDPR, the User
