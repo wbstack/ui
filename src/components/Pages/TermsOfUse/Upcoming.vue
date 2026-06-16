@@ -811,7 +811,7 @@
           </div>
 
           <h4>Clause 2 &mdash; Effect and invariability of the Clauses</h4>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) These Clauses set out appropriate safeguards, including enforceable data subject rights and effective
               legal remedies, pursuant to Article 46(1) and Article 46 (2)(c) of Regulation (EU) 2016/679 and, with
@@ -829,7 +829,7 @@
           </ul>
 
           <h4>Clause 3 &mdash; Third-party beneficiaries</h4>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) Data subjects may invoke and enforce these Clauses, as third-party beneficiaries, against the data
               exporter and/or data importer, with the following exceptions:
@@ -868,7 +868,7 @@
           </ul>
 
           <h4>Clause 4 &mdash; Interpretation</h4>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) Where these Clauses use terms that are defined in Regulation (EU) 2016/679, those terms shall have the
               same meaning as in that Regulation.
@@ -895,7 +895,7 @@
             transferred, are specified in Annex I.B.</p>
 
           <h4>Clause 7 &mdash; Optional Docking clause</h4>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) An entity that is not a Party to these Clauses may, with the agreement of the Parties, accede to these
               Clauses at any time, either as a data exporter or as a data importer, by completing the Appendix and
@@ -925,7 +925,7 @@
             obligations under these Clauses.</p>
 
           <h5>8.1 Instructions</h5>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) The data exporter shall process the personal data only on documented instructions from the data
               importer acting as its controller.
@@ -949,7 +949,7 @@
           </ul>
 
           <h5>8.2 Security of processing</h5>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) The Parties shall implement appropriate technical and organisational measures to ensure the security
               of the data, including during transmission, and protection against a breach of security leading to
@@ -975,7 +975,7 @@
           </ul>
 
           <h5>8.3 Documentation and compliance</h5>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) The Parties shall be able to demonstrate compliance with these Clauses.
             </li>
@@ -994,7 +994,7 @@
             under Regulation (EU) 2016/679.</p>
 
           <h4>Clause 11 &mdash; Redress</h4>
-          <div>
+          <div class="mb-3">
           <ul>
             <li>
               (a) The data importer shall inform data subjects in a transparent and easily accessible format, through
@@ -1005,7 +1005,7 @@
           </div>
 
           <h4>Clause 12 &mdash; Liability</h4>
-          <div>
+          <div class="mb-3">
           <ul>
             <li>
               (a) Each Party shall be liable to the other Party/ies for any damages it causes the other Party/ies by any
@@ -1043,7 +1043,7 @@
 
           <h3>SECTION IV &mdash; FINAL PROVISIONS</h3>
           <h4>Clause 16 &mdash; Non-compliance with the Clauses and termination</h4>
-          <ul>
+          <ul class="mb-3">
             <li>
               (a) The data importer shall promptly inform the data exporter if it is unable to comply with these
               Clauses, for whatever reason.
