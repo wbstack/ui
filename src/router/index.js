@@ -14,7 +14,8 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
-import TermsOfUse from '@/components/Pages/TermsOfUse'
+import Current from '@/components/Pages/TermsOfUse/Current.vue'
+import Upcoming from '@/components/Pages/TermsOfUse/Upcoming.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
@@ -73,7 +74,12 @@ const router = new Router({
     {
       path: '/terms-of-use',
       name: 'TermsOfUse',
-      component: TermsOfUse,
+      component: Current,
+    },
+    {
+      path: '/terms-of-use/upcoming',
+      name: 'TermsOfUseUpcoming',
+      component: Upcoming,
     },
     {
       path: '/hosting-policy/pilot',
