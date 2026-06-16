@@ -20,6 +20,7 @@ import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
 import HostingPolicy from '@/components/Pages/HostingPolicy.vue'
+import DsaInfo from '@/components/Pages/DsaInfo/DsaInfo'
 
 Vue.use(Router)
 
@@ -83,6 +84,11 @@ const router = new Router({
       path: '/privacy-policy',
       name: 'Privacy',
       component: Privacy,
+    },
+    {
+      path: '/dsa-info',
+      name: 'DsaInfo',
+      component: DsaInfo,
     },
     {
       path: '/logout',
