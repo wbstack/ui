@@ -4,7 +4,12 @@
       <v-row justify="center">
         <v-col cols="12">
           <h1>Terms Of Use</h1>
-          <p class="grey--text text--darken-1">last updated on: November 9, 2025</p>
+          <v-alert
+            type="info"
+          >
+            This is an upcoming version. You can find the
+            <router-link class="white--text " to="/terms-of-use">current version here</router-link>
+          </v-alert>
           <v-alert
             text
             color="info"
@@ -12,7 +17,7 @@
             <div class="light-blue--text text--darken-4">
               <div class="text-h6 mb-3">What changed from
                 <router-link class="text-decoration-none light-blue--text text--darken-4" to="/terms-of-use">
-                  previous version</router-link>
+                  the previous version</router-link>
               </div>
               <p>The Terms of Use were revised to ensure compliance with the European Union’s
                 Digital Services Act (DSA) and to improve transparency about how Wikibase Cloud operates.</p>
@@ -22,21 +27,19 @@
                     <div>Key updates:</div>
                     <ul>
                       <li>
-                        We have clarified when and how user accounts or individual instances
-                        may be suspended or terminated.
+                        We have clarified when and how user accounts or individual instances may be suspended or terminated, including notice periods and proportionality principles.
                       </li>
                       <li>
-                        The new version explains more clearly how decisions are made.
+                        The new version explains more clearly how decisions are made, including how users can raise concerns or file complaints about moderation actions.
                       </li>
                       <li>
-                        The responsibilities of instance managers and contributors are
-                        described in more detail.
+                        The responsibilities of instance managers and contributors are described in more detail, especially regarding compliance with applicable laws and acceptable use of the platform.
                       </li>
                       <li>
-                        The Terms now explicitly reference applicable GDPR requirements.
+                        The Terms now explicitly reference applicable GDPR requirements and include updated wording to reflect international data transfer safeguards.
                       </li>
                       <li>
-                        The document has been reorganized and clarified.
+                        The document has been reorganized and clarified to make rights, obligations, and processes easier to understand.
                       </li>
                     </ul>
                   </div>
@@ -146,8 +149,7 @@
             create, publish or share Content. The User agrees not to upload or share
             any Content on their Wikibase Instance that infringes the intellectual
             property rights of third persons or that is otherwise unlawful.</p>
-          <p>5.3 It is specifically prohibited to:</p>
-
+          <p>5.3 It is specifically prohibited to:
           <ul>
             <li>Upload or distribute Content that is
               insulting, abusive, offensive, racist, threatening, harmful to minors,
@@ -171,7 +173,7 @@
             <li>Provide false data or information, as well as false data or
               information of third parties; or</li>
             <li>Sell or otherwise transfer the User Account to another person.</li>
-          </ul>
+          </ul></p>
 
           <p>5.4 The User should be aware that the sites
             may be edited by the public and, as such, may contain inappropriate
@@ -200,7 +202,7 @@
             that Wikimedia has erred in one of the measures mentioned above in this
             section 6, the User may request a review using the complaint functions
             and Wikimedia will review and reconsider the decision. The following
-            rules apply to complaints:</p>
+            rules apply to complaints:
           <ul>
             <li>The User may file a complaint against the
               removal of the Content, the suspension or termination of the Account, or
@@ -227,8 +229,7 @@
               case to certified out-of-court complaint bodies. For more information,
               <router-link to="/dsa-info">please click here</router-link>.
             </li>
-          </ul>
-
+          </ul></p>
           <h2>7. Grant of rights of use</h2>
           <p>7.1 The User grants
             Wikimedia the rights of use to the uploaded Content for the purpose of
