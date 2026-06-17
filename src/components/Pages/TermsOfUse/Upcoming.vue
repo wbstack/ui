@@ -804,12 +804,11 @@
             <p>and</p>
             <p>(ii) the entity/ies in a third country receiving the personal data from the data exporter, directly or
               indirectly via another entity also Party to these Clauses, as listed in Annex I.A. (hereinafter each “data
-              importer”)</p>
-            <p>have agreed to these standard contractual clauses (hereinafter: “Clauses”).</p>
+              importer”)</p></div>
+          <p>have agreed to these standard contractual clauses (hereinafter: “Clauses”).</p>
             <p>(c) These Clauses apply with respect to the transfer of personal data as specified in Annex I.B.</p>
             <p>(d) The Appendix to these Clauses containing the Annexes referred to therein forms an integral part of
               these Clauses.</p>
-          </div>
 
           <h4>Clause 2 &mdash; Effect and invariability of the Clauses</h4>
             <p>
