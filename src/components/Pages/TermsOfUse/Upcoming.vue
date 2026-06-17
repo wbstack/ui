@@ -160,8 +160,9 @@
 
             <li>Upload or distribute Content
               that is copied as a whole or in part from another protected work or
-              material without the permission of the respective copyright owner;
-              *Upload or distribute Content that violates or infringes the rights of
+              material without the permission of the respective copyright owner;</li>
+
+            <li>Upload or distribute Content that violates or infringes the rights of
               third parties, in particular personal rights, copyrights or other
               intellectual property rights or any other rights of third parties</li>
 
