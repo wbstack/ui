@@ -6,9 +6,9 @@
           <h1>Terms Of Use</h1>
           <v-alert
             type="info"
-          >
+          >T420575
             This is an upcoming version. You can find the
-            <router-link class="white--text " to="/terms-of-use">current version here</router-link>
+            <router-link class="white--text" to="/terms-of-use">current version here</router-link>
           </v-alert>
           <v-alert
             text
@@ -149,7 +149,7 @@
             create, publish or share Content. The User agrees not to upload or share
             any Content on their Wikibase Instance that infringes the intellectual
             property rights of third persons or that is otherwise unlawful.</p>
-          <p>5.3 It is specifically prohibited to:
+          <div class="mb-3">5.3 It is specifically prohibited to:
           <ul>
             <li>Upload or distribute Content that is
               insulting, abusive, offensive, racist, threatening, harmful to minors,
@@ -173,7 +173,7 @@
             <li>Provide false data or information, as well as false data or
               information of third parties; or</li>
             <li>Sell or otherwise transfer the User Account to another person.</li>
-          </ul></p>
+          </ul></div>
 
           <p>5.4 The User should be aware that the sites
             may be edited by the public and, as such, may contain inappropriate
@@ -198,7 +198,7 @@
             carefully, objectively and proportionately when examining Content and
             implementing measures, and will take into account the rights and
             legitimate interests of all parties involved.</p>
-          <p>6.5 If the User believes
+          <div class="mb-3">6.5 If the User believes
             that Wikimedia has erred in one of the measures mentioned above in this
             section 6, the User may request a review using the complaint functions
             and Wikimedia will review and reconsider the decision. The following
@@ -229,7 +229,7 @@
               case to certified out-of-court complaint bodies. For more information,
               <router-link to="/dsa-info">please click here</router-link>.
             </li>
-          </ul></p>
+          </ul></div>
           <h2>7. Grant of rights of use</h2>
           <p>7.1 The User grants
             Wikimedia the rights of use to the uploaded Content for the purpose of
