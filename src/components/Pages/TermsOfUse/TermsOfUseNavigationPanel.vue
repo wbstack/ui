@@ -17,10 +17,10 @@ export default {
     ],
     currentPath: 'bar',
   }),
-  mounted() {
+  mounted () {
     this.currentPath = this.$route.path
     console.log(this.currentPath)
-  }
+  },
 }
 
 </script>

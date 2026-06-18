@@ -30,11 +30,11 @@ export default {
   props: {
     title: String,
     currentPath: String,
-    links: Array,    
+    links: Array,
   },
-  mounted() {
+  mounted () {
     console.log(this.currentPath)
-  }
+  },
 }
 
 </script>
