@@ -19,7 +19,6 @@ export default {
   }),
   mounted () {
     this.currentPath = this.$route.path
-    console.log(this.currentPath)
   },
 }
 

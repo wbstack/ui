@@ -32,9 +32,6 @@ export default {
     currentPath: String,
     links: Array,
   },
-  mounted () {
-    console.log(this.currentPath)
-  },
 }
 
 </script>
