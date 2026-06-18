@@ -1141,7 +1141,7 @@
 </template>
 
 <script>
-import TermsOfUseNavigationPanel from './NavigationPanel.vue'
+import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
 
 export default {
   name: 'TermsOfUseUpcoming',

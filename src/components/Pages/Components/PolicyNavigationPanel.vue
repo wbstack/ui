@@ -7,13 +7,15 @@
             <v-list class="wrap">
                 <v-list-item v-for="(link) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="! isCurrentPage(link.routePath)">
+                        <v-list-item-title v-if="link.routePath == currentPath">
+                            {{ link.title }}
+                        </v-list-item-title>
+
+                        <v-list-item-title v-else>
                             <router-link :to="{ path: link.routePath }" class="text-decoration-none">
                                 <v-list-item-title>{{ link.title }}</v-list-item-title>
                             </router-link>
                         </v-list-item-title>
-
-                        <v-list-item-title v-else>{{ link.title }}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -27,13 +29,12 @@ export default {
   name: 'NavigationPanel',
   props: {
     title: String,
-    links: Array,
+    currentPath: String,
+    links: Array,    
   },
-  methods: {
-    isCurrentPage (path) {
-      return this.$route.path === path
-    },
-  },
+  mounted() {
+    console.log(this.currentPath)
+  }
 }
 
 </script>
