@@ -5,10 +5,10 @@
 
             <v-expansion-panel-content>
             <v-list class="wrap">
-                <v-list-item v-for="(link) in links" :key="link.routeName">
+                <v-list-item v-for="(link) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="! isCurrentPage(link.routeName)">
-                            <router-link :to="{ name: link.routeName }" class="text-decoration-none">
+                        <v-list-item-title v-if="! isCurrentPage(link.routePath)">
+                            <router-link :to="{ path: link.routePath }" class="text-decoration-none">
                                 <v-list-item-title>{{ link.title }}</v-list-item-title>
                             </router-link>
                         </v-list-item-title>
@@ -30,8 +30,8 @@ export default {
     links: Array,
   },
   methods: {
-    isCurrentPage (routeName) {
-      return this.$route.name === routeName
+    isCurrentPage (path) {
+      return this.$route.path === path
     },
   },
 }

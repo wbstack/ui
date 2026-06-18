@@ -12,8 +12,8 @@ export default {
   },
   data: () => ({
     termsOfUseLinks: [
-      { title: 'Upcoming Version', routeName: 'TermsOfUseUpcoming' },
-      { title: 'April 11th 2022 (current)', routeName: 'TermsOfUse' },
+      { title: 'Upcoming Version', routePath: '/terms-of-use/upcoming' },
+      { title: 'April 11th 2022 (current)', routePath: '/terms-of-use' },
     ],
   }),
 }
