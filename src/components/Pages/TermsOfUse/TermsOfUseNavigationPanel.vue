@@ -15,7 +15,7 @@ export default {
       { title: 'Upcoming Version', routePath: '/terms-of-use/upcoming' },
       { title: 'April 11th 2022 (current)', routePath: '/terms-of-use' },
     ],
-    currentPath: 'bar',
+    currentPath: null,
   }),
   mounted () {
     this.currentPath = this.$route.path
