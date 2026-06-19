@@ -10,9 +10,9 @@
           <h1>Terms Of Use</h1>
           <v-alert
             type="info"
-          >T420575
-            This is an upcoming version. You can find the
-            <router-link class="white--text" to="/terms-of-use">current version here</router-link>
+          >
+           This is an upcoming version. You can find the
+            <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
           <v-alert
             text
@@ -29,7 +29,7 @@
                 <div v-if="show || !isMobile">
                   <div>
                     <div>Key updates:</div>
-                    <ul>
+                    <ul class="mb-3">
                       <li>
                         We have clarified when and how user accounts or individual instances may be suspended or terminated, including notice periods and proportionality principles.
                       </li>
@@ -45,7 +45,13 @@
                       <li>
                         The document has been reorganized and clarified to make rights, obligations, and processes easier to understand.
                       </li>
+                      <li>
+                        We have introduced a separate Hosting Policy that defines additional rules for using the platform. This policy is now explicitly incorporated into the Terms of Use and forms part of the agreement users must accept.
+                      </li>
                     </ul>
+                  </div>
+                  <div>
+                    These changes do not alter the core purpose of Wikibase Cloud as a free hosting platform for open knowledge projects, but they introduce clearer rules, including a separate Hosting Policy, and provide stronger legal transparency in line with EU regulatory requirements.
                   </div>
                 </div>
               </v-expand-transition>
@@ -69,7 +75,7 @@
                 </v-btn>
               </div>
           </v-alert>
-          <h2>1. Definitions</h2>
+          <h2 class="mb-2">1. Definitions</h2>
           <p>In addition to terms defined elsewhere in this
             Agreement, the following terms have the following meanings:</p>
           <p>1.1 “Manager Account” or “Account”: The personal Account provided by Wikibase.cloud
@@ -83,19 +89,19 @@
           <p>1.5 “Wikibase Instance” or “Site”: an open knowledge base that can be
             created and run by anyone on Wikibase.cloud.
           </p>
-          <h2>2. Scope and Applicability</h2>
+          <h2 class="mb-2">2. Scope and Applicability</h2>
           <p>2.1 Wikimedia, Tempelhofer Ufer 23/24, 10963 Berlin, provides
             Wikibase.cloud (the „Platform“), a free cloud-based Platform that hosts
             instances of Wikibase. It offers collaborative space to pool, edit and
-            curate information and is accessible under https://www.wikibase.cloud/.</p>
+            curate information and is accessible under <router-link to="/">https://www.wikibase.cloud/</router-link>.</p>
           <p>2.2 These Terms of Use govern the legal relationship between Wikimedia
             and the User and apply to all actions of the User and Wikimedia on or in
             connection with the Platform (the „Agreement“).</p>
-          <h2>3. Conclusion of the Contract and Registration for an Account</h2>
+          <h2 class="mb-2">3. Conclusion of the Contract and Registration for an Account</h2>
           <p>3.1 To use the Platform, the
             User must open a Manager Account. Opening a Manager Account is free of
             charge for the User. The User can sign up directly by visiting the
-            website https://www.wikibase.cloud/ and clicking “Sign Up”.</p>
+            website <router-link to="/">https://www.wikibase.cloud/</router-link> and clicking “Sign Up”.</p>
           <p>3.2 When registering, the User is required to provide certain basic
             information, including an email address and a password.</p>
           <p>3.3 By clicking
@@ -112,7 +118,7 @@
             the latest version of these Terms at any time on the Platform. The
             Agreement is concluded in English and the Terms are only available in
             English.</p>
-          <h2>4. Creating a Wikibase Instance and its basic functions</h2>
+          <h2 class="mb-2">4. Creating a Wikibase Instance and its basic functions</h2>
           <p>4.1 After creating a Manager Account and logging into it, the User can
             create a Wikibase Instance on their dashboard page.</p>
           <p>4.2 To create a
@@ -138,7 +144,7 @@
             media (the “Content”) using the tools provided. Wikibase is a
             collaborative Platform. The User can enable other persons to register
             for an Account on their Wikibase Instance or upload Content.</p>
-          <h2>5. Rules of the Platform</h2>
+          <h2 class="mb-2">5. Rules of the Platform</h2>
           <p>5.1 The User may only use the Platform in accordance with
             the Terms of Use and the additional rules laid down in the Hosting
             Policy, which is hereby explicitly incorporated into the Agreement. In
@@ -184,7 +190,7 @@
             may be edited by the public and, as such, may contain inappropriate
             Content at any time.</p>
 
-          <h2>6. Moderation of Content</h2>
+          <h2 class="mb-2">6. Moderation of Content</h2>
           <p>6.1 Wikimedia does not
             monitor Content on the Platform, but reserves the right to conduct
             random checks, particularly if there are indications of violations.
@@ -235,7 +241,7 @@
               <router-link to="/dsa-info">please click here</router-link>.
             </li>
           </ul></div>
-          <h2>7. Grant of rights of use</h2>
+          <h2 class="mb-2">7. Grant of rights of use</h2>
           <p>7.1 The User grants
             Wikimedia the rights of use to the uploaded Content for the purpose of
             Wikimedia’s provision of the Platform.</p>
@@ -243,11 +249,11 @@
             for any reason. Wikimedia shall not be held liable for any modification,
             suspension or discontinuance of any site, or of the Platform as a whole.</p>
 
-          <h2>8. Term and Termination</h2>
+          <h2 class="mb-2">8. Term and Termination</h2>
           <p>8.1 The terms of this Agreement commence upon the
             User’s registration.</p>
           <p>8.2 The User can delete their Account by contacting
-            Wikimedia, for example, via https://www.wikibase.cloud/contact.</p>
+            Wikimedia, for example, via <router-link to="/contact">https://www.wikibase.cloud/contact.</router-link></p>
           <p>8.3 Wikimedia can (i) terminate the contract, (ii) suspend single instances,
             (iii) permanently delete single instances, and/ or (iv) transfer
             ownership of single instances to another User at any time and without
@@ -262,7 +268,7 @@
             termination of the User’s Account, the User’s right to use the Platform
             will immediately cease.</p>
 
-          <h2>9. Availability and Maintenance</h2>
+          <h2 class="mb-2">9. Availability and Maintenance</h2>
           <p>9.1 Wikimedia shall implement appropriate measures to ensure the availability and
             error free functionality of the Platform. However, the User acknowledges
             that for technical reasons and due to the dependence on external
@@ -274,7 +280,7 @@
             Insofar Wikimedia shall carry out the maintenance work during periods of
             low use.</p>
 
-          <h2>10. Liability</h2>
+          <h2 class="mb-2">10. Liability</h2>
           <p>10.1 Wikimedia provides a free service that allows
             the User to create their own Wikibase Instance. Wikimedia assumes no
             responsibility for any material posted by the User. However, in
@@ -286,7 +292,7 @@
             and hold harmless Wikimedia from any claims by third parties arising
             from Content they publish or actions they take while using our Platform.</p>
 
-          <h2>11. Data Protection</h2>
+          <h2 class="mb-2">11. Data Protection</h2>
           <p>11.1 For comprehensive information on how Wikimedia
             collects, processes or uses personal data of the User, please refer to
             our <router-link to="/privacy-policy">Privacy
@@ -309,7 +315,7 @@
             Module 4 (Processor to Controller). The Annexes I, II, III and IV of
             Appendix 1 apply accordingly.</p>
 
-          <h2>12. Miscellaneous</h2>
+          <h2 class="mb-2"  >12. Miscellaneous</h2>
           <p>12.1 This Agreement is
             governed by, and shall be interpreted in accordance with, the laws of,
             and directly applicable in, the Federal Republic of Germany, excluding,
@@ -335,7 +341,7 @@
             Decision (EU) 2021/915 of 4 June 2021)</h2>
           <h3>SECTION I</h3>
 
-          <h4>Clause 1 &mdash; Purpose and scope</h4>
+          <h4 class="mb-2">Clause 1 &mdash; Purpose and scope</h4>
           <p>(a) The purpose of these Standard
             Contractual Clauses (the Clauses) is to ensure compliance with Article
             28(3) and (4) of Regulation (EU) 2016/679 of the European Parliament and
@@ -359,17 +365,17 @@
             international transfers in accordance with Chapter V of Regulation (EU)
             2016/679 and/or Regulation (EU) 2018/1725.</p>
 
-          <h4>Clause 2 &mdash; Invariability of the Clauses
+          <h4 class="mb-2">Clause 2 &mdash; Invariability of the Clauses
           </h4>
           <p>(a) The Parties undertake not to modify the Clauses, except for
             adding information to the Annexes or updating information in them.</p>
-          <p>(b)This does not prevent the Parties from including the standard
+          <p>(b) This does not prevent the Parties from including the standard
             contractual clauses laid down in these Clauses in a broader contract, or
             from adding other clauses or additional safeguards provided that they do
             not directly or indirectly contradict the Clauses or detract from the
             fundamental rights or freedoms of data subjects.</p>
 
-          <h4>Clause 3 &mdash; Interpretation</h4>
+          <h4 class="mb-2">Clause 3 &mdash; Interpretation</h4>
           <p>(a) Where these Clauses use the terms defined in Regulation (EU)
             2016/679 or Regulation (EU) 2018/1725 respectively, those terms shall
             have the same meaning as in that Regulation.</p>
@@ -382,7 +388,7 @@
             2018/1725 or in a way that prejudices the fundamental rights or freedoms
             of the data subjects.</p>
 
-          <h4>Clause 4 &mdash; Hierarchy</h4>
+          <h4 class="mb-2">Clause 4 &mdash; Hierarchy</h4>
           <p>In the event of a contradiction
             between these Clauses and the provisions of related agreements between
             the Parties existing at the time when these Clauses are agreed or
@@ -390,12 +396,12 @@
 
           <h3>SECTION II &mdash; OBLIGATIONS OF THE PARTIES</h3>
 
-          <h4>Clause 5 &mdash; Description of processing(s)</h4>
+          <h4 class="mb-2">Clause 5 &mdash; Description of processing(s)</h4>
           <p>The details of the processing operations, in particular the categories of
             personal data and the purposes of processing for which the personal data
             is processed on behalf of the controller, are specified in Annex II.</p>
 
-          <h4>Clause 6 &mdash; Obligations of the Parties</h4>
+          <h4 class="mb-2">Clause 6 &mdash; Obligations of the Parties</h4>
           <h5>6.1. Instructions</h5>
           <p>(a) The processor
             shall process personal data only on documented instructions from the
@@ -517,8 +523,7 @@
             Article 46(2) of Regulation (EU) 2016/679, provided the conditions for
             the use of those standard contractual clauses are met.</p>
 
-          <h4>Clause 7</h4>
-          <h4>Assistance to the controller</h4>
+          <h4 class="mb-2">Clause 7 &mdash; Assistance to the controller</h4>
           <p>(a) The processor shall promptly notify the
             controller of any request it has received from the data subject. It
             shall not respond to the request itself, unless authorised to do so by
@@ -553,7 +558,7 @@
           <p>(d) The Parties shall set out in Annex III the appropriate technical and organisational measures by which
             the processor is required to assist the controller in the application of this Clause as well as the scope
             and the extent of the assistance required.</p>
-          <h4>Clause 8 &mdash; Notification of personal data breach</h4>
+          <h4 class="mb-2">Clause 8 &mdash; Notification of personal data breach</h4>
           <p>In the event of a personal data
             breach, the processor shall cooperate with and assist the controller for
             the controller to comply with its obligations under Articles 33 and 34
@@ -620,7 +625,7 @@
             SECTION III &mdash; FINAL PROVISIONS
           </h3>
 
-          <h4>
+          <h4 class="mb-2">
             Clause 9 &mdash; Non-compliance with the Clauses and termination
           </h4>
           <p>(a) Without prejudice to any provisions of Regulation
@@ -658,7 +663,7 @@
             requires storage of the personal data. Until the data is deleted or returned, the processor shall continue
             to ensure compliance with these Clauses.</p>
 
-          <h4>ANNEX I</h4>
+          <h4 class="mb-2">ANNEX I</h4>
           <h5>List of parties</h5>
           <p>
             <b>Controller(s):</b> [Identity and contact details
@@ -673,7 +678,7 @@
           <p>Wikimedia
             Deutschland e. V., Tempelhofer Ufer 23-24, 10369 Berlin</p>
 
-          <h4>ANNEX II</h4>
+          <h4 class="mb-2">ANNEX II</h4>
           <h5>Description of the processing</h5>
           <div>
             <i>Categories of data subjects
@@ -744,7 +749,7 @@
               and duration of the processing</i>
           </p>
 
-          <h4>ANNEX III</h4>
+          <h4 class="mb-2">ANNEX III</h4>
           <p>Technical and organisational measures including technical
             and organisational measures to ensure the security of the data</p>
 
@@ -753,7 +758,7 @@
               to do so please send an email to: datenschutz@wikimedia.de.</i>
           </p>
 
-          <h4>ANNEX IV</h4>
+          <h4 class="mb-2">ANNEX IV</h4>
           <p class="font-weight-bold">List of sub-processors</p>
           <p class="font-weight-bold">EXPLANATORY NOTE:</p>
 
@@ -793,7 +798,7 @@
           <h2>Appendix 2: International Standard Contractual Clauses : MODULE FOUR:
             Transfer processor to controller</h2>
           <h3>SECTION I</h3>
-          <h4>Clause 1 &mdash; Purpose and scope</h4>
+          <h4 class="mb-2">Clause 1 &mdash; Purpose and scope</h4>
           <p>(a) The purpose of these standard contractual clauses is to ensure compliance with the requirements of
             Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of
             natural persons with regard to the processing of personal data and on the free movement of such data
@@ -814,7 +819,7 @@
             <p>(d) The Appendix to these Clauses containing the Annexes referred to therein forms an integral part of
               these Clauses.</p>
 
-          <h4>Clause 2 &mdash; Effect and invariability of the Clauses</h4>
+          <h4 class="mb-2">Clause 2 &mdash; Effect and invariability of the Clauses</h4>
             <p>
               (a) These Clauses set out appropriate safeguards, including enforceable data subject rights and effective
               legal remedies, pursuant to Article 46(1) and Article 46 (2)(c) of Regulation (EU) 2016/679 and, with
@@ -830,7 +835,7 @@
               Regulation (EU) 2016/679.
             </p>
 
-          <h4>Clause 3 &mdash; Third-party beneficiaries</h4>
+          <h4 class="mb-2">Clause 3 &mdash; Third-party beneficiaries</h4>
             <p>
               (a) Data subjects may invoke and enforce these Clauses, as third-party beneficiaries, against the data
               exporter and/or data importer, with the following exceptions:
@@ -867,7 +872,7 @@
               (b) Paragraph (a) is without prejudice to rights of data subjects under Regulation (EU) 2016/679.
             </p>
 
-          <h4>Clause 4 &mdash; Interpretation</h4>
+          <h4 class="mb-2">Clause 4 &mdash; Interpretation</h4>
           <div class="mb-3">
             <p>
               (a) Where these Clauses use terms that are defined in Regulation (EU) 2016/679, those terms shall have the
@@ -883,18 +888,18 @@
             </p>
           </div>
 
-          <h4>Clause 5 &mdash; Hierarchy</h4>
+          <h4 class="mb-2">Clause 5 &mdash; Hierarchy</h4>
           <p>In the event of a contradiction between these Clauses and the
             provisions of related agreements between the Parties, existing at the
             time these Clauses are agreed or entered into thereafter, these Clauses
             shall prevail.</p>
 
-          <h4>Clause 6 &mdash; Description of the transfer(s)</h4>
+          <h4 class="mb-2">Clause 6 &mdash; Description of the transfer(s)</h4>
           <p>The details of the transfer(s), and in particular the categories of
             personal data that are transferred and the purpose(s) for which they are
             transferred, are specified in Annex I.B.</p>
 
-          <h4>Clause 7 &mdash; Optional Docking clause</h4>
+          <h4 class="mb-2">Clause 7 &mdash; Optional Docking clause</h4>
           <div class="mb-3">
             <p>
               (a) An entity that is not a Party to these Clauses may, with the agreement of the Parties, accede to these
@@ -914,7 +919,7 @@
 
           <h3>SECTION II &mdash; OBLIGATIONS OF THE PARTIES</h3>
 
-          <h4>
+          <h4 class="mb-2">
             Clause 8 &mdash; Data protection
             safeguards
           </h4>
@@ -985,22 +990,22 @@
             </p>
           </div>
 
-          <h4>Clause 9 [not applicable] &mdash; Use of sub-processors</h4>
+          <h4 class="mb-2">Clause 9 [not applicable] &mdash; Use of sub-processors</h4>
 
-          <h4>Clause 10 &mdash; Data subject rights</h4>
+          <h4 class="mb-2">Clause 10 &mdash; Data subject rights</h4>
           <p>The Parties shall assist each other in responding to enquiries and
             requests made by data subjects under the local law applicable to the
             data importer or, for data processing by the data exporter in the EU,
             under Regulation (EU) 2016/679.</p>
 
-          <h4>Clause 11 &mdash; Redress</h4>
+          <h4 class="mb-2">Clause 11 &mdash; Redress</h4>
           <div class="mb-3">
               (a) The data importer shall inform data subjects in a transparent and easily accessible format, through
               individual notice or on its website, of a contact point authorised to handle complaints. It shall deal
               promptly with any complaints it receives from a data subject.
           </div>
 
-          <h4>Clause 12 &mdash; Liability</h4>
+          <h4 class="mb-2">Clause 12 &mdash; Liability</h4>
           <div class="mb-3">
             <p>
               (a) Each Party shall be liable to the other Party/ies for any damages it causes the other Party/ies by any
@@ -1028,15 +1033,15 @@
             </p>
           </div>
 
-          <h4>Clause 13 [not applicable] &mdash; Supervision</h4>
+          <h4 class="mb-2">Clause 13 [not applicable] &mdash; Supervision</h4>
 
           <h3>SECTION III &mdash; LOCAL LAWS AND OBLIGATIONS IN CASE OF ACCESS BY PUBLIC
             AUTHORITIES</h3>
-          <h4>Clause 14 [not applicable]</h4>
-          <h4>Clause 15 [not applicable]</h4>
+          <h4 class="mb-2">Clause 14 [not applicable]</h4>
+          <h4 class="mb-2">Clause 15 [not applicable]</h4>
 
           <h3>SECTION IV &mdash; FINAL PROVISIONS</h3>
-          <h4>Clause 16 &mdash; Non-compliance with the Clauses and termination</h4>
+          <h4 class="mb-2">Clause 16 &mdash; Non-compliance with the Clauses and termination</h4>
           <div class="mb-3">
             <p>
               (a) The data importer shall promptly inform the data exporter if it is unable to comply with these
@@ -1090,12 +1095,12 @@
             </p>
           </div>
 
-          <h4>Clause 17 &mdash; Governing law</h4>
+          <h4 class="mb-2">Clause 17 &mdash; Governing law</h4>
           <p>These Clauses shall be governed by the law of a country allowing for
             third-party beneficiary rights. The Parties agree that this shall be the
             law of Germany (specify country).</p>
 
-          <h4>Clause 18 &mdash; Choice of forum and jurisdiction</h4>
+          <h4 class="mb-2">Clause 18 &mdash; Choice of forum and jurisdiction</h4>
           <p>Any dispute arising from these Clauses shall be resolved by the
             courts of Germany (specify country).</p>
 
