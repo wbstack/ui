@@ -33,7 +33,4 @@ export default {
     links: Array,
   },
 }
-
 </script>
-
-<style scoped></style>
