@@ -2,7 +2,11 @@
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="11" md="4" order-md="last">
+            <TermsOfUseNavigationPanel />
+        </v-col>
+
+        <v-col cols="11" md="8">
           <h1>Terms Of Use</h1>
           <p>
             PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THE SERVICES.
@@ -1288,8 +1292,13 @@
 </template>
 
 <script>
+import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+
 export default {
   name: 'TermsOfUse',
+  components: {
+    TermsOfUseNavigationPanel,
+  },
   computed: {},
 }
 </script>

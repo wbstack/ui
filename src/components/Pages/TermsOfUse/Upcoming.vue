@@ -2,7 +2,11 @@
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-        <v-col cols="12">
+        <v-col cols="11" md="4" order-md="last">
+            <TermsOfUseNavigationPanel />
+        </v-col>
+
+        <v-col cols="11" md="8">
           <h1>Terms Of Use</h1>
           <v-alert
             type="info"
@@ -1125,8 +1129,13 @@
 </template>
 
 <script>
+import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+
 export default {
   name: 'TermsOfUseUpcoming',
+  components: {
+    TermsOfUseNavigationPanel,
+  },
   computed: {
     isMobile () {
       return this.$vuetify.breakpoint.xs
