@@ -13,7 +13,7 @@
 
                         <v-list-item-title v-else>
                             <router-link :to="{ path: link.routePath }" class="text-decoration-none">
-                                <v-list-item-title>{{ link.title }}</v-list-item-title>
+                                {{ link.title }}
                             </router-link>
                         </v-list-item-title>
                     </v-list-item-content>
