@@ -7,13 +7,13 @@
             <v-list class="wrap">
                 <v-list-item v-for="(link) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="link.routePath == currentPath">
+                        <v-list-item-title v-if="link.routePath === currentPath">
                             {{ link.title }}
                         </v-list-item-title>
 
                         <v-list-item-title v-else>
                             <router-link :to="{ path: link.routePath }" class="text-decoration-none">
-                                <v-list-item-title>{{ link.title }}</v-list-item-title>
+                                {{ link.title }}
                             </router-link>
                         </v-list-item-title>
                     </v-list-item-content>
@@ -33,7 +33,4 @@ export default {
     links: Array,
   },
 }
-
 </script>
-
-<style scoped></style>
