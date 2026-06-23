@@ -1,7 +1,7 @@
 <template>
     <v-expansion-panels v-bind:value="$vuetify.breakpoint.mdAndUp ? 0 : null" v-if="links">
         <v-expansion-panel>
-            <v-expansion-panel-header>{{ title }}</v-expansion-panel-header>
+            <v-expansion-panel-header class="grey lighten-3">{{ title }}</v-expansion-panel-header>
 
             <v-expansion-panel-content>
             <v-list class="wrap">
