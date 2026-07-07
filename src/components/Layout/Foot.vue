@@ -10,6 +10,7 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">Documentation</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://status.wikibase.cloud">Platform Status</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wbstack">GitHub</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://spenden.wikimedia.de/donation/new?piwik_kwd=ui-footer&piwik_campaign=wbc-202606-ui&lang=en_gb">Donate</a></li>
             <li><router-link to="/contact">Contact us</router-link></li>
           </ul>
         </nav>
