@@ -14,13 +14,13 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
-import TermsOfUse from '@/components/Pages/TermsOfUse/Current.vue'
+import TermsOfUse from '@/components/Pages/TermsOfUse/terms-of-use/2022-01-01.vue'
+import TermsOfUseRenderer from '@/components/Pages/TermsOfUse/TermsOfUseRenderer.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
 import HostingPolicy from '@/components/Pages/HostingPolicy.vue'
-import TermsOfUseUpcoming from '@/components/Pages/TermsOfUse/Upcoming.vue'
 import DsaInfo from '@/components/Pages/DsaInfo/DsaInfo'
 
 Vue.use(Router)
@@ -74,12 +74,12 @@ const router = new Router({
     {
       path: '/terms-of-use',
       name: 'TermsOfUse',
-      component: TermsOfUse,
+      component: TermsOfUseRenderer,
     },
     {
-      path: '/terms-of-use/upcoming',
-      name: 'TermsOfUseUpcoming',
-      component: TermsOfUseUpcoming,
+      path: '/terms-of-use/:version',
+      name: 'TermsOfUseRenderer',
+      component: TermsOfUseRenderer,
     },
     {
       path: '/hosting-policy/pilot',
@@ -184,6 +184,7 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(({ title, name }) => {
+  if (typeof name !== 'undefined') {
   if (typeof title === 'undefined') {
     // split pascal-case into separate words
     title = [...name.matchAll(/([A-Z]+[^A-Z]*)/g)]
@@ -192,6 +193,7 @@ router.afterEach(({ title, name }) => {
   }
 
   document.title = `wikibase.cloud ${title.length ? ' - ' + title : ''}`
+  }
 })
 
 export default router
