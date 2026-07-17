@@ -11,6 +11,7 @@ export default {
     PolicyNavigationPanel,
   },
   data: () => ({
+    // TODO update with info from API
     termsOfUseLinks: [
       { title: 'Upcoming Version', routePath: '/terms-of-use/upcoming' },
       { title: '11 April 2022 (current)', routePath: '/terms-of-use' },

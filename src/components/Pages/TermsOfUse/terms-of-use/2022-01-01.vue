@@ -1292,7 +1292,7 @@
 </template>
 
 <script>
-import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+import TermsOfUseNavigationPanel from '../TermsOfUseNavigationPanel.vue'
 
 export default {
   name: 'TermsOfUse',
