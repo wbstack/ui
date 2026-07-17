@@ -184,7 +184,6 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(({ title, name }) => {
-  if (typeof name !== 'undefined') {
   if (typeof title === 'undefined') {
     // split pascal-case into separate words
     title = [...name.matchAll(/([A-Z]+[^A-Z]*)/g)]
@@ -193,7 +192,6 @@ router.afterEach(({ title, name }) => {
   }
 
   document.title = `wikibase.cloud ${title.length ? ' - ' + title : ''}`
-  }
 })
 
 export default router
