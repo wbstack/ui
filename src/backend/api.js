@@ -103,12 +103,10 @@ export const policiesCurrent = async () => {
 }
 
 export const policyByDate = async ({ policyType, activeFrom }) => {
-  return (await axios.get('/v1/policies/{policy_type}/by_active_from/{active_from}', {
-    params: {
-      policy_type: policyType,
-      active_from: activeFrom,
-    }
-  }));
+  console.info(policyType);
+  console.info(activeFrom);
+
+  return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`));
 }
 
 export const importEntities = async ({

@@ -42,33 +42,18 @@ export default {
   },
   methods: {
     async loadPolicy () {
-        console.warn(this.policyId);
+        console.info(this.policyId);
       try {
         // const response = await this.$api.policiesCurrent();
-        // const response = await this.$api.policyByDate({policy_type, active_from});
+        let policy_type = 'terms-of-use';
+        let active_from = this.policyId;
 
-        const mockResponses = {
-            "2022-01-01": {
-  "metadata": {
-    "policy_id": 1,
-    "type": "terms-of-use",
-    "active_from": "2022-01-01",
-    "content_vue_file": "terms-of-use/version-1.vue"
-  }},
-  upcoming: {
-  "metadata": {
-    "policy_id": 1,
-    "type": "terms-of-use",
-    "active_from": "upcoming",
-    "content_vue_file": "terms-of-use/upcoming.vue"
-  }}
-        }
-        const response = mockResponses[this.policyId];
+        const response = await this.$api.policyByDate({policy_type, active_from});
 
         const metadata = await response.metadata;
         this.policy = versions[metadata.active_from];
       } catch (error) {
-        console.log(error)
+        console.error(error)
         alert('Failed to show policy')
       }
     },
