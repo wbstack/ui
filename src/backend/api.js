@@ -99,11 +99,11 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
 }
 
 export const policiesCurrent = async () => {
-  return (await axios.get('/v1/policies/current'));
+  return (await axios.get('/v1/policies/current'))
 }
 
-export const policyByDate = async ( { policyType, activeFrom }) => {
-  return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)).data;
+export const policyByDate = async ({ policyType, activeFrom }) => {
+  return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)).data
 }
 
 export const importEntities = async ({

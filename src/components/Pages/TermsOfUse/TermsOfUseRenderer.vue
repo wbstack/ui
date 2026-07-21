@@ -18,7 +18,7 @@
 import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
 
 export const versions = {
-  "2022-01-01": () => ({ component: import('./terms-of-use/2022-01-01.vue') }),
+  '2022-01-01': () => ({ component: import('./terms-of-use/2022-01-01.vue') }),
 }
 
 export default {
@@ -28,39 +28,39 @@ export default {
   },
   computed: {
     policyId: function () { // TODO rename to activeFrom ?
-      return this.$route.params.version;
-    }
+      return this.$route.params.version
+    },
   },
-  data() {
+  data () {
     return {
       policy: undefined,
     }
   },
   methods: {
-    async loadPolicy() {
+    async loadPolicy () {
       try {
         // const response = await this.$api.policiesCurrent();
-        let policyType = 'terms-of-use'; // TODO read this from component property
-        let activeFrom = this.policyId;
+        const policyType = 'terms-of-use' // TODO read this from component property
+        const activeFrom = this.policyId
 
-        const response = await this.$api.policyByDate({ policyType, activeFrom });
+        const response = await this.$api.policyByDate({ policyType, activeFrom })
 
-        const metadata = await response.metadata;
-        this.policy = versions[metadata.active_from];
+        const metadata = await response.metadata
+        this.policy = versions[metadata.active_from]
       } catch (error) {
         console.error(error)
         alert('Failed to show policy')
       }
     },
   },
-  mounted() {
+  mounted () {
     this.loadPolicy()
   },
   watch: {
     policyId: function () {
       this.loadPolicy()
     },
-  }
+  },
 }
 </script>
 

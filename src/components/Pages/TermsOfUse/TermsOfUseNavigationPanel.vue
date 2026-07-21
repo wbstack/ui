@@ -18,17 +18,17 @@ export default {
     ],
   }),
   computed: {
-    currentLink: function() {
-      const isCurrentPath = (element) => element.routePath === this.$route.path;
-      const positionInList = this.termsOfUseLinks.findIndex(isCurrentPath);
+    currentLink: function () {
+      const isCurrentPath = (element) => element.routePath === this.$route.path
+      const positionInList = this.termsOfUseLinks.findIndex(isCurrentPath)
 
-      if (positionInList == -1) {
+      if (positionInList === -1) {
         // not in a list, must be current version, because the TermsOfUseRenderer only allows accessing the current version by its active from date
-        return 1;
+        return 1
       }
 
-      return positionInList;
-    }
+      return positionInList
+    },
   },
 }
 
