@@ -50,6 +50,8 @@ export default {
 
         const response = await this.$api.policyByDate({ policyType, activeFrom });
 
+        console.info(response);
+
         const metadata = await response.metadata;
         this.policy = versions[metadata.active_from];
       } catch (error) {
