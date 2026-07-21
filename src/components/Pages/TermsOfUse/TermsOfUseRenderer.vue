@@ -42,7 +42,7 @@ export default {
         const policyType = 'terms-of-use' // TODO read this from component property
         const activeFrom = this.policyActiveFrom
 
-        const response = await this.$api.policyByDate({ policyType, policyActiveFrom })
+        const response = await this.$api.policyByDate({ policyType, activeFrom })
 
         const metadata = await response.metadata
         this.policy = versions[metadata.active_from]
