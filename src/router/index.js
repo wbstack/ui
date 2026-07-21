@@ -14,6 +14,8 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
+import TermsOfUse from '@/components/Pages/TermsOfUse/Current.vue'
+import TermsOfUseUpcoming from '@/components/Pages/TermsOfUse/Upcoming.vue'
 import TermsOfUseRenderer from '@/components/Pages/TermsOfUse/TermsOfUseRenderer.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
@@ -70,10 +72,17 @@ const router = new Router({
       name: 'ResetPassword',
       component: ResetPassword,
     },
+    // this should be handled by TermsOfUseRenderer
     {
       path: '/terms-of-use',
       name: 'TermsOfUse',
-      component: TermsOfUseRenderer,
+      component: TermsOfUse,
+    },
+    // this should be handled by TermsOfUseRenderer
+    {
+      path: '/terms-of-use/upcoming',
+      name: 'TermsOfUseUpcoming',
+      component: TermsOfUseUpcoming,
     },
     {
       path: '/terms-of-use/:version',
