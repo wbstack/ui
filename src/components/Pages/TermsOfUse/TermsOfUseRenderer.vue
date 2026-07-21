@@ -19,7 +19,6 @@ import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
 
 export const versions = {
   "2022-01-01": () => ({ component: import('./terms-of-use/2022-01-01.vue') }),
-  upcoming: () => ({ component: import('./terms-of-use/upcoming.vue') }),
 }
 
 export default {
