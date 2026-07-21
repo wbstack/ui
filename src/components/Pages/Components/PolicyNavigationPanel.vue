@@ -5,9 +5,9 @@
 
             <v-expansion-panel-content>
             <v-list class="wrap">
-                <v-list-item v-for="(link) in links" :key="link.routePath">
+                <v-list-item v-for="(link, index) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="link.routePath === currentPath">
+                        <v-list-item-title v-if="index == currentLink">
                             {{ link.title }}
                         </v-list-item-title>
 
@@ -29,7 +29,7 @@ export default {
   name: 'NavigationPanel',
   props: {
     title: String,
-    currentPath: String,
+    currentLink: Number,
     links: Array,
   },
 }
