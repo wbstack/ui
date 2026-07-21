@@ -1,56 +1,50 @@
 <template>
   <v-main>
-    <pre>
-    policyId (derived from route): `{{policyId}}`
-    policy: {{ policy }}
-    </pre>
+    <v-container class="fill-height" fluid>
+      <v-row justify="center">
+        <v-col cols="11" md="4" order-md="last">
+          <TermsOfUseNavigationPanel />
+        </v-col>
 
-    <p>
-    <router-link :to="{ path: '/terms-of-use/2022-01-01' }">
-        2022-01-01
-    </router-link></p>
-
-    <p><router-link :to="{ path: '/terms-of-use/upcoming' }">
-        upcoming
-    </router-link></p>
-
-    <hr>
-
-    <component :is="policy" v-if="policy" />
+        <v-col cols="11" md="8">
+          <component :is="policy" v-if="policy" />
+        </v-col>
+      </v-row>
+    </v-container>
   </v-main>
 </template>
 
 <script>
+import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+
 export const versions = {
   "2022-01-01": () => ({ component: import('./terms-of-use/2022-01-01.vue') }),
-  upcoming:     () => ({ component: import('./terms-of-use/upcoming.vue') }),
+  upcoming: () => ({ component: import('./terms-of-use/upcoming.vue') }),
 }
 
 export default {
   name: 'TermsOfUseRenderer',
   components: {
+    TermsOfUseNavigationPanel,
   },
   computed: {
-    policyId: function() { // TODO rename to activeFrom ?
-        return this.$route.params.version;
+    policyId: function () { // TODO rename to activeFrom ?
+      return this.$route.params.version;
     }
   },
   data() {
     return {
-        policy: undefined,
+      policy: undefined,
     }
   },
   methods: {
-    async loadPolicy () {
-        console.info(this.policyId);
+    async loadPolicy() {
       try {
         // const response = await this.$api.policiesCurrent();
         let policyType = 'terms-of-use'; // TODO read this from component property
         let activeFrom = this.policyId;
 
         const response = await this.$api.policyByDate({ policyType, activeFrom });
-
-        console.info(response);
 
         const metadata = await response.metadata;
         this.policy = versions[metadata.active_from];
@@ -60,7 +54,7 @@ export default {
       }
     },
   },
-  mounted () {
+  mounted() {
     this.loadPolicy()
   },
   watch: {
@@ -71,5 +65,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
