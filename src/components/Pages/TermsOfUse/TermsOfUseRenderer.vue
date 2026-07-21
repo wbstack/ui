@@ -31,7 +31,7 @@ export default {
   components: {
   },
   computed: {
-    policyId: function() {
+    policyId: function() { // TODO rename to activeFrom ?
         return this.$route.params.version;
     }
   },
@@ -45,10 +45,10 @@ export default {
         console.info(this.policyId);
       try {
         // const response = await this.$api.policiesCurrent();
-        let policy_type = 'terms-of-use';
-        let active_from = this.policyId;
+        let policyType = 'terms-of-use'; // TODO read this from component property
+        let activeFrom = this.policyId;
 
-        const response = await this.$api.policyByDate({policy_type, active_from});
+        const response = await this.$api.policyByDate({ policyType, activeFrom });
 
         const metadata = await response.metadata;
         this.policy = versions[metadata.active_from];

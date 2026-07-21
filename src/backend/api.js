@@ -102,7 +102,7 @@ export const policiesCurrent = async () => {
   return (await axios.get('/v1/policies/current'));
 }
 
-export const policyByDate = async ({ policyType, activeFrom }) => {
+export const policyByDate = async ( { policyType, activeFrom }) => {
   console.info(policyType);
   console.info(activeFrom);
 
