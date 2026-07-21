@@ -27,8 +27,8 @@ export default {
     TermsOfUseNavigationPanel,
   },
   computed: {
-    policyId: function () { // TODO rename to activeFrom ?
-      return this.$route.params.version
+    policyActiveFrom: function () {
+      return this.$route.params.activeFrom
     },
   },
   data () {
@@ -39,17 +39,16 @@ export default {
   methods: {
     async loadPolicy () {
       try {
-        // const response = await this.$api.policiesCurrent();
         const policyType = 'terms-of-use' // TODO read this from component property
-        const activeFrom = this.policyId
+        const activeFrom = this.policyActiveFrom
 
-        const response = await this.$api.policyByDate({ policyType, activeFrom })
+        const response = await this.$api.policyByDate({ policyType, policyActiveFrom })
 
         const metadata = await response.metadata
         this.policy = versions[metadata.active_from]
       } catch (error) {
         console.error(error)
-        alert('Failed to show policy')
+        alert('Failed to load policy.')
       }
     },
   },

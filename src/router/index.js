@@ -72,20 +72,20 @@ const router = new Router({
       name: 'ResetPassword',
       component: ResetPassword,
     },
-    // this should be handled by TermsOfUseRenderer
+    // TODO should be handled by TermsOfUseRenderer
     {
       path: '/terms-of-use',
       name: 'TermsOfUse',
       component: TermsOfUse,
     },
-    // this should be handled by TermsOfUseRenderer
+    // TODO should be handled by TermsOfUseRenderer
     {
       path: '/terms-of-use/upcoming',
       name: 'TermsOfUseUpcoming',
       component: TermsOfUseUpcoming,
     },
     {
-      path: '/terms-of-use/:version',
+      path: '/terms-of-use/:activeFrom',
       name: 'TermsOfUseRenderer',
       component: TermsOfUseRenderer,
     },
