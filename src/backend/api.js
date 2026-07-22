@@ -98,10 +98,6 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
   })).data
 }
 
-export const policiesCurrent = async () => {
-  return (await axios.get('/v1/policies/current'))
-}
-
 export const policyByDate = async ({ policyType, activeFrom }) => {
   return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)).data
 }
