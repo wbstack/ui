@@ -55,8 +55,8 @@
                 <div>
                   I agree to the
                   <template v-for="(policy, idx) in policies">
-                    <span>{{ getPolicySeparator(idx) }}</span>
-                    <v-tooltip bottom>
+                    <span :key="idx">{{ getPolicySeparator(idx) }}</span>
+                    <v-tooltip bottom :key="idx">
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
@@ -66,7 +66,7 @@
                         >{{ policy.name }}</a>
                       </template>
                       Opens in new window
-                    </v-tooltip><span v-if="idx === policies.length - 1">.</span>
+                    </v-tooltip><span v-if="idx === policies.length - 1" :key="idx">.</span>
                   </template>
                 </div>
               </template>
@@ -87,7 +87,7 @@
                 </div>
               </template>
             </v-checkbox>
-          </v-skeleton-loader
+          </v-skeleton-loader>
         <p>
           This site is protected by reCAPTCHA. Wikibase Cloud
           <a target="_blank" href="https://www.wikibase.cloud/privacy-policy">Privacy Policy</a> and Google
@@ -143,8 +143,8 @@ export default {
           policy => ({
             ...policy,
             name: policy.metadata.type.replaceAll('-', ' '),
-            url: `/${policy.metadata.type}/${policy.metadata.active_from}`
-          })
+            url: `/${policy.metadata.type}/${policy.metadata.active_from}`,
+          }),
         )
     } catch (err) {
       console.error(err)
@@ -201,7 +201,7 @@ export default {
 
       const acceptedPolicies = Array.from(
         this.policies,
-        policy => policy.metadata.policy_id
+        policy => policy.metadata.policy_id,
       )
 
       // Check for matching confirmed password
