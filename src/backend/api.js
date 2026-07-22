@@ -98,6 +98,10 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
   })).data
 }
 
+export const policyByDate = async ({ policyType, activeFrom }) => {
+  return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)).data
+}
+
 export const importEntities = async ({
   wikiId,
   entityIds = [

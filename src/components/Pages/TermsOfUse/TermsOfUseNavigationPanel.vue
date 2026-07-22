@@ -1,5 +1,5 @@
 <template>
-    <PolicyNavigationPanel title="All Versions" :links="termsOfUseLinks" :currentPath="currentPath" />
+    <PolicyNavigationPanel title="All Versions" :links="termsOfUseLinks"  :currentLink="currentLink" />
 </template>
 
 <script>
@@ -11,14 +11,24 @@ export default {
     PolicyNavigationPanel,
   },
   data: () => ({
+    // TODO read this from API
     termsOfUseLinks: [
       { title: 'Upcoming Version', routePath: '/terms-of-use/upcoming' },
       { title: '11 April 2022 (current)', routePath: '/terms-of-use' },
     ],
-    currentPath: null,
   }),
-  mounted () {
-    this.currentPath = this.$route.path
+  computed: {
+    currentLink: function () {
+      const isCurrentPath = (element) => element.routePath === this.$route.path
+      const positionInList = this.termsOfUseLinks.findIndex(isCurrentPath)
+
+      if (positionInList === -1) {
+        // not in a list, must be current version, because the TermsOfUseRenderer only allows accessing the current version by its active_from date
+        return 1
+      }
+
+      return positionInList
+    },
   },
 }
 
