@@ -3,7 +3,7 @@
     <v-alert class="mt-8 mr-2 ml-2" outlined type="error" border="left" v-if="error">
       An error occurred while trying to load the requested policy. Please try again later.
     </v-alert>
-    <v-container class="fill-height" fluid>
+    <v-container class="fill-height" fluid v-if="!error">
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
           <TermsOfUseNavigationPanel />
