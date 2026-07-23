@@ -51,7 +51,7 @@ export default {
         const metadata = await response.metadata
         this.policy = versions[metadata.content_vue_file]
       } catch (error) {
-        this.error = error;
+        this.error = error
         console.error(error)
       }
     },

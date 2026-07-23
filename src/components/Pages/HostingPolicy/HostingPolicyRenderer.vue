@@ -48,7 +48,7 @@ export default {
         this.policy = versions[metadata.content_vue_file]
       } catch (error) {
         console.error(error)
-        this.error = error;
+        this.error = error
       }
     },
   },
