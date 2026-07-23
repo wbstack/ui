@@ -53,6 +53,10 @@ export const checkVerified = async () => {
   const { data } = await axios.get('/auth/login')
   return data.verified
 }
+export const getCurrentPolicies = async () => {
+  const { data } = await axios.get('/v1/policies/current')
+  return data.items
+}
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
