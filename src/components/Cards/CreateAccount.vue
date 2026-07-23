@@ -39,31 +39,55 @@
             :disabled="inFlight"
             :error-messages="error['inputPasswordConfirmation']"
           />
-          <v-checkbox
-            required
-            v-model="terms"
-            :disabled="inFlight"
-            :error-messages="error['terms']"
+          <v-skeleton-loader
+            type="image"
+            :loading="loadingPolicies"
+            height="50px"
+            class="mt-4"
           >
-            <template v-slot:label>
-              <div>
-                I agree to the
-                <v-tooltip bottom>
-                  <template v-slot:activator="{ on }">
-                    <a
-                      target="_blank"
-                      href="/terms-of-use"
-                      @click.stop
-                      v-on="on"
-                    >
-                      Terms of Use.
-                    </a>
+            <v-checkbox
+              required
+              v-model="terms"
+              :disabled="inFlight"
+              :error-messages="error['terms']"
+            >
+              <template v-slot:label v-if="policies.length">
+                <div>
+                  I agree to the
+                  <template v-for="(policy, idx) in policies">
+                    <span :key="idx">{{ getPolicySeparator(idx) }}</span>
+                    <v-tooltip bottom :key="idx">
+                      <template v-slot:activator="{ on }">
+                        <a
+                          target="_blank"
+                          :href="policy.url"
+                          @click.stop
+                          v-on="on"
+                        >{{ policy.name }}</a>
+                      </template>
+                      Opens in new window
+                    </v-tooltip><span v-if="idx === policies.length - 1" :key="idx">.</span>
                   </template>
-                  Opens in new window
-                </v-tooltip>
-              </div>
-            </template>
-          </v-checkbox>
+                </div>
+              </template>
+              <template v-slot:label v-else>
+                <div>
+                  I agree to the
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                      <a
+                        target="_blank"
+                        href="/terms-of-use"
+                        @click.stop
+                        v-on="on"
+                      >terms of use</a>
+                    </template>
+                    Opens in new window
+                  </v-tooltip>.
+                </div>
+              </template>
+            </v-checkbox>
+          </v-skeleton-loader>
         <p>
           This site is protected by reCAPTCHA. Wikibase Cloud
           <a target="_blank" href="https://www.wikibase.cloud/privacy-policy">Privacy Policy</a> and Google
@@ -106,15 +130,47 @@ export default {
       hasError: false,
       error: [],
       inFlight: false,
+      policies: [],
+      loadingPolicies: true,
     }
   },
-  created () {
+  async created () {
     this.checkCurrentLogin()
+
+    try {
+      this.policies = (await this.$api.getCurrentPolicies())
+        .map(
+          policy => ({
+            ...policy,
+            name: policy.metadata.type.replaceAll('-', ' '),
+            url: `/${policy.metadata.type}/${policy.metadata.active_from}`,
+          }),
+        )
+    } catch (err) {
+      console.error(err)
+      // The policies array remains empty, so we fall back to the default terms of use
+      // message. After sign up, the user will be prompted to accept any policies they
+      // missed. (See T401223)
+    } finally {
+      this.loadingPolicies = false
+    }
   },
   updated () {
     this.checkCurrentLogin()
   },
   methods: {
+    getPolicySeparator (idx) {
+      const count = this.policies.length
+      if (idx === 0) {
+        return ' '
+      } else if (count === 2) {
+        return ' and the '
+      } else if (idx === count - 1) {
+        return ', and the '
+      } else {
+        return ', the '
+      }
+    },
     resetErrorState () {
       this.hasError = false
       this.error = []
@@ -140,8 +196,13 @@ export default {
       // Check for the terms
       if (this.terms === false) {
         this.hasError = true
-        this.error.terms = 'You must accept the Terms of Service.'
+        this.error.terms = 'You must accept the policies.'
       }
+
+      const acceptedPolicies = Array.from(
+        this.policies,
+        policy => policy.metadata.policy_id,
+      )
 
       // Check for matching confirmed password
       if (this.password !== this.passwordConfirmation) {
@@ -166,6 +227,7 @@ export default {
             email: this.email,
             password: this.password,
             recaptcha: token,
+            accepted_policies: acceptedPolicies,
           })
           .then(success => this.createSuccessful(success))
           .catch(errors => {
