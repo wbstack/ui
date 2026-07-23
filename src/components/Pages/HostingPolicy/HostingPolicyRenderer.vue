@@ -45,7 +45,13 @@ export default {
         const response = await this.$api.policyByDate({ policyType, activeFrom })
 
         const metadata = await response.metadata
-        this.policy = versions[metadata.content_vue_file]
+        const policy = versions[metadata.content_vue_file]
+
+        if (policy !== undefined) {
+          this.policy = policy
+        } else {
+          this.error = 'missing policy'
+        }
       } catch (error) {
         console.error(error)
         this.error = error
