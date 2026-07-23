@@ -1,5 +1,8 @@
 <template>
   <v-main>
+    <v-alert class="mt-8 mr-2 ml-2" outlined type="error" border="left" v-if="error">
+      An error occurred while trying to load the requested policy. Please try again later.
+    </v-alert>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
@@ -34,6 +37,7 @@ export default {
   data () {
     return {
       policy: undefined,
+      error: undefined,
     }
   },
   methods: {
@@ -47,8 +51,8 @@ export default {
         const metadata = await response.metadata
         this.policy = versions[metadata.content_vue_file]
       } catch (error) {
+        this.error = error;
         console.error(error)
-        alert('Failed to load policy.')
       }
     },
   },
