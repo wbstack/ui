@@ -6,7 +6,6 @@
     <v-container class="fill-height" fluid v-if="!error">
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
-          <TermsOfUseNavigationPanel />
         </v-col>
 
         <v-col cols="11" md="8">
@@ -18,17 +17,14 @@
 </template>
 
 <script>
-import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
 
 export const versions = {
-  'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
+  'hosting-policy/version-1.vue': () => ({ component: import('./hosting-policy/version-1.vue') }),
 }
 
 export default {
-  name: 'TermsOfUseRenderer',
-  components: {
-    TermsOfUseNavigationPanel,
-  },
+  name: 'HostingPolicyRenderer',
+  components: {},
   computed: {
     policyActiveFrom: function () {
       return this.$route.params.activeFrom
@@ -43,7 +39,7 @@ export default {
   methods: {
     async loadPolicy () {
       try {
-        const policyType = 'terms-of-use' // TODO read this from component property
+        const policyType = 'hosting-policy' // TODO read this from component property
         const activeFrom = this.policyActiveFrom
 
         const response = await this.$api.policyByDate({ policyType, activeFrom })
@@ -57,8 +53,8 @@ export default {
           this.error = 'missing policy'
         }
       } catch (error) {
-        this.error = error
         console.error(error)
+        this.error = error
       }
     },
   },
