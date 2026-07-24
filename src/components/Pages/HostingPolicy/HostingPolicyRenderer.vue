@@ -39,10 +39,10 @@ export default {
   methods: {
     async loadPolicy () {
       try {
-        const policyType = 'hosting-policy' // TODO read this from component property
+        const policyType = 'hosting-policy' // TODO for a generalized component, read this from component property
         const activeFrom = this.policyActiveFrom
 
-        const response = await this.$api.policyByDate({ policyType, activeFrom })
+        const response = await this.$api.getPolicyByDate({ policyType, activeFrom })
 
         const metadata = await response.metadata
         const policy = versions[metadata.content_vue_file]

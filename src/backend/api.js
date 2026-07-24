@@ -58,6 +58,26 @@ export const getCurrentPolicies = async () => {
   return data.items
 }
 
+export const getPolicyByDate = async ({ policyType, activeFrom }) => {
+  const { data } = await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`).data
+  return data;
+}
+
+export const getAllPoliciesByType = async ({ policyType }) => {
+  const { data } = await axios.get(`/v1/policies/${policyType}`).data
+  return data.items;
+}
+
+export const getCurrentPolicyByType = async ({ policyType }) => {
+  const { data } = await axios.get(`/v1/policies/${policyType}`).data
+  return data;
+}
+
+export const getUpcomingPolicyByType = async ({ policyType }) => {
+  const { data } = await axios.get(`/v1/policies/${policyType}/upcoming`).data
+  return data;
+}
+
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
 export const myWikis = async () => (await axios.post('/wiki/mine')).data
@@ -100,10 +120,6 @@ export const wikiDiscovery = async ({ sort, direction, active, currentPage, resu
       per_page: resultsPerPage,
     },
   })).data
-}
-
-export const policyByDate = async ({ policyType, activeFrom }) => {
-  return (await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)).data
 }
 
 export const importEntities = async ({
