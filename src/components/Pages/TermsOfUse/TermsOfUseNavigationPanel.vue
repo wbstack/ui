@@ -31,12 +31,11 @@ export default {
   methods: {
     async loadPolicies () {
       try {
-        const policyType = 'terms-of-use';
+        const policyType = 'terms-of-use'
         const response = await this.$api.getAllPoliciesByType({ policyType })
+        const items = await response.items
 
-        const items = await response.items;
-
-        this.policies = items;
+        this.policies = items
       } catch (error) {
         this.error = error
         console.error(error)

@@ -44,8 +44,9 @@ export default {
   methods: {
     async loadPolicy () {
       try {
-        const policyType = this.policyType; // TODO for a generalized component, read this from component property
-        
+        const policyType = this.policyType // TODO for a generalized component, read this from component property
+        const activeFrom = this.activeFrom
+
         if (this.policyActiveFrom === undefined) {
           const response = await this.$api.getCurrentPolicyByType({ policyType })
         } else {
