@@ -38,15 +38,19 @@ export default {
     return {
       policy: undefined,
       error: undefined,
+      policyType: 'terms-of-use',
     }
   },
   methods: {
     async loadPolicy () {
       try {
-        const policyType = 'terms-of-use' // TODO read this from component property
-        const activeFrom = this.policyActiveFrom
-
-        const response = await this.$api.policyByDate({ policyType, activeFrom })
+        const policyType = this.policyType; // TODO for a generalized component, read this from component property
+        
+        if (this.policyActiveFrom === undefined) {
+          const response = await this.$api.getCurrentPolicyByType({ policyType })
+        } else {
+          const response = await this.$api.getPolicyByDate({ policyType, activeFrom })
+        }
 
         const metadata = await response.metadata
         const policy = versions[metadata.content_vue_file]
@@ -66,7 +70,7 @@ export default {
     this.loadPolicy()
   },
   watch: {
-    policyId: function () {
+    policyActiveFrom: function () {
       this.loadPolicy()
     },
   },

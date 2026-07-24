@@ -11,11 +11,9 @@ export default {
     PolicyNavigationPanel,
   },
   data: () => ({
-    // TODO read this from API
-    termsOfUseLinks: [
-      { title: 'Upcoming Version', routePath: '/terms-of-use/upcoming' },
-      { title: '11 April 2022 (current)', routePath: '/terms-of-use' },
-    ],
+    termsOfUseLinks: [],
+    policies: undefined,
+    error: undefined,
   }),
   computed: {
     currentLink: function () {
@@ -29,6 +27,24 @@ export default {
 
       return positionInList
     },
+  },
+  methods: {
+    async loadPolicies () {
+      try {
+        const policyType = 'terms-of-use';
+        const response = await this.$api.getAllPoliciesByType({ policyType })
+
+        const items = await response.items;
+
+        this.policies = items;
+      } catch (error) {
+        this.error = error
+        console.error(error)
+      }
+    },
+  },
+  mounted () {
+    this.loadPolicies()
   },
 }
 

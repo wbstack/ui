@@ -73,31 +73,34 @@ const router = new Router({
       name: 'ResetPassword',
       component: ResetPassword,
     },
-    // TODO should be handled by TermsOfUseRenderer
     {
       path: '/terms-of-use',
-      name: 'TermsOfUse',
-      component: TermsOfUse,
-    },
-    // TODO should be handled by TermsOfUseRenderer
-    {
-      path: '/terms-of-use/upcoming',
-      name: 'TermsOfUseUpcoming',
-      component: TermsOfUseUpcoming,
-    },
-    {
-      path: '/terms-of-use/:activeFrom',
       name: 'TermsOfUseRenderer',
       component: TermsOfUseRenderer,
     },
     {
+      path: '/terms-of-use/upcoming',
+      name: 'TermsOfUseRendererUpcoming',
+      component: TermsOfUseRenderer,
+    },
+    {
+      path: '/terms-of-use/:activeFrom',
+      name: 'TermsOfUseRendererExact',
+      component: TermsOfUseRenderer,
+    },
+    {
       path: '/hosting-policy/pilot',
-      name: 'Hosting Policy',
+      name: 'HostingPolicyPilot',
       component: HostingPolicy,
     },
     {
       path: '/hosting-policy/:activeFrom',
-      name: 'Hosting Policy',
+      name: 'HostingPolicyRendererExact',
+      component: HostingPolicyRenderer,
+    },
+    {
+      path: '/hosting-policy/upcoming',
+      name: 'HostingPolicyRendererUpcoming',
       component: HostingPolicyRenderer,
     },
     {
