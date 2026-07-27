@@ -87,6 +87,11 @@ const router = new Router({
       component: TermsOfUseRenderer,
     },
     {
+      path: '/hosting-policy',
+      name: 'HostingPolicy',
+      component: HostingPolicyRenderer,
+    },
+    {
       path: '/hosting-policy/pilot',
       name: 'HostingPolicyPilot',
       component: HostingPolicy,

@@ -9,12 +9,6 @@
         <v-col cols="11" md="8">
           <h1>Terms Of Use</h1>
           <v-alert
-            type="info"
-          >
-           This is an upcoming version. You can find the
-            <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
-          </v-alert>
-          <v-alert
             text
             color="info"
           >
