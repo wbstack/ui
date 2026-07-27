@@ -59,22 +59,22 @@ export const getCurrentPolicies = async () => {
 }
 
 export const getPolicyByDate = async ({ policyType, activeFrom }) => {
-  const { data } = await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`).data
+  const { data } = await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)
   return data
 }
 
 export const getAllPoliciesByType = async ({ policyType }) => {
-  const { data } = await axios.get(`/v1/policies/${policyType}`).data
+  const { data } = await axios.get(`/v1/policies/${policyType}`)
   return data.items
 }
 
 export const getCurrentPolicyByType = async ({ policyType }) => {
-  const { data } = await axios.get(`/v1/policies/${policyType}`).data
+  const { data } = await axios.get(`/v1/policies/${policyType}/current`)
   return data
 }
 
 export const getUpcomingPolicyByType = async ({ policyType }) => {
-  const { data } = await axios.get(`/v1/policies/${policyType}/upcoming`).data
+  const { data } = await axios.get(`/v1/policies/${policyType}/upcoming`)
   return data
 }
 
