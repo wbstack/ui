@@ -1,5 +1,3 @@
-<!-- TODO do we wanna move this into TermsOfUseRenderer.vue ? -->
-<!-- TODO make sure any upcoming policy links always go to /upcoming and not /activeFrom -->
 <template>
   <PolicyNavigationPanel :title="title" :links="links" :currentLink="currentLink" />
 </template>
