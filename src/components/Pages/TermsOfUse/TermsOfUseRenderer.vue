@@ -42,9 +42,9 @@ export default {
     isUpcomingRoute: function () {
       return this.$route.path === '/terms-of-use/upcoming'
     },
-    isCurrentRoute: function() {
+    isCurrentRoute: function () {
       return this.policyActiveFrom === undefined
-    }
+    },
   },
   data () {
     return {

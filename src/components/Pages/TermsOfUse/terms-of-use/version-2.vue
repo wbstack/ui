@@ -1122,7 +1122,7 @@ export default {
   components: {
   },
   computed: {
-    isMobile() {
+    isMobile () {
       return this.$vuetify.breakpoint.xs
     },
   },
