@@ -15,7 +15,7 @@
 
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
-          <TermsOfUseNavigationPanel basePath="/hosting-policy" policyType="hosting-policy" title="All Versions" />
+          <PolicyNavigationPanel basePath="/hosting-policy" policyType="hosting-policy" />
         </v-col>
 
         <v-col cols="11" md="8">
@@ -28,7 +28,7 @@
 
 <script>
 
-import TermsOfUseNavigationPanel from '../TermsOfUse/TermsOfUseNavigationPanel.vue'
+import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
 
 export const versions = {
   'hosting-policy/version-1.vue': () => ({ component: import('./hosting-policy/version-1.vue') }),
@@ -49,7 +49,7 @@ const isFutureDate = (activeFrom) => {
 export default {
   name: 'HostingPolicyRenderer',
   components: {
-    TermsOfUseNavigationPanel,
+    PolicyNavigationPanel,
   },
   computed: {
     policyActiveFrom: function () {
