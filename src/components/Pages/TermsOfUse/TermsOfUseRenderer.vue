@@ -42,6 +42,9 @@ export default {
     isUpcomingRoute: function () {
       return this.$route.path === '/terms-of-use/upcoming'
     },
+    isCurrentRoute: function() {
+      return this.policyActiveFrom === undefined
+    }
   },
   data () {
     return {
@@ -59,12 +62,12 @@ export default {
 
       try {
         const policyType = this.policyType // TODO for a generalized component, read this from component property
-        const activeFrom = this.activeFrom
+        const activeFrom = this.policyActiveFrom
         let response
 
         if (this.isUpcomingRoute) {
           response = await this.$api.getUpcomingPolicyByType({ policyType })
-        } else if (activeFrom === undefined) {
+        } else if (this.isCurrentRoute) {
           response = await this.$api.getCurrentPolicyByType({ policyType })
         } else {
           response = await this.$api.getPolicyByDate({ policyType, activeFrom })
