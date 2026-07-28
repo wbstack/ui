@@ -6,7 +6,7 @@
     <v-container class="fill-height" fluid v-if="!error">
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
-          <TermsOfUseNavigationPanel />
+          <PolicyNavigationPanel policyType="terms-of-use" basePath="/terms-of-use" />
         </v-col>
 
         <v-col cols="11" md="8">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
 
 export const versions = {
   'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
@@ -33,7 +33,7 @@ export const versions = {
 export default {
   name: 'TermsOfUseRenderer',
   components: {
-    TermsOfUseNavigationPanel,
+    PolicyNavigationPanel,
   },
   computed: {
     policyActiveFrom: function () {
