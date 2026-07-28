@@ -30,18 +30,6 @@ export const versions = {
   'terms-of-use/version-2.vue': () => ({ component: import('./terms-of-use/version-2.vue') }),
 }
 
-const isFutureDate = (activeFrom) => {
-  if (activeFrom === null || activeFrom === undefined) {
-    return false
-  }
-
-  const date = new Date(`${activeFrom}T00:00:00Z`)
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-
-  return date > today
-}
-
 export default {
   name: 'TermsOfUseRenderer',
   components: {
