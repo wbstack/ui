@@ -65,12 +65,12 @@ export default {
 
       const currentPolicy = sortedPolicies.find(policy => {
         const activeFrom = parseActiveFrom(policy.metadata.active_from)
-        return activeFrom === null || activeFrom <= today
+        return activeFrom <= today
       })
 
       const upcomingPolicy = sortedPolicies.find(policy => {
         const activeFrom = parseActiveFrom(policy.metadata.active_from)
-        return activeFrom !== null && activeFrom > today
+        return activeFrom > today || activeFrom === null
       })
 
       const otherPolicies = sortedPolicies.filter(policy => {
@@ -144,11 +144,6 @@ export default {
   },
   mounted () {
     this.loadPolicies()
-  },
-  watch: {
-    policyType () {
-      this.loadPolicies()
-    },
   },
 }
 
