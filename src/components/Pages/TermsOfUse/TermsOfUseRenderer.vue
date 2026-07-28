@@ -31,7 +31,7 @@ import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
 
 export const versions = {
   'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
-  'terms-of-use/version-2.vue': () => ({ component: import('./Upcoming.vue') }),
+  'terms-of-use/version-2.vue': () => ({ component: import('./terms-of-use/version-2.vue') }),
 }
 
 const isFutureDate = (activeFrom) => {
