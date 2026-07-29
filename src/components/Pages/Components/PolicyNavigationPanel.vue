@@ -7,7 +7,7 @@
             <v-list class="wrap">
                 <v-list-item v-for="(link, index) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="index == currentLink">
+                        <v-list-item-title v-if="index == currentlyRenderedLink">
                             {{ link.title }}
                         </v-list-item-title>
 
@@ -25,32 +25,6 @@
 </template>
 
 <script>
-const parseActiveFrom = (activeFrom) => {
-  if (activeFrom === null || activeFrom === undefined) {
-    return null
-  }
-
-  return new Date(`${activeFrom}T00:00:00Z`)
-}
-
-const comparePolicies = (left, right) => {
-  const leftActiveFrom = parseActiveFrom(left.metadata.active_from)
-  const rightActiveFrom = parseActiveFrom(right.metadata.active_from)
-
-  if (leftActiveFrom === null && rightActiveFrom === null) {
-    return 0
-  }
-
-  if (leftActiveFrom === null) {
-    return 1
-  }
-
-  if (rightActiveFrom === null) {
-    return -1
-  }
-
-  return rightActiveFrom - leftActiveFrom || right.metadata.policy_id - left.metadata.policy_id
-}
 
 export default {
   name: 'PolicyNavigationPanel',
@@ -70,33 +44,34 @@ export default {
   },
   data: () => ({
     policies: [],
+    currentPolicyId: null,
+    upcomingPolicyId: null,
     error: undefined,
   }),
   computed: {
     links: function () {
-      const sortedPolicies = [...this.policies].sort(comparePolicies)
-      const today = new Date()
-      today.setHours(0, 0, 0, 0)
+      const policyById = new Map(this.policies.map(policy => [policy.metadata.policy_id, policy]))
+      const currentPolicy = policyById.get(this.currentPolicyId)
+      const upcomingPolicy = policyById.get(this.upcomingPolicyId)
 
-      const currentPolicy = sortedPolicies.find(policy => {
-        const activeFrom = parseActiveFrom(policy.metadata.active_from)
-        return activeFrom <= today
-      })
-
-      const upcomingPolicy = sortedPolicies.find(policy => {
-        const activeFrom = parseActiveFrom(policy.metadata.active_from)
-        return activeFrom > today || activeFrom === null
-      })
-
-      const otherPolicies = sortedPolicies.filter(policy => {
+      const otherPolicies = this.policies.filter(policy => {
         const policyId = policy.metadata.policy_id
-        const currentPolicyId = currentPolicy ? currentPolicy.metadata.policy_id : null
-        const upcomingPolicyId = upcomingPolicy ? upcomingPolicy.metadata.policy_id : null
+        const currentPolicyId = this.currentPolicyId
+        const upcomingPolicyId = this.upcomingPolicyId
 
         return policyId !== currentPolicyId && policyId !== upcomingPolicyId
+      }).sort((left, right) => {
+        const leftActiveFrom = left.metadata.active_from || ''
+        const rightActiveFrom = right.metadata.active_from || ''
+
+        if (leftActiveFrom === rightActiveFrom) {
+          return right.metadata.policy_id - left.metadata.policy_id
+        }
+
+        return rightActiveFrom.localeCompare(leftActiveFrom)
       })
 
-      const orderedPolicies = [currentPolicy, upcomingPolicy, ...otherPolicies].filter(Boolean)
+      const orderedPolicies = [upcomingPolicy, currentPolicy, ...otherPolicies].filter(Boolean)
 
       return orderedPolicies.map(policy => {
         const activeFrom = policy.metadata.active_from
@@ -109,14 +84,13 @@ export default {
         }
       })
     },
-    currentLink: function () {
-      const isCurrentPath = (element) => element.routePath === this.$route.path
-      const positionInList = this.links.findIndex(isCurrentPath)
+    currentlyRenderedLink: function () {
+      const isRenderedPath = (element) => element.routePath === this.$route.path
+      const positionInList = this.links.findIndex(isRenderedPath)
 
       if (positionInList === -1) {
-        const currentVersionIndex = this.links.findIndex(element => element.routePath === this.basePath)
-
-        return currentVersionIndex === -1 ? 0 : currentVersionIndex
+        const renderedVersionIndex = this.links.findIndex(element => element.routePath === this.basePath)
+        return renderedVersionIndex === -1 ? 0 : renderedVersionIndex
       }
 
       return positionInList
@@ -127,8 +101,33 @@ export default {
       this.error = undefined
 
       try {
-        const response = await this.$api.getAllPoliciesByType({ policyType: this.policyType })
-        this.policies = response
+        const policies = await this.$api.getAllPoliciesByType({ policyType: this.policyType })
+
+        this.policies = policies
+
+        // We look up the Current and Upcoming policy of this type to avoid needing to have the complex
+        // date calculations in the frontend and instead do them in the platform api.
+        // This is quite inefficient but it keeps the frontend less complex to reason about.
+        // We need to consider that there may be neither an upcoming or current policy and gracefully handle that,
+        try {
+          const upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType: this.policyType })
+          this.upcomingPolicyId = upcomingPolicy.metadata.policy_id
+        } catch (error) {
+          if (!(error && error.response && error.response.status === 404)) {
+            console.error(error)
+          }
+          this.upcomingPolicyId = null
+        }
+
+        try {
+          const currentPolicy = await this.$api.getCurrentPolicyByType({ policyType: this.policyType })
+          this.currentPolicyId = currentPolicy.metadata.policy_id
+        } catch (error) {
+          if (!(error && error.response && error.response.status === 404)) {
+            console.error(error)
+          }
+          this.currentPolicyId = null
+        }
       } catch (error) {
         this.error = error
         console.error(error)
@@ -149,7 +148,6 @@ export default {
       if (isCurrentPolicy) {
         return 'Current version'
       }
-
       if (isUpcomingPolicy) {
         return 'Upcoming version'
       }

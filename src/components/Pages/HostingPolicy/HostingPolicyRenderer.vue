@@ -4,7 +4,7 @@
       An error occurred while trying to load the requested policy. Please try again later.
     </v-alert>
     <v-container class="fill-height" fluid v-if="!error">
-      <v-row v-if="isUpcomingPolicy" justify="center">
+      <v-row v-if="isUpcomingRoute" justify="center">
         <v-col cols="11">
           <v-alert type="info">
             This is an upcoming version. You can find the
@@ -34,18 +34,6 @@ export const versions = {
   'hosting-policy/version-1.vue': () => ({ component: import('./hosting-policy/version-1.vue') }),
 }
 
-const isFutureDate = (activeFrom) => {
-  if (activeFrom === null || activeFrom === undefined) {
-    return false
-  }
-
-  const date = new Date(`${activeFrom}T00:00:00Z`)
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-
-  return date > today
-}
-
 export default {
   name: 'HostingPolicyRenderer',
   components: {
@@ -58,8 +46,8 @@ export default {
     isUpcomingRoute: function () {
       return this.$route.path === '/hosting-policy/upcoming'
     },
-    isUpcomingPolicy: function () {
-      return isFutureDate(this.policyMetadata && this.policyMetadata.active_from)
+    isCurrentRoute: function () {
+      return this.policyActiveFrom === undefined
     },
   },
   data () {
@@ -67,6 +55,7 @@ export default {
       policy: undefined,
       policyMetadata: undefined,
       error: undefined,
+      policyType: 'hosting-policy',
     }
   },
   methods: {
@@ -76,13 +65,13 @@ export default {
       this.error = undefined
 
       try {
-        const policyType = 'hosting-policy' // TODO for a generalized component, read this from component property
+        const policyType = this.policyType // TODO for a generalized component, read this from component property
         const activeFrom = this.policyActiveFrom
         let response
 
         if (this.isUpcomingRoute) {
           response = await this.$api.getUpcomingPolicyByType({ policyType })
-        } else if (activeFrom === undefined) {
+        } else if (this.isCurrentRoute) {
           response = await this.$api.getCurrentPolicyByType({ policyType })
         } else {
           response = await this.$api.getPolicyByDate({ policyType, activeFrom })
