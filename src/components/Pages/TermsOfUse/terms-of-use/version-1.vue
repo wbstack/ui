@@ -1282,7 +1282,6 @@
 
 <script>
 export default {
-  name: 'TermsOfUse',
   components: {},
   computed: {},
 }

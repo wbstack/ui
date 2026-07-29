@@ -6,10 +6,15 @@
     <v-container class="fill-height" fluid v-if="!error">
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
-          <TermsOfUseNavigationPanel />
+          <PolicyNavigationPanel policyType="terms-of-use" basePath="/terms-of-use" />
         </v-col>
 
         <v-col cols="11" md="8">
+          <v-alert type="info" v-if="isUpcomingRoute">
+            This is an upcoming version. You can find the
+            <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
+          </v-alert>
+
           <component :is="policy" v-if="policy" />
         </v-col>
       </v-row>
@@ -18,41 +23,62 @@
 </template>
 
 <script>
-import TermsOfUseNavigationPanel from './TermsOfUseNavigationPanel.vue'
+import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
 
 export const versions = {
   'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
+  'terms-of-use/version-2.vue': () => ({ component: import('./terms-of-use/version-2.vue') }),
 }
 
 export default {
   name: 'TermsOfUseRenderer',
   components: {
-    TermsOfUseNavigationPanel,
+    PolicyNavigationPanel,
   },
   computed: {
     policyActiveFrom: function () {
       return this.$route.params.activeFrom
     },
+    isUpcomingRoute: function () {
+      return this.$route.path === '/terms-of-use/upcoming'
+    },
+    isCurrentRoute: function () {
+      return this.policyActiveFrom === undefined
+    },
   },
   data () {
     return {
       policy: undefined,
+      policyMetadata: undefined,
       error: undefined,
+      policyType: 'terms-of-use',
     }
   },
   methods: {
     async loadPolicy () {
+      this.policy = undefined
+      this.policyMetadata = undefined
+      this.error = undefined
+
       try {
-        const policyType = 'terms-of-use' // TODO read this from component property
+        const policyType = this.policyType // TODO for a generalized component, read this from component property
         const activeFrom = this.policyActiveFrom
+        let response
 
-        const response = await this.$api.policyByDate({ policyType, activeFrom })
+        if (this.isUpcomingRoute) {
+          response = await this.$api.getUpcomingPolicyByType({ policyType })
+        } else if (this.isCurrentRoute) {
+          response = await this.$api.getCurrentPolicyByType({ policyType })
+        } else {
+          response = await this.$api.getPolicyByDate({ policyType, activeFrom })
+        }
 
-        const metadata = await response.metadata
+        const metadata = response.metadata
         const policy = versions[metadata.content_vue_file]
 
         if (policy !== undefined) {
           this.policy = policy
+          this.policyMetadata = metadata
         } else {
           this.error = 'missing policy'
         }
@@ -66,7 +92,10 @@ export default {
     this.loadPolicy()
   },
   watch: {
-    policyId: function () {
+    policyActiveFrom: function () {
+      this.loadPolicy()
+    },
+    isUpcomingRoute: function () {
       this.loadPolicy()
     },
   },

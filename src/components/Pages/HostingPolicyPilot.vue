@@ -279,6 +279,7 @@
 </template>
 
 <script>
+// Legacy file. Remove after T408316
 export default {
   name: 'HostingPolicy',
 }
