@@ -4,21 +4,17 @@
       An error occurred while trying to load the requested policy. Please try again later.
     </v-alert>
     <v-container class="fill-height" fluid v-if="!error">
-      <v-row v-if="isUpcomingRoute" justify="center">
-        <v-col cols="11">
-          <v-alert type="info">
-            This is an upcoming version. You can find the
-            <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
-          </v-alert>
-        </v-col>
-      </v-row>
-
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
           <PolicyNavigationPanel basePath="/hosting-policy" policyType="hosting-policy" />
         </v-col>
 
         <v-col cols="11" md="8">
+          <v-alert type="info" v-if="isUpcomingRoute">
+            This is an upcoming version. You can find the
+            <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
+          </v-alert>
+
           <component :is="policy" v-if="policy" />
         </v-col>
       </v-row>
