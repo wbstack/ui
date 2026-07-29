@@ -101,15 +101,14 @@ export default {
       this.error = undefined
 
       try {
-        const [policies] = await Promise.all([
-          this.$api.getAllPoliciesByType({ policyType: this.policyType }),
-        ])
+        const policies = await this.$api.getAllPoliciesByType({ policyType: this.policyType })
 
         this.policies = policies
-        this.currentPolicyId = currentPolicy.metadata.policy_id
 
-        // TODO: this doesn't handle the case where there is no current policy.
-
+        // We look up the Current and Upcoming policy of this type to avoid needing to have the complex
+        // date calculations in the frontend and instead do them in the platform api.
+        // This is quite inefficient but it keeps the frontend less complex to reason about.
+        // We need to consider that there may be neither an upcoming or current policy and gracefully handle that,
         try {
           const upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType: this.policyType })
           this.upcomingPolicyId = upcomingPolicy.metadata.policy_id
