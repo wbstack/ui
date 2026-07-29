@@ -54,22 +54,8 @@
               <template v-slot:label v-if="policies.length">
                 <div>
                   I agree to the
-                  <template v-for="(policy, idx) in policies">
-                    <div :key="policy.metadata.policy_id" style="display: contents">
-                      <span>{{ getPolicySeparator(idx) }}</span>
-                      <v-tooltip bottom>
-                        <template v-slot:activator="{ on }">
-                          <a
-                            target="_blank"
-                            :href="policy.url"
-                            @click.stop
-                            v-on="on"
-                          >{{ policy.name }}</a>
-                        </template>
-                        Opens in new window
-                      </v-tooltip><span v-if="idx === policies.length - 1">.</span>
-                    </div>
-                  </template>
+                  <PolicyList :policies="policies"/>
+                  <span>.</span>
                 </div>
               </template>
               <template v-slot:label v-else>
@@ -111,13 +97,17 @@
 </template>
 
 <script>
+import PolicyList from '../Components/PolicyList'
+
 export default {
   name: 'CreateAccountCard',
   props: [
     'title',
     'buttonText',
   ],
-  components: {},
+  components: {
+    PolicyList,
+  },
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
@@ -140,14 +130,7 @@ export default {
     this.checkCurrentLogin()
 
     try {
-      this.policies = (await this.$api.getCurrentPolicies())
-        .map(
-          policy => ({
-            ...policy,
-            name: policy.metadata.type.replaceAll('-', ' '),
-            url: `/${policy.metadata.type}/${policy.metadata.active_from}`,
-          }),
-        )
+      this.policies = await this.$api.getCurrentPolicies()
     } catch (err) {
       console.error(err)
       // The policies array remains empty, so we fall back to the default terms of use
@@ -161,18 +144,6 @@ export default {
     this.checkCurrentLogin()
   },
   methods: {
-    getPolicySeparator (idx) {
-      const count = this.policies.length
-      if (idx === 0) {
-        return ' '
-      } else if (count === 2) {
-        return ' and the '
-      } else if (idx === count - 1) {
-        return ', and the '
-      } else {
-        return ', the '
-      }
-    },
     resetErrorState () {
       this.hasError = false
       this.error = []

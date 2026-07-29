@@ -57,6 +57,15 @@ export const getCurrentPolicies = async () => {
   const { data } = await axios.get('/v1/policies/current')
   return data.items
 }
+export const getMissingPolicies = async () => {
+  const { data } = await axios.get('/v1/policies/missing')
+  return data.items
+}
+export const acceptPolicies = async (policyIds) => {
+  await axios.put('/v1/policy_acceptances', {
+    policy_ids: policyIds,
+  })
+}
 
 /* Wiki endpoints */
 export const countWikis = async () => (await axios.get('/wiki/count')).data.data // TODO This doesn't seem to exist and not used?
