@@ -7,7 +7,7 @@
             <v-list class="wrap">
                 <v-list-item v-for="(link, index) in links" :key="link.routePath">
                     <v-list-item-content>
-                        <v-list-item-title v-if="index == currentLink">
+                        <v-list-item-title v-if="index == currentlyRenderedLink">
                             {{ link.title }}
                         </v-list-item-title>
 
@@ -71,7 +71,7 @@ export default {
         return rightActiveFrom.localeCompare(leftActiveFrom)
       })
 
-      const orderedPolicies = [currentPolicy, upcomingPolicy, ...otherPolicies].filter(Boolean)
+      const orderedPolicies = [upcomingPolicy, currentPolicy, ...otherPolicies].filter(Boolean)
 
       return orderedPolicies.map(policy => {
         const activeFrom = policy.metadata.active_from
@@ -84,14 +84,14 @@ export default {
         }
       })
     },
-    currentLink: function () {
-      const isCurrentPath = (element) => element.routePath === this.$route.path
-      const positionInList = this.links.findIndex(isCurrentPath)
+    currentlyRenderedLink: function () {
+      const isRenderedPath = (element) => element.routePath === this.$route.path
+      const positionInList = this.links.findIndex(isRenderedPath)
 
       if (positionInList === -1) {
-        const currentVersionIndex = this.links.findIndex(element => element.routePath === this.basePath)
+        const renderedVersionIndex = this.links.findIndex(element => element.routePath === this.basePath)
 
-        return currentVersionIndex === -1 ? 0 : currentVersionIndex
+        return renderedVersionIndex === -1 ? 0 : renderedVersionIndex
       }
 
       return positionInList
