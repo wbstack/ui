@@ -69,6 +69,11 @@ export default {
           response = await this.$api.getUpcomingPolicyByType({ policyType })
         } else if (this.isCurrentRoute) {
           response = await this.$api.getCurrentPolicyByType({ policyType })
+          if (response === undefined) {
+            // Special case to redirect users to the pilot policy if there is no current policy
+            // Remove afer T408316
+            this.$router.replace({ path: '/hosting-policy/pilot' })
+          }
         } else {
           response = await this.$api.getPolicyByDate({ policyType, activeFrom })
         }
