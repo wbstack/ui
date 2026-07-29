@@ -90,7 +90,6 @@ export default {
 
       if (positionInList === -1) {
         const renderedVersionIndex = this.links.findIndex(element => element.routePath === this.basePath)
-
         return renderedVersionIndex === -1 ? 0 : renderedVersionIndex
       }
 
@@ -102,13 +101,14 @@ export default {
       this.error = undefined
 
       try {
-        const [policies, currentPolicy] = await Promise.all([
+        const [policies] = await Promise.all([
           this.$api.getAllPoliciesByType({ policyType: this.policyType }),
-          this.$api.getCurrentPolicyByType({ policyType: this.policyType }),
         ])
 
         this.policies = policies
         this.currentPolicyId = currentPolicy.metadata.policy_id
+
+        // TODO: this doesn't handle the case where there is no current policy.
 
         try {
           const upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType: this.policyType })
@@ -118,6 +118,16 @@ export default {
             console.error(error)
           }
           this.upcomingPolicyId = null
+        }
+
+        try {
+          const currentPolicy = await this.$api.getCurrentPolicyByType({ policyType: this.policyType })
+          this.currentPolicyId = currentPolicy.metadata.policy_id
+        } catch (error) {
+          if (!(error && error.response && error.response.status === 404)) {
+            console.error(error)
+          }
+          this.currentPolicyId = null
         }
       } catch (error) {
         this.error = error
@@ -139,7 +149,6 @@ export default {
       if (isCurrentPolicy) {
         return 'Current version'
       }
-
       if (isUpcomingPolicy) {
         return 'Upcoming version'
       }
