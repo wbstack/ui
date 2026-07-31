@@ -92,9 +92,9 @@ const router = new Router({
       component: HostingPolicyRenderer,
     },
     {
-      path: '/hosting-policy/pilot', // Remove after T408316
-      name: 'HostingPolicyPilot',
-      component: HostingPolicyPilot,
+      path: '/hosting-policy/',
+      name: 'HostingPolicy',
+      component: HostingPolicy,
     },
     {
       path: '/hosting-policy/:activeFrom',
