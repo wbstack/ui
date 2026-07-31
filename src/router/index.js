@@ -14,8 +14,6 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
-import TermsOfUse from '@/components/Pages/TermsOfUse/Current.vue'
-import TermsOfUseUpcoming from '@/components/Pages/TermsOfUse/Upcoming.vue'
 import TermsOfUseRenderer from '@/components/Pages/TermsOfUse/TermsOfUseRenderer.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
@@ -73,31 +71,39 @@ const router = new Router({
       name: 'ResetPassword',
       component: ResetPassword,
     },
-    // TODO should be handled by TermsOfUseRenderer
     {
       path: '/terms-of-use',
-      name: 'TermsOfUse',
-      component: TermsOfUse,
-    },
-    // TODO should be handled by TermsOfUseRenderer
-    {
-      path: '/terms-of-use/upcoming',
-      name: 'TermsOfUseUpcoming',
-      component: TermsOfUseUpcoming,
-    },
-    {
-      path: '/terms-of-use/:activeFrom',
       name: 'TermsOfUseRenderer',
       component: TermsOfUseRenderer,
     },
     {
-      path: '/hosting-policy/pilot',
-      name: 'Hosting Policy',
-      component: HostingPolicy,
+      path: '/terms-of-use/upcoming',
+      name: 'TermsOfUseRendererUpcoming',
+      component: TermsOfUseRenderer,
+    },
+    {
+      path: '/terms-of-use/:activeFrom',
+      name: 'TermsOfUseRendererExact',
+      component: TermsOfUseRenderer,
+    },
+    {
+      path: '/hosting-policy',
+      name: 'HostingPolicy',
+      component: HostingPolicyRenderer,
+    },
+    {
+      path: '/hosting-policy/pilot', // Remove after T408316
+      name: 'HostingPolicyPilot',
+      component: HostingPolicyPilot,
     },
     {
       path: '/hosting-policy/:activeFrom',
-      name: 'Hosting Policy',
+      name: 'HostingPolicyRendererExact',
+      component: HostingPolicyRenderer,
+    },
+    {
+      path: '/hosting-policy/upcoming',
+      name: 'HostingPolicyRendererUpcoming',
       component: HostingPolicyRenderer,
     },
     {

@@ -55,18 +55,20 @@
                 <div>
                   I agree to the
                   <template v-for="(policy, idx) in policies">
-                    <span :key="idx">{{ getPolicySeparator(idx) }}</span>
-                    <v-tooltip bottom :key="idx">
-                      <template v-slot:activator="{ on }">
-                        <a
-                          target="_blank"
-                          :href="policy.url"
-                          @click.stop
-                          v-on="on"
-                        >{{ policy.name }}</a>
-                      </template>
-                      Opens in new window
-                    </v-tooltip><span v-if="idx === policies.length - 1" :key="idx">.</span>
+                    <div :key="policy.metadata.policy_id" style="display: contents">
+                      <span>{{ getPolicySeparator(idx) }}</span>
+                      <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <a
+                            target="_blank"
+                            :href="policy.url"
+                            @click.stop
+                            v-on="on"
+                          >{{ policy.name }}</a>
+                        </template>
+                        Opens in new window
+                      </v-tooltip><span v-if="idx === policies.length - 1">.</span>
+                    </div>
                   </template>
                 </div>
               </template>

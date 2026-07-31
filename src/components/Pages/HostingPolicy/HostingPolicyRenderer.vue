@@ -6,9 +6,15 @@
     <v-container class="fill-height" fluid v-if="!error">
       <v-row justify="center">
         <v-col cols="11" md="4" order-md="last">
+          <PolicyNavigationPanel basePath="/hosting-policy" policyType="hosting-policy" />
         </v-col>
 
         <v-col cols="11" md="8">
+          <v-alert type="info" v-if="isUpcomingRoute">
+            This is an upcoming version. You can find the
+            <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
+          </v-alert>
+
           <component :is="policy" v-if="policy" />
         </v-col>
       </v-row>
@@ -18,37 +24,70 @@
 
 <script>
 
+import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
+
 export const versions = {
   'hosting-policy/version-1.vue': () => ({ component: import('./hosting-policy/version-1.vue') }),
 }
 
 export default {
   name: 'HostingPolicyRenderer',
-  components: {},
+  components: {
+    PolicyNavigationPanel,
+  },
   computed: {
     policyActiveFrom: function () {
       return this.$route.params.activeFrom
+    },
+    isUpcomingRoute: function () {
+      return this.$route.path === '/hosting-policy/upcoming'
+    },
+    isCurrentRoute: function () {
+      return this.policyActiveFrom === undefined
     },
   },
   data () {
     return {
       policy: undefined,
+      policyMetadata: undefined,
       error: undefined,
+      policyType: 'hosting-policy',
     }
   },
   methods: {
     async loadPolicy () {
+      this.policy = undefined
+      this.policyMetadata = undefined
+      this.error = undefined
+
       try {
-        const policyType = 'hosting-policy' // TODO read this from component property
+        const policyType = this.policyType // TODO for a generalized component, read this from component property
         const activeFrom = this.policyActiveFrom
+        let response
 
-        const response = await this.$api.policyByDate({ policyType, activeFrom })
+        if (this.isUpcomingRoute) {
+          response = await this.$api.getUpcomingPolicyByType({ policyType })
+        } else if (this.isCurrentRoute) {
+          // Special case to redirect users to the pilot policy if there is no current policy
+          // Remove afer T408316
+          try {
+            response = await this.$api.getCurrentPolicyByType({ policyType })
+          } catch (error) {
+            if (error && error.response && error.response.status === 404) {
+              this.$router.replace({ path: '/hosting-policy/pilot' })
+              return
+            }
+          }
+        } else {
+          response = await this.$api.getPolicyByDate({ policyType, activeFrom })
+        }
 
-        const metadata = await response.metadata
+        const metadata = response.metadata
         const policy = versions[metadata.content_vue_file]
 
         if (policy !== undefined) {
           this.policy = policy
+          this.policyMetadata = metadata
         } else {
           this.error = 'missing policy'
         }
@@ -62,7 +101,10 @@ export default {
     this.loadPolicy()
   },
   watch: {
-    policyId: function () {
+    policyActiveFrom: function () {
+      this.loadPolicy()
+    },
+    isUpcomingRoute: function () {
       this.loadPolicy()
     },
   },
