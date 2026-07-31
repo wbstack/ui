@@ -64,9 +64,9 @@
           <ul>
             <li> The manager provided sufficient information about their use case for the Review Committee to evaluate the intended use.</li>
             <li>The instance's observed use matches the description provided information.</li>
-            <li>The main page or the <a href="TODO" About/> the wiki page has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
+            <li>The main page or the <code>Project:About</code> the wiki page has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
             <li>The licensing statement is visible on the <code>Project:Copyrights</code> page.</li>
-            <li>The structured data is in the public domain or released under <a href="TODO" CC-0 />.</li>
+            <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0" CC-0 />.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
           </ul>
           <h4 id="disqualifying-conditions" class="d-flex align-center mt-4 mb-3"><v-icon class="mr-1" color="red">mdi-circle</v-icon> Disqualifying Conditions (must not be true)</h4>
