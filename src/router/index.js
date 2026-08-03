@@ -19,7 +19,7 @@ import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
 import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
-import HostingPolicy from '@/components/Pages/HostingPolicy/hosting-policy/version-1.vue'
+import HostingPolicyPilot from '@/components/Pages/HostingPolicyPilot.vue'
 import HostingPolicyRenderer from '@/components/Pages/HostingPolicy/HostingPolicyRenderer.vue'
 import DsaInfo from '@/components/Pages/DsaInfo/DsaInfo'
 
@@ -92,9 +92,9 @@ const router = new Router({
       component: HostingPolicyRenderer,
     },
     {
-      path: '/hosting-policy/',
-      name: 'HostingPolicy',
-      component: HostingPolicy,
+      path: '/hosting-policy/pilot', // Remove after T408316
+      name: 'HostingPolicyPilot',
+      component: HostingPolicyPilot,
     },
     {
       path: '/hosting-policy/:activeFrom',
