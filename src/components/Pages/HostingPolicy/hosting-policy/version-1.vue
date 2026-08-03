@@ -161,6 +161,7 @@
             <li>provide any additional information for reconsideration.</li>
           </ul>
           <p>The Review Committee will review the appeal with priority over new applications. A suspension may be reversed if the additional information resolves the concerns that led to the suspension.</p>
+          <p>Submitting an appeal does not automatically restore a suspended instance. The instance remains suspended until the Review Committee takes up the appeal; at that point it may be temporarily reinstated so the review can be carried out and the manager can make any necessary corrections.</p>
           <h3 id="review-committee" class="mb-3">4.7 Review Committee</h3>
           <p>The group participating in decision-making is:</p>
           <ul class="mb-4">
