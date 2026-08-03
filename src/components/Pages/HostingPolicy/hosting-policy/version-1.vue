@@ -64,7 +64,7 @@
           <ul>
             <li> The manager provided sufficient information about their use case for the Review Committee to evaluate the intended use.</li>
             <li>The instance's observed use matches the description provided information.</li>
-            <li>The main page or the <code>Project:About</code> the wiki page has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
+            <li>The main page or the <code>Project:About</code> has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
             <li>The licensing statement is visible on the <code>Project:Copyrights</code> page.</li>
             <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0" CC-0 />.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
@@ -103,7 +103,7 @@
             <li>
               The instance is only intended to be used by the contributing individual or organization with no clear external audience (people or groups who meaningfully benefit from it), including use cases that support purely internal workflows, private organizational processes, or personal documentation, like internal CRM systems, business asset management. <br />The <span class="text-decoration-underline">exceptions</span> that do not produce this concerning signal are:
               <ul>
-                <li>The instance is a staging ground for a dataset being prepared for later contribution to the other parts of the Wikibase Ecosystem (for example, to Wikidata)</li>
+                <li>The instance is a staging ground for a dataset being prepared for later contribution to the other parts of the Wikibase Ecosystem (for example, to Wikidata).</li>
                 <li>The instance supports teaching Wikibase as a piece of software.</li>
                 <li>The instance is used in the context of building a software tool intended to benefit the Wikidata/Wikibase Ecosystem - for example, a bot, data importer, or gadget. The instance holds real or mock data that the tool can operate on during development.</li>
               </ul>
@@ -117,7 +117,7 @@
           <ul>
             <li>The instance advances knowledge equity or representation of marginalized or underrepresented knowledge domains and use cases (this one produces <span class="font-weight-bold">2 positive signals</span>).</li>
             <li>The instance contributes to education, cultural preservation, research or public benefit.</li>
-            <li>The contributing individual, organization or community has limited technical skills, hosting capacity or financial resources to run and maintain a self-hosted Wikibase, , or their existence in the future is uncertain. The project can only realistically proceed and survive because Wikibase Cloud removes financial, technical, or infrastructural barriers in the long-term.</li>
+            <li>The contributing individual, organization or community has limited technical skills, hosting capacity or financial resources to run and maintain a self-hosted Wikibase, or their existence in the future is uncertain. The project can only realistically proceed and survive because Wikibase Cloud removes financial, technical, or infrastructural barriers in the long-term.</li>
           </ul>
           <h2 id="decision-process" class="mt-7 mb-3">4. Decision Process</h2>
           <h3 id="temporary-by-default-rule" class="mb-3">4.1 Temporary-by-Default Rule</h3>
