@@ -193,7 +193,7 @@ router.beforeEach(async (to, from, next) => {
     await Store.getters.initialized
     if (Store.getters.isLoggedIn) {
       if (!to.meta.requiresAuth.excludeFromPolicyChecks) {
-        await Store.dispatch('missingPolicies')
+        await Store.dispatch('fetchMissingPolicies')
       }
       next()
       return

@@ -24,7 +24,7 @@ const mutations = {
 }
 
 const actions = {
-  latestError ({ commit }, { error, message, dismissible = true }) {
+  reportLatestError ({ commit }, { error, message, dismissible = true }) {
     console.error(error)
     commit('setLatestError', { error, message, dismissible })
   },

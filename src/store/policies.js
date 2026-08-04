@@ -24,12 +24,13 @@ const mutations = {
 }
 
 const actions = {
-  async missingPolicies ({ dispatch, commit }) {
+  async fetchMissingPolicies ({ dispatch, commit }) {
     try {
       commit('setMissingPolicies', await api.getMissingPolicies())
     } catch (error) {
+      // User is prompted to reload the page, which will reset this state
       commit('failedToGetMissingPolicies', true)
-      dispatch('latestError', {
+      dispatch('reportLatestError', {
         error: error,
         message: 'Failed to get policies. Please try reloading the page.',
         dismissible: false,
@@ -39,9 +40,9 @@ const actions = {
   async acceptPolicies ({ dispatch }, policyIds) {
     try {
       await api.acceptPolicies(policyIds)
-      await dispatch('missingPolicies')
+      await dispatch('fetchMissingPolicies')
     } catch (error) {
-      dispatch('latestError', {
+      dispatch('reportLatestError', {
         error: error,
         message: 'Failed to save policy acceptances. Please try again.',
       })
