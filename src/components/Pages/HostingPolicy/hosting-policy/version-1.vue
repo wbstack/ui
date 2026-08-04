@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-        <v-col cols="8" class="policy-content text-body-1">
+        <v-col cols="11" class="policy-content text-body-1">
           <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
           <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
@@ -63,10 +63,10 @@
           <p>These conditions must be met for an instance to be eligible for hosting.</p>
           <ul>
             <li> The manager provided sufficient information about their use case for the Review Committee to evaluate the intended use.</li>
-            <li>The instance's observed use matches the description provided information.</li>
-            <li>The main page or the <code>Project:About</code> has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
+            <li>The instance's observed use matches the provided information.</li>
+            <li>The main page or the <code>Project:About</code> page has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
             <li>The licensing statement is visible on the <code>Project:Copyrights</code> page.</li>
-            <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0" CC-0 />.</li>
+            <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0">CC-0</a>.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
           </ul>
           <h4 id="disqualifying-conditions" class="d-flex align-center mt-4 mb-3"><v-icon class="mr-1" color="red">mdi-circle</v-icon> Disqualifying Conditions (must not be true)</h4>
@@ -161,7 +161,6 @@
             <li>provide any additional information for reconsideration.</li>
           </ul>
           <p>The Review Committee will review the appeal with priority over new applications. A suspension may be reversed if the additional information resolves the concerns that led to the suspension.</p>
-          <p>Submitting an appeal does not automatically restore a suspended instance. The instance remains suspended until the Review Committee takes up the appeal; at that point it may be temporarily reinstated so the review can be carried out and the manager can make any necessary corrections.</p>
           <h3 id="review-committee" class="mb-3">4.7 Review Committee</h3>
           <p>The group participating in decision-making is:</p>
           <ul class="mb-4">

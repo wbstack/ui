@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="fill-height" fluid>
       <v-row justify="center">
-        <v-col cols="8" class="policy-content text-body-1">
+        <v-col cols="11" class="policy-content text-body-1">
           <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
           <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
