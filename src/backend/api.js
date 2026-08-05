@@ -57,6 +57,15 @@ export const getCurrentPolicies = async () => {
   const { data } = await axios.get('/v1/policies/current')
   return data.items
 }
+export const getMissingPolicies = async () => {
+  const { data } = await axios.get('/v1/policies/missing')
+  return data.items
+}
+export const acceptPolicies = async (policyIds) => {
+  await axios.put('/v1/policy_acceptances', {
+    policy_ids: policyIds,
+  })
+}
 
 export const getPolicyByDate = async ({ policyType, activeFrom }) => {
   const { data } = await axios.get(`/v1/policies/${policyType}/by_active_from/${activeFrom}`)

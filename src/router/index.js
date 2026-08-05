@@ -121,7 +121,9 @@ const router = new Router({
       name: 'Logout',
       component: Logout,
       meta: {
-        requiresAuth: true,
+        requiresAuth: {
+          excludeFromPolicyChecks: true,
+        },
       },
     },
     {
@@ -129,7 +131,9 @@ const router = new Router({
       name: 'EmailVerification',
       component: EmailVerification,
       meta: {
-        requiresAuth: true,
+        requiresAuth: {
+          excludeFromPolicyChecks: true,
+        },
       },
     },
     {
@@ -194,6 +198,9 @@ router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     await Store.getters.initialized
     if (Store.getters.isLoggedIn) {
+      if (!to.meta.requiresAuth.excludeFromPolicyChecks) {
+        await Store.dispatch('fetchMissingPolicies')
+      }
       next()
       return
     }
