@@ -1,9 +1,8 @@
 <template>
   <v-main>
     <v-container class="fill-height" fluid>
-      <v-row justify="center">
-        <v-col cols="11" class="policy-content text-body-1">
-          <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
+      <v-col justify="center" class="policy-content text-body-1">
+      <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
           <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
           <p>The policy exists to ensure that Wikibase Cloud technical and financial resources, as well as staff capacity are used responsibly, intentionally, in alignment with WMDE’s mission. Wikibase Cloud is not intended to be a generic free hosting service for any purpose. The policy helps us maintain visibility into how the platform is used and provides a framework to support and encourage use cases aligned with the role we want Wikibase Cloud to play in the Wikibase Ecosystem, and to address cases that clearly fall outside that role.</p>
@@ -161,6 +160,7 @@
             <li>provide any additional information for reconsideration.</li>
           </ul>
           <p>The Review Committee will review the appeal with priority over new applications. A suspension may be reversed if the additional information resolves the concerns that led to the suspension.</p>
+          <p>Submitting an appeal does not automatically restore a suspended instance. The instance remains suspended until the Review Committee takes up the appeal; at that point it may be temporarily reinstated so the review can be carried out and the manager can make any necessary corrections.</p>
           <h3 id="review-committee" class="mb-3">4.7 Review Committee</h3>
           <p>The group participating in decision-making is:</p>
           <ul class="mb-4">
@@ -229,8 +229,7 @@
           <ul class="mb-4">
             <li>Major outdated versions are archived but remain accessible for reference.</li>
           </ul>
-        </v-col>
-      </v-row>
+      </v-col>
     </v-container>
   </v-main>
 </template>
