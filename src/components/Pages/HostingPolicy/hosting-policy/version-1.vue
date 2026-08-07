@@ -1,9 +1,8 @@
 <template>
   <v-main>
     <v-container class="fill-height" fluid>
-      <v-row justify="center">
-        <v-col cols="8" class="policy-content text-body-1">
-          <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
+      <v-col justify="center" class="policy-content text-body-1">
+      <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
           <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
           <p>The policy exists to ensure that Wikibase Cloud technical and financial resources, as well as staff capacity are used responsibly, intentionally, in alignment with WMDE’s mission. Wikibase Cloud is not intended to be a generic free hosting service for any purpose. The policy helps us maintain visibility into how the platform is used and provides a framework to support and encourage use cases aligned with the role we want Wikibase Cloud to play in the Wikibase Ecosystem, and to address cases that clearly fall outside that role.</p>
@@ -63,10 +62,10 @@
           <p>These conditions must be met for an instance to be eligible for hosting.</p>
           <ul>
             <li> The manager provided sufficient information about their use case for the Review Committee to evaluate the intended use.</li>
-            <li>The instance's observed use matches the description provided information.</li>
-            <li>The main page or the <code>Project:About</code> has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
+            <li>The instance's observed use matches the provided information.</li>
+            <li>The main page or the <code>Project:About</code> page has sufficient information describing the intended use of the instance for potential visitors of the instance, or has links to such information.</li>
             <li>The licensing statement is visible on the <code>Project:Copyrights</code> page.</li>
-            <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0" CC-0 />.</li>
+            <li>The structured data is in the public domain or released under <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud/Why_CC0">CC0</a>.</li>
             <li>The license for the text in other namespaces allows commercial and non-commercial use and derivatives (we recommend using the conformant licenses <a href="https://opendefinition.org/licenses/">from this list</a>).</li>
           </ul>
           <h4 id="disqualifying-conditions" class="d-flex align-center mt-4 mb-3"><v-icon class="mr-1" color="red">mdi-circle</v-icon> Disqualifying Conditions (must not be true)</h4>
@@ -230,8 +229,7 @@
           <ul class="mb-4">
             <li>Major outdated versions are archived but remain accessible for reference.</li>
           </ul>
-        </v-col>
-      </v-row>
+      </v-col>
     </v-container>
   </v-main>
 </template>
