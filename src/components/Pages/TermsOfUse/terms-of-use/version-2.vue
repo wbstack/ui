@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Terms Of Use</h1>
-    <p v-if="activeFrom" class="text-subtitle-1 mb-2">Effective: {{ formattedActiveFrom }}</p>
+    <p v-if="activeFrom" class="text-subtitle-1 mb-2"  style="color: rgba(0, 0, 0, 0.6);">Effective: {{ formattedActiveFrom }}</p>
     <v-alert text color="info">
       <div class="light-blue--text text--darken-4">
         <div class="text-h6 mb-3">What changed from
@@ -1134,7 +1134,7 @@ export default {
     },
     formattedActiveFrom () {
       if (!this.activeFrom) return null
-      return new Date(this.activeFrom).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+      return new Date(this.activeFrom).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
   data: () => ({

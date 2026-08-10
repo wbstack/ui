@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Terms Of Use</h1>
-    <p v-if="activeFrom" class="text-subtitle-1 mb-2">Effective: {{ formattedActiveFrom }}</p>
+    <p v-if="activeFrom" class="text-subtitle-1 mb-2" style="color: rgba(0, 0, 0, 0.6);">Effective: {{ formattedActiveFrom }}</p>
     <p>
       PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THE SERVICES.
       BY ACCESSING THIS SITE OR USING ANY PART OF THE SITE OR ANY CONTENT
@@ -1293,7 +1293,7 @@ export default {
   computed: {
     formattedActiveFrom () {
       if (!this.activeFrom) return null
-      return new Date(this.activeFrom).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+      return new Date(this.activeFrom).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
 }
