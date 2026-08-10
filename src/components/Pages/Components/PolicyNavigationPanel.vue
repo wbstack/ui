@@ -146,7 +146,7 @@ export default {
     },
     titleForPolicy ({ activeFrom, isCurrentPolicy, isUpcomingPolicy }) {
       if (isCurrentPolicy) {
-        return 'Current version'
+        return `${activeFrom} (current)`
       }
       if (isUpcomingPolicy) {
         return 'Upcoming version'
