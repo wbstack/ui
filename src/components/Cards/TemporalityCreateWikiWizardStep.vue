@@ -50,7 +50,6 @@
             </template>
           </v-radio>
         </v-radio-group>
-        <h3 class="mt-6">Terms of Use</h3>
         <div
           v-if="policiesError"
           class="body-2 red--text"
