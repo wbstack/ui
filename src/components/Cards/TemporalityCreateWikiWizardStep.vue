@@ -50,22 +50,32 @@
             </template>
           </v-radio>
         </v-radio-group>
-        <h3 class="mt-6">Terms of Use</h3>
-        <div class="body-2">
-          Previously accepted
-          <v-tooltip top>
-            <template v-slot:activator="{ on }">
-              <a
-                target="_blank"
-                href="/terms-of-use"
-                @click.stop
-                v-on="on"
-              >
-                Terms of Use</a>
-            </template>
-            Opens in new window
-          </v-tooltip> still apply.
+        <div
+          v-if="policiesError"
+          class="body-2 red--text"
+        >
+          Failed to load policies. Please
+          <a
+            class="text-decoration-underline red--text"
+            @click.prevent="getCurrentPolicies()"
+          >click here</a>
+          to retry.
         </div>
+        <v-skeleton-loader
+          v-else
+          type="image"
+          :loading="policiesLoading"
+          height="50px"
+        >
+          <div class="body-2">
+            Previously accepted
+            <PolicyList
+              :policies="policies"
+              article=""
+            />
+            still apply.
+          </div>
+        </v-skeleton-loader>
       </v-form>
     </v-card-text>
     <v-card-actions>
@@ -80,7 +90,7 @@
       <v-btn
         type="button"
         color="primary"
-        :disabled="inFlight"
+        :disabled="inFlight || policiesLoading || policiesError"
         @click="primaryBtnAction"
       >
         {{primaryBtnLabel}}
@@ -90,6 +100,8 @@
 </template>
 
 <script>
+import PolicyList from '../Components/PolicyList'
+
 export default {
   name: 'TemporalityCreateWikiWizardStep',
   props: {
@@ -97,6 +109,19 @@ export default {
     inFlight: Boolean,
     value: Object,
     error: Array,
+  },
+  components: {
+    PolicyList,
+  },
+  data () {
+    return {
+      policies: [],
+      policiesLoading: true,
+      policiesError: false,
+    }
+  },
+  created () {
+    this.getCurrentPolicies()
   },
   computed: {
     primaryBtnLabel () {
@@ -129,6 +154,19 @@ export default {
       }
 
       this.$emit('previous-step')
+    },
+    async getCurrentPolicies () {
+      this.policiesLoading = true
+      this.policiesError = false
+
+      try {
+        this.policies = await this.$api.getCurrentPolicies()
+      } catch (error) {
+        console.error(error)
+        this.policiesError = true
+      } finally {
+        this.policiesLoading = false
+      }
     },
   },
 }
