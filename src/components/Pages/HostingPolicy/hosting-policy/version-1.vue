@@ -247,7 +247,7 @@ export default {
   computed: {
     formattedActiveFrom () {
       if (!this.activeFrom) return null
-      return new Date(this.activeFrom).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+      return new Date(this.activeFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
 }
