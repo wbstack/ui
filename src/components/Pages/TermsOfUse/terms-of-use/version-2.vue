@@ -1,5 +1,9 @@
 <template>
   <div>
+    <hgroup>
+      <h1>Terms Of Use</h1>
+      <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>
+    </hgroup>
     <v-alert text color="info">
       <div class="light-blue--text text--darken-4">
         <div class="text-h6 mb-3">What changed from the

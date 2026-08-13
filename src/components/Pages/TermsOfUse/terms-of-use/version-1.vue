@@ -1,5 +1,9 @@
 <template>
   <div>
+    <hgroup>
+      <h1>Terms Of Use</h1>
+      <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>
+    </hgroup>
     <p>
       PLEASE READ THESE TERMS OF USE CAREFULLY BEFORE USING THE SERVICES.
       BY ACCESSING THIS SITE OR USING ANY PART OF THE SITE OR ANY CONTENT
