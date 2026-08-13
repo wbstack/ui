@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Terms Of Use</h1>
     <hgroup>
       <h1>Terms Of Use</h1>
       <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>

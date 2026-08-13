@@ -3,7 +3,7 @@
     <v-container class="fill-height" fluid>
       <v-col justify="center">
         <hgroup>
-          <h1 id="hosting-policy-for-wikibase-cloud">Hosting Policy for Wikibase Cloud</h1>
+          <h1>Hosting Policy for Wikibase Cloud</h1>
           <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>
         </hgroup>
 
