@@ -144,15 +144,22 @@ export default {
 
       return `${this.basePath}/${activeFrom}`
     },
+    formatActiveFrom (activeFrom) {
+      if (!activeFrom) {
+        return ''
+      }
+
+      return new Date(activeFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+    },
     titleForPolicy ({ activeFrom, isCurrentPolicy, isUpcomingPolicy }) {
       if (isCurrentPolicy) {
-        return 'Current version'
+        return `${this.formatActiveFrom(activeFrom)} (current)`
       }
       if (isUpcomingPolicy) {
         return 'Upcoming version'
+      } else {
+        return `${this.formatActiveFrom(activeFrom)}`
       }
-
-      return activeFrom
     },
   },
   mounted () {

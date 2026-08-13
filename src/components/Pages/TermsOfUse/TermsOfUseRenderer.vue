@@ -15,7 +15,7 @@
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
 
-          <component :is="policy" v-if="policy" />
+          <component :is="policy" v-if="policy" :active-from="policyMetadata && policyMetadata.active_from" />
         </v-col>
       </v-row>
     </v-container>

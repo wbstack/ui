@@ -1,8 +1,12 @@
 <template>
   <v-main>
     <v-container class="fill-height" fluid>
-      <v-col justify="center" class="policy-content text-body-1">
-      <h1 id="hosting-policy-for-wikibase-cloud" class="mb-7">Hosting Policy for Wikibase Cloud</h1>
+      <v-col justify="center">
+        <hgroup>
+          <h1>Hosting Policy for Wikibase Cloud</h1>
+          <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>
+        </hgroup>
+
           <h2 id="purpose-and-scope" class="mb-3">1. Purpose and Scope</h2>
           <p>This policy defines Wikimedia Deutschland’s (WMDE) expectations and criteria for hosting on Wikibase Cloud. It explains what kinds of datasets and use cases are supported by WMDE and how those decisions are made and implemented.</p>
           <p>The policy exists to ensure that Wikibase Cloud technical and financial resources, as well as staff capacity are used responsibly, intentionally, in alignment with WMDE’s mission. Wikibase Cloud is not intended to be a generic free hosting service for any purpose. The policy helps us maintain visibility into how the platform is used and provides a framework to support and encourage use cases aligned with the role we want Wikibase Cloud to play in the Wikibase Ecosystem, and to address cases that clearly fall outside that role.</p>
@@ -237,5 +241,17 @@
 <script>
 export default {
   name: 'HostingPolicy',
+  props: {
+    activeFrom: {
+      type: String,
+      default: null,
+    },
+  },
+  computed: {
+    formattedActiveFrom () {
+      if (!this.activeFrom) return null
+      return new Date(this.activeFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+    },
+  },
 }
 </script>
