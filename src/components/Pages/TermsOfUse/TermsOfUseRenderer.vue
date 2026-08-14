@@ -10,8 +10,19 @@
         </v-col>
 
         <v-col cols="11" md="8">
+          <hgroup>
+            <h1>Terms Of Use</h1>
+            <p v-if="policyMetadata && policyMetadata.active_from" class="text-subtitle-1 text--secondary mb-2">
+              Effective: {{ formattedActiveFrom }}
+            </p>
+          </hgroup>
+
           <v-alert type="info" v-if="isUpcomingRoute">
             This is an upcoming version. You can find the
+            <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
+          </v-alert>
+          <v-alert type="info" v-if="!isUpcomingRoute && !isCurrentRoute">
+            This is an outdated version. You can find the
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
 
@@ -44,6 +55,10 @@ export default {
     },
     isCurrentRoute: function () {
       return this.policyActiveFrom === undefined
+    },
+    formattedActiveFrom: function () {
+      if (!this.policyMetadata || !this.policyMetadata.active_from) return null
+      return new Date(this.policyMetadata.active_from).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
   data () {
