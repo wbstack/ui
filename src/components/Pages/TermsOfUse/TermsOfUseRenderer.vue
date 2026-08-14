@@ -11,7 +11,7 @@
 
         <v-col cols="11" md="8">
           <hgroup>
-            <h1>Terms Of Use</h1>
+            <h1>{{ title }}</h1>
             <p v-if="policyMetadata && policyMetadata.active_from" class="text-subtitle-1 text--secondary mb-2">
               Effective: {{ formattedActiveFrom }}
             </p>
@@ -47,6 +47,9 @@ export default {
     PolicyNavigationPanel,
   },
   computed: {
+    title: function () {
+      return 'Term Of Use'
+    },
     policyActiveFrom: function () {
       return this.$route.params.activeFrom
     },
