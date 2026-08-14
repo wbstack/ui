@@ -25,11 +25,6 @@
 <script>
 import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
 
-export const versions = {
-  'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
-  'terms-of-use/version-2.vue': () => ({ component: import('./terms-of-use/version-2.vue') }),
-}
-
 export default {
   name: 'TermsOfUseRenderer',
   components: {
@@ -74,7 +69,7 @@ export default {
         }
 
         const metadata = response.metadata
-        const policy = versions[metadata.content_vue_file]
+        const policy = () => ({component: import(`./${metadata.content_vue_file}`)})
 
         if (policy !== undefined) {
           this.policy = policy
