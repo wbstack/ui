@@ -362,6 +362,26 @@
                 </tr>
                 <tr>
                   <td>
+                    <p>laravel_token</p>
+                  </td>
+                  <td>
+                    <p>api.wikibase.cloud / current API host</p>
+                  </td>
+                  <td>
+                    <p>30 days</p>
+                  </td>
+                  <td>
+                    <p>Laravel Passport</p>
+                  </td>
+                  <td>
+                    <p>
+                      Authenticates the browser session for the Wikibase.cloud API
+                      and keeps the user logged in without re-entering credentials
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
                     <p>_GRECAPTCHA</p>
                   </td>
                   <td>
