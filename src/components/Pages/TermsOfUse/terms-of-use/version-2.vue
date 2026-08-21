@@ -1,10 +1,5 @@
 <template>
   <div>
-    <hgroup>
-      <h1>Terms Of Use</h1>
-      <p v-if="activeFrom" class="text-subtitle-1 text--secondary mb-2">Effective: {{ formattedActiveFrom }}</p>
-    </hgroup>
-
     <v-alert text color="info">
       <div class="light-blue--text text--darken-4">
         <div class="text-h6 mb-3">What changed from the
@@ -1123,21 +1118,11 @@
 
 <script>
 export default {
-  props: {
-    activeFrom: {
-      type: String,
-      default: null,
-    },
-  },
   components: {
   },
   computed: {
     isMobile () {
       return this.$vuetify.breakpoint.xs
-    },
-    formattedActiveFrom () {
-      if (!this.activeFrom) return null
-      return new Date(this.activeFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
   data: () => ({
