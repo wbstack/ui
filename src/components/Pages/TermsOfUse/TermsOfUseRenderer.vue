@@ -17,11 +17,11 @@
             </p>
           </hgroup>
 
-          <v-alert type="info" v-if="isUpcomingRoute">
+          <v-alert class="mt-2" type="info" v-if="isUpcomingRoute">
             This is an upcoming version. You can find the
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
-          <v-alert type="info" v-if="!isUpcomingRoute && !isCurrentRoute">
+          <v-alert class="mt-2" type="info" v-if="!isUpcomingRoute && !isCurrentRoute">
             This is an outdated version. You can find the
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
