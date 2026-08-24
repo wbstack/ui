@@ -17,11 +17,11 @@
             </p>
           </hgroup>
 
-          <v-alert class="mt-2" type="info" v-if="isUpcomingRoute">
+          <v-alert class="mt-2" type="info" v-if="isUpcomingPolicy">
             This is an upcoming version. You can find the
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
-          <v-alert class="mt-2" type="info" v-if="!isUpcomingRoute && !isCurrentRoute">
+          <v-alert class="mt-2" type="info" v-if="!isUpcomingPolicy && !isCurrentPolicy  ">
             This is an outdated version. You can find the
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
@@ -47,14 +47,22 @@ export default {
     PolicyNavigationPanel,
   },
   computed: {
-    policyActiveFrom: function () {
+    policyActiveFromRoute: function () {
       return this.$route.params.activeFrom
     },
     isUpcomingRoute: function () {
       return this.$route.path === '/terms-of-use/upcoming'
     },
+    isCurrentPolicy: function () {
+      // TODO: this relies on policyMetadata which isn't actually known until the lookup for the policy has happened.
+      return this.currentPolicyActiveFrom === this.policyMetadata.active_from
+    },
+    isUpcomingPolicy: function () {
+      // TODO: this relies on policyMetadata which isn't actually known until the lookup for the policy has happened.
+      return this.upcomingPolicyActiveFrom === this.policyMetadata.active_from
+    },
     isCurrentRoute: function () {
-      return this.policyActiveFrom === undefined
+      return this.policyActiveFromRoute === undefined
     },
     formattedActiveFrom: function () {
       if (!this.policyMetadata || !this.policyMetadata.active_from) return null
@@ -67,6 +75,7 @@ export default {
       policyMetadata: undefined,
       error: undefined,
       policyType: 'terms-of-use',
+      currentPolicyActiveFrom: undefined
     }
   },
   methods: {
@@ -77,13 +86,33 @@ export default {
 
       try {
         const policyType = this.policyType // TODO for a generalized component, read this from component property
-        const activeFrom = this.policyActiveFrom
+        const activeFrom = this.policyActiveFromRoute
         let response
 
+        let upcomingPolicy
+        let currentPolicy
+
+        try {
+          upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType })
+          this.upcomingPolicyActiveFrom = upcomingPolicy.metadata.active_from
+        } catch {
+          // TODO: just catch the 404 case
+          upcomingPolicy = undefined
+        }
+
+        try {
+          currentPolicy = await this.$api.getCurrentPolicyByType({ policyType })
+          this.currentPolicyActiveFrom = currentPolicy.metadata.active_from
+        } catch {
+          // TODO: just catch the 404 case
+          currentPolicy = undefined
+        }
+
+
         if (this.isUpcomingRoute) {
-          response = await this.$api.getUpcomingPolicyByType({ policyType })
+          response = upcomingPolicy
         } else if (this.isCurrentRoute) {
-          response = await this.$api.getCurrentPolicyByType({ policyType })
+          response = currentPolicy
         } else {
           response = await this.$api.getPolicyByDate({ policyType, activeFrom })
         }
@@ -107,7 +136,7 @@ export default {
     this.loadPolicy()
   },
   watch: {
-    policyActiveFrom: function () {
+    policyActiveFromRoute: function () {
       this.loadPolicy()
     },
     isUpcomingRoute: function () {
