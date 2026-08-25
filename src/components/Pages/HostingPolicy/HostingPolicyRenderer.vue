@@ -12,21 +12,21 @@
         <v-col cols="11" md="8">
           <hgroup>
             <h1>Hosting Policy</h1>
-            <p v-if="policyMetadata && policyMetadata.active_from" class="text-subtitle-1 text--secondary mb-2">
+            <p v-if="policyActiveFrom" class="text-subtitle-1 text--secondary mb-2">
               Effective: {{ formattedActiveFrom }}
             </p>
           </hgroup>
 
-          <v-alert class="mt-2" type="info" v-if="isUpcomingRoute">
+          <v-alert class="mt-2" type="info" v-if="isUpcomingPolicy">
             This is an upcoming version. You can find the
             <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
           </v-alert>
-          <v-alert class="mt-2" type="info" v-if="!isUpcomingRoute && !isCurrentRoute">
+          <v-alert class="mt-2" type="info" v-if="isOutdatedPolicy">
             This is an outdated version. You can find the
             <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
           </v-alert>
 
-          <component :is="policyContentComponent" v-if="policyContentComponent" :active-from="policyMetadata && policyMetadata.active_from" />
+          <component :is="policyContentComponent" v-if="policyContentComponent" :active-from="policyActiveFrom" />
         </v-col>
       </v-row>
     </v-container>
@@ -36,10 +36,7 @@
 <script>
 
 import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
-
-export const versions = {
-  'hosting-policy/version-1.vue': () => ({ component: import('./hosting-policy/version-1.vue') }),
-}
+import { AxiosError } from 'axios'
 
 export default {
   name: 'HostingPolicyRenderer',
@@ -47,62 +44,97 @@ export default {
     PolicyNavigationPanel,
   },
   computed: {
-    policyActiveFrom: function () {
-      return this.$route.params.activeFrom
+    isUpcomingPolicy: function () {
+      return this.policyActiveFrom && this.policyActiveFrom === this.upcomingPolicyActiveFrom
     },
-    isUpcomingRoute: function () {
-      return this.$route.path === '/hosting-policy/upcoming'
-    },
-    isCurrentRoute: function () {
-      return this.policyActiveFrom === undefined
+    isOutdatedPolicy: function () {
+      return this.policyActiveFrom &&
+        this.policyActiveFrom !== this.upcomingPolicyActiveFrom &&
+        this.policyActiveFrom !== this.currentPolicyActiveFrom
     },
     formattedActiveFrom: function () {
-      if (!this.policyMetadata || !this.policyMetadata.active_from) return null
-      return new Date(this.policyMetadata.active_from).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+      if (!this.policyActiveFrom) return null
+      return new Date(this.policyActiveFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
   data () {
     return {
-      policyContentComponent: undefined,
-      policyMetadata: undefined,
-      error: undefined,
       policyType: 'hosting-policy',
+      policyContentComponent: undefined,
+      policyActiveFrom: undefined,
+      upcomingPolicyActiveFrom: undefined,
+      currentPolicyActiveFrom: undefined,
+      error: undefined,
     }
   },
   methods: {
     async renderPage () {
       this.policyContentComponent = undefined
-      this.policyMetadata = undefined
+      this.policyActiveFrom = undefined
       this.error = undefined
 
       try {
         const policyType = this.policyType // TODO for a generalized component, read this from component property
-        const activeFrom = this.policyActiveFrom
-        let response
+        const activeFromRouteParam = this.$route.params.activeFrom
 
-        if (this.isUpcomingRoute) {
-          response = await this.$api.getUpcomingPolicyByType({ policyType })
-        } else if (this.isCurrentRoute) {
-          // Special case to redirect users to the pilot policy if there is no current policy
-          // Remove afer T408316
-          try {
-            response = await this.$api.getCurrentPolicyByType({ policyType })
-          } catch (error) {
-            if (error && error.response && error.response.status === 404) {
-              this.$router.replace({ path: '/hosting-policy/pilot' })
-              return
-            }
+        let upcomingPolicy
+        let currentPolicy
+        let policyContentVueFile
+
+        try {
+          upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType })
+          this.upcomingPolicyActiveFrom = upcomingPolicy.metadata.active_from
+        } catch (exception) {
+          if (exception instanceof AxiosError && exception.status === 404) {
+            upcomingPolicy = undefined
+          } else {
+            throw exception
           }
-        } else {
-          response = await this.$api.getPolicyByDate({ policyType, activeFrom })
         }
 
-        const metadata = response.metadata
-        const policyContentComponent = versions[metadata.content_vue_file]
+        try {
+          currentPolicy = await this.$api.getCurrentPolicyByType({ policyType })
+          this.currentPolicyActiveFrom = currentPolicy.metadata.active_from
+        } catch (exception) {
+          if (exception instanceof AxiosError && exception.status === 404) {
+            // Special case to redirect users to the pilot policy if there is no current policy
+            // Remove after T408316
+            this.$router.replace({ path: '/hosting-policy/pilot' })
+            return
+            // And replace with:
+            // currentPolicy = undefined
+          } else {
+            throw exception
+          }
+        }
 
+        // The route can be one of:
+        //   /hosting-policy/upcoming      - upcoming version
+        //   /hosting-policy/:activeFrom   - upcoming version
+        //   /hosting-policy               - current version
+        //   /hosting-policy/:activeFrom   - current version
+        //   /hosting-policy/:activeFrom   - previous version
+        const isUpcomingRoute = this.$route.path === '/hosting-policy/upcoming'
+        const isUpcomingActiveFrom = activeFromRouteParam && activeFromRouteParam === this.upcomingPolicyActiveFrom
+        const isCurrentRoute = this.$route.path === '/hosting-policy'
+        const isCurrentActiveFrom = activeFromRouteParam && activeFromRouteParam === this.currentPolicyActiveFrom
+
+        // Determine which policy to render based on the route and the activeFrom parameter
+        if (isUpcomingRoute || isUpcomingActiveFrom) {
+          policyContentVueFile = upcomingPolicy.metadata.content_vue_file
+          this.policyActiveFrom = upcomingPolicy.metadata.active_from
+        } else if (isCurrentRoute || isCurrentActiveFrom) {
+          policyContentVueFile = currentPolicy.metadata.content_vue_file
+          this.policyActiveFrom = currentPolicy.metadata.active_from
+        } else {
+          const previousPolicy = await this.$api.getPolicyByDate({ policyType, activeFrom: activeFromRouteParam })
+          policyContentVueFile = previousPolicy.metadata.content_vue_file
+          this.policyActiveFrom = previousPolicy.metadata.active_from
+        }
+
+        const policyContentComponent = () => ({ component: import(`./${policyContentVueFile}`) })
         if (policyContentComponent !== undefined) {
           this.policyContentComponent = policyContentComponent
-          this.policyMetadata = metadata
         } else {
           this.error = 'missing policy'
         }
