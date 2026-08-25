@@ -26,7 +26,7 @@
             <router-link class="white--text" to="/hosting-policy">current version here</router-link>.
           </v-alert>
 
-          <component :is="policy" v-if="policy" :active-from="policyMetadata && policyMetadata.active_from" />
+          <component :is="policyContentComponent" v-if="policyContentComponent" :active-from="policyMetadata && policyMetadata.active_from" />
         </v-col>
       </v-row>
     </v-container>
@@ -63,15 +63,15 @@ export default {
   },
   data () {
     return {
-      policy: undefined,
+      policyContentComponent: undefined,
       policyMetadata: undefined,
       error: undefined,
       policyType: 'hosting-policy',
     }
   },
   methods: {
-    async loadPolicy () {
-      this.policy = undefined
+    async renderPage () {
+      this.policyContentComponent = undefined
       this.policyMetadata = undefined
       this.error = undefined
 
@@ -98,10 +98,10 @@ export default {
         }
 
         const metadata = response.metadata
-        const policy = versions[metadata.content_vue_file]
+        const policyContentComponent = versions[metadata.content_vue_file]
 
-        if (policy !== undefined) {
-          this.policy = policy
+        if (policyContentComponent !== undefined) {
+          this.policyContentComponent = policyContentComponent
           this.policyMetadata = metadata
         } else {
           this.error = 'missing policy'
@@ -113,14 +113,14 @@ export default {
     },
   },
   mounted () {
-    this.loadPolicy()
+    this.renderPage()
   },
   watch: {
     policyActiveFrom: function () {
-      this.loadPolicy()
+      this.renderPage()
     },
     isUpcomingRoute: function () {
-      this.loadPolicy()
+      this.renderPage()
     },
   },
 }
