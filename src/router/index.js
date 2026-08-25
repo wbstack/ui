@@ -97,13 +97,13 @@ const router = new Router({
       component: HostingPolicyPilot,
     },
     {
-      path: '/hosting-policy/:activeFrom',
-      name: 'HostingPolicyRendererExact',
+      path: '/hosting-policy/upcoming',
+      name: 'HostingPolicyRendererUpcoming',
       component: HostingPolicyRenderer,
     },
     {
-      path: '/hosting-policy/upcoming',
-      name: 'HostingPolicyRendererUpcoming',
+      path: '/hosting-policy/:activeFrom',
+      name: 'HostingPolicyRendererExact',
       component: HostingPolicyRenderer,
     },
     {
