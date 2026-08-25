@@ -12,7 +12,7 @@
         <v-col cols="11" md="8">
           <hgroup>
             <h1>Terms of Use</h1>
-            <p v-if="policyMetadata && policyMetadata.active_from" class="text-subtitle-1 text--secondary mb-2">
+            <p v-if="policyActiveFrom" class="text-subtitle-1 text--secondary mb-2">
               Effective: {{ formattedActiveFrom }}
             </p>
           </hgroup>
@@ -26,7 +26,7 @@
             <router-link class="white--text" to="/terms-of-use">current version here</router-link>.
           </v-alert>
 
-          <component :is="policy" v-if="policy" :active-from="policyMetadata && policyMetadata.active_from" />
+          <component :is="policy" v-if="policy" :active-from="policyActiveFrom" />
         </v-col>
       </v-row>
     </v-container>
@@ -35,6 +35,7 @@
 
 <script>
 import PolicyNavigationPanel from '../Components/PolicyNavigationPanel.vue'
+import { AxiosError } from 'axios'
 
 export const versions = {
   'terms-of-use/version-1.vue': () => ({ component: import('./terms-of-use/version-1.vue') }),
@@ -54,35 +55,33 @@ export default {
       return this.$route.path === '/terms-of-use/upcoming'
     },
     isCurrentPolicy: function () {
-      // TODO: this relies on policyMetadata which isn't actually known until the lookup for the policy has happened.
-      return this.currentPolicyActiveFrom === this.policyMetadata.active_from
+      return this.currentPolicyActiveFrom === this.policyActiveFrom
     },
     isUpcomingPolicy: function () {
-      // TODO: this relies on policyMetadata which isn't actually known until the lookup for the policy has happened.
-      return this.upcomingPolicyActiveFrom === this.policyMetadata.active_from
+      return this.upcomingPolicyActiveFrom === this.policyActiveFrom
     },
     isCurrentRoute: function () {
       return this.policyActiveFromRoute === undefined
     },
     formattedActiveFrom: function () {
-      if (!this.policyMetadata || !this.policyMetadata.active_from) return null
-      return new Date(this.policyMetadata.active_from).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+      if (!this.policyActiveFrom) return null
+      return new Date(this.policyActiveFrom).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
     },
   },
   data () {
     return {
       policy: undefined,
-      policyMetadata: undefined,
+      policyActiveFrom: undefined,
       error: undefined,
       policyType: 'terms-of-use',
-      currentPolicyActiveFrom: undefined
+      currentPolicyActiveFrom: undefined,
     }
   },
   methods: {
     async loadPolicy () {
       this.policy = undefined
-      this.policyMetadata = undefined
       this.error = undefined
+      this.policyActiveFrom = undefined
 
       try {
         const policyType = this.policyType // TODO for a generalized component, read this from component property
@@ -95,19 +94,24 @@ export default {
         try {
           upcomingPolicy = await this.$api.getUpcomingPolicyByType({ policyType })
           this.upcomingPolicyActiveFrom = upcomingPolicy.metadata.active_from
-        } catch {
-          // TODO: just catch the 404 case
-          upcomingPolicy = undefined
+        } catch (exception) {
+          if (exception instanceof AxiosError && exception.status === 404) {
+            upcomingPolicy = undefined
+          } else {
+            throw exception
+          }
         }
 
         try {
           currentPolicy = await this.$api.getCurrentPolicyByType({ policyType })
           this.currentPolicyActiveFrom = currentPolicy.metadata.active_from
-        } catch {
-          // TODO: just catch the 404 case
-          currentPolicy = undefined
+        } catch (exception) {
+          if (exception instanceof AxiosError && exception.status === 404) {
+            currentPolicy = undefined
+          } else {
+            throw exception
+          }
         }
-
 
         if (this.isUpcomingRoute) {
           response = upcomingPolicy
@@ -117,12 +121,11 @@ export default {
           response = await this.$api.getPolicyByDate({ policyType, activeFrom })
         }
 
-        const metadata = response.metadata
-        const policy = versions[metadata.content_vue_file]
+        const policy = versions[response.metadata.content_vue_file]
 
         if (policy !== undefined) {
           this.policy = policy
-          this.policyMetadata = metadata
+          this.policyActiveFrom = response.metadata.active_from
         } else {
           this.error = 'missing policy'
         }
