@@ -112,15 +112,14 @@ export default {
       }
     },
   },
-  mounted () {
-    this.renderPage()
-  },
   watch: {
-    policyActiveFrom: function () {
-      this.renderPage()
-    },
-    isUpcomingRoute: function () {
-      this.renderPage()
+    // Watch for route changes to (re-)render the page
+    $route: {
+      // Run the handler immediately on component creation
+      immediate: true,
+      handler (to, from) {
+        this.renderPage()
+      },
     },
   },
 }
