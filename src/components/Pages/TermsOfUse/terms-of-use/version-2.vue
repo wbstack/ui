@@ -3,7 +3,7 @@
     <v-alert text color="info">
       <div class="light-blue--text text--darken-4">
         <div class="text-h6 mb-3">What changed from the
-          <router-link class="light-blue--text text--darken-4" to="/terms-of-use/2022-01-01">
+          <router-link class="light-blue--text text--darken-4" to="/terms-of-use/2022-04-11">
             previous version</router-link>
         </div>
         <p>The Terms of Use were revised to ensure compliance with the European Union’s
