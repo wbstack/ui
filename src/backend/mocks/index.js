@@ -2,4 +2,4 @@ export { MOCK_SCENARIOS, getMockScenario, setMockScenario, resetMockState } from
 
 export const handlers = typeof Response === 'undefined'
   ? []
-  : require('./default_handlers').handlers
+  : require('./handlers').handlers
