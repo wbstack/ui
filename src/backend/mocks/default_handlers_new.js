@@ -18,17 +18,12 @@ export const handlers = [
         status: 401,
       })
     }
-    //   todo this might be broken below here
-    console.log('duck')
-    // const body = await request.json()
-    console.log('duck2')
-    const user = makeUser('thomas.arrow@wikimediasdfa.de')
+    const body = await request.json()
+    const user = makeUser(body.email)
     return HttpResponse.json({ user })
   }),
   http.post('/api/auth/login', async ({ request }) => {
     const body = await request.json()
-    console.log('fooooooo')
-    console.log(body)
     const user = makeUser(body.email)
     return HttpResponse.json({
       user,
