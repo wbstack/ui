@@ -16,7 +16,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'warn',
     'vue/no-reserved-component-names': 'warn',
-    'vue/no-mutating-props': 'warn'
+    'vue/no-mutating-props': 'warn',
+    'max-len': ['error', {'code': 120}]
   },
   overrides: [
     {
