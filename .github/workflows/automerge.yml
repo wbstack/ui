@@ -1,0 +1,26 @@
+name: Dependabot Automerger
+
+on:
+  pull_request:
+
+jobs:
+  worker:
+    name: Automerger
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - id: waitforstatuschecks
+        uses: WyriHaximus/github-action-wait-for-status@v1.8.0
+        with:
+          ignoreActions: Automerger
+          checkInterval: 60
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pascalgn/automerge-action@v0.16.3
+        if: steps.waitforstatuschecks.outputs.status == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_LABELS: dependencies,safety
+          MERGE_DELETE_BRANCH: true
+          MERGE_METHOD: squash
