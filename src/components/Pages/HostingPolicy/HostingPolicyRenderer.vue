@@ -93,12 +93,7 @@ export default {
           currentPolicyActiveFrom = currentPolicyResponse.metadata.active_from
         } catch (exception) {
           if (exception instanceof AxiosError && exception.status === 404) {
-            // Special case to redirect users to the pilot policy if there is no current policy
-            // Remove after T408316
-            this.$router.replace({ path: '/hosting-policy/pilot' })
-            return
-            // And replace with:
-            // currentPolicy = undefined
+            currentPolicyResponse = undefined
           } else {
             throw exception
           }
