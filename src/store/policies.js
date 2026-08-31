@@ -31,7 +31,7 @@ const actions = {
       // User is prompted to reload the page, which will reset this state
       commit('failedToGetMissingPolicies', true)
       dispatch('reportLatestError', {
-        error: error,
+        error,
         message: 'Failed to get policies. Please try reloading the page.',
         dismissible: false,
       })
@@ -43,7 +43,7 @@ const actions = {
       await dispatch('fetchMissingPolicies')
     } catch (error) {
       dispatch('reportLatestError', {
-        error: error,
+        error,
         message: 'Failed to save policy acceptances. Please try again.',
       })
     }
