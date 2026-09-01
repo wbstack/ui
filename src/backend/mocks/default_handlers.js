@@ -219,7 +219,8 @@ export const handlers = [
   }),
 
   http.post('/api/wiki/delete', async ({ request }) => {
-    const wikiId = await request.json().wiki
+    const body = await request.json()
+    const wikiId = body.wiki
     const wikiIndex = myWikis.findIndex(w => w.id === Number(wikiId))
 
     if (wikiIndex < 0) {
@@ -239,7 +240,8 @@ export const handlers = [
   }),
 
   http.post('/api/wiki/details', async ({ request }) => {
-    const wikiId = await request.json().wiki
+    const body = await request.json()
+    const wikiId = body.wiki
     const wikiDetails = myWikis.find(w => w.id === Number(wikiId))
 
     if (!wikiDetails) {
