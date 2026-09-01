@@ -199,7 +199,7 @@ export const handlers = [
   }),
 
   http.post('/api/wiki/entityImport', () => {
-    const data = { status: 'pending', payload: {}, started_at: new Date().toJSON() };
+    const data = { status: 'pending', payload: {}, started_at: new Date().toJSON() }
     return Response.json(data)
   }),
 
@@ -211,7 +211,7 @@ export const handlers = [
       case 2:
         return Response.json([{ status: 'pending' }])
       default:
-        return Response.json([{status: 'success'}])
+        return Response.json([{ status: 'success' }])
     }
   }),
 
@@ -226,7 +226,7 @@ export const handlers = [
     const wikiIndex = myWikis.findIndex(w => w.id === Number(wikiId))
 
     if (wikiIndex < 0) {
-      return new Response(null, {status: 404})
+      return new Response(null, { status: 404 })
     }
 
     removeWiki(wikiIndex)
@@ -246,9 +246,9 @@ export const handlers = [
     const wikiDetails = myWikis.find(w => w.id === Number(wikiId))
 
     if (!wikiDetails) {
-      return new Response(null, {status: 404})
+      return new Response(null, { status: 404 })
     }
-    
+
     return Response.json(wikiDetails)
   }),
 
