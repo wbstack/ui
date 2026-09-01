@@ -50,6 +50,14 @@ export const handlers = [
     return new Response('Success')
   }),
 
+  http.post('/api/user/sendVerifyEmail', () => {
+    return new Response('Already verified')
+  }),
+
+  http.post('/api/user/verifyEmail', () => {
+    return new Response('Already verified')
+  }),
+
   http.post('/api/wiki/mine', () => {
     const data = { wikis: myWikis, count: myWikis.length, limit: false }
     return Response.json(data)
