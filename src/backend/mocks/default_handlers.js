@@ -58,6 +58,20 @@ export const handlers = [
     return new Response('Already verified')
   }),
 
+  http.post('/api/complaint/sendMessage', () => {
+    return new Response('Success')
+  }),
+
+  http.post('/api/contact/sendMessage', async ({ request }) => {
+    const body = await request.json()
+
+    if (body.name == '' || body.message == '' || body.subject == '') {
+      return new Response(null, { status: 400 })
+    }
+
+    return new Response('Success')
+  }),
+
   http.post('/api/wiki/mine', () => {
     const data = { wikis: myWikis, count: myWikis.length, limit: false }
     return Response.json(data)
