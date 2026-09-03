@@ -4,7 +4,7 @@ import { http } from 'msw'
 // see old.default_handlers.js for reference
 // this note can get removed after migration
 
-let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
+const myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
 let user = makeUser()
 let getEntityImportCalledTimes = 0
@@ -208,7 +208,7 @@ export const handlers = [
       case 2:
         return Response.json({ data: [{ status: 'pending' }] })
       default:
-        return Response.json({data: [{ status: 'success' }] })
+        return Response.json({ data: [{ status: 'success' }] })
     }
   }),
 
