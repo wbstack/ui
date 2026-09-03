@@ -14,10 +14,10 @@ jobs:
       with:
         env-file: .env.development.mock
 
-    - name: Use Node.js 22.x
+    - name: Use Node.js 26.x
       uses: actions/setup-node@v6.1.0
       with:
-        node-version: 22.x
+        node-version: 26.x
     - run: npm ci
     - run: npm run build
 
@@ -48,10 +48,10 @@ jobs:
       with:
         env-file: .env.development.prod
 
-    - name: Use Node.js 22.x
+    - name: Use Node.js 26.x
       uses: actions/setup-node@v6.1.0
       with:
-        node-version: 22.x
+        node-version: 26.x
     - run: npm ci
     - run: npm run build
 
