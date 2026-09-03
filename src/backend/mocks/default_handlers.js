@@ -183,7 +183,7 @@ export const handlers = [
   http.post('/api/contact/sendMessage', async ({ request }) => {
     const body = await request.json()
 
-    if (body.name == '' || body.message == '' || body.subject == '') {
+    if (body.name === '' || body.message === '' || body.subject === '') {
       return new Response(null, { status: 400 })
     }
 
