@@ -53,7 +53,7 @@ const makeNewWiki = ({ domain, sitename }) => {
 }
 
 const removeWiki = wikiIndex => {
-  myWikis = myWikis.splice(wikiIndex, 1)
+  myWikis.splice(wikiIndex, 1)
   localStorage.setItem('msw-myWikis', JSON.stringify(myWikis))
 }
 
