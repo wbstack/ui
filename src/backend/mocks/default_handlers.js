@@ -248,7 +248,10 @@ export const handlers = [
       return new Response(null, { status: 404 })
     }
 
-    return Response.json(wikiDetails)
+    return Response.json({
+      success: true,
+      data: wikiDetails,
+    })
   }),
 
   http.get('/api/wiki', async ({ request }) => {
