@@ -268,4 +268,27 @@ export const handlers = [
     const items = []
     return Response.json({ items })
   }),
+
+  http.get('/api/v1/policies/current', () => {
+    const items = [
+      {
+        metadata: {
+          policy_id: 2,
+          type: 'terms-of-use',
+          active_from: '2026-08-27',
+          content_vue_file: 'terms-of-use/version-2.vue',
+        },
+      },
+      {
+        metadata: {
+          policy_id: 3,
+          type: 'hosting-policy',
+          active_from: '2026-08-27',
+          content_vue_file: 'hosting-policy/version-1.vue',
+        },
+      },
+    ]
+
+    return Response.json({ items })
+  }),
 ]
