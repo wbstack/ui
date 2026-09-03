@@ -6,7 +6,7 @@ import { http } from 'msw'
 
 let myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
-const user = makeUser()
+let user = makeUser()
 let getEntityImportCalledTimes = 0
 
 function makeUser (email = 'test@local') {
@@ -143,13 +143,13 @@ export const handlers = [
       })
     }
 
-    const user = makeUser()
+    user = makeUser()
     return Response.json({ user })
   }),
 
   http.post('/api/auth/login', async ({ request }) => {
     const body = await request.json()
-    const user = makeUser(body.email)
+    user = makeUser(body.email)
 
     return Response.json({ user }, {
       headers: { 'set-cookie': 'authToken=token_value' },
