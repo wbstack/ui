@@ -1,9 +1,5 @@
 import { http } from 'msw'
 
-// implementations for msw v2 handlers go in this file
-// see old.default_handlers.js for reference
-// this note can get removed after migration
-
 const myWikis = JSON.parse(localStorage.getItem('msw-myWikis')) || []
 let lastWikiId = (myWikis.length && myWikis[myWikis.length - 1].id) || 0
 let user = makeUser()
