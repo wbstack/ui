@@ -214,8 +214,11 @@ export const handlers = [
 
   http.post('/api/wiki/create', async ({ request }) => {
     const body = await request.json()
-    const data = makeNewWiki(body)
-    return Response.json(data)
+    const newWiki = makeNewWiki(body)
+    return Response.json({
+      success: true,
+      data: newWiki,
+    })
   }),
 
   http.post('/api/wiki/delete', async ({ request }) => {
