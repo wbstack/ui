@@ -204,11 +204,11 @@ export const handlers = [
     getEntityImportCalledTimes++
     switch (getEntityImportCalledTimes) {
       case 1:
-        return Response.json([])
+        return Response.json({ data: [] })
       case 2:
-        return Response.json([{ status: 'pending' }])
+        return Response.json({ data: [{ status: 'pending' }] })
       default:
-        return Response.json([{ status: 'success' }])
+        return Response.json({data: [{ status: 'success' }] })
     }
   }),
 
