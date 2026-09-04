@@ -12,53 +12,61 @@ import 'typeface-roboto/index.css'
 import 'vuetify/dist/vuetify.min.css'
 import config from '~/config'
 
-if (process.env.NODE_ENV !== 'production' && config.API_MOCK === '1') {
-  const { worker } = require('./backend/mocks/browser')
-  worker.start()
+async function enableMocking () {
+  if (process.env.NODE_ENV !== 'production' && config.API_MOCK === '1') {
+    const { worker } = await import('./backend/mocks/browser')
+
+    // `worker.start()` returns a Promise that resolves
+    // once the Service Worker is up and ready to intercept requests.
+    // onUnhandledRequest: 'error' saves us from a false belief that mocks are working when they aren't
+    return worker.start({ onUnhandledRequest: 'error' })
+  }
 }
 
-Vue.config.productionTip = false
+enableMocking().then(() => {
+  Vue.config.productionTip = false
 
-Vue.use(Vuetify)
+  Vue.use(Vuetify)
 
-Vue.use(VueReCaptcha, {
-  siteKey: config.RECAPTCHA_SITE_KEY,
-  loaderOptions: { useRecaptchaNet: true },
-})
+  Vue.use(VueReCaptcha, {
+    siteKey: config.RECAPTCHA_SITE_KEY,
+    loaderOptions: { useRecaptchaNet: true },
+  })
 
-// allow components to access api without importing it
-Vue.prototype.$api = api
+  // allow components to access api without importing it
+  Vue.prototype.$api = api
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  vuetify: new Vuetify({
-    icons: {
-      iconfont: 'mdi',
-    },
-  }),
-  components: { App },
-  template: '<App/>',
-  created: function () {
-    store.dispatch('login', null)
-    axios.interceptors.response.use(undefined, function (err) {
-      return new Promise(function (resolve, reject) {
+  /* eslint-disable no-new */
+  new Vue({
+    el: '#app',
+    router,
+    store,
+    vuetify: new Vuetify({
+      icons: {
+        iconfont: 'mdi',
+      },
+    }),
+    components: { App },
+    template: '<App/>',
+    created: function () {
+      store.dispatch('login', null)
+      axios.interceptors.response.use(undefined, function (err) {
+        return new Promise(function (resolve, reject) {
         // Unauthenticated. is the exact error message returned by the API for the auth middle ware
         // which is why we check for that message here...
-        if (err.response.config && !err.response.config.__isRetryRequest && err.response.data && err.response.data.error && err.response.data.error === 'Unauthenticated.') {
+          if (err.response.config && !err.response.config.__isRetryRequest && err.response.data && err.response.data.error && err.response.data.error === 'Unauthenticated.') {
           // TODO this IF should also have a condition for is logged in....
-          console.log('Detected logged out state, so logging out...')
-          store
-            .dispatch('logout')
-            .then(() => router.push('/login'))
-            .catch(err => {
-              console.log(err)
-            })
-        }
-        reject(err)
+            console.log('Detected logged out state, so logging out...')
+            store
+              .dispatch('logout')
+              .then(() => router.push('/login'))
+              .catch(err => {
+                console.log(err)
+              })
+          }
+          reject(err)
+        })
       })
-    })
-  },
+    },
+  })
 })
