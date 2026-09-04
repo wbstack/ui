@@ -290,83 +290,82 @@ export const handlers = [
 
   http.get('/api/v1/policies/terms-of-use', () => {
     const items = [
-		{
-			"metadata": {
-				"policy_id": 1,
-				"type": "terms-of-use",
-				"active_from": "2022-01-01",
-				"content_vue_file": "terms-of-use/version-1.vue"
-			}
-		},
-		{
-			"metadata": {
-				"policy_id": 2,
-				"type": "terms-of-use",
-				"active_from": "2026-08-27",
-				"content_vue_file": "terms-of-use/version-2.vue"
-			}
-		}
-	];
+      {
+        metadata: {
+          policy_id: 1,
+          type: 'terms-of-use',
+          active_from: '2022-01-01',
+          content_vue_file: 'terms-of-use/version-1.vue',
+        },
+      },
+      {
+        metadata: {
+          policy_id: 2,
+          type: 'terms-of-use',
+          active_from: '2026-08-27',
+          content_vue_file: 'terms-of-use/version-2.vue',
+        },
+      },
+    ]
 
-      return Response.json({ items })
+    return Response.json({ items })
   }),
 
   http.get('/api/v1/policies/terms-of-use/by_active_from/2022-01-01', () => {
     const metadata = {
-		"policy_id": 1,
-		"type": "terms-of-use",
-		"active_from": "2022-01-01",
-		"content_vue_file": "terms-of-use/version-1.vue"
-	}
+      policy_id: 1,
+      type: 'terms-of-use',
+      active_from: '2022-01-01',
+      content_vue_file: 'terms-of-use/version-1.vue',
+    }
 
-    return Response.json({ metadata });
+    return Response.json({ metadata })
   }),
 
   http.get('/api/v1/policies/terms-of-use/current', () => {
     const metadata = {
-		"policy_id": 2,
-		"type": "terms-of-use",
-		"active_from": "2026-08-27",
-		"content_vue_file": "terms-of-use/version-2.vue"
-	};
+      policy_id: 2,
+      type: 'terms-of-use',
+      active_from: '2026-08-27',
+      content_vue_file: 'terms-of-use/version-2.vue',
+    }
 
-  return Response.json({ metadata });
+    return Response.json({ metadata })
   }),
 
   http.get('/api/v1/policies/terms-of-use/upcoming', () => {
-    const message = "Policy not found.";
+    const message = 'Policy not found.'
     return Response.json({ message }, { status: 404 })
   }),
 
   http.get('/api/v1/policies/hosting-policy', () => {
     const items = [
-		{
-			"metadata": {
-				"policy_id": 3,
-				"type": "hosting-policy",
-				"active_from": "2026-08-27",
-				"content_vue_file": "hosting-policy/version-1.vue"
-			}
-		}
-	];
+      {
+        metadata: {
+          policy_id: 3,
+          type: 'hosting-policy',
+          active_from: '2026-08-27',
+          content_vue_file: 'hosting-policy/version-1.vue',
+        },
+      },
+    ]
 
-    return Response.json({ items });
+    return Response.json({ items })
   }),
 
   http.get('/api/v1/policies/hosting-policy/current', () => {
     const metadata = {
-		"policy_id": 3,
-		"type": "hosting-policy",
-		"active_from": "2026-08-27",
-		"content_vue_file": "hosting-policy/version-1.vue"
-	};
+      policy_id: 3,
+      type: 'hosting-policy',
+      active_from: '2026-08-27',
+      content_vue_file: 'hosting-policy/version-1.vue',
+    }
 
-  return Response.json({ metadata });
-
+    return Response.json({ metadata })
   }),
 
   http.get('/api/v1/policies/hosting-policy/upcoming', () => {
-    const message = "Policy not found.";
+    const message = 'Policy not found.'
     return Response.json({ message }, { status: 404 })
   }),
 ]
