@@ -3,22 +3,12 @@
     <div class="content">
       <div class="tab-container">
         <div v-if="isReady">
-          <v-tabs v-model="tab">
-              <v-tab>Profile</v-tab>
-              <v-tab>Settings</v-tab>
-              <v-tab>Features</v-tab>
+          <v-tabs>
+              <v-tab :to="this.getTabPath('TabSettingsProfileInner')">Profile</v-tab>
+              <v-tab :to="this.getTabPath('TabSettingsSettingsInner')">Settings</v-tab>
+              <v-tab :to="this.getTabPath('TabSettingsFeaturesInner')">Features</v-tab>
           </v-tabs>
-          <v-tabs-items v-model="tab">
-            <v-tab-item>
-                  <ManageProfile />
-              </v-tab-item>
-            <v-tab-item>
-                  <ManageWiki />
-              </v-tab-item>
-              <v-tab-item>
-                  <ManageFeatures />
-              </v-tab-item>
-          </v-tabs-items>
+          <router-view/>
         </div>
         <div class="text-center" v-if="!isReady">
           <br/>
@@ -30,25 +20,17 @@
 </template>
 
 <script>
-import ManageProfile from './Tabs/ManageProfile.vue'
-import ManageWiki from './Tabs/ManageWiki.vue'
-import ManageFeatures from './Tabs/ManageFeatures.vue'
 
 export default {
   name: 'TabSettings',
-  components: {
-    ManageProfile,
-    ManageWiki,
-    ManageFeatures,
-  },
-  data () {
-    return {
-      tab: null,
-    }
-  },
   computed: {
     isReady () {
       return this.$store.state.wikis.currentWikiSettings !== null
+    },
+  },
+  methods: {
+    getTabPath (name) {
+      return this.$router.resolve({ name, params: this.$route.params }).href
     },
   },
   created () {
