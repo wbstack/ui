@@ -14,6 +14,9 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
+import ManageProfile from '@/components/Pages/ManageWiki/Tabs/ManageProfile.vue'
+import ManageFeatures from '../components/Pages/ManageWiki/Tabs/ManageFeatures.vue'
+import ManageWiki from '../components/Pages/ManageWiki/Tabs/ManageWiki.vue'
 import TermsOfUseRenderer from '@/components/Pages/TermsOfUse/TermsOfUseRenderer.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
@@ -162,6 +165,35 @@ const router = new Router({
         requiresAuth: true,
         customLayout: true,
       },
+      children: [
+        {
+          path: 'profile',
+          component: ManageProfile,
+          meta: {
+            requiresAuth: true,
+            customLayout: true,
+          },
+          name: 'TabSettingsProfileInner',
+        },
+        {
+          path: 'settings',
+          component: ManageWiki,
+          meta: {
+            requiresAuth: true,
+            customLayout: true,
+          },
+          name: 'TabSettingsSettingsInner',
+        },
+        {
+          path: 'features',
+          component: ManageFeatures,
+          meta: {
+            requiresAuth: true,
+            customLayout: true,
+          },
+          name: 'TabSettingsFeaturesInner',
+        },
+      ],
     },
     {
       path: '/discovery',
