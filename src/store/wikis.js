@@ -157,6 +157,9 @@ const mutations = {
   set_current_wiki_profile (state, value) {
     state.currentWikiProfile = value
   },
+  submit_wiki_review () {
+
+  },
 }
 
 const actions = {
@@ -258,6 +261,9 @@ const actions = {
   setQuestyCaptchaQuestions ({ commit }, value) {
     commit('set_questy_captcha_questions', value)
   },
+  submitWikiForReview ( { commit }, payload ) {
+    return api.submitReview( payload )
+  }
 }
 
 export default {

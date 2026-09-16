@@ -202,6 +202,7 @@ const router = new Router({
             customLayout: true,
           },
           name: 'TabSettingsReviewInner',
+          props: true
         },
       ],
     },
