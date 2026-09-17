@@ -13,8 +13,8 @@ export default {
     ReviewSubmission,
   },
   props: [
+    // TODO should this really be passed in here or would it be better to get the id from the store for consistency
     'id',
-    // 'baseUrl' -  TODO: where should we get this from? The store? Will this be fresh enough? Does initaliseSettings from this parent get called early enough?
   ],
 }
 </script>

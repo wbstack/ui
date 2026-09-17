@@ -13,10 +13,10 @@
       We require that the structured data hosted on the platform is in the public domain or released under <ExternalLink url="https://creativecommons.org/publicdomain/zero/1.0/">CC0</ExternalLink>, and the license for the text in other namespaces allows commercial and non-commercial use and derivatives.
       <RequiredCheckbox>
         <!--TODO: add link dependent on wikiId-->
-          I confirm that the licensing rules for this Wikibase are compliant with the requirements above and described on the <ExternalLink @click.stop url="https://anton12.wikibase.cloud/wiki/Project:Copyrights">Project:Copyrights</ExternalLink> page.
+          I confirm that the licensing rules for this Wikibase are compliant with the requirements above and described on the <ExternalLink @click.stop :url="`https://${this.$store.state.wikis.currentWikiDomain}/wiki/Project:Copyrights`">Project:Copyrights</ExternalLink> page.
       </RequiredCheckbox>
       <!--TODO: add link dependent on wikiId-->
-      Visitors to your Wikibase should be able to understand what your project is about and whether they are welcome to contribute, reuse or refer to this data. We require making this clear in the information on the <ExternalLink>main</ExternalLink> or <ExternalLink>Project:About</ExternalLink> page.
+      Visitors to your Wikibase should be able to understand what your project is about and whether they are welcome to contribute, reuse or refer to this data. We require making this clear in the information on the <ExternalLink :url="`https://${this.$store.state.wikis.currentWikiDomain}/wiki/Main_Page`">main</ExternalLink> or <ExternalLink :url="`https://${this.$store.state.wikis.currentWikiDomain}/wiki/Project:About`">Project:About</ExternalLink> page.
       <RequiredCheckbox>I confirm that the information describing the project to external users is visible on my Wikibase.</RequiredCheckbox>
       <RequiredCheckbox>I confirm that I intend to take further care of the instance and ensure its
                     compliance with Wikibase Cloud policies, stay reachable or pass my
@@ -48,10 +48,6 @@ export default {
   components: {
     ExternalLink,
     RequiredCheckbox,
-  },
-  computed: {
-    formUrl: function () {
-    },
   },
   data: () => ({
     additionalInformation: '',

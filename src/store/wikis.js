@@ -9,6 +9,7 @@ const getDefaultState = () => {
     currentWikiEntityImports: [],
     currentWikiEntityImportError: null,
     currentWikiSettings: null,
+    currentWikiDomain: '',
   }
 }
 
@@ -55,6 +56,9 @@ const mutations = {
   },
   wikis_error (state) {
     state.status = 'error'
+  },
+  set_current_wiki_domain (state, domain) {
+    state.currentWikiDomain = domain
   },
   set_current_wiki_settings (state, details) {
     const wgDefaultSkinSetting = details.public_settings.find(setting => setting.name === 'wgDefaultSkin')
@@ -174,6 +178,7 @@ const actions = {
     api.wikiDetails({ wiki: wikiId })
       .then(details => {
         commit('set_current_wiki_settings', details)
+        commit('set_current_wiki_domain', details.domain)
         commit('set_current_wiki_profile', details.wiki_latest_profile)
       })
   },
