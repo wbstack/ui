@@ -22,12 +22,11 @@
                     compliance with Wikibase Cloud policies, stay reachable or pass my
                     responsibilities over to another manager with Terms of Use-based
                     responsibility.</RequiredCheckbox>
-      <!--TODO: add rule to assert lengthm or just hard limit? -->
+      <!--TODO: add rule to assert length or just hard limit? -->
       <v-textarea :value="additionalInformation" outlined maxlength="1000" counter="1000" no-resize placeholder="Feel free to pass on any additional information to the review committee to support your submission."/>
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <!--TODO: add status line; see how this works vs form validation-->
       <span v-if="!isFormValid">Tick all four confirmations to submit.</span>
       <span v-if="isFormValid">Ready to submit.</span>
       <v-spacer/>
