@@ -261,9 +261,9 @@ const actions = {
   setQuestyCaptchaQuestions ({ commit }, value) {
     commit('set_questy_captcha_questions', value)
   },
-  submitWikiForReview ( { commit }, payload ) {
-    return api.submitReview( payload )
-  }
+  submitWikiForReview ({ commit }, payload) {
+    return api.submitReview(payload)
+  },
 }
 
 export default {

@@ -5,17 +5,17 @@
 </template>
 
 <script>
-import ReviewSubmission from '../Cards/ReviewSubmission.vue';
+import ReviewSubmission from '../Cards/ReviewSubmission.vue'
 
 export default {
   name: 'Review',
   components: {
-    ReviewSubmission
+    ReviewSubmission,
   },
   props: [
-    'id'
+    'id',
     // 'baseUrl' -  TODO: where should we get this from? The store? Will this be fresh enough? Does initaliseSettings from this parent get called early enough?
-  ]
+  ],
 }
 </script>
 
