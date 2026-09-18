@@ -41,6 +41,7 @@ const getters = {
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
   hasLoaded: state => state.wikis.status !== '',
   getReviewsByWikiId: (state) => (wikiId) => {
+    // TODO: Why even when there is an entry in the store is this getter returning []??
     return state.reviews[wikiId] ?? []
   }
 }
