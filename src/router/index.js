@@ -24,6 +24,7 @@ import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
 import HostingPolicyRenderer from '@/components/Pages/HostingPolicy/HostingPolicyRenderer.vue'
 import DsaInfo from '@/components/Pages/DsaInfo/DsaInfo'
+import Review from '../components/Pages/ManageWiki/Tabs/Review.vue'
 
 Vue.use(Router)
 
@@ -192,6 +193,16 @@ const router = new Router({
             customLayout: true,
           },
           name: 'TabSettingsFeaturesInner',
+        },
+        {
+          path: 'review',
+          component: Review,
+          meta: {
+            requiresAuth: true,
+            customLayout: true,
+          },
+          name: 'TabSettingsReviewInner',
+          props: true,
         },
       ],
     },

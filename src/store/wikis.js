@@ -9,6 +9,8 @@ const getDefaultState = () => {
     currentWikiEntityImports: [],
     currentWikiEntityImportError: null,
     currentWikiSettings: null,
+    currentWikiDomain: '',
+    reviews: {},
   }
 }
 
@@ -38,6 +40,10 @@ const getters = {
   currentWikiEntityImports: state => state.currentWikiEntityImports,
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
   hasLoaded: state => state.wikis.status !== '',
+  getReviewsByWikiId: (state) => (wikiId) => {
+    // TODO: Why even when there is an entry in the store is this getter returning []??
+    return state.reviews[wikiId] ?? []
+  }
 }
 
 const mutations = {
@@ -55,6 +61,9 @@ const mutations = {
   },
   wikis_error (state) {
     state.status = 'error'
+  },
+  set_current_wiki_domain (state, domain) {
+    state.currentWikiDomain = domain
   },
   set_current_wiki_settings (state, details) {
     const wgDefaultSkinSetting = details.public_settings.find(setting => setting.name === 'wgDefaultSkin')
@@ -157,6 +166,9 @@ const mutations = {
   set_current_wiki_profile (state, value) {
     state.currentWikiProfile = value
   },
+  add_wiki_review (state, { wikiId, value }) {
+    state.reviews[wikiId] = [value]
+  },
 }
 
 const actions = {
@@ -171,6 +183,7 @@ const actions = {
     api.wikiDetails({ wiki: wikiId })
       .then(details => {
         commit('set_current_wiki_settings', details)
+        commit('set_current_wiki_domain', details.domain)
         commit('set_current_wiki_profile', details.wiki_latest_profile)
       })
   },
@@ -257,6 +270,11 @@ const actions = {
   },
   setQuestyCaptchaQuestions ({ commit }, value) {
     commit('set_questy_captcha_questions', value)
+  },
+  async submitWikiForReview ({ commit }, payload) {
+    const response = await api.submitReview(payload)
+    const wikiId = payload.wikiId
+    commit('add_wiki_review', { wikiId, value: response } )
   },
 }
 

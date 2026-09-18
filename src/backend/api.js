@@ -161,3 +161,10 @@ export const getEntityImports = async ({ wikiId }) => {
   const { data: { data } } = await axios.get(`/wiki/entityImport?wiki=${wikiId}`)
   return data
 }
+
+export const submitReview = async ( { wikiId, addititionalInformation } ) => {
+  const { data } = await axios.post(`/v1/wikis/${wikiId}/review_submissions`, {
+    addititionalInformation
+  })
+  return data
+}
