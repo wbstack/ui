@@ -10,6 +10,7 @@ const getDefaultState = () => {
     currentWikiEntityImportError: null,
     currentWikiSettings: null,
     currentWikiDomain: '',
+    reviews: {},
   }
 }
 
@@ -39,6 +40,9 @@ const getters = {
   currentWikiEntityImports: state => state.currentWikiEntityImports,
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
   hasLoaded: state => state.wikis.status !== '',
+  getReviewsByWikiId: (state) => (wikiId) => {
+    return state.reviews[wikiId] ?? []
+  }
 }
 
 const mutations = {
@@ -161,8 +165,8 @@ const mutations = {
   set_current_wiki_profile (state, value) {
     state.currentWikiProfile = value
   },
-  submit_wiki_review () {
-
+  add_wiki_review (state, { wikiId, value }) {
+    state.reviews[wikiId] = [value]
   },
 }
 
@@ -266,8 +270,10 @@ const actions = {
   setQuestyCaptchaQuestions ({ commit }, value) {
     commit('set_questy_captcha_questions', value)
   },
-  submitWikiForReview ({ commit }, payload) {
-    return api.submitReview(payload)
+  async submitWikiForReview ({ commit }, payload) {
+    const response = await api.submitReview(payload)
+    const wikiId = payload.wikiId
+    commit('add_wiki_review', { wikiId, value: response } )
   },
 }
 

@@ -57,7 +57,9 @@ export default {
     submitReview: function () {
       this.$refs.reviewForm.validate()
       if (this.$refs.reviewForm.validate() === true) {
-        this.$api.submitReview({ wikiId: this.wikiId, additionalInformation: this.additionalInformation })
+        this.$store.dispatch('submitWikiForReview', {wikiId: this.wikiId, additionalInformation: this.additionalInformation })
+        // this.$api.submitReview({ wikiId: this.wikiId, additionalInformation: this.additionalInformation })
+
       }
     },
   },
