@@ -167,10 +167,9 @@ const mutations = {
     state.currentWikiProfile = value
   },
   add_wiki_review (state, { wikiId, value }) {
-    if (state.reviews[wikiId]) {
-      state.reviews[wikiId].push(value)
-    }
-    Vue.set(state.reviews, wikiId, [value])
+    const wikiReviews = state.reviews[wikiId] || []
+    wikiReviews.push(value)
+    Vue.set(state.reviews, wikiId, wikiReviews)
   },
   set_wiki_reviews (state, { wikiId, value }) {
     Vue.set(state.reviews, wikiId, value)
