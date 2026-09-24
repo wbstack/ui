@@ -42,7 +42,7 @@ const getters = {
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
   hasLoaded: state => state.wikis.status !== '',
   getReviewsByWikiId: (state) => (wikiId) => {
-    return state.reviews[wikiId] ?? []
+    return state.reviews[Number(wikiId)] ?? []
   },
 }
 
