@@ -166,8 +166,7 @@ export default {
     createSuccess (wikiDetails) {
       this.hasError = false
       this.error = []
-      // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
-      this.$router.replace('/wikis/manage/' + wikiDetails.id)
+      this.$router.push({ name: 'TabSettingsProfileInner', params: { id: wikiDetails.id } })
     },
     createFail (errors) {
       // Probably we want to go back to the first step that has an error in this case.
