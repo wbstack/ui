@@ -92,7 +92,4 @@ export default {
 </script>
 
 <style scoped>
-.v-main >>> .col {
-  max-width: 656px;
-}
 </style>

@@ -164,7 +164,6 @@ const router = new Router({
       component: TabSettings,
       meta: {
         requiresAuth: true,
-        customLayout: true,
       },
       children: [
         {
@@ -172,7 +171,6 @@ const router = new Router({
           component: ManageProfile,
           meta: {
             requiresAuth: true,
-            customLayout: true,
           },
           name: 'TabSettingsProfileInner',
         },
@@ -181,7 +179,6 @@ const router = new Router({
           component: ManageWiki,
           meta: {
             requiresAuth: true,
-            customLayout: true,
           },
           name: 'TabSettingsSettingsInner',
         },
@@ -190,7 +187,6 @@ const router = new Router({
           component: ManageFeatures,
           meta: {
             requiresAuth: true,
-            customLayout: true,
           },
           name: 'TabSettingsFeaturesInner',
         },
@@ -199,7 +195,6 @@ const router = new Router({
           component: Review,
           meta: {
             requiresAuth: true,
-            customLayout: true,
           },
           name: 'TabSettingsReviewInner',
           props: true,

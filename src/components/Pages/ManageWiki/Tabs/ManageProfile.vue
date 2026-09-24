@@ -34,8 +34,4 @@ export default {
 </script>
 
 <style scoped>
-.v-main >>> .col {
-  max-width: 656px;
-  width: 100vw;
-}
 </style>
