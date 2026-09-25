@@ -1,0 +1,37 @@
+name: Netlify Daily E2E
+
+on:
+  schedule:
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  e2e-netlify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      NETLIFY_UI_BASE_URL: ${{ vars.NETLIFY_UI_BASE_URL != '' && vars.NETLIFY_UI_BASE_URL || secrets.NETLIFY_UI_BASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v6.0.1
+
+      - name: Validate target URL
+        run: |
+          if [ -z "$NETLIFY_UI_BASE_URL" ]; then
+            echo "NETLIFY_UI_BASE_URL is not set. Configure it as a repository variable or secret."
+            exit 1
+          fi
+          echo "Running E2E against $NETLIFY_UI_BASE_URL"
+
+      - name: Install UI dependencies
+        run: docker compose run --rm --env NODE_ENV=development ui npm ci
+
+      - name: Start Selenium services
+        run: docker compose --profile browser-tests up -d selenium-firefox selenium-chrome
+
+      - name: Run E2E tests against Netlify
+        run: docker compose run --rm ui npx vue-cli-service test:e2e --baseUrl="$NETLIFY_UI_BASE_URL"
+
+      - name: Stop Selenium services
+        if: always()
+        run: docker compose --profile browser-tests down
