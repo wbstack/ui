@@ -1,13 +1,8 @@
 <template>
-    <a
-    :href="url"
-    rel="external"
-    target="_blank"
-    @click.stop
-    >
-          <slot></slot>
-          <v-icon small color="primary" class="pl-1 pb-2"> mdi-open-in-new</v-icon>
-          </a>
+  <a :href="url" rel="external" target="_blank" @click.stop>
+    <slot></slot>
+    <v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon>
+  </a>
 </template>
 
 <script>
@@ -16,5 +11,4 @@ export default {
     'url',
   ],
 }
-
 </script>
