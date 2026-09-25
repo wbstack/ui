@@ -1,7 +1,7 @@
 <template>
   <a :href="url" rel="external" target="_blank" @click.stop>
     <slot></slot>
-    <v-icon small color="primary" class="pl-1 pb-2">mdi-open-in-new</v-icon>
+    <v-icon size="inherit" color="primary" class="mb-1">mdi-open-in-new</v-icon>
   </a>
 </template>
 
