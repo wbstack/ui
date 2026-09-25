@@ -1,4 +1,4 @@
-<!-- The component is shown to submit a review not to edit or view the status of an existing one-->
+<!-- This component is for submitting a new review, not to edit or view the status of an existing one-->
 <template>
   <v-card>
     <v-card-title>Submit for review</v-card-title>
@@ -6,7 +6,7 @@
     <v-card-text>
 
       <v-form v-model="isFormValid" ref="reviewForm">
-        We need to know some details about your use case. The form to fill out these details is in an <external-link :url='"https://wikimedia.sslsurvey.de/WBC-Hosting-Policy-Review-Submission/?" + this.wikiId'><span class="font-weight-bold">external survey tool</span></external-link>. Please submit your answers there and come back to this page.
+        We need to know some details about your use case. The form to fill out these details is in an <ExternalLink :url='"https://wikimedia.sslsurvey.de/WBC-Hosting-Policy-Review-Submission/?" + this.wikiId'><span class="font-weight-bold">external survey tool</span></ExternalLink>. Please submit your answers there and come back to this page.
       <RequiredCheckbox>
         I confirm that I have filled out the questionnaire for this Wikibase in the external tool.
       </RequiredCheckbox>
