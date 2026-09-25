@@ -7,6 +7,7 @@
               <v-tab :to="this.getTabPath('TabSettingsProfileInner')">Profile</v-tab>
               <v-tab :to="this.getTabPath('TabSettingsSettingsInner')">Settings</v-tab>
               <v-tab :to="this.getTabPath('TabSettingsFeaturesInner')">Features</v-tab>
+              <v-tab :to="this.getTabPath('TabSettingsReviewInner')">Review</v-tab>
           </v-tabs>
           <router-view/>
         </div>
