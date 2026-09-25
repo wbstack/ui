@@ -2,12 +2,12 @@
   <v-main>
     <v-container>
       <v-row>
-        <v-col class="card-column">
+        <v-col>
           <Details :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
       <v-row>
-        <v-col class="card-column">
+        <v-col>
           <Profile :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
@@ -34,8 +34,4 @@ export default {
 </script>
 
 <style scoped>
-.v-main >>> .col {
-  max-width: 656px;
-  width: 100vw;
-}
 </style>
