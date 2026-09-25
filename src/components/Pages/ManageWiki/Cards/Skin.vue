@@ -17,7 +17,7 @@
     <v-card-actions>
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" @click="doSetSkin">Set Skin</v-btn>
+        <v-btn v-bind="attrs" v-on="on" :disabled="inFlight" @click="doSetSkin">Set Skin</v-btn>
         </template>
         <span>It may take up to 10 seconds for changes to be reflected on your wiki</span>
       </v-tooltip>
@@ -55,6 +55,8 @@ export default {
       ],
       skinId: '',
       message: false,
+      inFlight: false,
+      error: [],
     }
   },
   created () {
@@ -69,6 +71,7 @@ export default {
     doSetSkin () {
       const wiki = this.wikiId
       const value = this.skin.value
+      this.inFlight = true
 
       this.$store
         .dispatch('updateSkin', { wiki, value })
@@ -78,6 +81,9 @@ export default {
         .catch(err => {
           console.error(err.response)
           this.$refs.message.show('error', 'Something went wrong while updating your default skin. Please try again.')
+        })
+        .then(() => {
+          this.inFlight = false
         })
     },
   },
