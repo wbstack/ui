@@ -1,6 +1,9 @@
 const path = require('path')
 module.exports = {
     devServer: {
+        client: {
+            webSocketURL: 'auto://0.0.0.0:0/ws'
+        },
         proxy: {
             '^/api': {
                 target: process.env.VUE_APP_API_URL,
