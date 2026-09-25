@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-spacer></v-spacer>
-      <v-col cols="8">
+      <v-col cols="12" lg="8">
         <div class="content">
           <div class="tab-container">
             <div v-if="isReady">
