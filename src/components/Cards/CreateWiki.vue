@@ -26,7 +26,6 @@
       v-show="step === 3"
       :title="title"
       :inFlight="inFlight"
-      :error="error"
       @previous-step="goToStep(2)"
       @submit="createWiki"
     />
