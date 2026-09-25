@@ -3,8 +3,8 @@
     <v-row>
       <v-spacer></v-spacer>
       <v-col cols="12" lg="8">
-        <div class="content">
-          <div class="tab-container">
+        <div>
+          <div>
             <div v-if="isReady">
               <v-tabs>
                 <v-tab :to="this.getTabPath('TabSettingsProfileInner')">Profile</v-tab>

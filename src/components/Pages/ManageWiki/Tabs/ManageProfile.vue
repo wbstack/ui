@@ -2,12 +2,12 @@
   <v-main>
     <v-container>
       <v-row>
-        <v-col class="card-column">
+        <v-col>
           <Details :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
       <v-row>
-        <v-col class="card-column">
+        <v-col>
           <Profile :wikiId="this.wikiId"/>
         </v-col>
       </v-row>
