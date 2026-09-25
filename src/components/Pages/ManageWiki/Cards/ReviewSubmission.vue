@@ -53,7 +53,6 @@ export default {
   }),
   methods: {
     submitReview: function () {
-      this.$refs.reviewForm.validate()
       if (this.$refs.reviewForm.validate() === true) {
         // TODO: Consider if we should block form submission until success or failure of the dispatch and show an error?
         // there is no spec for this unhappy path right now.
