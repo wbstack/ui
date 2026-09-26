@@ -76,7 +76,7 @@
               </template>
             </v-checkbox>
           </v-skeleton-loader>
-        <p>
+        <p v-if="recaptchaEnabled">
           This site is protected by reCAPTCHA. Wikibase Cloud
           <a target="_blank" href="https://www.wikibase.cloud/privacy-policy">Privacy Policy</a> and Google
           <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
@@ -97,6 +97,7 @@
 </template>
 
 <script>
+import config from '~/config'
 import PolicyList from '../Components/PolicyList'
 import { getRecaptchaToken } from '~/backend'
 
@@ -112,6 +113,9 @@ export default {
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isLoggedIn
+    },
+    recaptchaEnabled: function () {
+      return config.RECAPTCHA_ENABLED
     },
   },
   data () {
