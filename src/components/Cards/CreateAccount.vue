@@ -98,6 +98,7 @@
 
 <script>
 import PolicyList from '../Components/PolicyList'
+import { getRecaptchaToken } from '~/backend'
 
 export default {
   name: 'CreateAccountCard',
@@ -192,9 +193,8 @@ export default {
 
       // TODO once emailing is setup add emailVerificationRequired option to user model in model-config.json
 
-      // TODO recaptcha check should be optional for development (env var switch?)
       // Recaptcha check
-      this.$recaptcha('login').then((token) => {
+      getRecaptchaToken(this, 'login').then((token) => {
         this.$api.register(
           {
             email: this.email,
