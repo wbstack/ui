@@ -1,0 +1,31 @@
+name: Auto-merge Dependabot
+
+on:
+    workflow_run:
+        workflows: ["Browser tests", "Docker build", "Docker lint", "Combine PRs", "Netlify comment on PR", "Netlify Preview", "Node.js CI"]
+        types:
+            - completed
+
+jobs:
+    auto-merge:
+        runs-on: ubuntu-latest
+        if: >
+            github.event.workflow_run.conclusion == 'success' &&
+            github.actor == 'dependabot[bot]' &&
+            github.event.pull_request.merged == true
+
+        steps:
+            - name: Checkout code
+              uses: action/checkout@v3
+
+            - name: Set up Git
+              run: |
+                git config user.name 'github-actions[bot]' 
+                git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            
+            - name: Merge Dependabot PR
+              run: |
+                git fetch origin
+                git checkout ${{ github.event.workflow_run.head_branch }}
+                git merge ${{ github.event.workflow_run.head_branch }}
+                git push origin HEAD:${{ github.event.workflow_run.head_branch }}
