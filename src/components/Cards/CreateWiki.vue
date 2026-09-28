@@ -118,6 +118,9 @@ export default {
         ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
         ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
         ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
+        // need to set this for now otherwise temporality defaults to 'permanent'
+        temporality: 'other',
+        temporality_other: 'T433687',
       }
 
       const requestBody = {

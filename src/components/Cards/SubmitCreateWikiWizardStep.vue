@@ -7,20 +7,6 @@
     </v-toolbar>
     <v-card-text>
       <v-form ref="inputForm" v-on:submit.prevent>
-        <!--
-          TODO: this is not a level-3 nested heading; should replace with suitable tag and Vuetify2 classes.
-          Should this and the subheading be wrapped in a `hgroup`, or is that just for page titles / subtitles?
-        -->
-        <!--  -->
-        <!-- <div class="text-h6">This Wikibase will go offline on <span class="font-weight-bold">{{ suspensionDate }}</span></div> -->
-        <!-- TODO: should this subheading be wrapped in some tags? -->
-        <!-- <div class="text-subtitle1">unless it is submitted for review and approved.</div> -->
-
-        <!-- <hgroup>
-          <h1 class="text-body-1">This Wikibase will go offline on <span class="font-weight-bold">{{ suspensionDate }}</span></h1>
-          <p class="text-body-2">unless it is submitted for review and approved.</p>
-        </hgroup> -->
-
         <div class="text-body-1">
           This Wikibase will go offline on <span class="font-weight-bold d-inline-block">{{ suspensionDate }}</span>
         </div>
@@ -28,7 +14,7 @@
 
         <v-alert text dense border="left" colored-border color="primary">
           <p class="font-weight-bold">All Wikibases on our platform are temporary by default.</p>
-          <p>Once you're confident you want to keep this Wikibase for more than 3 months, submit it for review.</p>
+          <p>Once you're confident you want to keep this Wikibase longer, submit it for review.</p>
           <p class="mb-0">
             Some uses can't be approved for a longer stay - for example, primarily commercial or promotional projects,
             or content under non-free licenses. To make sure your use case qualifies, check the
@@ -80,6 +66,7 @@ export default {
   computed: {
     suspensionDate () {
       const date = new Date()
+      // TODO: don't hard-code the temporary wiki duration of 91 days here
       date.setDate(date.getDate() + 91)
 
       return date.toLocaleDateString(
