@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit="createWiki">
+  <v-form>
     <SiteDetailsCreateWikiWizardStep
       v-show="step === 1"
       :title="title"

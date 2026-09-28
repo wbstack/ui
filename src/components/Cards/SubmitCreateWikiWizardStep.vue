@@ -6,7 +6,7 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-toolbar>
     <v-card-text>
-      <v-form ref="inputForm" v-on:submit.prevent>
+      <v-form ref="inputForm">
         <div class="text-body-1">
           This Wikibase will go offline on <span class="font-weight-bold d-inline-block">{{ suspensionDate }}</span>
         </div>
