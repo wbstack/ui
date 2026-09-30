@@ -38,21 +38,26 @@ export default {
     'wikiId',
   ],
   data () {
+    const skins = [
+      {
+        value: 'vector',
+        text: 'Vector',
+      },
+      {
+        value: 'timeless',
+        text: 'Timeless',
+      },
+    ]
+
+    if (this.$store.state.wikis.currentWikiSettings.wgDefaultSkin === 'modern') {
+      skins.splice(1, 0, {
+        value: 'modern',
+        text: 'Modern',
+      })
+    }
+
     return {
-      skins: [
-        {
-          value: 'vector',
-          text: 'Vector',
-        },
-        {
-          value: 'modern',
-          text: 'Modern',
-        },
-        {
-          value: 'timeless',
-          text: 'Timeless',
-        },
-      ],
+      skins,
       skinId: '',
       message: false,
     }
