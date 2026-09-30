@@ -77,6 +77,7 @@ export default {
     login (evt) {
       evt.preventDefault()
       this.loggingIn = true
+      this.$emit('login-in-flight', true)
       const email = this.email
       const password = this.password
       this.errorMessage = ''
@@ -96,6 +97,7 @@ export default {
           })
 
           this.loggingIn = false
+          this.$emit('login-in-flight', false)
         })
     },
   },

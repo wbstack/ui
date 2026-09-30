@@ -156,12 +156,16 @@ export default {
       this.error.inputPassword = error
       this.error.inputPasswordConfirmation = error
       this.error.terms = error
-      this.inFlight = false
+      this.setInFlight(false)
+    },
+    setInFlight (inFlight) {
+      this.inFlight = inFlight
+      this.$emit('account-creation-in-flight', inFlight)
     },
     createaccount (evt) {
       evt.preventDefault()
       // Request is processing
-      this.inFlight = true
+      this.setInFlight(true)
 
       // Reset errors
       this.resetErrorState()
@@ -186,7 +190,7 @@ export default {
 
       // If the error are not empty then dont submit the request
       if (this.hasError) {
-        this.inFlight = false
+        this.setInFlight(false)
         return
       }
 
@@ -224,8 +228,11 @@ export default {
             }
 
             this.$store.dispatch('logout')
-            this.inFlight = false
+            this.setInFlight(false)
           })
+      }).catch(err => {
+        console.error(err)
+        this.setGeneralErrorState()
       })
     },
     createSuccessful (success) {
@@ -242,7 +249,6 @@ export default {
           console.log(err)
           // TODO better error messages..
           this.setGeneralErrorState('Post account creation authentication failed!')
-          this.inFlight = false
         })
     },
     checkCurrentLogin () {

@@ -2,7 +2,7 @@
     <v-main class="pa-1">
       <v-container class="fill-height" fluid >
         <v-row align="center" justify="center">
-            <LoginCard title="Log in" buttonText="Log in"/>
+            <LoginCard title="Log in" buttonText="Log in" @login-in-flight="inFlight = $event"/>
         </v-row>
         <v-row justify="center" >
           <div>
@@ -28,7 +28,9 @@ export default {
     LoginCard,
   },
   data () {
-    return {}
+    return {
+      inFlight: false,
+    }
   },
 }
 </script>

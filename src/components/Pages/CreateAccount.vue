@@ -1,7 +1,7 @@
 <template>
   <v-container class="fill-height" fluid >
     <v-row align="center" justify="center">
-      <CreateAccountCard title="Sign up" buttonText="Create Account"/>
+      <CreateAccountCard title="Sign up" buttonText="Create Account" @account-creation-in-flight="inFlight = $event"/>
     </v-row>
       <v-row align="center" justify="center">
       <v-col class="needs-padding">
@@ -28,7 +28,9 @@ export default {
     CreateAccountCard,
   },
   data () {
-    return {}
+    return {
+      inFlight: false,
+    }
   },
 }
 </script>
