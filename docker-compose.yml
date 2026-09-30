@@ -3,6 +3,8 @@ services:
   ui:
     env_file:
       - .env
+    environment:
+      VUE_APP_RECAPTCHA_ENABLED: ${VUE_APP_RECAPTCHA_ENABLED:-0}
     image: node:22
     user: "node"
     working_dir: /home/node/app
