@@ -7,6 +7,9 @@
         <v-card-text>
           {{state.message}}
         </v-card-text>
+        <v-card-text v-if="showLoginLink">
+          <router-link to="/login">Log in to your account.</router-link>
+        </v-card-text>
       </v-card>
     </v-main>
 </template>
@@ -22,23 +25,29 @@ const STATES = Object.freeze({
 
 export default {
   name: 'EmailVerification',
-  computed: {},
+  computed: {
+    showLoginLink () {
+      return this.state === STATES.VERIFIED && !this.$store.getters.isLoggedIn
+    },
+  },
   data () {
     return {
-      state: this.$store.getters.currentUser.verified ? STATES.VERIFIED : STATES.PENDING,
+      state: STATES.PENDING,
     }
   },
   created () {
-    if (!this.$store.getters.currentUser.verified) {
-      this.$api.verifyEmail({ token: this.$route.params.token })
-        .then(message => this.success())
-        .catch(expired => this.fail(expired))
-    }
+    this.$api.verifyEmail({ token: this.$route.params.token })
+      .then(() => this.success())
+      .catch(expired => this.fail(expired))
   },
   methods: {
-    success (message) {
+    success () {
       this.state = STATES.VERIFIED
-      this.$store.dispatch('markAsVerified', {})
+      if (this.$store.getters.isLoggedIn) {
+        this.$api.checkVerified()
+          .then(verified => verified && this.$store.dispatch('markAsVerified'))
+          .catch(err => console.error(err))
+      }
     },
     fail (expired) {
       if (expired) {
