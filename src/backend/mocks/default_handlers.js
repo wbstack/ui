@@ -153,7 +153,10 @@ export const handlers = [
   }),
 
   http.delete('/api/auth/login', () => {
-    return new Response(null, { status: 204 })
+    return new Response(null, {
+      status: 204,
+      headers: { 'set-cookie': 'authToken=' },
+    })
   }),
 
   http.post('/api/user/forgotPassword', () => {

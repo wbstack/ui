@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit="createWiki">
+  <v-form>
     <SiteDetailsCreateWikiWizardStep
       v-show="step === 1"
       :title="title"
@@ -22,24 +22,11 @@
       @next-step="goToStep(3)"
     />
 
-    <TemporalityCreateWikiWizardStep
+    <SubmitCreateWikiWizardStep
       v-show="step === 3"
       :title="title"
       :inFlight="inFlight"
-      :error="error"
-      v-model="stepThree"
       @previous-step="goToStep(2)"
-      @next-step="goToStep(4)"
-      @submit="createWiki"
-    />
-
-    <KnowledgeEquityCreateWikiWizardStep
-      v-show="step === 4"
-      v-model="stepFour"
-      :title="title"
-      :inFlight="inFlight"
-      :error="error"
-      @previous-step="goToStep(3)"
       @submit="createWiki"
     />
   </v-form>
@@ -49,16 +36,14 @@
 import config from '~/config'
 import SiteDetailsCreateWikiWizardStep from './SiteDetailsCreateWikiWizardStep.vue'
 import AudienceAndPurposeWizardStep from './AudienceAndPurposeWizardStep.vue'
-import TemporalityCreateWikiWizardStep from './TemporalityCreateWikiWizardStep.vue'
-import KnowledgeEquityCreateWikiWizardStep from './KnowledgeEquityCreateWikiWizardStep.vue'
+import SubmitCreateWikiWizardStep from './SubmitCreateWikiWizardStep.vue'
 
 export default {
   name: 'CreateWiki',
   components: {
     SiteDetailsCreateWikiWizardStep,
     AudienceAndPurposeWizardStep,
-    TemporalityCreateWikiWizardStep,
-    KnowledgeEquityCreateWikiWizardStep,
+    SubmitCreateWikiWizardStep,
   },
   props: [
     'title',
@@ -82,14 +67,6 @@ export default {
         otherPurpose: '',
         audience: '',
         otherAudience: '',
-      },
-      stepThree: {
-        temporality: '',
-        otherTemporality: '',
-      },
-      stepFour: {
-        selectedOption: '',
-        freeTextResponse: '',
       },
       hasError: false,
       error: [],
@@ -141,8 +118,9 @@ export default {
         ...(this.stepTwo.otherPurpose && { purpose_other: this.stepTwo.otherPurpose }),
         ...(this.stepTwo.audience && { audience: this.stepTwo.audience }),
         ...(this.stepTwo.otherAudience && { audience_other: this.stepTwo.otherAudience }),
-        temporality: this.stepThree.temporality,
-        ...(this.stepThree.otherTemporality && { temporality_other: this.stepThree.otherTemporality }),
+        // need to set this for now otherwise temporality defaults to 'permanent'
+        temporality: 'other',
+        temporality_other: 'T433687',
       }
 
       const requestBody = {
@@ -152,13 +130,6 @@ export default {
         profile: JSON.stringify(profileObject),
       }
 
-      if (this.stepThree.temporality === 'permanent' && this.stepFour.selectedOption) {
-        requestBody.knowledgeEquityResponse = {
-          selectedOption: this.stepFour.selectedOption,
-          freeTextResponse: this.stepFour.freeTextResponse,
-        }
-      }
-
       this.$api.createWiki(requestBody)
         .then(wikiDetails => this.createSuccess(wikiDetails))
         .catch(errors => this.createFail(errors))
@@ -166,8 +137,7 @@ export default {
     createSuccess (wikiDetails) {
       this.hasError = false
       this.error = []
-      // this.$router.replace(this.$route.query.redirect || '/wikis/manage/' + req.data.data.id)
-      this.$router.replace('/wikis/manage/' + wikiDetails.id)
+      this.$router.push({ name: 'TabSettingsProfileInner', params: { id: wikiDetails.id } })
     },
     createFail (errors) {
       // Probably we want to go back to the first step that has an error in this case.

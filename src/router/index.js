@@ -14,6 +14,9 @@ import ResetPassword from '@/components/Pages/ResetPassword'
 import EmailVerification from '@/components/Pages/EmailVerification'
 import CreateWiki from '@/components/Pages/CreateWiki'
 import TabSettings from '@/components/Pages/ManageWiki/TabSettings'
+import ManageProfile from '@/components/Pages/ManageWiki/Tabs/ManageProfile.vue'
+import ManageFeatures from '../components/Pages/ManageWiki/Tabs/ManageFeatures.vue'
+import ManageWiki from '../components/Pages/ManageWiki/Tabs/ManageWiki.vue'
 import TermsOfUseRenderer from '@/components/Pages/TermsOfUse/TermsOfUseRenderer.vue'
 import Privacy from '@/components/Pages/Privacy/Privacy'
 import User from '@/components/Pages/User'
@@ -21,6 +24,7 @@ import Discovery from '@/components/Pages/Discovery/Discovery'
 import Complaint from '@/components/Pages/Complaint.vue'
 import HostingPolicyRenderer from '@/components/Pages/HostingPolicy/HostingPolicyRenderer.vue'
 import DsaInfo from '@/components/Pages/DsaInfo/DsaInfo'
+import Review from '../components/Pages/ManageWiki/Tabs/Review.vue'
 
 Vue.use(Router)
 
@@ -160,8 +164,42 @@ const router = new Router({
       component: TabSettings,
       meta: {
         requiresAuth: true,
-        customLayout: true,
       },
+      children: [
+        {
+          path: 'profile',
+          component: ManageProfile,
+          meta: {
+            requiresAuth: true,
+          },
+          name: 'TabSettingsProfileInner',
+        },
+        {
+          path: 'settings',
+          component: ManageWiki,
+          meta: {
+            requiresAuth: true,
+          },
+          name: 'TabSettingsSettingsInner',
+        },
+        {
+          path: 'features',
+          component: ManageFeatures,
+          meta: {
+            requiresAuth: true,
+          },
+          name: 'TabSettingsFeaturesInner',
+        },
+        {
+          path: 'review',
+          component: Review,
+          meta: {
+            requiresAuth: true,
+          },
+          name: 'TabSettingsReviewInner',
+          props: true,
+        },
+      ],
     },
     {
       path: '/discovery',

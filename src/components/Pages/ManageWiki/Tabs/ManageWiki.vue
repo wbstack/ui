@@ -5,22 +5,22 @@
         <!--Col 1-->
         <v-col>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <Skin :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <Logo :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <Registration :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <QuestyCaptcha :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
@@ -28,24 +28,24 @@
         <!--Col 2-->
         <v-col>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <EntityImport :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <Wikibase :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="card-column">
+            <v-col>
               <Delete :wikiId="this.wikiId"/>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
       <v-row v-if="wikiId == 0">
-        <v-col class="card-column">
+        <v-col>
           <v-card>
             <v-toolbar dark color="primary">
               <v-toolbar-title>Wiki Management</v-toolbar-title>
@@ -92,10 +92,4 @@ export default {
 </script>
 
 <style scoped>
-  .red-notice-highlight{
-    background-color: red;
-  }
-.v-main >>> .col {
-  max-width: 656px;
-}
 </style>
