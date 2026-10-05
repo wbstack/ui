@@ -168,11 +168,11 @@ export const handlers = [
   }),
 
   http.post('/api/user/sendVerifyEmail', () => {
-    return new Response('Already verified')
+    return new Response('Already verified!')
   }),
 
   http.post('/api/user/verifyEmail', () => {
-    return new Response('Already verified')
+    return new Response('Already verified!')
   }),
 
   http.post('/api/complaint/sendMessage', () => {
