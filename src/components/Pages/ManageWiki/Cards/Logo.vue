@@ -3,10 +3,10 @@
     <v-card-title>Set Logo</v-card-title>
     <v-card-text>
       <v-file-input
-        hint="Upload a square PNG logo that is at least 135x135 pixels."
+        hint="Upload a square SVG (recommended) or PNG of at least 135x135 pixels. Maximum file size: 2 MiB. SVGs must be self-contained and are sanitised for safety."
         label="Logo"
         prepend-icon="mdi-watermark"
-        accept="image/png"
+        accept="image/png,image/svg+xml,.png,.svg"
         :show-size="true"
         :persistent-hint="true"
         @change="onLogoFileChanged"
@@ -50,9 +50,9 @@ export default {
           alert('Upload success!')
         })
         .catch(err => {
-          console.log(err.response)
-          alert('Something went wrong.')
-          this.$router.go()
+          console.error(err)
+          const errors = err.response && err.response.data && err.response.data.errors
+          alert(errors && errors.logo ? errors.logo.join('\n') : 'The logo could not be uploaded. Please try again.')
         })
     },
   },
