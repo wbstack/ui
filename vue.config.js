@@ -1,6 +1,11 @@
 const path = require('path')
 module.exports = {
     devServer: {
+        client: {
+            // Derive the HMR WebSocket protocol, host and port from the browser, so that it works
+            // from both `localhost` and the Docker Compose `ui` host (e.g. selenium e2e tests).
+            webSocketURL: 'auto://0.0.0.0:0/ws'
+        },
         proxy: {
             '^/api': {
                 target: process.env.VUE_APP_API_URL,
