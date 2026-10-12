@@ -292,7 +292,7 @@ export const handlers = [
   }),
 
   // Currently in this form this needs to be kept in sync with new policies added in the future
-  // TODO: find a way to test different scenarios of policy states 
+  // TODO: find a way to test different scenarios of policy states
   http.get('/api/v1/policies/terms-of-use', () => {
     const items = [
       {
