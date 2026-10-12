@@ -128,11 +128,6 @@ const router = new Router({
       path: '/emailVerification/:token',
       name: 'EmailVerification',
       component: EmailVerification,
-      meta: {
-        requiresAuth: {
-          excludeFromPolicyChecks: true,
-        },
-      },
     },
     {
       path: '/user',
