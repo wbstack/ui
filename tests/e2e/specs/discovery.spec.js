@@ -17,6 +17,7 @@ describe('Discovery page', () => {
 
   it('should paginate results', async () => {
     const page = await Discovery.pagination
+    await page.waitForDisplayed({ timeout: 5000 })
     expect(await page.isDisplayed()).toBe(true)
   })
 
