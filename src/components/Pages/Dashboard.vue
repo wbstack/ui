@@ -14,7 +14,7 @@
                           <v-list-item-title>{{wiki.sitename}}</v-list-item-title>
                         </v-list-item-content>
                             <v-list-item-icon>
-                              <v-btn icon small icontarget="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>mdi-home</v-icon></v-btn>
+                              <v-btn icon small target="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>mdi-home</v-icon></v-btn>
                             </v-list-item-icon>
                             <v-list-item-icon>
                               <v-btn icon small :to="{ name: 'TabSettingsProfileInner', params: { id: wiki.id } }"><v-icon>mdi-cog</v-icon></v-btn>
