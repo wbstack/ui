@@ -28,10 +28,12 @@ enableMocking().then(() => {
 
   Vue.use(Vuetify)
 
-  Vue.use(VueReCaptcha, {
-    siteKey: config.RECAPTCHA_SITE_KEY,
-    loaderOptions: { useRecaptchaNet: true },
-  })
+  if (config.RECAPTCHA_ENABLED) {
+    Vue.use(VueReCaptcha, {
+      siteKey: config.RECAPTCHA_SITE_KEY,
+      loaderOptions: { useRecaptchaNet: true },
+    })
+  }
 
   // allow components to access api without importing it
   Vue.prototype.$api = api
