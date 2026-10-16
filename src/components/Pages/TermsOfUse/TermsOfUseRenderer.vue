@@ -71,6 +71,7 @@ export default {
       try {
         const policyType = this.policyType // TODO for a generalized component, read this from component property
         const activeFromRouteParam = this.$route.params.activeFrom
+        const normalizedRoutePath = this.$route.path.replace(/\/+$/, '') || '/'
 
         let upcomingPolicyResponse
         let upcomingPolicyActiveFrom
@@ -101,10 +102,10 @@ export default {
         }
 
         // The routes for an upcoming version can be /terms-of-use/upcoming or /terms-of-use/:activeFrom
-        const isUpcomingRoute = this.$route.path === '/terms-of-use/upcoming'
+        const isUpcomingRoute = normalizedRoutePath === '/terms-of-use/upcoming'
         const isUpcomingActiveFrom = activeFromRouteParam && activeFromRouteParam === upcomingPolicyActiveFrom
         // The routes for the currently active version can be /terms-of-use or /terms-of-use/:activeFrom
-        const isCurrentRoute = this.$route.path === '/terms-of-use'
+        const isCurrentRoute = normalizedRoutePath === '/terms-of-use'
         const isCurrentActiveFrom = activeFromRouteParam && activeFromRouteParam === currentPolicyActiveFrom
         // Determine which policy to render based on the route and the activeFrom parameter
         if (isUpcomingRoute || isUpcomingActiveFrom) {
