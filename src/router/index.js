@@ -76,32 +76,32 @@ const router = new Router({
     },
     {
       path: '/terms-of-use',
-      name: 'TermsOfUseRenderer',
+      name: 'TermsOfUseCurrent',
       component: TermsOfUseRenderer,
     },
     {
       path: '/terms-of-use/upcoming',
-      name: 'TermsOfUseRendererUpcoming',
+      name: 'TermsOfUseUpcoming',
       component: TermsOfUseRenderer,
     },
     {
       path: '/terms-of-use/:activeFrom',
-      name: 'TermsOfUseRendererExact',
+      name: 'TermsOfUseByDate',
       component: TermsOfUseRenderer,
     },
     {
       path: '/hosting-policy',
-      name: 'HostingPolicy',
+      name: 'HostingPolicyCurrent',
       component: HostingPolicyRenderer,
     },
     {
       path: '/hosting-policy/upcoming',
-      name: 'HostingPolicyRendererUpcoming',
+      name: 'HostingPolicyUpcoming',
       component: HostingPolicyRenderer,
     },
     {
       path: '/hosting-policy/:activeFrom',
-      name: 'HostingPolicyRendererExact',
+      name: 'HostingPolicyByDate',
       component: HostingPolicyRenderer,
     },
     {
