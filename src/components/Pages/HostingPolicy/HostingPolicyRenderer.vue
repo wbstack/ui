@@ -100,10 +100,10 @@ export default {
         }
 
         // The routes for an upcoming version can be /hosting-policy/upcoming or /hosting-policy/:activeFrom
-        const isUpcomingRoute = this.$route.path === '/hosting-policy/upcoming'
+        const isUpcomingRoute = this.$route.name === 'HostingPolicyUpcoming'
         const isUpcomingActiveFrom = activeFromRouteParam && activeFromRouteParam === upcomingPolicyActiveFrom
         // The routes for the currently active version can be /hosting-policy or /hosting-policy/:activeFrom
-        const isCurrentRoute = this.$route.path === '/hosting-policy'
+        const isCurrentRoute = this.$route.name === 'HostingPolicyCurrent'
         const isCurrentActiveFrom = activeFromRouteParam && activeFromRouteParam === currentPolicyActiveFrom
         // Determine which policy to render based on the route and the activeFrom parameter
         if (isUpcomingRoute || isUpcomingActiveFrom) {
