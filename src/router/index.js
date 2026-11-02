@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Store from './../store'
 
 import Home from '@/components/Pages/Home/Home'
-import Dashboard from '@/components/Pages/Dashboard'
+import Dashboard from '@/components/Pages/Dashboard/Dashboard'
 import About from '@/components/Pages/About'
 import Contact from '@/components/Pages/Contact'
 import CreateAccount from '@/components/Pages/CreateAccount'
