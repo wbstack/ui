@@ -11,7 +11,18 @@
                     <v-list v-if="currentUser.verified == 1">
                       <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
                         <v-list-item-content>
-                          <v-list-item-title>{{wiki.sitename}}</v-list-item-title>
+                          <v-list-item-title>
+                            <div>
+                              {{wiki.sitename}}
+                              <v-chip color="warning" outlined small>
+                                <v-icon class="mr-1" small>mdi-clock-outline</v-icon>
+                                Expiring soon
+                              </v-chip>
+                            </div>
+                            <div>
+                              <span class="warning--text">Will expire on {{ wiki.latest_suspension.active_from}}</span>
+                            </div>
+                          </v-list-item-title>
                         </v-list-item-content>
                             <v-list-item-icon>
                               <v-btn icon small icontarget="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>mdi-home</v-icon></v-btn>
