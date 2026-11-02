@@ -16,6 +16,7 @@
                             :wikiTitle="wiki.sitename"
                             :suspensionReason="wiki.latest_suspension.reason"
                             :suspensionActiveFrom="wiki.latest_suspension.active_from"
+                            :hasPendingReview="wiki.has_pending_review"
                           />
                         </v-list-item-title>
                       </v-list-item-content>
@@ -60,12 +61,12 @@
 </template>
 
 <script>
-import WikiDashboardListElement from './Components/WikiDashboardListElement';
+import WikiDashboardListElement from './Components/WikiDashboardListElement'
 
 export default {
   name: 'Dashboard',
   components: {
-    WikiDashboardListElement
+    WikiDashboardListElement,
   },
   data () {
     return {
