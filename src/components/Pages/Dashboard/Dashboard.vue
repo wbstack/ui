@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="fill-height" fluid >
       <v-row>
-        <v-col cols="12" lg="4" md="4">
+        <v-col cols="12" lg="4" md="6">
           <v-container fluid class="rightpaddingonly">
             <v-row>
               <v-col>
@@ -52,7 +52,7 @@
             </v-row>
           </v-container>
         </v-col>
-        <v-col cols="12" lg="6" md="5" class="mt-3">
+        <v-col cols="12" lg="6" md="4" class="mt-3">
           <h3>Welcome to wikibase.cloud</h3>
           <p>You can create and manage wikis from this central dashboard.</p>
           <p>Check out our <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">cloud service documentation</a> as well as general documentation on <a href="https://www.mediawiki.org/wiki/Wikibase">Wikibase</a>.</p>
