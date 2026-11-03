@@ -14,13 +14,13 @@
     <div v-if="!hasPendingReview" class="mt-2">
       <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
-        <v-dialog value="true" width="564" v-model="expandDialog">
-    <WikiDashboardListDialogContent
-      :hasPendingReview="hasPendingReview"
-      :formattedActiveFromDate="formattedActiveFromDate"
-      :wikiDomain="wikiDomain"
-      :wikiId="wikiId"
-      @close="expandDialog=false" />
+    <v-dialog value="true" width="564" v-model="expandDialog">
+      <WikiDashboardListDialogContent
+        :hasPendingReview="hasPendingReview"
+        :formattedActiveFromDate="formattedActiveFromDate"
+        :wikiDomain="wikiDomain"
+        :wikiId="wikiId"
+        @close="expandDialog=false" />
     </v-dialog>
   </div>
 </template>
@@ -45,10 +45,6 @@ export default {
     wikiId: {
       type: Number,
       required: true,
-    },
-    suspensionReason: {
-      type: String,
-      required: false,
     },
     suspensionActiveFrom: {
       type: String,
