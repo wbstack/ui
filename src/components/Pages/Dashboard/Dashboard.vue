@@ -2,25 +2,36 @@
   <v-main>
     <v-container class="fill-height" fluid >
       <v-row>
-        <v-col cols="12" lg="4" md="4">
+        <v-col cols="12" lg="4" md="6">
           <v-container fluid class="rightpaddingonly">
             <v-row>
               <v-col>
                 <v-container>
-                    <h3 class="ml-4">Your Wikibases</h3>
-                    <v-list v-if="currentUser.verified == 1">
-                      <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
-                        <v-list-item-content>
-                          <v-list-item-title>{{wiki.sitename}}</v-list-item-title>
-                        </v-list-item-content>
-                            <v-list-item-icon>
-                              <v-btn icon small icontarget="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>mdi-home</v-icon></v-btn>
-                            </v-list-item-icon>
-                            <v-list-item-icon>
-                              <v-btn icon small :to="{ name: 'TabSettingsProfileInner', params: { id: wiki.id } }"><v-icon>mdi-cog</v-icon></v-btn>
-                            </v-list-item-icon>
-                      </v-list-item>
-                    </v-list>
+                  <h3 class="ml-4">Your Wikibases</h3>
+                  <v-list v-if="currentUser.verified == 1">
+                    <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          <WikiDashboardListElement
+                            :wikiTitle="wiki.sitename"
+                            :wikiDomain="wiki.domain"
+                            :wikiId="wiki.id"
+                            :suspensionReason="wiki.latest_suspension.reason"
+                            :suspensionActiveFrom="wiki.latest_suspension.active_from"
+                            :hasPendingReview="wiki.has_pending_review"
+                          />
+                        </v-list-item-title>
+                      </v-list-item-content>
+
+                      <v-list-item-icon>
+                        <v-btn icon small icontarget="_blank" rel="noopener noreferrer" :href="'//' + wiki.domain"><v-icon>mdi-home</v-icon></v-btn>
+                      </v-list-item-icon>
+                      <v-list-item-icon>
+                        <v-btn icon small :to="{ name: 'TabSettingsProfileInner', params: { id: wiki.id } }"><v-icon>mdi-cog</v-icon></v-btn>
+                      </v-list-item-icon>
+                    </v-list-item>
+                  </v-list>
+
                   <v-container v-if="status == 'loading' && count == 0">
                     <v-container class="d-flex justify-center">
                       <v-progress-circular indeterminate color="primary"></v-progress-circular>
@@ -41,7 +52,7 @@
             </v-row>
           </v-container>
         </v-col>
-        <v-col cols="12" lg="6" md="5" class="mt-3">
+        <v-col cols="12" lg="6" md="4" class="mt-3">
           <h3>Welcome to wikibase.cloud</h3>
           <p>You can create and manage wikis from this central dashboard.</p>
           <p>Check out our <a href="https://www.mediawiki.org/wiki/Wikibase/Wikibase.cloud">cloud service documentation</a> as well as general documentation on <a href="https://www.mediawiki.org/wiki/Wikibase">Wikibase</a>.</p>
@@ -52,8 +63,13 @@
 </template>
 
 <script>
+import WikiDashboardListElement from './Components/WikiDashboardListElement'
+
 export default {
   name: 'Dashboard',
+  components: {
+    WikiDashboardListElement,
+  },
   data () {
     return {
       stats: [
