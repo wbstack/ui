@@ -2,17 +2,27 @@
   <div>
     <div>
       {{wikiTitle}}
-      <v-chip v-if="!hasPendingReview" @click="expandDialog = true" class="ml-3" color="warning" outlined small>
-        <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
-        Expiring soon
-      </v-chip>
-      <v-chip v-else class="ml-3" color="primary" outlined small>
-        <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
-        Pending review
-      </v-chip>
+      <v-hover v-slot="{ hover }">
+        <v-chip
+          v-if="!hasPendingReview"
+          @click="expandDialog = true"
+          class="ml-3"
+          color="warning"
+          :class="{ 'white--text': hover }"
+          :outlined="!hover"
+          small
+        >
+          <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
+          Expiring soon
+        </v-chip>
+        <v-chip v-else class="ml-3" color="primary" outlined small>
+          <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
+          Pending review
+        </v-chip>
+      </v-hover>
     </div>
     <div v-if="!hasPendingReview" class="mt-2">
-      <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
+      <span class="warning--text body-2">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
     <v-dialog value="true" width="564" v-model="expandDialog">
       <WikiDashboardListDialogContent
