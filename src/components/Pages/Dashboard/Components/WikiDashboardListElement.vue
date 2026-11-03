@@ -6,22 +6,22 @@
         <v-chip
           v-if="!hasPendingReview"
           @click="expandDialog = true"
-          class="ml-3"
+          class="ml-3 px-2"
           color="warning"
           :outlined="!hover"
           small
         >
-          <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
+          <v-icon class="mr-1" small>mdi-clock-outline</v-icon>
           Expiring soon
         </v-chip>
         <v-chip
           v-else
-          class="ml-3"
+          class="ml-3 px-2"
           color="primary"
           :outlined="!hover"
           small
         >
-          <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
+          <v-icon class="mr-1" small>mdi-clock-outline</v-icon>
           Pending review
         </v-chip>
       </v-hover>
