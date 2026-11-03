@@ -7,6 +7,7 @@
     <v-divider />
     <v-card-actions class="justify-end">
       <v-btn
+        color="primary"
         text
         @click='close'
       >Close</v-btn>
