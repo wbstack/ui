@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import { getRecaptchaToken } from '~/backend'
+
 export default {
   data: () => ({
     contenturl: '',
@@ -116,7 +118,7 @@ export default {
       const name = this.name
       const email = this.email
       if (this.$refs.form.validate() === true) {
-        this.$recaptcha('complaint').then((recaptcha) => {
+        getRecaptchaToken(this, 'complaint').then((recaptcha) => {
           this.$api.complaint(
             {
               name,

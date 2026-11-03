@@ -25,6 +25,10 @@ docker compose run ui npm install
 docker compose up -d
 ```
 
+reCAPTCHA is disabled in the UI's Docker Compose development server by default;
+set `VUE_APP_RECAPTCHA_ENABLED=1` and configure the API's
+`RECAPTCHA_ENABLED=true` to test with real reCAPTCHA keys.
+
 #### Running scripts
 
 ```
