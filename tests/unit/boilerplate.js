@@ -16,3 +16,8 @@ window.location = { assign: assignMock }
 afterEach(() => {
   assignMock.mockClear()
 })
+
+// throw on any console errors
+global.console.error = (message) => {
+  throw message
+}
