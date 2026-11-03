@@ -81,6 +81,9 @@ export default {
 
       this.$store
         .dispatch('forgottenPassword', { email })
+        .then(() => {
+          this.inFlight = false
+        })
     },
   },
 }
