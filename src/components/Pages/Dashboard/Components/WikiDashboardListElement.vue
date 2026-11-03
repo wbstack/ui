@@ -15,7 +15,7 @@
       <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
 
-    <WikiDashboardListDialog v-if="expandDialog" @close="expandDialog=false" />
+    <WikiDashboardListDialog :hasPendingReview="hasPendingReview" v-if="expandDialog" @close="expandDialog=false" />
   </div>
 </template>
 

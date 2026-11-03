@@ -28,8 +28,10 @@ export default {
       open_dialog: true,
     }
   },
-  close () {
-    this.$emit('close')
+  methods: {
+    close () {
+      this.$emit('close')
+    },
   },
 }
 </script>
