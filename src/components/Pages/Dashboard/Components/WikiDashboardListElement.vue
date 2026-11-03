@@ -15,7 +15,14 @@
           <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
           Expiring soon
         </v-chip>
-        <v-chip v-else class="ml-3" color="primary" outlined small>
+        <v-chip
+          v-else
+          class="ml-3"
+          color="primary"
+          :class="{ 'white--text': hover }"
+          :outlined="!hover"
+          small
+        >
           <v-icon class="mr-1" small left>mdi-clock-outline</v-icon>
           Pending review
         </v-chip>
