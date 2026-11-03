@@ -4,10 +4,10 @@ require('./boilerplate.js')
 
 describe('WikiDashboardListElement.vue', () => {
   it('renders a Wiki List Element with expiry notice', () => {
-    let today = new Date();
-    let suspensionDay = today.getDate() + 1;
-    let suspensionActiveFromDate = new Date();
-    suspensionActiveFromDate.setDate(suspensionDay);
+    const today = new Date()
+    const suspensionDay = today.getDate() + 1
+    const suspensionActiveFromDate = new Date()
+    suspensionActiveFromDate.setDate(suspensionDay)
 
     const wrapper = shallowMount(WikiDashboardListElement, {
       propsData: {
