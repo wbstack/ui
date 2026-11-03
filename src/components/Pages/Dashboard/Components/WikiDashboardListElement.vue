@@ -15,7 +15,13 @@
       <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
 
-    <WikiDashboardListDialog :hasPendingReview="hasPendingReview" v-if="expandDialog" @close="expandDialog=false" />
+    <WikiDashboardListDialog
+      :hasPendingReview="hasPendingReview"
+      :formattedActiveFromDate="formattedActiveFromDate"
+      :wikiDomain="wikiDomain"
+      :wikiId="wikiId"
+      v-if="expandDialog"
+      @close="expandDialog=false" />
   </div>
 </template>
 
@@ -30,6 +36,14 @@ export default {
   props: {
     wikiTitle: {
       type: String,
+      required: true,
+    },
+    wikiDomain: {
+      type: String,
+      required: true,
+    },
+    wikiId: {
+      type: Number,
       required: true,
     },
     suspensionReason: {

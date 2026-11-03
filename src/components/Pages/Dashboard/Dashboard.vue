@@ -14,6 +14,8 @@
                         <v-list-item-title>
                           <WikiDashboardListElement
                             :wikiTitle="wiki.sitename"
+                            :wikiDomain="wiki.domain"
+                            :wikiId="wiki.id"
                             :suspensionReason="wiki.latest_suspension.reason"
                             :suspensionActiveFrom="wiki.latest_suspension.active_from"
                             :hasPendingReview="wiki.has_pending_review"
