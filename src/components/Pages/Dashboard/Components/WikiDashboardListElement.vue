@@ -8,7 +8,6 @@
           @click="expandDialog = true"
           class="ml-3"
           color="warning"
-          :class="{ 'white--text': hover }"
           :outlined="!hover"
           small
         >
@@ -19,7 +18,6 @@
           v-else
           class="ml-3"
           color="primary"
-          :class="{ 'white--text': hover }"
           :outlined="!hover"
           small
         >
