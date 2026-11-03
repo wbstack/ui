@@ -2,7 +2,7 @@ FROM node:22 AS builder
 
 WORKDIR /src/app
 COPY ./package.json ./package-lock.json ./
-RUN npm install && npm cache clean --force
+RUN npm ci && npm cache clean --force
 COPY ./ .
 RUN VUE_APP_BUILD_FOR_DOCKER_IMAGE=1 npm run build
 
