@@ -2,7 +2,7 @@
   <div>
     <div>
       {{wikiTitle}}
-      <v-chip v-if="!hasPendingReview" class="ml-3" color="warning" outlined small>
+      <v-chip v-if="!hasPendingReview" @click="expandDialog = true" class="ml-3" color="warning" outlined small>
         <v-icon class="mr-1" small>mdi-clock-outline</v-icon>
         Expiring soon
       </v-chip>
@@ -14,12 +14,19 @@
     <div v-if="!hasPendingReview" class="mt-2">
       <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
+
+    <WikiDashboardListDialog v-if="expandDialog" @close="expandDialog=false" />
   </div>
 </template>
 
 <script>
+import WikiDashboardListDialog from './WikiDashboardListDialog.vue'
+
 export default {
   name: 'WikiDashboardListElement',
+  components: {
+    WikiDashboardListDialog,
+  },
   props: {
     wikiTitle: {
       type: String,
@@ -46,6 +53,11 @@ export default {
         { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' },
       )
     },
+  },
+  data () {
+    return {
+      expandDialog: false,
+    }
   },
 }
 </script>
