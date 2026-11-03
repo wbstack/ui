@@ -1,5 +1,4 @@
 <template>
-    <v-dialog value="true" width="564">
       <v-card>
         <v-card-title>Status information</v-card-title>
         <v-card-text v-if="!hasPendingReview">
@@ -13,7 +12,6 @@
           >Close</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>
 </template>
 
 <script>

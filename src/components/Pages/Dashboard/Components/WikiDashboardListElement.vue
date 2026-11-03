@@ -14,24 +14,24 @@
     <div v-if="!hasPendingReview" class="mt-2">
       <span class="warning--text">Will expire on {{ formattedActiveFromDate }}</span>
     </div>
-
-    <WikiDashboardListDialog
+        <v-dialog value="true" width="564" v-model="expandDialog">
+    <WikiDashboardListDialogContent
       :hasPendingReview="hasPendingReview"
       :formattedActiveFromDate="formattedActiveFromDate"
       :wikiDomain="wikiDomain"
       :wikiId="wikiId"
-      v-if="expandDialog"
       @close="expandDialog=false" />
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import WikiDashboardListDialog from './WikiDashboardListDialog.vue'
+import WikiDashboardListDialogContent from './WikiDashboardListDialogContent.vue'
 
 export default {
   name: 'WikiDashboardListElement',
   components: {
-    WikiDashboardListDialog,
+    WikiDashboardListDialogContent,
   },
   props: {
     wikiTitle: {
