@@ -4,12 +4,17 @@ require('./boilerplate.js')
 
 describe('WikiDashboardListElement.vue', () => {
   it('renders a Wiki List Element with expiry notice', () => {
+    let today = new Date();
+    let suspensionDay = today.getDate() + 1;
+    let suspensionActiveFromDate = new Date();
+    suspensionActiveFromDate.setDate(suspensionDay);
+
     const wrapper = shallowMount(WikiDashboardListElement, {
       propsData: {
         wikiTitle: 'Foobar',
         wikiDomain: 'foobar.wikibase.cloud',
         wikiId: 1,
-        suspensionActiveFrom: '2027-02-02T08:58:11.000000Z',
+        suspensionActiveFrom: suspensionActiveFromDate.toString(),
         hasPendingReview: true,
       },
     })
