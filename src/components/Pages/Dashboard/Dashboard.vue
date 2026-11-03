@@ -38,7 +38,7 @@
                     </v-container>
                   </v-container>
                   <v-container v-if="currentUser.verified == 1">
-                        <v-btn color="primary mb-2" dark to="/wikis/create">
+                        <v-btn class="mb-2" color="primary" dark to="/wikis/create">
                             Create new Wiki
                         </v-btn>
                     <p class="caption">{{count}} of {{limit == false ? '∞' : limit}} Wikis used</p>
