@@ -9,9 +9,9 @@
                 <v-container>
                   <h3 class="ml-4">Your Wikibases</h3>
                   <v-list v-if="currentUser.verified == 1">
-                    <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki">
+                    <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki" class="wiki-list-item">
                       <v-list-item-content>
-                        <v-list-item-title>
+                        <v-list-item-title class="wiki-list-title">
                           <WikiDashboardListElement
                             :wikiTitle="wiki.sitename"
                             :wikiDomain="wiki.domain"
@@ -103,6 +103,13 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.wiki-list-title {
+  white-space: normal;
+}
+.wiki-list-item .v-list-item__icon {
+  margin-left: 8px;
+}
+
 .fullwidth {
   width: 100%;
 }
