@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div>
-      {{wikiTitle}}
+    <div class="wiki-heading">
+      <span class="wiki-name">{{wikiTitle}}</span>
       <v-hover v-slot="{ hover }">
         <v-chip
           v-if="!hasPendingReview"
           @click="expandDialog = true"
-          class="ml-3 px-2"
+          class="px-2"
           color="warning"
           :outlined="!hover"
           small
@@ -16,7 +16,7 @@
         </v-chip>
         <v-chip
           v-else
-          class="ml-3 px-2"
+          class="px-2"
           color="primary"
           :outlined="!hover"
           small
@@ -86,3 +86,16 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.wiki-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.wiki-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+</style>
