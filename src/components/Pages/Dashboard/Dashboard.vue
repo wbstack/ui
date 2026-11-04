@@ -70,15 +70,6 @@ export default {
   components: {
     WikiDashboardListElement,
   },
-  data () {
-    return {
-      stats: [
-        'Active Wikis: 100+',
-        'Edits: 1.7+ million',
-        'Pages: 1.3+ million',
-      ],
-    }
-  },
   computed: {
     currentUser: function () {
       return this.$store.getters.currentUser
