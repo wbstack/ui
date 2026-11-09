@@ -40,7 +40,6 @@ const getters = {
   wikiLimit: state => state.limit,
   currentWikiEntityImports: state => state.currentWikiEntityImports,
   currentWikiEntityImportError: state => state.currentWikiEntityImportError,
-  hasLoaded: state => state.wikis.status !== '',
   getReviewsByWikiId: (state) => (wikiId) => {
     return state.reviews[Number(wikiId)] ?? []
   },
