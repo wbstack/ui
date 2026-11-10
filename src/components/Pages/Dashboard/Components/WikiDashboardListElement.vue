@@ -16,6 +16,7 @@
         </v-chip>
         <v-chip
           v-else
+          @click="expandDialog = true"
           class="ml-3 px-2"
           color="primary"
           :outlined="!hover"

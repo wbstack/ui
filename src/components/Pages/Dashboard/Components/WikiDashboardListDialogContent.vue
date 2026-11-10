@@ -4,6 +4,9 @@
     <v-card-text v-if="!hasPendingReview">
       Under our <ExternalLink :url="`https://www.wikibase.cloud/hosting-policy`">hosting policy</ExternalLink>, Wikibases are temporary by default. Unless submitted for review, your Wikibase {{ wikiDomain }} will be taken offline on {{ formattedActiveFromDate }}. If you want to keep it online, please <ExternalLink :url="`https://www.wikibase.cloud/wikis/manage/${this.wikiId}/review`">submit it for review</ExternalLink>.
     </v-card-text>
+    <v-card-text v-if="hasPendingReview">
+      Your Wikibase {{ wikiDomain }} is scheduled for re-evaluation under our <ExternalLink :url="`https://www.wikibase.cloud/hosting-policy`">hosting policy</ExternalLink> by {{ formattedActiveFromDate }}. You will be able to <ExternalLink :url="`https://www.wikibase.cloud/wikis/manage/${this.wikiId}/review`">submit it for review</ExternalLink> 3 months before this date.
+    </v-card-text>
     <v-divider />
     <v-card-actions class="justify-end">
       <v-btn
