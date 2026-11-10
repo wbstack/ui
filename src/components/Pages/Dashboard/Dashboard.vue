@@ -38,7 +38,7 @@
                     </v-container>
                   </v-container>
                   <v-container v-if="currentUser.verified == 1">
-                        <v-btn color="primary mb-2" dark class="space" to="/wikis/create">
+                        <v-btn class="mb-2" color="primary" dark to="/wikis/create">
                             Create new Wiki
                         </v-btn>
                     <p class="caption">{{count}} of {{limit == false ? '∞' : limit}} Wikis used</p>
@@ -69,15 +69,6 @@ export default {
   name: 'Dashboard',
   components: {
     WikiDashboardListElement,
-  },
-  data () {
-    return {
-      stats: [
-        'Active Wikis: 100+',
-        'Edits: 1.7+ million',
-        'Pages: 1.3+ million',
-      ],
-    }
   },
   computed: {
     currentUser: function () {
