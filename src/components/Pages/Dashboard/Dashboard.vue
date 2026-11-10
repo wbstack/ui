@@ -13,13 +13,13 @@
             </p>
           </template>
 
-          <div v-else-if="status === 'loading'">
+          <div v-else-if="wikisStatus === 'loading'">
             <v-progress-circular indeterminate color="primary" />
           </div>
 
-          <template v-else-if="status === 'success'">
+          <template v-else-if="wikisStatus === 'success'">
             <v-list>
-              <v-list-item v-for="wiki in wikis" :key="wiki.id" :wiki="wiki" class="pl-0">
+              <v-list-item v-for="wiki in wikis" :key="wiki.id" class="pl-0">
                 <v-list-item-content>
                   <WikiDashboardListElement
                     :wikiTitle="wiki.sitename"
@@ -48,7 +48,7 @@
             <v-btn class="mb-2" color="primary" dark to="/wikis/create">
                 Create new Wiki
             </v-btn>
-            <p class="caption">{{count}} of {{limit || '∞'}} Wikis used</p>
+            <p class="caption">{{ wikiCount }} of {{ wikiLimit || '∞' }} Wikis used</p>
           </template>
         </v-col>
         <v-col cols="12" md="6">
@@ -66,6 +66,7 @@
 
 <script>
 import WikiDashboardListElement from './Components/WikiDashboardListElement'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
@@ -73,21 +74,13 @@ export default {
     WikiDashboardListElement,
   },
   computed: {
-    currentUser: function () {
-      return this.$store.getters.currentUser
-    },
-    wikis: function () {
-      return this.$store.getters.wikis
-    },
-    count: function () {
-      return this.$store.getters.wikiCount
-    },
-    limit: function () {
-      return this.$store.getters.wikiLimit
-    },
-    status: function () {
-      return this.$store.getters.wikisStatus
-    },
+    ...mapGetters([
+      'currentUser',
+      'wikis',
+      'wikiCount',
+      'wikiLimit',
+      'wikisStatus',
+    ]),
   },
   created () {
     this.$store.dispatch('refreshWikis')
