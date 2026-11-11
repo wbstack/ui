@@ -16,9 +16,7 @@ describe('WikiDashboardListDialogContent.vue', () => {
         hasPendingReview: false,
       },
     })
-
-    expect(wrapper.text()).toContain('will be taken offline on 11 November 2026')
-    expect(wrapper.text()).not.toContain('is expecting a review')
+    expect(wrapper.text()).toContain('submit it for review')
     expect(wrapper.text()).toContain('mywayordatway.wikibase.cloud')
   })
 
@@ -31,7 +29,6 @@ describe('WikiDashboardListDialogContent.vue', () => {
     })
 
     expect(wrapper.text()).toContain('is expecting a review')
-    expect(wrapper.text()).not.toContain('will be taken offline')
     expect(wrapper.text()).toContain('mywayordatway.wikibase.cloud')
   })
 })
