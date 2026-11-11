@@ -3,8 +3,16 @@ import WikiDashboardListDialogContent from '@/components/Pages/Dashboard/Compone
 require('./boilerplate.js')
 
 describe('WikiDashboardListDialogContent.vue', () => {
+  const today = new Date()
+  const suspensionDay = today.getDate() + 1
+  const suspensionActiveFromDate = new Date()
+  suspensionActiveFromDate.setDate(suspensionDay)
+  const formattedActiveFromDate = suspensionActiveFromDate.toLocaleDateString(
+    'en-GB',
+    { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' },
+  )
   const propsData = {
-    formattedActiveFromDate: '11 November 2026',
+    formattedActiveFromDate,
     wikiDomain: 'mywayordatway.wikibase.cloud',
     wikiId: 1,
   }
@@ -17,7 +25,7 @@ describe('WikiDashboardListDialogContent.vue', () => {
       },
     })
 
-    expect(wrapper.text()).toContain('will be taken offline on 11 November 2026')
+    expect(wrapper.text()).toContain(`will be taken offline on ${formattedActiveFromDate}`)
     expect(wrapper.text()).not.toContain('is expecting a review')
     expect(wrapper.text()).toContain('mywayordatway.wikibase.cloud')
   })
