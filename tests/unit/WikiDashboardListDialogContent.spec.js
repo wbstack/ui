@@ -9,7 +9,7 @@ describe('WikiDashboardListDialogContent.vue', () => {
     wikiId: 1,
   }
 
-  it('renders the expiry message when there is no pending review', () => {
+  it('renders only the expiry message when there is no pending review', () => {
     const wrapper = shallowMount(WikiDashboardListDialogContent, {
       propsData: {
         ...propsData,
@@ -19,9 +19,10 @@ describe('WikiDashboardListDialogContent.vue', () => {
     expect(wrapper.text()).toContain(
       `your Wikibase ${propsData.wikiDomain} will be taken offline on ${propsData.formattedActiveFromDate}`
     )
+    expect(wrapper.text()).not.toContain('is expecting a review')
   })
 
-  it('renders the pending review message when a review is pending', () => {
+  it('renders only the pending review message when a review is pending', () => {
     const wrapper = shallowMount(WikiDashboardListDialogContent, {
       propsData: {
         ...propsData,
@@ -30,5 +31,6 @@ describe('WikiDashboardListDialogContent.vue', () => {
     })
 
     expect(wrapper.text()).toContain(`Your Wikibase ${propsData.wikiDomain} is expecting a review`)
+    expect(wrapper.text()).not.toContain('will be taken offline')
   })
 })
