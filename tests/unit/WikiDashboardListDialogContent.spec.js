@@ -16,7 +16,9 @@ describe('WikiDashboardListDialogContent.vue', () => {
         hasPendingReview: false,
       },
     })
-    expect(wrapper.text()).toContain(`your Wikibase ${propsData.wikiDomain} will be taken offline`)
+    expect(wrapper.text()).toContain(
+      `your Wikibase ${propsData.wikiDomain} will be taken offline on ${propsData.formattedActiveFromDate}`
+    )
   })
 
   it('renders the pending review message when a review is pending', () => {
