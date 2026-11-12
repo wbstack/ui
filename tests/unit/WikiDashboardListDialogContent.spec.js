@@ -16,8 +16,7 @@ describe('WikiDashboardListDialogContent.vue', () => {
         hasPendingReview: false,
       },
     })
-    expect(wrapper.text()).toContain('submit it for review')
-    expect(wrapper.text()).toContain('mywayordatway.wikibase.cloud')
+    expect(wrapper.text()).toContain(`your Wikibase ${propsData.wikiDomain} will be taken offline`)
   })
 
   it('renders the pending review message when a review is pending', () => {
@@ -28,7 +27,6 @@ describe('WikiDashboardListDialogContent.vue', () => {
       },
     })
 
-    expect(wrapper.text()).toContain('is expecting a review')
-    expect(wrapper.text()).toContain('mywayordatway.wikibase.cloud')
+    expect(wrapper.text()).toContain(`Your Wikibase ${propsData.wikiDomain} is expecting a review`)
   })
 })
