@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>Status information</v-card-title>
     <v-card-text v-if="!hasPendingReview">
-      Under our <ExternalLink :url="`https://www.wikibase.cloud/hosting-policy`">hosting policy</ExternalLink>, Wikibases are temporary by default. Unless submitted for review, your Wikibase <strong>{{ wikiDomain }}</strong> will be taken offline on {{ formattedActiveFromDate }}. If you want to keep it online, please <ExternalLink :url="`https://www.wikibase.cloud/wikis/manage/${this.wikiId}/review`">submit it for review</ExternalLink>.
+      Under our <ExternalLink :url="`/hosting-policy`">hosting policy</ExternalLink>, Wikibases are temporary by default. Unless submitted for review, your Wikibase <strong>{{ wikiDomain }}</strong> will be taken offline on {{ formattedActiveFromDate }}. If you want to keep it online, please <ExternalLink :url="`/wikis/manage/${this.wikiId}/review`">submit it for review</ExternalLink>.
     </v-card-text>
     <v-card-text v-if="hasPendingReview">
       Your Wikibase <strong>{{ wikiDomain }}</strong> is expecting a review. Once it's reviewed, we'll let you know the outcome and what happens next. The Wikibase will stay online at least until the review is complete.
