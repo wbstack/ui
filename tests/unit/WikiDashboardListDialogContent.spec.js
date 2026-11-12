@@ -16,6 +16,7 @@ describe('WikiDashboardListDialogContent.vue', () => {
         hasPendingReview: false,
       },
     })
+
     expect(wrapper.text()).toContain(
       `your Wikibase ${propsData.wikiDomain} will be taken offline on ${propsData.formattedActiveFromDate}`
     )
