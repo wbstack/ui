@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import { getRecaptchaToken } from '~/backend'
+
 export default {
   data: () => ({
     items: [
@@ -99,7 +101,7 @@ export default {
       const message = this.message
       const contactDetails = this.contactDetails
       // Recaptcha check
-      this.$recaptcha('contact').then((recaptcha) => {
+      getRecaptchaToken(this, 'contact').then((recaptcha) => {
         this.$api.contact(
           {
             name,
